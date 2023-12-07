@@ -179,6 +179,94 @@ nav {
   display: none;
 }
 
+.nav_mob_menu_wrapper {
+  width: 100%;
+  height: 100vh;
+  padding: 32px 24px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 111;
+  position: fixed;
+  background: #111112;
+  transition: all 0.4s ease;
+  transform: translateX(100%);
+}
+.visible_mob_menu {
+  transition: all 0.4s ease;
+  transform: translateX(0);
+}
+.nav_mob_menu_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+.mob_menu_user_data p {
+  color: var(--92979C, #92979c);
+  margin-bottom: 10px;
+  /* 17px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
+.mob_menu_user_data p:nth-child(1) {
+  color: var(--FFFFFF, #fff);
+}
+.nav_mob_menu_wrapper .nav_bar_menu {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 24px;
+}
+.nav_menu_item {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+}
+.nav_menu_itemm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav_mob_menu_wrapper_line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid var(--595959, #595959);
+  margin: 24px 0 24px;
+}
+.nav_logout_btn button {
+  border-radius: 40px;
+  width: 100%;
+  margin-top: 65px;
+  background: var(--Accent, #2420fc);
+  padding: 11px 20px 13px 20px;
+
+  color: var(--OnSecond, var(--FFFFFF, #fff));
+  font-family: TTInterfaces500;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 123.077% */
+}
+.nav_menu_item_drop {
+  width: 100%;
+  z-index: 112;
+  top: 0;
+}
+.nav_menu_item_drop {
+  position: relative;
+}
+.nav_mob_menu_wrapper_content_wrapper {
+  overflow-y: auto;
+  max-height: 80vh;
+}
 @media only screen and (max-width: 1300px) {
   .nav_bar_menu,
   .nav_wrapper_right {
@@ -195,7 +283,6 @@ nav {
     display: none;
   }
 }
-
 
 @media only screen and (max-width: 750px) {
   .nav_wrapper_right {

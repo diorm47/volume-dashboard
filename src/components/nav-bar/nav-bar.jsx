@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./nav-bar.css";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as Down } from "../../assets/icons/bottom-arrow.svg";
 import { ReactComponent as ChatIcon } from "../../assets/icons/nav-chat-icon.svg";
 import { ReactComponent as MenuIcon } from "../../assets/icons/nav-menu-burger.svg";
+import { ReactComponent as ExitIcon } from "../../assets/icons/exit-nav-mob.svg";
 import { ReactComponent as NotificationICon } from "../../assets/icons/nav-notification-icon.svg";
 import avatar from "../../assets/images/avatar.png";
 
 function NavBar() {
+  const [menuVisible, setMenuVisible] = useState(false);
   return (
     <nav>
       <div className="nav_wrapper">
@@ -190,8 +192,111 @@ function NavBar() {
             </div>
           </div>
         </div>
-        <div className="nav_mob_burger">
+        <div className="nav_mob_burger" onClick={() => setMenuVisible(true)}>
           <MenuIcon />
+        </div>
+        <div
+          className={
+            menuVisible
+              ? "nav_mob_menu_wrapper visible_mob_menu"
+              : "nav_mob_menu_wrapper"
+          }
+        >
+          <div className="nav_mob_menu_top">
+            <NavLink to="/">
+              <div className="nav_logo">
+                <Logo />
+              </div>
+            </NavLink>
+            <ExitIcon onClick={() => setMenuVisible(false)} />
+          </div>
+          <div className="nav_mob_menu_wrapper_content_wrapper">
+            <div className="nav_mob_menu_wrapper_content">
+              <div className="mob_menu_user_data">
+                <p>nvolume@gmail.com</p>
+                <p>USER ID:436425</p>
+                <p>Пробный</p>
+              </div>
+              <div className="nav_mob_menu_wrapper_line"></div>
+              <div className="nav_bar_menu">
+                <NavLink to="/review">
+                  <div className="nav_menu_item">
+                    <p>Обзор</p>
+                  </div>
+                </NavLink>
+                <NavLink to="/analysis">
+                  <div className="nav_menu_item">
+                    <p>Анализ</p>
+                  </div>
+                </NavLink>
+                <NavLink to="/investments">
+                  <div className="nav_menu_item">
+                    <p>Инвестиции</p>
+                  </div>
+                </NavLink>
+
+                <div className="nav_menu_item ">
+                  <div className="nav_menu_itemm">
+                    <p>Тарифы</p>
+                    <Down />
+                  </div>
+
+                  <div className="nav_menu_item_drop">
+                    <NavLink to="/rates/rates">
+                      <p>Тарифы</p>
+                    </NavLink>
+                    <NavLink to="/rates/transactions">
+                      <p>Транзакции</p>
+                    </NavLink>
+                  </div>
+                </div>
+
+                <div className="nav_menu_item">
+                  <div className="nav_menu_itemm">
+                    <p>Настройки</p>
+                    <Down />
+                  </div>
+
+                  <div className="nav_menu_item_drop nav_menu_item_drop_settings">
+                    <NavLink to="/settings/profile">
+                      <p>Профиль</p>
+                    </NavLink>
+                    <NavLink to="/settings/security">
+                      <p>Безопасность</p>
+                    </NavLink>
+                    <NavLink to="/settings/api-keys">
+                      <p>Подключение API</p>
+                    </NavLink>
+                  </div>
+                </div>
+
+                <div className="nav_menu_item">
+                  <div className="nav_menu_itemm">
+                    <p>Изучить</p>
+                    <Down />
+                  </div>
+
+                  <div className="nav_menu_item_drop nav_menu_item_drop_learn">
+                    <NavLink to="/base">
+                      <p>База знаний</p>
+                    </NavLink>
+                    <NavLink to="#">
+                      <p>Whatepaper</p>
+                    </NavLink>
+                    <NavLink to="#">
+                      <p>Политика конфиденциальности</p>
+                    </NavLink>
+                    <NavLink to="#">
+                      <p>Клиентское соглашение</p>
+                    </NavLink>
+                  </div>
+                </div>
+              </div>
+              <div className="nav_logout_btn">
+                <button>Выйти</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
