@@ -102,7 +102,7 @@ function Analysis() {
               + 81,11 <span>USDT</span>
             </p>
           </div>
-          <img src={analysisGraph} alt="" />
+          <img src={analysisGraph}  className="graph_image" alt="" />
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
@@ -113,7 +113,7 @@ function Analysis() {
               + 168,65 <span>USDT</span>
             </p>
           </div>
-          <img src={analysisGraph2} alt="" />
+          <img  className="graph_image" src={analysisGraph2} alt="" />
         </div>
 
         <div className="orders_history_list main_block_wrapper">

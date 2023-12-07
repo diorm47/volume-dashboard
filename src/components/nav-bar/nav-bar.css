@@ -166,11 +166,42 @@ nav {
   color: var(--111112, #111112);
 }
 .nav_menu_item_drop_profile_block p:last-child {
-margin-bottom: 0;
+  margin-bottom: 0;
 }
 .nav_menu_item_drop_settings {
   width: 195px;
 }
 .nav_menu_item_drop_learn {
   width: 310px;
+}
+.nav_mob_burger {
+  cursor: pointer;
+  display: none;
+}
+
+@media only screen and (max-width: 1300px) {
+  .nav_bar_menu,
+  .nav_wrapper_right {
+    gap: 20px;
+  }
+  nav {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .nav_bar_menu {
+    display: none;
+  }
+}
+
+
+@media only screen and (max-width: 750px) {
+  .nav_wrapper_right {
+    display: none;
+  }
+  .nav_mob_burger {
+    display: block;
+  }
 }

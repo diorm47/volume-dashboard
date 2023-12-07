@@ -190,3 +190,28 @@
   transform: rotate(45deg);
   transition: all 0.5s ease;
 }
+
+@media only screen and (max-width: 1050px) {
+  .investing_top_cards {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .investing_top_card_value p,
+  .faq_invest_item_question p {
+    font-size: 13px;
+  }
+  .order_history_list_item_content_item_last span {
+    padding: 0 !important;
+  }
+
+  .faq_invest_item_answer p {
+    font-size: 11px;
+    line-height: 140%;
+  }
+  .investments_page_title p {
+    margin: 0;
+  }
+}

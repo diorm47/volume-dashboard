@@ -71,7 +71,7 @@ function Review() {
                 + 301,63 <span>USDT</span>
               </p>
             </div>
-            <img src={pnl_graph} alt="" />
+            <img className="graph_image" src={pnl_graph} alt="" />
           </div>
           <div className="orders_history_list main_block_wrapper">
             <div className="main_block_wrapper_top">

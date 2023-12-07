@@ -8,9 +8,9 @@
   line-height: normal;
 }
 .page_title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .analysis_page {
   padding-top: 50px;
@@ -37,19 +37,75 @@
 }
 
 .analysis_top_toggler svg {
-    cursor: pointer;
+  cursor: pointer;
 }
 .analysis_page_wrapper {
-   margin-top: 50px;
+  margin-top: 50px;
 }
 
 .analysis_order_items p {
-   margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 .order_item_top_status_success {
-    border-radius: 6px;
-    background: var(--E0F5E8, #E0F5E8);
+  border-radius: 6px;
+  background: var(--E0F5E8, #e0f5e8);
 }
 .order_item_top_status_success p {
-    color: var(--31BD65, #31BD65);
+  color: var(--31BD65, #31bd65);
+}
+
+@media only screen and (max-width: 900px) {
+  .review_left_top {
+    flex-direction: column;
+    gap: 0 !important;
+  }
+  .review_left_top .main_block_wrapper {
+    width: 100% !important;
+  }
+  .analysis_order_items {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .order_history_list_item_content_item {
+    width: 50%;
+  }
+  .order_history_list_item_content_item p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px !important;
+  }
+  .order_history_list_item_content_item span {
+    padding: 0 !important;
+    padding-top: 10px !important;
+  }
+  .analysis_order_items .order_history_list_item_content_item:nth-child(2),
+  .analysis_order_items .order_history_list_item_content_item:nth-child(4) {
+    text-align: right;
+  }
+  .order_history_list_item_content_item_last p {
+    text-align: left !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    flex-direction: row;
+    margin: 0 !important;
+  }
+  .order_history_list_item_content_item_last span {
+    padding: 0 !important;
+    padding-left: 9px !important;
+  }
+  .order_history_list_item_content_item_last {
+    max-width: 200px;
+  }
+  .page_title h2 {
+    font-size: 23px;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .page_title {
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+  }
 }

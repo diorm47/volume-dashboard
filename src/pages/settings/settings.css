@@ -104,6 +104,9 @@
   font-weight: 400;
   line-height: 16px; /* 123.077% */
 }
+.user_data_item p:last-child span {
+  color: #0052ff;
+}
 
 .user_login_history_titles {
   display: flex;
@@ -246,4 +249,45 @@
 .user_login_history table thead td:nth-child(3),
 .user_login_history table thead td:nth-child(4) {
   text-align: center;
+}
+
+@media only screen and (max-width: 750px) {
+  .user_img p br {
+    display: none;
+  }
+  .api_keys_title_top {
+    flex-direction: column;
+    margin-top: 0;
+  }
+  .add_key_btn {
+    width: 100%;
+    margin-top: 24px;
+    margin-bottom: 14px;
+  }
+  .add_key_btn button {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .user_image_block h2 {
+    font-size: 17px;
+  }
+  .user_img p,
+  .user_data_item div p:first-child,
+  .settings_navigation p {
+    font-size: 13px;
+  }
+  .security_page .secondary_block_wrapper svg {
+    width: 100px;
+  }
+  .user_data_item p:last-child span {
+    display: none;
+  }
+  .user_login_history_item p {
+    font-size: 13px;
+  }
+  .order_history_list_line {
+    margin: 24px 0;
+  }
 }

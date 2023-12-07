@@ -12,6 +12,11 @@ button {
   cursor: pointer;
   border: none;
   outline: none;
+  transition: all 0.4s ease;
+}
+button:hover {
+  opacity: 0.8;
+  transition: all 0.4s ease;
 }
 input {
   outline: none;
@@ -42,4 +47,13 @@ input {
 }
 .nav_menu_item_drop p:hover {
   color: #111112;
+}
+
+@media only screen and (max-width: 1300px) {
+  .pages_wrapper,
+  .question_widget_wrapper {
+    width: 100%;
+    padding-left: 20px;
+    padding-inline-end: 20px;
+  }
 }

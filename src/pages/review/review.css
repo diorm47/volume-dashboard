@@ -345,3 +345,96 @@
   font-weight: 400;
   line-height: 24px; /* 141.176% */
 }
+
+@media only screen and (max-width: 1300px) {
+  .review_left {
+    width: 66%;
+  }
+  .graph_image {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .review_page_wrapper {
+    flex-direction: column;
+  }
+  .review_left,
+  .review_right {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .review_left_top {
+    flex-direction: column;
+    gap: 0;
+  }
+  .review_left_top .main_block_wrapper {
+    width: 100%;
+  }
+  .order_history_list_item_content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .order_history_list_item_content_item {
+    width: 50%;
+  }
+  .order_history_list_item_content_item_last {
+    text-align: left;
+    justify-content: start;
+    align-items: start;
+    margin-top: 30px;
+  }
+  .order_history_list_item_content
+    .order_history_list_item_content_item:nth-child(2) {
+    text-align: right;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .main_block_wrapper_bottom {
+    padding: 24px;
+  }
+  .main_block_wrapper_top {
+    padding: 24px 28px;
+  }
+  .main_block_wrapper_title h2 {
+    font-size: 17px;
+  }
+  .review_left_top_block_content p {
+    font-size: 13px;
+  }
+  .review_left_top_block_content_amount p,
+  .pnl_value p {
+    font-size: 17px;
+  }
+  .review_left_top_block_content_amount span,
+  .tarif_plan_top p,
+  .review_right_link p,
+  .invite_block_title p,
+  .invite_block_desc p,
+  .most_questions_desc p, .most_questions_list p {
+    font-size: 13px;
+  }
+  .tarif_plan_top {
+    margin: 20px 0;
+  }
+  .invite_block_desc p, .most_questions_desc p, .most_questions_list p {
+    line-height: 16px;
+  }
+  .secondary_block_wrapper {
+    padding: 24px;
+  }
+  .orders_history_list .main_block_wrapper_top,
+  .orders_history_list .main_block_wrapper_bottom {
+    padding: 24px 12px;
+  }
+  .order_history_list_item_content_item p {
+    display: flex;
+    flex-direction: column;
+  }
+  .order_history_list_item_content_item span {
+    padding: 0;
+    padding-top: 10px;
+  }
+}

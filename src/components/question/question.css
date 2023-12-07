@@ -33,3 +33,21 @@
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
+@media only screen and (max-width: 1300px) {
+  .question_widget_wrapper {
+    width: 100%;
+    padding-left: 20px;
+    padding-inline-end: 20px;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .question_widget_wrapper {
+    padding-right: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .question_widget {
+    margin-right: -17px;
+  }
+}

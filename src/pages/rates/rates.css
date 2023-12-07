@@ -104,3 +104,28 @@
   font-weight: 400;
   line-height: 24px; /* 141.176% */
 }
+
+@media only screen and (max-width: 950px) {
+  .rates_cards {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .rates_card .main_block_wrapper_title p,
+  .rates_card_descr_limit p,
+  .rates_card_descr_price span,
+  .rates_warning .main_block_wrapper_title p {
+    font-size: 13px;
+  }
+  .rates_card_descr_price p {
+    font-size: 23px;
+  }
+  .rates_warning .main_block_wrapper_title h2 {
+    font-size: 17px;
+  }
+  .page_title h2 {
+    text-align: center !important; 
+  }
+}

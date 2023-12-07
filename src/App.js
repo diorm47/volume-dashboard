@@ -7,6 +7,7 @@ import Investments from "./pages/investments/investments";
 import Rates from "./pages/rates/rates";
 import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
+import Register from "./pages/base/register-acc";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
           <Route path="/investments" element={<Investments />} />
           <Route path="/settings/*" element={<Settings />} />
           <Route path="/rates/*" element={<Rates />} />
-          <Route path="/base" element={<Base />} />
+          <Route path="/base/*" element={<Base />} />
+          <Route path="/register-acc" element={<Register />} />
         </Routes>
 
         <Footer />

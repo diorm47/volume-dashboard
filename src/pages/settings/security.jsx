@@ -2,8 +2,8 @@ import React from "react";
 
 function Security() {
   return (
-    <div className="profile_page">
-      <div className="secondary_block_wrapper user_image_block">
+    <div className="profile_page security_page" >
+      <div className="secondary_block_wrapper user_image_block" >
         <h2>Настройки безопасности</h2>
         <p>Вы можете поменять настройки или отключить их ниже</p>
         <div class="order_history_list_line"></div>
@@ -11,9 +11,9 @@ function Security() {
           <span>Текущий пароль</span>
           <div>
             <svg
-              width="952"
+              width="300"
               height="21"
-              viewBox="0 0 952 21"
+              viewBox="0 0 300 21"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -83,7 +83,7 @@ function Security() {
           <span>Аутентификация по email</span>
           <div>
             <p>nvolume@mail.ru</p>
-            <p>Изменить электронную почту | Отключить </p>
+            <p>Изменить <span>электронную почту</span> | Отключить </p>
           </div>
         </div>
       </div>

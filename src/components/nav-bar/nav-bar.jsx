@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as Down } from "../../assets/icons/bottom-arrow.svg";
 import { ReactComponent as ChatIcon } from "../../assets/icons/nav-chat-icon.svg";
+import { ReactComponent as MenuIcon } from "../../assets/icons/nav-menu-burger.svg";
 import { ReactComponent as NotificationICon } from "../../assets/icons/nav-notification-icon.svg";
 import avatar from "../../assets/images/avatar.png";
 
@@ -188,6 +189,9 @@ function NavBar() {
               </NavLink>
             </div>
           </div>
+        </div>
+        <div className="nav_mob_burger">
+          <MenuIcon />
         </div>
       </div>
     </nav>
