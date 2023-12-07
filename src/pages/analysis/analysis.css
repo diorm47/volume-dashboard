@@ -1,0 +1,55 @@
+.page_title h2 {
+  color: var(--111112, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  font-family: TTInterfaces600;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.page_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.analysis_page {
+  padding-top: 50px;
+}
+.analysis_top_toggler {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--DBDBDB, #dbdbdb);
+}
+
+.analysis_top_toggler p {
+  color: var(--111112, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 17px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
+
+.analysis_top_toggler svg {
+    cursor: pointer;
+}
+.analysis_page_wrapper {
+   margin-top: 50px;
+}
+
+.analysis_order_items p {
+   margin-bottom: 0 !important;
+}
+.order_item_top_status_success {
+    border-radius: 6px;
+    background: var(--E0F5E8, #E0F5E8);
+}
+.order_item_top_status_success p {
+    color: var(--31BD65, #31BD65);
+}
