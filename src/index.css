@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -20,6 +21,9 @@ button:hover {
 }
 input {
   outline: none;
+}
+.page_content {
+  overflow: hidden;
 }
 
 .pages_wrapper {

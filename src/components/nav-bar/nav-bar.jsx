@@ -220,17 +220,26 @@ function NavBar() {
               <div className="nav_mob_menu_wrapper_line"></div>
               <div className="nav_bar_menu">
                 <NavLink to="/review">
-                  <div className="nav_menu_item">
+                  <div
+                    className="nav_menu_item"
+                    onClick={() => setMenuVisible(false)}
+                  >
                     <p>Обзор</p>
                   </div>
                 </NavLink>
                 <NavLink to="/analysis">
-                  <div className="nav_menu_item">
+                  <div
+                    className="nav_menu_item"
+                    onClick={() => setMenuVisible(false)}
+                  >
                     <p>Анализ</p>
                   </div>
                 </NavLink>
                 <NavLink to="/investments">
-                  <div className="nav_menu_item">
+                  <div
+                    className="nav_menu_item"
+                    onClick={() => setMenuVisible(false)}
+                  >
                     <p>Инвестиции</p>
                   </div>
                 </NavLink>
@@ -241,7 +250,10 @@ function NavBar() {
                     <Down />
                   </div>
 
-                  <div className="nav_menu_item_drop">
+                  <div
+                    className="nav_menu_item_drop"
+                    onClick={() => setMenuVisible(false)}
+                  >
                     <NavLink to="/rates/rates">
                       <p>Тарифы</p>
                     </NavLink>
@@ -257,7 +269,10 @@ function NavBar() {
                     <Down />
                   </div>
 
-                  <div className="nav_menu_item_drop nav_menu_item_drop_settings">
+                  <div
+                    className="nav_menu_item_drop nav_menu_item_drop_settings"
+                    onClick={() => setMenuVisible(false)}
+                  >
                     <NavLink to="/settings/profile">
                       <p>Профиль</p>
                     </NavLink>
@@ -276,7 +291,10 @@ function NavBar() {
                     <Down />
                   </div>
 
-                  <div className="nav_menu_item_drop nav_menu_item_drop_learn">
+                  <div
+                    className="nav_menu_item_drop nav_menu_item_drop_learn"
+                    onClick={() => setMenuVisible(false)}
+                  >
                     <NavLink to="/base">
                       <p>База знаний</p>
                     </NavLink>

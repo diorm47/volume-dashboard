@@ -35,9 +35,9 @@ function Review() {
                   <div className="main_select_item">
                     <select name="" id="">
                       <option value="#">За сегодня</option>
-                      <option value="#">За сегодня</option>
-                      <option value="#">За сегодня</option>
-                      <option value="#">За сегодня</option>
+                      <option value="#">За последние 7 дн.</option>
+                      <option value="#">За последние 30 дн.</option>
+                      <option value="#">За последние 90 дн.</option>
                     </select>
                   </div>
                 </div>
@@ -59,10 +59,9 @@ function Review() {
               <h2>PnL</h2>
               <div className="main_select_item">
                 <select name="" id="">
-                  <option value="#">За последние 7 дн.</option>
-                  <option value="#">За сегодня</option>
-                  <option value="#">За сегодня</option>
-                  <option value="#">За сегодня</option>
+                  <option value="#">За последние 30 дн.</option>
+                  <option value="#">За последние 90 дн.</option>
+                  <option value="#">За все время</option>
                 </select>
               </div>
             </div>

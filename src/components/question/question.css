@@ -1,6 +1,6 @@
 .question_widget {
-  position: absolute;
-  margin-top: -145px;
+  position: fixed;
+  bottom: 50px;
 }
 .question_widget_wrapper {
   width: 1250px;
