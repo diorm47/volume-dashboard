@@ -28,7 +28,7 @@ function NavBar() {
                 <p>Анализ</p>
               </div>
             </NavLink>
-            <NavLink to="/">
+            <NavLink to="/investments">
               <div className="nav_menu_item">
                 <p>Инвестиции</p>
               </div>
