@@ -19,6 +19,7 @@ input {
 
 .pages_wrapper {
   width: 1250px;
+  min-height: 70vh;
   margin: 0 auto;
   padding-top: 24px;
 }

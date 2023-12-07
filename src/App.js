@@ -4,6 +4,8 @@ import Review from "./pages/review/review";
 import Analysis from "./pages/analysis/analysis";
 import Footer from "./components/footer/footer";
 import Investments from "./pages/investments/investments";
+import Settings from "./pages/settings/settings";
+import Rates from "./pages/rates/rates";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/review" element={<Review />} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/investments" element={<Investments />} />
+          <Route path="/settings/*" element={<Settings />} />
+          <Route path="/rates/*" element={<Rates />} />
         </Routes>
         <Footer />
       </div>

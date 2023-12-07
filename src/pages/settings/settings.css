@@ -1,0 +1,249 @@
+.settings_navigation {
+  padding: 24px 36px;
+  border-top: 1px solid #1d1d1d;
+  border-bottom: 1px solid #1d1d1d;
+  background: var(--111112, #111112);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+
+.settings_navigation p {
+  color: #d2d2d2;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 17px/Medium */
+  font-family: TTInterfaces500;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 141.176% */
+}
+
+.user_image_block h2 {
+  color: var(--text-black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-bottom: 10px;
+  /* 23px/SemiBold */
+  font-family: TTInterfaces700;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 104.348% */
+}
+.user_image_block p {
+  color: var(--92979C, #92979c);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 13px/Regular */
+  font-family: TTInterfaces400;
+
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+
+.user_img img {
+  cursor: pointer;
+}
+.user_img {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.user_img p {
+  color: var(--text-gray, var(--92979C, #92979c));
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 17px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
+
+.user_data_item span {
+  color: #747a80;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  font-family: TTInterfaces400;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+.user_data_item div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.user_data_item div p:first-child {
+  color: var(--text-black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 17px/SemiBold */
+  font-family: TTInterfaces600;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 141.176% */
+}
+
+.user_data_item p:last-child {
+  color: #0052ff;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 13px/Regular */
+  font-family: TTInterfaces400;
+  cursor: pointer;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+
+.user_login_history_titles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user_login_history {
+  margin-top: 50px;
+}
+.user_login_history_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user_login_history_item p {
+  color: var(--111112, #111112);
+
+  /* 17px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
+
+.user_login_history_titles p:nth-child(2) {
+  margin-right: -8.6%;
+}
+.api_keys_title_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.api_keys_title_top h2 {
+  color: #000;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  font-family: TTInterfaces600;
+
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 104.348% */
+}
+
+.add_key_btn button {
+  padding: 11px 20px 13px 20px;
+  border-radius: 40px;
+  background: var(--111112, #111112);
+  color: var(--FFFFFF, #fff);
+  font-family: TTInterfaces500;
+
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 123.077% */
+}
+
+.api_keys_title span {
+  color: var(--92979C, #92979c);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  font-family: TTInterfaces500;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 141.176% */
+}
+.api_keys_title {
+  margin-bottom: 52px;
+}
+.add_key_history .user_login_history {
+  margin-top: 0;
+}
+.add_key_history_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user_login_history table tbody td {
+  color: var(--111112, #111112);
+
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+  padding-top: 28px;
+}
+.user_login_history thead td {
+  color: var(--92979C, #92979c);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  font-family: TTInterfaces400;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--DBDBDB, #dbdbdb);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+.user_login_history table {
+  width: 100%;
+}
+.api_actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.api_actions p {
+  font-family: TTInterfaces400;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
+.api_actions p:first-child {
+  color: var(--2420FC, #2420fc);
+}
+.api_actions p:last-child {
+  color: var(--F1507B, #f1507b);
+}
+
+.user_login_history table tbody td:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.user_login_history table thead td:last-child {
+  text-align: right;
+}
+.user_login_history table tbody td:nth-child(2),
+.user_login_history table tbody td:nth-child(3),
+.user_login_history table tbody td:nth-child(4) {
+  text-align: center;
+}
+.user_login_history table thead td:nth-child(2),
+.user_login_history table thead td:nth-child(3),
+.user_login_history table thead td:nth-child(4) {
+  text-align: center;
+}

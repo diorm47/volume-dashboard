@@ -1,0 +1,106 @@
+.order_item_top_status_process {
+  border-radius: 6px;
+  background: rgba(252, 217, 32, 0.3);
+}
+
+.order_item_top_status_process p {
+  color: #ffd600;
+}
+
+.rates_card {
+  width: 33%;
+}
+.rates_card .main_block_wrapper_title {
+  padding: 10px;
+  flex-direction: column;
+  align-items: start;
+}
+.rates_card .main_block_wrapper_title h2 {
+  font-family: TTInterfaces800;
+  margin-bottom: 10px;
+}
+.rates_card .main_block_wrapper_title p {
+  color: var(--92979C, #92979c);
+  font-family: TTInterfaces500;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.rates_card_descr_price p {
+  color: var(--OnBg, #111112);
+  font-family: TTInterfaces800;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  letter-spacing: -0.42px;
+}
+.rates_card_descr_price span {
+  color: var(--92979C, #92979c);
+
+  font-family: TTInterfaces400;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.rates_card_descr_limit p {
+  color: var(--OnBg, #111112);
+  font-family: TTInterfaces500;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  opacity: 0.9;
+  margin-top: 8px;
+}
+
+.rates_card:nth-child(1) {
+  border-top: 8px solid #64dd86;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
+}
+.rates_card:nth-child(2) {
+  border-top: 8px solid #fcd920;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
+}
+.rates_card:nth-child(3) {
+  border-top: 8px solid #2420fc;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.rates_cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.rates_warning .main_block_wrapper_title {
+  display: flex;
+  flex-direction: column;
+
+  align-items: start;
+}
+.rates_warning .main_block_wrapper_title h2 {
+  color: var(--111112, #111112);
+  margin-bottom: 28px;
+  font-family: TTInterfaces600;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 104.348% */
+}
+.rates_warning .main_block_wrapper_title p {
+  color: var(--92979C, #92979c);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  font-family: TTInterfaces400;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
