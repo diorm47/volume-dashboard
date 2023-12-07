@@ -16,3 +16,9 @@ button {
 input {
   outline: none;
 }
+
+.pages_wrapper {
+  width: 1250px;
+  margin: 0 auto;
+  padding-top: 24px;
+}
