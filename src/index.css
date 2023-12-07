@@ -20,6 +20,26 @@ input {
 .pages_wrapper {
   width: 1250px;
   min-height: 70vh;
+
   margin: 0 auto;
   padding-top: 24px;
+}
+
+.nav_bar_menu .active p,
+.settings_navigation .active p {
+  color: #fff;
+  transition: all 0.4s ease;
+}
+.nav_bar_menu p:hover,
+.settings_navigation p:hover {
+  color: #fff;
+  transition: all 0.4s ease;
+}
+
+.nav_menu_item_drop .active p {
+  color: #111112;
+  background: #f9f9f9;
+}
+.nav_menu_item_drop p:hover {
+  color: #111112;
 }

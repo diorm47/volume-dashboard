@@ -50,7 +50,7 @@ function NavBar() {
             <div className="nav_menu_item">
               <p>Настройки</p>
               <Down />
-              <div className="nav_menu_item_drop nav_menu_item_drop">
+              <div className="nav_menu_item_drop nav_menu_item_drop_settings">
                 <NavLink to="/settings/profile">
                   <p>Профиль</p>
                 </NavLink>
@@ -67,16 +67,16 @@ function NavBar() {
               <p>Изучить</p>
               <Down />
               <div className="nav_menu_item_drop nav_menu_item_drop_learn">
-                <NavLink to="/">
+                <NavLink to="/base">
                   <p>База знаний</p>
                 </NavLink>
-                <NavLink to="/">
+                <NavLink to="#">
                   <p>Whatepaper</p>
                 </NavLink>
-                <NavLink to="/">
+                <NavLink to="#">
                   <p>Политика конфиденциальности</p>
                 </NavLink>
-                <NavLink to="/">
+                <NavLink to="#">
                   <p>Клиентское соглашение</p>
                 </NavLink>
               </div>
@@ -88,13 +88,13 @@ function NavBar() {
             <p>EN</p>
             <Down />
             <div className="nav_menu_item_drop">
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>RU</p>
               </NavLink>
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>EN</p>
               </NavLink>
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>SE</p>
               </NavLink>
             </div>
@@ -113,7 +113,7 @@ function NavBar() {
           <div className="nav_menu_item">
             <ChatIcon />
             <div className="nav_menu_item_drop nav_menu_item_drop_chat">
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>Telegram</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +130,7 @@ function NavBar() {
                   />
                 </svg>
               </NavLink>
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>Discord</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -151,19 +151,19 @@ function NavBar() {
           <div className="nav_menu_item">
             <NotificationICon />
             <div className="nav_menu_item_drop nav_menu_item_drop_notifications">
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
               </NavLink>
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
               </NavLink>{" "}
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
               </NavLink>{" "}
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
               </NavLink>
@@ -177,13 +177,13 @@ function NavBar() {
                 <p>USER ID:436425</p>
                 <p>Пробный</p>
               </div>
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>Профиль</p>
               </NavLink>
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>Реферальная программа</p>
               </NavLink>
-              <NavLink to="/">
+              <NavLink to="#">
                 <p>Выйти</p>
               </NavLink>
             </div>

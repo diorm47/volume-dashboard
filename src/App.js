@@ -1,15 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import NavBar from "./components/nav-bar/nav-bar";
-import Review from "./pages/review/review";
-import Analysis from "./pages/analysis/analysis";
 import Footer from "./components/footer/footer";
+import NavBar from "./components/nav-bar/nav-bar";
+import Analysis from "./pages/analysis/analysis";
+import Base from "./pages/base/base";
 import Investments from "./pages/investments/investments";
-import Settings from "./pages/settings/settings";
 import Rates from "./pages/rates/rates";
+import Review from "./pages/review/review";
+import Settings from "./pages/settings/settings";
 
 function App() {
   return (
-    <div className="page_wrapper">
+    <div>
       <NavBar />
 
       <div className="page_content">
@@ -20,7 +21,9 @@ function App() {
           <Route path="/investments" element={<Investments />} />
           <Route path="/settings/*" element={<Settings />} />
           <Route path="/rates/*" element={<Rates />} />
+          <Route path="/base" element={<Base />} />
         </Routes>
+
         <Footer />
       </div>
     </div>
