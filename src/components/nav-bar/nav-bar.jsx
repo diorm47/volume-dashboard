@@ -248,7 +248,7 @@ function NavBar() {
                   <div className="nav_menu_item ">
                     <div className="nav_menu_itemm">
                       <p>Тарифы</p>
-                      <Down />
+                      <Down className="drop_down_icon" />
                     </div>
 
                     <div
@@ -267,7 +267,7 @@ function NavBar() {
                   <div className="nav_menu_item">
                     <div className="nav_menu_itemm">
                       <p>Настройки</p>
-                      <Down />
+                      <Down  className="drop_down_icon"/>
                     </div>
 
                     <div
@@ -289,7 +289,7 @@ function NavBar() {
                   <div className="nav_menu_item">
                     <div className="nav_menu_itemm">
                       <p>Изучить</p>
-                      <Down />
+                      <Down  className="drop_down_icon"/>
                     </div>
 
                     <div
@@ -299,13 +299,13 @@ function NavBar() {
                       <NavLink to="/base">
                         <p>База знаний</p>
                       </NavLink>
-                      <NavLink to="#">
+                      <NavLink to="/whitepaper">
                         <p>Whatepaper</p>
                       </NavLink>
-                      <NavLink to="#">
+                      <NavLink to="/policy">
                         <p>Политика конфиденциальности</p>
                       </NavLink>
-                      <NavLink to="#">
+                      <NavLink to="/agreement">
                         <p>Клиентское соглашение</p>
                       </NavLink>
                     </div>

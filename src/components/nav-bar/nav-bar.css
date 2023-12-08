@@ -262,6 +262,7 @@ nav {
     flex-direction: column;
     align-items: start;
     width: 100%;
+    height: auto;
   }
   .nav_menu_itemm {
     display: flex;
