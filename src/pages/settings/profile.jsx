@@ -104,111 +104,119 @@ function Profile() {
         </div>
       </div>
 
-      {nameModal || usernameModal || numberModal || emailModal ? (
-        <div className="overlay" onClick={closeModals}></div>
-      ) : (
-        ""
-      )}
+      <div
+        className={
+          nameModal || usernameModal || numberModal || emailModal
+            ? "overlay visible_overlay"
+            : "overlay"
+        }
+        onClick={closeModals}
+      ></div>
 
-      {nameModal ? (
-        <div className="modal_wrapper">
-          <div className="modal_wrapper_title">
-            <p>Изменить имя</p>
-            <ExitModal onClick={closeModals} />
+      <div
+        className={
+          nameModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
+        }
+      >
+        <div className="modal_wrapper_title">
+          <p>Изменить имя</p>
+          <ExitModal onClick={closeModals} />
+        </div>
+        <div className="modal_wrapper_content">
+          <div className="modal_wrapper_content_item">
+            <p>Фамилия</p>
+            <input type="text" />
           </div>
-          <div className="modal_wrapper_content">
-            <div className="modal_wrapper_content_item">
-              <p>Фамилия</p>
-              <input type="text" />
-            </div>
-            <div className="modal_wrapper_content_item">
-              <p>Имя</p>
-              <input type="text" />
-            </div>
-            <div className="modal_wrapper_content_item">
-              <p>Отчество</p>
-              <input type="text" />
-            </div>
-            <div className="modal_wrapper_save_btn">
-              <button>Сохранить</button>
-            </div>
-            <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
-            </div>
+          <div className="modal_wrapper_content_item">
+            <p>Имя</p>
+            <input type="text" />
+          </div>
+          <div className="modal_wrapper_content_item">
+            <p>Отчество</p>
+            <input type="text" />
+          </div>
+          <div className="modal_wrapper_save_btn">
+            <button>Сохранить</button>
+          </div>
+          <div className="modal_wrapper_cancel">
+            <button>Отмена</button>
           </div>
         </div>
-      ) : (
-        ""
-      )}
-      {usernameModal ? (
-        <div className="modal_wrapper">
-          <div className="modal_wrapper_title">
-            <p>Изменить псевдоним</p>
-            <ExitModal onClick={closeModals} />
-          </div>
-          <div className="modal_wrapper_content">
-            <div className="modal_wrapper_content_item">
-              <p>Псевдоним</p>
-              <input type="text" />
-            </div>
+      </div>
 
-            <div className="modal_wrapper_save_btn">
-              <button>Сохранить</button>
-            </div>
-            <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
-            </div>
+      <div
+        className={
+          usernameModal
+            ? "modal_wrapper visible_modal_wrapper"
+            : "modal_wrapper "
+        }
+      >
+        <div className="modal_wrapper_title">
+          <p>Изменить псевдоним</p>
+          <ExitModal onClick={closeModals} />
+        </div>
+        <div className="modal_wrapper_content">
+          <div className="modal_wrapper_content_item">
+            <p>Псевдоним</p>
+            <input type="text" />
+          </div>
+
+          <div className="modal_wrapper_save_btn">
+            <button>Сохранить</button>
+          </div>
+          <div className="modal_wrapper_cancel">
+            <button>Отмена</button>
           </div>
         </div>
-      ) : (
-        ""
-      )}
-      {numberModal ? (
-        <div className="modal_wrapper">
-          <div className="modal_wrapper_title">
-            <p>Изменить номер телефона</p>
-            <ExitModal onClick={closeModals} />
-          </div>
-          <div className="modal_wrapper_content">
-            <div className="modal_wrapper_content_item">
-              <p>Номер телефона</p>
-              <input type="text" />
-            </div>
+      </div>
 
-            <div className="modal_wrapper_save_btn">
-              <button>Сохранить</button>
-            </div>
-            <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
-            </div>
+      <div
+        className={
+          numberModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
+        }
+      >
+        <div className="modal_wrapper_title">
+          <p>Изменить номер телефона</p>
+          <ExitModal onClick={closeModals} />
+        </div>
+        <div className="modal_wrapper_content">
+          <div className="modal_wrapper_content_item">
+            <p>Номер телефона</p>
+            <input type="text" />
+          </div>
+
+          <div className="modal_wrapper_save_btn">
+            <button>Сохранить</button>
+          </div>
+          <div className="modal_wrapper_cancel">
+            <button>Отмена</button>
           </div>
         </div>
-      ) : (
-        ""
-      )}
-      {emailModal ? (
-        <div className="modal_wrapper">
-          <div className="modal_wrapper_title">
-            <p>Изменить электронную почту</p>
-            <ExitModal onClick={closeModals} />
-          </div>
-          <div className="modal_wrapper_content">
-            <div className="modal_wrapper_content_item">
-              <p>Электронная почтф</p>
-              <input type="text" />
-            </div>
+      </div>
 
-            <div className="modal_wrapper_save_btn">
-              <button>Сохранить</button>
-            </div>
-            <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
-            </div>
+      <div
+        className={
+          emailModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
+        }
+      >
+        <div className="modal_wrapper_title">
+          <p>Изменить электронную почту</p>
+          <ExitModal onClick={closeModals} />
+        </div>
+        <div className="modal_wrapper_content">
+          <div className="modal_wrapper_content_item">
+            <p>Электронная почтф</p>
+            <input type="text" />
+          </div>
+
+          <div className="modal_wrapper_save_btn">
+            <button>Сохранить</button>
+          </div>
+          <div className="modal_wrapper_cancel">
+            <button>Отмена</button>
           </div>
         </div>
-      ) : (
-        ""
-      )}
+      </div>
     </>
   );
 }

@@ -24,4 +24,7 @@ footer {
   footer {
     margin-top: 70px;
   }
+  .footer_wrapper p {
+    font-size: 13px;
+  }
 }

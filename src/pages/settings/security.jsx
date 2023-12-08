@@ -221,139 +221,149 @@ function Security() {
         </div>
       </div>
 
-      {passwordModal || emailModal || passwordConfirmModal ? (
-        <div className="overlay" onClick={closeModals}></div>
-      ) : (
-        ""
-      )}
-      {passwordModal ? (
-        <div className="modal_wrapper">
-          <div className="modal_wrapper_title">
-            <p>Изменить пароль</p>
-            <ExitModal onClick={closeModals} />
-          </div>
-          <div className="modal_wrapper_content">
-            <div className="modal_wrapper_content_item">
-              <p>Текущий пароль</p>
-              <input type="password" />
-            </div>
-            <div className="modal_wrapper_content_item">
-              <p>Новый пароль</p>
-              <input type="password" />
-            </div>
-            <div className="modal_wrapper_content_item">
-              <p>Новый пароль ещё раз</p>
-              <input type="password" />
-            </div>
+      <div
+        className={
+          passwordModal || emailModal || passwordConfirmModal
+            ? "overlay visible_overlay"
+            : "overlay"
+        }
+        onClick={closeModals}
+      ></div>
 
-            <div className="modal_wrapper_save_btn">
-              <button
-                onClick={() => {
-                  setPasswordModal(false);
-                  setPasswordConfirmModal(true);
-                }}
-              >
-                Подтвердить
-              </button>
-            </div>
-            <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
-            </div>
+      <div
+        className={
+          passwordModal
+            ? "modal_wrapper visible_modal_wrapper"
+            : "modal_wrapper "
+        }
+      >
+        <div className="modal_wrapper_title">
+          <p>Изменить пароль</p>
+          <ExitModal onClick={closeModals} />
+        </div>
+        <div className="modal_wrapper_content">
+          <div className="modal_wrapper_content_item">
+            <p>Текущий пароль</p>
+            <input type="password" />
+          </div>
+          <div className="modal_wrapper_content_item">
+            <p>Новый пароль</p>
+            <input type="password" />
+          </div>
+          <div className="modal_wrapper_content_item">
+            <p>Новый пароль ещё раз</p>
+            <input type="password" />
+          </div>
+
+          <div className="modal_wrapper_save_btn">
+            <button
+              onClick={() => {
+                setPasswordModal(false);
+                setPasswordConfirmModal(true);
+              }}
+            >
+              Подтвердить
+            </button>
+          </div>
+          <div className="modal_wrapper_cancel">
+            <button>Отмена</button>
           </div>
         </div>
-      ) : (
-        ""
-      )}
-      {emailModal ? (
-        <div className="modal_wrapper">
-          <div className="modal_wrapper_title">
-            <p>Изменить электронную почту</p>
-            <ExitModal onClick={closeModals} />
-          </div>
-          <div className="modal_wrapper_content">
-            <div className="modal_wrapper_content_item">
-              <p>Электронная почта</p>
-              <input type="text" />
-            </div>
+      </div>
 
-            <div className="modal_wrapper_save_btn">
-              <button>Сохранить</button>
-            </div>
-            <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
-            </div>
+      <div
+        className={
+          emailModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
+        }
+      >
+        <div className="modal_wrapper_title">
+          <p>Изменить электронную почту</p>
+          <ExitModal onClick={closeModals} />
+        </div>
+        <div className="modal_wrapper_content">
+          <div className="modal_wrapper_content_item">
+            <p>Электронная почта</p>
+            <input type="text" />
+          </div>
+
+          <div className="modal_wrapper_save_btn">
+            <button>Сохранить</button>
+          </div>
+          <div className="modal_wrapper_cancel">
+            <button>Отмена</button>
           </div>
         </div>
-      ) : (
-        ""
-      )}
-      {passwordConfirmModal ? (
-        <div className="modal_wrapper">
-          <div className="modal_wrapper_title">
-            <p>Изменить пароль</p>
-            <ExitModal onClick={closeModals} />
-          </div>
-          <div className="modal_wrapper_content">
-            <div className="modal_wrapper_content_item">
-              <p>Мы отправили код на nvolume@mail.ru</p>
-              <div className="recovery_inputs">
-                <input
-                  type="text"
-                  value={input1}
-                  onChange={(e) => handleInput(e, setInput1, input2Ref)}
-                  maxLength={1}
-                />
-                <input
-                  ref={input2Ref}
-                  type="text"
-                  value={input2}
-                  onChange={(e) => handleInput(e, setInput2, input3Ref)}
-                  maxLength={1}
-                />
-                <input
-                  ref={input3Ref}
-                  type="text"
-                  value={input3}
-                  onChange={(e) => handleInput(e, setInput3, input4Ref)}
-                  maxLength={1}
-                />
-                <input
-                  ref={input4Ref}
-                  type="text"
-                  value={input4}
-                  onChange={(e) => handleInput(e, setInput4, input5Ref)}
-                  maxLength={1}
-                />
-                <input
-                  ref={input5Ref}
-                  type="text"
-                  value={input5}
-                  onChange={(e) => handleInput(e, setInput5, input6Ref)}
-                  maxLength={1}
-                />
-                <input
-                  ref={input6Ref}
-                  type="text"
-                  value={input6}
-                  onChange={(e) => handleInput(e, setInput6, null)}
-                  maxLength={1}
-                  onKeyUp={(e) => e.key === "Enter"}
-                />
-              </div>
-              <p className="recovery_time">Отправить повторно (5:00)</p>
-            </div>
+      </div>
 
-            <div className="modal_wrapper_save_btn">
-              <button>Подтвердить</button>
+      <div
+        className={
+          passwordConfirmModal
+            ? "modal_wrapper visible_modal_wrapper"
+            : "modal_wrapper "
+        }
+      >
+        <div className="modal_wrapper_title">
+          <p>Изменить пароль</p>
+          <ExitModal onClick={closeModals} />
+        </div>
+        <div className="modal_wrapper_content">
+          <div className="modal_wrapper_content_item">
+            <p>Мы отправили код на nvolume@mail.ru</p>
+            <div className="recovery_inputs">
+              <input
+                type="text"
+                value={input1}
+                onChange={(e) => handleInput(e, setInput1, input2Ref)}
+                maxLength={1}
+              />
+              <input
+                ref={input2Ref}
+                type="text"
+                value={input2}
+                onChange={(e) => handleInput(e, setInput2, input3Ref)}
+                maxLength={1}
+              />
+              <input
+                ref={input3Ref}
+                type="text"
+                value={input3}
+                onChange={(e) => handleInput(e, setInput3, input4Ref)}
+                maxLength={1}
+              />
+              <input
+                ref={input4Ref}
+                type="text"
+                value={input4}
+                onChange={(e) => handleInput(e, setInput4, input5Ref)}
+                maxLength={1}
+              />
+              <input
+                ref={input5Ref}
+                type="text"
+                value={input5}
+                onChange={(e) => handleInput(e, setInput5, input6Ref)}
+                maxLength={1}
+              />
+              <input
+                ref={input6Ref}
+                type="text"
+                value={input6}
+                onChange={(e) => handleInput(e, setInput6, null)}
+                maxLength={1}
+                onKeyUp={(e) => e.key === "Enter"}
+              />
             </div>
-            <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
-            </div>
+            <p className="recovery_time">Отправить повторно (5:00)</p>
+          </div>
+
+          <div className="modal_wrapper_save_btn">
+            <button>Подтвердить</button>
+          </div>
+          <div className="modal_wrapper_cancel">
+            <button>Отмена</button>
           </div>
         </div>
-      ) : (
-        ""
-      )}
+      </div>
     </>
   );
 }
