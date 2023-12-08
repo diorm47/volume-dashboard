@@ -5,6 +5,7 @@ import "./rates.css";
 import Transactions from "./transactions";
 
 function Rates() {
+  
   return (
     <>
       <div className="settings_navigation">

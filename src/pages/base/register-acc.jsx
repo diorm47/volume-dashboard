@@ -9,6 +9,9 @@ import img4 from "../../assets/images/register/image 5.png";
 import img5 from "../../assets/images/register/image 6.png";
 
 function Register() {
+  React.useEffect(() => {
+    document.title = `Регистрация биржевого аккаунта | &Volume`;
+  }, []);
   return (
     <div className="base_page_wrapper">
       <div className="base_top_block">

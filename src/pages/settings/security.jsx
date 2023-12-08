@@ -2,6 +2,9 @@ import React, { useRef, useState } from "react";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
 function Security() {
+  React.useEffect(() => {
+    document.title = `Настройки безопасности | &Volume`;
+  }, []);
   const [passwordModal, setPasswordModal] = useState(false);
   const [passwordConfirmModal, setPasswordConfirmModal] = useState(false);
   const [emailModal, setEmailModal] = useState(false);

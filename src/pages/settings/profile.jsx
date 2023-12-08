@@ -3,6 +3,9 @@ import userImg from "../../assets/icons/user-img.svg";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
 function Profile() {
+  React.useEffect(() => {
+    document.title = `Профиль | &Volume`;
+  }, []);
   const [nameModal, setNameModal] = useState(false);
   const [usernameModal, setUserNameModal] = useState(false);
   const [numberModal, setNumberModal] = useState(false);

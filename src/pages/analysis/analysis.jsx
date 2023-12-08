@@ -6,6 +6,9 @@ import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg
 import { ReactComponent as BTC } from "../../assets/icons/btc.svg";
 
 function Analysis() {
+  React.useEffect(() => {
+    document.title = `Анализ прибыли и убытка | &Volume`;
+  }, []);
   return (
     <div className="pages_wrapper analysis_page">
       <div className="page_title">
@@ -102,7 +105,7 @@ function Analysis() {
               + 81,11 <span>USDT</span>
             </p>
           </div>
-          <img src={analysisGraph}  className="graph_image" alt="" />
+          <img src={analysisGraph} className="graph_image" alt="" />
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
@@ -113,7 +116,7 @@ function Analysis() {
               + 168,65 <span>USDT</span>
             </p>
           </div>
-          <img  className="graph_image" src={analysisGraph2} alt="" />
+          <img className="graph_image" src={analysisGraph2} alt="" />
         </div>
 
         <div className="orders_history_list main_block_wrapper">

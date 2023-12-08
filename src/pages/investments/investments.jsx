@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./investments.css";
 
 function Investments() {
+  React.useEffect(() => {
+    document.title = `Выберите метод инвестирования | &Volume`;
+  }, []);
   const faq = [
     {
       question: "Что такое инвестиции?",

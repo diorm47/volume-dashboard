@@ -4,6 +4,9 @@ import baseTop from "../../assets/images/base-top.png";
 import baseBottom from "../../assets/images/base-bottom.png";
 
 function Base() {
+  React.useEffect(() => {
+    document.title = `Часто задаваемые вопросы | &Volume`;
+  }, []);
   return (
     <div className="base_page_wrapper">
       <div className="base_top_block">

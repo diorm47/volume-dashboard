@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
 function ApiKeys() {
+  React.useEffect(() => {
+    document.title = `Ключи API | &Volume`;
+  }, []);
   const [apiModal, setapiModal] = useState(false);
   const [apiActiveModal, setapiActiveModal] = useState(false);
   const [apiActiveEditModal, setapiActiveEditModal] = useState(false);
 
-  
   const closeModals = () => {
     setapiModal(false);
     setapiActiveModal(false);
-    setapiActiveEditModal(false)
+    setapiActiveEditModal(false);
   };
-
+ 
   return (
     <>
       <div className="api_keys_title">
@@ -175,10 +177,14 @@ function ApiKeys() {
               </div>
             </div>
             <div className="modal_wrapper_save_btn">
-              <button onClick={() => {
-                closeModals()
-                setapiActiveEditModal(true)
-              }}>Редактировать</button>
+              <button
+                onClick={() => {
+                  closeModals();
+                  setapiActiveEditModal(true);
+                }}
+              >
+                Редактировать
+              </button>
             </div>
             <div className="modal_wrapper_cancel api_delete_btn">
               <button>Удалить</button>

@@ -1,6 +1,9 @@
 import React from "react";
 
 function Transactions() {
+  React.useEffect(() => {
+    document.title = `Транзакции | &Volume`;
+  }, []);
   return (
     <div class="orders_history_list main_block_wrapper">
       <div class="main_block_wrapper_top">

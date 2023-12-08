@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
 function RatesPage() {
+  React.useEffect(() => {
+    document.title = `Выберите тарифный план | &Volume`;
+  }, []);
   const faq = [
     {
       question: "Могу ли я перейти на улучшенный тариф после оплаты?",

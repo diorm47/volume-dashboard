@@ -6,6 +6,9 @@ import inviteImg from "../../assets/images/invite.png";
 import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg";
 
 function Review() {
+  React.useEffect(() => {
+    document.title = `Обзор | &Volume`;
+  }, []);
   return (
     <div className="pages_wrapper review_page">
       <div className="review_page_wrapper">
