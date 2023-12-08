@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
 function Security() {
@@ -13,14 +13,12 @@ function Security() {
     setEmailModal(false);
     setPasswordConfirmModal(false);
   };
-
   const [input1, setInput1] = useState("");
   const [input2, setInput2] = useState("");
   const [input3, setInput3] = useState("");
   const [input4, setInput4] = useState("");
   const [input5, setInput5] = useState("");
   const [input6, setInput6] = useState("");
-
   const input2Ref = useRef();
   const input3Ref = useRef();
   const input4Ref = useRef();
@@ -34,6 +32,30 @@ function Security() {
       nextInputRef.current.focus();
     }
   };
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (
+      (passwordModal || passwordConfirmModal || emailModal) &&
+      windowWidth < 450
+    ) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [passwordModal, passwordConfirmModal, emailModal]);
 
   return (
     <>
@@ -110,7 +132,9 @@ function Security() {
                 />
               </svg>
 
-              <p onClick={() => setPasswordModal(true)}>Изменить пароль</p>
+              <p onClick={() => setPasswordModal(true)}>
+                Изменить <span>пароль</span>
+              </p>
             </div>
           </div>
           <div class="order_history_list_line"></div>

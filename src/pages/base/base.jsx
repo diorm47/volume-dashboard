@@ -2,6 +2,7 @@ import React from "react";
 import "./base.css";
 import baseTop from "../../assets/images/base-top.png";
 import baseBottom from "../../assets/images/base-bottom.png";
+import { NavLink } from "react-router-dom";
 
 function Base() {
   React.useEffect(() => {
@@ -29,7 +30,9 @@ function Base() {
               <div class="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
-                  <p>Регистрация биржевого аккаунта</p>
+                  <NavLink to="/register-acc">
+                    <p>Регистрация биржевого аккаунта</p>
+                  </NavLink>
                   <span>
                     Узнайте как зарегистрироваться и пройти верификацию на
                     биржах партнерах
@@ -261,7 +264,6 @@ function Base() {
               <span>Что бы вы хотели улучшить в нашем сервисе?</span>
               <button>Предложить идею</button>
             </div>
-           
           </div>
         </div>
       </div>

@@ -39,7 +39,7 @@ function NavBar() {
 
             <div className="nav_menu_item ">
               <p>Тарифы</p>
-              <Down />
+              <Down className="drop_down_icon" />
               <div className="nav_menu_item_drop">
                 <NavLink to="/rates/rates">
                   <p>Тарифы</p>
@@ -52,7 +52,7 @@ function NavBar() {
 
             <div className="nav_menu_item">
               <p>Настройки</p>
-              <Down />
+              <Down className="drop_down_icon" />
               <div className="nav_menu_item_drop nav_menu_item_drop_settings">
                 <NavLink to="/settings/profile">
                   <p>Профиль</p>
@@ -68,18 +68,18 @@ function NavBar() {
 
             <div className="nav_menu_item">
               <p>Изучить</p>
-              <Down />
+              <Down className="drop_down_icon"/>
               <div className="nav_menu_item_drop nav_menu_item_drop_learn">
                 <NavLink to="/base">
                   <p>База знаний</p>
                 </NavLink>
-                <NavLink to="#">
+                <NavLink to="/whitepaper">
                   <p>Whatepaper</p>
                 </NavLink>
-                <NavLink to="#">
+                <NavLink to="/policy">
                   <p>Политика конфиденциальности</p>
                 </NavLink>
-                <NavLink to="#">
+                <NavLink to="/agreement">
                   <p>Клиентское соглашение</p>
                 </NavLink>
               </div>
@@ -89,15 +89,15 @@ function NavBar() {
         <div className="nav_wrapper_right">
           <div className="nav_menu_item">
             <p>EN</p>
-            <Down />
+            <Down className="drop_down_icon"/>
             <div className="nav_menu_item_drop">
-              <NavLink to="#">
+              <NavLink to="/ru">
                 <p>RU</p>
               </NavLink>
-              <NavLink to="#">
+              <NavLink to="/en">
                 <p>EN</p>
               </NavLink>
-              <NavLink to="#">
+              <NavLink to="/se">
                 <p>SE</p>
               </NavLink>
             </div>
@@ -116,7 +116,7 @@ function NavBar() {
           <div className="nav_menu_item">
             <ChatIcon />
             <div className="nav_menu_item_drop nav_menu_item_drop_chat">
-              <NavLink to="#">
+              <NavLink to="https://t.me/">
                 <p>Telegram</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +133,7 @@ function NavBar() {
                   />
                 </svg>
               </NavLink>
-              <NavLink to="#">
+              <NavLink to="https://">
                 <p>Discord</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -154,19 +154,19 @@ function NavBar() {
           <div className="nav_menu_item">
             <NotificationICon />
             <div className="nav_menu_item_drop nav_menu_item_drop_notifications">
-              <NavLink to="#">
+              <NavLink to="/a">
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
               </NavLink>
-              <NavLink to="#">
+              <NavLink to="/a">
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
               </NavLink>{" "}
-              <NavLink to="#">
+              <NavLink to="/a">
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
               </NavLink>{" "}
-              <NavLink to="#">
+              <NavLink to="/a">
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
               </NavLink>
@@ -180,13 +180,13 @@ function NavBar() {
                 <p>USER ID:436425</p>
                 <p>Пробный</p>
               </div>
-              <NavLink to="#">
+              <NavLink to="/settings/profile">
                 <p>Профиль</p>
               </NavLink>
-              <NavLink to="#">
+              <NavLink to="/referals">
                 <p>Реферальная программа</p>
               </NavLink>
-              <NavLink to="#">
+              <NavLink to="/logout">
                 <p>Выйти</p>
               </NavLink>
             </div>
@@ -202,118 +202,120 @@ function NavBar() {
               : "nav_mob_menu_wrapper"
           }
         >
-          <div className="nav_mob_menu_top">
-            <NavLink to="/">
-              <div className="nav_logo">
-                <Logo />
-              </div>
-            </NavLink>
-            <ExitIcon onClick={() => setMenuVisible(false)} />
-          </div>
-          <div className="nav_mob_menu_wrapper_content_wrapper">
-            <div className="nav_mob_menu_wrapper_content">
-              <div className="mob_menu_user_data">
-                <p>nvolume@gmail.com</p>
-                <p>USER ID:436425</p>
-                <p>Пробный</p>
-              </div>
-              <div className="nav_mob_menu_wrapper_line"></div>
-              <div className="nav_bar_menu">
-                <NavLink to="/review">
-                  <div
-                    className="nav_menu_item"
-                    onClick={() => setMenuVisible(false)}
-                  >
-                    <p>Обзор</p>
-                  </div>
-                </NavLink>
-                <NavLink to="/analysis">
-                  <div
-                    className="nav_menu_item"
-                    onClick={() => setMenuVisible(false)}
-                  >
-                    <p>Анализ</p>
-                  </div>
-                </NavLink>
-                <NavLink to="/investments">
-                  <div
-                    className="nav_menu_item"
-                    onClick={() => setMenuVisible(false)}
-                  >
-                    <p>Инвестиции</p>
-                  </div>
-                </NavLink>
+          <div>
+            <div className="nav_mob_menu_top">
+              <NavLink to="/">
+                <div className="nav_logo">
+                  <Logo />
+                </div>
+              </NavLink>
+              <ExitIcon onClick={() => setMenuVisible(false)} />
+            </div>
+            <div className="nav_mob_menu_wrapper_content_wrapper">
+              <div className="nav_mob_menu_wrapper_content">
+                <div className="mob_menu_user_data">
+                  <p>nvolume@gmail.com</p>
+                  <p>USER ID:436425</p>
+                  <p>Пробный</p>
+                </div>
+                <div className="nav_mob_menu_wrapper_line"></div>
+                <div className="nav_bar_menu">
+                  <NavLink to="/review">
+                    <div
+                      className="nav_menu_item"
+                      onClick={() => setMenuVisible(false)}
+                    >
+                      <p>Обзор</p>
+                    </div>
+                  </NavLink>
+                  <NavLink to="/analysis">
+                    <div
+                      className="nav_menu_item"
+                      onClick={() => setMenuVisible(false)}
+                    >
+                      <p>Анализ</p>
+                    </div>
+                  </NavLink>
+                  <NavLink to="/investments">
+                    <div
+                      className="nav_menu_item"
+                      onClick={() => setMenuVisible(false)}
+                    >
+                      <p>Инвестиции</p>
+                    </div>
+                  </NavLink>
 
-                <div className="nav_menu_item ">
-                  <div className="nav_menu_itemm">
-                    <p>Тарифы</p>
-                    <Down />
-                  </div>
-
-                  <div
-                    className="nav_menu_item_drop"
-                    onClick={() => setMenuVisible(false)}
-                  >
-                    <NavLink to="/rates/rates">
+                  <div className="nav_menu_item ">
+                    <div className="nav_menu_itemm">
                       <p>Тарифы</p>
-                    </NavLink>
-                    <NavLink to="/rates/transactions">
-                      <p>Транзакции</p>
-                    </NavLink>
+                      <Down />
+                    </div>
+
+                    <div
+                      className="nav_menu_item_drop"
+                      onClick={() => setMenuVisible(false)}
+                    >
+                      <NavLink to="/rates/rates">
+                        <p>Тарифы</p>
+                      </NavLink>
+                      <NavLink to="/rates/transactions">
+                        <p>Транзакции</p>
+                      </NavLink>
+                    </div>
+                  </div>
+
+                  <div className="nav_menu_item">
+                    <div className="nav_menu_itemm">
+                      <p>Настройки</p>
+                      <Down />
+                    </div>
+
+                    <div
+                      className="nav_menu_item_drop nav_menu_item_drop_settings"
+                      onClick={() => setMenuVisible(false)}
+                    >
+                      <NavLink to="/settings/profile">
+                        <p>Профиль</p>
+                      </NavLink>
+                      <NavLink to="/settings/security">
+                        <p>Безопасность</p>
+                      </NavLink>
+                      <NavLink to="/settings/api-keys">
+                        <p>Подключение API</p>
+                      </NavLink>
+                    </div>
+                  </div>
+
+                  <div className="nav_menu_item">
+                    <div className="nav_menu_itemm">
+                      <p>Изучить</p>
+                      <Down />
+                    </div>
+
+                    <div
+                      className="nav_menu_item_drop nav_menu_item_drop_learn"
+                      onClick={() => setMenuVisible(false)}
+                    >
+                      <NavLink to="/base">
+                        <p>База знаний</p>
+                      </NavLink>
+                      <NavLink to="#">
+                        <p>Whatepaper</p>
+                      </NavLink>
+                      <NavLink to="#">
+                        <p>Политика конфиденциальности</p>
+                      </NavLink>
+                      <NavLink to="#">
+                        <p>Клиентское соглашение</p>
+                      </NavLink>
+                    </div>
                   </div>
                 </div>
-
-                <div className="nav_menu_item">
-                  <div className="nav_menu_itemm">
-                    <p>Настройки</p>
-                    <Down />
-                  </div>
-
-                  <div
-                    className="nav_menu_item_drop nav_menu_item_drop_settings"
-                    onClick={() => setMenuVisible(false)}
-                  >
-                    <NavLink to="/settings/profile">
-                      <p>Профиль</p>
-                    </NavLink>
-                    <NavLink to="/settings/security">
-                      <p>Безопасность</p>
-                    </NavLink>
-                    <NavLink to="/settings/api-keys">
-                      <p>Подключение API</p>
-                    </NavLink>
-                  </div>
-                </div>
-
-                <div className="nav_menu_item">
-                  <div className="nav_menu_itemm">
-                    <p>Изучить</p>
-                    <Down />
-                  </div>
-
-                  <div
-                    className="nav_menu_item_drop nav_menu_item_drop_learn"
-                    onClick={() => setMenuVisible(false)}
-                  >
-                    <NavLink to="/base">
-                      <p>База знаний</p>
-                    </NavLink>
-                    <NavLink to="#">
-                      <p>Whatepaper</p>
-                    </NavLink>
-                    <NavLink to="#">
-                      <p>Политика конфиденциальности</p>
-                    </NavLink>
-                    <NavLink to="#">
-                      <p>Клиентское соглашение</p>
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-              <div className="nav_logout_btn">
-                <button>Выйти</button>
               </div>
             </div>
+          </div>
+          <div className="nav_logout_btn">
+            <button>Выйти</button>
           </div>
         </div>
       </div>

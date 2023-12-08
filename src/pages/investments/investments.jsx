@@ -43,6 +43,13 @@ function Investments() {
     },
   ];
   const [opened, setOpened] = useState();
+  const toggleTabs = (data) => {
+    if (data == opened) {
+      setOpened("");
+    } else {
+      setOpened(data);
+    }
+  };
   return (
     <div className="pages_wrapper investments_page">
       <div className="page_title investments_page_title">
@@ -368,11 +375,11 @@ function Investments() {
                   ? "faq_invest_item faq_invest_item_open"
                   : "faq_invest_item"
               }
+              onClick={() => toggleTabs(item.question)}
             >
               <div className="faq_invest_item_question">
                 <p>{item.question}</p>
                 <svg
-                  onClick={() => setOpened(item.question)}
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"

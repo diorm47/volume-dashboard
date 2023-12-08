@@ -1,5 +1,5 @@
 nav {
-  padding: 26px 36px;
+  padding: 0 36px;
   background: var(--111112, #111112);
 }
 
@@ -45,12 +45,20 @@ nav {
 .nav_menu_item {
   position: relative;
   padding: 10px 0;
+  height: 56px;
+}
+.nav_menu_item .drop_down_icon {
+  transition: all 0.4s ease;
+}
+.nav_menu_item:hover .drop_down_icon {
+  transition: all 0.4s ease;
+  transform: rotate(-180deg);
 }
 
 .nav_menu_item_drop {
   position: absolute;
   width: auto;
-  top: 36px;
+  top: 56px;
   padding: 12px;
   border-radius: 6px;
   background: #fff;
@@ -144,7 +152,7 @@ nav {
 
 .nav_menu_item_drop_profile {
   right: 0;
-  top: 50px;
+  top: 56px;
   width: 260px;
 }
 .nav_menu_item_drop_profile_block {
@@ -177,7 +185,8 @@ nav {
 .nav_mob_burger {
   cursor: pointer;
   display: none;
-}  .nav_mob_menu_wrapper {
+}
+.nav_mob_menu_wrapper {
   width: 100%;
   height: 100vh;
   padding: 32px 24px;
@@ -190,6 +199,9 @@ nav {
   background: #111112;
   transition: all 0.4s ease;
   transform: translateX(100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -210,6 +222,9 @@ nav {
   }
   .nav_mob_burger {
     display: block;
+  }
+  nav {
+    padding: 10px 20px;
   }
 
   .visible_mob_menu {
@@ -263,7 +278,7 @@ nav {
   .nav_logout_btn button {
     border-radius: 40px;
     width: 100%;
-    margin-top: 65px;
+   margin-top: 20px;
     background: var(--Accent, #2420fc);
     padding: 11px 20px 13px 20px;
 
@@ -279,12 +294,17 @@ nav {
     z-index: 112;
     top: 0;
     background: transparent;
-
+    border: none;
+    box-shadow: none;
   }
   .nav_menu_item_drop p {
     color: #fff;
     padding-left: 0;
     font-size: 15px;
+  }
+  .nav_menu_item_drop a:hover p {
+    background: transparent;
+    color: #fff;
   }
   .nav_menu_item_drop .active p {
     background: transparent;
@@ -296,7 +316,7 @@ nav {
   }
   .nav_mob_menu_wrapper_content_wrapper {
     overflow-y: auto;
-    max-height: 80vh;
+    max-height: 68vh;
   }
 }
 
@@ -307,5 +327,10 @@ nav {
 
   .nav_menu_item_drop {
     padding: 3px;
+  }
+}
+@media only screen and (max-width: 450px) { 
+  nav {
+    padding: 10px;
   }
 }

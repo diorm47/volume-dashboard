@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import userImg from "../../assets/icons/user-img.svg";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
@@ -17,6 +17,30 @@ function Profile() {
     setNumberModal(false);
     setEmailModal(false);
   };
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (
+      (nameModal || usernameModal || numberModal || emailModal) &&
+      windowWidth < 450
+    ) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [nameModal, usernameModal, numberModal, emailModal]);
+
   return (
     <>
       <div className="profile_page">
@@ -40,7 +64,9 @@ function Profile() {
             <span>Полное имя</span>
             <div>
               <p>Овчинников Данил Игоревич</p>
-              <p onClick={() => setNameModal(true)}>Изменить имя</p>
+              <p onClick={() => setNameModal(true)}>
+                Изменить <span>имя</span>
+              </p>
             </div>
           </div>
           <div class="order_history_list_line"></div>
@@ -48,7 +74,9 @@ function Profile() {
             <span>Псевдоним</span>
             <div>
               <p>DanilOvchinnikovill</p>
-              <p onClick={() => setUserNameModal(true)}>Изменить псевдоним</p>
+              <p onClick={() => setUserNameModal(true)}>
+                Изменить <span>псевдоним</span>
+              </p>
             </div>
           </div>
           <div class="order_history_list_line"></div>
@@ -58,7 +86,7 @@ function Profile() {
             <div>
               <p>nvolume@mail.ru</p>
               <p onClick={() => setEmailModal(true)}>
-                Изменить электронную почту
+                Изменить <span>электронную почту</span>
               </p>
             </div>
           </div>
@@ -69,7 +97,7 @@ function Profile() {
             <div>
               <p>+79000000000</p>
               <p onClick={() => setNumberModal(true)}>
-                Изменить номер телефона
+                Изменить <span>номер телефона</span>
               </p>
             </div>
           </div>

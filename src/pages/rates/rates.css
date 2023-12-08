@@ -1,10 +1,10 @@
 .order_item_top_status_process {
-  border-radius: 6px;
-  background: rgba(252, 217, 32, 0.3);
+  border-radius: 6px !important;
+  background: rgba(252, 217, 32, 0.3) !important;
 }
 
 .order_item_top_status_process p {
-  color: #ffd600;
+  color: #ffd600 !important;
 }
 
 .rates_card {

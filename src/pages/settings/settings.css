@@ -1,5 +1,5 @@
 .settings_navigation {
-  padding: 24px 36px;
+  padding: 20px;
   border-top: 1px solid #1d1d1d;
   border-bottom: 1px solid #1d1d1d;
   background: var(--111112, #111112);
@@ -139,7 +139,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30px;
+
   margin-bottom: 10px;
 }
 .api_keys_title_top h2 {
@@ -257,6 +257,7 @@
   background: #00000068;
   top: 0;
   left: 0;
+  display: none;
 }
 .modal_wrapper {
   position: fixed;
@@ -265,6 +266,7 @@
   top: 30%;
   z-index: 111;
   margin-left: -187px;
+  display: none;
 }
 
 .modal_wrapper_title {
@@ -343,7 +345,7 @@
   text-align: center;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   border-radius: 40px;
-
+  background: transparent;
   /* 13px/Regular */
   font-family: TTInterfaces400;
   font-size: 13px;
@@ -425,13 +427,12 @@
   padding: 0;
   border: none;
 }
-.my_active_api
-.add_key_history_mobile_title {
+.my_active_api .add_key_history_mobile_title {
   margin-bottom: 24px;
 }
-.api_delete_btn  button {
+.api_delete_btn button {
   background: transparent;
-  color: var(--F1507B, #F1507B);
+  color: var(--F1507B, #f1507b);
 }
 @media only screen and (max-width: 750px) {
   .user_img p br {
@@ -505,13 +506,16 @@
   .api_keys_title {
     margin-bottom: 24px;
   }
+  .overlay {
+    display: block;
+  }
   .modal_wrapper {
-      width: 100%;
-   top: auto;
-   left: 0;
-   right: auto;
-   margin: 0 !important;
-   bottom: 0 !important;
+    width: 100%;
+    top: auto;
+    left: 0;
+    right: auto;
+    margin: 0 !important;
+    bottom: 0 !important;
+    display: block;
   }
 }
-

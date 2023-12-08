@@ -4,11 +4,26 @@ import "./review.css";
 import pnl_graph from "../../assets/images/pnl-graph.png";
 import inviteImg from "../../assets/images/invite.png";
 import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg";
+import { NavLink } from "react-router-dom";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 function Review() {
   React.useEffect(() => {
     document.title = `Обзор | &Volume`;
   }, []);
+  const options = [
+    "За сегодня",
+    "За последние 7 дн.",
+    "За последние 30 дн.",
+    "За последние 90 дн.",
+  ];
+  const options2 = [
+    "За последние 30 дн.",
+    "За последние 90 дн.",
+    "За все время",
+  ];
+
   return (
     <div className="pages_wrapper review_page">
       <div className="review_page_wrapper">
@@ -36,12 +51,39 @@ function Review() {
                 <div className="main_block_wrapper_title">
                   <h2>PnL</h2>
                   <div className="main_select_item">
-                    <select name="" id="">
-                      <option value="#">За сегодня</option>
-                      <option value="#">За последние 7 дн.</option>
-                      <option value="#">За последние 30 дн.</option>
-                      <option value="#">За последние 90 дн.</option>
-                    </select>
+                    <Dropdown
+                      options={options}
+                      placeholder={options[0]}
+                      arrowClosed={
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                        >
+                          <path
+                            d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
+                            fill="#111112"
+                          />
+                        </svg>
+                      }
+                      arrowOpen={
+                        <svg
+                          className="open_arrow"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                        >
+                          <path
+                            d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
+                            fill="#111112"
+                          />
+                        </svg>
+                      }
+                    />
                   </div>
                 </div>
               </div>
@@ -61,11 +103,41 @@ function Review() {
             <div className="main_block_wrapper_title">
               <h2>PnL</h2>
               <div className="main_select_item">
-                <select name="" id="">
-                  <option value="#">За последние 30 дн.</option>
-                  <option value="#">За последние 90 дн.</option>
-                  <option value="#">За все время</option>
-                </select>
+                <div className="main_select_item">
+                  <Dropdown
+                    options={options2}
+                    placeholder={options2[0]}
+                    arrowClosed={
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
+                          fill="#111112"
+                        />
+                      </svg>
+                    }
+                    arrowOpen={
+                      <svg
+                        className="open_arrow"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
+                          fill="#111112"
+                        />
+                      </svg>
+                    }
+                  />
+                </div>
               </div>
             </div>
             <div className="pnl_value">
@@ -402,7 +474,9 @@ function Review() {
                 </div>
               </div>
               <div className="review_right_link">
-                <p>Добавить + 30 дней</p>
+                <NavLink to="/rates/rates">
+                  <p>Добавить + 30 дней</p>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -495,7 +569,9 @@ function Review() {
               </div>
             </div>
             <div className="review_right_link">
-              <p>Перейти в базу знаний</p>
+              <NavLink to="/base">
+                <p>Перейти в базу знаний</p>
+              </NavLink>
             </div>
           </div>
         </div>

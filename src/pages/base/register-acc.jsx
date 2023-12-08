@@ -16,36 +16,40 @@ function Register() {
     <div className="base_page_wrapper">
       <div className="base_top_block">
         <div className="base_top_block_wrapper">
-          <div>
-            <p>
-              <NavLink to="/base">База знаний</NavLink>{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M10.9768 9.99999L6.85183 5.87499L8.03016 4.69666L13.3335 9.99999L8.03016 15.3033L6.85183 14.1242L10.9768 9.99916"
-                  fill="#92979C"
-                />
-              </svg>
-              <NavLink to="/base">Подключение</NavLink>{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M10.9768 9.99999L6.85183 5.87499L8.03016 4.69666L13.3335 9.99999L8.03016 15.3033L6.85183 14.1242L10.9768 9.99916"
-                  fill="#92979C"
-                />
-              </svg>
-              Регистрация биржевого аккаунта
-            </p>
+          <div className="base_top_block_left">
+            <div className="base_top_block_wrapper_nav">
+              <div>
+                <p>
+                  <NavLink to="/base">База знаний</NavLink>{" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                  >
+                    <path
+                      d="M10.9768 9.99999L6.85183 5.87499L8.03016 4.69666L13.3335 9.99999L8.03016 15.3033L6.85183 14.1242L10.9768 9.99916"
+                      fill="#92979C"
+                    />
+                  </svg>
+                  <NavLink to="/base">Подключение</NavLink>{" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                  >
+                    <path
+                      d="M10.9768 9.99999L6.85183 5.87499L8.03016 4.69666L13.3335 9.99999L8.03016 15.3033L6.85183 14.1242L10.9768 9.99916"
+                      fill="#92979C"
+                    />
+                  </svg>
+                  Регистрация биржевого аккаунта
+                </p>
+              </div>
+            </div>
             <h1>Регистрация биржевого аккаунта</h1>
           </div>
           <img src={baseTop} alt="" />

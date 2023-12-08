@@ -202,6 +202,7 @@
   .investing_top_card_value p,
   .faq_invest_item_question p {
     font-size: 13px;
+    width: 90%;
   }
   .order_history_list_item_content_item_last span {
     padding: 0 !important;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
 function ApiKeys() {
@@ -14,7 +14,30 @@ function ApiKeys() {
     setapiActiveModal(false);
     setapiActiveEditModal(false);
   };
- 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (
+      (apiModal || apiActiveModal || apiActiveEditModal) &&
+      windowWidth < 450
+    ) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [apiModal, apiActiveModal, apiActiveEditModal]);
+
   return (
     <>
       <div className="api_keys_title">
