@@ -33,13 +33,13 @@ function Profile() {
   useEffect(() => {
     if (
       (nameModal || usernameModal || numberModal || emailModal) &&
-      windowWidth < 450
+      windowWidth < 750
     ) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [nameModal, usernameModal, numberModal, emailModal]);
+  }, [nameModal, usernameModal, numberModal, emailModal, windowWidth]);
 
   return (
     <>
@@ -205,7 +205,7 @@ function Profile() {
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Электронная почтф</p>
+            <p>Электронная почта</p>
             <input type="text" />
           </div>
 

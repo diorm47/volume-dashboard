@@ -213,6 +213,14 @@
     line-height: 140%;
   }
   .investments_page_title p {
-    margin: 0;
+    margin-top: 24px;
+  }
+  .investments_page
+  .order_history_list_item_content_item_last {
+  width: 100% !important;
+  }
+  .investments_page
+  .order_history_list_item_content_item span {
+    font-size: 13px;
   }
 }

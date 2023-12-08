@@ -49,13 +49,13 @@ function Security() {
   useEffect(() => {
     if (
       (passwordModal || passwordConfirmModal || emailModal) &&
-      windowWidth < 450
+      windowWidth < 750
     ) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [passwordModal, passwordConfirmModal, emailModal]);
+  }, [passwordModal, passwordConfirmModal, emailModal, windowWidth]);
 
   return (
     <>

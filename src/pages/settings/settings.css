@@ -450,6 +450,18 @@
   .user_img p br {
     display: none;
   }
+  .modal_wrapper {
+    width: 100%;
+    top: auto;
+    left: 0;
+    right: auto;
+    margin: 0 !important;
+    bottom: 0 !important;
+    display: block;
+  }
+  .overlay {
+    display: block;
+  }
   .add_key_history_mobile {
     display: block;
   }
@@ -518,18 +530,8 @@
   .api_keys_title {
     margin-bottom: 24px;
   }
-  .overlay {
-    display: block;
-  }
-  .modal_wrapper {
-    width: 100%;
-    top: auto;
-    left: 0;
-    right: auto;
-    margin: 0 !important;
-    bottom: 0 !important;
-    display: block;
-  }
+ 
+
   .modal_wrapper_content_item .Dropdown-control {
     display: flex;
     align-items: center;

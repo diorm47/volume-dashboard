@@ -32,13 +32,13 @@ function ApiKeys() {
   useEffect(() => {
     if (
       (apiModal || apiActiveModal || apiActiveEditModal) &&
-      windowWidth < 450
+      windowWidth < 750
     ) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [apiModal, apiActiveModal, apiActiveEditModal]);
+  }, [apiModal, apiActiveModal, apiActiveEditModal, windowWidth]);
   const options = ["Binance", "CommeEX", "Okx"];
   return (
     <>
