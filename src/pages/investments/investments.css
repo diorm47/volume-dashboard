@@ -216,8 +216,8 @@
     margin-top: 24px;
   }
   .investments_page
-  .order_history_list_item_content_item_last {
-  width: 100% !important;
+  .order_history_list_item_content_item_last p {
+  width: 270px;
   }
   .investments_page
   .order_history_list_item_content_item span {
