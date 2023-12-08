@@ -3,8 +3,14 @@ import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
 function ApiKeys() {
   const [apiModal, setapiModal] = useState(false);
+  const [apiActiveModal, setapiActiveModal] = useState(false);
+  const [apiActiveEditModal, setapiActiveEditModal] = useState(false);
+
+  
   const closeModals = () => {
     setapiModal(false);
+    setapiActiveModal(false);
+    setapiActiveEditModal(false)
   };
 
   return (
@@ -67,7 +73,10 @@ function ApiKeys() {
           </svg>
         </div>
         <div class="order_history_list_line"></div>
-        <div className="add_key_history_mobile_list">
+        <div
+          className="add_key_history_mobile_list"
+          onClick={() => setapiActiveModal(true)}
+        >
           <div>
             <p>Время добавления</p>
             <h4>26 окт. 2023 г., 00:29:16</h4>
@@ -79,7 +88,11 @@ function ApiKeys() {
         </div>
       </div>
 
-      {apiModal ? <div className="overlay" onClick={closeModals}></div> : ""}
+      {apiModal || apiActiveModal || apiActiveEditModal ? (
+        <div className="overlay" onClick={closeModals}></div>
+      ) : (
+        ""
+      )}
 
       {apiModal ? (
         <div className="modal_wrapper">
@@ -120,6 +133,82 @@ function ApiKeys() {
             </div>
             <div className="modal_wrapper_cancel">
               <button>Отмена</button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      {apiActiveModal ? (
+        <div className="modal_wrapper">
+          <div className="modal_wrapper_title">
+            <p>API</p>
+            <ExitModal onClick={closeModals} />
+          </div>
+          <div className="modal_wrapper_content">
+            <div className="secondary_block_wrapper my_active_api">
+              <div className="add_key_history_mobile_title">
+                <h2>MyAPI</h2>
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="10" height="10" rx="5" fill="#31BD65" />
+                </svg>
+              </div>
+
+              <div
+                className="add_key_history_mobile_list"
+                onClick={() => setapiActiveModal(true)}
+              >
+                <div>
+                  <p>Время добавления</p>
+                  <h4>26 окт. 2023 г., 00:29:16</h4>
+                </div>
+                <div>
+                  <p>Биржа</p>
+                  <h4>Binance</h4>
+                </div>
+              </div>
+            </div>
+            <div className="modal_wrapper_save_btn">
+              <button onClick={() => {
+                closeModals()
+                setapiActiveEditModal(true)
+              }}>Редактировать</button>
+            </div>
+            <div className="modal_wrapper_cancel api_delete_btn">
+              <button>Удалить</button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      {apiActiveEditModal ? (
+        <div className="modal_wrapper">
+          <div className="modal_wrapper_title">
+            <p>API</p>
+            <ExitModal onClick={closeModals} />
+          </div>
+          <div className="modal_wrapper_content">
+            <div className="modal_wrapper_content_item">
+              <p>Приватный ключ</p>
+              <input type="text" />
+            </div>
+            <div className="modal_wrapper_content_item">
+              <p>Секретный ключ</p>
+              <input type="text" />
+            </div>
+
+            <div className="modal_wrapper_save_btn">
+              <button>Сохранить</button>
+            </div>
+            <div className="modal_wrapper_cancel api_delete_btn">
+              <button>Удалить</button>
             </div>
           </div>
         </div>
