@@ -3,10 +3,8 @@ import "./question.css";
 
 function QuestionWidget() {
   return (
-    <div className="question_widget_wrapper">
-      <div className="question_widget">
-        <p>?</p>
-      </div>
+    <div className="question_widget">
+      <p>?</p>
     </div>
   );
 }

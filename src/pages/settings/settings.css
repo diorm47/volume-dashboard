@@ -250,10 +250,183 @@
 .user_login_history table thead td:nth-child(4) {
   text-align: center;
 }
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #0000002f;
+  top: 0;
+  left: 0;
+}
+.modal_wrapper {
+  position: fixed;
+  width: 375px;
+  left: 50%;
+  top: 30%;
+  z-index: 111;
+  margin-left: -187px;
+}
 
+.modal_wrapper_title {
+  border-bottom: 1px solid var(--DBDBDB, #dbdbdb);
+  background: var(--FFFFFF, #fff);
+  padding: 14px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 6px 6px 0 0;
+}
+.modal_wrapper_title p {
+  color: var(--111112, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 17px/SemiBold */
+  font-family: TTInterfaces600;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 141.176% */
+}
+.modal_wrapper_title svg {
+  cursor: pointer;
+}
+.modal_wrapper_content {
+  padding: 15px 15px 0;
+  background: var(--FFFFFF, #fff);
+  border-radius: 0 0 6px 6px;
+}
+.modal_wrapper_content_item p {
+  color: #747a80;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 13px/Regular */
+  font-family: TTInterfaces400;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+.modal_wrapper_content_item input {
+  border-radius: 5px;
+  border: 1px solid #eaeaea;
+  height: 40px;
+  margin-bottom: 30px;
+  width: 100%;
+  color: var(--text-black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  text-indent: 11px;
+  /* 13px/SemiBold */
+  font-family: TTInterfaces600;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px; /* 123.077% */
+}
+.modal_wrapper_save_btn button {
+  border-radius: 40px;
+  background: var(--111112, #111112);
+  padding: 11px 20px 13px 20px;
+  width: 100%;
+  margin-bottom: 15px;
+  color: var(--FFFFFF, #fff);
+  font-family: TTInterfaces500;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 123.077% */
+}
+.modal_wrapper_cancel button {
+  width: 100%;
+  padding: 14px 10px;
+  color: var(--111112, #111112);
+  text-align: center;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  border-radius: 40px;
+
+  /* 13px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+.recovery_inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.recovery_inputs input {
+  width: 30px;
+  height: 34px;
+  border-radius: 4px;
+  border: 1px solid #eaeaea;
+  text-indent: 0;
+  text-align: center;
+  margin-bottom: 24px !important;
+}
+.recovery_time {
+  text-align: right;
+  margin-bottom: 28px !important;
+}
+.api_select {
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #eaeaea;
+  height: 40px;
+  cursor: pointer;
+  color: #000;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  padding-left: 11px;
+  /* 13px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+  margin-bottom: 30px;
+}
+.api_select option {
+  display: flex;
+  align-items: center;
+}
+.add_key_history_mobile {
+  display: none;
+}
+.add_key_history_mobile_list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.add_key_history_mobile_list p {
+  color: var(--92979C, #92979c);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-bottom: 24px;
+  /* 13px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+.add_key_history_mobile_list h4 {
+  color: var(--111112, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  font-family: TTInterfaces400;
+
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
 @media only screen and (max-width: 750px) {
   .user_img p br {
     display: none;
+  }
+  .add_key_history_mobile {
+    display: block;
   }
   .api_keys_title_top {
     flex-direction: column;
@@ -266,6 +439,25 @@
   }
   .add_key_btn button {
     width: 100%;
+  }
+  .add_key_history {
+    display: none;
+  }
+  .add_key_history_mobile_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .add_key_history_mobile_title h2 {
+    color: var(--111112, #111112);
+    font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+    /* 23px/SemiBold */
+    font-family: TTInterfaces600;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 104.348% */
   }
 }
 
@@ -284,10 +476,24 @@
   .user_data_item p:last-child span {
     display: none;
   }
-  .user_login_history_item p {
+  .user_login_history_item p,
+  .api_keys_title span,
+  .add_key_history_mobile_list h4 {
     font-size: 13px;
   }
   .order_history_list_line {
     margin: 24px 0;
+  }
+  .api_keys_title_top h2 {
+    text-align: left;
+  }
+  .api_keys_title_top {
+    align-items: start;
+  }
+  .api_keys_title {
+    margin-bottom: 24px;
+  }
+  .modal_wrapper {
+    top: 10%;
   }
 }

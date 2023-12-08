@@ -1,6 +1,7 @@
 .question_widget {
   position: fixed;
   bottom: 50px;
+  right: 36px;
 }
 .question_widget_wrapper {
   width: 1250px;

@@ -278,6 +278,18 @@ nav {
     width: 100%;
     z-index: 112;
     top: 0;
+    background: transparent;
+
+  }
+  .nav_menu_item_drop p {
+    color: #fff;
+    padding-left: 0;
+    font-size: 15px;
+  }
+  .nav_menu_item_drop .active p {
+    background: transparent;
+    color: #fff;
+    text-decoration: underline;
   }
   .nav_menu_item_drop {
     position: relative;
