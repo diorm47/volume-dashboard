@@ -98,7 +98,7 @@
   margin-top: 10px !important;
   color: #111112;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-
+z-index: 10 !important;
   /* 13px/Regular */
   font-family: TTInterfaces400;
   font-size: 13px;

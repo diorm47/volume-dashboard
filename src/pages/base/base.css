@@ -299,6 +299,9 @@
   .base_bottom_blocks_left p {
     margin-bottom: 24px;
   }
+  .register_page_top_data p {
+    font-size: 13px;
+  }
 }
 
 

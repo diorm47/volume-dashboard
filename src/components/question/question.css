@@ -50,5 +50,6 @@
   }
   .question_widget {
     margin-right: -17px;
+    z-index: 11;
   }
 }

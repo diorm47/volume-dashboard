@@ -153,4 +153,7 @@
   .pagination p {
     font-size: 13px;
   }
+  .analysing_page_title_wrapper .page_title h2 {
+    text-align: left !important;
+  }
 }
