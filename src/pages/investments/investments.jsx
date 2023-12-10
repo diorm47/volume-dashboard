@@ -50,6 +50,23 @@ function Investments() {
       setOpened(data);
     }
   };
+  const invest_times = [
+    {
+      name: "1 год",
+    },
+    {
+      name: "6 месяцев",
+    },
+    {
+      name: "3 месяца",
+    },
+    {
+      name: "1 месяц",
+    },
+  ];
+  const [active1, setActive1] = useState("1 месяц");
+  const [active2, setActive2] = useState("1 месяц");
+  const [active3, setActive3] = useState("1 месяц");
   return (
     <div className="pages_wrapper investments_page">
       <div className="page_title investments_page_title">
@@ -126,12 +143,16 @@ function Investments() {
               </div>
             </div>
             <div className="investing_top_card_item investing_top_card_btns">
-              <button>1 год</button>
-              <button className="investing_top_card_active_btn">
-                6 месяцев
-              </button>
-              <button>3 месяца</button>
-              <button>1 месяц</button>
+              {invest_times.map((times) => (
+                <button
+                  className={
+                    active1 == times.name ? "investing_top_card_active_btn" : ""
+                  }
+                  onClick={() => setActive1(times.name)}
+                >
+                  {times.name}
+                </button>
+              ))}
             </div>
             <div className="investing_top_card_item investing_top_card_warning">
               <p>
@@ -209,12 +230,16 @@ function Investments() {
               </div>
             </div>
             <div className="investing_top_card_item investing_top_card_btns">
-              <button>1 год</button>
-              <button className="investing_top_card_active_btn">
-                6 месяцев
-              </button>
-              <button>3 месяца</button>
-              <button>1 месяц</button>
+              {invest_times.map((times) => (
+                <button
+                  className={
+                    active2 == times.name ? "investing_top_card_active_btn" : ""
+                  }
+                  onClick={() => setActive2(times.name)}
+                >
+                  {times.name}
+                </button>
+              ))}
             </div>
             <div className="investing_top_card_item investing_top_card_warning">
               <p>
@@ -292,12 +317,16 @@ function Investments() {
               </div>
             </div>
             <div className="investing_top_card_item investing_top_card_btns">
-              <button>1 год</button>
-              <button className="investing_top_card_active_btn">
-                6 месяцев
-              </button>
-              <button>3 месяца</button>
-              <button>1 месяц</button>
+              {invest_times.map((times) => (
+                <button
+                  className={
+                    active3 == times.name ? "investing_top_card_active_btn" : ""
+                  }
+                  onClick={() => setActive3(times.name)}
+                >
+                  {times.name}
+                </button>
+              ))}
             </div>
             <div className="investing_top_card_item investing_top_card_warning">
               <p>
@@ -355,12 +384,7 @@ function Investments() {
             <div className="order_history_list_line"></div>
 
             <div className="investing_actions">
-              <div className=" investing_top_card_select ">
-                <button>Редактировать</button>
-              </div>
-              <div className=" investing_top_card_select investing_top_card_select_active">
-                <button>Удалить</button>
-              </div>
+            <div class="add_key_btn"><button>Удалить</button></div>
             </div>
           </div>
         </div>

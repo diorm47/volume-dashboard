@@ -273,6 +273,7 @@
   }
   .register_page_text p {
     line-height: 16px;
+    margin-bottom: 24px;
   }
   .register_page_text_block {
     padding: 24px;

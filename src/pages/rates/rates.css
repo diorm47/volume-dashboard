@@ -21,11 +21,11 @@
 }
 .rates_card .main_block_wrapper_title p {
   color: var(--92979C, #92979c);
-  font-family: TTInterfaces500;
+  font-family: TTInterfaces400;
 
   font-size: 17px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
 }
 
@@ -127,5 +127,8 @@
   }
   .page_title h2 {
     text-align: center !important; 
+  }
+  .investments_page_title p {
+    font-size: 15px;
   }
 }

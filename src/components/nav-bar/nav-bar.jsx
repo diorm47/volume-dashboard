@@ -73,15 +73,15 @@ function NavBar() {
                 <NavLink to="/base">
                   <p>База знаний</p>
                 </NavLink>
-                <NavLink to="/whitepaper">
+                {/* <NavLink to="/whitepaper"> */}
                   <p>Whatepaper</p>
-                </NavLink>
-                <NavLink to="/policy">
+                {/* </NavLink> */}
+                {/* <NavLink to="/policy"> */}
                   <p>Политика конфиденциальности</p>
-                </NavLink>
-                <NavLink to="/agreement">
+                {/* </NavLink> */}
+                {/* <NavLink to="/agreement"> */}
                   <p>Клиентское соглашение</p>
-                </NavLink>
+                {/* </NavLink> */}
               </div>
             </div>
           </div>
@@ -91,15 +91,15 @@ function NavBar() {
             <p>EN</p>
             <Down className="drop_down_icon"/>
             <div className="nav_menu_item_drop">
-              <NavLink to="/ru">
+              {/* <NavLink to="/ru"> */}
                 <p>RU</p>
-              </NavLink>
-              <NavLink to="/en">
+              {/* </NavLink> */}
+              {/* <NavLink to="/en"> */}
                 <p>EN</p>
-              </NavLink>
-              <NavLink to="/se">
+              {/* </NavLink> */}
+              {/* <NavLink to="/se"> */}
                 <p>SE</p>
-              </NavLink>
+              {/* </NavLink> */}
             </div>
           </div>
 
@@ -116,7 +116,7 @@ function NavBar() {
           <div className="nav_menu_item">
             <ChatIcon />
             <div className="nav_menu_item_drop nav_menu_item_drop_chat">
-              <NavLink to="https://t.me/">
+              {/* <NavLink to="https://t.me/"> */}
                 <p>Telegram</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -132,8 +132,8 @@ function NavBar() {
                     fill="black"
                   />
                 </svg>
-              </NavLink>
-              <NavLink to="https://">
+              {/* </NavLink> */}
+              {/* <NavLink to="https://"> */}
                 <p>Discord</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -147,29 +147,29 @@ function NavBar() {
                     fill="black"
                   />
                 </svg>
-              </NavLink>
+              {/* </NavLink> */}
             </div>
           </div>
 
           <div className="nav_menu_item">
             <NotificationICon />
             <div className="nav_menu_item_drop nav_menu_item_drop_notifications">
-              <NavLink to="/a">
+              {/* <NavLink to="/a"> */}
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
-              </NavLink>
-              <NavLink to="/a">
+              {/* </NavLink> */}
+              {/* <NavLink to="/a"> */}
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
-              </NavLink>{" "}
-              <NavLink to="/a">
+              {/* </NavLink>{" "} */}
+              {/* <NavLink to="/a"> */}
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
-              </NavLink>{" "}
-              <NavLink to="/a">
+              {/* </NavLink>{" "} */}
+              {/* <NavLink to="/a"> */}
                 <p>Уведомление о изменение платежной системы на &volume</p>
                 <span>20.11.2023, 16:00:31</span>
-              </NavLink>
+              {/* </NavLink> */}
             </div>
           </div>
           <div className="nav_menu_item">
@@ -183,12 +183,12 @@ function NavBar() {
               <NavLink to="/settings/profile">
                 <p>Профиль</p>
               </NavLink>
-              <NavLink to="/referals">
+              {/* <NavLink to="/referals"> */}
                 <p>Реферальная программа</p>
-              </NavLink>
-              <NavLink to="/logout">
+              {/* </NavLink> */}
+              {/* <NavLink to="/logout"> */}
                 <p>Выйти</p>
-              </NavLink>
+              {/* </NavLink> */}
             </div>
           </div>
         </div>
@@ -299,15 +299,15 @@ function NavBar() {
                       <NavLink to="/base">
                         <p>База знаний</p>
                       </NavLink>
-                      <NavLink to="/whitepaper">
+                      {/* <NavLink to="/whitepaper"> */}
                         <p>Whatepaper</p>
-                      </NavLink>
-                      <NavLink to="/policy">
+                      {/* </NavLink> */}
+                      {/* <NavLink to="/policy"> */}
                         <p>Политика конфиденциальности</p>
-                      </NavLink>
-                      <NavLink to="/agreement">
+                      {/* </NavLink> */}
+                      {/* <NavLink to="/agreement"> */}
                         <p>Клиентское соглашение</p>
-                      </NavLink>
+                      {/* </NavLink> */}
                     </div>
                   </div>
                 </div>
