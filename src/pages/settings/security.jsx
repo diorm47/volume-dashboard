@@ -275,12 +275,23 @@ function Security() {
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Электронная почта</p>
+            <p>Новая электронная почта</p>
+            <input type="text" />
+          </div>
+          <div className="modal_wrapper_content_item">
+            <p>Новая электронная почта ещё раз</p>
             <input type="text" />
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button>Сохранить</button>
+              <button
+                onClick={() => {
+                  setEmailModal(false);
+                  setPasswordConfirmModal(true);
+                }}
+              >
+                Подтвердить
+              </button>
             </div>
             <div className="modal_wrapper_cancel">
               <button>Отмена</button>

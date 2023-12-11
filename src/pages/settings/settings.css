@@ -458,6 +458,22 @@
   background: transparent;
   color: var(--F1507B, #f1507b);
 }
+.add_key_history_mobile_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add_key_history_mobile_title h2 {
+  color: var(--111112, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 23px/SemiBold */
+  font-family: TTInterfaces600;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 104.348% */
+}
 @media only screen and (max-width: 750px) {
   .user_img p br {
     display: none;
@@ -513,6 +529,36 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+}
+.modal_wrapper_content_item .Dropdown-control {
+  display: flex;
+  align-items: center;
+  padding: 10px !important;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid #eaeaea;
+  margin-bottom: 30px;
+
+  color: #000;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 13px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+.modal_wrapper_content_item .Dropdown-option {
+  color: #000;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 13px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
 }
 @media only screen and (max-width: 450px) {
   .modal_wrapper_title {
@@ -587,34 +633,5 @@
     margin-bottom: 24px;
   }
 
-  .modal_wrapper_content_item .Dropdown-control {
-    display: flex;
-    align-items: center;
-    padding: 10px !important;
-    justify-content: space-between;
-    border-radius: 5px;
-    border: 1px solid #eaeaea;
-    margin-bottom: 30px;
 
-    color: #000;
-    font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-
-    /* 13px/Regular */
-    font-family: TTInterfaces400;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px; /* 123.077% */
-  }
-  .modal_wrapper_content_item .Dropdown-option {
-    color: #000;
-    font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-
-    /* 13px/Regular */
-    font-family: TTInterfaces400;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px; /* 123.077% */
-  }
 }

@@ -62,7 +62,7 @@ function ApiKeys() {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr    onClick={() => setapiActiveModal(true)}>
                 <td>26 окт. 2023 г., 00:29:16</td>
                 <td>Активное</td>
                 <td>MyAPI</td>
