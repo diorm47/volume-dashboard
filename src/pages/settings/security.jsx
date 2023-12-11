@@ -246,19 +246,20 @@ function Security() {
             <p>Новый пароль ещё раз</p>
             <input type="password" />
           </div>
-
-          <div className="modal_wrapper_save_btn">
-            <button
-              onClick={() => {
-                setPasswordModal(false);
-                setPasswordConfirmModal(true);
-              }}
-            >
-              Подтвердить
-            </button>
-          </div>
-          <div className="modal_wrapper_cancel">
-            <button>Отмена</button>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button
+                onClick={() => {
+                  setPasswordModal(false);
+                  setPasswordConfirmModal(true);
+                }}
+              >
+                Подтвердить
+              </button>
+            </div>
+            <div className="modal_wrapper_cancel">
+              <button>Отмена</button>
+            </div>
           </div>
         </div>
       </div>
@@ -277,12 +278,13 @@ function Security() {
             <p>Электронная почта</p>
             <input type="text" />
           </div>
-
-          <div className="modal_wrapper_save_btn">
-            <button>Сохранить</button>
-          </div>
-          <div className="modal_wrapper_cancel">
-            <button>Отмена</button>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button>Сохранить</button>
+            </div>
+            <div className="modal_wrapper_cancel">
+              <button>Отмена</button>
+            </div>
           </div>
         </div>
       </div>
@@ -347,12 +349,13 @@ function Security() {
             </div>
             <p className="recovery_time">Отправить повторно (5:00)</p>
           </div>
-
-          <div className="modal_wrapper_save_btn">
-            <button>Подтвердить</button>
-          </div>
-          <div className="modal_wrapper_cancel">
-            <button>Отмена</button>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button>Подтвердить</button>
+            </div>
+            <div className="modal_wrapper_cancel">
+              <button>Отмена</button>
+            </div>
           </div>
         </div>
       </div>

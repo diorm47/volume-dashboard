@@ -273,11 +273,13 @@
   left: 50%;
   top: 30%;
   z-index: 111;
-  margin-left: -187px;
+  margin-left: -260px;
   visibility: hidden;
   transform: translateY(100%);
   transition: all 0.5s ease;
   opacity: 0;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
 }
 .visible_modal_wrapper {
   transform: translateY(0%);
@@ -362,7 +364,6 @@
   line-height: 16px; /* 123.077% */
 }
 .modal_wrapper_cancel button {
-
   padding: 14px 10px;
   color: var(--111112, #111112);
   text-align: center;
@@ -461,15 +462,7 @@
   .user_img p br {
     display: none;
   }
-  .modal_wrapper {
-    width: 100%;
-    top: auto;
-    left: 0;
-    right: auto;
-    margin: 0 !important;
-    bottom: 0 !important;
-    display: block;
-  }
+
   .overlay {
     display: block;
   }
@@ -508,17 +501,38 @@
     line-height: 24px; /* 104.348% */
   }
 }
-
+@media only screen and (max-width: 520px) {
+  .modal_wrapper {
+    width: 100%;
+    top: auto;
+    left: 0;
+    right: auto;
+    margin: 0 !important;
+    bottom: 0 !important;
+    display: block;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
 @media only screen and (max-width: 450px) {
   .modal_wrapper_title {
     padding: 14px 15px;
+  }
+  .modal_wrapper_btns {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0;
+    gap: 14px;
+  }
+  .modal_wrapper_btns div {
+    width: 100% !important;
   }
   .modal_wrapper_save_btn button {
     border-radius: 40px;
     background: var(--111112, #111112);
     padding: 11px 20px 13px 20px;
     width: 100%;
-    margin-bottom: 15px;
     color: var(--FFFFFF, #fff);
     font-family: TTInterfaces500;
     font-size: 13px;
