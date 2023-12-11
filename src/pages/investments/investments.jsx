@@ -67,6 +67,8 @@ function Investments() {
   const [active1, setActive1] = useState("1 месяц");
   const [active2, setActive2] = useState("1 месяц");
   const [active3, setActive3] = useState("1 месяц");
+
+  const [activeCardSelect, setactiveCardSelect] = useState("");
   return (
     <div className="pages_wrapper investments_page">
       <div className="page_title investments_page_title">
@@ -162,7 +164,13 @@ function Investments() {
               </p>
             </div>
             <div className="investing_top_card_select">
-              <button>Выбрать</button>
+              {activeCardSelect == 1 ? (
+                <button className="investing_top_card_select_active">
+                  Активный
+                </button>
+              ) : (
+                <button onClick={() => setactiveCardSelect(1)}>Выбрать</button>
+              )}
             </div>
           </div>
           <div className="secondary_block_wrapper investing_top_card">
@@ -249,7 +257,13 @@ function Investments() {
               </p>
             </div>
             <div className="investing_top_card_select">
-              <button>Выбрать</button>
+              {activeCardSelect == 2 ? (
+                <button className="investing_top_card_select_active">
+                  Активный
+                </button>
+              ) : (
+                <button onClick={() => setactiveCardSelect(2)}>Выбрать</button>
+              )}
             </div>
           </div>
           <div className="secondary_block_wrapper investing_top_card">
@@ -335,8 +349,14 @@ function Investments() {
                 будущей доходности.
               </p>
             </div>
-            <div className="investing_top_card_select investing_top_card_select_active">
-              <button>Активный</button>
+            <div className="investing_top_card_select ">
+              {activeCardSelect == 3 ? (
+                <button className="investing_top_card_select_active">
+                  Активный
+                </button>
+              ) : (
+                <button onClick={() => setactiveCardSelect(3)}>Выбрать</button>
+              )}
             </div>
           </div>
         </div>
@@ -384,7 +404,9 @@ function Investments() {
             <div className="order_history_list_line"></div>
 
             <div className="investing_actions">
-            <div class="add_key_btn"><button>Удалить</button></div>
+              <div class="add_key_btn">
+                <button>Удалить</button>
+              </div>
             </div>
           </div>
         </div>

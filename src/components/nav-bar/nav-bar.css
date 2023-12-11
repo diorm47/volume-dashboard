@@ -234,7 +234,7 @@ nav {
     visibility: visible;
   }
   .nav_menu_item:hover .nav_menu_item_drop {
-      display: block;
+    display: block;
   }
 
   .nav_bar_menu,
@@ -258,7 +258,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 48px;
+    
   }
   .mob_menu_user_data p {
     color: var(--92979C, #92979c);
@@ -276,16 +276,26 @@ nav {
   .nav_mob_menu_wrapper .nav_bar_menu {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     gap: 24px;
   }
+
   .nav_menu_item {
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: start;
-    width: 100%;
+
     height: auto;
+  }
+  .nav_menu_item p {
+    color: var(--OnSecond, var(--FFFFFF, #fff));
+    font-family: TTInterfaces800;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px; /* 109.091% */
+    letter-spacing: -0.44px;
   }
   .nav_menu_itemm {
     display: flex;
@@ -302,7 +312,7 @@ nav {
   .nav_logout_btn button {
     border-radius: 40px;
     width: 100%;
-    margin-top: 20px;
+ 
     background: var(--Accent, #2420fc);
     padding: 11px 20px 13px 20px;
 
@@ -338,10 +348,7 @@ nav {
   .nav_menu_item_drop {
     position: relative;
   }
-  .nav_mob_menu_wrapper_content_wrapper {
-    overflow-y: auto;
-    max-height: 68vh;
-  }
+
 }
 
 @media only screen and (max-width: 750px) {
@@ -355,6 +362,6 @@ nav {
 }
 @media only screen and (max-width: 450px) {
   nav {
-  padding: 32px 24px;
+    padding: 32px 24px;
   }
 }

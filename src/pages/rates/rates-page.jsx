@@ -143,7 +143,7 @@ function RatesPage() {
           </div>
           <div class="order_history_list_line"></div>
           <div class="investing_top_card_select">
-            <button>Активный</button>
+            <button>Купить</button>
           </div>
         </div>
       </div>

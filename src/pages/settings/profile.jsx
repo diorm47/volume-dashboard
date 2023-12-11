@@ -17,51 +17,22 @@ function Profile() {
     setNumberModal(false);
     setEmailModal(false);
   };
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    handleResize();
-
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
- 
-    if (
-      (nameModal || usernameModal || numberModal || emailModal) &&
-      windowWidth < 750
-    ) {
+    if (nameModal || usernameModal || numberModal || emailModal) {
       const scrollY = window.scrollY;
-
-      // Disable scrolling by setting overflow hidden
       document.body.style.overflow = "hidden";
-
-      // Apply a fixed position and set the top value to the stored scroll position
+      document.body.style.width = "100%";
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollY}px`;
     } else {
-      // Enable scrolling by resetting overflow
       document.body.style.overflow = "";
-
-      // Reset the position style
       document.body.style.position = "";
-
-      // Calculate the original scroll position
       const scrollY = document.body.style.top;
-
-      // Reset the body top style
       document.body.style.top = "";
-
-      // Restore the original scroll position
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
     }
-  }, [nameModal, usernameModal, numberModal, emailModal, windowWidth]);
+  }, [nameModal, usernameModal, numberModal, emailModal]);
 
   return (
     <>
@@ -157,11 +128,13 @@ function Profile() {
             <p>Отчество</p>
             <input type="text" />
           </div>
-          <div className="modal_wrapper_save_btn">
-            <button>Сохранить</button>
-          </div>
-          <div className="modal_wrapper_cancel">
-            <button>Отмена</button>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button>Сохранить</button>
+            </div>
+            <div className="modal_wrapper_cancel">
+              <button>Отмена</button>
+            </div>{" "}
           </div>
         </div>
       </div>
@@ -182,12 +155,13 @@ function Profile() {
             <p>Псевдоним</p>
             <input type="text" />
           </div>
-
-          <div className="modal_wrapper_save_btn">
-            <button>Сохранить</button>
-          </div>
-          <div className="modal_wrapper_cancel">
-            <button>Отмена</button>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button>Сохранить</button>
+            </div>
+            <div className="modal_wrapper_cancel">
+              <button>Отмена</button>
+            </div>
           </div>
         </div>
       </div>
@@ -206,12 +180,13 @@ function Profile() {
             <p>Номер телефона</p>
             <input type="text" />
           </div>
-
-          <div className="modal_wrapper_save_btn">
-            <button>Сохранить</button>
-          </div>
-          <div className="modal_wrapper_cancel">
-            <button>Отмена</button>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button>Сохранить</button>
+            </div>
+            <div className="modal_wrapper_cancel">
+              <button>Отмена</button>
+            </div>
           </div>
         </div>
       </div>
@@ -230,12 +205,13 @@ function Profile() {
             <p>Электронная почта</p>
             <input type="text" />
           </div>
-
-          <div className="modal_wrapper_save_btn">
-            <button>Сохранить</button>
-          </div>
-          <div className="modal_wrapper_cancel">
-            <button>Отмена</button>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button>Сохранить</button>
+            </div>
+            <div className="modal_wrapper_cancel">
+              <button>Отмена</button>
+            </div>
           </div>
         </div>
       </div>

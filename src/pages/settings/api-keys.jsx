@@ -16,49 +16,22 @@ function ApiKeys() {
     setapiActiveModal(false);
     setapiActiveEditModal(false);
   };
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
-    if (
-      (apiModal || apiActiveModal || apiActiveEditModal) &&
-      windowWidth < 750
-    ) {
+    if (apiModal || apiActiveModal || apiActiveEditModal) {
       const scrollY = window.scrollY;
-
-      // Disable scrolling by setting overflow hidden
       document.body.style.overflow = "hidden";
-
-      // Apply a fixed position and set the top value to the stored scroll position
+      document.body.style.width = "100%";
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollY}px`;
     } else {
-      // Enable scrolling by resetting overflow
       document.body.style.overflow = "";
-
-      // Reset the position style
       document.body.style.position = "";
-
-      // Calculate the original scroll position
       const scrollY = document.body.style.top;
-
-      // Reset the body top style
       document.body.style.top = "";
-
-      // Restore the original scroll position
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
     }
-  }, [apiModal, apiActiveModal, apiActiveEditModal, windowWidth]);
+  }, [apiModal, apiActiveModal, apiActiveEditModal]);
   const options = ["Binance", "CommeEX", "Okx"];
   return (
     <>
@@ -202,12 +175,13 @@ function ApiKeys() {
             <p>Секретный ключ</p>
             <input type="text" />
           </div>
-
-          <div className="modal_wrapper_save_btn">
-            <button>Добавить</button>
-          </div>
-          <div className="modal_wrapper_cancel">
-            <button>Отмена</button>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button>Добавить</button>
+            </div>
+            <div className="modal_wrapper_cancel">
+              <button>Отмена</button>
+            </div>
           </div>
         </div>
       </div>
@@ -252,18 +226,20 @@ function ApiKeys() {
               </div>
             </div>
           </div>
-          <div className="modal_wrapper_save_btn">
-            <button
-              onClick={() => {
-                closeModals();
-                setapiActiveEditModal(true);
-              }}
-            >
-              Редактировать
-            </button>
-          </div>
-          <div className="modal_wrapper_cancel api_delete_btn">
-            <button>Удалить</button>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button
+                onClick={() => {
+                  closeModals();
+                  setapiActiveEditModal(true);
+                }}
+              >
+                Редактировать
+              </button>
+            </div>
+            <div className="modal_wrapper_cancel api_delete_btn">
+              <button>Удалить</button>
+            </div>
           </div>
         </div>
       </div>
@@ -288,12 +264,13 @@ function ApiKeys() {
             <p>Секретный ключ</p>
             <input type="text" />
           </div>
-
-          <div className="modal_wrapper_save_btn">
-            <button>Сохранить</button>
-          </div>
-          <div className="modal_wrapper_cancel api_delete_btn">
-            <button>Удалить</button>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button>Сохранить</button>
+            </div>
+            <div className="modal_wrapper_cancel api_delete_btn">
+              <button>Удалить</button>
+            </div>
           </div>
         </div>
       </div>

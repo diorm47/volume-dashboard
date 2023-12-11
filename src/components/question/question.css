@@ -53,3 +53,9 @@
     z-index: 11;
   }
 }
+@media only screen and (max-width: 500px) {
+  .question_widget {
+    bottom: 24px;
+  }
+}
+

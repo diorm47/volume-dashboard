@@ -166,7 +166,6 @@
   line-height: 16px; /* 123.077% */
 }
 
-
 .api_keys_title span {
   color: var(--92979C, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -258,7 +257,7 @@
   background: #00000000;
   top: 0;
   left: 0;
-  display: none;
+
   transition: all 0.5s ease;
   visibility: hidden;
 }
@@ -269,24 +268,28 @@
 }
 .modal_wrapper {
   position: fixed;
-  width: 375px;
+  max-width: 520px;
+  width: 100%;
   left: 50%;
   top: 30%;
   z-index: 111;
   margin-left: -187px;
-  display: none;
+  visibility: hidden;
   transform: translateY(100%);
   transition: all 0.5s ease;
+  opacity: 0;
 }
 .visible_modal_wrapper {
   transform: translateY(0%);
   transition: all 0.5s ease;
+  visibility: visible;
+  opacity: 1;
 }
 
 .modal_wrapper_title {
   border-bottom: 1px solid var(--DBDBDB, #dbdbdb);
   background: var(--FFFFFF, #fff);
-  padding: 14px 15px;
+  padding: 24px 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -322,6 +325,14 @@
   font-weight: 400;
   line-height: 16px; /* 123.077% */
 }
+.modal_wrapper_btns {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+  justify-content: end;
+  padding-bottom: 24px;
+  gap: 15px;
+}
 .modal_wrapper_content_item input {
   border-radius: 5px;
   border: 1px solid #eaeaea;
@@ -342,8 +353,7 @@
   border-radius: 40px;
   background: var(--111112, #111112);
   padding: 11px 20px 13px 20px;
-  width: 100%;
-  margin-bottom: 15px;
+
   color: var(--FFFFFF, #fff);
   font-family: TTInterfaces500;
   font-size: 13px;
@@ -352,7 +362,7 @@
   line-height: 16px; /* 123.077% */
 }
 .modal_wrapper_cancel button {
-  width: 100%;
+
   padding: 14px 10px;
   color: var(--111112, #111112);
   text-align: center;
@@ -360,10 +370,10 @@
   border-radius: 40px;
   background: transparent;
   /* 13px/Regular */
-  font-family: TTInterfaces400;
+  font-family: TTInterfaces500;
   font-size: 13px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 16px; /* 123.077% */
 }
 .recovery_inputs {
@@ -500,6 +510,37 @@
 }
 
 @media only screen and (max-width: 450px) {
+  .modal_wrapper_title {
+    padding: 14px 15px;
+  }
+  .modal_wrapper_save_btn button {
+    border-radius: 40px;
+    background: var(--111112, #111112);
+    padding: 11px 20px 13px 20px;
+    width: 100%;
+    margin-bottom: 15px;
+    color: var(--FFFFFF, #fff);
+    font-family: TTInterfaces500;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 123.077% */
+  }
+  .modal_wrapper_cancel button {
+    width: 100%;
+    padding: 14px 10px;
+    color: var(--111112, #111112);
+    text-align: center;
+    font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+    border-radius: 40px;
+    background: transparent;
+    /* 13px/Regular */
+    font-family: TTInterfaces400;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 123.077% */
+  }
   .user_image_block h2 {
     font-size: 17px;
   }
@@ -531,7 +572,6 @@
   .api_keys_title {
     margin-bottom: 24px;
   }
- 
 
   .modal_wrapper_content_item .Dropdown-control {
     display: flex;
