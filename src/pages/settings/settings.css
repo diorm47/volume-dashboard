@@ -486,7 +486,7 @@
 .user_img_wrapper img {
   width: 120px;
   height: 120px;
-  border: 3px solid var(--111112, #111112);
+  border: 3px solid #2420FC;
   border-radius: 50%;
   transition: all 0.4s ease;
 }
@@ -496,21 +496,14 @@
   justify-content: center;
   padding: 7px;
   border-radius: 50%;
-  background: var(--111112, #111112);
+  background: #2420FC;
   cursor: pointer;
   position: absolute;
   right: 0;
   bottom: 10px;
   transition: all 0.4s ease;
 }
-.user_img_wrapper:hover img {
-  transition: all 0.4s ease;
-  border: 3px solid rgba(36, 32, 252, 0.8);
-}
-.user_img_wrapper:hover .user_img_update {
-  transition: all 0.4s ease;
-  background: rgba(36, 32, 252, 0.8);
-}
+
 @media only screen and (max-width: 750px) {
   .user_img p br {
     display: none;
@@ -604,7 +597,7 @@
   .user_img_wrapper img {
     width: 60px;
     height: 60px;
-    border: 3px solid var(--111112, #111112);
+    
     border-radius: 50%;
     transition: all 0.4s ease;
   }

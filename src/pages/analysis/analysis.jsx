@@ -7,13 +7,13 @@ import { ReactComponent as BTC } from "../../assets/icons/btc.svg";
 
 function Analysis() {
   React.useEffect(() => {
-    document.title = `Анализ прибыли и убытка | &Volume`;
+    document.title = `Анализ  | &Volume`;
   }, []);
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
         <div className="page_title analyse_title">
-          <h2>Анализ <span>прибыли и убытка</span></h2>
+          <h2>Анализ</h2>
           <div className="analysis_top_toggler">
             <p>21.11.2023</p>
             <svg
@@ -900,9 +900,18 @@ function Analysis() {
           </div>
           <div className="main_block_wrapper_bottom">
             <div className="pagination">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  <path d="M7.21871 8.00001L10.5187 11.3L9.57604 12.2427L5.33337 8.00001L9.57604 3.75734L10.5187 4.70067L7.21871 8.00068" fill="#111112"/>
-</svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  d="M7.21871 8.00001L10.5187 11.3L9.57604 12.2427L5.33337 8.00001L9.57604 3.75734L10.5187 4.70067L7.21871 8.00068"
+                  fill="#111112"
+                />
+              </svg>
               <p>1</p>
               <p>2</p>
               <p>3</p>

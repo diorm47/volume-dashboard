@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function RatesPage() {
   React.useEffect(() => {
-    document.title = `Выберите тарифный план | &Volume`;
+    document.title = `Выберите план | &Volume`;
   }, []);
   const faq = [
     {
@@ -53,7 +53,7 @@ function RatesPage() {
   return (
     <>
       <div class="page_title investments_page_title rate_title">
-        <h2>Выберите <span>тарифный</span> план</h2>
+        <h2>Выберите план</h2>
         <p>
           При оплате тарифа платёжный сервис берет комиссию за проведение
           транзакции. <br /> Внимательно указывайте сумму с учётом комиссии.
