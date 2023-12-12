@@ -108,9 +108,9 @@ function NavBar() {
             width="2"
             height="18"
             viewBox="0 0 2 18"
-            fill="none"
+            fill="#f7f7f7"
           >
-            <path d="M1 0V18" stroke="#1D1D1D" />
+            <path d="M1 0V18" stroke="#f7f7f7" />
           </svg>
 
           <div className="nav_menu_item">
