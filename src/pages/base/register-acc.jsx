@@ -52,7 +52,7 @@ function Register() {
             </div>
             <h1>Регистрация биржевого аккаунта</h1>
           </div>
-         
+          
         </div>
       </div>
 
