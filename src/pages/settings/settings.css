@@ -1,8 +1,8 @@
 .settings_navigation {
   padding: 20px;
-  border-top: 1px solid #1d1d1d;
-  border-bottom: 1px solid #1d1d1d;
-  background: var(--111112, #111112);
+  border-top: 1px solid var(--F7F7F7, #F7F7F7);
+  border-bottom: 1px solid var(--F7F7F7, #F7F7F7);
+  /* background: var(--111112, #111112); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +10,7 @@
 }
 
 .settings_navigation p {
-  color: #d2d2d2;
+  color: #111112;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 17px/Medium */

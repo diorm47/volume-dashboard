@@ -1,7 +1,9 @@
 .base_top_block {
   padding: 40px 0;
-  border-top: 1px solid #1d1d1d;
-  background: var(--111112, #111112);
+
+  border-top: 1px solid var(--F7F7F7, #F7F7F7);
+
+  /* background: var(--111112, #111112); */
 }
 
 .base_top_block_wrapper {
@@ -12,7 +14,7 @@
   margin: 0 auto;
 }
 .base_top_block_wrapper p {
-  color: var(--92979C, #92979c);
+  color: var(--111112, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   margin-bottom: 40px;
   /* 17px/Regular */
@@ -28,8 +30,12 @@
 .base_top_block_wrapper p a {
   color: var(--92979C, #92979c);
 }
+.base_top_block_wrapper_nav p {
+  color: var(--92979C, #92979c);
+
+}
 .base_top_block_wrapper h1 {
-  color: var(--FFFFFF, #fff);
+  color: var(--FFFFFF, #111112);
   font-family: TTInterfaces800;
   font-size: 52px;
   font-style: normal;

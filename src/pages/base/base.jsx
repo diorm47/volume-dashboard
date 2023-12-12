@@ -1,6 +1,6 @@
 import React from "react";
 import "./base.css";
-import baseTop from "../../assets/images/base-top.png";
+
 import baseBottom from "../../assets/images/base-bottom.png";
 import { NavLink } from "react-router-dom";
 
@@ -16,7 +16,7 @@ function Base() {
             <p>База знаний</p>
             <h1>Часто задаваемые вопросы</h1>
           </div>
-          <img src={baseTop} alt="" />
+         
         </div>
       </div>
 

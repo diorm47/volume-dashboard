@@ -36,12 +36,13 @@ input {
 
 .nav_bar_menu .active p,
 .settings_navigation .active p {
-  color: #fff;
+  opacity: 0.7;
+
   transition: all 0.4s ease;
 }
 .nav_bar_menu p:hover,
 .settings_navigation p:hover {
-  color: #fff;
+  opacity: 0.7;
   transition: all 0.4s ease;
 }
 
@@ -62,8 +63,6 @@ input {
   }
 }
 
-
 /* hidden_scroll */
 .analysing_page_title_wrapper {
-
 }
