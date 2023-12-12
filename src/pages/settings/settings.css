@@ -347,10 +347,10 @@
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   text-indent: 11px;
   /* 13px/SemiBold */
-  font-family: TTInterfaces600;
-  font-size: 13px;
+  font-family: TTInterfaces500;
+  font-size: 17px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 16px; /* 123.077% */
 }
 .modal_wrapper_save_btn button {

@@ -13,7 +13,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
- 
 }
 
 .investing_top_cards {
@@ -88,20 +87,20 @@
 .investing_top_card_btns button:hover {
   transition: all 0.4s ease;
 
-  background: var(--111112, #2420FCCC);
+  background: var(--111112, #2420fccc);
   color: var(--FFFFFF, #fff);
   opacity: 1;
 }
 .investing_top_card_select button:hover {
   transition: all 0.4s ease;
 
-  background: var(--111112, #2420FCCC);
+  background: var(--111112, #2420fccc);
   color: var(--FFFFFF, #fff);
   opacity: 1;
 }
 .investing_top_card_active_btn {
   color: var(--FFFFFF, #fff) !important;
-  background: var(--111112, #2420FC) !important;
+  background: var(--111112, #2420fc) !important;
 }
 .investing_top_card_warning p {
   color: #747a80;
@@ -136,7 +135,7 @@
   line-height: 24px; /* 141.176% */
 }
 
-.investing_top_card_select_active  {
+.investing_top_card_select_active {
   background: var(--2420FC, #2420fc) !important;
 
   color: var(--FFFFFF, #fff) !important;
@@ -206,6 +205,16 @@
   transform: rotate(45deg);
   transition: all 0.5s ease;
 }
+.questions_title {
+  color: var(--111112, #111112);
+  text-align: center;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  font-family: TTInterfaces600;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
 
 @media only screen and (max-width: 1050px) {
   .investing_top_cards {
@@ -242,9 +251,13 @@
     width: 300px;
   }
   .investing_top_card_btns button {
-  font-size: 13px;
+    font-size: 13px;
   }
   .investing_top_card_select button {
     font-size: 13px;
+  }
+  .questions_title {
+    font-size: 23px;
+    letter-spacing: -0.48px;
   }
 }

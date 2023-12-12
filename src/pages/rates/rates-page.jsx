@@ -158,7 +158,7 @@ function RatesPage() {
         </div>
       </div>
       <div className="page_title investments_block_title">
-        <h2>Часто задаваемые вопросы</h2>
+      <h1 className="questions_title">Часто задаваемые вопросы</h1>
       </div>
       <div className="faq_invest">
         {faq.map((item) => (

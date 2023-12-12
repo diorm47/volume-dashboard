@@ -167,10 +167,10 @@ z-index: 10 !important;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 17px/Bold */
-  font-family: TTInterfaces700;
+  font-family: TTInterfaces500;
   font-size: 17px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 24px; /* 141.176% */
 }
 
