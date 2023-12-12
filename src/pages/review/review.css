@@ -310,17 +310,8 @@ z-index: 10 !important;
   line-height: 24px; /* 141.176% */
 }
 
-.invite_block_title p {
-  color: var(--92979C, #92979c);
-  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-
-  /* 17px/Regular */
-  font-family: TTInterfaces400;
-  margin-bottom: 32px;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 141.176% */
+.invite_block h2 {
+   margin-bottom: 30px;
 }
 
 .invite_block_desc p {
@@ -432,6 +423,10 @@ z-index: 10 !important;
   .pnl_value p {
     font-size: 17px;
   }
+  .invite_block h2 {
+    margin-bottom: 0px;
+ }
+ 
   .review_left_top_block_content_amount span,
   .tarif_plan_top p,
   .review_right_link p,

@@ -4,14 +4,16 @@
   margin-bottom: 50px;
 }
 .investments_page_title p {
-  margin-top: 28px;
+  margin-top: 30px;
   color: var(--92979C, #92979c);
   text-align: center;
   font-family: TTInterfaces500;
-  font-size: 17px;
+  font-weight: 500;
+  font-size: 22px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
+  line-height: 24px;
+ 
 }
 
 .investing_top_cards {
@@ -228,6 +230,7 @@
   }
   .investments_page_title p {
     margin-top: 24px;
+    line-height: 16px;
   }
   .investments_page .order_history_list_item_content_item_last p {
     width: 270px;

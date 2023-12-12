@@ -481,8 +481,8 @@ function Review() {
             </div>
           </div>
           <div className="secondary_block_wrapper invite_block">
-            <div className="invite_block_title">
-              <p>Приглашение</p>
+            <div class="main_block_wrapper_title">
+              <h2>Приглашение</h2>
             </div>
             <div className="invite_block_desc">
               <p>

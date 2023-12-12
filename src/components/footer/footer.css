@@ -6,6 +6,7 @@ footer {
   align-items: center;
   justify-content: center;
   padding: 24px;
+  margin-top: 96px;
 }
 .footer_wrapper {
   display: flex;
@@ -48,4 +49,5 @@ footer a {
   footer a {
     font-size: 11px;
   }
+
 }
