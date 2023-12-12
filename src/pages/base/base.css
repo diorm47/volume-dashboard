@@ -134,8 +134,8 @@
   padding: 18px 28px;
   border-radius: 40px;
   margin-top: 28px;
-  background: var(--111112, #111112);
-
+  background: var(--2420FC, #2420FC);
+  transition: all 0.4s ease;
   color: var(--FFFFFF, #fff);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   font-family: TTInterfaces500;
@@ -145,7 +145,11 @@
   font-weight: 500;
   line-height: 24px; /* 141.176% */
 }
+.base_bottom_blocks_left button:hover {
+  background: rgba(36, 32, 252, 0.80);
+  transition: all 0.4s ease;
 
+}
 .base_bottom_blocks_left {
   display: flex;
   flex-direction: column;
