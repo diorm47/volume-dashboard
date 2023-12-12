@@ -1,7 +1,7 @@
 .settings_navigation {
   padding: 20px;
-  border-top: 1px solid var(--F7F7F7, #F7F7F7);
-  border-bottom: 1px solid var(--F7F7F7, #F7F7F7);
+  border-top: 1px solid var(--F7F7F7, #f7f7f7);
+  border-bottom: 1px solid var(--F7F7F7, #f7f7f7);
   /* background: var(--111112, #111112); */
   display: flex;
   align-items: center;
@@ -156,17 +156,17 @@
 .add_key_btn button {
   padding: 11px 20px 13px 20px;
   border-radius: 40px;
-  background: var(--111112, #2420FC);
+  background: var(--111112, #2420fc);
   color: var(--FFFFFF, #fff);
   font-family: TTInterfaces500;
-
+  height: 46px;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 123.077% */
 }
 .add_key_btn button:hover {
-  background: rgba(36, 32, 252, 0.80);
+  background: rgba(36, 32, 252, 0.8);
 }
 .api_keys_title span {
   color: var(--92979C, #92979c);
@@ -355,7 +355,7 @@
 }
 .modal_wrapper_save_btn button {
   border-radius: 40px;
-  background: var(--111112, #2420FC);
+  background: var(--111112, #2420fc);
   padding: 11px 20px 13px 20px;
 
   color: var(--FFFFFF, #fff);
@@ -366,7 +366,7 @@
   line-height: 16px; /* 123.077% */
 }
 .modal_wrapper_save_btn button:hover {
-  background: rgba(36, 32, 252, 0.80);
+  background: rgba(36, 32, 252, 0.8);
 }
 .modal_wrapper_cancel button {
   padding: 14px 10px;
@@ -480,6 +480,37 @@
   font-weight: 600;
   line-height: 24px; /* 104.348% */
 }
+.user_img_wrapper {
+  position: relative;
+}
+.user_img_wrapper img {
+  width: 120px;
+  height: 120px;
+  border: 3px solid var(--111112, #111112);
+  border-radius: 50%;
+  transition: all 0.4s ease;
+}
+.user_img_update {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  border-radius: 50%;
+  background: var(--111112, #111112);
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  transition: all 0.4s ease;
+}
+.user_img_wrapper:hover img {
+  transition: all 0.4s ease;
+  border: 3px solid rgba(36, 32, 252, 0.8);
+}
+.user_img_wrapper:hover .user_img_update {
+  transition: all 0.4s ease;
+  background: rgba(36, 32, 252, 0.8);
+}
 @media only screen and (max-width: 750px) {
   .user_img p br {
     display: none;
@@ -570,6 +601,21 @@
   .modal_wrapper_title {
     padding: 14px 15px;
   }
+  .user_img_wrapper img {
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--111112, #111112);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+  }
+  .user_img_update {
+    padding: 2px;
+    bottom: 4px;
+  }
+  .user_img_update svg {
+    width: 12px;
+    height: 12px;
+  }
   .modal_wrapper_btns {
     flex-direction: column;
     justify-content: center;
@@ -582,7 +628,7 @@
   }
   .modal_wrapper_save_btn button {
     border-radius: 40px;
-    background: var(--111112, #111112);
+    background: var(--111112, #2420fc);
     padding: 11px 20px 13px 20px;
     width: 100%;
     color: var(--FFFFFF, #fff);
@@ -638,6 +684,4 @@
   .api_keys_title {
     margin-bottom: 24px;
   }
-
-
 }

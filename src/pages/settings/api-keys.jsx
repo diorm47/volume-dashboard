@@ -40,7 +40,7 @@ function ApiKeys() {
           <h2>Ключи API</h2>
           <div className="add_key_btn">
             <button onClick={() => setapiModal(true)}>
-              + Добавить ключ API
+              Добавить ключ API
             </button>
           </div>{" "}
         </div>

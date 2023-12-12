@@ -72,7 +72,7 @@ function Investments() {
   return (
     <div className="pages_wrapper investments_page">
       <div className="page_title investments_page_title">
-        <h2>Выберите метод инвестирования</h2>
+        <h2>Выберите метод <span>инвестирования</span></h2>
         <p>
           Выберите свой стиль инвестирования и чувствуйте себя уверенно на любом
           временном промежутке.

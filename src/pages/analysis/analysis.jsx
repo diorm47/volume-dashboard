@@ -12,8 +12,8 @@ function Analysis() {
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
-        <div className="page_title">
-          <h2>Анализ прибыли и убытка</h2>
+        <div className="page_title analyse_title">
+          <h2>Анализ <span>прибыли и убытка</span></h2>
           <div className="analysis_top_toggler">
             <p>21.11.2023</p>
             <svg

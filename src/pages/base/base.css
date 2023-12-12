@@ -196,7 +196,7 @@
 .register_page_text_block {
   padding: 28px;
   border-radius: 6px;
-  background: #111112;
+  background: var(--2420FC, #2420FC);
   margin-bottom: 50px;
 }
 .register_page_text_block p {

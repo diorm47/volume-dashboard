@@ -157,4 +157,10 @@
   .analysing_page_title_wrapper .page_title h2 {
     text-align: left !important;
   }
+  .analyse_title h2 span {
+    display: none;
+  }
+  .analyse_title h2 {
+    font-size: 33px !important;
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import userImg from "../../assets/icons/user-img.svg";
+import { ReactComponent as UpdateIcon } from "../../assets/icons/update-img.svg";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
+import avatar from "../../assets/images/avatar.png";
 
 function Profile() {
   React.useEffect(() => {
@@ -63,7 +64,13 @@ function Profile() {
           <p>Вы можете изменить изображение вашего профиля</p>
           <div class="order_history_list_line"></div>
           <div className="user_img">
-            <img src={userImg} alt="" />
+            <div className="user_img_wrapper">
+              <img src={avatar} alt="" />
+              <div className="user_img_update">
+                <UpdateIcon />
+              </div>
+            </div>
+
             <p>
               Поддерживаются форматы JPG, PNG. Максимальный размер файла <br />{" "}
               для загрузки: 10 Мб
@@ -120,7 +127,11 @@ function Profile() {
 
       <div
         className={
-          nameModal || usernameModal || numberModal || emailModal || passwordConfirmModal
+          nameModal ||
+          usernameModal ||
+          numberModal ||
+          emailModal ||
+          passwordConfirmModal
             ? "overlay visible_overlay"
             : "overlay"
         }

@@ -131,4 +131,10 @@
   .investments_page_title p {
     font-size: 15px;
   }
+  .investments_page_title h2 span {
+    display: none;
+  }
+  .investments_page_title p br {
+    display: none;
+  }
 }

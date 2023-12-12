@@ -52,11 +52,11 @@ function RatesPage() {
   };
   return (
     <>
-      <div class="page_title investments_page_title">
-        <h2>Выберите тарифный план</h2>
+      <div class="page_title investments_page_title rate_title">
+        <h2>Выберите <span>тарифный</span> план</h2>
         <p>
           При оплате тарифа платёжный сервис берет комиссию за проведение
-          транзакции. Внимательно указывайте сумму с учётом комиссии.
+          транзакции. <br /> Внимательно указывайте сумму с учётом комиссии.
         </p>
       </div>
       <div class="secondary_block_wrapper">
