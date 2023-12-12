@@ -80,7 +80,7 @@
   transition: all 0.4s ease;
   /* 13px/Regular */
   font-family: TTInterfaces400;
-  font-size: 17px;
+  font-size: 13px !important;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
