@@ -51,10 +51,10 @@
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 17px/Bold */
-  font-family: TTInterfaces700;
+  font-family: TTInterfaces600;
   font-size: 17px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 24px; /* 141.176% */
 }
 .investing_top_card_item {
@@ -80,7 +80,7 @@
   transition: all 0.4s ease;
   /* 13px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 17px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -240,5 +240,11 @@
   }
   .page_title h2 {
     width: 300px;
+  }
+  .investing_top_card_btns button {
+  font-size: 13px;
+  }
+  .investing_top_card_select button {
+    font-size: 13px;
   }
 }
