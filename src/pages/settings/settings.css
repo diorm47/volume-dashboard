@@ -135,18 +135,16 @@
 .user_login_history_titles p:nth-child(2) {
   margin-right: -8.6%;
 }
-.api_keys_title_top {
+.api_keys_title {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
-
-  margin-bottom: 10px;
 }
 .api_keys_title_top h2 {
   color: #000;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   font-family: TTInterfaces600;
-
+  margin-bottom: 24px;
   font-size: 23px;
   font-style: normal;
   font-weight: 600;
@@ -486,7 +484,7 @@
 .user_img_wrapper img {
   width: 120px;
   height: 120px;
-  border: 3px solid #2420FC;
+  border: 3px solid #2420fc;
   border-radius: 50%;
   transition: all 0.4s ease;
 }
@@ -496,7 +494,7 @@
   justify-content: center;
   padding: 7px;
   border-radius: 50%;
-  background: #2420FC;
+  background: #2420fc;
   cursor: pointer;
   position: absolute;
   right: 0;
@@ -508,7 +506,9 @@
   .user_img p br {
     display: none;
   }
-
+  .api_keys_title {
+    flex-direction: column;
+  }
   .overlay {
     display: block;
   }
@@ -597,7 +597,7 @@
   .user_img_wrapper img {
     width: 60px;
     height: 60px;
-    
+
     border-radius: 50%;
     transition: all 0.4s ease;
   }

@@ -38,16 +38,15 @@ function ApiKeys() {
       <div className="api_keys_title">
         <div className="api_keys_title_top">
           <h2>Ключи API</h2>
-          <div className="add_key_btn">
-            <button onClick={() => setapiModal(true)}>
-              Добавить ключ API
-            </button>
-          </div>{" "}
+          <span>
+            Добавьте пожалуйста подключение API для дальнейшего использования
+            &Volume.
+          </span>
         </div>
-        <span>
-          Добавьте пожалуйста подключение API для дальнейшего использования
-          &Volume.
-        </span>
+
+        <div className="add_key_btn">
+          <button onClick={() => setapiModal(true)}>Добавить ключ API</button>
+        </div>
       </div>
       <div class="secondary_block_wrapper user_image_block add_key_history">
         <div class="user_login_history">
@@ -62,7 +61,7 @@ function ApiKeys() {
               </tr>
             </thead>
             <tbody>
-              <tr    onClick={() => setapiActiveModal(true)}>
+              <tr onClick={() => setapiActiveModal(true)}>
                 <td>26 окт. 2023 г., 00:29:16</td>
                 <td>Активное</td>
                 <td>MyAPI</td>
