@@ -17,7 +17,7 @@ button {
   font-size: 17px !important;
 }
 button:hover {
-  opacity: 0.8;
+  background: #2420FCCC;
   transition: all 0.4s ease;
 }
 input {

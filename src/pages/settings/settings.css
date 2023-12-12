@@ -156,7 +156,7 @@
 .add_key_btn button {
   padding: 11px 20px 13px 20px;
   border-radius: 40px;
-  background: var(--111112, #111112);
+  background: var(--111112, #2420FC);
   color: var(--FFFFFF, #fff);
   font-family: TTInterfaces500;
 
@@ -165,7 +165,9 @@
   font-weight: 500;
   line-height: 16px; /* 123.077% */
 }
-
+.add_key_btn button:hover {
+  background: rgba(36, 32, 252, 0.80);
+}
 .api_keys_title span {
   color: var(--92979C, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -353,7 +355,7 @@
 }
 .modal_wrapper_save_btn button {
   border-radius: 40px;
-  background: var(--111112, #111112);
+  background: var(--111112, #2420FC);
   padding: 11px 20px 13px 20px;
 
   color: var(--FFFFFF, #fff);
@@ -362,6 +364,9 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 123.077% */
+}
+.modal_wrapper_save_btn button:hover {
+  background: rgba(36, 32, 252, 0.80);
 }
 .modal_wrapper_cancel button {
   padding: 14px 10px;
@@ -377,6 +382,7 @@
   font-weight: 500;
   line-height: 16px; /* 123.077% */
 }
+
 .recovery_inputs {
   display: flex;
   align-items: center;
