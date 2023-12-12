@@ -1,10 +1,11 @@
 .page_title h2 {
   color: var(--111112, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-  font-family: TTInterfaces600;
+  font-family: TTInterfaces800;
   font-size: 52px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 800;
+  letter-spacing: -2.58px;
   line-height: normal;
 }
 .page_title {
