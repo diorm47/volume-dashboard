@@ -8,6 +8,9 @@ import Rates from "./pages/rates/rates";
 import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
 import Register from "./pages/base/register-acc";
+import Login from "./pages/login-auth/login";
+import Auth from "./pages/login-auth/auth";
+import Reset from "./pages/login-auth/reset";
 
 function App() {
   return (
@@ -24,6 +27,10 @@ function App() {
           <Route path="/rates/*" element={<Rates />} />
           <Route path="/base/*" element={<Base />} />
           <Route path="/register-acc" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/reset" element={<Reset />} />
+
         </Routes>
 
         <Footer />
