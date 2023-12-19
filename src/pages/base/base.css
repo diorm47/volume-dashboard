@@ -150,7 +150,7 @@
   padding: 18px 28px;
   border-radius: 40px;
   margin-top: 28px;
-  background: var(--2420FC, #2420FC);
+  background: var(--2420FC, #0077FF);
   transition: all 0.4s ease;
   color: var(--FFFFFF, #fff);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -222,7 +222,7 @@
 .register_page_text_block {
   padding: 28px;
   border-radius: 6px;
-  background: var(--2420FC, #2420FC);
+  background: var(--2420FC, #0077FF);
   margin-bottom: 50px;
 }
 .register_page_text_block p {

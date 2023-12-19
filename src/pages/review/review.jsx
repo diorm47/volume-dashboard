@@ -514,7 +514,7 @@ function Review() {
                   viewBox="0 0 10 10"
                   fill="none"
                 >
-                  <circle cx="5" cy="5" r="5" fill="#2420FC" />
+                  <circle cx="5" cy="5" r="5" fill="#0077FF" />
                 </svg>
                 <p>Как &Volume решает куда инвестировать средства?</p>
               </div>
@@ -526,7 +526,7 @@ function Review() {
                   viewBox="0 0 10 10"
                   fill="none"
                 >
-                  <circle cx="5" cy="5" r="5" fill="#2420FC" />
+                  <circle cx="5" cy="5" r="5" fill="#0077FF" />
                 </svg>
                 <p>Какая минимальная сумма?</p>
               </div>
@@ -539,7 +539,7 @@ function Review() {
                   viewBox="0 0 10 10"
                   fill="none"
                 >
-                  <circle cx="5" cy="5" r="5" fill="#2420FC" />
+                  <circle cx="5" cy="5" r="5" fill="#0077FF" />
                 </svg>
                 <p>Могу я использовать заёмные деньги?</p>
               </div>
@@ -551,7 +551,7 @@ function Review() {
                   viewBox="0 0 10 10"
                   fill="none"
                 >
-                  <circle cx="5" cy="5" r="5" fill="#2420FC" />
+                  <circle cx="5" cy="5" r="5" fill="#0077FF" />
                 </svg>
                 <p>Какие комиссии и условия использования?</p>
               </div>
@@ -563,7 +563,7 @@ function Review() {
                   viewBox="0 0 10 10"
                   fill="none"
                 >
-                  <circle cx="5" cy="5" r="5" fill="#2420FC" />
+                  <circle cx="5" cy="5" r="5" fill="#0077FF" />
                 </svg>
                 <p>Какие гарантии безопасности?</p>
               </div>

@@ -143,7 +143,7 @@
 }
 
 .pnl_value p {
-  color: var(--2420FC, #2420fc);
+  color: var(--2420FC, #0077FF);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 23px/Medium */
@@ -326,13 +326,13 @@
 
 .tarif_plan_time_block_value {
   border-radius: 6px;
-  background: var(--2420FC, #2420fc);
+  background: var(--2420FC, #0077FF);
   height: 4px;
   width: 70%;
 }
 
 .review_right_link p {
-  color: var(--2420FC, #2420fc);
+  color: var(--2420FC, #0077FF);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 17px/Regular */

@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   gap: 36px;
-  border-bottom: 1px solid var(--Stroke_White, #DBDBDB);
+  border-bottom: 1px solid var(--Stroke_White, #dbdbdb);
   background: #fff;
 }
 .black_mode .settings_navigation {
@@ -105,10 +105,9 @@
   font-weight: 600;
   line-height: 24px; /* 141.176% */
 }
-.black_mode
-.user_data_item div p:first-child {
+.black_mode .user_data_item div p:first-child {
   color: #fff;
-} 
+}
 .user_data_item p:last-child {
   color: #0052ff;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -179,7 +178,7 @@
 .add_key_btn button {
   padding: 11px 40px 11px 40px;
   border-radius: 40px;
-  background: var(--111112, #2420fc);
+  background: var(--111112, #0077ff);
   color: var(--FFFFFF, #fff);
   font-family: TTInterfaces500;
   height: 46px;
@@ -223,8 +222,7 @@
   line-height: 24px; /* 141.176% */
   padding-top: 28px;
 }
-.black_mode
-.user_login_history table tbody td {
+.black_mode .user_login_history table tbody td {
   color: #fff;
 }
 .user_login_history thead td {
@@ -238,8 +236,7 @@
   font-weight: 400;
   line-height: 16px; /* 123.077% */
 }
-.black_mode
-.user_login_history thead td {
+.black_mode .user_login_history thead td {
   border-bottom: 1px solid var(--Stroke_Black, #343436);
 }
 .user_login_history table {
@@ -259,7 +256,7 @@
   line-height: 24px; /* 141.176% */
 }
 .api_actions p:first-child {
-  color: var(--2420FC, #2420fc);
+  color: var(--2420FC, #0077ff);
 }
 .api_actions p:last-child {
   color: var(--F1507B, #f1507b);
@@ -313,6 +310,28 @@
   opacity: 0;
   border-radius: 0 0 6px 6px;
   overflow: hidden;
+}
+.black_mode .modal_wrapper {
+  background: #18181a;
+  border-radius: 6px;
+}
+.black_mode .modal_wrapper_title {
+  background: transparent;
+  border-bottom: 1px solid var(--Stroke_Black, #343436);
+}
+.black_mode .modal_wrapper_title p {
+  color: var(--Color_White, #fff);
+}
+.black_mode .modal_wrapper_content {
+  background: transparent;
+}
+.black_mode .modal_wrapper_content_item input {
+  border: 1px solid var(--Stroke_Black, #343436);
+  background: transparent;
+  color: #fff;
+}
+.black_mode .modal_wrapper_cancel button {
+  color: var(--Color_Accent, #07f);
 }
 .visible_modal_wrapper {
   transform: translateY(0%);
@@ -386,7 +405,7 @@
 }
 .modal_wrapper_save_btn button {
   border-radius: 40px;
-  background: var(--111112, #2420fc);
+  background: var(--111112, #0077ff);
   padding: 11px 20px 13px 20px;
 
   color: var(--FFFFFF, #fff);
@@ -511,13 +530,19 @@
   font-weight: 600;
   line-height: 24px; /* 104.348% */
 }
+.black_mode .add_key_history_mobile_title h2 {
+  color: #fff;
+}
+.black_mode .add_key_history_mobile_list h4 {
+  color: #fff;
+}
 .user_img_wrapper {
   position: relative;
 }
 .user_img_wrapper img {
   width: 120px;
   height: 120px;
-  border: 3px solid #2420fc;
+  border: 3px solid #0077ff;
   border-radius: 50%;
   transition: all 0.4s ease;
 }
@@ -527,7 +552,7 @@
   justify-content: center;
   padding: 7px;
   border-radius: 50%;
-  background: #2420fc;
+  background: #0077ff;
   cursor: pointer;
   position: absolute;
   right: 0;
@@ -612,6 +637,14 @@
   font-weight: 400;
   line-height: 16px; /* 123.077% */
 }
+.black_mode .modal_wrapper_content_item .Dropdown-control {
+  background: transparent;
+  color: #fff;
+  border: 1px solid var(--Stroke_Black, #343436);
+}
+.black_mode .modal_wrapper_content_item .Dropdown-option {
+  color: #fff;
+}
 .modal_wrapper_content_item .Dropdown-option {
   color: #000;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -654,7 +687,7 @@
   }
   .modal_wrapper_save_btn button {
     border-radius: 40px;
-    background: var(--111112, #2420fc);
+    background: var(--111112, #0077ff);
     padding: 11px 20px 13px 20px;
     width: 100%;
     color: var(--FFFFFF, #fff);

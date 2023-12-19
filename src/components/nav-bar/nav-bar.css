@@ -357,7 +357,7 @@ nav {
     border-radius: 40px;
     width: 100%;
 
-    background: var(--Accent, #2420fc);
+    background: var(--Accent, #0077FF);
     padding: 11px 20px 13px 20px;
 
     color: var(--OnSecond, var(--FFFFFF, #fff));

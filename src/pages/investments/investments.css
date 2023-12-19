@@ -93,20 +93,20 @@
 .investing_top_card_btns button:hover {
   transition: all 0.4s ease;
 
-  background: var(--111112, #2420fccc);
+  background: var(--111112, #0077FFcc);
   color: var(--FFFFFF, #fff);
   opacity: 1;
 }
 .investing_top_card_select button:hover {
   transition: all 0.4s ease;
 
-  background: var(--111112, #2420fccc);
+  background: var(--111112, #0077FFcc);
   color: var(--FFFFFF, #fff);
   opacity: 1;
 }
 .investing_top_card_active_btn {
   color: var(--FFFFFF, #fff) !important;
-  background: var(--111112, #2420fc) !important;
+  background: var(--111112, #0077FF) !important;
 }
 .investing_top_card_warning p {
   color: #747a80;
@@ -142,7 +142,7 @@
 }
 
 .investing_top_card_select_active {
-  background: var(--2420FC, #2420fc) !important;
+  background: var(--2420FC, #0077FF) !important;
 
   color: var(--FFFFFF, #fff) !important;
 }
