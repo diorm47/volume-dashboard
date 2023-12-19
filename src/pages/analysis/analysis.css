@@ -8,6 +8,31 @@
   letter-spacing: -2.58px;
   line-height: normal;
 }
+.black_mode .page_title h2 {
+  color: #fff;
+}
+.black_mode .analysis_top_toggler {
+  border-radius: 6px;
+  background: var(--Color_Block_Black, #18181a);
+
+  /* Тень */
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+  border: none;
+}
+.black_mode .analysis_top_toggler p {
+  color: var(--Color_White, #fff);
+}
+.black_mode .analysis_top_toggler svg * {
+  fill: #fff;
+}
+.black_mode
+.pagination p {
+  color: #fff;
+}
+.black_mode
+.pagination svg * {
+  fill: #fff;
+}
 .page_title {
   display: flex;
   align-items: center;
@@ -62,7 +87,7 @@
   justify-content: center;
   gap: 16px;
 }
-.pagination p{
+.pagination p {
   cursor: pointer;
   padding: 8px;
 }

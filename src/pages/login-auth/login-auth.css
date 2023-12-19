@@ -238,10 +238,13 @@ button:disabled {
 .set_password_rules {
   margin-bottom: 22px;
 }
-.reset_page {
+.reset_page,
+.auth_page {
   min-height: 50vh;
 }
-
+.auth_page {
+  min-height: 55vh;
+}
 @media only screen and (max-width: 500px) {
   .fillcode_inputs {
     width: 100%;

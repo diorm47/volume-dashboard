@@ -1,8 +1,10 @@
 nav {
   padding: 0 36px;
   /* background: var(--111112, #111112); */
-  border-bottom: 1px solid var(--Stroke_White, #DBDBDB);
-  background: #fff;
+  border-bottom: 1px solid var(--Stroke_White, #dbdbdb);
+}
+.black_mode nav {
+  border-bottom: 1px solid var(--Stroke_Black, #343436);
 }
 
 .nav_wrapper {
@@ -41,7 +43,7 @@ nav {
   cursor: pointer;
 }
 .nav_menu_item p {
-  color: #05061f ;
+  color: #05061f;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 17px/Medium */
@@ -51,7 +53,18 @@ nav {
   font-weight: 500;
   line-height: 24px; /* 141.176% */
 }
-
+.black_mode .nav_menu_item p {
+  color: var(--Color_White, #fff);
+}
+.black_mode .nav_menu_item svg * {
+  fill: #fff;
+}
+.black_mode .nav_menu_vert_line * {
+  stroke: #343436 !important;
+}
+.black_mode_handler * {
+  stroke: #ffffff;
+}
 .nav_wrapper_right {
   display: flex;
   align-items: center;
@@ -69,7 +82,8 @@ nav {
   transition: all 0.4s ease;
   transform: rotate(-180deg);
 }
-.nav_wrapper_right svg *, .nav_bar_menu svg *{
+.nav_wrapper_right svg *,
+.nav_bar_menu svg * {
   fill: #111112;
 }
 .nav_menu_item_drop {
@@ -87,6 +101,11 @@ nav {
   transform: translateY(20%);
   transition: all 0.4s ease;
   visibility: hidden;
+}
+.black_mode .nav_menu_item_drop {
+  border-radius: 6px;
+  background: var(--Color_Block_Black, #18181a);
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
 }
 
 .nav_menu_item_drop p {
@@ -107,6 +126,9 @@ nav {
 .nav_menu_item_drop a:hover p {
   border-radius: 6px;
   background: #f9f9f9;
+}
+.black_mode .nav_menu_item_drop a:hover p {
+  background: #111112;
 }
 
 .nav_menu_item:hover .nav_menu_item_drop {
@@ -138,6 +160,10 @@ nav {
 .nav_menu_item_drop_chat a:hover,
 .nav_menu_item_drop_notifications a:hover {
   background: #f9f9f9;
+}
+.black_mode .nav_menu_item_drop_chat a:hover,
+.black_mode .nav_menu_item_drop_notifications a:hover {
+  background: #111112;
 }
 .nav_menu_item_drop_notifications {
   right: 0;
@@ -194,6 +220,12 @@ nav {
 }
 .nav_menu_item_drop_profile_block p:first-child {
   color: var(--111112, #111112);
+}
+.black_mode .nav_menu_item_drop_profile_block p {
+  color: var(--Color_Gray, #92979C);
+}
+.black_mode .nav_menu_item_drop_profile_block p:first-child {
+  color:  #fff;
 }
 .nav_menu_item_drop_profile_block p:last-child {
   margin-bottom: 0;
@@ -270,7 +302,6 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
   }
   .mob_menu_user_data p {
     color: var(--92979C, #92979c);
@@ -325,7 +356,7 @@ nav {
   .nav_logout_btn button {
     border-radius: 40px;
     width: 100%;
- 
+
     background: var(--Accent, #2420fc);
     padding: 11px 20px 13px 20px;
 
@@ -361,7 +392,6 @@ nav {
   .nav_menu_item_drop {
     position: relative;
   }
-
 }
 
 @media only screen and (max-width: 750px) {

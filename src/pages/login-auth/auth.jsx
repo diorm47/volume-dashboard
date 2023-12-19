@@ -104,7 +104,7 @@ function Auth() {
   };
 
   return (
-    <div class="login_page">
+    <div class="login_page auth_page">
       {section === 1 ? (
         <div class="auth_section auth_input">
           <div class="login_title">

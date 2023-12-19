@@ -11,13 +11,17 @@ import Register from "./pages/base/register-acc";
 import Login from "./pages/login-auth/login";
 import Auth from "./pages/login-auth/auth";
 import Reset from "./pages/login-auth/reset";
+import { useState } from "react";
 
 function App() {
+  const [mode, setMode] = useState(localStorage.getItem("mode"))
   return (
-    <div>
-      <NavBar />
+    <div
+      className={mode === "black" ? "black_mode" : ""}
+    >
+      <NavBar setMode={setMode}/>
 
-      <div className="page_content">
+      <div className="page_content ">
         <Routes>
           <Route path="/" element={<Review />} />
           <Route path="/review" element={<Review />} />
@@ -30,7 +34,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/reset" element={<Reset />} />
-
         </Routes>
 
         <Footer />

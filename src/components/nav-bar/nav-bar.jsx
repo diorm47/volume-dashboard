@@ -8,11 +8,19 @@ import { ReactComponent as MenuIcon } from "../../assets/icons/nav-menu-burger.s
 import { ReactComponent as ExitIcon } from "../../assets/icons/exit-nav-mob.svg";
 import { ReactComponent as NotificationICon } from "../../assets/icons/nav-notification-icon.svg";
 import { ReactComponent as LightMode } from "../../assets/icons/ligt-mode.svg";
+import { ReactComponent as BlackMode } from "../../assets/icons/black_theme.svg";
 
 import avatar from "../../assets/images/avatar.png";
 
-function NavBar() {
+function NavBar({setMode}) {
   const [menuVisible, setMenuVisible] = useState(false);
+  const toggleMode = () => {
+    const newMode =
+      localStorage.getItem("mode") === "black" ? "white" : "black";
+    localStorage.setItem("mode", newMode);
+    setMode(newMode);
+  };
+
   return (
     <nav>
       <div className="nav_wrapper">
@@ -105,17 +113,21 @@ function NavBar() {
             </div>
           </div>
           <div className="mode_toggler">
-          <LightMode />
-
+            {localStorage.getItem("mode") === "black" ? (
+              <BlackMode onClick={toggleMode} className="black_mode_handler" />
+            ) : (
+              <LightMode onClick={toggleMode} />
+            )}
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="2"
             height="18"
             viewBox="0 0 2 18"
-            fill="#f7f7f7"
+            className="nav_menu_vert_line"
+            fill="#111112"
           >
-            <path d="M1 0V18" stroke="#f7f7f7" />
+            <path d="M1 0V18" stroke="#111112" />
           </svg>
 
           <div className="nav_menu_item">

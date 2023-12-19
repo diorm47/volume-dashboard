@@ -20,7 +20,9 @@
   justify-content: center;
   cursor: pointer;
 }
-
+.black_mode .question_widget {
+  background: var(--Color_Block_Black, #18181A);
+}
 .question_widget p {
   color: var(--OnSecond, var(--FFFFFF, #fff));
   text-align: center;

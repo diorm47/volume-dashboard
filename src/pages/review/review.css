@@ -41,7 +41,27 @@
   font-weight: 600;
   line-height: 24px; /* 104.348% */
 }
-
+.black_mode .main_block_wrapper_title h2,
+.black_mode .review_left_top_block_content p {
+  color: var(--Color_White, #fff);
+}
+.black_mode .main_select_item .Dropdown-control {
+  background: transparent;
+  border: 1px solid var(--Stroke_Black, #343436);
+  color: #fff;
+}
+.black_mode .Dropdown-option {
+  background: #18181a;
+  color: #fff;
+  overflow: hidden;
+}
+.black_mode .Dropdown-menu {
+  border: 1px solid var(--Stroke_Black, #343436) !important;
+  overflow: hidden;
+}
+.black_mode .Dropdown-arrow-wrapper svg * {
+  fill: #343436;
+}
 .review_left_top_block_content p {
   color: var(--111112, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -98,7 +118,7 @@
   margin-top: 10px !important;
   color: #111112;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-z-index: 10 !important;
+  z-index: 10 !important;
   /* 13px/Regular */
   font-family: TTInterfaces400;
   font-size: 13px;
@@ -173,6 +193,9 @@ z-index: 10 !important;
   font-weight: 500;
   line-height: 24px; /* 141.176% */
 }
+.black_mode .order_history_list_item_title h2 {
+  color: #fff;
+}
 
 .order_item_top_status {
   padding: 4px 8px;
@@ -206,6 +229,9 @@ z-index: 10 !important;
   color: #111112;
   padding-left: 8px;
 }
+.black_mode .order_history_list_item_content_item span  {
+  color: #fff;
+}
 
 .order_history_list_item_content_item p:first-child {
   margin-bottom: 24px;
@@ -226,12 +252,17 @@ z-index: 10 !important;
 .order_history_list_item_content_item_last span {
   color: var(--31BD65, #31bd65);
 }
-
+.black_mode .order_history_list_item_content_item_last span {
+  color: var(--31BD65, #31bd65);
+}
 .order_history_list_line {
   margin: 28px auto;
   width: 100%;
   height: 1px;
   background: #dbdbdb;
+}
+.black_mode  .order_history_list_line {
+  background-color: #343436;
 }
 .review_page_wrapper {
   display: flex;
@@ -281,6 +312,9 @@ z-index: 10 !important;
   font-weight: 500;
   line-height: 16px; /* 123.077% */
 }
+.black_mode .tarif_plan_time_title p {
+  color: #fff;
+}
 
 .tarif_plan_time_block {
   border-radius: 6px;
@@ -311,7 +345,7 @@ z-index: 10 !important;
 }
 
 .invite_block h2 {
-   margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .invite_block_desc p {
@@ -323,6 +357,9 @@ z-index: 10 !important;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 141.176% */
+}
+.black_mode .invite_block_desc p {
+  color: var(--Color_White, #fff);
 }
 .invite_block_desc {
   display: flex;
@@ -360,6 +397,9 @@ z-index: 10 !important;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 141.176% */
+}
+.black_mode .most_questions_list p {
+  color: #fff;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -425,8 +465,8 @@ z-index: 10 !important;
   }
   .invite_block h2 {
     margin-bottom: 0px;
- }
- 
+  }
+
   .review_left_top_block_content_amount span,
   .tarif_plan_top p,
   .review_right_link p,

@@ -10,7 +10,10 @@
   border-bottom: 1px solid var(--Stroke_White, #DBDBDB);
   background: #fff;
 }
-
+.black_mode .settings_navigation {
+  background: transparent;
+  border-bottom: 1px solid var(--Stroke_Black, #343436);
+}
 .settings_navigation p {
   color: #111112;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -21,6 +24,9 @@
   font-style: normal;
   font-weight: 500;
   line-height: 24px; /* 141.176% */
+}
+.black_mode .settings_navigation p {
+  color: #fff;
 }
 
 .user_image_block h2 {
@@ -33,6 +39,9 @@
   font-style: normal;
   font-weight: 700;
   line-height: 24px; /* 104.348% */
+}
+.black_mode .user_image_block h2 {
+  color: #fff;
 }
 .user_image_block p {
   color: var(--92979C, #92979c);
@@ -82,6 +91,9 @@
   justify-content: space-between;
   margin-top: 10px;
 }
+.user_data_item div svg * {
+  fill: #fff;
+}
 .user_data_item div p:first-child {
   color: var(--text-black, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -93,7 +105,10 @@
   font-weight: 600;
   line-height: 24px; /* 141.176% */
 }
-
+.black_mode
+.user_data_item div p:first-child {
+  color: #fff;
+} 
 .user_data_item p:last-child {
   color: #0052ff;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -133,6 +148,9 @@
   font-weight: 400;
   line-height: 24px; /* 141.176% */
 }
+.black_mode .user_login_history_item p {
+  color: #fff;
+}
 
 .user_login_history_titles p:nth-child(2) {
   margin-right: -8.6%;
@@ -153,6 +171,9 @@
   font-style: normal;
   font-weight: 800;
   line-height: 24px; /* 104.348% */
+}
+.black_mode .api_keys_title_top h2 {
+  color: #fff;
 }
 
 .add_key_btn button {
@@ -202,6 +223,10 @@
   line-height: 24px; /* 141.176% */
   padding-top: 28px;
 }
+.black_mode
+.user_login_history table tbody td {
+  color: #fff;
+}
 .user_login_history thead td {
   color: var(--92979C, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -212,6 +237,10 @@
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
+}
+.black_mode
+.user_login_history thead td {
+  border-bottom: 1px solid var(--Stroke_Black, #343436);
 }
 .user_login_history table {
   width: 100%;

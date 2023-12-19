@@ -38,6 +38,9 @@
   line-height: normal;
   letter-spacing: -0.42px;
 }
+.black_mode .rates_card_descr_price p {
+  color: #fff;
+}
 .rates_card_descr_price span {
   color: var(--92979C, #92979c);
 
@@ -59,17 +62,20 @@
   opacity: 0.9;
   margin-top: 8px;
 }
+.black_mode .rates_card_descr_limit p {
+  color: var(--Color_White, #FFF);
+}
 
 .rates_card:nth-child(1) {
-  border-top: 8px solid #64dd86;
+  border-top: 8px solid #64dd86 !important;
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
 }
 .rates_card:nth-child(2) {
-  border-top: 8px solid #fcd920;
+  border-top: 8px solid #fcd920 !important;
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
 }
 .rates_card:nth-child(3) {
-  border-top: 8px solid #2420fc;
+  border-top: 8px solid #2420fc !important;
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
 }
 

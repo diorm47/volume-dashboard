@@ -8,12 +8,34 @@
 body {
   background: #fbfbfb;
 }
-.main_block_wrapper, .secondary_block_wrapper {
+.main_block_wrapper,
+.secondary_block_wrapper {
   background: #fff;
   overflow: hidden;
   border-radius: 6px;
+  border: none;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+}
+.black_mode .main_block_wrapper,
+.black_mode .secondary_block_wrapper {
+  border-radius: 6px;
+  background: var(--Color_Block_Black, #18181a);
+
   /* Тень */
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+.main_block_wrapper_bottom,
+.secondary_block_wrapper {
+  border: none !important;
+}
+.main_block_wrapper_top {
+  border: none !important;
+  border-bottom: 1px solid var(--Stroke_White, #DBDBDB) !important;
+}
+.black_mode .main_block_wrapper_top {
+  border-bottom: 1px solid var(--Stroke_Black, #343436) !important;
 }
 a {
   text-decoration: none;
@@ -62,6 +84,9 @@ input {
 }
 .nav_menu_item_drop p:hover {
   color: #111112;
+}
+.black_mode {
+  background: #111112;
 }
 
 @media only screen and (max-width: 1300px) {

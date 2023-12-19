@@ -1,6 +1,5 @@
 footer {
-
-  border-top: 1px solid var(--Stroke_White, #DBDBDB);
+  border-top: 1px solid var(--Stroke_White, #dbdbdb);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +24,14 @@ footer a {
   text-transform: uppercase;
 }
 .footer_wrapper span {
-  color: rgba(0, 0, 0, 0.60);
+  color: rgba(0, 0, 0, 0.6);
+}
+.black_mode footer p,
+.black_mode footer a {
+  color: var(--Color_White, #fff);
+}
+.black_mode .footer_wrapper span {
+  color: rgba(255, 255, 255, 0.6);
 }
 .footer_left {
   display: flex;
@@ -38,6 +44,9 @@ footer a {
   align-items: center;
   gap: 8px;
 }
+.black_mode footer {
+  border-top: 1px solid var(--Stroke_Black, #343436);
+}
 @media only screen and (max-width: 450px) {
   footer {
     margin-top: 70px;
@@ -49,5 +58,4 @@ footer a {
   footer a {
     font-size: 11px;
   }
-
 }
