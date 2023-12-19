@@ -7,6 +7,8 @@ import { ReactComponent as ChatIcon } from "../../assets/icons/nav-chat-icon.svg
 import { ReactComponent as MenuIcon } from "../../assets/icons/nav-menu-burger.svg";
 import { ReactComponent as ExitIcon } from "../../assets/icons/exit-nav-mob.svg";
 import { ReactComponent as NotificationICon } from "../../assets/icons/nav-notification-icon.svg";
+import { ReactComponent as LightMode } from "../../assets/icons/ligt-mode.svg";
+
 import avatar from "../../assets/images/avatar.png";
 
 function NavBar() {
@@ -74,13 +76,13 @@ function NavBar() {
                   <p>База знаний</p>
                 </NavLink>
                 <NavLink to="/whitepaper">
-                <p>Whatepaper</p>
+                  <p>Whatepaper</p>
                 </NavLink>
                 <NavLink to="/policy">
-                <p>Политика конфиденциальности</p>
+                  <p>Политика конфиденциальности</p>
                 </NavLink>
                 <NavLink to="/agreement">
-                <p>Клиентское соглашение</p>
+                  <p>Клиентское соглашение</p>
                 </NavLink>
               </div>
             </div>
@@ -102,7 +104,10 @@ function NavBar() {
               </NavLink>
             </div>
           </div>
+          <div className="mode_toggler">
+          <LightMode />
 
+          </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="2"

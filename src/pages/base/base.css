@@ -1,9 +1,7 @@
 .base_top_block {
   padding: 40px 0;
 
-  border-top: 1px solid var(--F7F7F7, #F7F7F7);
-
-  /* background: var(--111112, #111112); */
+  border-bottom: 1px solid var(--Stroke_White, #DBDBDB);
 }
 
 .base_top_block_wrapper {

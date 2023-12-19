@@ -1,6 +1,8 @@
 nav {
   padding: 0 36px;
   /* background: var(--111112, #111112); */
+  border-bottom: 1px solid var(--Stroke_White, #DBDBDB);
+  background: #fff;
 }
 
 .nav_wrapper {
@@ -12,6 +14,14 @@ nav {
   display: flex;
   align-items: center;
   gap: 36px;
+}
+.mode_toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mode_toggler svg {
+  cursor: pointer;
 }
 
 .nav_logo {

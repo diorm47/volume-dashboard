@@ -1,12 +1,14 @@
 .settings_navigation {
   padding: 20px;
-  border-top: 1px solid var(--F7F7F7, #f7f7f7);
+
   border-bottom: 1px solid var(--F7F7F7, #f7f7f7);
   /* background: var(--111112, #111112); */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 36px;
+  border-bottom: 1px solid var(--Stroke_White, #DBDBDB);
+  background: #fff;
 }
 
 .settings_navigation p {
@@ -15,7 +17,7 @@
 
   /* 17px/Medium */
   font-family: TTInterfaces500;
-  font-size: 14px;
+  font-size: 17px;
   font-style: normal;
   font-weight: 500;
   line-height: 24px; /* 141.176% */
@@ -140,25 +142,27 @@
   align-items: start;
   justify-content: space-between;
 }
+.api_keys_title {
+  padding-top: 40px;
+}
 .api_keys_title_top h2 {
   color: #000;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-  font-family: TTInterfaces600;
-  margin-bottom: 24px;
-  font-size: 23px;
+  font-family: TTInterfaces800;
+  font-size: 52px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 800;
   line-height: 24px; /* 104.348% */
 }
 
 .add_key_btn button {
-  padding: 11px 20px 13px 20px;
+  padding: 11px 40px 11px 40px;
   border-radius: 40px;
   background: var(--111112, #2420fc);
   color: var(--FFFFFF, #fff);
   font-family: TTInterfaces500;
   height: 46px;
-  font-size: 13px;
+  font-size: 13px !important  ;
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 123.077% */

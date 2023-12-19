@@ -38,10 +38,7 @@ function ApiKeys() {
       <div className="api_keys_title">
         <div className="api_keys_title_top">
           <h2>Ключи API</h2>
-          <span>
-            Добавьте пожалуйста подключение API для дальнейшего использования
-            &Volume.
-          </span>
+       
         </div>
 
         <div className="add_key_btn">
