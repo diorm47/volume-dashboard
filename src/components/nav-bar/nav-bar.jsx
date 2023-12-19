@@ -125,9 +125,9 @@ function NavBar({setMode}) {
             height="18"
             viewBox="0 0 2 18"
             className="nav_menu_vert_line"
-            fill="#111112"
+            fill="#dbdbdb"
           >
-            <path d="M1 0V18" stroke="#111112" />
+            <path d="M1 0V18" stroke="#dbdbdb" />
           </svg>
 
           <div className="nav_menu_item">

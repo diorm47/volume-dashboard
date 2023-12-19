@@ -79,8 +79,8 @@ input {
 }
 
 .nav_menu_item_drop .active p {
-  color: #111112;
-  background: #f9f9f9;
+  color: #fff;
+  background: #111112;
 }
 .nav_menu_item_drop p:hover {
   color: #111112;
