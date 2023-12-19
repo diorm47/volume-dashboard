@@ -63,10 +63,10 @@
   color: #fff;
 }
 .investing_top_card_value_blue p {
-  color: #0052ff;
+  color: #0077FFcc;
 }
 .black_mode .investing_top_card_value_blue p {
-  color: #0052ff;
+  color: #0077FFcc;
 }
 .investing_top_card_btns {
   display: flex;
@@ -121,7 +121,7 @@
 }
 
 .investing_top_card_warning a {
-  color: #0052ff;
+  color: #0077FFcc;
 }
 
 .investing_top_card_select button {
