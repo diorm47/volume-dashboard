@@ -7,6 +7,7 @@ import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg
 import { NavLink } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import LineChart from "../../components/line-chart/line-chart";
 
 function Review() {
   React.useEffect(() => {
@@ -145,7 +146,10 @@ function Review() {
                 + 301,63 <span>USDT</span>
               </p>
             </div>
-            <img className="graph_image" src={pnl_graph} alt="" />
+            {/* <img className="graph_image" src={pnl_graph} alt="" /> */}
+            <div className="review_chart">
+              <LineChart />
+            </div>
           </div>
           <div className="orders_history_list main_block_wrapper">
             <div className="main_block_wrapper_top">
