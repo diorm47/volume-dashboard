@@ -897,7 +897,7 @@ function Analysis() {
                 </div>
               </div>
             </div>
-            <div className="order_history_list_line"></div>
+            <div className="order_history_list_line mb_0"></div>
           </div>
           <div className="main_block_wrapper_bottom">
             <div className="pagination">

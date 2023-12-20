@@ -15,6 +15,7 @@ import { useState } from "react";
 
 function App() {
   const [mode, setMode] = useState(localStorage.getItem("mode"))
+  
   return (
     <div
       className={mode === "black" ? "black_mode" : ""}

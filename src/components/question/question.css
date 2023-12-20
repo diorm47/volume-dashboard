@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 .black_mode .question_widget {
-  background: var(--Color_Block_Black, #0077FFcc);
+  background: var(--Color_Block_Black, #0077ff);
 }
 .question_widget p {
   color: var(--OnSecond, var(--FFFFFF, #fff));

@@ -85,7 +85,8 @@ function Investments() {
               <h2>Консервативный</h2>
             </div>
             <div className="investing_top_card_item">
-              <div className="investing_top_card_descr">
+              <div className="investing_top_card_descr" title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
+                
                 <p>Минимальная сумма инвестици</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +106,7 @@ function Investments() {
               </div>
             </div>
             <div className="investing_top_card_item">
-              <div className="investing_top_card_descr">
+              <div className="investing_top_card_descr"  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
                 <p>Уровень риска</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +126,7 @@ function Investments() {
               </div>
             </div>
             <div className="investing_top_card_item">
-              <div className="investing_top_card_descr">
+              <div className="investing_top_card_descr"  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
                 <p>Прогнозируемая доходность за период</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +167,7 @@ function Investments() {
             <div className="investing_top_card_select">
               {activeCardSelect == 1 ? (
                 <button className="investing_top_card_select_active">
-                  Активный
+                  Выбрать
                 </button>
               ) : (
                 <button onClick={() => setactiveCardSelect(1)}>Выбрать</button>
@@ -178,7 +179,7 @@ function Investments() {
               <h2>Умеренный</h2>
             </div>
             <div className="investing_top_card_item">
-              <div className="investing_top_card_descr">
+              <div className="investing_top_card_descr"  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
                 <p>Минимальная сумма инвестици</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -198,7 +199,7 @@ function Investments() {
               </div>
             </div>
             <div className="investing_top_card_item">
-              <div className="investing_top_card_descr">
+              <div className="investing_top_card_descr"  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
                 <p>Уровень риска</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +219,7 @@ function Investments() {
               </div>
             </div>
             <div className="investing_top_card_item">
-              <div className="investing_top_card_descr">
+              <div className="investing_top_card_descr"  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
                 <p>Прогнозируемая доходность за период</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +260,7 @@ function Investments() {
             <div className="investing_top_card_select">
               {activeCardSelect == 2 ? (
                 <button className="investing_top_card_select_active">
-                  Активный
+                  Выбрать
                 </button>
               ) : (
                 <button onClick={() => setactiveCardSelect(2)}>Выбрать</button>
@@ -271,7 +272,7 @@ function Investments() {
               <h2>Агрессивный</h2>
             </div>
             <div className="investing_top_card_item">
-              <div className="investing_top_card_descr">
+              <div className="investing_top_card_descr"  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
                 <p>Минимальная сумма инвестици</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -291,7 +292,7 @@ function Investments() {
               </div>
             </div>
             <div className="investing_top_card_item">
-              <div className="investing_top_card_descr">
+              <div className="investing_top_card_descr"  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
                 <p>Уровень риска</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -311,7 +312,7 @@ function Investments() {
               </div>
             </div>
             <div className="investing_top_card_item">
-              <div className="investing_top_card_descr">
+              <div className="investing_top_card_descr"  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
                 <p>Прогнозируемая доходность за период</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -352,7 +353,7 @@ function Investments() {
             <div className="investing_top_card_select ">
               {activeCardSelect == 3 ? (
                 <button className="investing_top_card_select_active">
-                  Активный
+                  Выбрать
                 </button>
               ) : (
                 <button onClick={() => setactiveCardSelect(3)}>Выбрать</button>

@@ -80,6 +80,10 @@
 .analysis_history {
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+  padding-bottom: 0 !important;
+}
+.mb_0 {
+  margin-bottom: 0 !important;
 }
 .pagination {
   display: flex;

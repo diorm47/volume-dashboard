@@ -8,7 +8,7 @@
   justify-content: center;
   gap: 36px;
   border-bottom: 1px solid var(--Stroke_White, #dbdbdb);
-  background: #fff;
+ 
 }
 .black_mode .settings_navigation {
   background: transparent;
@@ -27,6 +27,10 @@
 }
 .black_mode .settings_navigation p {
   color: #fff;
+}
+.password_templ path * {
+  fill: #000;
+  stroke: #0000;
 }
 
 .user_image_block h2 {
@@ -91,6 +95,7 @@
   justify-content: space-between;
   margin-top: 10px;
 }
+.black_mode
 .user_data_item div svg * {
   fill: #fff;
 }
@@ -107,6 +112,9 @@
 }
 .black_mode .user_data_item div p:first-child {
   color: #fff;
+}
+.api_key_title {
+  margin-bottom: 50px;
 }
 .user_data_item p:last-child {
   color: #0077FFcc;
@@ -236,8 +244,13 @@
   font-weight: 400;
   line-height: 16px; /* 123.077% */
 }
+.user_login_history table {
+  border-collapse: collapse;
+}
 .black_mode .user_login_history thead td {
   border-bottom: 1px solid var(--Stroke_Black, #343436);
+ 
+
 }
 .user_login_history table {
   width: 100%;
@@ -506,6 +519,8 @@
 .my_active_api {
   padding: 0;
   border: none;
+  background: transparent;
+  box-shadow: none;
 }
 .my_active_api .add_key_history_mobile_title {
   margin-bottom: 24px;
@@ -561,6 +576,12 @@
 }
 
 @media only screen and (max-width: 750px) {
+  .api_key_title {
+    flex-direction: column;
+    text-align: left;
+    align-items: start;
+    margin-bottom: 24px;
+  }
   .user_img p br {
     display: none;
   }
@@ -657,6 +678,13 @@
   line-height: 16px; /* 123.077% */
 }
 @media only screen and (max-width: 450px) {
+  .api_key_title h2 {
+    width: auto;
+  }
+  .add_key_btn {
+    margin-bottom: 0;
+    margin-top: 24px;
+  }
   .modal_wrapper_title {
     padding: 14px 15px;
   }

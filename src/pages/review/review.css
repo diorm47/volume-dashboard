@@ -125,6 +125,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
+  z-index: 111 !important;
 }
 
 .p24_28px {
@@ -386,6 +387,9 @@
   align-items: center;
   gap: 20px;
   margin-bottom: 30px;
+}
+.most_questions_list div svg {
+  width: 4.5%;
 }
 .most_questions_list p {
   color: var(--111112, #111112);

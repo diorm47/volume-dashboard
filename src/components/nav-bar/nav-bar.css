@@ -64,6 +64,7 @@ nav {
 }
 .black_mode_handler * {
   stroke: #ffffff;
+  fill: #fff;
 }
 .nav_wrapper_right {
   display: flex;
@@ -200,7 +201,7 @@ nav {
 
 .nav_menu_item_drop_profile {
   right: 0;
-  top: 108px;
+  top: 90px;
   width: 260px;
 }
 .nav_menu_item_drop_profile_block {

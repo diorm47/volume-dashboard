@@ -60,6 +60,7 @@ function Security() {
             <span>Текущий пароль</span>
             <div>
               <svg
+              className="password_templ"
                 width="300"
                 height="21"
                 viewBox="0 0 300 21"
