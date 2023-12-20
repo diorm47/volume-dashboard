@@ -137,6 +137,12 @@ nav {
   padding: 6px 24px;
   background: transparent;
 }
+.mob_lang_toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 37px;
+}
 .nav_mob_bottom_action p {
   color: var(--OnSecond, var(--Color_White, #fff));
   font-family: TTInterfaces500;
