@@ -1,7 +1,11 @@
 .login_page {
   width: 480px;
   margin: 0 auto;
-  margin-top: 6.7%;
+  height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
 }
 .login_title h2 {
   color: #111112;
@@ -35,7 +39,9 @@
   line-height: 17px; /* 100% */
   margin-bottom: 32px;
 }
-
+#loginForm, .auth_section  {
+  width: 100%;
+}
 #loginForm input,
 .login_form_temp input {
   width: 100%;
@@ -80,6 +86,7 @@
   transition: all 0.4s ease;
   opacity: 1 !important;
   background: rgba(36, 32, 252, 0.8) !important;
+  color: #fff;
 }
 .toggle_auth {
   display: flex;
@@ -153,6 +160,10 @@ button:disabled {
   background: #f7f7f7 !important;
   color: #c0c0c0 !important;
   cursor: default;
+}
+button:disabled:hover {
+  background: #f7f7f7 !important;
+  color: #c0c0c0 !important;
 }
 .hidden_referal input {
   display: none;
@@ -238,10 +249,7 @@ button:disabled {
 .set_password_rules {
   margin-bottom: 22px;
 }
-.reset_page,
-.auth_page {
-  min-height: 50vh;
-}
+
 .auth_page {
   min-height: 55vh;
 }

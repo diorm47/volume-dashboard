@@ -12,15 +12,21 @@ import Login from "./pages/login-auth/login";
 import Auth from "./pages/login-auth/auth";
 import Reset from "./pages/login-auth/reset";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function App() {
-  const [mode, setMode] = useState(localStorage.getItem("mode"))
-  
+  const location = useLocation();
+  const [mode, setMode] = useState(localStorage.getItem("mode"));
+
   return (
-    <div
-      className={mode === "black" ? "black_mode" : ""}
-    >
-      <NavBar setMode={setMode}/>
+    <div className={mode === "black" ? "black_mode" : ""}>
+      {location.pathname !== "/login" &&
+      location.pathname !== "/reset" &&
+      location.pathname !== "/auth" ? (
+        <NavBar setMode={setMode} />
+      ) : (
+        ""
+      )}
 
       <div className="page_content ">
         <Routes>
@@ -37,7 +43,13 @@ function App() {
           <Route path="/reset" element={<Reset />} />
         </Routes>
 
-        <Footer />
+        {location.pathname !== "/login" &&
+        location.pathname !== "/reset" &&
+        location.pathname !== "/auth" ? (
+          <Footer />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
