@@ -262,7 +262,7 @@
 }
 .api_actions p {
   font-family: TTInterfaces400;
-
+ cursor: pointer;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;

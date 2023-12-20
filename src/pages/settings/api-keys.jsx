@@ -54,14 +54,14 @@ function ApiKeys() {
               </tr>
             </thead>
             <tbody>
-              <tr >
+              <tr  >
                 <td>26 окт. 2023 г., 00:29:16</td>
                 <td>Активное</td>
                 <td>MyAPI</td>
                 <td>Binance</td>
                 <td>
                   <div className="api_actions">
-                    <p>Редактировать </p>
+                    <p onClick={() => setapiActiveEditModal(true)}>Редактировать </p>
                     <p>|</p>
                     <p>Удалить</p>
                   </div>
@@ -244,7 +244,7 @@ function ApiKeys() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>API</p>
+          <p>Редактировать ключь API</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
