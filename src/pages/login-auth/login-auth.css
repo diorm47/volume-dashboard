@@ -144,6 +144,9 @@
 .visible_password {
   top: 14px !important;
 }
+.visible_password * {
+  fill: #EAEAEA;
+}
 #error,
 .error_email {
   color: #f1507b;
