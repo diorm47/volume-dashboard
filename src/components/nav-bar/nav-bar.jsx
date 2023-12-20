@@ -12,7 +12,7 @@ import { ReactComponent as BlackMode } from "../../assets/icons/black_theme.svg"
 
 import avatar from "../../assets/images/avatar.png";
 
-function NavBar({setMode}) {
+function NavBar({ setMode }) {
   const [menuVisible, setMenuVisible] = useState(false);
   const toggleMode = () => {
     const newMode =
@@ -273,9 +273,28 @@ function NavBar({setMode}) {
               </div>
             </div>
           </div>
-
-          <div className="nav_logout_btn">
-            <button>Выйти</button>
+          <div className="nav_mob_bottom">
+            <div className="nav_mob_bottom_actions">
+              <div className="nav_mob_bottom_action">
+                <p>En</p>
+              </div>
+              <div className="nav_mob_bottom_action">
+                <p>Sw</p>
+              </div>
+              <div className="nav_mob_bottom_action">
+                {localStorage.getItem("mode") === "black" ? (
+                  <BlackMode
+                    onClick={toggleMode}
+                    className="black_mode_handler"
+                  />
+                ) : (
+                  <LightMode onClick={toggleMode} />
+                )}
+              </div>
+            </div>
+            <div className="nav_logout_btn">
+              <button>Выйти</button>
+            </div>
           </div>
         </div>
       </div>

@@ -131,6 +131,31 @@ nav {
 .black_mode .nav_menu_item_drop a:hover p {
   background: #111112;
 }
+.nav_mob_bottom_action {
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 24px;
+  background: transparent;
+}
+.nav_mob_bottom_action p {
+  color: var(--OnSecond, var(--Color_White, #fff));
+  font-family: TTInterfaces500;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 492;
+  line-height: 24px; /* 141.176% */
+}
+.nav_mob_bottom_action svg * {
+  fill: #fff;
+  stroke: #fff;
+}
+.nav_mob_bottom_actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
 
 .nav_menu_item:hover .nav_menu_item_drop {
   opacity: 1;
@@ -223,10 +248,10 @@ nav {
   color: var(--111112, #111112);
 }
 .black_mode .nav_menu_item_drop_profile_block p {
-  color: var(--Color_Gray, #92979C);
+  color: var(--Color_Gray, #92979c);
 }
 .black_mode .nav_menu_item_drop_profile_block p:first-child {
-  color:  #fff;
+  color: #fff;
 }
 .nav_menu_item_drop_profile_block p:last-child {
   margin-bottom: 0;
@@ -252,7 +277,7 @@ nav {
   right: 0;
   z-index: 111;
   position: fixed;
-  background: #000;
+  background: #111112;
   transition: all 0.4s ease;
   transform: translateX(100%);
   display: flex;
@@ -358,7 +383,7 @@ nav {
     border-radius: 40px;
     width: 100%;
 
-    background: var(--Accent, #0077FF);
+    background: var(--Accent, #0077ff);
     padding: 11px 20px 13px 20px;
 
     color: var(--OnSecond, var(--FFFFFF, #fff));
