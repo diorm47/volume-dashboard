@@ -62,7 +62,7 @@ function Profile() {
         <div className="secondary_block_wrapper user_image_block">
           <h2>Изображение профиля</h2>
           <p>Вы можете изменить изображение вашего профиля</p>
-          <div class="order_history_list_line"></div>
+          <div className="order_history_list_line"></div>
           <div className="user_img">
             <div className="user_img_wrapper">
               <img src={avatar} alt="" />
@@ -80,7 +80,7 @@ function Profile() {
         <div className="secondary_block_wrapper user_image_block">
           <h2>Информация об учетной записи</h2>
           <p>Вы можете поменять данные ниже</p>
-          <div class="order_history_list_line"></div>
+          <div className="order_history_list_line"></div>
           <div className="user_data_item">
             <span>Полное имя</span>
             <div>
@@ -90,7 +90,7 @@ function Profile() {
               </p>
             </div>
           </div>
-          <div class="order_history_list_line"></div>
+          <div className="order_history_list_line"></div>
           <div className="user_data_item">
             <span>Псевдоним</span>
             <div>
@@ -100,7 +100,7 @@ function Profile() {
               </p>
             </div>
           </div>
-          <div class="order_history_list_line"></div>
+          <div className="order_history_list_line"></div>
 
           <div className="user_data_item">
             <span>Адрес электронной почты</span>
@@ -111,7 +111,7 @@ function Profile() {
               </p>
             </div>
           </div>
-          <div class="order_history_list_line"></div>
+          <div className="order_history_list_line"></div>
 
           <div className="user_data_item">
             <span>Номер телефона</span>

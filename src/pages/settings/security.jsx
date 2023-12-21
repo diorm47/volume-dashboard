@@ -55,7 +55,7 @@ function Security() {
         <div className="secondary_block_wrapper user_image_block">
           <h2>Настройки безопасности</h2>
           <p>Вы можете поменять настройки или отключить их ниже</p>
-          <div class="order_history_list_line"></div>
+          <div className="order_history_list_line"></div>
           <div className="user_data_item">
             <span>Текущий пароль</span>
             <div>
@@ -130,7 +130,7 @@ function Security() {
               </p>
             </div>
           </div>
-          <div class="order_history_list_line"></div>
+          <div className="order_history_list_line"></div>
           <div className="user_data_item">
             <span>Аутентификация по email</span>
             <div>
@@ -150,61 +150,61 @@ function Security() {
               <p>Местонахождение</p>
               <p>IP-адрес</p>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="user_login_history_item">
               <p>26 окт. 2023 г., 00:29:16</p>
               <p>RU</p>
               <p>178.141.198.55</p>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="user_login_history_item">
               <p>26 окт. 2023 г., 00:29:16</p>
               <p>RU</p>
               <p>178.141.198.55</p>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="user_login_history_item">
               <p>26 окт. 2023 г., 00:29:16</p>
               <p>RU</p>
               <p>178.141.198.55</p>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="user_login_history_item">
               <p>26 окт. 2023 г., 00:29:16</p>
               <p>RU</p>
               <p>178.141.198.55</p>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="user_login_history_item">
               <p>26 окт. 2023 г., 00:29:16</p>
               <p>RU</p>
               <p>178.141.198.55</p>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="user_login_history_item">
               <p>26 окт. 2023 г., 00:29:16</p>
               <p>RU</p>
               <p>178.141.198.55</p>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="user_login_history_item">
               <p>26 окт. 2023 г., 00:29:16</p>
               <p>RU</p>
               <p>178.141.198.55</p>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="user_login_history_item">
               <p>26 окт. 2023 г., 00:29:16</p>
               <p>RU</p>
               <p>178.141.198.55</p>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="user_login_history_item">
               <p>26 окт. 2023 г., 00:29:16</p>
               <p>RU</p>
               <p>178.141.198.55</p>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="user_login_history_item">
               <p>26 окт. 2023 г., 00:29:16</p>
               <p>RU</p>

@@ -35,14 +35,14 @@ function ApiKeys() {
   const options = ["Binance", "CommeEX", "Okx"];
   return (
     <>
-      <div class="page_title analyse_title api_key_title">
+      <div className="page_title analyse_title api_key_title">
         <h2>Ключи API</h2>
         <div className="add_key_btn">
           <button onClick={() => setapiModal(true)}>Добавить ключ API</button>
         </div>
       </div>
-      <div class="secondary_block_wrapper user_image_block add_key_history">
-        <div class="user_login_history">
+      <div className="secondary_block_wrapper user_image_block add_key_history">
+        <div className="user_login_history">
           <table>
             <thead>
               <tr>
@@ -84,7 +84,7 @@ function ApiKeys() {
             <rect width="10" height="10" rx="5" fill="#31BD65" />
           </svg>
         </div>
-        <div class="order_history_list_line"></div>
+        <div className="order_history_list_line"></div>
         <div
           className="add_key_history_mobile_list"
           onClick={() => setapiActiveModal(true)}

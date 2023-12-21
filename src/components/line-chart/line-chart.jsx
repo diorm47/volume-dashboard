@@ -1,6 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import "./line-chart.css"
+import "./line-chart.css";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -24,13 +24,13 @@ ChartJS.register(
 const LineChart = () => {
   const data = {
     labels: [
-      "21.11.2023",
-      "22.11.2023",
-      "23.11.2023",
-      "24.11.2023",
-      "25.11.2023",
-      "26.11.2023",
-      "27.11.2023",
+      "21.11",
+      "22.11",
+      "23.11",
+      "24.11",
+      "25.11",
+      "26.11",
+      "27.11",
     ],
     datasets: [
       {
@@ -53,9 +53,6 @@ const LineChart = () => {
     elements: {
       line: {
         tension: 0.4,
-      },
-      point: {
-        radius: 0,
       },
     },
     scales: {

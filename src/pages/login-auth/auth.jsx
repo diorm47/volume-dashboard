@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import PasswordValidator from "./password-validator";
 
 function Auth() {
+  const navigate = useNavigate();
   const [section, setSection] = useState(1);
   const [email, setEmail] = useState("");
+  const [password, setAuthPassword] = useState("");
   const [referralCode, setReferralCode] = useState("");
   const [isReferralHidden, setIsReferralHidden] = useState(true);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
@@ -31,7 +33,7 @@ function Auth() {
   };
 
   const handleSubmit = () => {
-    setSection(2);
+    setSection(3);
   };
 
   // code  6
@@ -100,26 +102,50 @@ function Auth() {
   };
 
   const finishAuth = () => {
-    console.log("okey");
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("email", email);
+    bodyContent.append("password", password);
+    bodyContent.append("name", realName);
+    bodyContent.append("last_name", lastName);
+    bodyContent.append("password_confirmation", password);
+
+    fetch("https://trade.margelet.org/public-api/v1/users/register", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("token", data.data.user.token);
+        navigate("/review");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
+  console.log(section);
   return (
-    <div class="login_page auth_page">
+    <div className="login_page auth_page">
       {section === 1 ? (
-        <div class="auth_section auth_input">
-          <div class="login_title">
+        <div className="auth_section auth_input">
+          <div className="login_title">
             <h2>Регистрация</h2>
           </div>
-          <div id="loginForm" class="authForm">
+          <div id="loginForm" className="authForm">
             <div>
-              <div class="login_input_titles">
+              <div className="login_input_titles">
                 <p>Электронная почта</p>
               </div>
-              <div class="login_input">
+              <div className="login_input">
                 <input
                   type="email"
                   id="username"
-                  class="auth_user_email"
+                  className="auth_user_email"
                   value={email}
                   onChange={handleEmailChange}
                 />
@@ -154,7 +180,7 @@ function Auth() {
               id="referal_block"
               className={isReferralHidden ? "hidden_referal" : ""}
             >
-              <div class="login_input_titles">
+              <div className="login_input_titles">
                 <p>Реферальный код (необязательно)</p>
                 <svg
                   onClick={toggleReferral}
@@ -174,7 +200,7 @@ function Auth() {
                 </svg>
               </div>
 
-              <div class="login_input">
+              <div className="login_input">
                 <input
                   type="text"
                   id="referal"
@@ -196,50 +222,21 @@ function Auth() {
       ) : (
         ""
       )}
-      {section === 2 ? (
-        <div className="auth_section fill_code">
-          <div className="login_title">
-            <h2>Введите код</h2>
-            <p>
-              Мы отправили код на <span className="sending_email">{email}</span>
-            </p>
-          </div>
-          <div id="otp" className="fillcode_inputs">
-            {otp.map((data, index) => (
-              <input
-                key={index}
-                className="text-center form-control"
-                type="password"
-                maxLength="1"
-                value={data}
-                onChange={(e) => handleChange(e.target, index)}
-                onKeyUp={(e) => handleKeyUp(e, index)}
-                ref={(ref) => (inputsRef.current[index] = ref)}
-              />
-            ))}
-          </div>
-          <div className="getcode_timer">
-            <p>Отправить повторно ({formatTimer()})</p>
-          </div>
-          <button
-            id="submitBtn"
-            className="fill_code_svm"
-            onClick={handleSubmitCode}
-            disabled={otp.join("").length < 6}
-          >
-            Проверить
-          </button>
-        </div>
+
+      {section === 3 ? (
+        <PasswordValidator
+          setAuthPassword={setAuthPassword}
+          setSection={setSection}
+        />
       ) : (
         ""
       )}
-      {section === 3 ? <PasswordValidator setSection={setSection} /> : ""}
       {section === 4 ? (
         <div className="auth_section user_datas">
           <div className="login_title">
             <h2>Введите данные</h2>
           </div>
-          <form id="loginForm" className="authForm" onSubmit={handleSubmit}>
+          <div id="loginForm" className="authForm" onSubmit={finishAuth}>
             <div>
               <div className="login_input_titles">
                 <p>Имя</p>
@@ -299,23 +296,22 @@ function Auth() {
               className="last_auth_btn"
               disabled={!isFormComplete}
               onClick={() => finishAuth()}
-              
             >
               Создать аккаунт
             </button>
-          </form>
+          </div>
         </div>
       ) : (
         ""
       )}
 
-      <div class="toggle_auth">
+      <div className="toggle_auth">
         <p>
           Уже есть аккаунт? <NavLink to="/login">Войти</NavLink>
         </p>
       </div>
-      <div class="login_line"></div>
-      <div class="login_privacy">
+      <div className="login_line"></div>
+      <div className="login_privacy">
         <p>
           Продолжая регистрацию или вход, вы принимаете условия <br />
           <a href="./agreement.html">Пользовательского соглашения</a> и{" "}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./nav-bar.css";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { NavLink } from "react-router-dom";
@@ -11,9 +11,11 @@ import { ReactComponent as LightMode } from "../../assets/icons/ligt-mode.svg";
 import { ReactComponent as BlackMode } from "../../assets/icons/black_theme.svg";
 
 import avatar from "../../assets/images/avatar.png";
+import { mainApi } from "../utils/main-api";
 
 function NavBar({ setMode }) {
   const [menuVisible, setMenuVisible] = useState(false);
+  const [userData, setUserData] = useState({});
   const toggleMode = () => {
     const newMode =
       localStorage.getItem("mode") === "black" ? "white" : "black";
@@ -21,6 +23,31 @@ function NavBar({ setMode }) {
     setMode(newMode);
   };
 
+  const handleLogout = () => {
+    mainApi
+      .logout()
+      .then((res) => {
+        console.log(res);
+        localStorage.clear();
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      mainApi
+        .reEnter()
+        .then((res) => {
+          setUserData(res.data.user);
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
+    }
+  }, [localStorage.getItem("token")]);
+  console.log(userData);
   return (
     <nav>
       <div className="nav_wrapper">
@@ -143,8 +170,8 @@ function NavBar({ setMode }) {
                   fill="none"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M15.4026 16.4917V16.49L15.4176 16.4542L17.9167 3.85415V3.81415C17.9167 3.49999 17.8001 3.22582 17.5484 3.06165C17.3276 2.91749 17.0734 2.90749 16.8951 2.92082C16.7291 2.93583 16.5653 2.96938 16.4067 3.02082C16.3391 3.04262 16.2724 3.06708 16.2067 3.09415L16.1959 3.09832L2.26256 8.56415L2.25839 8.56582C2.21603 8.58029 2.17457 8.59726 2.13422 8.61665C2.03513 8.66117 1.94006 8.71415 1.85006 8.77499C1.67089 8.89832 1.33006 9.18832 1.38756 9.64832C1.43506 10.03 1.69756 10.2717 1.87506 10.3975C1.97983 10.4709 2.09247 10.5324 2.21089 10.5808L2.23756 10.5925L2.24589 10.595L2.25172 10.5975L4.69006 11.4183C4.68172 11.5708 4.69672 11.7267 4.73756 11.8808L5.95839 16.5133C6.02508 16.7658 6.1692 16.9911 6.37049 17.1575C6.57179 17.3239 6.82015 17.4231 7.0807 17.4411C7.34126 17.4592 7.60091 17.3951 7.8232 17.258C8.04548 17.1209 8.21924 16.9176 8.32006 16.6767L10.2267 14.6383L13.5009 17.1483L13.5476 17.1683C13.8451 17.2983 14.1226 17.3392 14.3767 17.305C14.6309 17.27 14.8326 17.1633 14.9842 17.0425C15.1596 16.9003 15.2995 16.7191 15.3926 16.5133L15.3992 16.4992L15.4017 16.4942L15.4026 16.4917ZM5.94589 11.5625C5.93237 11.5111 5.93558 11.4567 5.95507 11.4073C5.97455 11.3578 6.00928 11.3159 6.05422 11.2875L14.3217 6.03749C14.3217 6.03749 14.8084 5.74165 14.7909 6.03749C14.7909 6.03749 14.8776 6.08915 14.6167 6.33165C14.3701 6.56249 8.72422 12.0133 8.15256 12.565C8.12077 12.5959 8.0985 12.6352 8.08839 12.6783L7.16672 16.195L5.94589 11.5617"
                     fill="black"
                   />
@@ -193,7 +220,7 @@ function NavBar({ setMode }) {
             <img src={avatar} alt="" />
             <div className="nav_menu_item_drop nav_menu_item_drop_profile">
               <div className="nav_menu_item_drop_profile_block">
-                <p>nvolume@gmail.com</p>
+                <p>{userData.email}</p>
                 <p>USER ID:436425</p>
                 <p>Пробный</p>
               </div>
@@ -203,7 +230,7 @@ function NavBar({ setMode }) {
               <NavLink to="/referals">
                 <p>Реферальная программа</p>
               </NavLink>
-              <NavLink to="/logout">
+              <NavLink to="/login" onClick={handleLogout}>
                 <p>Выйти</p>
               </NavLink>
             </div>

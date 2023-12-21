@@ -405,7 +405,7 @@ function Investments() {
             <div className="order_history_list_line"></div>
 
             <div className="investing_actions">
-              <div class="add_key_btn">
+              <div className="add_key_btn">
                 <button>Удалить</button>
               </div>
             </div>
@@ -434,8 +434,8 @@ function Investments() {
                   fill="none"
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M13 11V4H11V11H4V13H11V20H13V13H20V11H13Z"
                     fill="#111112"
                   />

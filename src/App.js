@@ -17,7 +17,18 @@ import { useLocation } from "react-router-dom";
 function App() {
   const location = useLocation();
   const [mode, setMode] = useState(localStorage.getItem("mode"));
-
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     mainApi
+  //       .reEnter()
+  //       .then((res) => {
+  //         dispatch(loginUserAction(res));
+  //       })
+  //       .catch((error) => {
+  //         console.log("error", error);
+  //       });
+  //   }
+  // }, [localStorage.getItem("token")]);
   return (
     <div className={mode === "black" ? "black_mode" : ""}>
       {location.pathname !== "/login" &&

@@ -64,18 +64,18 @@ function Reset() {
   };
   return (
     <div className="login_page_wrapper">
-      <div class="login_page reset_page">
+      <div className="login_page reset_page">
         {section === 1 ? (
-          <div class="reset_section reset_username_section">
-            <div class="login_title">
+          <div className="reset_section reset_username_section">
+            <div className="login_title">
               <h2>Сбросить пароль</h2>
             </div>
             <div id="loginForm">
               <div>
-                <div class="login_input_titles">
+                <div className="login_input_titles">
                   <p>Электронная почта</p>
                 </div>
-                <div class="login_input">
+                <div className="login_input">
                   <input
                     type="email"
                     id="resetusername"
@@ -113,7 +113,7 @@ function Reset() {
               <button
                 type="submit"
                 id="submitBtn"
-                class="resetEmailbtn"
+                className="resetEmailbtn"
                 onClick={handleSubmit}
                 disabled={isSubmitDisabled}
               >
@@ -167,11 +167,11 @@ function Reset() {
         {section === 3 ? <PasswordValidator setSection={setSection} /> : ""}
 
         {section === 4 ? (
-          <div class="reset_section reset_username_block">
-            <div class="login_title">
+          <div className="reset_section reset_username_block">
+            <div className="login_title">
               <h2>Пароль изменен</h2>
             </div>
-            <p class="reset_text">Ваш пароль успешно изменен</p>
+            <p className="reset_text">Ваш пароль успешно изменен</p>
             <NavLink to="/login">
               <button type="submit" id="submitBtn">
                 Войти

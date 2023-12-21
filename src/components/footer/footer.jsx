@@ -7,8 +7,8 @@ function Footer() {
     <footer>
       {" "}
       <QuestionWidget />
-      <div class="footer_wrapper">
-        <div class="footer_left">
+      <div className="footer_wrapper">
+        <div className="footer_left">
           <p>
             <span>© 2023</span> &amp;Volume, <span>все права защищены</span>
           </p>

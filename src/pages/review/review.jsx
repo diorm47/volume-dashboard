@@ -485,7 +485,7 @@ function Review() {
             </div>
           </div>
           <div className="secondary_block_wrapper invite_block">
-            <div class="main_block_wrapper_title">
+            <div className="main_block_wrapper_title">
               <h2>Приглашение</h2>
             </div>
             <div className="invite_block_desc">
@@ -500,7 +500,7 @@ function Review() {
             </div>
           </div>
           <div className="secondary_block_wrapper most_questions">
-            <div class="main_block_wrapper_title">
+            <div className="main_block_wrapper_title">
               <h2>Часть задаваемые вопросы</h2>
             </div>
             <div className="most_questions_desc">

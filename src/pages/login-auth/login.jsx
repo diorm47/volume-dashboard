@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./login-auth.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { mainApi } from "../../components/utils/main-api";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate()
 
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -34,25 +36,49 @@ function Login() {
     setShowPassword(!showPassword);
   };
 
+  const LoginAction = () => {
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("email", email);
+    bodyContent.append("password", password);
+
+    fetch("https://trade.margelet.org/public-api/v1/users/login", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("token", data.data.user.token);
+        navigate('/review')
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!email || !password) {
       setPasswordError("Введите email и пароль");
     } else {
       setPasswordError("");
-      // Perform your login logic here
+      LoginAction();
     }
   };
 
   return (
     <div className="login_page_wrapper">
-      <div class="login_page">
-        <div class="login_title">
+      <div className="login_page">
+        <div className="login_title">
           <h2>Войти</h2>
         </div>
         <form id="loginForm" onSubmit={handleSubmit}>
           <div>
-            <div class="login_input_titles">
+            <div className="login_input_titles">
               <p>Электронная почта</p>
             </div>
             <div className={`login_input ${emailError ? "error_input" : ""}`}>
@@ -82,7 +108,7 @@ function Login() {
             </div>
           </div>
           <div>
-            <div class="login_input_titles recovery_password">
+            <div className="login_input_titles recovery_password">
               <p>Пароль</p>
               <NavLink to="/reset"> Забыли пароль?</NavLink>
             </div>
@@ -124,8 +150,8 @@ function Login() {
                   onClick={handleTogglePassword}
                 >
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M2 7.001V7C2.003 6.984 2.017 6.896 2.095 6.723C2.181 6.532 2.32 6.292 2.519 6.015C2.917 5.462 3.512 4.823 4.264 4.217C5.777 2.996 7.812 2 10 2C12.188 2 14.223 2.996 15.736 4.216C16.488 4.822 17.083 5.461 17.481 6.014C17.681 6.291 17.819 6.531 17.905 6.722C17.983 6.895 17.997 6.983 18 6.999V7C17.997 7.016 17.983 7.104 17.905 7.277C17.787 7.52619 17.645 7.76331 17.481 7.985C17.083 8.538 16.488 9.177 15.736 9.783C14.224 11.004 12.188 12 10 12C7.812 12 5.777 11.004 4.264 9.784C3.512 9.178 2.917 8.539 2.519 7.986C2.35491 7.7644 2.2129 7.52727 2.095 7.278C2.05129 7.19024 2.01935 7.09711 2 7.001ZM10 0C7.217 0 4.752 1.254 3.009 2.659C2.132 3.365 1.409 4.133 0.896 4.846C0.653079 5.17599 0.443708 5.52941 0.271 5.901C0.123 6.23 0 6.611 0 7C0 7.388 0.123 7.771 0.27 8.099C0.425 8.441 0.64 8.799 0.896 9.154C1.409 9.867 2.132 10.634 3.009 11.341C4.752 12.746 7.217 14 10 14C12.783 14 15.248 12.746 16.991 11.341C17.868 10.635 18.591 9.867 19.104 9.154C19.361 8.798 19.575 8.441 19.729 8.099C19.877 7.771 20 7.389 20 7C20 6.612 19.877 6.229 19.73 5.901C19.5567 5.52949 19.347 5.1761 19.104 4.846C18.591 4.133 17.868 3.366 16.991 2.659C15.248 1.254 12.783 0 10 0ZM9 7C9 6.73478 9.10536 6.48043 9.29289 6.29289C9.48043 6.10536 9.73478 6 10 6C10.2652 6 10.5196 6.10536 10.7071 6.29289C10.8946 6.48043 11 6.73478 11 7C11 7.26522 10.8946 7.51957 10.7071 7.70711C10.5196 7.89464 10.2652 8 10 8C9.73478 8 9.48043 7.89464 9.29289 7.70711C9.10536 7.51957 9 7.26522 9 7ZM10 4C9.20435 4 8.44129 4.31607 7.87868 4.87868C7.31607 5.44129 7 6.20435 7 7C7 7.79565 7.31607 8.55871 7.87868 9.12132C8.44129 9.68393 9.20435 10 10 10C10.7956 10 11.5587 9.68393 12.1213 9.12132C12.6839 8.55871 13 7.79565 13 7C13 6.20435 12.6839 5.44129 12.1213 4.87868C11.5587 4.31607 10.7956 4 10 4Z"
                     fill="black"
                   />
@@ -139,13 +165,13 @@ function Login() {
             Войти
           </button>
         </form>
-        <div class="toggle_auth">
+        <div className="toggle_auth">
           <p>
             Еще нет аккаунта? <NavLink to="/auth">Создать аккаунт</NavLink>
           </p>
         </div>
-        <div class="login_line"></div>
-        <div class="login_privacy">
+        <div className="login_line"></div>
+        <div className="login_privacy">
           <p>
             Продолжая регистрацию или вход, вы принимаете условия <br />
             <a href="./agreement.html">Пользовательского соглашения</a> и{" "}

@@ -23,11 +23,11 @@ function Base() {
       <div className="pages_wrapper">
         <div className="base_questions">
           <div className="base_questions_column">
-            <div class="secondary_block_wrapper base_question_card">
-              <div class="main_block_wrapper_title">
+            <div className="secondary_block_wrapper base_question_card">
+              <div className="main_block_wrapper_title">
                 <h2>Подключение</h2>
               </div>
-              <div class="order_history_list_line"></div>
+              <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
                   <NavLink to="/register-acc">
@@ -54,11 +54,11 @@ function Base() {
                 </div>
               </div>
             </div>
-            <div class="secondary_block_wrapper base_question_card">
-              <div class="main_block_wrapper_title">
+            <div className="secondary_block_wrapper base_question_card">
+              <div className="main_block_wrapper_title">
                 <h2>Покупка и продажа криптовалюты</h2>
               </div>
-              <div class="order_history_list_line"></div>
+              <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
                   <p>Способы пополнения</p>
@@ -81,11 +81,11 @@ function Base() {
             </div>
           </div>
           <div className="base_questions_column">
-            <div class="secondary_block_wrapper base_question_card">
-              <div class="main_block_wrapper_title">
+            <div className="secondary_block_wrapper base_question_card">
+              <div className="main_block_wrapper_title">
                 <h2>Инвестиции</h2>
               </div>
-              <div class="order_history_list_line"></div>
+              <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
                   <p>Различия</p>
@@ -110,11 +110,11 @@ function Base() {
                 </div>
               </div>
             </div>
-            <div class="secondary_block_wrapper base_question_card">
-              <div class="main_block_wrapper_title">
+            <div className="secondary_block_wrapper base_question_card">
+              <div className="main_block_wrapper_title">
                 <h2>Награды и рефералы</h2>
               </div>
-              <div class="order_history_list_line"></div>
+              <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
                   <p>Партнеры</p>
@@ -139,11 +139,11 @@ function Base() {
             </div>
           </div>
           <div className="base_questions_column">
-            <div class="secondary_block_wrapper base_question_card">
-              <div class="main_block_wrapper_title">
+            <div className="secondary_block_wrapper base_question_card">
+              <div className="main_block_wrapper_title">
                 <h2>Тарифы</h2>
               </div>
-              <div class="order_history_list_line"></div>
+              <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
                   <p>Торговые лимиты</p>
@@ -160,11 +160,11 @@ function Base() {
                 </div>
               </div>
             </div>
-            <div class="secondary_block_wrapper base_question_card">
-              <div class="main_block_wrapper_title">
+            <div className="secondary_block_wrapper base_question_card">
+              <div className="main_block_wrapper_title">
                 <h2>Другое</h2>
               </div>
-              <div class="order_history_list_line"></div>
+              <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
                   <p>Whitepaper</p>
@@ -200,11 +200,11 @@ function Base() {
           <h2>Последние новости</h2>
         </div>
         <div className="base_news">
-          <div class="secondary_block_wrapper base_question_card">
-            <div class="main_block_wrapper_title">
+          <div className="secondary_block_wrapper base_question_card">
+            <div className="main_block_wrapper_title">
               <h2>Уведомление о изменение платежной системы на &volume</h2>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="base_question_card_content">
               <div>
                 <span>
@@ -216,11 +216,11 @@ function Base() {
               </div>
             </div>
           </div>
-          <div class="secondary_block_wrapper base_question_card">
-            <div class="main_block_wrapper_title">
+          <div className="secondary_block_wrapper base_question_card">
+            <div className="main_block_wrapper_title">
               <h2>Уведомление о изменение платежной системы на &volume</h2>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="base_question_card_content">
               <div>
                 <span>
@@ -232,11 +232,11 @@ function Base() {
               </div>
             </div>
           </div>
-          <div class="secondary_block_wrapper base_question_card">
-            <div class="main_block_wrapper_title">
+          <div className="secondary_block_wrapper base_question_card">
+            <div className="main_block_wrapper_title">
               <h2>Уведомление о изменение платежной системы на &volume</h2>
             </div>
-            <div class="order_history_list_line"></div>
+            <div className="order_history_list_line"></div>
             <div className="base_question_card_content">
               <div>
                 <span>
