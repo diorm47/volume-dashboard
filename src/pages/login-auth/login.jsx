@@ -7,7 +7,13 @@ import Snackbar from "../../components/snackbar/snackbar";
 function Login() {
   const [section, setSection] = useState(1);
   const [errorResponce, setErrorResponce] = useState(false);
-
+  useEffect(() => {
+    if (errorResponce) {
+      setTimeout(() => {
+        setErrorResponce(false);
+      }, 3000);
+    }
+  }, [errorResponce]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +28,7 @@ function Login() {
   const handleEmailChange = (event) => {
     const newEmail = event.target.value;
     setEmail(newEmail);
-    setErrorResponce(false)
+    setErrorResponce(false);
     if (!validateEmail(newEmail)) {
       setEmailError("Неправильный email");
     } else {
@@ -33,6 +39,7 @@ function Login() {
   const handlePasswordChange = (event) => {
     const newPassword = event.target.value;
     setPassword(newPassword);
+    setErrorResponce(false);
   };
 
   const handleTogglePassword = () => {
