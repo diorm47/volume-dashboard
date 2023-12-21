@@ -60,6 +60,26 @@ function PasswordValidator({ setSection, setAuthPassword }) {
     );
   }, [password, confirmPassword, passwordCriteria]);
 
+
+
+
+  // active
+  const [focusedField, setFocusedField] = useState(null);
+
+  const handleFocus = (fieldName) => {
+    setFocusedField(fieldName);
+  };
+
+  const handleBlur = () => {
+    setFocusedField(null);
+  };
+
+  const getInputClass = (fieldName) => {
+    if (focusedField === fieldName) {
+      return "input_focused";
+    }
+    return "inputfocused";
+  };
   return (
     <div className="auth_section set_password">
       <div className="login_title">
@@ -76,6 +96,9 @@ function PasswordValidator({ setSection, setAuthPassword }) {
             name="password"
             value={password}
             onChange={handlePasswordChange}
+            className={getInputClass("field1")}
+            onFocus={() => handleFocus("field1")}
+            onBlur={handleBlur}
           />
           {isPasswordVisible ? (
             <svg
@@ -140,6 +163,9 @@ function PasswordValidator({ setSection, setAuthPassword }) {
             name="password"
             value={confirmPassword}
             onChange={handleConfirmPasswordChange}
+            className={getInputClass("field2")}
+            onFocus={() => handleFocus("field2")}
+            onBlur={handleBlur}
           />
           {isPasswordVisible2 ? (
             <svg

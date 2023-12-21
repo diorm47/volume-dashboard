@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import PasswordValidator from "./password-validator";
+import FillCode from "./fill-code";
 
 function Auth() {
-  const navigate = useNavigate();
   const [section, setSection] = useState(1);
   const [email, setEmail] = useState("");
   const [password, setAuthPassword] = useState("");
@@ -34,49 +34,6 @@ function Auth() {
 
   const handleSubmit = () => {
     setSection(3);
-  };
-
-  // code  6
-  const [otp, setOtp] = useState(new Array(6).fill(""));
-  const [timer, setTimer] = useState(300); // 5 minutes timer
-  const inputsRef = useRef([]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleChange = (element, index) => {
-    const value = element.value;
-    setOtp([...otp.slice(0, index), value, ...otp.slice(index + 1)]);
-
-    // Move to next input
-    if (value && index < 5) {
-      inputsRef.current[index + 1].focus();
-    }
-  };
-
-  const handleKeyUp = (event, index) => {
-    if (event.keyCode === 8 && index > 0) {
-      // Move to previous input
-      inputsRef.current[index - 1].focus();
-    }
-  };
-
-  const formatTimer = () => {
-    const minutes = Math.floor(timer / 60);
-    const seconds = timer % 60;
-    return `${minutes.toString().padStart(2, "0")}:${seconds
-      .toString()
-      .padStart(2, "0")}`;
-  };
-
-  const handleSubmitCode = () => {
-    setSection(3);
-    console.log("Submitted OTP:", otp.join(""));
   };
 
   // user data
@@ -121,14 +78,30 @@ function Auth() {
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem("token", data.data.user.token);
-        navigate("/review");
+        setSection(5);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
 
-  console.log(section);
+  // active
+  const [focusedField, setFocusedField] = useState(null);
+
+  const handleFocus = (fieldName) => {
+    setFocusedField(fieldName);
+  };
+
+  const handleBlur = () => {
+    setFocusedField(null);
+  };
+
+  const getInputClass = (fieldName) => {
+    if (focusedField === fieldName) {
+      return "input_focused";
+    }
+    return "inputfocused";
+  };
   return (
     <div className="login_page auth_page">
       {section === 1 ? (
@@ -145,9 +118,11 @@ function Auth() {
                 <input
                   type="email"
                   id="username"
-                  className="auth_user_email"
                   value={email}
                   onChange={handleEmailChange}
+                  className={getInputClass("field1")}
+                  onFocus={() => handleFocus("field1")}
+                  onBlur={handleBlur}
                 />
                 {email ? (
                   <svg
@@ -206,6 +181,9 @@ function Auth() {
                   id="referal"
                   value={referralCode}
                   onChange={handleReferralChange}
+                  className={getInputClass("field2")}
+                  onFocus={() => handleFocus("field2")}
+                  onBlur={handleBlur}
                 />
               </div>
             </div>
@@ -247,6 +225,9 @@ function Auth() {
                   id="userrealname"
                   value={realName}
                   onChange={handleRealNameChange}
+                  className={getInputClass("field3")}
+                  onFocus={() => handleFocus("field3")}
+                  onBlur={handleBlur}
                 />
                 <svg
                   id="clearUsername"
@@ -274,6 +255,9 @@ function Auth() {
                   id="userlastname"
                   value={lastName}
                   onChange={handleLastNameChange}
+                  className={getInputClass("field4")}
+                  onFocus={() => handleFocus("field4")}
+                  onBlur={handleBlur}
                 />
                 <svg
                   id="clearUsername"
@@ -304,20 +288,26 @@ function Auth() {
       ) : (
         ""
       )}
-
-      <div className="toggle_auth">
-        <p>
-          Уже есть аккаунт? <NavLink to="/login">Войти</NavLink>
-        </p>
-      </div>
-      <div className="login_line"></div>
-      <div className="login_privacy">
-        <p>
-          Продолжая регистрацию или вход, вы принимаете условия <br />
-          <a href="./agreement.html">Пользовательского соглашения</a> и{" "}
-          <a href="./policy.html">Политики конфиденциальности.</a>
-        </p>
-      </div>
+      {section === 5 ? <FillCode email={email} /> : ""}
+      {section !== 5 ? (
+        <>
+          <div className="toggle_auth">
+            <p>
+              Уже есть аккаунт? <NavLink to="/login">Войти</NavLink>
+            </p>
+          </div>
+          <div className="login_line"></div>
+          <div className="login_privacy">
+            <p>
+              Продолжая регистрацию или вход, вы принимаете условия <br />
+              <a href="./agreement.html">Пользовательского соглашения</a> и{" "}
+              <a href="./policy.html">Политики конфиденциальности.</a>
+            </p>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

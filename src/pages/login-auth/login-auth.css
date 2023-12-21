@@ -46,6 +46,11 @@
 #loginForm, .auth_section  {
   width: 100%;
 }
+.input_focused {
+  border: 1px solid #0077FF !important;
+  transition: border-color 0.5s ease;
+
+}
 #loginForm input,
 .login_form_temp input {
   width: 100%;
@@ -58,13 +63,15 @@
   font-style: normal;
   font-weight: 500;
   line-height: 24px; /* 141.176% */
-
+  outline: none;
   text-indent: 10px;
 }
 #loginForm input:active {
   border: 1px solid #111112;
 }
-
+.error_filled_status input {
+  border: 1px solid var(--Color_Red, #F1507B) !important;
+}
 .recovery_password a {
   color: #0077FF;
   font-family: TTInterfaces400;
