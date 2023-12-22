@@ -98,6 +98,18 @@ function Login() {
     }
     return "inputfocused";
   };
+
+  // hide modal
+  const handleClickHideSnackbar = () => {
+    setErrorResponce(false);
+  };
+  useEffect(() => {
+    document.addEventListener("click", handleClickHideSnackbar);
+    return () => {
+      document.removeEventListener("click", handleClickHideSnackbar);
+    };
+  }, []);
+
   return (
     <div className="login_page_wrapper">
       {section === 1 ? (
@@ -234,14 +246,11 @@ function Login() {
         ""
       )}
 
-      {errorResponce ? (
-        <Snackbar
-          text="Ошибка электронной почты или пароля. Проверьте правильность введенных данных."
-          status="error"
-        />
-      ) : (
-        ""
-      )}
+      <Snackbar
+        text="Ошибка электронной почты или пароля. Проверьте правильность введенных данных."
+        status="error"
+        visible={errorResponce}
+      />
     </div>
   );
 }

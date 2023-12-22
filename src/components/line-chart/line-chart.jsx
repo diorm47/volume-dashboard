@@ -18,8 +18,19 @@ const LineChart = () => {
       dataLabels: {
         enabled: false,
       },
+
       stroke: {
         curve: "smooth",
+        width: 2,
+        colors: ["#0077FF"],
+      },
+      grid: {
+        yaxis: {
+          lines: {
+            show: true,
+            color: "#F7F7F7",
+          },
+        },
       },
       xaxis: {
         type: "datetime",

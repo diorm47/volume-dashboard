@@ -1,10 +1,10 @@
 import React from "react";
 import "./snackbar.css";
 
-function Snackbar({ text, status }) {
+function Snackbar({ text, status, visible }) {
   return (
     <div className="snackbar_wrapper">
-      <div className="snackbar">
+      <div className={visible ? "snackbar snackbar_visible" : "snackbar"}>
         <div className="snackbar_icon">
           {status == "error" ? (
             <svg
