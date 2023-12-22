@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import PasswordValidator from "./password-validator";
 import FillCode from "./fill-code";
+import Snackbar from "../../components/snackbar/snackbar";
 
 function Auth() {
   const [section, setSection] = useState(1);
@@ -11,6 +12,14 @@ function Auth() {
   const [isReferralHidden, setIsReferralHidden] = useState(true);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isEmailError, setIsEmailError] = useState(true);
+  const [errorResponce, setErrorResponce] = useState(false);
+  useEffect(() => {
+    if (errorResponce) {
+      setTimeout(() => {
+        setErrorResponce(false);
+      }, 3000);
+    }
+  }, [errorResponce]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -82,6 +91,7 @@ function Auth() {
       })
       .catch((error) => {
         console.error("Error:", error);
+        setErrorResponce(true);
       });
   };
 
@@ -308,6 +318,12 @@ function Auth() {
       ) : (
         ""
       )}
+
+      <Snackbar
+        text="Кажется, вы уже зарегистрированы в нашей системе. Пожалуйста, нажмите войти."
+        status="error"
+        visible={errorResponce}
+      />
     </div>
   );
 }

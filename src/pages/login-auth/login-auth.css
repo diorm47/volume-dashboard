@@ -2,10 +2,10 @@
   width: 480px;
   margin: 0 auto;
   height: 100vh;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .login_title {
   width: 100%;
@@ -43,13 +43,13 @@
   line-height: 17px; /* 100% */
   margin-bottom: 32px;
 }
-#loginForm, .auth_section  {
+#loginForm,
+.auth_section {
   width: 100%;
 }
 .input_focused {
-  border: 1px solid #0077FF !important;
+  border: 1px solid #0077ff !important;
   transition: border-color 0.5s ease;
-
 }
 #loginForm input,
 .login_form_temp input {
@@ -70,10 +70,10 @@
   border: 1px solid #111112;
 }
 .error_filled_status input {
-  border: 1px solid var(--Color_Red, #F1507B) !important;
+  border: 1px solid var(--Color_Red, #f1507b) !important;
 }
 .recovery_password a {
-  color: #0077FF;
+  color: #0077ff;
   font-family: TTInterfaces400;
   font-size: 17px;
   font-style: normal;
@@ -83,7 +83,7 @@
 #submitBtn {
   height: 60px;
   border-radius: 87px;
-  background: var(--2420FC, #0077FF);
+  background: var(--2420FC, #0077ff);
   width: 100%;
   color: #fff;
   font-family: TTInterfaces500;
@@ -96,7 +96,7 @@
 #submitBtn:hover {
   transition: all 0.4s ease;
   opacity: 1 !important;
-  background: #0077FF !important;
+  background: #0077ff !important;
   color: #fff;
 }
 .toggle_auth {
@@ -117,7 +117,7 @@
 
 .toggle_auth a,
 .login_privacy a {
-  color: #0077FF;
+  color: #0077ff;
 }
 
 .login_line {
@@ -152,7 +152,7 @@
   top: 14px !important;
 }
 .visible_password * {
-  fill: #EAEAEA;
+  fill: #eaeaea;
 }
 #error,
 .error_email {
@@ -267,6 +267,29 @@ button:disabled:hover {
 .auth_page {
   min-height: 55vh;
 }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Для Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.fillcode_inputs input {
+  border: 1px solid #eaeaea;
+
+  color: #111112;
+  font-family: TTInterfaces500;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 141.176% */
+  outline: none;
+}
+
 @media only screen and (max-width: 500px) {
   .fillcode_inputs {
     width: 100%;
@@ -274,6 +297,12 @@ button:disabled:hover {
 }
 
 @media only screen and (max-width: 500px) {
+  .auth_page {
+    min-height: auto;
+  }
+  .login_page {
+    height: auto;
+  }
   .login_page {
     width: 100%;
     padding-left: 24px;

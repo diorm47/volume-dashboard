@@ -1,11 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Snackbar from "../../components/snackbar/snackbar";
 
 function FillCode({ email }) {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [timer, setTimer] = useState(300); // 5 minutes timer
   const inputsRef = useRef([]);
   const navigate = useNavigate();
+  const [errorResponce, setErrorResponce] = useState(false);
+  useEffect(() => {
+    if (errorResponce) {
+      setTimeout(() => {
+        setErrorResponce(false);
+      }, 3000);
+    }
+  }, [errorResponce]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -18,7 +27,7 @@ function FillCode({ email }) {
   const handleChange = (element, index) => {
     const value = element.value;
     setOtp([...otp.slice(0, index), value, ...otp.slice(index + 1)]);
-
+    setErrorResponce(false);
     // Move to next input
     if (value && index < 5) {
       inputsRef.current[index + 1].focus();
@@ -54,14 +63,21 @@ function FillCode({ email }) {
       body: bodyContent,
       headers: headersList,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((data) => {
         navigate("/review");
       })
       .catch((error) => {
         console.error("Error:", error);
+        setErrorResponce(true);
       });
   };
+
   return (
     <div className="auth_section fill_code">
       <div className="login_title">
@@ -70,12 +86,19 @@ function FillCode({ email }) {
           Мы отправили код на <span className="sending_email">{email}</span>
         </p>
       </div>
-      <div id="otp" className="fillcode_inputs">
+      <div
+        id="otp"
+        className={
+          errorResponce
+            ? "error_filled_status fillcode_inputs"
+            : " fillcode_inputs"
+        }
+      >
         {otp.map((data, index) => (
           <input
             key={index}
             className="text-center form-control"
-            type="password"
+            type="number"
             maxLength="1"
             value={data}
             onChange={(e) => handleChange(e.target, index)}
@@ -95,6 +118,12 @@ function FillCode({ email }) {
       >
         Проверить
       </button>
+
+      <Snackbar
+        text="Ошибка проверочного кода. Проверьте правильность введенных данных."
+        status="error"
+        visible={errorResponce}
+      />
     </div>
   );
 }
