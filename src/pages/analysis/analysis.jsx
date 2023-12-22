@@ -4,6 +4,8 @@ import analysisGraph from "../../assets/images/analysis-graph.png";
 import analysisGraph2 from "../../assets/images/analysis-graph-2.png";
 import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg";
 import { ReactComponent as BTC } from "../../assets/icons/btc.svg";
+import LineChart from "../../components/line-chart/line-chart";
+import ColumnChart from "../../components/column-chart/column-chart";
 
 function Analysis() {
   React.useEffect(() => {
@@ -107,7 +109,9 @@ function Analysis() {
               + 81,11 <span>USDT</span>
             </p>
           </div>
-          <img src={analysisGraph} className="graph_image" alt="" />
+          <div className="review_chart">
+            <LineChart />
+          </div>
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
@@ -118,7 +122,7 @@ function Analysis() {
               + 168,65 <span>USDT</span>
             </p>
           </div>
-          <img className="graph_image" src={analysisGraph2} alt="" />
+          <ColumnChart />
         </div>
 
         <div className="orders_history_list main_block_wrapper">

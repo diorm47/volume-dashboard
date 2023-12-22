@@ -1,11 +1,6 @@
-
-.apexcharts-toolbar {
-  display: none !important;
-}
-
 .apexcharts-text tspan {
   color: #92979c !important;
-  opacity: 0.7;
+  opacity: 0.6;
   font-family: TTInterfaces400;
   font-size: 11px;
   font-style: normal;

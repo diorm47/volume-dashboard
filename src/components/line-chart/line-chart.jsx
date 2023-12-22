@@ -1,71 +1,55 @@
-import React from "react";
-import { Line } from "react-chartjs-2";
+import React, { useState } from "react";
+import ReactApexChart from "react-apexcharts";
 import "./line-chart.css";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend,
-} from "chart.js";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend
-);
 const LineChart = () => {
-  const data = {
-    labels: [
-      "21.11",
-      "22.11",
-      "23.11",
-      "24.11",
-      "25.11",
-      "26.11",
-      "27.11",
-    ],
-    datasets: [
+  const [chartData, setChartData] = useState({
+    series: [
       {
-        label: "First dataset",
-        data: [33, 53, 85, 41, 44, 65, 34],
-        fill: true,
-
-        backgroundColor: "#d2e6fbaa",
-        borderColor: "#0077FF",
+        name: "PnL",
+        data: [31, 40, 28, 51, 42, 109, 100],
       },
     ],
-  };
-
-  const options = {
-    plugins: {
-      legend: {
-        display: false,
+    options: {
+      chart: {
+        height: 350,
+        type: "area",
       },
-    },
-    elements: {
-      line: {
-        tension: 0.4,
+      dataLabels: {
+        enabled: false,
       },
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false, // Disable the display of vertical grid lines
+      stroke: {
+        curve: "smooth",
+      },
+      xaxis: {
+        type: "datetime",
+        categories: [
+          "2018-09-19T00:00:00.000Z",
+          "2018-09-19T01:30:00.000Z",
+          "2018-09-19T02:30:00.000Z",
+          "2018-09-19T03:30:00.000Z",
+          "2018-09-19T04:30:00.000Z",
+          "2018-09-19T05:30:00.000Z",
+          "2018-09-19T06:30:00.000Z",
+        ],
+      },
+      tooltip: {
+        x: {
+          format: "dd/MM/yy HH:mm",
         },
       },
     },
-  };
+  });
+
   return (
-    <div className="line_chart">
-      <Line data={data} options={options} />
+    <div id="chart">
+      <ReactApexChart
+        options={chartData.options}
+        series={chartData.series}
+        type="area"
+        height={350}
+        width="100%"
+      />
     </div>
   );
 };

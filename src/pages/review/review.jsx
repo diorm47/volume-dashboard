@@ -146,7 +146,7 @@ function Review() {
                 + 301,63 <span>USDT</span>
               </p>
             </div>
-            {/* <img className="graph_image" src={pnl_graph} alt="" /> */}
+        
             <div className="review_chart">
               <LineChart />
             </div>
