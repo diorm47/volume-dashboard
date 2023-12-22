@@ -27,8 +27,8 @@ function NavBar({ setMode }) {
     mainApi
       .logout()
       .then((res) => {
-        console.log(res);
         localStorage.clear();
+        localStorage.setItem("mode", "white");
       })
       .catch((error) => {
         console.log("error", error);
@@ -47,7 +47,7 @@ function NavBar({ setMode }) {
         });
     }
   }, [localStorage.getItem("token")]);
-  console.log(userData);
+
   return (
     <nav>
       <div className="nav_wrapper">

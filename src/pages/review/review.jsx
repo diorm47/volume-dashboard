@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./review.css";
 
-import pnl_graph from "../../assets/images/pnl-graph.png";
-import inviteImg from "../../assets/images/invite.png";
-import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg";
-import { NavLink } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import { NavLink } from "react-router-dom";
+import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg";
+import inviteImg from "../../assets/images/invite.png";
 import LineChart from "../../components/line-chart/line-chart";
 
 function Review() {
@@ -24,6 +23,7 @@ function Review() {
     "За последние 90 дн.",
     "За все время",
   ];
+  const [pnl, setPnl] = useState(301);
 
   return (
     <div className="pages_wrapper review_page">
@@ -143,12 +143,12 @@ function Review() {
             </div>
             <div className="pnl_value">
               <p>
-                + 301,63 <span>USDT</span>
+                + {pnl} <span>USDT</span>
               </p>
             </div>
-        
+
             <div className="review_chart">
-              <LineChart />
+              <LineChart setPnl={setPnl} />
             </div>
           </div>
           <div className="orders_history_list main_block_wrapper">

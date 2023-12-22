@@ -1,9 +1,17 @@
-.apexcharts-text tspan {
-  color: #92979c !important;
-  opacity: 0.6;
-  font-family: TTInterfaces400;
+#chart .apexcharts-gridline {
+  stroke-width: 0.3px; /* Change grid line thickness here */
+}
+
+#chart .apexcharts-xaxis-label,
+#chart .apexcharts-yaxis-label {
+  font-family: TTInterfaces400 !important;
   font-size: 11px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+}
+.apexcharts-text tspan {
+  font-family: TTInterfaces400 !important;
+}
+#SvgjsLine1448 {
+  display: none !important;
 }

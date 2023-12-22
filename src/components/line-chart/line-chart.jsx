@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./line-chart.css";
 
-const LineChart = () => {
+const LineChart = ({ setPnl }) => {
   const [chartData, setChartData] = useState({
     series: [
       {
@@ -43,10 +43,28 @@ const LineChart = () => {
           "2018-09-19T05:30:00.000Z",
           "2018-09-19T06:30:00.000Z",
         ],
+        labels: {
+          style: {
+            colors: "#92979C",
+          },
+        },
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: "#92979C",
+          },
+        },
       },
       tooltip: {
         x: {
           format: "dd/MM/yy HH:mm",
+        },
+        y: {
+          formatter: function (value) {
+            setPnl(value);
+            return `${value} USDT`;
+          },
         },
       },
     },

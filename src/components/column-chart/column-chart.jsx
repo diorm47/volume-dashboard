@@ -2,60 +2,83 @@ import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./column-chart.css";
 
-const ColumnChart = () => {
-  const [chartData, setChartData] = useState({
+const ColumnChart = ({setPnlDays}) => {
+  const [chartData] = useState({
     series: [
       {
-        data: [
-          {
-            x: "21.11.2023",
-            y: [1, 5],
-          },
-          {
-            x: "22.11.2023",
-            y: [4, 6],
-          },
-          {
-            x: "23.11.2023",
-            y: [5, 8],
-          },
-          {
-            x: "24.11.2023",
-            y: [2, 4],
-          },
-
-          {
-            x: "25.11.2023",
-            y: [7, 11],
-          },
-          {
-            x: "26.11.2023",
-            y: [3, 11],
-          },
-          {
-            x: "27.11.2023",
-            y: [9, 11],
-          },
-        ],
+        name: "PnL",
+        data: [40, 20, -100, -30, 140, 50, 10],
       },
     ],
     options: {
       chart: {
-        type: "rangeBar",
+        type: "bar",
         height: 350,
-        
       },
       plotOptions: {
         bar: {
-          horizontal: false,
-      
-          barWidth: "30px", 
+          colors: {
+            ranges: [
+              {
+                from: 100000000,
+                to: -100000000,
+                color: "#0077FF",
+              },
+            ],
+          },
+          columnWidth: "20%",
         },
       },
-      colors: ["#0077FF"],
-
       dataLabels: {
         enabled: false,
+      },
+      grid: {
+        yaxis: {
+          lines: {
+            show: true,
+            color: "#F7F7F7",
+          },
+        },
+      },
+      yaxis: {
+        labels: {
+          formatter: function (y) {
+            return y.toFixed(0);
+          },
+        },
+      },
+      xaxis: {
+        type: "datetime",
+        categories: [
+          "2011-01-01",
+          "2011-02-01",
+          "2011-03-01",
+          "2011-04-01",
+          "2011-05-01",
+          "2011-06-01",
+          "2011-07-01",
+        ],
+        labels: {
+          style: {
+            colors: "#92979C",
+          },
+        },
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: "#92979C",
+          },
+        },
+      },
+      tooltip: {
+     
+        y: {
+          formatter: function (value) {
+            setPnlDays(value);
+            return `${value} USDT`;
+          },
+        },
       },
     },
   });
@@ -65,9 +88,8 @@ const ColumnChart = () => {
       <ReactApexChart
         options={chartData.options}
         series={chartData.series}
-        type="rangeBar"
+        type="bar"
         height={350}
-        width="100%"
       />
     </div>
   );

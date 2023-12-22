@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./analysis.css";
 import analysisGraph from "../../assets/images/analysis-graph.png";
 import analysisGraph2 from "../../assets/images/analysis-graph-2.png";
@@ -11,6 +11,9 @@ function Analysis() {
   React.useEffect(() => {
     document.title = `Анализ  | &Volume`;
   }, []);
+  const [pnl, setPnl] = useState(81);
+  const [pnlDays, setPnlDays] = useState("98");
+
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
@@ -106,11 +109,11 @@ function Analysis() {
           </div>
           <div className="pnl_value">
             <p>
-              + 81,11 <span>USDT</span>
+              + {pnl} <span>USDT</span>
             </p>
           </div>
           <div className="review_chart">
-            <LineChart />
+            <LineChart setPnl={setPnl} />
           </div>
         </div>
         <div className="secondary_block_wrapper">
@@ -119,10 +122,10 @@ function Analysis() {
           </div>
           <div className="pnl_value">
             <p>
-              + 168,65 <span>USDT</span>
+              {pnlDays > 0 ? `+${pnlDays}` : pnlDays} <span>USDT</span>
             </p>
           </div>
-          <ColumnChart />
+          <ColumnChart setPnlDays={setPnlDays} />
         </div>
 
         <div className="orders_history_list main_block_wrapper">
