@@ -12,6 +12,7 @@
 
 .review_left {
   max-width: 825px;
+  width: 100%;
 }
 .review_left_top {
   display: flex;
