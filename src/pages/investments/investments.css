@@ -402,6 +402,7 @@
   border-radius: 5px;
   border: 1px solid var(--Stroke_Black, #343436);
   background: transparent;
+  color: #fff;
 }
 .invest_modal_item_input {
   position: relative;
