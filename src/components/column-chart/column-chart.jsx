@@ -50,16 +50,16 @@ const ColumnChart = ({ setPnlDays }) => {
       xaxis: {
         type: "datetime",
         categories: [
-          "2011-01-01",
-          "2011-02-01",
-          "2011-03-01",
-          "2011-04-01",
-          "2011-05-01",
-          "2011-06-01",
-          "2011-07-01",
+          "2023-12-21",
+          "2023-12-22",
+          "2023-12-23",
+          "2023-12-24",
+          "2023-12-25",
+          "2023-12-26",
+          "2023-12-27",
         ],
         labels: {
-          format: 'MM/dd', // Format date as 'month/day'
+          format: "MM/dd", // Format date as 'month/day'
           style: {
             colors: "#92979C",
           },

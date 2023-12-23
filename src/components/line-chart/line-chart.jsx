@@ -30,29 +30,28 @@ const LineChart = ({ setPnl }) => {
             color: "#F7F7F7",
           },
         },
+        padding: {
+          right: 19, // Increase right padding
+        },
       },
       xaxis: {
         type: "datetime",
         categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-20T01:30:00.000Z",
-          "2018-09-21T02:30:00.000Z",
-          "2018-09-22T03:30:00.000Z",
-          "2018-09-23T04:30:00.000Z",
-          "2018-09-24T05:30:00.000Z",
-          "2018-09-25T06:30:00.000Z",
+          "2023-12-21",
+          "2023-12-22",
+          "2023-12-23",
+          "2023-12-24",
+          "2023-12-25",
+          "2023-12-26",
+          "2023-12-27",
         ],
         labels: {
-          formatter: function (value, timestamp) {
-            const date = new Date(timestamp);
-            const month = date.getMonth() + 1;
-            const day = date.getDate();
-            return `${month}/${day}`;
-          },
+          format: "MM/dd", // Format date as 'month/day'
+
           style: {
             colors: "#92979C",
           },
-        }
+        },
       },
       yaxis: {
         labels: {
@@ -63,7 +62,7 @@ const LineChart = ({ setPnl }) => {
       },
       tooltip: {
         x: {
-          format: "dd/MM/yy HH:mm",
+          format: "dd/MM/yy",
         },
         y: {
           formatter: function (value) {
