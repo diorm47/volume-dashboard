@@ -1,0 +1,102 @@
+.rs-picker-menu {
+  width: 568px;
+}
+.rs-stack {
+  width: 568px;
+}
+.rs-calendar {
+  width: 50%;
+}
+.date_picker div,
+.date_picker span,
+.date_picker button {
+  font-family: TTInterfaces400 !important;
+  font-family: 400;
+}
+
+.rs-calendar-table-cell-day {
+  font-family: TTInterfaces400 !important;
+  font-size: 14px;
+}
+.rs-calendar-table-header-cell-content {
+  font-size: 13px !important;
+  color: rgba(128, 128, 128, 0.348) !important;
+}
+.rs-calendar-table-header-cell {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.175) !important;
+  padding-bottom: 5px !important;
+}
+
+.rs-calendar-header-title-date {
+  font-size: 18px !important;
+  font-family: TTInterfaces500 !important;
+}
+.rs-picker-daterange-calendar-group .rs-calendar:nth-child(1) {
+  border-right: 1px solid rgba(128, 128, 128, 0.175) !important;
+}
+.rs-picker-daterange-menu .rs-calendar:first-child {
+  border-left: none !important;
+}
+.rs-picker-daterange-menu .rs-calendar {
+  padding-top: 16px !important;
+}
+.rs-picker-toolbar {
+  border-top: none !important;
+  flex-direction: column;
+}
+.rs-picker-menu .rs-picker-toolbar-ranges {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+}
+
+.rs-picker-menu .rs-picker-toolbar-ranges button {
+  color: #000;
+  font-family: TTInterfaces400 !important;
+  font-size: 13px !important;
+  background: rgba(128, 128, 128, 0.089);
+}
+.rs-picker-daterange-header {
+  display: none;
+}
+.rs-calendar-table-cell-selected .rs-calendar-table-cell-content {
+  background: #0077ff;
+  border-radius: 50%;
+}
+.rs-calendar-table-cell .rs-calendar-table-cell-content:hover {
+  background: #0077ff;
+  border-radius: 50%;
+}
+.rs-picker-toolbar-right {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.rs-picker-toolbar .rs-stack-item:nth-child(2) {
+  width: 100%;
+}
+.rs-picker-toolbar-right {
+  margin-top: 16px !important;
+  border-top: 1px solid rgba(128, 128, 128, 0.175) !important;
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rs-picker-toolbar-right button {
+  background: #0077ff;
+  border-radius: 40px;
+  padding: 7px 14px;
+  font-family: TTInterfaces500 !important;
+}
+.rs-calendar-table-cell-is-today .rs-calendar-table-cell-content {
+  border-radius: 50%;
+}
+
+.rs-picker-toggle-wrapper {
+    visibility: hidden;
+    position: absolute;
+    right: 15%;
+}
