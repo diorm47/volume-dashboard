@@ -47,7 +47,6 @@ const ColumnChart = ({ setPnlDays }) => {
           },
         },
       },
-  
       xaxis: {
         type: "datetime",
         categories: [
@@ -60,13 +59,7 @@ const ColumnChart = ({ setPnlDays }) => {
           "2011-07-01",
         ],
         labels: {
-          style: {
-            colors: "#92979C",
-          },
-        },
-      },
-      yaxis: {
-        labels: {
+          format: 'MM/dd', // Format date as 'month/day'
           style: {
             colors: "#92979C",
           },
