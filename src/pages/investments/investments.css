@@ -271,8 +271,10 @@
 }
 .invest_modal_top_exit svg {
   cursor: pointer;
-  position: fixed;
-  top: 25px;
+
+}
+.black_mode .invest_modal_top_exit svg * {
+  fill: #fff;
 }
 .invest_modal_top_exit svg * {
   fill: #111112;
@@ -283,6 +285,12 @@
   width: 100%;
   margin: 0 auto;
   position: relative;
+}
+.black_mode .aditional_invest_modal .login_input_titles p {
+  color: #fff;
+}
+.black_mode .aditional_invest_modal svg * {
+  stroke: #fff;
 }
 
 .invest_modal_top_content h2 {
@@ -296,6 +304,9 @@
   font-weight: 800;
   line-height: normal;
   letter-spacing: -2.58px;
+}
+.black_mode .invest_modal_top_content h2 {
+  color: var(--Color_White, #fff);
 }
 .invest_modal_top_content_descriptions {
   display: flex;
@@ -332,11 +343,17 @@
   height: 47px;
   background: #dbdbdb;
 }
+.black_mode .invest_modal_top_content_descriptions_line {
+  background-color: #343436;
+}
 .invest_modal__content_line {
   width: 100%;
   height: 1px;
   background: #dbdbdb;
   margin: 25px 0 28px;
+}
+.black_mode .invest_modal__content_line {
+  background: #343436;
 }
 .invest_modal_item_title {
   display: flex;
@@ -357,6 +374,11 @@
   font-weight: 400;
   line-height: 16px; /* 123.077% */
 }
+.black_mode .invest_modal_item_title p,
+.black_mode .invest_modal_item_input p,
+.black_mode .invest_modal_bottom_content_item_text {
+  color: #fff;
+}
 .invest_modal_item_title svg {
   cursor: pointer;
 }
@@ -366,15 +388,20 @@
   border: 1px solid var(--Stroke_White, #dbdbdb);
   padding: 12px 15px;
 
-  color: var(--Color_Gray, #92979c);
+  color: var(--Color_Gray, #000);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 13px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 17px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
+}
+.black_mode .invest_modal_item_input input {
+  border-radius: 5px;
+  border: 1px solid var(--Stroke_Black, #343436);
+  background: transparent;
 }
 .invest_modal_item_input {
   position: relative;
@@ -480,6 +507,10 @@
   font-weight: 400;
   line-height: 16px; /* 123.077% */
 }
+.black_mode .aditional_invest_modal_content h4,
+.black_mode .aditional_invest_modal_content li {
+  color: var(--Color_White, #fff);
+}
 .aditional_invest_modal_content h4 {
   margin-bottom: 20px;
 }
@@ -540,22 +571,72 @@
 ::-webkit-scrollbar {
   width: 5px;
   height: 10px;
-
 }
 
 /* Styles for the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-  background: #cdcdcd; 
+  background: #cdcdcd;
   border-radius: 5px;
 }
 .risk_orange {
-  color: var(--Yellow, #F2C94C) !important;
+  color: var(--Yellow, #f2c94c) !important;
 }
 
 @media only screen and (max-width: 1050px) {
   .investing_top_cards {
     flex-direction: column;
     gap: 0;
+  }
+}
+@media only screen and (max-width: 880px) {
+  .invest_modal {
+    width: 100%;
+    max-width: 100%;
+    left: 0 !important;
+    margin: 0 !important;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .invest_modal_top_content h2 {
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -1px;
+  }
+  .invest_modal {
+    top: 30px !important;
+  }
+  .invest_modal_top_content,
+  .invest_modal_bottom_content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .switch_toggler {
+    right: 15px;
+  }
+  .invest_modal {
+    max-height: auto !important;
+  }
+  .invest_modal_item_input input {
+    padding: 12px 11px;
+    font-size: 13px;
+  }
+  .aditional_invest_modal_content li, .aditional_invest_modal_content h4 {
+    margin-bottom: 14px;
+  }
+  .aditional_invest_modal_content p {
+    margin-bottom: 12px;
+  }
+  .invest_modal_top_exit svg * {
+    fill: #D2D2D2;
+   
+  }
+  .invest_modal_top_exit svg {
+    position: absolute;
+    right: 15px;
+    top: 24px;
+    z-index: 11;
   }
 }
 @media only screen and (max-width: 450px) {

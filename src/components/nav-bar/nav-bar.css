@@ -163,12 +163,33 @@ nav {
   margin-bottom: 24px;
 }
 
-.nav_menu_item:hover .nav_menu_item_drop {
+/* .nav_menu_item:hover .nav_menu_item_drop {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+} */
+
+.nav_menu_item p:hover ~ .nav_menu_item_drop,
+.nav_menu_item svg:hover ~ .nav_menu_item_drop,
+.nav_menu_item img:hover ~ .nav_menu_item_drop {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
   transition: all 0.3s ease;
 }
+.nav_menu_item svg:hover .nav_menu_item_drop {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+.nav_menu_item_drop:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .nav_menu_item_drop:hover {
   display: flex;
 }

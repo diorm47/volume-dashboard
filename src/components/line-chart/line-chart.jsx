@@ -18,7 +18,6 @@ const LineChart = ({ setPnl }) => {
       dataLabels: {
         enabled: false,
       },
-
       stroke: {
         curve: "smooth",
         width: 2,
@@ -36,18 +35,24 @@ const LineChart = ({ setPnl }) => {
         type: "datetime",
         categories: [
           "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z",
+          "2018-09-20T01:30:00.000Z",
+          "2018-09-21T02:30:00.000Z",
+          "2018-09-22T03:30:00.000Z",
+          "2018-09-23T04:30:00.000Z",
+          "2018-09-24T05:30:00.000Z",
+          "2018-09-25T06:30:00.000Z",
         ],
         labels: {
+          formatter: function (value, timestamp) {
+            const date = new Date(timestamp);
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            return `${month}/${day}`;
+          },
           style: {
             colors: "#92979C",
           },
-        },
+        }
       },
       yaxis: {
         labels: {

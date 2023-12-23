@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./column-chart.css";
 
-const ColumnChart = ({setPnlDays}) => {
+const ColumnChart = ({ setPnlDays }) => {
   const [chartData] = useState({
     series: [
       {
@@ -47,6 +47,7 @@ const ColumnChart = ({setPnlDays}) => {
           },
         },
       },
+  
       xaxis: {
         type: "datetime",
         categories: [
@@ -72,7 +73,6 @@ const ColumnChart = ({setPnlDays}) => {
         },
       },
       tooltip: {
-     
         y: {
           formatter: function (value) {
             setPnlDays(value);

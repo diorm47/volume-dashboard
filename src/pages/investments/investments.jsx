@@ -92,7 +92,6 @@ function Investments() {
   };
 
   // block site scroll
-
   useEffect(() => {
     if (modal1 || modal2 || modal3) {
       const scrollY = window.scrollY;
@@ -108,6 +107,24 @@ function Investments() {
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
     }
   }, [modal1, modal2, modal3]);
+
+  // active
+  const [focusedField, setFocusedField] = useState(null);
+
+  const handleFocus = (fieldName) => {
+    setFocusedField(fieldName);
+  };
+
+  const handleBlur = () => {
+    setFocusedField(null);
+  };
+
+  const getInputClass = (fieldName) => {
+    if (focusedField === fieldName) {
+      return "input_focused";
+    }
+    return "inputfocused";
+  };
   return (
     <>
       <div className="pages_wrapper investments_page">
@@ -587,7 +604,13 @@ function Investments() {
                 </svg>
               </div>
               <div className="invest_modal_item_input">
-                <input type="number" placeholder="Мин.100" />
+                <input
+                  type="number"
+                  placeholder="Мин.100"
+                  className={getInputClass("field1")}
+                  onFocus={() => handleFocus("field1")}
+                  onBlur={handleBlur}
+                />
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
@@ -631,6 +654,9 @@ function Investments() {
                   disabled={!isChecked}
                   onChange={(e) => setStopLos(e.target.value)}
                   placeholder="Введите максимально приемлемый убыток"
+                  className={getInputClass("field2")}
+                  onFocus={() => handleFocus("field2")}
+                  onBlur={handleBlur}
                 />
                 <p>USDT</p>
               </div>
@@ -797,7 +823,13 @@ function Investments() {
                 </svg>
               </div>
               <div className="invest_modal_item_input">
-                <input type="number" placeholder="Мин.100" />
+                <input
+                  type="number"
+                  placeholder="Мин.100"
+                  className={getInputClass("field3")}
+                  onFocus={() => handleFocus("field3")}
+                  onBlur={handleBlur}
+                />
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
@@ -841,6 +873,9 @@ function Investments() {
                   disabled={!isChecked}
                   onChange={(e) => setStopLos(e.target.value)}
                   placeholder="Введите максимально приемлемый убыток"
+                  className={getInputClass("field4")}
+                  onFocus={() => handleFocus("field4")}
+                  onBlur={handleBlur}
                 />
                 <p>USDT</p>
               </div>
@@ -1009,7 +1044,13 @@ function Investments() {
                 </svg>
               </div>
               <div className="invest_modal_item_input">
-                <input type="number" placeholder="Мин.100" />
+                <input
+                  type="number"
+                  placeholder="Мин.100"
+                  className={getInputClass("field5")}
+                  onFocus={() => handleFocus("field5")}
+                  onBlur={handleBlur}
+                />
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
@@ -1053,6 +1094,9 @@ function Investments() {
                   disabled={!isChecked}
                   onChange={(e) => setStopLos(e.target.value)}
                   placeholder="Введите максимально приемлемый убыток"
+                  className={getInputClass("field6")}
+                  onFocus={() => handleFocus("field6")}
+                  onBlur={handleBlur}
                 />
                 <p>USDT</p>
               </div>
