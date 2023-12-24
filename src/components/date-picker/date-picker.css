@@ -55,7 +55,7 @@
   color: #000;
   font-family: TTInterfaces500 !important;
   font-size: 13px !important;
-  background: rgba(128, 128, 128, 0.089);
+  background: #F7F7F7;
 }
 .rs-picker-daterange-header {
   display: none;
@@ -102,5 +102,5 @@
 }
 
 .rs-calendar-table-cell-in-range::before {
-  background-color: rgba(128, 128, 128, 0.112) !important;
+  background-color: #F7F7F7 !important;
 }

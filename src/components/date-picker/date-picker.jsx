@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import "./date-picker.css";
 
 import subDays from "date-fns/subDays";
-import { DateRangePicker, Stack } from "rsuite";
+import { DateRangePicker } from "rsuite";
 import "rsuite/dist/rsuite-rtl.css";
 
 function DatePicker() {
@@ -27,6 +27,7 @@ function DatePicker() {
 
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const customLocale = {
+    ok: "Подтвердить",
     sunday: "Вс",
     monday: "Пн",
     tuesday: "Вт",
@@ -80,6 +81,7 @@ function DatePicker() {
           console.log(shortcut);
         }}
         open={isCalendarOpen}
+        okButtonLabel="Подтвердить"
       />
 
       <div className="analysis_top_toggler" onClick={openCalendar}>
