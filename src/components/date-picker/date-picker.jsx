@@ -98,7 +98,7 @@ function DatePicker() {
         </svg>
         <p>{selectedRange[1].toLocaleDateString()}</p>
         <svg
-        //   onClick={() => setSelectedRange()}
+          onClick={() => setSelectedRange([subDays(new Date(), 6), new Date()])}
           xmlns="http://www.w3.org/2000/svg"
           width="18"
           height="19"

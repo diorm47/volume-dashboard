@@ -127,6 +127,7 @@ nav {
 .nav_menu_item_drop a:hover p {
   border-radius: 6px;
   background: #f9f9f9;
+
 }
 .black_mode .nav_menu_item_drop a:hover p {
   background: #111112;

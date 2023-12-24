@@ -19,3 +19,10 @@
 #SvgjsLine1073, .apexcharts-xaxis-tick {
   display: none !important;
 }
+
+@media only screen and (max-width: 450px) {
+  #chart {
+   margin-left: -20px;
+   margin-right: -20px;
+  }
+}

@@ -53,7 +53,7 @@
 
 .rs-picker-menu .rs-picker-toolbar-ranges button {
   color: #000;
-  font-family: TTInterfaces400 !important;
+  font-family: TTInterfaces500 !important;
   font-size: 13px !important;
   background: rgba(128, 128, 128, 0.089);
 }
@@ -96,7 +96,11 @@
 }
 
 .rs-picker-toggle-wrapper {
-    visibility: hidden;
-    position: absolute;
-    right: 15%;
+  visibility: hidden;
+  position: absolute;
+  right: 15%;
+}
+
+.rs-calendar-table-cell-in-range::before {
+  background-color: rgba(128, 128, 128, 0.112) !important;
 }

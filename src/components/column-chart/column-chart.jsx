@@ -39,6 +39,9 @@ const ColumnChart = ({ setPnlDays }) => {
             color: "#F7F7F7",
           },
         },
+        padding: {
+          right: 19, // Increase right padding
+        },
       },
       yaxis: {
         labels: {

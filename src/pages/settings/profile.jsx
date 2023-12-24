@@ -240,9 +240,7 @@ function Profile() {
             <span>Полное имя</span>
             <div>
               <p>
-                {`${formData.lastName || "-"} ${formData.firstName || "-"} ${
-                  formData.middleName || "-"
-                }`}{" "}
+                {`${formData.lastName} ${formData.firstName} ${formData.middleName}`}{" "}
               </p>
               <p onClick={() => setNameModal(true)}>
                 Изменить <span>имя</span>
