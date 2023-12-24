@@ -4,7 +4,7 @@
   justify-content: center;
 }
 .snackbar {
-  position: absolute;
+  position: fixed;
   top: 10%;
   z-index: 11;
 
@@ -37,6 +37,11 @@
   transition: all 0.5s ease;
   visibility: visible;
   opacity: 1;
+}
+.snackbar_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 620px) {

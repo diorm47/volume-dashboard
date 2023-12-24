@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as UpdateIcon } from "../../assets/icons/update-img.svg";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import avatar from "../../assets/images/avatar.png";
+import { mainApi } from "../../components/utils/main-api";
+import Snackbar from "../../components/snackbar/snackbar";
 
 function Profile() {
   React.useEffect(() => {
@@ -56,6 +58,151 @@ function Profile() {
     }
   };
 
+  // crud
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [email2, setEmail2] = useState("");
+  const [phone, setPhone] = useState("");
+  const [visibleSnack, setVisibleSnack] = useState(false);
+  const [snackText, setSnackText] = useState("");
+  const [snackStatus, setSnackStatus] = useState("");
+  const snackOptions = (text, status) => {
+    setVisibleSnack(true);
+    setSnackText(text);
+    setSnackStatus(status);
+    setTimeout(() => {
+      setVisibleSnack(false);
+    }, 2000);
+  };
+
+  const [formData, setFormData] = useState({
+    lastName: "",
+    firstName: "",
+    middleName: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      mainApi
+        .reEnter()
+        .then((res) => {
+          console.log(res.data.user);
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
+    }
+  }, [localStorage.getItem("token")]);
+
+  const handleChangeName = () => {
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("name", formData.firstName);
+    bodyContent.append("last_name", formData.lastName);
+    bodyContent.append("patronymic", formData.middleName);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/profile/fio", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        closeModals();
+        snackOptions("ФИО успешно обновлён!", "success");
+      })
+      .catch((error) => {
+        console.log(error);
+        snackOptions("Ошибка!", "error");
+      });
+  };
+
+  const handleChangeUserName = () => {
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("username", userName);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/profile/username", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        closeModals();
+        snackOptions("Юзернейм успeшно обновлён!", "success");
+      })
+      .catch((error) => {
+        console.log(error);
+        snackOptions("Ошибка!", "error");
+      });
+  };
+
+  const handleChangeEmail = () => {
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("new_email", email);
+    bodyContent.append("new_email_confirmation", email2);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/profile/email", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        closeModals();
+        // snackOptions("Юзернейм оспушно обновлены!", "success");
+        setEmailModal(false);
+        setPasswordConfirmModal(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        snackOptions("Ошибка!", "error");
+      });
+  };
+
+  const handleChangePhone = () => {
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("phone", phone);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/profile/phone", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        closeModals();
+        snackOptions("Телефон номер успeшно обновлён!", "success");
+      })
+      .catch((error) => {
+        console.log(error);
+        snackOptions("Ошибка!", "error");
+      });
+  };
+
   return (
     <>
       <div className="profile_page">
@@ -84,7 +231,11 @@ function Profile() {
           <div className="user_data_item">
             <span>Полное имя</span>
             <div>
-              <p>Овчинников Данил Игоревич</p>
+              <p>
+                {`${formData.lastName || "-"} ${formData.firstName || "-"} ${
+                  formData.middleName || "-"
+                }`}{" "}
+              </p>
               <p onClick={() => setNameModal(true)}>
                 Изменить <span>имя</span>
               </p>
@@ -94,7 +245,7 @@ function Profile() {
           <div className="user_data_item">
             <span>Псевдоним</span>
             <div>
-              <p>DanilOvchinnikovill</p>
+              <p>{userName || "---"}</p>
               <p onClick={() => setUserNameModal(true)}>
                 Изменить <span>псевдоним</span>
               </p>
@@ -105,7 +256,7 @@ function Profile() {
           <div className="user_data_item">
             <span>Адрес электронной почты</span>
             <div>
-              <p>nvolume@mail.ru</p>
+              <p>{email || "---"}</p>
               <p onClick={() => setEmailModal(true)}>
                 Изменить <span>электронную почту</span>
               </p>
@@ -116,7 +267,7 @@ function Profile() {
           <div className="user_data_item">
             <span>Номер телефона</span>
             <div>
-              <p>+79000000000</p>
+              <p>+{phone || ""}</p>
               <p onClick={() => setNumberModal(true)}>
                 Изменить <span>номер телефона</span>
               </p>
@@ -150,22 +301,37 @@ function Profile() {
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
             <p>Фамилия</p>
-            <input type="text" />
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="modal_wrapper_content_item">
             <p>Имя</p>
-            <input type="text" />
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="modal_wrapper_content_item">
             <p>Отчество</p>
-            <input type="text" />
+            <input
+              type="text"
+              name="middleName"
+              value={formData.middleName}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button>Сохранить</button>
+              <button onClick={handleChangeName}>Сохранить</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
+              <button onClick={closeModals}>Отмена</button>
             </div>{" "}
           </div>
         </div>
@@ -185,14 +351,18 @@ function Profile() {
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
             <p>Псевдоним</p>
-            <input type="text" />
+            <input
+              type="text"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button>Сохранить</button>
+              <button onClick={handleChangeUserName}>Сохранить</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
+              <button onClick={closeModals}>Отмена</button>
             </div>
           </div>
         </div>
@@ -210,14 +380,18 @@ function Profile() {
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
             <p>Номер телефона</p>
-            <input type="text" />
+            <input
+              type="number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button>Сохранить</button>
+              <button onClick={handleChangePhone}>Сохранить</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
+              <button onClick={closeModals}>Отмена</button>
             </div>
           </div>
         </div>
@@ -235,25 +409,26 @@ function Profile() {
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
             <p>Новая электронная почта</p>
-            <input type="text" />
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_content_item">
             <p>Новая электронная почта ещё раз</p>
-            <input type="text" />
+            <input
+              type="text"
+              value={email2}
+              onChange={(e) => setEmail2(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button
-                onClick={() => {
-                  setEmailModal(false);
-                  setPasswordConfirmModal(true);
-                }}
-              >
-                Подтвердить
-              </button>
+              <button onClick={() => handleChangeEmail}>Подтвердить</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
+              <button onClick={closeModals}>Отмена</button>
             </div>
           </div>
         </div>
@@ -328,6 +503,8 @@ function Profile() {
           </div>
         </div>
       </div>
+
+      <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
     </>
   );
 }

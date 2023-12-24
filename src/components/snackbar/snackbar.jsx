@@ -2,6 +2,7 @@ import React from "react";
 import "./snackbar.css";
 
 function Snackbar({ text, status, visible }) {
+  console.log(visible);
   return (
     <div className="snackbar_wrapper">
       <div className={visible ? "snackbar snackbar_visible" : "snackbar"}>

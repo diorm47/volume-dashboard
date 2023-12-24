@@ -42,7 +42,29 @@ function Auth() {
   };
 
   const handleSubmit = () => {
-    setSection(3);
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("email", email);
+
+    fetch("https://trade.margelet.org/public-api/v1/users/email-check", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setSection(3);
+        } else {
+          setErrorResponce(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   // user data
