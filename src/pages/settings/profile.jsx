@@ -59,7 +59,7 @@ function Profile() {
   };
 
   // crud
-  const [name, setName] = useState("");
+
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [email2, setEmail2] = useState("");
@@ -94,7 +94,15 @@ function Profile() {
       mainApi
         .reEnter()
         .then((res) => {
-          console.log(res.data.user);
+          const data = res.data.user;
+          setUserName(data.username);
+          setEmail(data.email);
+          setPhone(data.phone);
+          setFormData({
+            lastName: data.last_name,
+            firstName: data.name,
+            middleName: data.patronymic,
+          });
         })
         .catch((error) => {
           console.log("error", error);
