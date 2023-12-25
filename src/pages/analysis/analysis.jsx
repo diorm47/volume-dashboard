@@ -5,6 +5,7 @@ import ColumnChart from "../../components/column-chart/column-chart";
 import DatePicker from "../../components/date-picker/date-picker";
 import LineChart from "../../components/line-chart/line-chart";
 import "./analysis.css";
+import DataPickerMob from "../../components/data-picker-mob/data-picker-mob";
 
 function Analysis() {
   React.useEffect(() => {
@@ -18,8 +19,12 @@ function Analysis() {
       <div className="analysing_page_title_wrapper">
         <div className="page_title analyse_title">
           <h2>Анализ</h2>
-          <DatePicker />
-          
+          <div className="data_picker_desctop">
+            <DatePicker />
+          </div>
+          <div className="data_picker_mobile">
+            <DataPickerMob />
+          </div>
         </div>
       </div>
       <div className="analysis_page_wrapper">

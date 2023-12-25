@@ -157,6 +157,18 @@
   }
 }
 
+.data_picker_mobile {
+  display: none;
+}
+@media only screen and (max-width: 730px) {
+ .data_picker_desctop {
+  display: none;
+ }
+ .data_picker_mobile {
+  display: flex;
+ }
+}
+
 @media only screen and (max-width: 580px) {
   .analysing_page_title_wrapper .page_title {
     gap: 24px;

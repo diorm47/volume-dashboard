@@ -1,0 +1,60 @@
+.datepicker-header,
+.datepicker-navbar {
+  display: none;
+}
+
+.date_picker_mob_content {
+  height: 216px;
+  position: relative;
+}
+.datepicker.default {
+  background-color: transparent !important;
+}
+.date_picker_mob_buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.date_picker_mob_buttons button {
+  background: #f7f7f7;
+  color: #000;
+  font-family: TTInterfaces500;
+  font-size: 13px;
+  padding: 5px 10px;
+}
+
+.date_picker_mob_inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.date_picker_mob_inputs button {
+  background: transparent;
+  border: 1px solid #d5d5d5;
+  padding: 8px 0;
+  font-family: TTInterfaces500;
+  font-size: 16px !important;
+  width: 45%;
+  border-radius: 6px;
+}
+.datepicker .datepicker-scroll > li {
+  font-size: 15px !important;
+  font-family: TTInterfaces500;
+}
+.datepicker .datepicker-col-1 {
+  margin: 0 !important;
+}
+.active_time_input {
+  border: 1px solid #0077ffcc !important;
+}
+.datepicker.default .datepicker-wheel {
+  border-top: 1px solid #d5d5d5 !important;
+  border-bottom: 1px solid #d5d5d5 !important;
+}
+
+.datepicker.default .datepicker-scroll li.disabled {
+visibility: hidden;
+}
