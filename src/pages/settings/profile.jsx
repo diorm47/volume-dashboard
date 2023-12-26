@@ -39,25 +39,6 @@ function Profile() {
     }
   }, [nameModal, usernameModal, numberModal, emailModal, passwordConfirmModal]);
 
-  const [input1, setInput1] = useState("");
-  const [input2, setInput2] = useState("");
-  const [input3, setInput3] = useState("");
-  const [input4, setInput4] = useState("");
-  const [input5, setInput5] = useState("");
-  const [input6, setInput6] = useState("");
-  const input2Ref = useRef();
-  const input3Ref = useRef();
-  const input4Ref = useRef();
-  const input5Ref = useRef();
-  const input6Ref = useRef();
-  const handleInput = (e, setInput, nextInputRef) => {
-    const value = e.target.value;
-    setInput(value);
-    if (value.length === 1 && nextInputRef) {
-      nextInputRef.current.focus();
-    }
-  };
-
   // crud
 
   const [userName, setUserName] = useState("");
@@ -180,7 +161,7 @@ function Profile() {
       .then((response) => response.json())
       .then((data) => {
         closeModals();
-        // snackOptions("Юзернейм оспушно обновлены!", "success");
+
         setEmailModal(false);
         setPasswordConfirmModal(true);
       })
@@ -214,7 +195,70 @@ function Profile() {
         snackOptions("Ошибка!", "error");
       });
   };
+  const [otp, setOtp] = useState(new Array(6).fill(""));
+  const [timer, setTimer] = useState(300);
+  const inputsRef = useRef([]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleChange = (element, index) => {
+    const value = element.value;
+    setOtp([...otp.slice(0, index), value, ...otp.slice(index + 1)]);
+
+    if (value && index < 5) {
+      inputsRef.current[index + 1].focus();
+    }
+  };
+
+  const handleKeyUp = (event, index) => {
+    if (event.keyCode === 8 && index > 0) {
+      // Move to previous input
+      inputsRef.current[index - 1].focus();
+    }
+  };
+
+  const formatTimer = () => {
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+    return `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  };
+  const handleSubmitCode = async () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("code", otp.join(""));
+
+    fetch("https://trade.margelet.org/private-api/v1/users/two-factor", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        snackOptions("Почта yспушно обновлён!", "success");
+        closeModals();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        snackOptions("Ошибка!", "error");
+      });
+  };
   return (
     <>
       <div className="profile_page">
@@ -435,7 +479,7 @@ function Profile() {
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button onClick={() => handleChangeEmail}>Подтвердить</button>
+              <button onClick={handleChangeEmail}>Подтвердить</button>
             </div>
             <div className="modal_wrapper_cancel">
               <button onClick={closeModals}>Отмена</button>
@@ -445,70 +489,47 @@ function Profile() {
       </div>
       <div
         className={
-          passwordConfirmModal
+          passwordConfirmModal || true
             ? "modal_wrapper visible_modal_wrapper"
             : "modal_wrapper "
         }
       >
         <div className="modal_wrapper_title">
-          <p>Изменить пароль</p>
+          <p>Введите код</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Мы отправили код на nvolume@mail.ru</p>
-            <div className="recovery_inputs">
-              <input
-                type="text"
-                value={input1}
-                onChange={(e) => handleInput(e, setInput1, input2Ref)}
-                maxLength={1}
-              />
-              <input
-                ref={input2Ref}
-                type="text"
-                value={input2}
-                onChange={(e) => handleInput(e, setInput2, input3Ref)}
-                maxLength={1}
-              />
-              <input
-                ref={input3Ref}
-                type="text"
-                value={input3}
-                onChange={(e) => handleInput(e, setInput3, input4Ref)}
-                maxLength={1}
-              />
-              <input
-                ref={input4Ref}
-                type="text"
-                value={input4}
-                onChange={(e) => handleInput(e, setInput4, input5Ref)}
-                maxLength={1}
-              />
-              <input
-                ref={input5Ref}
-                type="text"
-                value={input5}
-                onChange={(e) => handleInput(e, setInput5, input6Ref)}
-                maxLength={1}
-              />
-              <input
-                ref={input6Ref}
-                type="text"
-                value={input6}
-                onChange={(e) => handleInput(e, setInput6, null)}
-                maxLength={1}
-                onKeyUp={(e) => e.key === "Enter"}
-              />
+            <p>Мы отправили код на {email}</p>
+            <div id="otp" className="fillcode_inputs">
+              {otp.map((data, index) => (
+                <input
+                  key={index}
+                  className="text-center form-control"
+                  type="number"
+                  maxLength="1"
+                  value={data}
+                  onChange={(e) => handleChange(e.target, index)}
+                  onKeyUp={(e) => handleKeyUp(e, index)}
+                  ref={(ref) => (inputsRef.current[index] = ref)}
+                />
+              ))}
             </div>
-            <p className="recovery_time">Отправить повторно (5:00)</p>
+            <div className="getcode_timer">
+              <p>Отправить повторно ({formatTimer()})</p>
+            </div>
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button>Подтвердить</button>
+              <button
+                onClick={handleSubmitCode}
+                disabled={otp.join("").length < 6}
+              >
+                Подтвердить
+              </button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
+              <button onClick={closeModals}>Отмена</button>
             </div>
           </div>
         </div>
