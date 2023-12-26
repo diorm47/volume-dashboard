@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./review.css";
 
 import Dropdown from "react-dropdown";
@@ -7,23 +7,76 @@ import { NavLink } from "react-router-dom";
 import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg";
 import inviteImg from "../../assets/images/invite.png";
 import LineChart from "../../components/line-chart/line-chart";
+import { mainApi } from "../../components/utils/main-api";
 
 function Review() {
   React.useEffect(() => {
     document.title = `Обзор | &Volume`;
   }, []);
-  const options = [
-    "За сегодня",
-    "За последние 7 дн.",
-    "За последние 30 дн.",
-    "За последние 90 дн.",
-  ];
+  const [userData, setUserData] = useState({});
+  const [pnl, setPnl] = useState(301);
+  const [selectedOption, setSelectedOption] = useState("today");
+
+  const optionsMap = {
+    "За сегодня": "today",
+    "За последние 7 дн.": "d7",
+    "За последние 30 дн.": "d30",
+    "За последние 90 дн.": "d90",
+  };
+  const options = Object.keys(optionsMap);
+
+  const handleSelect = (option) => {
+    const value = optionsMap[option.value];
+    setSelectedOption(value);
+    getPnl(value);
+  };
+
   const options2 = [
     "За последние 30 дн.",
     "За последние 90 дн.",
     "За все время",
   ];
-  const [pnl, setPnl] = useState(301);
+
+  const refresh = () => {
+    mainApi
+      .reEnter()
+      .then((res) => {
+        setUserData(res.data.user);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
+
+  const getPnl = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("period", selectedOption);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/pnl", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      refresh();
+      getPnl()
+    }
+  }, [localStorage.getItem("token")]);
 
   return (
     <div className="pages_wrapper review_page">
@@ -41,7 +94,7 @@ function Review() {
                   <p>Основной аккаунт</p>
                   <div className="review_left_top_block_content_amount">
                     <p>
-                      4.158,63 <span>USDT</span>
+                      {userData.balance || "-"} <span>USDT</span>
                     </p>
                   </div>
                 </div>
@@ -54,6 +107,10 @@ function Review() {
                   <div className="main_select_item">
                     <Dropdown
                       options={options}
+                      onChange={handleSelect}
+                      value={options.find(
+                        (option) => optionsMap[option] === selectedOption
+                      )}
                       placeholder={options[0]}
                       arrowClosed={
                         <svg
@@ -465,7 +522,7 @@ function Review() {
             </div>
             <div className="tarif_plan">
               <div className="tarif_plan_top">
-                <p>Продвинутый</p>
+                <p>{userData.tariff || "-"}</p>
                 <p>$ 100</p>
               </div>
               <div className="tarif_plan_time">
