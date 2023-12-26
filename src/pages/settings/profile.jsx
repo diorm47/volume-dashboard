@@ -113,6 +113,7 @@ function Profile() {
   const handleChangeName = () => {
     let headersList = {
       Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
     let bodyContent = new FormData();
@@ -139,6 +140,7 @@ function Profile() {
   const handleChangeUserName = () => {
     let headersList = {
       Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
     let bodyContent = new FormData();
@@ -163,6 +165,7 @@ function Profile() {
   const handleChangeEmail = () => {
     let headersList = {
       Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
     let bodyContent = new FormData();
@@ -190,6 +193,7 @@ function Profile() {
   const handleChangePhone = () => {
     let headersList = {
       Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
     let bodyContent = new FormData();
