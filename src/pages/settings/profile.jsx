@@ -489,7 +489,7 @@ function Profile() {
       </div>
       <div
         className={
-          passwordConfirmModal || true
+          passwordConfirmModal 
             ? "modal_wrapper visible_modal_wrapper"
             : "modal_wrapper "
         }
