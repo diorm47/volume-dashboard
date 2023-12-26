@@ -98,7 +98,8 @@ function Review() {
                   <p>Основной аккаунт</p>
                   <div className="review_left_top_block_content_amount">
                     <p>
-                      {userData.balance || "-"} <span>USDT</span>
+                      {/* {userData.balance || "-"} <span>USDT</span> */}
+                      0.00 <span>USDT</span>
                     </p>
                   </div>
                 </div>
@@ -154,7 +155,8 @@ function Review() {
                   <p>PnL за сегодня</p>
                   <div className="review_left_top_block_content_amount">
                     <p>
-                      {pnl} <span>USDT</span>
+                      {/* {pnl} <span>USDT</span> */}
+                      0.00 <span>USDT</span>
                     </p>
                   </div>
                 </div>

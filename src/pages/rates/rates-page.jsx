@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function RatesPage() {
   React.useEffect(() => {
@@ -61,24 +62,35 @@ function RatesPage() {
       </div>
       <div className="secondary_block_wrapper">
         <div className="main_block_wrapper_title">
-          <h2>Тарифный план</h2>
+          <h2>Пробный период</h2>
+          {/* <h2>Тарифный план</h2> */}
         </div>
         <div className="tarif_plan">
           <div className="tarif_plan_top">
-            <p>Продвинутый</p>
-            <p>$ 100</p>
+            {/* <p>{userData.tariff || "-"}</p>
+                <p>$ 100</p> */}
+            <p>7 дней бесплатно</p>
           </div>
-          <div className="tarif_plan_time">
-            <div className="tarif_plan_time_title">
-              <p>30 дней</p>
-              <p>12 дней</p>
-            </div>
-            <div className="tarif_plan_time_block">
-              <div className="tarif_plan_time_block_value"></div>
-            </div>
+          <div className="free_tarif">
+            <p>
+              Активируйте тестовый период уже сегодня и получите доступ к
+              широкому спектру возможностей.{" "}
+            </p>
           </div>
+          {/* <div className="tarif_plan_time">
+                <div className="tarif_plan_time_title">
+                  <p>30 дней</p>
+                  <p>12 дней</p>
+                </div>
+                <div className="tarif_plan_time_block">
+                  <div className="tarif_plan_time_block_value"></div>
+                </div>
+              </div> */}
           <div className="review_right_link">
-            <p>Добавить + 30 дней</p>
+            <NavLink to="/rates/rates">
+              {/* <p>Добавить + 30 дней</p> */}
+              <p>Активировать</p>
+            </NavLink>
           </div>
         </div>
       </div>

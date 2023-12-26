@@ -136,7 +136,7 @@ function Security() {
             <div>
               <p>nvolume@mail.ru</p>
               <p onClick={() => setEmailModal(true)}>
-                Изменить <span>электронную почту</span> | Отключить{" "}
+              Отключить{" "}
               </p>
             </div>
           </div>

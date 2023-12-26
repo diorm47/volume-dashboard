@@ -43,7 +43,7 @@ function Analysis() {
                 <p>Основной аккаунт</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    4.158,63 <span>USDT</span>
+                   0.00 <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -60,7 +60,7 @@ function Analysis() {
                 <p>PnL за сегодня</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    + 158,21 <span>USDT</span>
+                   0.00 <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -77,7 +77,7 @@ function Analysis() {
                 <p>PnL c 21.11.2023 - 27.11.2023</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    + 301,63 <span>USDT</span>
+                    0.00 <span>USDT</span>
                   </p>
                 </div>
               </div>

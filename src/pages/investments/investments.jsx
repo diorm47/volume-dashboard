@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./investments.css";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
+import empty_block from "../../assets/icons/empty-block.png";
+
 
 function Investments() {
   React.useEffect(() => {
@@ -24,8 +26,8 @@ function Investments() {
     },
     {
       question: "Как управлять рисками при инвестировании?",
-      answer: 'Криптовалюта - высокорискованный вид инвестиций. В зависимости от рыночной ситуации, инвестиции могут принести как крупную прибыль, так и ощутимый убыток. Мы настоятельно рекомендуем использовать только ту часть накоплений, которую вы готовы потерять. Выбирая метод инвестирования, принимайте во внимание вашу личную финансовую ситуацию и не рискуйте больше, чем можете себе позволить.'
-        
+      answer:
+        "Криптовалюта - высокорискованный вид инвестиций. В зависимости от рыночной ситуации, инвестиции могут принести как крупную прибыль, так и ощутимый убыток. Мы настоятельно рекомендуем использовать только ту часть накоплений, которую вы готовы потерять. Выбирая метод инвестирования, принимайте во внимание вашу личную финансовую ситуацию и не рискуйте больше, чем можете себе позволить.",
     },
     {
       question: "Что делать, если я не уверен в своих инвестиционных навыках?",
@@ -44,6 +46,7 @@ function Investments() {
     },
   ];
   const [opened, setOpened] = useState();
+  const [activeInvests, setActiveInvests] = useState();
   const toggleTabs = (data) => {
     if (data == opened) {
       setOpened("");
@@ -457,48 +460,57 @@ function Investments() {
                 <p>Здесь отображается активные инвестиции</p>
               </div>
             </div>
-            <div className="main_block_wrapper_bottom ">
-              <div className="order_history_list_item ">
-                <div className="order_history_list_item_title">
-                  <h2>&Volume</h2>
-                </div>
-                <div className="order_history_list_item_content analysis_order_items">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время создания <span>27.11.2023, 12:43:41</span>
-                    </p>
+            {activeInvests ? (
+              <div className="main_block_wrapper_bottom ">
+                <div className="order_history_list_item ">
+                  <div className="order_history_list_item_title">
+                    <h2>&Volume</h2>
                   </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Метод инвестирования <span>Агрессивный</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Начальная сумма<span>$ 100</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Используемая сумма <span>$ 154</span>
-                    </p>
-                  </div>
+                  <div className="order_history_list_item_content analysis_order_items">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время создания <span>27.11.2023, 12:43:41</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Метод инвестирования <span>Агрессивный</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Начальная сумма<span>$ 100</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Используемая сумма <span>$ 154</span>
+                      </p>
+                    </div>
 
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>154,62 USDT</span>
-                    </p>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток <span>154,62 USDT</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="order_history_list_line"></div>
+
+                <div className="investing_actions">
+                  <div className="add_key_btn">
+                    <button>Удалить</button>
                   </div>
                 </div>
               </div>
-              <div className="order_history_list_line"></div>
-
-              <div className="investing_actions">
-                <div className="add_key_btn">
-                  <button>Удалить</button>
+            ) : (
+              <div className="main_block_wrapper_bottom ">
+                <div className="empty_block">
+                  <img src={empty_block} alt="" />
+                  <p>Нет активных инвестиций</p>
                 </div>
               </div>
-            </div>
+            )}
           </div>
           <div className="page_title investments_block_title">
             <h1 className="questions_title">Часто задаваемые вопросы</h1>

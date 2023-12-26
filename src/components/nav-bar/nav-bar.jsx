@@ -26,11 +26,16 @@ function NavBar({ setMode }) {
   };
 
   const handleLogout = () => {
+    localStorage.clear();
+    localStorage.setItem("mode", "light");
+
+    setMode("light");
+
+    changeTheme("light");
     mainApi
       .logout()
       .then((res) => {
-        localStorage.clear();
-        localStorage.setItem("mode", "white");
+        console.log(res);
       })
       .catch((error) => {
         console.log("error", error);
@@ -322,7 +327,7 @@ function NavBar({ setMode }) {
               </div>
             </div>
             <div className="nav_logout_btn">
-              <button>Выйти</button>
+              <button onClick={handleLogout}>Выйти</button>
             </div>
           </div>
         </div>
