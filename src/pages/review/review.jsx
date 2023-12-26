@@ -14,7 +14,9 @@ function Review() {
     document.title = `Обзор | &Volume`;
   }, []);
   const [userData, setUserData] = useState({});
-  const [pnl, setPnl] = useState(301);
+  const [pnl, setPnl] = useState();
+
+  const [pnlGraph, setPnlGraph] = useState(301);
   const [selectedOption, setSelectedOption] = useState("today");
 
   const optionsMap = {
@@ -64,7 +66,7 @@ function Review() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        setPnl(data.data.pnl);
       })
       .catch((error) => {
         console.log(error);
@@ -74,7 +76,7 @@ function Review() {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       refresh();
-      getPnl()
+      getPnl();
     }
   }, [localStorage.getItem("token")]);
 
@@ -150,7 +152,7 @@ function Review() {
                   <p>PnL за сегодня</p>
                   <div className="review_left_top_block_content_amount">
                     <p>
-                      + 158,21 <span>USDT</span>
+                      {pnl ? `+ ${pnl}` : '-'} <span>USDT</span>
                     </p>
                   </div>
                 </div>
@@ -200,12 +202,12 @@ function Review() {
             </div>
             <div className="pnl_value">
               <p>
-                + {pnl} <span>USDT</span>
+                + {pnlGraph} <span>USDT</span>
               </p>
             </div>
 
             <div className="review_chart">
-              <LineChart setPnl={setPnl} />
+              <LineChart setPnl={setPnlGraph} />
             </div>
           </div>
           <div className="orders_history_list main_block_wrapper">
