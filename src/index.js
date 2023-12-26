@@ -5,16 +5,18 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { CustomProvider } from "rsuite";
 import ru_RU from "rsuite/locales/ru_RU";
+import ThemeWrapper from "./provider/theme-provider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
-    <CustomProvider
+    {/* <CustomProvider
       locale={ru_RU}
-      theme={localStorage.getItem("mode") === "black" ? "dark" : ""}
+      theme={localStorage.getItem("mode") === "black" ? "dark" : "light"}
     >
       <App />
-    </CustomProvider>
+    </CustomProvider> */}
+     <ThemeWrapper />
   </BrowserRouter>
 );

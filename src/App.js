@@ -1,36 +1,24 @@
-import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/footer/footer";
 import NavBar from "./components/nav-bar/nav-bar";
 import Analysis from "./pages/analysis/analysis";
 import Base from "./pages/base/base";
+import Register from "./pages/base/register-acc";
 import Investments from "./pages/investments/investments";
+import Auth from "./pages/login-auth/auth";
+import Login from "./pages/login-auth/login";
+import Reset from "./pages/login-auth/reset";
 import Rates from "./pages/rates/rates";
 import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
-import Register from "./pages/base/register-acc";
-import Login from "./pages/login-auth/login";
-import Auth from "./pages/login-auth/auth";
-import Reset from "./pages/login-auth/reset";
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
 
 function App() {
   const location = useLocation();
   const [mode, setMode] = useState(localStorage.getItem("mode"));
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     mainApi
-  //       .reEnter()
-  //       .then((res) => {
-  //         dispatch(loginUserAction(res));
-  //       })
-  //       .catch((error) => {
-  //         console.log("error", error);
-  //       });
-  //   }
-  // }, [localStorage.getItem("token")]);
+
   return (
-    <div className={mode === "black" ? "black_mode" : ""}>
+    <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&
       location.pathname !== "/reset" &&
       location.pathname !== "/auth" ? (

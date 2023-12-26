@@ -12,15 +12,17 @@ import { ReactComponent as BlackMode } from "../../assets/icons/black_theme.svg"
 
 import avatar from "../../assets/images/avatar.png";
 import { mainApi } from "../utils/main-api";
+import { changeTheme } from "../utils/utils";
 
 function NavBar({ setMode }) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [userData, setUserData] = useState({});
   const toggleMode = () => {
-    const newMode =
-      localStorage.getItem("mode") === "black" ? "white" : "black";
+    const newMode = localStorage.getItem("mode") === "dark" ? "light" : "dark";
     localStorage.setItem("mode", newMode);
     setMode(newMode);
+
+    changeTheme(newMode);
   };
 
   const handleLogout = () => {
@@ -140,7 +142,7 @@ function NavBar({ setMode }) {
             </div>
           </div>
           <div className="mode_toggler">
-            {localStorage.getItem("mode") === "black" ? (
+            {localStorage.getItem("mode") === "dark" ? (
               <BlackMode onClick={toggleMode} className="black_mode_handler" />
             ) : (
               <LightMode onClick={toggleMode} />
@@ -309,7 +311,7 @@ function NavBar({ setMode }) {
                 <p>Sv</p>
               </div>
               <div className="nav_mob_bottom_action mob_lang_toggler">
-                {localStorage.getItem("mode") === "black" ? (
+                {localStorage.getItem("mode") === "dark" ? (
                   <BlackMode
                     onClick={toggleMode}
                     className="black_mode_handler"

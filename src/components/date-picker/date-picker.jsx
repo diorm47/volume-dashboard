@@ -82,6 +82,7 @@ function DatePicker() {
         }}
         open={isCalendarOpen}
         okButtonLabel="Подтвердить"
+        placement='bottomEnd'
       />
 
       <div className="analysis_top_toggler" onClick={openCalendar}>

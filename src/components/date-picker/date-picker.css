@@ -105,7 +105,14 @@
   background-color: #f7f7f7a2 !important;
 }
 
-
 .black_mode_datapicker .rs-picker-menu {
   background: #18181a !important;
+}
+
+.data_picker_desctop {
+  position: relative;
+}
+.rs-picker-toggle-wrapper {
+  margin-right: -37px;
+  margin-top: 10px;
 }
