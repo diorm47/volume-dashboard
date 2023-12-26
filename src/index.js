@@ -7,9 +7,13 @@ import { CustomProvider } from "rsuite";
 import ru_RU from "rsuite/locales/ru_RU";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <BrowserRouter>
-    <CustomProvider locale={ru_RU}>
+    <CustomProvider
+      locale={ru_RU}
+      theme={localStorage.getItem("mode") === "black" ? "dark" : ""}
+    >
       <App />
     </CustomProvider>
   </BrowserRouter>

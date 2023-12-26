@@ -22,6 +22,15 @@
   font-family: TTInterfaces500;
   font-size: 13px;
   padding: 5px 10px;
+  border-radius: 6px;
+
+}
+.black_mode .date_picker_mob_buttons button {
+  background: rgb(48, 48, 48);
+  color: #fff;
+}
+.black_mode .datepicker.default .datepicker-scroll li {
+  color: #f7f7f7;
 }
 
 .date_picker_mob_inputs {
