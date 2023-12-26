@@ -14,6 +14,17 @@
   max-width: 825px;
   width: 100%;
 }
+.free_tarif p {
+  color: var(--Color_Black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-bottom: 30px;
+  /* 17px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
 .review_left_top {
   display: flex;
   align-items: center;
@@ -145,7 +156,7 @@
 }
 
 .pnl_value p {
-  color: var(--2420FC, #0077FF);
+  color: var(--2420FC, #0077ff);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 23px/Medium */
@@ -231,7 +242,7 @@
   color: #111112;
   padding-left: 8px;
 }
-.black_mode .order_history_list_item_content_item span  {
+.black_mode .order_history_list_item_content_item span {
   color: #fff;
 }
 
@@ -263,7 +274,7 @@
   height: 1px;
   background: #dbdbdb;
 }
-.black_mode  .order_history_list_line {
+.black_mode .order_history_list_line {
   background-color: #343436;
 }
 .review_page_wrapper {
@@ -328,13 +339,13 @@
 
 .tarif_plan_time_block_value {
   border-radius: 6px;
-  background: var(--2420FC, #0077FF);
+  background: var(--2420FC, #0077ff);
   height: 4px;
   width: 70%;
 }
 
 .review_right_link p {
-  color: var(--2420FC, #0077FF);
+  color: var(--2420FC, #0077ff);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 17px/Regular */

@@ -16,13 +16,33 @@
 .apexcharts-text tspan {
   font-family: TTInterfaces400 !important;
 }
-#SvgjsLine1073, .apexcharts-xaxis-tick {
+#SvgjsLine1073,
+.apexcharts-xaxis-tick {
   display: none !important;
 }
+.black_mode .apexcharts-tooltip.apexcharts-theme-light {
+  border: 1px solid #343436 !important;
+}
+.black_mode .apexcharts-tooltip.apexcharts-theme-light,
+.black_mode
+  .apexcharts-tooltip.apexcharts-theme-light
+  .apexcharts-tooltip-title {
+  background: #29292d !important;
+}
+.black_mode
+  .apexcharts-tooltip.apexcharts-theme-light
+  .apexcharts-tooltip-title {
+  border-bottom: 1px solid #343436 !important;
+}
+.black_mode .apexcharts-xaxistooltip, .apexcharts-yaxistooltip {
+  background: #29292d !important;
+  color: #fff;
+  border: 1px solid #343436 !important;
 
+}
 @media only screen and (max-width: 450px) {
   #chart {
-   margin-left: -20px;
-   margin-right: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
   }
 }

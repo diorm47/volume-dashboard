@@ -6,15 +6,15 @@ function RatesPage() {
   }, []);
   const faq = [
     {
-      question: "Могу ли я перейти на улучшенный тариф после оплаты?",
+      question: "Могу ли я перейти на другой тариф после оплаты?",
       answer:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor tempore illum cupiditate aspernatur, nam sapiente quidem velit in vel accusantium, neque blanditiis quaerat corporis illo consectetur architecto ipsum veritatis nisi.",
+        "Да. Если хотите перейти на тариф дороже, нужно будет доплатить разницу в зависимости от использованных дней. Если хотите перейти на тариф ниже, то нужно попросить возврат средств за оставшиеся дни, а затем оплатить новый. \n  Обе операции пока что невозможно совершить самостоятельно, обращайтесь в службу поддержки через форму обратной связи на сайте или в Телеграм-бота.",
     },
     {
       question:
         "Могу ли я поменять тарифный план пока действует пробный период?",
       answer:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor tempore illum cupiditate aspernatur, nam sapiente quidem velit in vel accusantium, neque blanditiis quaerat corporis illo consectetur architecto ipsum veritatis nisi.",
+        "Да. Чтобы купить подписку на нужный тариф, выберете его на странице “Тарифы” и следуйте инструкциям для оплаты. Если в процессе возникнут вопросы - обращайтесь в службу поддержки.",
     },
     {
       question: "Как я могу отменить тарифный план?",
@@ -24,17 +24,17 @@ function RatesPage() {
     {
       question: "Как я могу оформить возврат?",
       answer:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor tempore illum cupiditate aspernatur, nam sapiente quidem velit in vel accusantium, neque blanditiis quaerat corporis illo consectetur architecto ipsum veritatis nisi.",
+        "Чтобы получить возврат за неиспользованные дни, нужно обратиться в службу поддержки, либо через форму обратной связи, либо в Телегра-бота.",
     },
     {
-      question: "Какая минимальная сумма?",
+      question: "Какая должна быть минимальная сумма депозита?",
       answer:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor tempore illum cupiditate aspernatur, nam sapiente quidem velit in vel accusantium, neque blanditiis quaerat corporis illo consectetur architecto ipsum veritatis nisi.",
+        "Сервис доступен при балансе депозита от $100. Чтобы получить доход и одновременно окупить стоимость подписки рекомендуем использовать не менее $250 - $500. Также рекомендуем не использовать больше $3 000 в первый месяц.",
     },
     {
       question: "Какие комиссии и условия использования?",
       answer:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor tempore illum cupiditate aspernatur, nam sapiente quidem velit in vel accusantium, neque blanditiis quaerat corporis illo consectetur architecto ipsum veritatis nisi.",
+        "Не берём комиссии со сделок и не взимаем процент с дохода. Чтобы использовать сервис, нужно купить подписку. Стоимость подписки зависит от суммы инвестиций: чем выше депозит, тем дороже подписка. В будущем для пользователей с депозитами выше $5 000 может появиться подписка с оплатой от прибыли.",
     },
     {
       question: "Какие гарантии безопасности?",
@@ -158,7 +158,7 @@ function RatesPage() {
         </div>
       </div>
       <div className="page_title investments_block_title">
-      <h1 className="questions_title">Часто задаваемые вопросы</h1>
+        <h1 className="questions_title">Часто задаваемые вопросы</h1>
       </div>
       <div className="faq_invest">
         {faq.map((item) => (
@@ -188,7 +188,12 @@ function RatesPage() {
               </svg>{" "}
             </div>
             <div className="faq_invest_item_answer">
-              <p>{item.answer}</p>
+              {item.answer.split("\n").map((line, index) => (
+                <span key={index}>
+                  {line}
+                  <br />
+                </span>
+              ))}
             </div>
           </div>
         ))}

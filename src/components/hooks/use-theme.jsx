@@ -15,7 +15,6 @@ function useTheme() {
     };
   }, []);
 
-  console.log(theme);
   return theme;
 }
 

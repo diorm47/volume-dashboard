@@ -8,13 +8,15 @@ import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg
 import inviteImg from "../../assets/images/invite.png";
 import LineChart from "../../components/line-chart/line-chart";
 import { mainApi } from "../../components/utils/main-api";
+import empty_block from "../../assets/icons/empty-block.png";
 
 function Review() {
   React.useEffect(() => {
     document.title = `Обзор | &Volume`;
   }, []);
   const [userData, setUserData] = useState({});
-  const [pnl, setPnl] = useState();
+  const [pnl, setPnl] = useState("0.00");
+  const [ordersHistory, setOrdersHistory] = useState();
 
   const [pnlGraph, setPnlGraph] = useState(301);
   const [selectedOption, setSelectedOption] = useState("today");
@@ -152,7 +154,7 @@ function Review() {
                   <p>PnL за сегодня</p>
                   <div className="review_left_top_block_content_amount">
                     <p>
-                      {pnl || '-'} <span>USDT</span>
+                      {pnl} <span>USDT</span>
                     </p>
                   </div>
                 </div>
@@ -217,317 +219,334 @@ function Review() {
                 <p>Здесь отображается список последних 10 ордеров</p>
               </div>
             </div>
-            <div className="main_block_wrapper_bottom">
-              <div className="order_history_list_item">
-                <div className="order_history_list_item_title">
-                  <Etherium />
-                  <h2>ETHUSDT Бессрочные</h2>
-                  <div className="order_item_top_status">
-                    <p>Short 10x</p>
+            {ordersHistory ? (
+              <div className="main_block_wrapper_bottom">
+                <div className="order_history_list_item">
+                  <div className="order_history_list_item_title">
+                    <Etherium />
+                    <h2>ETHUSDT Бессрочные</h2>
+                    <div className="order_item_top_status">
+                      <p>Short 10x</p>
+                    </div>
+                  </div>
+                  <div className="order_history_list_item_content">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время открытия <span>27.11.2023, 12:43:41</span>
+                      </p>
+                      <p>
+                        Время закрытия <span>27.11.2023, 14:13:33</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Цена продажи <span>2 491,42 USDT</span>
+                      </p>
+                      <p>
+                        Объем позиции <span>0,41 ETH</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток <span>21,54 USDT</span>
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="order_history_list_item_content">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                    <p>
-                      Время закрытия <span>27.11.2023, 14:13:33</span>
-                    </p>
+                <div className="order_history_list_line"></div>
+                <div className="order_history_list_item">
+                  <div className="order_history_list_item_title">
+                    <Etherium />
+                    <h2>ETHUSDT Бессрочные</h2>
+                    <div className="order_item_top_status">
+                      <p>Short 10x</p>
+                    </div>
                   </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена продажи <span>2 491,42 USDT</span>
-                    </p>
-                    <p>
-                      Объем позиции <span>0,41 ETH</span>
-                    </p>
+                  <div className="order_history_list_item_content">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время открытия <span>27.11.2023, 12:43:41</span>
+                      </p>
+                      <p>
+                        Время закрытия <span>27.11.2023, 14:13:33</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Цена продажи <span>2 491,42 USDT</span>
+                      </p>
+                      <p>
+                        Объем позиции <span>0,41 ETH</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток <span>21,54 USDT</span>
+                      </p>
+                    </div>
                   </div>
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
+                </div>
+                <div className="order_history_list_line"></div>
+                <div className="order_history_list_item">
+                  <div className="order_history_list_item_title">
+                    <Etherium />
+                    <h2>ETHUSDT Бессрочные</h2>
+                    <div className="order_item_top_status">
+                      <p>Short 10x</p>
+                    </div>
+                  </div>
+                  <div className="order_history_list_item_content">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время открытия <span>27.11.2023, 12:43:41</span>
+                      </p>
+                      <p>
+                        Время закрытия <span>27.11.2023, 14:13:33</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Цена продажи <span>2 491,42 USDT</span>
+                      </p>
+                      <p>
+                        Объем позиции <span>0,41 ETH</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток <span>21,54 USDT</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="order_history_list_line"></div>
+                <div className="order_history_list_item">
+                  <div className="order_history_list_item_title">
+                    <Etherium />
+                    <h2>ETHUSDT Бессрочные</h2>
+                    <div className="order_item_top_status">
+                      <p>Short 10x</p>
+                    </div>
+                  </div>
+                  <div className="order_history_list_item_content">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время открытия <span>27.11.2023, 12:43:41</span>
+                      </p>
+                      <p>
+                        Время закрытия <span>27.11.2023, 14:13:33</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Цена продажи <span>2 491,42 USDT</span>
+                      </p>
+                      <p>
+                        Объем позиции <span>0,41 ETH</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток <span>21,54 USDT</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="order_history_list_line"></div>
+                <div className="order_history_list_item">
+                  <div className="order_history_list_item_title">
+                    <Etherium />
+                    <h2>ETHUSDT Бессрочные</h2>
+                    <div className="order_item_top_status">
+                      <p>Short 10x</p>
+                    </div>
+                  </div>
+                  <div className="order_history_list_item_content">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время открытия <span>27.11.2023, 12:43:41</span>
+                      </p>
+                      <p>
+                        Время закрытия <span>27.11.2023, 14:13:33</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Цена продажи <span>2 491,42 USDT</span>
+                      </p>
+                      <p>
+                        Объем позиции <span>0,41 ETH</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток <span>21,54 USDT</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="order_history_list_line"></div>
+                <div className="order_history_list_item">
+                  <div className="order_history_list_item_title">
+                    <Etherium />
+                    <h2>ETHUSDT Бессрочные</h2>
+                    <div className="order_item_top_status">
+                      <p>Short 10x</p>
+                    </div>
+                  </div>
+                  <div className="order_history_list_item_content">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время открытия <span>27.11.2023, 12:43:41</span>
+                      </p>
+                      <p>
+                        Время закрытия <span>27.11.2023, 14:13:33</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Цена продажи <span>2 491,42 USDT</span>
+                      </p>
+                      <p>
+                        Объем позиции <span>0,41 ETH</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток <span>21,54 USDT</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="order_history_list_line"></div>
+                <div className="order_history_list_item">
+                  <div className="order_history_list_item_title">
+                    <Etherium />
+                    <h2>ETHUSDT Бессрочные</h2>
+                    <div className="order_item_top_status">
+                      <p>Short 10x</p>
+                    </div>
+                  </div>
+                  <div className="order_history_list_item_content">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время открытия <span>27.11.2023, 12:43:41</span>
+                      </p>
+                      <p>
+                        Время закрытия <span>27.11.2023, 14:13:33</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Цена продажи <span>2 491,42 USDT</span>
+                      </p>
+                      <p>
+                        Объем позиции <span>0,41 ETH</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток <span>21,54 USDT</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="order_history_list_line"></div>
+                <div className="order_history_list_item">
+                  <div className="order_history_list_item_title">
+                    <Etherium />
+                    <h2>ETHUSDT Бессрочные</h2>
+                    <div className="order_item_top_status">
+                      <p>Short 10x</p>
+                    </div>
+                  </div>
+                  <div className="order_history_list_item_content">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время открытия <span>27.11.2023, 12:43:41</span>
+                      </p>
+                      <p>
+                        Время закрытия <span>27.11.2023, 14:13:33</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Цена продажи <span>2 491,42 USDT</span>
+                      </p>
+                      <p>
+                        Объем позиции <span>0,41 ETH</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток <span>21,54 USDT</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="order_history_list_line"></div>
+                <div className="order_history_list_item">
+                  <div className="order_history_list_item_title">
+                    <Etherium />
+                    <h2>ETHUSDT Бессрочные</h2>
+                    <div className="order_item_top_status">
+                      <p>Short 10x</p>
+                    </div>
+                  </div>
+                  <div className="order_history_list_item_content">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время открытия <span>27.11.2023, 12:43:41</span>
+                      </p>
+                      <p>
+                        Время закрытия <span>27.11.2023, 14:13:33</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Цена продажи <span>2 491,42 USDT</span>
+                      </p>
+                      <p>
+                        Объем позиции <span>0,41 ETH</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток <span>21,54 USDT</span>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="order_history_list_line"></div>
-              <div className="order_history_list_item">
-                <div className="order_history_list_item_title">
-                  <Etherium />
-                  <h2>ETHUSDT Бессрочные</h2>
-                  <div className="order_item_top_status">
-                    <p>Short 10x</p>
-                  </div>
-                </div>
-                <div className="order_history_list_item_content">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                    <p>
-                      Время закрытия <span>27.11.2023, 14:13:33</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена продажи <span>2 491,42 USDT</span>
-                    </p>
-                    <p>
-                      Объем позиции <span>0,41 ETH</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
-                  </div>
+            ) : (
+              <div className="main_block_wrapper_bottom">
+                <div className="empty_block">
+                  <img src={empty_block} alt="" />
+                  <p>Нет истории ордеров</p>
                 </div>
               </div>
-              <div className="order_history_list_line"></div>
-              <div className="order_history_list_item">
-                <div className="order_history_list_item_title">
-                  <Etherium />
-                  <h2>ETHUSDT Бессрочные</h2>
-                  <div className="order_item_top_status">
-                    <p>Short 10x</p>
-                  </div>
-                </div>
-                <div className="order_history_list_item_content">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                    <p>
-                      Время закрытия <span>27.11.2023, 14:13:33</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена продажи <span>2 491,42 USDT</span>
-                    </p>
-                    <p>
-                      Объем позиции <span>0,41 ETH</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="order_history_list_line"></div>
-              <div className="order_history_list_item">
-                <div className="order_history_list_item_title">
-                  <Etherium />
-                  <h2>ETHUSDT Бессрочные</h2>
-                  <div className="order_item_top_status">
-                    <p>Short 10x</p>
-                  </div>
-                </div>
-                <div className="order_history_list_item_content">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                    <p>
-                      Время закрытия <span>27.11.2023, 14:13:33</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена продажи <span>2 491,42 USDT</span>
-                    </p>
-                    <p>
-                      Объем позиции <span>0,41 ETH</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="order_history_list_line"></div>
-              <div className="order_history_list_item">
-                <div className="order_history_list_item_title">
-                  <Etherium />
-                  <h2>ETHUSDT Бессрочные</h2>
-                  <div className="order_item_top_status">
-                    <p>Short 10x</p>
-                  </div>
-                </div>
-                <div className="order_history_list_item_content">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                    <p>
-                      Время закрытия <span>27.11.2023, 14:13:33</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена продажи <span>2 491,42 USDT</span>
-                    </p>
-                    <p>
-                      Объем позиции <span>0,41 ETH</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="order_history_list_line"></div>
-              <div className="order_history_list_item">
-                <div className="order_history_list_item_title">
-                  <Etherium />
-                  <h2>ETHUSDT Бессрочные</h2>
-                  <div className="order_item_top_status">
-                    <p>Short 10x</p>
-                  </div>
-                </div>
-                <div className="order_history_list_item_content">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                    <p>
-                      Время закрытия <span>27.11.2023, 14:13:33</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена продажи <span>2 491,42 USDT</span>
-                    </p>
-                    <p>
-                      Объем позиции <span>0,41 ETH</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="order_history_list_line"></div>
-              <div className="order_history_list_item">
-                <div className="order_history_list_item_title">
-                  <Etherium />
-                  <h2>ETHUSDT Бессрочные</h2>
-                  <div className="order_item_top_status">
-                    <p>Short 10x</p>
-                  </div>
-                </div>
-                <div className="order_history_list_item_content">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                    <p>
-                      Время закрытия <span>27.11.2023, 14:13:33</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена продажи <span>2 491,42 USDT</span>
-                    </p>
-                    <p>
-                      Объем позиции <span>0,41 ETH</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="order_history_list_line"></div>
-              <div className="order_history_list_item">
-                <div className="order_history_list_item_title">
-                  <Etherium />
-                  <h2>ETHUSDT Бессрочные</h2>
-                  <div className="order_item_top_status">
-                    <p>Short 10x</p>
-                  </div>
-                </div>
-                <div className="order_history_list_item_content">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                    <p>
-                      Время закрытия <span>27.11.2023, 14:13:33</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена продажи <span>2 491,42 USDT</span>
-                    </p>
-                    <p>
-                      Объем позиции <span>0,41 ETH</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="order_history_list_line"></div>
-              <div className="order_history_list_item">
-                <div className="order_history_list_item_title">
-                  <Etherium />
-                  <h2>ETHUSDT Бессрочные</h2>
-                  <div className="order_item_top_status">
-                    <p>Short 10x</p>
-                  </div>
-                </div>
-                <div className="order_history_list_item_content">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                    <p>
-                      Время закрытия <span>27.11.2023, 14:13:33</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена продажи <span>2 491,42 USDT</span>
-                    </p>
-                    <p>
-                      Объем позиции <span>0,41 ETH</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
         <div className="review_right">
           <div className="secondary_block_wrapper">
             <div className="main_block_wrapper_title">
-              <h2>Тарифный план</h2>
+              <h2>Пробный период</h2>
+              {/* <h2>Тарифный план</h2> */}
             </div>
             <div className="tarif_plan">
               <div className="tarif_plan_top">
-                <p>{userData.tariff || "-"}</p>
-                <p>$ 100</p>
+                {/* <p>{userData.tariff || "-"}</p>
+                <p>$ 100</p> */}
+                <p>7 дней бесплатно</p>
               </div>
-              <div className="tarif_plan_time">
+              <div className="free_tarif">
+                <p>
+                  Активируйте тестовый период уже сегодня и получите доступ к
+                  широкому спектру возможностей.{" "}
+                </p>
+              </div>
+              {/* <div className="tarif_plan_time">
                 <div className="tarif_plan_time_title">
                   <p>30 дней</p>
                   <p>12 дней</p>
@@ -535,10 +554,11 @@ function Review() {
                 <div className="tarif_plan_time_block">
                   <div className="tarif_plan_time_block_value"></div>
                 </div>
-              </div>
+              </div> */}
               <div className="review_right_link">
                 <NavLink to="/rates/rates">
-                  <p>Добавить + 30 дней</p>
+                  {/* <p>Добавить + 30 дней</p> */}
+                  <p>Активировать</p>
                 </NavLink>
               </div>
             </div>

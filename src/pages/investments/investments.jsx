@@ -24,8 +24,8 @@ function Investments() {
     },
     {
       question: "Как управлять рисками при инвестировании?",
-      answer:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor tempore illum cupiditate aspernatur, nam sapiente quidem velit in vel accusantium, neque blanditiis quaerat corporis illo consectetur architecto ipsum veritatis nisi.",
+      answer: 'Криптовалюта - высокорискованный вид инвестиций. В зависимости от рыночной ситуации, инвестиции могут принести как крупную прибыль, так и ощутимый убыток. Мы настоятельно рекомендуем использовать только ту часть накоплений, которую вы готовы потерять. Выбирая метод инвестирования, принимайте во внимание вашу личную финансовую ситуацию и не рискуйте больше, чем можете себе позволить.'
+        
     },
     {
       question: "Что делать, если я не уверен в своих инвестиционных навыках?",
@@ -40,7 +40,7 @@ function Investments() {
     {
       question: "Как рассчитывается прогнозируемый доход? ",
       answer:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor tempore illum cupiditate aspernatur, nam sapiente quidem velit in vel accusantium, neque blanditiis quaerat corporis illo consectetur architecto ipsum veritatis nisi.",
+        "Прогнозируемый доход рассчитывается исходя из исторических данных о прибыльности за предыдущие периоды.",
     },
   ];
   const [opened, setOpened] = useState();
