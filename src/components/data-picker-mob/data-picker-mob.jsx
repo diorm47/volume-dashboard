@@ -134,7 +134,7 @@ function DataPickerMob() {
             />
           </div>
 
-          <div className="modal_wrapper_btns">
+          <div className="modal_wrapper_btns date_picker_mob_btns">
             <div className="modal_wrapper_cancel">
               <button onClick={() => setVisible(false)}>Отмена</button>
             </div>

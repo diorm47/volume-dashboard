@@ -49,6 +49,13 @@
   width: 45%;
   border-radius: 6px;
 }
+.black_mode .date_picker_mob_inputs button {
+  border: 1px solid var(--Stroke_Black, #343436);
+}
+.black_mode .datepicker.default .datepicker-wheel {
+  border-top: 1px solid #343436 !important;
+  border-bottom: 1px solid #343436 !important;
+}
 .datepicker .datepicker-scroll > li {
   font-size: 15px !important;
   font-family: TTInterfaces500;
@@ -66,4 +73,13 @@
 
 .datepicker.default .datepicker-scroll li.disabled {
 visibility: hidden;
+}
+
+
+@media only screen and (max-width: 450px) {
+  .date_picker_mob_btns {
+    flex-direction: column-reverse !important;
+    gap: 0 !important;
+    margin-top: 15px;
+  }
 }
