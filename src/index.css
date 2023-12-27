@@ -9,7 +9,10 @@ body {
   background: #fbfbfb;
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+}
+.active p {
+  text-decoration: none !important;
 }
 .white_mode {
   background: #fff !important;

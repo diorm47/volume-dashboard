@@ -1,12 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import PasswordValidator from "./password-validator";
 import { NavLink } from "react-router-dom";
+import Snackbar from "../../components/snackbar/snackbar";
 
 function Reset() {
   const [section, setSection] = useState(1);
   const [email, setEmail] = useState("");
+  const [token, setToken] = useState("");
+  const [password, setAuthPassword] = useState("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const [isEmailError, setIsEmailError] = useState(true);
+  const [errorResponce, setErrorResponce] = useState(false);
+
+  useEffect(() => {
+    if (errorResponce) {
+      setTimeout(() => {
+        setErrorResponce(false);
+      }, 3000);
+    }
+  }, [errorResponce]);
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
     validateEmail(e.target.value);
@@ -16,9 +28,6 @@ function Reset() {
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
     setIsSubmitDisabled(!isValidEmail);
     setIsEmailError(!isValidEmail);
-  };
-  const handleSubmit = () => {
-    setSection(2);
   };
 
   const [otp, setOtp] = useState(new Array(6).fill(""));
@@ -58,10 +67,107 @@ function Reset() {
       .padStart(2, "0")}`;
   };
 
-  const handleSubmitCode = () => {
-    setSection(3);
-    console.log("Submitted OTP:", otp.join(""));
+  const [visibleSnack, setVisibleSnack] = useState(false);
+  const [snackText, setSnackText] = useState("");
+  const [snackStatus, setSnackStatus] = useState("");
+  const snackOptions = (text, status) => {
+    setVisibleSnack(true);
+    setSnackText(text);
+    setSnackStatus(status);
+    setTimeout(() => {
+      setVisibleSnack(false);
+    }, 2000);
   };
+
+  // actions
+
+  const handleSubmit = () => {
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("email", email);
+
+    fetch(
+      "https://trade.margelet.org/public-api/v1/users/send-password-reset-token",
+      {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setSection(2);
+        } else {
+          snackOptions("Такой email не зарегистрирован!", "error");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleSubmitCode = () => {
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("email", email);
+    bodyContent.append("token", otp.join(""));
+
+    fetch(
+      "https://trade.margelet.org/public-api/v1/users/validate-password-reset-token",
+      {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setSection(3);
+          setToken(data.data.token);
+        } else {
+          snackOptions("Неправильный код подтверждения!", "error");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const setNewPassword = () => {
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("email", email);
+    bodyContent.append("token", token);
+    bodyContent.append("password", password);
+    bodyContent.append("password_confirmation", password);
+
+    fetch("https://trade.margelet.org/public-api/v1/users/set-new-password", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setSection(4);
+        } else {
+          snackOptions("Ошибка!", "error");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="login_page_wrapper">
       <div className="login_page reset_page">
@@ -139,7 +245,7 @@ function Reset() {
                 <input
                   key={index}
                   className="text-center form-control"
-                  type="password"
+                  type="number"
                   maxLength="1"
                   value={data}
                   onChange={(e) => handleChange(e.target, index)}
@@ -164,7 +270,15 @@ function Reset() {
           ""
         )}
 
-        {section === 3 ? <PasswordValidator setSection={setSection} /> : ""}
+        {section === 3 ? (
+          <PasswordValidator
+            setSection={setSection}
+            setAuthPassword={setAuthPassword}
+            setNewPassword={setNewPassword}
+          />
+        ) : (
+          ""
+        )}
 
         {section === 4 ? (
           <div className="reset_section reset_username_block">
@@ -182,6 +296,7 @@ function Reset() {
           ""
         )}
       </div>
+      <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
     </div>
   );
 }

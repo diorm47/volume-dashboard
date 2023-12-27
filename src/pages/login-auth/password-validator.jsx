@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ReactComponent as Error } from "../../assets/icons/password_error.svg";
 import { ReactComponent as Okey } from "../../assets/icons/password_ok.svg";
 
-function PasswordValidator({ setSection, setAuthPassword }) {
+function PasswordValidator({ setSection, setAuthPassword, setNewPassword }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -29,7 +29,7 @@ function PasswordValidator({ setSection, setAuthPassword }) {
   const handlePasswordChange = (e) => {
     const value = e.target.value;
     setPassword(value);
-    setAuthPassword(value)
+    setAuthPassword(value);
     validatePassword(value);
   };
 
@@ -60,9 +60,6 @@ function PasswordValidator({ setSection, setAuthPassword }) {
     );
   }, [password, confirmPassword, passwordCriteria]);
 
-
-
-
   // active
   const [focusedField, setFocusedField] = useState(null);
 
@@ -79,6 +76,10 @@ function PasswordValidator({ setSection, setAuthPassword }) {
       return "input_focused";
     }
     return "inputfocused";
+  };
+  const finishSubmit = () => {
+    setSection(4);
+    setNewPassword();
   };
   return (
     <div className="auth_section set_password">
@@ -204,7 +205,7 @@ function PasswordValidator({ setSection, setAuthPassword }) {
           id="submitBtn"
           className="verify-password-submit"
           disabled={isButtonDisabled}
-          onClick={() => setSection(4)}
+          onClick={finishSubmit}
         >
           Далее
         </button>
