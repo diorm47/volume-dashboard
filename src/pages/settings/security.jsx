@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
+import { format, parseISO } from "date-fns";
+import { ru } from "date-fns/locale";
 
 function Security() {
   React.useEffect(() => {
@@ -49,6 +51,44 @@ function Security() {
     }
   }, [passwordModal, passwordConfirmModal, emailModal]);
 
+  //   // // // // // // // //
+  const formatDate = (dateString) => {
+    const date = parseISO(dateString);
+    return format(date, "d MMM. yyyy 'г.,' HH:mm:ss", { locale: ru });
+  };
+
+  const [loginHistory, setLoginHistory] = useState();
+
+  const getLoginHistory = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch(
+      "https://trade.margelet.org/private-api/v1/users/security/ips-history",
+      {
+        method: "GET",
+
+        headers: headersList,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setLoginHistory(data.data.ips);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      getLoginHistory();
+    }
+  }, [localStorage.getItem("token")]);
+
+  console.log(loginHistory);
   return (
     <>
       <div className="profile_page security_page">
@@ -60,7 +100,7 @@ function Security() {
             <span>Текущий пароль</span>
             <div>
               <svg
-              className="password_templ"
+                className="password_templ"
                 width="300"
                 height="21"
                 viewBox="0 0 300 21"
@@ -135,9 +175,7 @@ function Security() {
             <span>Аутентификация по email</span>
             <div>
               <p>nvolume@mail.ru</p>
-              <p onClick={() => setEmailModal(true)}>
-              Отключить{" "}
-              </p>
+              <p onClick={() => setEmailModal(true)}>Отключить </p>
             </div>
           </div>
         </div>
@@ -151,65 +189,18 @@ function Security() {
               <p>IP-адрес</p>
             </div>
             <div className="order_history_list_line"></div>
-            <div className="user_login_history_item">
-              <p>26 окт. 2023 г., 00:29:16</p>
-              <p>RU</p>
-              <p>178.141.198.55</p>
-            </div>
-            <div className="order_history_list_line"></div>
-            <div className="user_login_history_item">
-              <p>26 окт. 2023 г., 00:29:16</p>
-              <p>RU</p>
-              <p>178.141.198.55</p>
-            </div>
-            <div className="order_history_list_line"></div>
-            <div className="user_login_history_item">
-              <p>26 окт. 2023 г., 00:29:16</p>
-              <p>RU</p>
-              <p>178.141.198.55</p>
-            </div>
-            <div className="order_history_list_line"></div>
-            <div className="user_login_history_item">
-              <p>26 окт. 2023 г., 00:29:16</p>
-              <p>RU</p>
-              <p>178.141.198.55</p>
-            </div>
-            <div className="order_history_list_line"></div>
-            <div className="user_login_history_item">
-              <p>26 окт. 2023 г., 00:29:16</p>
-              <p>RU</p>
-              <p>178.141.198.55</p>
-            </div>
-            <div className="order_history_list_line"></div>
-            <div className="user_login_history_item">
-              <p>26 окт. 2023 г., 00:29:16</p>
-              <p>RU</p>
-              <p>178.141.198.55</p>
-            </div>
-            <div className="order_history_list_line"></div>
-            <div className="user_login_history_item">
-              <p>26 окт. 2023 г., 00:29:16</p>
-              <p>RU</p>
-              <p>178.141.198.55</p>
-            </div>
-            <div className="order_history_list_line"></div>
-            <div className="user_login_history_item">
-              <p>26 окт. 2023 г., 00:29:16</p>
-              <p>RU</p>
-              <p>178.141.198.55</p>
-            </div>
-            <div className="order_history_list_line"></div>
-            <div className="user_login_history_item">
-              <p>26 окт. 2023 г., 00:29:16</p>
-              <p>RU</p>
-              <p>178.141.198.55</p>
-            </div>
-            <div className="order_history_list_line"></div>
-            <div className="user_login_history_item">
-              <p>26 окт. 2023 г., 00:29:16</p>
-              <p>RU</p>
-              <p>178.141.198.55</p>
-            </div>
+            {loginHistory && loginHistory.length >= 1
+              ? loginHistory.map((login) => (
+                  <div
+                    className="user_login_history_item"
+                    key={login.created_at}
+                  >
+                    <p>{formatDate(login.created_at)}</p>
+                    <p>{login.country}</p>
+                    <p>{login.ip}</p>
+                  </div>
+                ))
+              : ""}
           </div>
         </div>
       </div>

@@ -74,11 +74,31 @@ function Review() {
         console.log(error);
       });
   };
+  const getHistoryOrders = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch("https://trade.margelet.org/private-api/v1/users/deals/last-closed", {
+      method: "GET",
+
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setOrdersHistory(data.data.deals);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       refresh();
       getPnl();
+      getHistoryOrders();
     }
   }, [localStorage.getItem("token")]);
 
@@ -221,7 +241,7 @@ function Review() {
                 <p>Здесь отображается список последних 10 ордеров</p>
               </div>
             </div>
-            {ordersHistory ? (
+            {ordersHistory && ordersHistory.length >= 1 ? (
               <div className="main_block_wrapper_bottom">
                 <div className="order_history_list_item">
                   <div className="order_history_list_item_title">
