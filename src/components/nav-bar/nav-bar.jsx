@@ -24,7 +24,6 @@ function NavBar({ setMode }) {
 
     changeTheme(newMode);
   };
-
   const handleLogout = () => {
     localStorage.clear();
     localStorage.setItem("mode", "light");

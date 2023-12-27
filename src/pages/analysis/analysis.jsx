@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as BTC } from "../../assets/icons/btc.svg";
 import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg";
 import ColumnChart from "../../components/column-chart/column-chart";
@@ -7,6 +7,7 @@ import LineChart from "../../components/line-chart/line-chart";
 import "./analysis.css";
 import DataPickerMob from "../../components/data-picker-mob/data-picker-mob";
 import empty_block from "../../assets/icons/empty-block.png";
+import { format } from "date-fns";
 
 function Analysis() {
   React.useEffect(() => {
@@ -17,6 +18,38 @@ function Analysis() {
   const [pnlDays, setPnlDays] = useState("98");
   const [ordersHistory, setOrdersHistory] = useState();
 
+  const formatTime = (time) => {
+    const parsedDate = new Date(time);
+
+    const formattedDate = format(parsedDate, "dd.MM.yyyy, HH:mm:ss");
+    return formattedDate;
+  };
+
+  const getHistoryOrders = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch("https://trade.margelet.org/private-api/v1/users/deals/last-closed", {
+      method: "GET",
+
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setOrdersHistory(data.data.deals);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      getHistoryOrders();
+    }
+  }, [localStorage.getItem("token")]);
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
@@ -43,7 +76,7 @@ function Analysis() {
                 <p>Основной аккаунт</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                   0.00 <span>USDT</span>
+                    0.00 <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -60,7 +93,7 @@ function Analysis() {
                 <p>PnL за сегодня</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                   0.00 <span>USDT</span>
+                    0.00 <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -211,694 +244,68 @@ function Analysis() {
             </div>
           </div>
 
-          {ordersHistory ? (
-            <>
-              <div className="main_block_wrapper_bottom analysis_history">
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <Etherium />
-                    <h2>ETHUSDT Бессрочные</h2>
-                    <div className="order_item_top_status">
-                      <p>Short 10x</p>
+          {ordersHistory && ordersHistory.length >= 1 ? (
+            <div className="main_block_wrapper_bottom analysis_history">
+              {ordersHistory.map((item, index) => (
+                <div className="order_history_list_item_wrapper" key={index}>
+                  <div className="order_history_list_item">
+                    <div className="order_history_list_item_title">
+                      {/* <Etherium /> */}
+                      <h2>{item.ticker}</h2>
+                      {item.direction == "long" ? (
+                        <div className="order_item_top_status order_item_top_status_success">
+                          <p>Long 10x</p>
+                        </div>
+                      ) : (
+                        <div className="order_item_top_status">
+                          <p>Short 10x</p>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <BTC />
-                    <h2>BTCUSDT Бессрочные</h2>
-                    <div className="order_item_top_status order_item_top_status_success">
-                      <p>Long 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
+                    <div className="order_history_list_item_content">
+                      <div className="order_history_list_item_content_item">
+                        <p>
+                          Время открытия{" "}
+                          <span>{formatTime(item.trade_start_at)}</span>
+                        </p>
+                        <p>
+                          Время закрытия{" "}
+                          <span>{formatTime(item.trade_end_at)}</span>
+                        </p>
+                      </div>
+                      <div className="order_history_list_item_content_item">
+                        <p>
+                          Цена продажи{" "}
+                          <span>
+                            {item.price_start} {item.ticker}
+                          </span>
+                        </p>
+                        <p>
+                          Объем позиции{" "}
+                          <span>
+                            {item.price_end} {item.ticker}
+                          </span>
+                        </p>
+                      </div>
+                      <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                        <p>
+                          Прибыль или убыток{" "}
+                          {item.trading_result < 0 ? (
+                            <span style={{ color: "red" }}>
+                              {item.trading_result} {item.ticker}
+                            </span>
+                          ) : (
+                            <span>
+                              {item.trading_result} {item.ticker}
+                            </span>
+                          )}
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <div className="order_history_list_line"></div>
                 </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <Etherium />
-                    <h2>ETHUSDT Бессрочные</h2>
-                    <div className="order_item_top_status">
-                      <p>Short 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <BTC />
-                    <h2>BTCUSDT Бессрочные</h2>
-                    <div className="order_item_top_status order_item_top_status_success">
-                      <p>Long 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <Etherium />
-                    <h2>ETHUSDT Бессрочные</h2>
-                    <div className="order_item_top_status">
-                      <p>Short 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <BTC />
-                    <h2>BTCUSDT Бессрочные</h2>
-                    <div className="order_item_top_status order_item_top_status_success">
-                      <p>Long 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <Etherium />
-                    <h2>ETHUSDT Бессрочные</h2>
-                    <div className="order_item_top_status">
-                      <p>Short 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <BTC />
-                    <h2>BTCUSDT Бессрочные</h2>
-                    <div className="order_item_top_status order_item_top_status_success">
-                      <p>Long 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <Etherium />
-                    <h2>ETHUSDT Бессрочные</h2>
-                    <div className="order_item_top_status">
-                      <p>Short 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <BTC />
-                    <h2>BTCUSDT Бессрочные</h2>
-                    <div className="order_item_top_status order_item_top_status_success">
-                      <p>Long 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <Etherium />
-                    <h2>ETHUSDT Бессрочные</h2>
-                    <div className="order_item_top_status">
-                      <p>Short 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <BTC />
-                    <h2>BTCUSDT Бессрочные</h2>
-                    <div className="order_item_top_status order_item_top_status_success">
-                      <p>Long 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <Etherium />
-                    <h2>ETHUSDT Бессрочные</h2>
-                    <div className="order_item_top_status">
-                      <p>Short 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <BTC />
-                    <h2>BTCUSDT Бессрочные</h2>
-                    <div className="order_item_top_status order_item_top_status_success">
-                      <p>Long 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <Etherium />
-                    <h2>ETHUSDT Бессрочные</h2>
-                    <div className="order_item_top_status">
-                      <p>Short 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <BTC />
-                    <h2>BTCUSDT Бессрочные</h2>
-                    <div className="order_item_top_status order_item_top_status_success">
-                      <p>Long 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <Etherium />
-                    <h2>ETHUSDT Бессрочные</h2>
-                    <div className="order_item_top_status">
-                      <p>Short 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-                <div className="order_history_list_item ">
-                  <div className="order_history_list_item_title">
-                    <BTC />
-                    <h2>BTCUSDT Бессрочные</h2>
-                    <div className="order_item_top_status order_item_top_status_success">
-                      <p>Long 10x</p>
-                    </div>
-                  </div>
-                  <div className="order_history_list_item_content analysis_order_items">
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время открытия <span>27.11.2023, 12:43:41</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Время закрытия <span>27.11.2023, 14:13:33</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Цена покупки <span>2 431,89 USDT</span>
-                      </p>
-                    </div>
-                    <div className="order_history_list_item_content_item">
-                      <p>
-                        Объем позиции <span>0,11 BTC</span>
-                      </p>
-                    </div>
-
-                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                      <p>
-                        Прибыль или убыток <span>21,54 USDT</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="order_history_list_line mb_0"></div>
-              </div>
+              ))}
               <div className="main_block_wrapper_bottom">
                 <div className="pagination">
                   <svg
@@ -932,7 +339,7 @@ function Analysis() {
                   </svg>
                 </div>
               </div>
-            </>
+            </div>
           ) : (
             <div className="main_block_wrapper_bottom">
               <div className="empty_block">
