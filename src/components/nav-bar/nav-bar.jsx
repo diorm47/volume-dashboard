@@ -228,7 +228,7 @@ function NavBar({ setMode }) {
             <div className="nav_menu_item_drop nav_menu_item_drop_profile">
               <div className="nav_menu_item_drop_profile_block">
                 <p>{userData.email}</p>
-                <p>USER ID:436425</p>
+                {/* <p>USER ID:436425</p> */}
                 <p>Пробный</p>
               </div>
               <NavLink to="/settings/profile">

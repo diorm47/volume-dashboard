@@ -7,6 +7,9 @@
   align-items: center;
   justify-content: center;
 }
+.login_page_wrapper {
+  background: #fff !important;
+}
 .login_title {
   width: 100%;
 }

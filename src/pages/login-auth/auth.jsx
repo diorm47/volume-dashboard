@@ -135,6 +135,7 @@ function Auth() {
     return "inputfocused";
   };
   return (
+    <div className="login_page_wrapper">
     <div className="login_page auth_page">
       {section === 1 ? (
         <div className="auth_section auth_input">
@@ -346,7 +347,7 @@ function Auth() {
         status="error"
         visible={errorResponce}
       />
-    </div>
+    </div></div>
   );
 }
 

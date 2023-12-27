@@ -269,6 +269,9 @@
   line-height: 24px; /* 141.176% */
   margin: 0;
 }
+.user_login_history_item_wrapper:last-child .order_history_list_line {
+  display: none;
+}
 .api_actions p:first-child {
   color: var(--2420FC, #0077ff);
 }

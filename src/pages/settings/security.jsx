@@ -192,12 +192,15 @@ function Security() {
             {loginHistory && loginHistory.length >= 1
               ? loginHistory.map((login) => (
                   <div
-                    className="user_login_history_item"
+                    className="user_login_history_item_wrapper"
                     key={login.created_at}
                   >
-                    <p>{formatDate(login.created_at)}</p>
-                    <p>{login.country}</p>
-                    <p>{login.ip}</p>
+                    <div className="user_login_history_item">
+                      <p>{formatDate(login.created_at)}</p>
+                      <p>{login.country}</p>
+                      <p>{login.ip}</p>
+                    </div>
+                    <div className="order_history_list_line"></div>
                   </div>
                 ))
               : ""}
