@@ -102,6 +102,9 @@ input {
 .black_mode {
   background: #111112;
 }
+.empty_block_wrapper {
+  width: 100%;
+}
 .empty_block {
   width: 100%;
   display: flex;

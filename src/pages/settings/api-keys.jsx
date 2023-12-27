@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import Dropdown from "react-dropdown";
+import empty_block from "../../assets/icons/empty-block.png";
+
 import "react-dropdown/style.css";
 
 function ApiKeys() {
@@ -32,6 +34,9 @@ function ApiKeys() {
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
     }
   }, [apiModal, apiActiveModal, apiActiveEditModal]);
+
+  const [apiList, setapiList] = useState();
+
   const options = ["Binance", "CommeEX", "Okx"];
   return (
     <>
@@ -53,52 +58,77 @@ function ApiKeys() {
                 <td>Действие</td>
               </tr>
             </thead>
-            <tbody>
-              <tr  >
-                <td>26 окт. 2023 г., 00:29:16</td>
-                <td>Активное</td>
-                <td>MyAPI</td>
-                <td>Binance</td>
-                <td>
-                  <div className="api_actions">
-                    <p onClick={() => setapiActiveEditModal(true)}>Редактировать </p>
-                    <p>|</p>
-                    <p>Удалить</p>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+            {apiList ? (
+              <tbody>
+                <tr>
+                  <td>26 окт. 2023 г., 00:29:16</td>
+                  <td>Активное</td>
+                  <td>MyAPI</td>
+                  <td>Binance</td>
+                  <td>
+                    <div className="api_actions">
+                      <p onClick={() => setapiActiveEditModal(true)}>
+                        Редактировать{" "}
+                      </p>
+                      <p>|</p>
+                      <p>Удалить</p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            ) : (
+              ""
+            )}
           </table>
+          {!apiList ? (
+            <div className="main_block_wrapper_bottom empty_block_wrapper">
+              <div className="empty_block">
+                <img src={empty_block} alt="" />
+                <p>Нет подключенных API.</p>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
-      <div className="secondary_block_wrapper add_key_history_mobile">
-        <div className="add_key_history_mobile_title">
-          <h2>MyAPI</h2>
-          <svg
-            width="10"
-            height="10"
-            viewBox="0 0 10 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+      {apiList ? (
+        <div className="secondary_block_wrapper add_key_history_mobile">
+          <div className="add_key_history_mobile_title">
+            <h2>MyAPI</h2>
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="10" height="10" rx="5" fill="#31BD65" />
+            </svg>
+          </div>
+          <div className="order_history_list_line"></div>
+          <div
+            className="add_key_history_mobile_list"
+            onClick={() => setapiActiveModal(true)}
           >
-            <rect width="10" height="10" rx="5" fill="#31BD65" />
-          </svg>
+            <div>
+              <p>Время добавления</p>
+              <h4>26 окт. 2023 г., 00:29:16</h4>
+            </div>
+            <div>
+              <p>Биржа</p>
+              <h4>Binance</h4>
+            </div>
+          </div>
         </div>
-        <div className="order_history_list_line"></div>
-        <div
-          className="add_key_history_mobile_list"
-          onClick={() => setapiActiveModal(true)}
-        >
-          <div>
-            <p>Время добавления</p>
-            <h4>26 окт. 2023 г., 00:29:16</h4>
-          </div>
-          <div>
-            <p>Биржа</p>
-            <h4>Binance</h4>
-          </div>
+      ) : (
+        <div className="main_block_wrapper_bottom empty_block_wrapper">
+        <div className="empty_block">
+          <img src={empty_block} alt="" />
+          <p>Нет подключенных API.</p>
         </div>
       </div>
+      )}
 
       <div
         className={

@@ -241,7 +241,7 @@ function Review() {
                 <p>Здесь отображается список последних 10 ордеров</p>
               </div>
             </div>
-            {ordersHistory && ordersHistory.length >= 1 ? (
+            { false ? (
               <div className="main_block_wrapper_bottom">
                 <div className="order_history_list_item">
                   <div className="order_history_list_item_title">
