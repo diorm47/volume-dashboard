@@ -30,7 +30,6 @@ function NavBar({ setMode }) {
     localStorage.setItem("mode", "light");
 
     setMode("light");
-
     changeTheme("light");
     mainApi
       .logout()
@@ -327,7 +326,9 @@ function NavBar({ setMode }) {
               </div>
             </div>
             <div className="nav_logout_btn">
-              <button onClick={handleLogout}>Выйти</button>
+              <NavLink to="/login">
+                <button onClick={handleLogout}>Выйти</button>
+              </NavLink>
             </div>
           </div>
         </div>
