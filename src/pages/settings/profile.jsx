@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as UpdateIcon } from "../../assets/icons/update-img.svg";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
-import avatar from "../../assets/images/avatar.png";
+import avatar from "../../assets/images/avatar-big.png";
 import { mainApi } from "../../components/utils/main-api";
 import Snackbar from "../../components/snackbar/snackbar";
 

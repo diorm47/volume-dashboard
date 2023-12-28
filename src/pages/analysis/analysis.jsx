@@ -18,13 +18,6 @@ function Analysis() {
   const [pnlDays, setPnlDays] = useState("98");
   const [ordersHistory, setOrdersHistory] = useState();
 
-  const formatTime = (time) => {
-    const parsedDate = new Date(time);
-
-    const formattedDate = format(parsedDate, "dd.MM.yyyy, HH:mm:ss");
-    return formattedDate;
-  };
-
   const getHistoryOrders = () => {
     let headersList = {
       Accept: "*/*",
@@ -50,6 +43,13 @@ function Analysis() {
       getHistoryOrders();
     }
   }, [localStorage.getItem("token")]);
+
+  const formatTime = (time) => {
+    const parsedDate = new Date(time);
+
+    const formattedDate = format(parsedDate, "dd.MM.yyyy, HH:mm:ss");
+    return formattedDate;
+  };
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
@@ -244,68 +244,70 @@ function Analysis() {
             </div>
           </div>
 
-          {ordersHistory && ordersHistory.length >= 1 ? (
-            <div className="main_block_wrapper_bottom analysis_history">
-              {ordersHistory.map((item, index) => (
-                <div className="order_history_list_item_wrapper" key={index}>
-                  <div className="order_history_list_item">
+          {ordersHistory ? (
+            <>
+              <div className="main_block_wrapper_bottom analysis_history">
+                {ordersHistory.map((item, index) => (
+                  <div className="order_history_list_item " key={index}>
                     <div className="order_history_list_item_title">
-                      {/* <Etherium /> */}
                       <h2>{item.ticker}</h2>
                       {item.direction == "long" ? (
                         <div className="order_item_top_status order_item_top_status_success">
-                          <p>Long 10x</p>
+                          <p>Long {item.leverage}x</p>
                         </div>
                       ) : (
                         <div className="order_item_top_status">
-                          <p>Short 10x</p>
+                          <p>Short {item.leverage}x</p>
                         </div>
                       )}
                     </div>
-                    <div className="order_history_list_item_content">
+                    <div className="order_history_list_item_content analysis_order_items">
                       <div className="order_history_list_item_content_item">
                         <p>
                           Время открытия{" "}
                           <span>{formatTime(item.trade_start_at)}</span>
                         </p>
+                      </div>
+                      <div className="order_history_list_item_content_item">
                         <p>
                           Время закрытия{" "}
                           <span>{formatTime(item.trade_end_at)}</span>
                         </p>
                       </div>
                       <div className="order_history_list_item_content_item">
+                        {item.direction == "long" ? (
+                          <p>
+                            Цена покупки <span>{item.price_start} USDT</span>
+                          </p>
+                        ) : (
+                          <p>
+                            Цена продажи <span>{item.price_start} USDT</span>
+                          </p>
+                        )}
+                      </div>
+                      <div className="order_history_list_item_content_item">
                         <p>
-                          Цена продажи{" "}
-                          <span>
-                            {item.price_start} {item.ticker}
-                          </span>
-                        </p>
-                        <p>
-                          Объем позиции{" "}
-                          <span>
-                            {item.price_end} {item.ticker}
-                          </span>
+                          Объем позиции <span>{item.volume} USDT</span>
                         </p>
                       </div>
+
                       <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
                         <p>
                           Прибыль или убыток{" "}
                           {item.trading_result < 0 ? (
                             <span style={{ color: "red" }}>
-                              {item.trading_result} {item.ticker}
+                              {item.trading_result} USDT
                             </span>
                           ) : (
-                            <span>
-                              {item.trading_result} {item.ticker}
-                            </span>
+                            <span>{item.trading_result} USDT</span>
                           )}
                         </p>
                       </div>
                     </div>
+                    <div className="order_history_list_line"></div>
                   </div>
-                  <div className="order_history_list_line"></div>
-                </div>
-              ))}
+                ))}
+              </div>
               <div className="main_block_wrapper_bottom">
                 <div className="pagination">
                   <svg
@@ -339,7 +341,7 @@ function Analysis() {
                   </svg>
                 </div>
               </div>
-            </div>
+            </>
           ) : (
             <div className="main_block_wrapper_bottom">
               <div className="empty_block">

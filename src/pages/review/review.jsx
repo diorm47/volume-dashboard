@@ -258,11 +258,11 @@ function Review() {
                         <h2>{item.ticker}</h2>
                         {item.direction == "long" ? (
                           <div className="order_item_top_status order_item_top_status_success">
-                            <p>Long 10x</p>
+                            <p>Long {item.leverage}x</p>
                           </div>
                         ) : (
                           <div className="order_item_top_status">
-                            <p>Short 10x</p>
+                            <p>Short {item.leverage}x</p>
                           </div>
                         )}
                       </div>
@@ -278,17 +278,17 @@ function Review() {
                           </p>
                         </div>
                         <div className="order_history_list_item_content_item">
+                          {item.direction == "long" ? (
+                            <p>
+                              Цена покупки <span>{item.price_start} USDT</span>
+                            </p>
+                          ) : (
+                            <p>
+                              Цена продажи <span>{item.price_start} USDT</span>
+                            </p>
+                          )}
                           <p>
-                            Цена продажи{" "}
-                            <span>
-                              {item.price_start} {item.ticker}
-                            </span>
-                          </p>
-                          <p>
-                            Объем позиции{" "}
-                            <span>
-                              {item.price_end} {item.ticker}
-                            </span>
+                            Объем позиции <span>{item.volume} USDT</span>
                           </p>
                         </div>
                         <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
@@ -296,12 +296,10 @@ function Review() {
                             Прибыль или убыток{" "}
                             {item.trading_result < 0 ? (
                               <span style={{ color: "red" }}>
-                                {item.trading_result} {item.ticker}
+                                {item.trading_result} USDT
                               </span>
                             ) : (
-                              <span>
-                                {item.trading_result} {item.ticker}
-                              </span>
+                              <span>{item.trading_result} USDT</span>
                             )}
                           </p>
                         </div>

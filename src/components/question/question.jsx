@@ -3,9 +3,11 @@ import "./question.css";
 
 function QuestionWidget() {
   return (
-    <div className="question_widget">
-      <p>?</p>
-    </div>
+    <a target="_blank" href="https://t.me/NvolumeSupport_bot">
+      <div className="question_widget">
+        <p>?</p>
+      </div>
+    </a>
   );
 }
 

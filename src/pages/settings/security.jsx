@@ -52,10 +52,26 @@ function Security() {
   }, [passwordModal, passwordConfirmModal, emailModal]);
 
   //   // // // // // // // //
-  const formatDate = (dateString) => {
+  
+  const formatDateWithTime = (dateString) => {
     const date = parseISO(dateString);
-    return format(date, "d MMM. yyyy 'г.,' HH:mm:ss", { locale: ru });
+    return format(date, "d MMM yyyy 'г.,' HH:mm:ss", { locale: ru });
   };
+  
+  const formatDateWithoutTime = (dateString) => {
+    const date = parseISO(dateString);
+    return format(date, "d MMM yyyy", { locale: ru });
+  };
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 450);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 500);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const [loginHistory, setLoginHistory] = useState();
 
@@ -196,7 +212,7 @@ function Security() {
                     key={login.created_at}
                   >
                     <div className="user_login_history_item">
-                      <p>{formatDate(login.created_at)}</p>
+                    <p>{isMobile ? formatDateWithoutTime(login.created_at) : formatDateWithTime(login.created_at)}</p>
                       <p>{login.country}</p>
                       <p>{login.ip}</p>
                     </div>

@@ -25,12 +25,10 @@
 .black_mode .analysis_top_toggler svg * {
   fill: #fff;
 }
-.black_mode
-.pagination p {
+.black_mode .pagination p {
   color: #fff;
 }
-.black_mode
-.pagination svg * {
+.black_mode .pagination svg * {
   fill: #fff;
 }
 .page_title {
@@ -81,6 +79,9 @@
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   padding-bottom: 0 !important;
+}
+.analysis_history .order_history_list_item:last-child .order_history_list_line {
+  margin-bottom: 0;
 }
 .mb_0 {
   margin-bottom: 0 !important;
@@ -162,26 +163,26 @@
   display: none;
 }
 @media only screen and (max-width: 730px) {
- .data_picker_desctop {
-  display: none;
- }
- .data_picker_mobile {
-  display: flex;
- }
+  .data_picker_desctop {
+    display: none;
+  }
+  .data_picker_mobile {
+    display: flex;
+  }
 }
 
 @media only screen and (max-width: 580px) {
   .analysing_page_title_wrapper .page_title {
     gap: 24px;
-    width: 550px;
+
   }
   .analysing_page_title_wrapper .page_title h2 {
     font-size: 17px;
   }
   .analysing_page_title_wrapper {
     overflow: auto;
-    margin-right: -20px;
-    padding-right: 40px;
+    margin-right: -10px;
+ 
   }
   .analysis_top_toggler p {
     font-size: 13px;
@@ -189,9 +190,9 @@
 }
 
 @media only screen and (max-width: 430px) {
-  .analysing_page_title_wrapper .page_title {
-    gap: 24px;
-    width: 430px;
+
+  .analysis_top_toggler {
+    padding: 5px;
   }
   .pagination p {
     font-size: 13px;

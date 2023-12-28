@@ -16,7 +16,6 @@ function Base() {
             <p>База знаний</p>
             <h1>Часто задаваемые вопросы</h1>
           </div>
-         
         </div>
       </div>
 
@@ -31,12 +30,14 @@ function Base() {
               <div className="base_question_card_content">
                 <div>
                   <NavLink to="/register-acc">
+                    <div>
                     <p>Регистрация биржевого аккаунта</p>
+
+                    <span>
+                      Узнайте как зарегистрироваться и пройти верификацию на
+                      биржах партнерах
+                    </span></div>
                   </NavLink>
-                  <span>
-                    Узнайте как зарегистрироваться и пройти верификацию на
-                    биржах партнерах
-                  </span>
                 </div>
                 <div>
                   <p>API</p>
@@ -48,10 +49,10 @@ function Base() {
                   <p>Инвестиции</p>
                   <span>Выбор и подключение метода инвестиций</span>
                 </div>
-                <div>
+                {/* <div>
                   <p>Пробный период</p>
                   <span>Используйте сервис на 100% в пробный период</span>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="secondary_block_wrapper base_question_card">
@@ -71,12 +72,12 @@ function Base() {
                     с биржевого аккаунта
                   </span>
                 </div>
-                <div>
+                {/* <div>
                   <p>Сторонние платежные каналы</p>
                   <span>
                     Покупайте и продавайте криптовалюту через другие платформы
                   </span>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -104,10 +105,10 @@ function Base() {
                     инвестиция с высокой волатильностью.
                   </span>
                 </div>
-                <div>
+                {/* <div>
                   <p>Прочее</p>
                   <span>Распространенные вопросы по инвестициям</span>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="secondary_block_wrapper base_question_card">
@@ -130,10 +131,6 @@ function Base() {
                     Получайте награды за использования сервиса &Volume вашими
                     рефералими{" "}
                   </span>
-                </div>
-                <div>
-                  <p></p>
-                  <span></span>
                 </div>
               </div>
             </div>
@@ -184,19 +181,19 @@ function Base() {
                     использует и раскрывает информацию о клиентах
                   </span>
                 </div>
-                <div>
+                {/* <div>
                   <p>Прочее</p>
                   <span>Распространенные вопросы по другим темам</span>
                 </div>
                 <div>
                   <p>Дорожная карта &Volume</p>
                   <span>&Volume — из криптов фондовый рынок</span>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
-        <div className="base_block_title">
+        {/* <div className="base_block_title">
           <h2>Последние новости</h2>
         </div>
         <div className="base_news">
@@ -248,13 +245,15 @@ function Base() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="base_bottom_blocks">
           <div className="secondary_block_wrapper base_bottom_block">
             <div className="base_bottom_blocks_left">
               <p>Остались вопросы?</p>
               <span>Мы готовы помочь вам в любое время</span>
-              <button>Открыть чат</button>
+              <a target="_blank" href="https://t.me/NvolumeSupport_bot">
+                <button>Открыть чат</button>
+              </a>
             </div>
             <img src={baseBottom} alt="" />
           </div>

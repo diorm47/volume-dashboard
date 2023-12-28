@@ -130,7 +130,7 @@ function NavBar({ setMode }) {
         </div>
         <div className="nav_wrapper_right">
           <div className="nav_menu_item">
-            <p>EN</p>
+            <p>RU</p>
             <Down className="drop_down_icon" />
             <div className="nav_menu_item_drop">
               <NavLink to="/ru">
@@ -151,7 +151,7 @@ function NavBar({ setMode }) {
               <LightMode onClick={toggleMode} />
             )}
           </div>
-          <svg
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="2"
             height="18"
@@ -160,7 +160,7 @@ function NavBar({ setMode }) {
             fill="#dbdbdb"
           >
             <path d="M1 0V18" stroke="#dbdbdb" />
-          </svg>
+          </svg> */}
 
           <div className="nav_menu_item">
             <ChatIcon />
@@ -200,7 +200,7 @@ function NavBar({ setMode }) {
             </div>
           </div>
 
-          <div className="nav_menu_item">
+          {/* <div className="nav_menu_item">
             <NotificationICon />
             <div className="nav_menu_item_drop nav_menu_item_drop_notifications">
               <NavLink to="/a">
@@ -220,7 +220,7 @@ function NavBar({ setMode }) {
                 <span>20.11.2023, 16:00:31</span>
               </NavLink>
             </div>
-          </div>
+          </div> */}
           <div className="nav_menu_item">
             <img src={avatar} alt="" />
             <div className="nav_menu_item_drop nav_menu_item_drop_profile">

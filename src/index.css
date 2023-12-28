@@ -20,6 +20,10 @@ a {
 a:hover {
   text-decoration: none !important;
 }
+p + p {
+  margin: 0;
+  margin-top: 0 !important;
+}
 .main_block_wrapper,
 .secondary_block_wrapper {
   background: #fff;
@@ -134,7 +138,4 @@ input {
   button {
     font-size: 13px !important;
   }
-}
-/* hidden_scroll */
-.analysing_page_title_wrapper {
 }

@@ -496,17 +496,19 @@
   cursor: pointer;
 }
 
-.aditional_invest_modal_content li,
-.aditional_invest_modal_content h4 {
+.aditional_invest_modal_content h3 {
   color: var(--Color_Black, #111112);
-  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-
+  font-feature-settings: 'cv11' on, 'cv01' on, 'ss01' on;
+   margin-bottom: 24px;
   /* 13px/Regular */
   font-family: TTInterfaces400;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
+}
+.aditional_invest_modal_content {
+  padding-bottom: 15px;
 }
 .black_mode .aditional_invest_modal_content h4,
 .black_mode .aditional_invest_modal_content li {

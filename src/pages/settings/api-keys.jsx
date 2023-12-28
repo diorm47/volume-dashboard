@@ -37,7 +37,7 @@ function ApiKeys() {
 
   const [apiList, setapiList] = useState();
 
-  const options = ["Binance", "CommeEX", "Okx"];
+  const options = ["Binance", "ByBit"];
   return (
     <>
       <div className="page_title analyse_title api_key_title">

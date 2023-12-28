@@ -561,7 +561,7 @@
 .user_img_wrapper img {
   width: 120px;
   height: 120px;
-  border: 3px solid #0077ff;
+
   border-radius: 50%;
   transition: all 0.4s ease;
 }
@@ -680,6 +680,15 @@
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
+}
+.black_mode .Dropdown-option:hover {
+  background: #18181ad7 !important;
+}
+.black_mode .is-selected  {
+  background: #18181ad7 !important;
+}
+.user_login_history_item p {
+  margin: 0;
 }
 @media only screen and (max-width: 450px) {
   .api_key_title h2 {
