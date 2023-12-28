@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./review.css";
 
+import { format } from "date-fns";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import { NavLink } from "react-router-dom";
-import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg";
+import empty_block from "../../assets/icons/empty-block.png";
 import inviteImg from "../../assets/images/invite.png";
 import LineChart from "../../components/line-chart/line-chart";
 import { mainApi } from "../../components/utils/main-api";
-import empty_block from "../../assets/icons/empty-block.png";
-import { format } from "date-fns";
+import sha256 from "crypto-js/sha256";
+import HmacSHA256 from "crypto-js/hmac-sha256";
+import Hex from "crypto-js/enc-hex";
 
 function Review() {
   React.useEffect(() => {
@@ -94,12 +96,47 @@ function Review() {
         console.log(error);
       });
   };
+  const getBalance = () => {
+    const apiKey =
+      "U7oFbrGNPbOicTYEiCtmYdYcr8XyLGp1CtAFyPrvdEkGc01HnOr1ftsog8ZPqKB3";
+    const apiSecret =
+      "Fvgb6lFCHPRnG5ZdlRlJUeHx3VHtDH6G45IZE7tvqU8hzM1cbwOha1S8sK99wo4P";
+    const burl = "https://api.binance.com";
+    const endPoint = "/api/v3/account";
+    const dataQueryString = "timestamp=" + Date.now();
+    const keys = {
+      APIkey: apiKey,
+      SECRETkey: apiSecret,
+    };
+
+    // Генерация подписи
+    const signature = HmacSHA256(dataQueryString, keys.SECRETkey).toString(Hex);
+
+    const url = `${burl}${endPoint}?${dataQueryString}&signature=${signature}`;
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "X-MBX-APIKEY": keys.APIkey,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const arrayCleaned = data.balances.map((ele) => ({
+          asset: ele.asset,
+          free: ele.free,
+        }));
+        console.log(arrayCleaned);
+      })
+      .catch((error) => console.error("Error:", error));
+  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       refresh();
       getPnl();
       getHistoryOrders();
+      getBalance();
     }
   }, [localStorage.getItem("token")]);
 
@@ -295,8 +332,8 @@ function Review() {
                           <p>
                             Прибыль или убыток{" "}
                             {item.trading_result < 0 ? (
-                              <span >
-                              {/* <span style={{ color: "red" }}> */}
+                              <span>
+                                {/* <span style={{ color: "red" }}> */}
                                 {item.trading_result} USDT
                               </span>
                             ) : (
