@@ -12,6 +12,10 @@ import Reset from "./pages/login-auth/reset";
 import Rates from "./pages/rates/rates";
 import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
+import ApiConnectiong from "./pages/base/api";
+import ConnectiongInvest from "./pages/base/base-investing";
+import Differences from "./pages/base/differences";
+import Risks from "./pages/base/risks";
 
 function App() {
   const location = useLocation();
@@ -40,6 +44,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/reset" element={<Reset />} />
+          <Route path="/api" element={<ApiConnectiong />} />
+          <Route path="/base-investing" element={<ConnectiongInvest />} />
+          <Route path="/differences" element={<Differences />} />
+          <Route path="/risks" element={<Risks />} />
         </Routes>
 
         {location.pathname !== "/login" &&

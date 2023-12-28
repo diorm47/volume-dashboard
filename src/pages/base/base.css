@@ -214,7 +214,7 @@
   color: var(--Color_White, #fff);
 }
 .register_page_block_title a {
-  color: var(--Color_Accent, #07F);
+  color: var(--Color_Accent, #07f);
 }
 .register_page img {
   width: 100%;
@@ -266,7 +266,60 @@
   /* Тень */
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
 }
+.api_list_ul_ol h4 {
+  color: var(--Color_Black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-bottom: 18px;
+  /* 17px/SemiBold */
+  font-family: TTInterfaces600;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 141.176% */
+}
+.api_list_ul_ol {
+  margin-bottom: 80px;
+  margin-top: 20px;
+}
+.api_list_ul_ol ul {
+  padding-left: 20px;
+}
+.api_list_ul_ol li {
+  color: var(--Color_Black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
+  /* 17px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.text_pages_wrapper h2 {
+  color: var(--Color_Black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-bottom: 50px;
+  /* 23px/SemiBold */
+  font-family: TTInterfaces600;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 104.348% */
+}
+.text_pages_wrapper h2:first-child {
+  margin-bottom: 80px;
+}
+.text_pages_wrapper p {
+  color: var(--Color_Black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-bottom: 50px;
+  /* 17px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
 @media only screen and (max-width: 1300px) {
   .base_top_block_wrapper {
     width: 100%;
