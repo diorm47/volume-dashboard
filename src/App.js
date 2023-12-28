@@ -16,6 +16,9 @@ import ApiConnectiong from "./pages/base/api";
 import ConnectiongInvest from "./pages/base/base-investing";
 import Differences from "./pages/base/differences";
 import Risks from "./pages/base/risks";
+import Limits from "./pages/base/limits";
+import TopupTypes from "./pages/base/topup-types";
+import P2p from "./pages/base/p2p";
 
 function App() {
   const location = useLocation();
@@ -48,6 +51,9 @@ function App() {
           <Route path="/base-investing" element={<ConnectiongInvest />} />
           <Route path="/differences" element={<Differences />} />
           <Route path="/risks" element={<Risks />} />
+          <Route path="/limits" element={<Limits />} />
+          <Route path="/topup-types" element={<TopupTypes />} />
+          <Route path="/p2p" element={<P2p />} />
         </Routes>
 
         {location.pathname !== "/login" &&

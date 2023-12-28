@@ -73,15 +73,25 @@ function Base() {
               <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
-                  <p>Способы пополнения</p>
-                  <span>Способы и сервисы пополнения биржевого аккаунта </span>
+                  <NavLink to="/topup-types">
+                    <div>
+                      <p>Способы пополнения</p>
+                      <span>
+                        Способы и сервисы пополнения биржевого аккаунта{" "}
+                      </span>
+                    </div>
+                  </NavLink>
                 </div>
                 <div>
-                  <p>P2P-торговля</p>
-                  <span>
-                    Узнайте как использовать P2P для пополнения и вывода средств
-                    с биржевого аккаунта
-                  </span>
+                  <NavLink to="/p2p">
+                    <div>
+                      <p>P2P-торговля</p>
+                      <span>
+                        Узнайте как использовать P2P для пополнения и вывода
+                        средств с биржевого аккаунта
+                      </span>
+                    </div>
+                  </NavLink>
                 </div>
                 {/* <div>
                   <p>Сторонние платежные каналы</p>
@@ -165,11 +175,15 @@ function Base() {
               <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
-                  <p>Торговые лимиты</p>
-                  <span>
-                    Узнайте что такое торговые лимиты и как они влияют на
-                    торговый результат
-                  </span>
+                  <NavLink to="/limits">
+                    <div>
+                      <p>Торговые лимиты</p>
+                      <span>
+                        Узнайте что такое торговые лимиты и как они влияют на
+                        торговый результат
+                      </span>
+                    </div>
+                  </NavLink>
                 </div>
                 <div>
                   <p>Оплата</p>
