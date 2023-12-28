@@ -162,6 +162,9 @@
 .data_picker_mobile {
   display: none;
 }
+.active_order_item:last-child .order_history_list_line {
+ display: none;
+}
 @media only screen and (max-width: 730px) {
   .data_picker_desctop {
     display: none;

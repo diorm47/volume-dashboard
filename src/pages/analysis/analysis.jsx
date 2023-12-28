@@ -14,7 +14,7 @@ function Analysis() {
     document.title = `Анализ  | &Volume`;
   }, []);
   const [pnl, setPnl] = useState(81);
-  const [activeOrders, setActiveOrders] = useState();
+  const [activeOrders, setActiveOrders] = useState([]);
   const [pnlDays, setPnlDays] = useState("98");
   const [ordersHistory, setOrdersHistory] = useState();
 
@@ -37,10 +37,30 @@ function Analysis() {
         console.log(error);
       });
   };
+  const getActiveOrders = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch("https://trade.margelet.org/private-api/v1/users/deals/open", {
+      method: "GET",
+
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setActiveOrders(data.data.deals);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getHistoryOrders();
+      getActiveOrders();
     }
   }, [localStorage.getItem("token")]);
 
@@ -50,6 +70,7 @@ function Analysis() {
     const formattedDate = format(parsedDate, "dd.MM.yyyy, HH:mm:ss");
     return formattedDate;
   };
+
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
@@ -149,83 +170,70 @@ function Analysis() {
               <p>Здесь отображается список открытых ордеров</p>
             </div>
           </div>
-          {activeOrders ? (
+          {activeOrders && activeOrders.length >= 1 ? (
             <div className="main_block_wrapper_bottom ">
-              <div className="order_history_list_item ">
-                <div className="order_history_list_item_title">
-                  <Etherium />
-                  <h2>ETHUSDT Бессрочные</h2>
-                  <div className="order_item_top_status">
-                    <p>Short 10x</p>
+              {activeOrders.map((item, index) => (
+                <div
+                  className="order_history_list_item active_order_item "
+                  key={index}
+                >
+                  <div className="order_history_list_item_title">
+                    <h2>{item.ticker}</h2>
+                    {item.direction == "long" ? (
+                      <div className="order_item_top_status order_item_top_status_success">
+                        <p>Long {item.leverage}x</p>
+                      </div>
+                    ) : (
+                      <div className="order_item_top_status">
+                        <p>Short {item.leverage}x</p>
+                      </div>
+                    )}
                   </div>
-                </div>
-                <div className="order_history_list_item_content analysis_order_items">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время закрытия <span>.....</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена покупки <span>2 431,89 USDT</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Объем позиции <span>0,11 BTC</span>
-                    </p>
-                  </div>
+                  <div className="order_history_list_item_content analysis_order_items">
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время открытия{" "}
+                        <span>{formatTime(item.trade_start_at)}</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Время закрытия <span>.....</span>
+                      </p>
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      {item.direction == "long" ? (
+                        <p>
+                          Цена покупки <span>{item.price_start} USDT</span>
+                        </p>
+                      ) : (
+                        <p>
+                          Цена продажи <span>{item.price_start} USDT</span>
+                        </p>
+                      )}
+                    </div>
+                    <div className="order_history_list_item_content_item">
+                      <p>
+                        Объем позиции <span>{item.volume} USDT</span>
+                      </p>
+                    </div>
 
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
+                    <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                      <p>
+                        Прибыль или убыток{" "}
+                        {item.trading_result < 0 ? (
+                          <span style={{ color: "red" }}>
+                            {item.trading_result} USDT
+                          </span>
+                        ) : (
+                          <span>{item.trading_result} USDT</span>
+                        )}
+                      </p>
+                    </div>
                   </div>
+                  <div className="order_history_list_line"></div>
                 </div>
-              </div>
-              <div className="order_history_list_line"></div>
-              <div className="order_history_list_item ">
-                <div className="order_history_list_item_title">
-                  <BTC />
-                  <h2>BTCUSDT Бессрочные</h2>
-                  <div className="order_item_top_status order_item_top_status_success">
-                    <p>Long 10x</p>
-                  </div>
-                </div>
-                <div className="order_history_list_item_content analysis_order_items">
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время открытия <span>27.11.2023, 12:43:41</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Время закрытия <span>.....</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Цена покупки <span>2 431,89 USDT</span>
-                    </p>
-                  </div>
-                  <div className="order_history_list_item_content_item">
-                    <p>
-                      Объем позиции <span>0,11 BTC</span>
-                    </p>
-                  </div>
-
-                  <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                    <p>
-                      Прибыль или убыток <span>21,54 USDT</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           ) : (
             <div className="main_block_wrapper_bottom ">
