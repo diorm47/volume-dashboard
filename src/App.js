@@ -19,6 +19,9 @@ import Risks from "./pages/base/risks";
 import Limits from "./pages/base/limits";
 import TopupTypes from "./pages/base/topup-types";
 import P2p from "./pages/base/p2p";
+import Policy from "./pages/base/policy";
+import Agreement from "./pages/base/agreement";
+import Whitepaper from "./pages/base/white-paper";
 
 function App() {
   const location = useLocation();
@@ -54,6 +57,10 @@ function App() {
           <Route path="/limits" element={<Limits />} />
           <Route path="/topup-types" element={<TopupTypes />} />
           <Route path="/p2p" element={<P2p />} />
+          <Route path="/policy" element={<Policy />} />
+          <Route path="/agreement" element={<Agreement />} />
+          <Route path="/whitepaper" element={<Whitepaper />} />
+          
         </Routes>
 
         {location.pathname !== "/login" &&

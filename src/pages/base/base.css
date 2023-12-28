@@ -320,6 +320,89 @@
   font-weight: 400;
   line-height: 24px; /* 141.176% */
 }
+.policy_agreeement h2 {
+  color: var(--Color_Black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-bottom: 80px;
+  /* 23px/SemiBold */
+  font-family: TTInterfaces600;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 104.348% */
+}
+.policy_agreeement p,
+.policy_agreeement li {
+  color: var(--Color_Black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-bottom: 80px;
+  /* 17px/Regular */
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
+.policy_agreeement li,
+.policy_agreeement li p {
+  margin: 0;
+}
+.policy_agreeement li {
+  margin-bottom: 14px;
+}
+.policy_agreeement ol,
+.policy_agreeement ul {
+  padding-left: 17px;
+}
+.agreement_page p {
+  margin-bottom: 20px !important;
+}
+.agreement_page div {
+  margin-bottom: 80px;
+}
+.whitepaper_page p {
+  margin-bottom: 20px !important;
+}
+.whitepaper_page h2 {
+  font-family: TTInterfaces600;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--Color_Black, #111112);
+  margin-top: 80px;
+}
+.whitepaper_page h3 {
+  font-size: 17px;
+  font-family: TTInterfaces600;
+  color: var(--Color_Black, #111112);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 80px;
+  margin-top: 80px;
+}
+.whitepaper_page a p {
+  color: var(--Color_Accent, #07f);
+}
+.picture_text {
+  color: var(--Color_Black, #111112) !important;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-bottom: 80px !important;
+  /* 13px/Regular */
+  margin-top: 50px;
+  padding-bottom: 60px;
+  font-family: TTInterfaces400;
+  font-size: 13px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px !important; /* 123.077% */
+}
+.formula_img img {
+  width: auto !important;
+}
+.link_menu_item {
+  color: #0077ff !important;
+}
 @media only screen and (max-width: 1300px) {
   .base_top_block_wrapper {
     width: 100%;
