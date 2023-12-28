@@ -70,24 +70,27 @@ function Profile() {
       [name]: value,
     });
   };
+  const refresh = () => {
+    mainApi
+      .reEnter()
+      .then((res) => {
+        const data = res.data.user;
+        setUserName(data.username);
+        setEmail(data.email);
+        setPhone(data.phone);
+        setFormData({
+          lastName: data.last_name,
+          firstName: data.name,
+          middleName: data.patronymic,
+        });
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      mainApi
-        .reEnter()
-        .then((res) => {
-          const data = res.data.user;
-          setUserName(data.username);
-          setEmail(data.email);
-          setPhone(data.phone);
-          setFormData({
-            lastName: data.last_name,
-            firstName: data.name,
-            middleName: data.patronymic,
-          });
-        })
-        .catch((error) => {
-          console.log("error", error);
-        });
+      refresh();
     }
   }, [localStorage.getItem("token")]);
 
@@ -259,6 +262,45 @@ function Profile() {
         snackOptions("Ошибка!", "error");
       });
   };
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const handleFileSelect = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const updateAvatar = async () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("avatar", selectedFile);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/profile/avatar", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        snackOptions("Аватар yспушно обновлён!", "success");
+        setSelectedFile(null);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+  useEffect(() => {
+    if (selectedFile) {
+      updateAvatar();
+    }
+  }, [selectedFile]);
   return (
     <>
       <div className="profile_page">
@@ -267,12 +309,21 @@ function Profile() {
           <p>Вы можете изменить изображение вашего профиля</p>
           <div className="order_history_list_line"></div>
           <div className="user_img">
-            <div className="user_img_wrapper">
+            <div
+              className="user_img_wrapper"
+              onClick={() => document.getElementById("fileInput").click()}
+            >
               <img src={avatar} alt="" />
               <div className="user_img_update">
                 <UpdateIcon />
               </div>
             </div>
+            <input
+              type="file"
+              id="fileInput"
+              style={{ display: "none" }}
+              onChange={handleFileSelect}
+            />
 
             <p>
               Поддерживаются форматы JPG, PNG. Максимальный размер файла <br />{" "}
@@ -489,7 +540,7 @@ function Profile() {
       </div>
       <div
         className={
-          passwordConfirmModal 
+          passwordConfirmModal
             ? "modal_wrapper visible_modal_wrapper"
             : "modal_wrapper "
         }
