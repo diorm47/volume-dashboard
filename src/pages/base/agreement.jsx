@@ -634,8 +634,7 @@ function Agreement() {
               <p>
                 Вопросы об Условиях обслуживания следует направлять в &amp;Volume по
                 адресу Вопросы об Условиях обслуживания следует направлять в
-                &amp;Volume по адресу
-                <a href="mailto:support@nvolume.io">support@nvolume.io</a>
+                &amp;Volume по адресу{' '} <a href="mailto:support@nvolume.io">support@nvolume.io</a>
               </p>
             </div>
           </div>

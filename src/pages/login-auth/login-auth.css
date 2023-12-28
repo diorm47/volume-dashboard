@@ -222,10 +222,10 @@ button:disabled:hover {
 
 .getcode_timer p {
   color: #bdbdbf;
-  font-family: TTInterfaces600;
+  font-family: TTInterfaces500;
   font-size: 13px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 17px; /* 130.769% */
   text-align: right;
   margin-bottom: 32px;

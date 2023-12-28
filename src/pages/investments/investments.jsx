@@ -719,7 +719,7 @@ function Investments() {
             <div className="invest_modal_terms">
               <input type="checkbox" />
               <p>
-                Я прочитал(-а) и принимаю <a href="#">Условия инвестирования</a>
+                Я прочитал(-а) и принимаю <a href="#">Условия использования</a>
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
@@ -902,7 +902,7 @@ function Investments() {
             <div className="invest_modal_terms">
               <input type="checkbox" />
               <p>
-                Я прочитал(-а) и принимаю <a href="#">Условия инвестирования</a>
+                Я прочитал(-а) и принимаю <a href="#">Условия использования</a>
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
@@ -1087,7 +1087,7 @@ function Investments() {
             <div className="invest_modal_terms">
               <input type="checkbox" />
               <p>
-                Я прочитал(-а) и принимаю <a href="#">Условия инвестирования</a>
+                Я прочитал(-а) и принимаю <a href="#">Условия использования</a>
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">

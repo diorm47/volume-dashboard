@@ -259,6 +259,10 @@
   font-weight: 400;
   line-height: 24px; /* 141.176% */
 }
+.black_mode .register_top_togglers button {
+  color: #fff;
+  background: #343436;
+}
 .active_register_top_toggler {
   border-radius: 6px;
   background: var(--Color_Accent, #07f) !important;
@@ -403,6 +407,29 @@
 .link_menu_item {
   color: #0077ff !important;
 }
+.black_mode .register_page_block_title h2,
+.black_mode .api_list_ul_ol h4,
+.black_mode .text_pages_wrapper h2,
+.black_mode .text_pages_wrapper p b,
+.black_mode .whitepaper_page h2,
+.black_mode .whitepaper_page h3,
+.black_mode .policy_agreeement h2 {
+  color: #fff;
+}
+.black_mode .api_list_ul_ol li,
+.black_mode .text_pages_wrapper p,
+.black_mode .whitepaper_page p,
+.black_mode .whitepaper_page p,
+.black_mode .policy_agreeement p,
+.black_mode .policy_agreeement li {
+  color: #92979c !important;
+}
+.black_mode .whitepaper_page a p {
+  color: #0077ff !important;
+}
+.black_mode .formula_img img {
+  background: #fff;
+}
 @media only screen and (max-width: 1300px) {
   .base_top_block_wrapper {
     width: 100%;
@@ -441,7 +468,7 @@
     width: 100%;
   }
   .base_top_block_wrapper_nav div {
-    width: 480px;
+    width: 500px;
   }
   .base_top_block .base_top_block_left {
     width: 100%;
@@ -502,5 +529,22 @@
   }
   .register_page_top_data p {
     font-size: 13px;
+  }
+
+  .register_page_block_title h2,
+  .api_list_ul_ol h4,
+  .text_pages_wrapper h2,
+  .whitepaper_page h2,
+  .whitepaper_page h3,
+  .policy_agreeement h2 {
+    font-size: 17px !important;
+  }
+  .api_list_ul_ol li,
+  .text_pages_wrapper p,
+  .whitepaper_page p,
+  .whitepaper_page p,
+  .policy_agreeement p,
+  .policy_agreeement li {
+    font-size: 13px !important;
   }
 }
