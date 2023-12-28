@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as UpdateIcon } from "../../assets/icons/update-img.svg";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
-import avatar from "../../assets/images/avatar-big.png";
+import avatarImg from "../../assets/images/avatar-big.png";
 import { mainApi } from "../../components/utils/main-api";
 import Snackbar from "../../components/snackbar/snackbar";
 
@@ -42,6 +42,7 @@ function Profile() {
   // crud
 
   const [userName, setUserName] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [email, setEmail] = useState("");
   const [email2, setEmail2] = useState("");
   const [phone, setPhone] = useState("");
@@ -83,6 +84,7 @@ function Profile() {
           firstName: data.name,
           middleName: data.patronymic,
         });
+        setAvatar(data.avatar);
       })
       .catch((error) => {
         console.log("error", error);
@@ -291,6 +293,7 @@ function Profile() {
       .then((data) => {
         snackOptions("Аватар yспушно обновлён!", "success");
         setSelectedFile(null);
+        refresh()
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -313,7 +316,7 @@ function Profile() {
               className="user_img_wrapper"
               onClick={() => document.getElementById("fileInput").click()}
             >
-              <img src={avatar} alt="" />
+              <img src={avatar || avatarImg} alt="" />
               <div className="user_img_update">
                 <UpdateIcon />
               </div>

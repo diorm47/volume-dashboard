@@ -17,6 +17,7 @@ import { changeTheme } from "../utils/utils";
 function NavBar({ setMode }) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [userData, setUserData] = useState({});
+
   const toggleMode = () => {
     const newMode = localStorage.getItem("mode") === "dark" ? "light" : "dark";
     localStorage.setItem("mode", newMode);
@@ -222,7 +223,11 @@ function NavBar({ setMode }) {
             </div>
           </div> */}
           <div className="nav_menu_item">
-            <img src={avatar} alt="" />
+            <img
+              className="user_nav_avatar"
+              src={userData.avatar || avatar}
+              alt=""
+            />
             <div className="nav_menu_item_drop nav_menu_item_drop_profile">
               <div className="nav_menu_item_drop_profile_block">
                 <p>{userData.email}</p>

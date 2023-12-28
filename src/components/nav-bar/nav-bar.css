@@ -25,6 +25,12 @@ nav {
 .mode_toggler svg {
   cursor: pointer;
 }
+.user_nav_avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
 .nav_logo {
   display: flex;
