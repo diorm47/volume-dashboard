@@ -36,7 +36,7 @@ function ApiKeys() {
     }
   }, [apiModal, apiActiveModal, apiActiveEditModal]);
 
-  const [apiList, setapiList] = useState();
+  const [apiList, setapiList] = useState([]);
 
   const [selectedOption, setSelectedOption] = useState("binance");
 
@@ -65,6 +65,31 @@ function ApiKeys() {
     }, 2000);
   };
 
+  // get api
+  const refresh = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch("https://trade.margelet.org/private-api/v1/users/api-keys", {
+      method: "GET",
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setapiList(data.data.api_keys[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      refresh();
+    }
+  }, [localStorage.getItem("token")]);
+
   // add key
   const [name, setName] = useState("");
 
@@ -90,16 +115,72 @@ function ApiKeys() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        refresh();
         closeModals();
         snackOptions("API ключ успешно подключен.", "success");
-
       })
       .catch((error) => {
         console.log(error);
-        snackOptions("Ошибка подключения API ключа. Проверьте правильность введенных данных или создайте новый API ключ.", "error");
+        snackOptions(
+          "Ошибка подключения API ключа. Проверьте правильность введенных данных или создайте новый API ключ.",
+          "error"
+        );
       });
   };
+  const deleteApi = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("id", apiList.id);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/api-keys/destroy", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        refresh();
+        closeModals();
+        snackOptions("API ключ успешно удалён!", "success");
+      })
+      .catch((error) => {
+        console.log(error);
+        snackOptions("Ошибка !", "error");
+      });
+  };
+
+  const editApi = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("id", apiList.id);
+    bodyContent.append("api_key", publickKey);
+    bodyContent.append("api_secret", secretKey);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/api-keys/update", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        closeModals();
+        refresh();
+        snackOptions("API ключ успешно обновлён!", "success");
+      })
+      .catch((error) => {
+        console.log(error);
+        snackOptions("Ошибка !", "error");
+      });
+  };
+
   return (
     <>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
@@ -107,7 +188,12 @@ function ApiKeys() {
       <div className="page_title analyse_title api_key_title">
         <h2>Ключи API</h2>
         <div className="add_key_btn">
-          <button onClick={() => setapiModal(true)}>Добавить ключ API</button>
+          <button
+            onClick={() => setapiModal(true)}
+            disabled={apiList && apiList.id}
+          >
+            Добавить ключ API
+          </button>
         </div>
       </div>
       <div className="secondary_block_wrapper user_image_block add_key_history">
@@ -122,20 +208,22 @@ function ApiKeys() {
                 <td>Действие</td>
               </tr>
             </thead>
-            {apiList ? (
+            {apiList && apiList.id ? (
               <tbody>
                 <tr>
-                  <td>26 окт. 2023 г., 00:29:16</td>
+                  <td>-</td>
                   <td>Активное</td>
-                  <td>MyAPI</td>
-                  <td>Binance</td>
+                  <td>{apiList.title}</td>
+                  <td style={{ textTransform: "capitalize" }}>
+                    {apiList.exchange}
+                  </td>
                   <td>
                     <div className="api_actions">
                       <p onClick={() => setapiActiveEditModal(true)}>
                         Редактировать{" "}
                       </p>
                       <p>|</p>
-                      <p>Удалить</p>
+                      <p onClick={deleteApi}>Удалить</p>
                     </div>
                   </td>
                 </tr>
@@ -156,10 +244,10 @@ function ApiKeys() {
           )}
         </div>
       </div>
-      {apiList ? (
+      {apiList && apiList.id ? (
         <div className="secondary_block_wrapper add_key_history_mobile">
           <div className="add_key_history_mobile_title">
-            <h2>MyAPI</h2>
+            <h2> {apiList.title}</h2>
             <svg
               width="10"
               height="10"
@@ -177,11 +265,13 @@ function ApiKeys() {
           >
             <div>
               <p>Время добавления</p>
-              <h4>26 окт. 2023 г., 00:29:16</h4>
+              <h4>-</h4>
             </div>
             <div>
               <p>Биржа</p>
-              <h4>Binance</h4>
+              <h4 style={{ textTransform: "capitalize" }}>
+                {apiList.exchange}
+              </h4>
             </div>
           </div>
         </div>
@@ -302,7 +392,7 @@ function ApiKeys() {
         <div className="modal_wrapper_content">
           <div className="secondary_block_wrapper my_active_api">
             <div className="add_key_history_mobile_title">
-              <h2>MyAPI</h2>
+              <h2>{apiList.title}</h2>
               <svg
                 width="10"
                 height="10"
@@ -320,11 +410,13 @@ function ApiKeys() {
             >
               <div>
                 <p>Время добавления</p>
-                <h4>26 окт. 2023 г., 00:29:16</h4>
+                <h4>-</h4>
               </div>
               <div>
                 <p>Биржа</p>
-                <h4>Binance</h4>
+                <h4 style={{ textTransform: "capitalize" }}>
+                  {apiList.exchange}
+                </h4>
               </div>
             </div>
           </div>
@@ -340,7 +432,7 @@ function ApiKeys() {
               </button>
             </div>
             <div className="modal_wrapper_cancel api_delete_btn">
-              <button>Удалить</button>
+              <button onClick={deleteApi}>Удалить</button>
             </div>
           </div>
         </div>
@@ -360,18 +452,26 @@ function ApiKeys() {
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
             <p>Публичный ключ</p>
-            <input type="text" />
+            <input
+              type="text"
+              value={publickKey}
+              onChange={(e) => setPublickKey(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_content_item">
             <p>Приватный ключ</p>
-            <input type="text" />
+            <input
+              type="text"
+              value={secretKey}
+              onChange={(e) => setSecretKey(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button>Сохранить</button>
+              <button onClick={editApi}>Сохранить</button>
             </div>
             <div className="modal_wrapper_cancel api_delete_btn">
-              <button>Удалить</button>
+              <button onClick={closeModals}>Удалить</button>
             </div>
           </div>
         </div>
