@@ -177,7 +177,7 @@ function ApiConnectiong() {
               </p>
             </div>
             {/* <img src={bybit1} alt="" /> */}
-            <Bybit1 />
+            <Bybit1 className="by_bit_api_img_" />
             <div className="api_list_ul_ol">
               <h4>
                 Обратите внимание, что перед созданием API-ключа вы должны:

@@ -4,6 +4,7 @@ import Dropdown from "react-dropdown";
 import empty_block from "../../assets/icons/empty-block.png";
 
 import "react-dropdown/style.css";
+import Snackbar from "../../components/snackbar/snackbar";
 
 function ApiKeys() {
   React.useEffect(() => {
@@ -37,9 +38,72 @@ function ApiKeys() {
 
   const [apiList, setapiList] = useState();
 
-  const options = ["Binance", "ByBit"];
+  const [selectedOption, setSelectedOption] = useState("binance");
+
+  const optionsMap = {
+    Binance: "binance",
+    ByBit: "bybit",
+  };
+  const options = Object.keys(optionsMap);
+
+  const handleSelect = (option) => {
+    const value = optionsMap[option.value];
+    setSelectedOption(value);
+  };
+
+  // snackbar
+
+  const [visibleSnack, setVisibleSnack] = useState(false);
+  const [snackText, setSnackText] = useState("");
+  const [snackStatus, setSnackStatus] = useState("");
+  const snackOptions = (text, status) => {
+    setVisibleSnack(true);
+    setSnackText(text);
+    setSnackStatus(status);
+    setTimeout(() => {
+      setVisibleSnack(false);
+    }, 2000);
+  };
+
+  // add key
+  const [name, setName] = useState("");
+
+  const [publickKey, setPublickKey] = useState("");
+  const [secretKey, setSecretKey] = useState("");
+
+  const addApi = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("title", name);
+    bodyContent.append("exchange", selectedOption);
+    bodyContent.append("api_key", publickKey);
+    bodyContent.append("api_secret", secretKey);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/api-keys/store", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        closeModals();
+        snackOptions("API ключ успешно подключен.", "success");
+
+      })
+      .catch((error) => {
+        console.log(error);
+        snackOptions("Ошибка подключения API ключа. Проверьте правильность введенных данных или создайте новый API ключ.", "error");
+      });
+  };
   return (
     <>
+      <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
+
       <div className="page_title analyse_title api_key_title">
         <h2>Ключи API</h2>
         <div className="add_key_btn">
@@ -123,11 +187,11 @@ function ApiKeys() {
         </div>
       ) : (
         <div className="main_block_wrapper_bottom empty_block_wrapper">
-        <div className="empty_block">
-          <img src={empty_block} alt="" />
-          <p>Нет подключенных API.</p>
+          <div className="empty_block">
+            <img src={empty_block} alt="" />
+            <p>Нет подключенных API.</p>
+          </div>
         </div>
-      </div>
       )}
 
       <div
@@ -151,13 +215,21 @@ function ApiKeys() {
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
             <p>Название</p>
-            <input type="text" />
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_content_item">
             <p>Биржа</p>
             <Dropdown
               options={options}
               placeholder={options[0]}
+              onChange={handleSelect}
+              value={options.find(
+                (option) => optionsMap[option] === selectedOption
+              )}
               arrowClosed={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -190,19 +262,27 @@ function ApiKeys() {
             />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Приватный ключ</p>
-            <input type="text" />
+            <p>Публичный ключ</p>
+            <input
+              type="text"
+              value={publickKey}
+              onChange={(e) => setPublickKey(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Секретный ключ</p>
-            <input type="text" />
+            <p>Приватный ключ</p>
+            <input
+              type="text"
+              value={secretKey}
+              onChange={(e) => setSecretKey(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button>Добавить</button>
+              <button onClick={addApi}>Добавить</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
+              <button onClick={closeModals}>Отмена</button>
             </div>
           </div>
         </div>
@@ -279,11 +359,11 @@ function ApiKeys() {
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Приватный ключ</p>
+            <p>Публичный ключ</p>
             <input type="text" />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Секретный ключ</p>
+            <p>Приватный ключ</p>
             <input type="text" />
           </div>
           <div className="modal_wrapper_btns">

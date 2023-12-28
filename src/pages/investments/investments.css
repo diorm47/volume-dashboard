@@ -271,7 +271,6 @@
 }
 .invest_modal_top_exit svg {
   cursor: pointer;
-
 }
 .black_mode .invest_modal_top_exit svg * {
   fill: #fff;
@@ -502,8 +501,8 @@
 
 .aditional_invest_modal_content h3 {
   color: var(--Color_Black, #111112);
-  font-feature-settings: 'cv11' on, 'cv01' on, 'ss01' on;
-   margin-bottom: 24px;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-bottom: 24px;
   /* 13px/Regular */
   font-family: TTInterfaces400;
   font-size: 13px;
@@ -513,7 +512,8 @@
 }
 
 .black_mode .aditional_invest_modal_content h4,
-.black_mode .aditional_invest_modal_content li, .black_mode .aditional_invest_modal_content h3{
+.black_mode .aditional_invest_modal_content li,
+.black_mode .aditional_invest_modal_content h3 {
   color: var(--Color_White, #fff);
 }
 .aditional_invest_modal_content h4 {
@@ -609,9 +609,9 @@
     line-height: 24px;
     letter-spacing: -1px;
   }
-  .invest_modal {
+  /* .invest_modal {
     top: 30px !important;
-  }
+  } */
   .invest_modal_top_content,
   .invest_modal_bottom_content {
     padding-left: 15px;
@@ -621,21 +621,22 @@
     right: 15px;
   }
   .invest_modal {
-    max-height: auto !important;
+   top: auto !important;
+    bottom: 0 !important;
   }
   .invest_modal_item_input input {
     padding: 12px 11px;
     font-size: 13px;
   }
-  .aditional_invest_modal_content li, .aditional_invest_modal_content h4 {
+  .aditional_invest_modal_content li,
+  .aditional_invest_modal_content h4 {
     margin-bottom: 14px;
   }
   .aditional_invest_modal_content p {
     margin-bottom: 12px;
   }
   .invest_modal_top_exit svg * {
-    fill: #D2D2D2;
-   
+    fill: #d2d2d2;
   }
   .invest_modal_top_exit svg {
     position: absolute;

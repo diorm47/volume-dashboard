@@ -436,6 +436,10 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+  .by_bit_api_img_ {
+    width: 100%;
+    height: auto;
+  }
 }
 
 @media only screen and (max-width: 750px) {
@@ -534,7 +538,7 @@
 
   .register_page_block_title h2,
   .api_list_ul_ol h4,
-  .text_pages_wrapper h2,
+ 
   .whitepaper_page h2,
   .whitepaper_page h3,
   .policy_agreeement h2 {
@@ -545,7 +549,7 @@
   .whitepaper_page p,
   .whitepaper_page p,
   .policy_agreeement p,
-  .policy_agreeement li {
+  .policy_agreeement li,  .text_pages_wrapper h2 {
     font-size: 13px !important;
   }
   .whitepaper_page h3,

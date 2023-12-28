@@ -4,7 +4,6 @@ import { format, parseISO } from "date-fns";
 import { ru } from "date-fns/locale";
 import { mainApi } from "../../components/utils/main-api";
 
-
 function Security() {
   React.useEffect(() => {
     document.title = `Настройки безопасности | &Volume`;
@@ -122,7 +121,6 @@ function Security() {
     }
   }, [localStorage.getItem("token")]);
 
-  console.log(loginHistory);
   return (
     <>
       <div className="profile_page security_page">
@@ -208,7 +206,7 @@ function Security() {
           <div className="user_data_item">
             <span>Аутентификация по email</span>
             <div>
-              <p>{email || ''}</p>
+              <p>{email || ""}</p>
               <p onClick={() => setEmailModal(true)}>Отключить </p>
             </div>
           </div>
