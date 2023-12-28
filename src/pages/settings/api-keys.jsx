@@ -378,65 +378,69 @@ function ApiKeys() {
         </div>
       </div>
 
-      <div
-        className={
-          apiActiveModal
-            ? "modal_wrapper visible_modal_wrapper"
-            : "modal_wrapper "
-        }
-      >
-        <div className="modal_wrapper_title">
-          <p>API</p>
-          <ExitModal onClick={closeModals} />
-        </div>
-        <div className="modal_wrapper_content">
-          <div className="secondary_block_wrapper my_active_api">
-            <div className="add_key_history_mobile_title">
-              <h2>{apiList.title}</h2>
-              <svg
-                width="10"
-                height="10"
-                viewBox="0 0 10 10"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="10" height="10" rx="5" fill="#31BD65" />
-              </svg>
-            </div>
+      {apiList && apiList.id ? (
+        <div
+          className={
+            apiActiveModal
+              ? "modal_wrapper visible_modal_wrapper"
+              : "modal_wrapper "
+          }
+        >
+          <div className="modal_wrapper_title">
+            <p>API</p>
+            <ExitModal onClick={closeModals} />
+          </div>
+          <div className="modal_wrapper_content">
+            <div className="secondary_block_wrapper my_active_api">
+              <div className="add_key_history_mobile_title">
+                <h2>{apiList.title}</h2>
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="10" height="10" rx="5" fill="#31BD65" />
+                </svg>
+              </div>
 
-            <div
-              className="add_key_history_mobile_list"
-              onClick={() => setapiActiveModal(true)}
-            >
-              <div>
-                <p>Время добавления</p>
-                <h4>-</h4>
-              </div>
-              <div>
-                <p>Биржа</p>
-                <h4 style={{ textTransform: "capitalize" }}>
-                  {apiList.exchange}
-                </h4>
-              </div>
-            </div>
-          </div>
-          <div className="modal_wrapper_btns">
-            <div className="modal_wrapper_save_btn">
-              <button
-                onClick={() => {
-                  closeModals();
-                  setapiActiveEditModal(true);
-                }}
+              <div
+                className="add_key_history_mobile_list"
+                onClick={() => setapiActiveModal(true)}
               >
-                Редактировать
-              </button>
+                <div>
+                  <p>Время добавления</p>
+                  <h4>-</h4>
+                </div>
+                <div>
+                  <p>Биржа</p>
+                  <h4 style={{ textTransform: "capitalize" }}>
+                    {apiList.exchange}
+                  </h4>
+                </div>
+              </div>
             </div>
-            <div className="modal_wrapper_cancel api_delete_btn">
-              <button onClick={deleteApi}>Удалить</button>
+            <div className="modal_wrapper_btns">
+              <div className="modal_wrapper_save_btn">
+                <button
+                  onClick={() => {
+                    closeModals();
+                    setapiActiveEditModal(true);
+                  }}
+                >
+                  Редактировать
+                </button>
+              </div>
+              <div className="modal_wrapper_cancel api_delete_btn">
+                <button onClick={deleteApi}>Удалить</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
 
       <div
         className={
