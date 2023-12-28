@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import img1 from "../../assets/images/register/image 1.png";
 import img2 from "../../assets/images/register/image 3.png";
+import { ReactComponent as Img3 } from "../../assets/images/register/bybit/3.svg";
 import img3 from "../../assets/images/register/image 4.png";
 import img4 from "../../assets/images/register/image 5.png";
 import img5 from "../../assets/images/register/image 6.png";
 import bybit1 from "../../assets/images/register/bybit/1.png";
 import bybit2 from "../../assets/images/register/bybit/2.png";
-import bybit3 from "../../assets/images/register/bybit/3.png";
+// import bybit3 from "../../assets/images/register/bybit/3.png";
 import "./base.css";
 
 function Register() {
@@ -113,6 +114,7 @@ function Register() {
               </p>
             </div>
             <img src={img2} alt="" />
+            
             <div className="register_page_text">
               <p>
                 3. На вашу электронную почту или телефон придет код верификации
@@ -167,7 +169,8 @@ function Register() {
                 Подтвердить.
               </p>
             </div>
-            <img src={bybit3} alt="" />
+            {/* <img src={bybit3} alt="" /> */}
+            <Img3 />
             <div className="register_page_text">
               <p>4. Поздравляем! Вы создали аккаунт Bybit.</p>
             </div>

@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import { format, parseISO } from "date-fns";
 import { ru } from "date-fns/locale";
+import { mainApi } from "../../components/utils/main-api";
+
 
 function Security() {
   React.useEffect(() => {
@@ -52,12 +54,12 @@ function Security() {
   }, [passwordModal, passwordConfirmModal, emailModal]);
 
   //   // // // // // // // //
-  
+
   const formatDateWithTime = (dateString) => {
     const date = parseISO(dateString);
     return format(date, "d MMM yyyy 'г.,' HH:mm:ss", { locale: ru });
   };
-  
+
   const formatDateWithoutTime = (dateString) => {
     const date = parseISO(dateString);
     return format(date, "d MMM yyyy", { locale: ru });
@@ -69,11 +71,12 @@ function Security() {
       setIsMobile(window.innerWidth < 500);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const [loginHistory, setLoginHistory] = useState();
+  const [email, setEmail] = useState();
 
   const getLoginHistory = () => {
     let headersList = {
@@ -98,9 +101,24 @@ function Security() {
       });
   };
 
+  const refresh = () => {
+    mainApi
+
+      .reEnter()
+      .then((res) => {
+        const data = res.data.user;
+
+        setEmail(data.email);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getLoginHistory();
+      refresh();
     }
   }, [localStorage.getItem("token")]);
 
@@ -190,7 +208,7 @@ function Security() {
           <div className="user_data_item">
             <span>Аутентификация по email</span>
             <div>
-              <p>nvolume@mail.ru</p>
+              <p>{email || ''}</p>
               <p onClick={() => setEmailModal(true)}>Отключить </p>
             </div>
           </div>
@@ -212,7 +230,11 @@ function Security() {
                     key={login.created_at}
                   >
                     <div className="user_login_history_item">
-                    <p>{isMobile ? formatDateWithoutTime(login.created_at) : formatDateWithTime(login.created_at)}</p>
+                      <p>
+                        {isMobile
+                          ? formatDateWithoutTime(login.created_at)
+                          : formatDateWithTime(login.created_at)}
+                      </p>
                       <p>{login.country}</p>
                       <p>{login.ip}</p>
                     </div>

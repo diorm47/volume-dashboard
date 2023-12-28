@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { ReactComponent as Ai1 } from "./whitepaper-images/ai-1.svg";
+
+import ai_1 from "./whitepaper-images/ai-1.png";
+
 import ai_2 from "./whitepaper-images/ai-2.png";
 import diagram_1 from "./whitepaper-images/diagram-1.png";
 import formula_1 from "./whitepaper-images/formula-1.png";
@@ -201,7 +203,7 @@ function Whitepaper() {
               гиперпараметрами проходит процедуру тестирования и оценки
               результатов.
             </p>
-            <Ai1 />
+            <img src={ai_1} alt="" />
             <p class="picture_text">
               Рисунок 1. Общая модель ИИ &Volume (2023).
             </p>

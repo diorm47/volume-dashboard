@@ -295,7 +295,8 @@ function Review() {
                           <p>
                             Прибыль или убыток{" "}
                             {item.trading_result < 0 ? (
-                              <span style={{ color: "red" }}>
+                              <span >
+                              {/* <span style={{ color: "red" }}> */}
                                 {item.trading_result} USDT
                               </span>
                             ) : (

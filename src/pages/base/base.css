@@ -203,11 +203,11 @@
 .register_page_text p {
   color: #111112;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-  font-family: TTInterfaces600;
+  font-family: TTInterfaces400;
   margin-bottom: 50px;
   font-size: 17px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 24px; /* 141.176% */
 }
 .black_mode .register_page_text p {
@@ -485,6 +485,7 @@
   }
   .register_page_top_data {
     margin-bottom: 50px;
+    margin-top: 26px;
   }
   .register_page_block_title h2 {
     margin-bottom: 24px;
@@ -546,5 +547,27 @@
   .policy_agreeement p,
   .policy_agreeement li {
     font-size: 13px !important;
+  }
+  .whitepaper_page h3,
+  .whitepaper_page h2 {
+    margin: 24px 0;
+  }
+  .picture_text {
+    padding: 0;
+    margin-top: 0;
+  }
+  .policy_agreeement h2,
+  .agreement_page div,
+  .policy_agreeement p,
+  .policy_agreeement li,
+  .text_pages_wrapper h2:first-child,
+  .text_pages_wrapper h2,
+  .api_list_ul_ol,
+  .text_pages_wrapper p, .register_top_togglers {
+    margin-bottom: 24px;
+  }
+  .register_top_togglers button {
+    padding: 12px 36px;
+    font-size: 13px;
   }
 }

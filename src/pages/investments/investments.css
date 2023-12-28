@@ -484,6 +484,7 @@
 .aditional_invest_modal {
   margin-bottom: 30px;
 }
+
 .aditional_invest_modal .login_input_titles p {
   color: var(--Color_Black, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -512,7 +513,7 @@
 }
 
 .black_mode .aditional_invest_modal_content h4,
-.black_mode .aditional_invest_modal_content li, .aditional_invest_modal_content h3{
+.black_mode .aditional_invest_modal_content li, .black_mode .aditional_invest_modal_content h3{
   color: var(--Color_White, #fff);
 }
 .aditional_invest_modal_content h4 {
@@ -654,7 +655,7 @@
   }
 
   .faq_invest_item_answer p {
-    font-size: 11px;
+    font-size: 13px;
     line-height: 140%;
   }
   .investments_page_title p {

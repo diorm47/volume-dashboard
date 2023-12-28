@@ -495,7 +495,7 @@
   .invite_block_title p,
   .invite_block_desc p,
   .most_questions_desc p,
-  .most_questions_list p {
+  .most_questions_list p, .free_tarif p {
     font-size: 13px;
   }
   .tarif_plan_top {
@@ -503,7 +503,7 @@
   }
   .invite_block_desc p,
   .most_questions_desc p,
-  .most_questions_list p {
+  .most_questions_list p,  .free_tarif p {
     line-height: 16px;
   }
   .secondary_block_wrapper {

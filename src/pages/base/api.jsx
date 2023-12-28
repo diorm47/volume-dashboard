@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import img1 from "../../assets/images/api/api-b-1.png";
 
-import bybit1 from "../../assets/images/api/api-by-1.png";
+// import bybit1 from "../../assets/images/api/api-by-1.png";
+import { ReactComponent as Bybit1 } from "../../assets/images/api/api-by-1.svg";
 import bybit2 from "../../assets/images/api/api-by-2.png";
 import bybit3 from "../../assets/images/api/api-by-3.png";
 import bybit4 from "../../assets/images/api/api-by-4.png";
@@ -175,7 +176,8 @@ function ApiConnectiong() {
                 </a>
               </p>
             </div>
-            <img src={bybit1} alt="" />
+            {/* <img src={bybit1} alt="" /> */}
+            <Bybit1 />
             <div className="api_list_ul_ol">
               <h4>
                 Обратите внимание, что перед созданием API-ключа вы должны:
