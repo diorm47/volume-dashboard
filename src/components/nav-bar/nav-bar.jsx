@@ -104,32 +104,33 @@ function NavBar({ setMode }) {
               <Down className="drop_down_icon" />
               <div className="nav_menu_item_drop nav_menu_item_drop_settings">
                 <NavLink to="/settings/profile">
-                  <p>Профиль</p>
+                  <p>{t("nav_menu_7")}</p>
                 </NavLink>
                 <NavLink to="/settings/security">
-                  <p>Безопасность</p>
+                  <p> {t("nav_menu_8")} </p>
                 </NavLink>
                 <NavLink to="/settings/api-keys">
-                  <p>Подключение API</p>
+                  <p> {t("nav_menu_9")} </p>
                 </NavLink>
               </div>
             </div>
 
             <div className="nav_menu_item">
-              <p>Изучить</p>
+              <p> {t("nav_menu_10")} </p>
+
               <Down className="drop_down_icon" />
               <div className="nav_menu_item_drop nav_menu_item_drop_learn">
                 <NavLink to="/base">
-                  <p>База знаний</p>
+                  <p> {t("nav_menu_11")} </p>
                 </NavLink>
                 <NavLink to="/whitepaper">
                   <p>Whatepaper</p>
                 </NavLink>
                 <NavLink to="/policy">
-                  <p>Политика конфиденциальности</p>
+                  <p> {t("nav_menu_12")} </p>
                 </NavLink>
                 <NavLink to="/agreement">
-                  <p>Клиентское соглашение</p>
+                  <p> {t("nav_menu_13")} </p>
                 </NavLink>
               </div>
             </div>
@@ -242,13 +243,13 @@ function NavBar({ setMode }) {
                 <p>Пробный</p>
               </div>
               <NavLink to="/settings/profile">
-                <p>Профиль</p>
+                <p> {t("nav_menu_7")} </p>
               </NavLink>
               <NavLink to="/referals">
-                <p>Реферальная программа</p>
+                <p> {t("nav_menu_14")} </p>
               </NavLink>
               <NavLink to="/login" onClick={handleLogout}>
-                <p>Выйти</p>
+                <p> {t("nav_menu_15")} </p>
               </NavLink>
             </div>
           </div>

@@ -6,9 +6,6 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "bybit-api": "^3.7.8",
-    "crypto-browserify": "^3.12.0",
-    "crypto-js": "^4.2.0",
     "date-fns": "^3.0.6",
     "i18next": "^23.7.12",
     "react": "^18.2.0",
@@ -21,7 +18,6 @@
     "react-router-dom": "^6.20.1",
     "react-scripts": "5.0.1",
     "rsuite": "^5.48.1",
-    "stream": "^0.0.2",
     "web-vitals": "^2.1.4"
   },
   "browser": {

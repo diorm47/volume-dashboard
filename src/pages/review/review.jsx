@@ -9,11 +9,14 @@ import empty_block from "../../assets/icons/empty-block.png";
 import inviteImg from "../../assets/images/invite.png";
 import LineChart from "../../components/line-chart/line-chart";
 import { mainApi } from "../../components/utils/main-api";
+import { useTranslation } from "react-i18next";
 
 function Review() {
+  const { t } = useTranslation();
   React.useEffect(() => {
-    document.title = `Обзор | &Volume`;
-  }, []);
+    document.title = `${t("rev_1")} | &Volume`;
+  }, [t]);
+
   const [userData, setUserData] = useState({});
   const [pnl, setPnl] = useState("0.00");
   const [ordersHistory, setOrdersHistory] = useState();
@@ -139,12 +142,12 @@ function Review() {
               <div className="main_block_wrapper">
                 <div className="main_block_wrapper_top">
                   <div className="main_block_wrapper_title">
-                    <h2>Баланс</h2>
+                    <h2>{t("rev_2")}</h2>
                   </div>
                 </div>
                 <div className="main_block_wrapper_bottom">
                   <div className="review_left_top_block_content">
-                    <p>Основной аккаунт</p>
+                    <p> {t("rev_3")}</p>
                     <div className="review_left_top_block_content_amount">
                       <p>
                         {/* {userData.balance || "-"} <span>USDT</span> */}
@@ -201,7 +204,7 @@ function Review() {
                 </div>
                 <div className="main_block_wrapper_bottom">
                   <div className="review_left_top_block_content">
-                    <p>PnL за сегодня</p>
+                    <p> {t("rev_4")}</p>
                     <div className="review_left_top_block_content_amount">
                       <p>
                         {pnl} <span>USDT</span>
@@ -266,8 +269,8 @@ function Review() {
             <div className="orders_history_list main_block_wrapper">
               <div className="main_block_wrapper_top">
                 <div className="main_block_wrapper_title secondary_title">
-                  <h2>История ордеров</h2>
-                  <p>Здесь отображается список последних 10 ордеров</p>
+                  <h2> {t("rev_5")}</h2>
+                  <p>{t("rev_6")}</p>
                 </div>
               </div>
               {ordersHistory && ordersHistory.length >= 1 ? (
@@ -341,7 +344,7 @@ function Review() {
                 <div className="main_block_wrapper_bottom">
                   <div className="empty_block">
                     <img src={empty_block} alt="" />
-                    <p>Нет истории ордеров</p>
+                    <p> {t("rev_7")}</p>
                   </div>
                 </div>
               )}
