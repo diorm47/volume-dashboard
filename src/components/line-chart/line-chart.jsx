@@ -4,9 +4,9 @@ import "./line-chart.css";
 import subDays from "date-fns/subDays";
 import empty_block from "../../assets/icons/empty-block.png";
 
-const LineChart = () => {
+const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
   const [pnl, setPnl] = useState(false);
-  const [pnlData, setPnlData] = useState('0.00');
+  const [pnlData, setPnlData] = useState("0.00");
   const formatDate = (date) => {
     let day = date.getDate().toString().padStart(2, "0");
     let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
@@ -87,26 +87,33 @@ const LineChart = () => {
     },
   });
 
-  const [selectedTime, setSelectedTime] = useState([
-    subDays(new Date(), 6),
-    new Date(),
-  ]);
+  // const [selectedTime, setSelectedTime] = useState([
+  //   subDays(new Date(), 6),
+  //   new Date(),
+  // ]);
   const updateChartData = (serverData) => {
     const last7Days = getLast7Days();
-
-    // Convert the server data keys to 'yyyy-mm-dd' format for matching
+    
+    // Convert server data to 'yyyy-mm-dd' format
     const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
       const [dd, mm, yyyy] = key.split("-");
       acc[`${yyyy}-${mm}-${dd}`] = serverData[key];
       return acc;
     }, {});
 
-    const updatedData = last7Days.map((date) => serverDataConverted[date] || 0);
+    // Filter data to include only within the selectedTime range
+    const formattedSelectedTime = selectedTime.map(date => formatDate(date));
+    const updatedData = last7Days
+      .filter(date => formattedSelectedTime.includes(date))
+      .map(date => serverDataConverted[date] || 0);
 
-    setChartData((prevState) => ({
+    setChartData(prevState => ({
       ...prevState,
       series: [{ ...prevState.series[0], data: updatedData }],
     }));
+
+    const total = sumData(updatedData);
+    setPnlData(total);
   };
   const sumData = (data) => {
     return data.reduce((acc, value) => acc + value, 0).toFixed(2);

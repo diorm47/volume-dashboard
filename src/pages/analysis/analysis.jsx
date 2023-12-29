@@ -263,7 +263,7 @@ function Analysis() {
             <h2>{t("pnl_main_title")}</h2>
           </div>
 
-          <LineChart />
+          <LineChart selectedTime={selectedTime} />
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
