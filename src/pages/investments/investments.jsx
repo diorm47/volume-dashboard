@@ -143,12 +143,12 @@ function Investments() {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-
+  
     let bodyContent = new FormData();
     bodyContent.append("level_risk", level_risk);
     bodyContent.append("amount_investment", amountInvestment);
     bodyContent.append("stop_loss", stopLos);
-
+  
     fetch("https://trade.margelet.org/private-api/v1/users/bots/store", {
       method: "POST",
       body: bodyContent,
@@ -156,36 +156,38 @@ function Investments() {
     })
       .then((response) => {
         if (!response.ok) {
-          console.log(response.json());
-          if (!response.success && response.error.api_keys_not_found) {
-            snackOptions("Ошибка, не добавлен апи-ключ!", "error");
-          } else if (!response.success && response.error.bots_limit) {
-            snackOptions("Ошибка, достигнут лимит ботов!", "error");
-          } else if (!response.success && response.error.unpaid_tariff) {
-            snackOptions("Ошибка, нет активного тарифа!", "error");
-          }
-          throw new Error("Network response was not ok");
+          return response.json().then((errorData) => {
+            handleErrors(errorData);
+            throw new Error("Network response was not ok");
+          });
         }
         return response.json();
       })
       .then((data) => {
-        console.log("2", data);
         if (data.success) {
-          snackOptions("Метод усешно добавлен!", "success");
+          snackOptions("Метод успешно добавлен!", "success");
           closeModals();
-        }
-        if (!data.success && data.error.api_keys_not_found) {
-          snackOptions("Ошибка, не добавлен апи-ключ!", "error");
-        } else if (!data.success && data.error.bots_limit) {
-          snackOptions("Ошибка, достигнут лимит ботов!", "error");
-        } else if (!data.success && data.error.unpaid_tariff) {
-          snackOptions("Ошибка, нет активного тарифа!", "error");
+        } else {
+          handleErrors(data.error);
         }
       })
       .catch((error) => {
-        snackOptions("Ошибка!", "error");
+        snackOptions("Ошибка при выполнении запроса!", "error");
       });
   };
+  
+  const handleErrors = (errorData) => {
+    if (errorData.api_keys_not_found) {
+      snackOptions("Ошибка, не добавлен апи-ключ!", "error");
+    } else if (errorData.bots_limit) {
+      snackOptions("Ошибка, достигнут лимит ботов!", "error");
+    } else if (errorData.unpaid_tariff) {
+      snackOptions("Ошибка, нет активного тарифа!", "error");
+    } else {
+      snackOptions("Произошла неизвестная ошибка.", "error");
+    }
+  };
+  
   return (
     <>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
