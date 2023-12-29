@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { mainApi } from "../../components/utils/main-api";
 import Snackbar from "../../components/snackbar/snackbar";
+import { useTranslation } from "react-i18next";
 
 function RatesPage() {
   React.useEffect(() => {
@@ -140,37 +141,38 @@ function RatesPage() {
         snackOptions("Ошибка!", "error");
       });
   };
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
       <div className="page_title investments_page_title rate_title">
-        <h2>Выберите план</h2>
-        <p>
-          При оплате тарифа платёжный сервис берет комиссию за проведение
-          транзакции. <br /> Внимательно указывайте сумму с учётом комиссии.
-        </p>
+        <h2>{t("selectPlan")}</h2>
+        <p>{t("paymentDisclaimer")}</p>
       </div>
       {(userData && userData.tariff && userData.tariff_paid_to) ||
       userData.demo_used ? (
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
-            <h2>Тарифный план</h2>
+            <h2>{t("tariffPlanTitle")}</h2>
           </div>
           <div className="tarif_plan">
             <div className="tarif_plan_top">
               <p>{userData.tariff}</p>
-              <p>$ -</p>
+              <p>$ 0.00</p>
             </div>
 
             <div className="tarif_plan_time">
               <div className="tarif_plan_time_title">
                 {userData.tariff == "Пробный" ? (
-                  <p> 7 дней</p>
+                  <p>{t("trialPlanDuration")}</p>
                 ) : (
-                  <p> 30 дней</p>
+                  <p>{t("paidPlanDuration")}</p>
                 )}
 
-                <p>{remainingDays} дней</p>
+                <p>
+                  {remainingDays} {t("remainingDays")}
+                </p>
               </div>
               <div className="tarif_plan_time_block">
                 <div
@@ -181,7 +183,7 @@ function RatesPage() {
             </div>
             <div className="review_right_link">
               <NavLink to="/rates/rates">
-                <p>Добавить + 30 дней</p>
+                <p>{t("addDaysLink")}</p>
               </NavLink>
             </div>
           </div>
@@ -189,20 +191,17 @@ function RatesPage() {
       ) : (
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
-            <h2>Пробный период</h2>
+            <h2>{t("trialPeriodTitle")}</h2>
           </div>
           <div className="tarif_plan">
             <div className="tarif_plan_top">
-              <p>7 дней бесплатно</p>
+              <p>{t("freePlanDuration")}</p>
             </div>
             <div className="free_tarif">
-              <p>
-                Активируйте тестовый период уже сегодня и получите доступ к
-                широкому спектру возможностей.{" "}
-              </p>
+              <p>{t("activateTrialPeriod")}</p>
             </div>
             <div className="review_right_link">
-              <p onClick={activateDemoTariff}>Активировать</p>
+              <p onClick={activateDemoTariff}>{t("activateLink")}</p>
             </div>
           </div>
         </div>
@@ -210,80 +209,83 @@ function RatesPage() {
       <div className="rates_cards">
         <div className="secondary_block_wrapper rates_card">
           <div className="main_block_wrapper_title">
-            <h2>Стартовый</h2>
-            <p>Для новых инвесторов</p>
+            <h2>{t("startPlanTitle")}</h2>
+            <p>{t("startPlanDescription")}</p>
           </div>
           <div className="order_history_list_line"></div>
           <div className="rates_card_descr">
             <div className="rates_card_descr_price">
               <p>
-                $ 25 <span>/ ежемесячно</span>
+                {t("startPlanPrice")} <span>{t("startPlanPricePerMonth")}</span>
               </p>
             </div>
             <div className="rates_card_descr_limit">
-              <p>Лимит суммы в торгах до $400</p>
+              <p>{t("startPlanTradingLimit")}</p>
             </div>
           </div>
           <div className="order_history_list_line"></div>
           <div className="investing_top_card_select">
-            <button onClick={() => setTarif("start")}>Купить</button>
+            <button onClick={() => setTarif("start")}>{t("buyButton")}</button>
           </div>
         </div>
         <div className="secondary_block_wrapper rates_card">
           <div className="main_block_wrapper_title">
-            <h2>Улучшенный</h2>
-            <p>Для опытных инвесторов</p>
+            <h2>{t("advancedPlanTitle")}</h2>
+            <p>{t("advancedPlanDescription")}</p>
           </div>
           <div className="order_history_list_line"></div>
           <div className="rates_card_descr">
             <div className="rates_card_descr_price">
               <p>
-                $ 50 <span>/ ежемесячно</span>
+                {t("advancedPlanPrice")}{" "}
+                <span>{t("advancedPlanPricePerMonth")}</span>
               </p>
             </div>
             <div className="rates_card_descr_limit">
-              <p>Лимит суммы в торгах до $401 до $900</p>
+              <p>{t("advancedPlanTradingLimit")}</p>
             </div>
           </div>
           <div className="order_history_list_line"></div>
           <div className="investing_top_card_select">
-            <button onClick={() => setTarif("advanced")}>Купить</button>
+            <button onClick={() => setTarif("advanced")}>
+              {t("buyButton")}
+            </button>
           </div>
         </div>
+
         <div className="secondary_block_wrapper rates_card">
           <div className="main_block_wrapper_title">
-            <h2>Продвинутый</h2>
-            <p>Для профессионалов </p>
+            <h2>{t("professionalPlanTitle")}</h2>
+            <p>{t("professionalPlanDescription")}</p>
           </div>
           <div className="order_history_list_line"></div>
           <div className="rates_card_descr">
             <div className="rates_card_descr_price">
               <p>
-                $ 100 <span>/ ежемесячно</span>
+                {t("professionalPlanPrice")}{" "}
+                <span>{t("professionalPlanPricePerMonth")}</span>
               </p>
             </div>
             <div className="rates_card_descr_limit">
-              <p>Лимит суммы в торгах до $901 до $3 000</p>
+              <p>{t("professionalPlanTradingLimit")}</p>
             </div>
           </div>
           <div className="order_history_list_line"></div>
           <div className="investing_top_card_select">
-            <button onClick={() => setTarif("professional")}>Купить</button>
+            <button onClick={() => setTarif("professional")}>
+              {t("buyButton")}
+            </button>
           </div>
         </div>
       </div>
       <div className="secondary_block_wrapper rates_warning">
         <div className="main_block_wrapper_title">
-          <h2>Не теряйте самоконтроль</h2>
-          <p>
-            Инвестиции в торговлю криптовалютой рискованнее, чем традиционные
-            инструменты (вклад в банк, покупка акцией на долгий срок и т.п.),
-            рассчитывайте свои риски и не инвестируйте все свои сбережения.
-          </p>
+          <h2>{t("controlTitle")}</h2>
+          <p>{t("controlDescription")}</p>
         </div>
       </div>
       <div className="page_title investments_block_title">
-        <h1 className="questions_title">Часто задаваемые вопросы</h1>
+        <h1 className="questions_title">{t("faq_title")}</h1>
       </div>
       <div className="faq_invest">
         {faq.map((item) => (

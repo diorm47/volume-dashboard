@@ -3,17 +3,19 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import RatesPage from "./rates-page";
 import "./rates.css";
 import Transactions from "./transactions";
+import { useTranslation } from "react-i18next";
 
 function Rates() {
-  
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <div className="settings_navigation">
         <NavLink to="rates">
-          <p>Тарифы</p>
+          <p>{t("rates")}</p>
         </NavLink>
         <NavLink to="transactions">
-          <p>Транзакции</p>
+          <p>{t("transactions")}</p>
         </NavLink>
       </div>
       <div className="pages_wrapper settings_page">

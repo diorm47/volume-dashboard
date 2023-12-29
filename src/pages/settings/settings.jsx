@@ -4,19 +4,22 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import Profile from "./profile";
 import ApiKeys from "./api-keys";
 import Security from "./security";
+import { useTranslation } from "react-i18next";
 
 function Settings() {
+  const { t, i18n } = useTranslation();
+  
   return (
     <>
       <div className="settings_navigation">
         <NavLink to="profile">
-          <p>Профиль</p>
+          <p>{t("profile")}</p>
         </NavLink>
         <NavLink to="security">
-          <p>Безопасность</p>
+          <p>{t("security")}</p>
         </NavLink>
         <NavLink to="api-keys">
-          <p>Ключи API</p>
+          <p>{t("apiKeys")}</p>
         </NavLink>
       </div>
       <div className="pages_wrapper settings_page">

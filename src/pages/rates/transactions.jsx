@@ -1,6 +1,7 @@
 import empty_block from "../../assets/icons/empty-block.png";
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 function Transactions() {
   React.useEffect(() => {
@@ -39,13 +40,14 @@ function Transactions() {
     const formattedDate = format(parsedDate, "dd.MM.yyyy, HH:mm:ss");
     return formattedDate;
   };
-  console.log(transactions);
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="orders_history_list main_block_wrapper">
       <div className="main_block_wrapper_top">
         <div className="main_block_wrapper_title secondary_title">
-          <h2>Транзакции</h2>
-          <p>Здесь отображается список транзакций</p>
+          <h2>{t("transactions")}</h2>
+          <p>{t("transactionListDescription")}</p>
         </div>
       </div>
       {transactions && transactions.length ? (
@@ -57,23 +59,17 @@ function Transactions() {
             >
               <div className="order_history_list_item_title">
                 <h2>ID {item.invoice_id}</h2>
-                {item.status == "created" ? (
+                {item.status === "created" ? (
                   <div className="order_item_top_status order_item_top_status_process">
-                    <p>В обработке</p>
+                    <p>{t("processing")}</p>
                   </div>
-                ) : (
-                  ""
-                )}
-                {item.status == "error" ? (
+                ) : item.status === "error" ? (
                   <div className="order_item_top_status">
-                    <p>Ошибка</p>
+                    <p>{t("error")}</p>
                   </div>
-                ) : (
-                  ""
-                )}
-                {item.status == "success" ? (
+                ) : item.status === "success" ? (
                   <div className="order_item_top_status order_item_top_status_success">
-                    <p>Выполнена</p>
+                    <p>{t("completed")}</p>
                   </div>
                 ) : (
                   ""
@@ -82,22 +78,22 @@ function Transactions() {
               <div className="order_history_list_item_content analysis_order_items">
                 <div className="order_history_list_item_content_item">
                   <p>
-                    Время создания <span>{formatTime(item.created_at)}</span>
+                    {t("createdAt")} <span>{formatTime(item.created_at)}</span>
                   </p>
                 </div>
                 <div className="order_history_list_item_content_item">
                   <p>
-                    Тип транзакции <span>{item.method}</span>
+                    {t("transactionType")} <span>{t(item.method)}</span>
                   </p>
                 </div>
                 <div className="order_history_list_item_content_item">
                   <p>
-                    Комиссия <span>$ -</span>
+                    {t("commission")} <span>$ -</span>
                   </p>
                 </div>
                 <div className="order_history_list_item_content_item">
                   <p>
-                    Сумма транзакции<span>{item.amount} USDT</span>
+                    {t("transactionAmount")} <span>{item.amount} USDT</span>
                   </p>
                 </div>
               </div>
@@ -109,7 +105,7 @@ function Transactions() {
         <div className="main_block_wrapper_bottom">
           <div className="empty_block">
             <img src={empty_block} alt="" />
-            <p>Нет транзакций</p>
+            <p>{t("noTransactions")}</p>
           </div>
         </div>
       )}

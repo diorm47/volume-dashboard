@@ -58,6 +58,13 @@ function NavBar({ setMode }) {
 
   const { t } = useTranslation();
 
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+    setMenuVisible(false);
+  };
+
   return (
     <nav>
       <div className="nav_wrapper">
@@ -123,13 +130,19 @@ function NavBar({ setMode }) {
                 <NavLink to="/base">
                   <p> {t("nav_menu_11")} </p>
                 </NavLink>
-                <NavLink to="/whitepaper">
+                <NavLink
+                  target="_blank"
+                  to="https://nvolume.com/white-paper.html"
+                >
                   <p>Whatepaper</p>
                 </NavLink>
-                <NavLink to="/policy">
+                <NavLink target="_blank" to="https://nvolume.com/policy.html">
                   <p> {t("nav_menu_12")} </p>
                 </NavLink>
-                <NavLink to="/agreement">
+                <NavLink
+                  target="_blank"
+                  to="https://nvolume.com/agreement.html"
+                >
                   <p> {t("nav_menu_13")} </p>
                 </NavLink>
               </div>
@@ -280,38 +293,38 @@ function NavBar({ setMode }) {
               >
                 <NavLink to="/review">
                   <div className="nav_menu_item">
-                    <p>Обзор</p>
+                    <p> {t("nav_menu_1")} </p>
                   </div>
                 </NavLink>
                 <NavLink to="/analysis">
                   <div className="nav_menu_item">
-                    <p>Анализ</p>
+                    <p> {t("nav_menu_2")} </p>
                   </div>
                 </NavLink>
                 <NavLink to="/investments">
                   <div className="nav_menu_item">
-                    <p>Инвестиции</p>
+                    <p> {t("nav_menu_3")} </p>
                   </div>
                 </NavLink>
 
                 <NavLink to="/rates/rates">
                   <div className="nav_menu_item ">
                     <div className="nav_menu_itemm">
-                      <p>Тарифы</p>
+                      <p> {t("nav_menu_4")} </p>
                     </div>
                   </div>
                 </NavLink>
                 <NavLink to="/settings/profile">
                   <div className="nav_menu_item">
                     <div className="nav_menu_itemm">
-                      <p>Настройки</p>
+                      <p> {t("nav_menu_6")} </p>
                     </div>
                   </div>
                 </NavLink>
                 <NavLink to="/base">
                   <div className="nav_menu_item">
                     <div className="nav_menu_itemm">
-                      <p>Изучить</p>
+                      <p> {t("nav_menu_10")} </p>
                     </div>
                   </div>
                 </NavLink>
@@ -320,9 +333,16 @@ function NavBar({ setMode }) {
           </div>
           <div className="nav_mob_bottom">
             <div className="nav_mob_bottom_actions">
-              <div className="nav_mob_bottom_action">
-                <p>En</p>
-              </div>
+              {i18n.language == "en" ? (
+                <div className="nav_mob_bottom_action">
+                  <p onClick={() => changeLanguage("ru")}>Ru</p>
+                </div>
+              ) : (
+                <div className="nav_mob_bottom_action">
+                  <p onClick={() => changeLanguage("en")}>En</p>
+                </div>
+              )}
+
               <div className="nav_mob_bottom_action">
                 <p>Sv</p>
               </div>
@@ -339,7 +359,7 @@ function NavBar({ setMode }) {
             </div>
             <div className="nav_logout_btn">
               <NavLink to="/login">
-                <button onClick={handleLogout}>Выйти</button>
+                <button onClick={handleLogout}> {t("nav_menu_15")} </button>
               </NavLink>
             </div>
           </div>

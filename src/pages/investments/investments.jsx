@@ -232,7 +232,7 @@ function Investments() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setActiveInvests(data.bots[0]);
+        setActiveInvests(data.bots.bots[0]);
       })
       .catch((error) => {
         console.log(error);
@@ -294,14 +294,14 @@ function Investments() {
           <div className="investing_top_cards">
             <div className="secondary_block_wrapper investing_top_card">
               <div className="main_block_wrapper_title">
-                <h2>Консервативный</h2>
+                <h2>{t("conservative")}</h2>
               </div>
               <div className="investing_top_card_item">
                 <div
                   className="investing_top_card_descr"
                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                 >
-                  <p>Минимальная сумма инвестици</p>
+                  <p>{t("minimumInvestmentAmount")}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -324,7 +324,7 @@ function Investments() {
                   className="investing_top_card_descr"
                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                 >
-                  <p>Уровень риска</p>
+                  <p>{t("riskLevel")}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -339,7 +339,7 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  <p>Низкий</p>
+                  <p>{t("low")}</p>
                 </div>
               </div>
               <div className="investing_top_card_item">
@@ -347,7 +347,7 @@ function Investments() {
                   className="investing_top_card_descr"
                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                 >
-                  <p>Прогнозируемая доходность за период</p>
+                  <p>{t("projectedYield")}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -362,7 +362,7 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  <p>до 10.43%</p>
+                  <p>{t("upTo")} 10.43%</p>
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -380,31 +380,34 @@ function Investments() {
                 ))}
               </div>
               <div className="investing_top_card_item investing_top_card_warning">
-                <p>
-                  * Доходность рассчитана на основе исторических данных и не
-                  является гарантией будущей доходности.
-                </p>
+                <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select">
                 {activeCardSelect == 1 ? (
                   <button className="investing_top_card_select_active">
-                    Выбрать
+                    {t("select")}
                   </button>
                 ) : (
-                  <button onClick={() => setModal1(true)}>Выбрать</button>
+                  <button onClick={() => setModal1(true)}>
+                    {" "}
+                    {t("select")}
+                  </button>
                 )}
               </div>
             </div>
             <div className="secondary_block_wrapper investing_top_card">
               <div className="main_block_wrapper_title">
-                <h2>Умеренный</h2>
+                <h2>{t("moderate")}</h2>
               </div>
               <div className="investing_top_card_item">
                 <div
                   className="investing_top_card_descr"
                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                 >
-                  <p>Минимальная сумма инвестици</p>
+                  <p>
+                    {" "}
+                    <p>{t("minimumInvestmentAmount")}</p>
+                  </p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -427,7 +430,10 @@ function Investments() {
                   className="investing_top_card_descr"
                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                 >
-                  <p>Уровень риска</p>
+                  <p>
+                    {" "}
+                    <p>{t("riskLevel")}</p>
+                  </p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -442,7 +448,7 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  <p>Средний</p>
+                  <p>{t("medium")}</p>
                 </div>
               </div>
               <div className="investing_top_card_item">
@@ -450,7 +456,7 @@ function Investments() {
                   className="investing_top_card_descr"
                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                 >
-                  <p>Прогнозируемая доходность за период</p>
+                  <p>{t("projectedYield")}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -465,7 +471,7 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  <p>до 21.65%</p>
+                  <p>{t("upTo")} 21.65%</p>
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -483,31 +489,33 @@ function Investments() {
                 ))}
               </div>
               <div className="investing_top_card_item investing_top_card_warning">
-                <p>
-                  * Доходность рассчитана на основе исторических данных и не
-                  является гарантией будущей доходности.
-                </p>
+                <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select">
                 {activeCardSelect == 2 ? (
                   <button className="investing_top_card_select_active">
-                    Выбрать
+                    {t("select")}
                   </button>
                 ) : (
-                  <button onClick={() => setModal2(true)}>Выбрать</button>
+                  <button onClick={() => setModal2(true)}>
+                    {" "}
+                    {t("select")}
+                  </button>
                 )}
               </div>
             </div>
             <div className="secondary_block_wrapper investing_top_card">
               <div className="main_block_wrapper_title">
-                <h2>Агрессивный</h2>
+                <h2>{t("aggressive")}</h2>
               </div>
               <div className="investing_top_card_item">
                 <div
                   className="investing_top_card_descr"
-                  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                  title={t(
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                  )}
                 >
-                  <p>Минимальная сумма инвестици</p>
+                  <p>{t("minimumInvestmentAmount")}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -528,9 +536,11 @@ function Investments() {
               <div className="investing_top_card_item">
                 <div
                   className="investing_top_card_descr"
-                  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                  title={t(
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                  )}
                 >
-                  <p>Уровень риска</p>
+                  <p>{t("riskLevel")}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -545,15 +555,17 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  <p>Высокий</p>
+                  <p>{t("high")}</p>
                 </div>
               </div>
               <div className="investing_top_card_item">
                 <div
                   className="investing_top_card_descr"
-                  title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                  title={t(
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                  )}
                 >
-                  <p>Прогнозируемая доходность за период</p>
+                  <p>{t("projectedYield")}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -568,36 +580,33 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  <p>до 30.14%</p>
+                  <p>{t("upTo")} 30.14%</p>
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
                 {invest_times.map((times) => (
                   <button
                     className={
-                      active3 == times.name
+                      active3 === times.name
                         ? "investing_top_card_active_btn"
                         : ""
                     }
                     onClick={() => setActive3(times.name)}
                   >
-                    {times.name}
+                    {t(times.name)}
                   </button>
                 ))}
               </div>
               <div className="investing_top_card_item investing_top_card_warning">
-                <p>
-                  * Доходность рассчитана на основе исторических данных и не
-                  является гарантией будущей доходности.
-                </p>
+                <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select ">
-                {activeCardSelect == 3 ? (
+                {activeCardSelect === 3 ? (
                   <button className="investing_top_card_select_active">
-                    Выбрать
+                    {t("select")}
                   </button>
                 ) : (
-                  <button onClick={() => setModal3(true)}>Выбрать</button>
+                  <button onClick={() => setModal3(true)}>{t("select")}</button>
                 )}
               </div>
             </div>
@@ -605,11 +614,11 @@ function Investments() {
           <div className="orders_history_list main_block_wrapper">
             <div className="main_block_wrapper_top">
               <div className="main_block_wrapper_title secondary_title">
-                <h2>Инвестиции</h2>
-                <p>Здесь отображается активные инвестиции</p>
+                <h2>{t("investments")}</h2>
+                <p>{t("activeInvestmentsDescription")}</p>
               </div>
             </div>
-            {activeInvests && activeInvests.start_at ? (
+            {activeInvests && activeInvests.exchange ? (
               <div className="main_block_wrapper_bottom ">
                 <div className="order_history_list_item ">
                   <div className="order_history_list_item_title">
@@ -620,25 +629,25 @@ function Investments() {
                   <div className="order_history_list_item_content analysis_order_items">
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Время создания{" "}
+                        {t("creationTime")}
                         <span>{formatTime(activeInvests.start_at)}</span>
                       </p>
                     </div>
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Метод инвестирования
-                        {activeInvests.level_risk == "aggressive" ? (
-                          <span>Агрессивный</span>
+                        {t("investmentMethod")}
+                        {activeInvests.level_risk === "aggressive" ? (
+                          <span>{t("aggressive")}</span>
                         ) : (
                           ""
                         )}
-                        {activeInvests.level_risk == "moderate" ? (
-                          <span>Умеренный</span>
+                        {activeInvests.level_risk === "moderate" ? (
+                          <span>{t("moderate")}</span>
                         ) : (
                           ""
                         )}
-                        {activeInvests.level_risk == "conservative" ? (
-                          <span>Консервативный</span>
+                        {activeInvests.level_risk === "conservative" ? (
+                          <span>{t("conservative")}</span>
                         ) : (
                           ""
                         )}
@@ -646,28 +655,26 @@ function Investments() {
                     </div>
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Начальная сумма
+                        {t("initialAmount")}
                         <span>$ {activeInvests.amount_investment}</span>
                       </p>
                     </div>
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Используемая сумма <span>$ 0</span>
+                        {t("usedAmount")} <span>$ 0</span>
                       </p>
                     </div>
-
                     <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
                       <p>
-                        Прибыль или убыток <span>0 USDT</span>
+                        {t("profitOrLoss")} <span>0 USDT</span>
                       </p>
                     </div>
                   </div>
                 </div>
                 <div className="order_history_list_line"></div>
-
                 <div className="investing_actions">
                   <div className="add_key_btn">
-                    <button onClick={deleteBot}>Удалить</button>
+                    <button onClick={deleteBot}>{t("delete")}</button>
                   </div>
                 </div>
               </div>
@@ -675,14 +682,15 @@ function Investments() {
               <div className="main_block_wrapper_bottom ">
                 <div className="empty_block">
                   <img src={empty_block} alt="" />
-                  <p>Нет активных инвестиций</p>
+                  <p>{t("noActiveInvestments")}</p>
                 </div>
               </div>
             )}
           </div>
           <div className="page_title investments_block_title">
-            <h1 className="questions_title">Часто задаваемые вопросы</h1>
+            <h1 className="questions_title">{t("faqTitle")}</h1>
           </div>
+
           <div className="faq_invest">
             {faq.map((item) => (
               <div
@@ -747,15 +755,15 @@ function Investments() {
         </div>
         <div className="invest_modal__content">
           <div className="invest_modal_top_content">
-            <h2>Консервативный</h2>
+            <h2>{t("conservativeTitle")}</h2>
             <div className="invest_modal_top_content_descriptions">
               <div>
-                <h3>Уровень риска</h3>
-                <p>Низкий</p>
+                <h3>{t("riskLevel")}</h3>
+                <p>{t("low")}</p>
               </div>
               <div className="invest_modal_top_content_descriptions_line"></div>
               <div>
-                <h3>Макс.просадка</h3>
+                <h3>{t("maxDrawdown")}</h3>
                 <p>
                   <span>3.23%</span>
                 </p>
@@ -763,7 +771,7 @@ function Investments() {
               <div className="invest_modal_top_content_descriptions_line"></div>
 
               <div>
-                <h3>PNL(%) за 30 дней</h3>
+                <h3>{t("pnl30Days")}</h3>
                 <p>+10.43%</p>
               </div>
             </div>
@@ -775,7 +783,7 @@ function Investments() {
                 className="invest_modal_item_title"
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
-                <p>Инвестиции</p>
+                <p>{t("investment")}</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -792,7 +800,7 @@ function Investments() {
               <div className="invest_modal_item_input">
                 <input
                   type="number"
-                  placeholder="Мин.100"
+                  placeholder={t("min100")}
                   className={getInputClass("field1")}
                   onFocus={() => handleFocus("field1")}
                   onBlur={handleBlur}
@@ -802,7 +810,7 @@ function Investments() {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                Доступно: 0,00 USDT
+                {t("available")}: 0,00 USDT
               </p>
             </div>
             <div className="invest_modal_bottom_content_item">
@@ -810,7 +818,7 @@ function Investments() {
                 className="invest_modal_item_title"
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
-                <p>Общий стоп-лосс</p>
+                <p>{t("totalStopLoss")}</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -841,7 +849,7 @@ function Investments() {
                   value={stopLos}
                   disabled={!isChecked}
                   onChange={(e) => setStopLos(e.target.value)}
-                  placeholder="Введите максимально приемлемый убыток"
+                  placeholder={t("enterMaxAcceptableLoss")}
                   className={getInputClass("field2")}
                   onFocus={() => handleFocus("field2")}
                   onBlur={handleBlur}
@@ -849,8 +857,8 @@ function Investments() {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                Если ваш чистый убыток достигнет {stopLos ? stopLos : "--"}{" "}
-                USDT, инвестиции прекратятся
+                {t("ifNetLossReaches")} {stopLos ? stopLos : "--"} USDT,{" "}
+                {t("investmentsWillStop")}
               </p>
             </div>
             {isChecked ? (
@@ -865,7 +873,7 @@ function Investments() {
                   className="login_input_titles"
                   onClick={() => setInformations(!informations)}
                 >
-                  <p>Дополнительная информация</p>
+                  <p>{t("additionalInformation")}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -883,24 +891,10 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="aditional_invest_modal_content">
-                  <h3>
-                    В &Volume стоп-лосс это ручной механизм ограничения потерь.
-                  </h3>
-                  <p>
-                    Вы указываете общий абсолютный уровень потерь в USDT, а не
-                    процентный. Например, сумма торгов $1000, вы устанавливаете
-                    общий стоп-лосс $200.
-                  </p>
-                  <p>
-                    В случае, если в какой-либо из сделок криптовалюта аномально
-                    снизится (или возрастет) в цене, ваш убыток не превысит
-                    $200, а сервис временно перестанет открывать сделки до
-                    нормализации рыночных условий.
-                  </p>
-                  <p>
-                    Если не установить значение вручную, то по умолчанию общий
-                    стоп-лосс составит 50% от депозита на бирже.
-                  </p>
+                  <h3>{t("volumeStopLoss")}</h3>
+                  <p>{t("volumeStopLossDescription")}</p>
+                  <p>{t("volumeStopLossExample")}</p>
+                  <p>{t("volumeStopLossDefault")}</p>
                 </div>
               </div>
             ) : (
@@ -909,7 +903,7 @@ function Investments() {
             <div className="invest_modal_terms">
               <input type="checkbox" />
               <p>
-                Я прочитал(-а) и принимаю <a href="#">Условия использования</a>
+                {t("iHaveReadAndAccept")} <a href="#">{t("termsOfUse")}</a>
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
@@ -917,7 +911,7 @@ function Investments() {
                 onClick={() => addBot("conservative")}
                 disabled={!amountInvestment}
               >
-                Выбрать
+                {t("select")}
               </button>
             </div>
           </div>
@@ -939,15 +933,15 @@ function Investments() {
         </div>
         <div className="invest_modal__content">
           <div className="invest_modal_top_content">
-            <h2>Умеренный</h2>
+            <h2>{t("moderateTitle")}</h2>
             <div className="invest_modal_top_content_descriptions">
               <div>
-                <h3>Уровень риска</h3>
-                <p className="risk_orange">Низкий</p>
+                <h3>{t("riskLevel")}</h3>
+                <p className="risk_orange">{t("low")}</p>
               </div>
               <div className="invest_modal_top_content_descriptions_line"></div>
               <div>
-                <h3>Макс.просадка</h3>
+                <h3>{t("maxDrawdown")}</h3>
                 <p>
                   <span>6.54%</span>
                 </p>
@@ -955,7 +949,7 @@ function Investments() {
               <div className="invest_modal_top_content_descriptions_line"></div>
 
               <div>
-                <h3>PNL(%) за 30 дней</h3>
+                <h3>{t("pnl30Days")}</h3>
                 <p>+21.65%</p>
               </div>
             </div>
@@ -967,7 +961,7 @@ function Investments() {
                 className="invest_modal_item_title"
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
-                <p>Инвестиции</p>
+                <p>{t("investment")}</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -984,7 +978,7 @@ function Investments() {
               <div className="invest_modal_item_input">
                 <input
                   type="number"
-                  placeholder="Мин.100"
+                  placeholder={t("min100")}
                   className={getInputClass("field3")}
                   onFocus={() => handleFocus("field3")}
                   onBlur={handleBlur}
@@ -994,7 +988,7 @@ function Investments() {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                Доступно: 0,00 USDT
+                {t("available")}: 0,00 USDT
               </p>
             </div>
             <div className="invest_modal_bottom_content_item">
@@ -1002,7 +996,7 @@ function Investments() {
                 className="invest_modal_item_title"
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
-                <p>Общий стоп-лосс</p>
+                <p>{t("totalStopLoss")}</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -1033,7 +1027,7 @@ function Investments() {
                   value={stopLos}
                   disabled={!isChecked}
                   onChange={(e) => setStopLos(e.target.value)}
-                  placeholder="Введите максимально приемлемый убыток"
+                  placeholder={t("enterMaxAcceptableLoss")}
                   className={getInputClass("field4")}
                   onFocus={() => handleFocus("field4")}
                   onBlur={handleBlur}
@@ -1041,8 +1035,8 @@ function Investments() {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                Если ваш чистый убыток достигнет {stopLos ? stopLos : "--"}{" "}
-                USDT, инвестиции прекратятся
+                {t("ifNetLossReaches")} {stopLos ? stopLos : "--"} USDT,{" "}
+                {t("investmentsWillStop")}
               </p>
             </div>
             {isChecked ? (
@@ -1057,7 +1051,7 @@ function Investments() {
                   className="login_input_titles"
                   onClick={() => setInformations(!informations)}
                 >
-                  <p>Дополнительная информация</p>
+                  <p>{t("additionalInformation")}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1075,24 +1069,10 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="aditional_invest_modal_content">
-                  <h3>
-                    В &Volume стоп-лосс это ручной механизм ограничения потерь.
-                  </h3>
-                  <p>
-                    Вы указываете общий абсолютный уровень потерь в USDT, а не
-                    процентный. Например, сумма торгов $1000, вы устанавливаете
-                    общий стоп-лосс $200.
-                  </p>
-                  <p>
-                    В случае, если в какой-либо из сделок криптовалюта аномально
-                    снизится (или возрастет) в цене, ваш убыток не превысит
-                    $200, а сервис временно перестанет открывать сделки до
-                    нормализации рыночных условий.
-                  </p>
-                  <p>
-                    Если не установить значение вручную, то по умолчанию общий
-                    стоп-лосс составит 50% от депозита на бирже.
-                  </p>
+                  <h3>{t("volumeStopLoss")}</h3>
+                  <p>{t("volumeStopLossDescription")}</p>
+                  <p>{t("volumeStopLossExample")}</p>
+                  <p>{t("volumeStopLossDefault")}</p>
                 </div>
               </div>
             ) : (
@@ -1101,7 +1081,7 @@ function Investments() {
             <div className="invest_modal_terms">
               <input type="checkbox" />
               <p>
-                Я прочитал(-а) и принимаю <a href="#">Условия использования</a>
+                {t("iHaveReadAndAccept")} <a href="#">{t("termsOfUse")}</a>
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
@@ -1109,7 +1089,7 @@ function Investments() {
                 onClick={() => addBot("moderate")}
                 disabled={!amountInvestment}
               >
-                Выбрать
+                {t("select")}
               </button>
             </div>
           </div>
@@ -1131,17 +1111,17 @@ function Investments() {
         </div>
         <div className="invest_modal__content">
           <div className="invest_modal_top_content">
-            <h2>Агрессивный</h2>
+            <h2>{t("aggressive")}</h2>
             <div className="invest_modal_top_content_descriptions">
               <div>
-                <h3>Уровень риска</h3>
+                <h3>{t("riskLevel")}</h3>
                 <p>
-                  <span>Высокий</span>
+                  <span>{t("high")}</span>
                 </p>
               </div>
               <div className="invest_modal_top_content_descriptions_line"></div>
               <div>
-                <h3>Макс.просадка</h3>
+                <h3>{t("maxDrawdown")}</h3>
                 <p>
                   <span>13.23%</span>
                 </p>
@@ -1149,7 +1129,7 @@ function Investments() {
               <div className="invest_modal_top_content_descriptions_line"></div>
 
               <div>
-                <h3>PNL(%) за 30 дней</h3>
+                <h3>{t("pnl30Days")}</h3>
                 <p>+30.14%</p>
               </div>
             </div>
@@ -1161,7 +1141,7 @@ function Investments() {
                 className="invest_modal_item_title"
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
-                <p>Инвестиции</p>
+                <p>{t("investment")}</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -1178,7 +1158,7 @@ function Investments() {
               <div className="invest_modal_item_input">
                 <input
                   type="number"
-                  placeholder="Мин.100"
+                  placeholder={t("min100")}
                   className={getInputClass("field5")}
                   onFocus={() => handleFocus("field5")}
                   onBlur={handleBlur}
@@ -1188,7 +1168,7 @@ function Investments() {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                Доступно: 0,00 USDT
+                {t("available")}: 0,00 USDT
               </p>
             </div>
             <div className="invest_modal_bottom_content_item">
@@ -1196,7 +1176,7 @@ function Investments() {
                 className="invest_modal_item_title"
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
-                <p>Общий стоп-лосс</p>
+                <p>{t("totalStopLoss")}</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -1227,7 +1207,7 @@ function Investments() {
                   value={stopLos}
                   disabled={!isChecked}
                   onChange={(e) => setStopLos(e.target.value)}
-                  placeholder="Введите максимально приемлемый убыток"
+                  placeholder={t("enterMaxAcceptableLoss")}
                   className={getInputClass("field6")}
                   onFocus={() => handleFocus("field6")}
                   onBlur={handleBlur}
@@ -1235,8 +1215,8 @@ function Investments() {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                Если ваш чистый убыток достигнет {stopLos ? stopLos : "--"}{" "}
-                USDT, инвестиции прекратятся
+                {t("ifNetLossReaches")} {stopLos ? stopLos : "--"} USDT,{" "}
+                {t("investmentsWillStop")}
               </p>
             </div>
             {isChecked ? (
@@ -1251,7 +1231,7 @@ function Investments() {
                   className="login_input_titles"
                   onClick={() => setInformations(!informations)}
                 >
-                  <p>Дополнительная информация</p>
+                  <p>{t("additionalInformation")}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1269,24 +1249,10 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="aditional_invest_modal_content">
-                  <h3>
-                    В &Volume стоп-лосс это ручной механизм ограничения потерь.
-                  </h3>
-                  <p>
-                    Вы указываете общий абсолютный уровень потерь в USDT, а не
-                    процентный. Например, сумма торгов $1000, вы устанавливаете
-                    общий стоп-лосс $200.
-                  </p>
-                  <p>
-                    В случае, если в какой-либо из сделок криптовалюта аномально
-                    снизится (или возрастет) в цене, ваш убыток не превысит
-                    $200, а сервис временно перестанет открывать сделки до
-                    нормализации рыночных условий.
-                  </p>
-                  <p>
-                    Если не установить значение вручную, то по умолчанию общий
-                    стоп-лосс составит 50% от депозита на бирже.
-                  </p>
+                  <h3>{t("volumeStopLoss")}</h3>
+                  <p>{t("volumeStopLossDescription")}</p>
+                  <p>{t("volumeStopLossExample")}</p>
+                  <p>{t("volumeStopLossDefault")}</p>
                 </div>
               </div>
             ) : (
@@ -1295,7 +1261,7 @@ function Investments() {
             <div className="invest_modal_terms">
               <input type="checkbox" />
               <p>
-                Я прочитал(-а) и принимаю <a href="#">Условия использования</a>
+                {t("iHaveReadAndAccept")} <a href="#">{t("termsOfUse")}</a>
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
@@ -1303,7 +1269,7 @@ function Investments() {
                 onClick={() => addBot("aggressive")}
                 disabled={!amountInvestment}
               >
-                Выбрать
+                {t("select")}
               </button>
             </div>
           </div>
