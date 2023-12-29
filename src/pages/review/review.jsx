@@ -297,36 +297,36 @@ function Review() {
                         <div className="order_history_list_item_content">
                           <div className="order_history_list_item_content_item">
                             <p>
-                              Время открытия{" "}
+                              {t("trade_open_time")}{" "}
                               <span>{formatTime(item.trade_start_at)}</span>
                             </p>
                             <p>
-                              Время закрытия{" "}
+                              {t("trade_close_time")}{" "}
                               <span>{formatTime(item.trade_end_at)}</span>
                             </p>
                           </div>
                           <div className="order_history_list_item_content_item">
-                            {item.direction == "long" ? (
+                            {item.direction === "long" ? (
                               <p>
-                                Цена покупки{" "}
+                                {t("buy_price")}{" "}
                                 <span>{item.price_start} USDT</span>
                               </p>
                             ) : (
                               <p>
-                                Цена продажи{" "}
+                                {t("sell_price")}{" "}
                                 <span>{item.price_start} USDT</span>
                               </p>
                             )}
                             <p>
-                              Объем позиции <span>{item.volume} USDT</span>
+                              {t("position_volume")}{" "}
+                              <span>{item.volume} USDT</span>
                             </p>
                           </div>
                           <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
                             <p>
-                              Прибыль или убыток{" "}
+                              {t("profit_or_loss")}{" "}
                               {item.trading_result < 0 ? (
-                                <span>
-                                  {/* <span style={{ color: "red" }}> */}
+                                <span style={{ color: "red" }}>
                                   {item.trading_result} USDT
                                 </span>
                               ) : (
@@ -355,23 +355,23 @@ function Review() {
             userData.demo_used ? (
               <div className="secondary_block_wrapper">
                 <div className="main_block_wrapper_title">
-                  <h2>Тарифный план</h2>
+                  <h2>{t("tariff_title")}</h2>
                 </div>
                 <div className="tarif_plan">
                   <div className="tarif_plan_top">
                     <p>{userData.tariff}</p>
                     <p>$ -</p>
                   </div>
-
                   <div className="tarif_plan_time">
                     <div className="tarif_plan_time_title">
-                      {userData.tariff == "Пробный" ? (
-                        <p> 7 дней</p>
+                      {userData.tariff === "Пробный" ? (
+                        <p>{t("trial_period")}</p>
                       ) : (
-                        <p> 30 дней</p>
+                        <p>{t("paid_period")}</p>
                       )}
-
-                      <p>{remainingDays} дней</p>
+                      <p>
+                        {remainingDays} {t("remaining_days")}
+                      </p>
                     </div>
                     <div className="tarif_plan_time_block">
                       <div
@@ -382,7 +382,7 @@ function Review() {
                   </div>
                   <div className="review_right_link">
                     <NavLink to="/rates/rates">
-                      <p>Добавить + 30 дней</p>
+                      <p>{t("add_30_days")}</p>
                     </NavLink>
                   </div>
                 </div>
@@ -390,28 +390,25 @@ function Review() {
             ) : (
               <div className="secondary_block_wrapper">
                 <div className="main_block_wrapper_title">
-                  <h2>Пробный период</h2>
+                  <h2>{t("trial_period_title")}</h2>
                 </div>
                 <div className="tarif_plan">
                   <div className="tarif_plan_top">
-                    <p>7 дней бесплатно</p>
+                    <p>{t("free_trial")}</p>
                   </div>
                   <div className="free_tarif">
-                    <p>
-                      Активируйте тестовый период уже сегодня и получите доступ
-                      к широкому спектру возможностей.{" "}
-                    </p>
+                    <p>{t("activate_trial")}</p>
                   </div>
                   <div className="review_right_link">
                     <NavLink to="/rates/rates">
-                      <p>Активировать</p>
+                      <p>{t("activate")}</p>
                     </NavLink>
                   </div>
                 </div>
               </div>
             )}
 
-            <div className="secondary_block_wrapper invite_block">
+            {/* <div className="secondary_block_wrapper invite_block">
               <div className="main_block_wrapper_title">
                 <h2>Приглашение</h2>
               </div>
@@ -425,16 +422,13 @@ function Review() {
               <div className="review_right_link">
                 <p>Пригласить</p>
               </div>
-            </div>
+            </div> */}
             <div className="secondary_block_wrapper most_questions">
               <div className="main_block_wrapper_title">
-                <h2>Часть задаваемые вопросы</h2>
+                <h2>{t("faq_title")}</h2>
               </div>
               <div className="most_questions_desc">
-                <p>
-                  В нашей базе знаний вы можете найти ответы на самые часто
-                  задаваемые вопросы.
-                </p>
+                <p>{t("faq_description")}</p>
               </div>
               <div className="most_questions_list">
                 <div>
@@ -447,7 +441,7 @@ function Review() {
                   >
                     <circle cx="5" cy="5" r="5" fill="#0077FF" />
                   </svg>
-                  <p>Как &Volume решает куда инвестировать средства?</p>
+                  <p>{t("faq_question_1")}</p>
                 </div>
                 <div>
                   <svg
@@ -459,7 +453,7 @@ function Review() {
                   >
                     <circle cx="5" cy="5" r="5" fill="#0077FF" />
                   </svg>
-                  <p>Какая минимальная сумма?</p>
+                  <p>{t("faq_question_2")}</p>
                 </div>
 
                 <div>
@@ -472,7 +466,7 @@ function Review() {
                   >
                     <circle cx="5" cy="5" r="5" fill="#0077FF" />
                   </svg>
-                  <p>Могу я использовать заёмные деньги?</p>
+                  <p>{t("faq_question_3")}</p>
                 </div>
                 <div>
                   <svg
@@ -484,7 +478,7 @@ function Review() {
                   >
                     <circle cx="5" cy="5" r="5" fill="#0077FF" />
                   </svg>
-                  <p>Какие комиссии и условия использования?</p>
+                  <p>{t("faq_question_4")}</p>
                 </div>
                 <div>
                   <svg
@@ -496,12 +490,12 @@ function Review() {
                   >
                     <circle cx="5" cy="5" r="5" fill="#0077FF" />
                   </svg>
-                  <p>Какие гарантии безопасности?</p>
+                  <p>{t("faq_question_5")}</p>
                 </div>
               </div>
               <div className="review_right_link">
                 <NavLink to="/base">
-                  <p>Перейти в базу знаний</p>
+                  <p>{t("knowledge_base_link")}</p>
                 </NavLink>
               </div>
             </div>
