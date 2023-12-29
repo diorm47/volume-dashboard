@@ -115,9 +115,16 @@ function ApiKeys() {
     })
       .then((response) => response.json())
       .then((data) => {
-        refresh();
-        closeModals();
-        snackOptions("API ключ успешно подключен.", "success");
+        if (data.success) {
+          refresh();
+          closeModals();
+          snackOptions("API ключ успешно подключен.", "success");
+        } else {
+          snackOptions(
+            "Ошибка подключения API ключа. Проверьте правильность введенных данных или создайте новый API ключ.",
+            "error"
+          );
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -143,9 +150,13 @@ function ApiKeys() {
     })
       .then((response) => response.json())
       .then((data) => {
-        refresh();
-        closeModals();
-        snackOptions("API ключ успешно удалён!", "success");
+        if (data.success) {
+          refresh();
+          closeModals();
+          snackOptions("API ключ успешно удалён!", "success");
+        } else {
+          snackOptions("Ошибка !", "error");
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -171,9 +182,13 @@ function ApiKeys() {
     })
       .then((response) => response.json())
       .then((data) => {
-        closeModals();
-        refresh();
-        snackOptions("API ключ успешно обновлён!", "success");
+        if (data.success) {
+          closeModals();
+          refresh();
+          snackOptions("API ключ успешно обновлён!", "success");
+        } else {
+          snackOptions("Ошибка !", "error");
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -482,7 +497,7 @@ function ApiKeys() {
               </button>
             </div>
             <div className="modal_wrapper_cancel api_delete_btn">
-              <button onClick={closeModals}>Удалить</button>
+              <button onClick={deleteApi}>Удалить</button>
             </div>
           </div>
         </div>
