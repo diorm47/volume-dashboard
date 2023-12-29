@@ -176,7 +176,7 @@ function Investments() {
         }
       })
       .catch((error) => {
-        snackOptions("Ошибка при выполнении запроса!", "error");
+        console.log("Ошибка при выполнении запроса!", "error");
       });
   };
 
