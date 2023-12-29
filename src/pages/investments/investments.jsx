@@ -3,6 +3,7 @@ import "./investments.css";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import empty_block from "../../assets/icons/empty-block.png";
 import Snackbar from "../../components/snackbar/snackbar";
+import { format } from "date-fns";
 
 function Investments() {
   React.useEffect(() => {
@@ -36,7 +37,7 @@ function Investments() {
     },
   ];
   const [opened, setOpened] = useState();
-  const [activeInvests, setActiveInvests] = useState();
+  const [activeInvests, setActiveInvests] = useState({});
   const toggleTabs = (data) => {
     if (data == opened) {
       setOpened("");
@@ -134,7 +135,6 @@ function Investments() {
   };
 
   // add bot
-
   const [amountInvestment, setAmountInvestment] = useState("");
   const [stopLos, setStopLos] = useState("");
 
@@ -168,6 +168,7 @@ function Investments() {
           if (data.success) {
             snackOptions("Метод успешно добавлен!", "success");
             closeModals();
+            getBots();
           }
           throw new Error("Bad response from server");
         });
@@ -178,10 +179,73 @@ function Investments() {
         if (data.success) {
           snackOptions("Метод успешно добавлен!", "success");
           closeModals();
+          getBots();
         }
       })
       .catch((error) => {
         console.log("Ошибка при выполнении запроса!", "error");
+      });
+  };
+
+  // get bot
+  const getBots = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch("https://trade.margelet.org/private-api/v1/users/bots", {
+      method: "GET",
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setActiveInvests(data.bots[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      getBots();
+    }
+  }, [localStorage.getItem("token")]);
+
+  const formatTime = (time) => {
+    const parsedDate = new Date(time);
+    const formattedDate = format(parsedDate, "dd.MM.yyyy, HH:mm:ss");
+    return formattedDate;
+  };
+
+  // deleteBot
+
+  const deleteBot = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("bot_id", activeInvests.bot_id);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/bots/destroy", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          closeModals();
+          snackOptions("Метод успешно удалён!", "success");
+        } else {
+          snackOptions("Ошибка! Бот не найден", "error");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        snackOptions("Ошибка!", "error");
       });
   };
 
@@ -515,37 +579,56 @@ function Investments() {
                 <p>Здесь отображается активные инвестиции</p>
               </div>
             </div>
-            {activeInvests ? (
+            {activeInvests && activeInvests.start_at ? (
               <div className="main_block_wrapper_bottom ">
                 <div className="order_history_list_item ">
                   <div className="order_history_list_item_title">
-                    <h2>&Volume</h2>
+                    <h2 style={{ textTransform: "capitalize" }}>
+                      {activeInvests.exchange}
+                    </h2>
                   </div>
                   <div className="order_history_list_item_content analysis_order_items">
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Время создания <span>27.11.2023, 12:43:41</span>
+                        Время создания{" "}
+                        <span>{formatTime(activeInvests.start_at)}</span>
                       </p>
                     </div>
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Метод инвестирования <span>Агрессивный</span>
+                        Метод инвестирования
+                        {activeInvests.level_risk == "aggressive" ? (
+                          <span>Агрессивный</span>
+                        ) : (
+                          ""
+                        )}
+                        {activeInvests.level_risk == "moderate" ? (
+                          <span>Умеренный</span>
+                        ) : (
+                          ""
+                        )}
+                        {activeInvests.level_risk == "conservative" ? (
+                          <span>Консервативный</span>
+                        ) : (
+                          ""
+                        )}
                       </p>
                     </div>
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Начальная сумма<span>$ 100</span>
+                        Начальная сумма
+                        <span>$ {activeInvests.amount_investment}</span>
                       </p>
                     </div>
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Используемая сумма <span>$ 154</span>
+                        Используемая сумма <span>$ 0</span>
                       </p>
                     </div>
 
                     <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
                       <p>
-                        Прибыль или убыток <span>154,62 USDT</span>
+                        Прибыль или убыток <span>0 USDT</span>
                       </p>
                     </div>
                   </div>
@@ -554,7 +637,7 @@ function Investments() {
 
                 <div className="investing_actions">
                   <div className="add_key_btn">
-                    <button>Удалить</button>
+                    <button onClick={deleteBot}>Удалить</button>
                   </div>
                 </div>
               </div>
