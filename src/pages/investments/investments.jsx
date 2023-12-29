@@ -162,10 +162,15 @@ function Investments() {
       })
       .then((data) => {
         if (data.success) {
-          snackOptions("Метод усешно добавлен !", "success");
+          snackOptions("Метод усешно добавлен!", "success");
           closeModals();
-        } else {
-          snackOptions("Ошибка!", "error");
+        }
+        if (!data.success && data.error.api_keys_not_found) {
+          snackOptions("Ошибка, не добавлен апи-ключ!", "error");
+        } else if (!data.success && data.error.bots_limit) {
+          snackOptions("Ошибка, достигнут лимит ботов!", "error");
+        } else if (!data.success && data.error.unpaid_tariff) {
+          snackOptions("Ошибка, нет активного тарифа!", "error");
         }
       })
       .catch((error) => {
