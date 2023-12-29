@@ -55,14 +55,14 @@ function Review() {
       });
   };
 
-  const getPnl = () => {
+  const getPnl = (value) => {
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
     let bodyContent = new FormData();
-    bodyContent.append("period", selectedOption);
+    bodyContent.append("period", value || selectedOption);
 
     fetch("https://trade.margelet.org/private-api/v1/users/pnl", {
       method: "POST",
@@ -71,12 +71,14 @@ function Review() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setPnl(data.pnl);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  console.log(selectedOption);
   const getHistoryOrders = () => {
     let headersList = {
       Accept: "*/*",
@@ -149,7 +151,6 @@ function Review() {
 
   const targetDate = new Date(userData.tariff_paid_to);
 
-
   const [remainingDays, setRemainingDays] = useState(0);
   const [progressWidth, setProgressWidth] = useState("0%");
 
@@ -167,6 +168,7 @@ function Review() {
 
     return () => clearInterval(interval);
   }, [targetDate]);
+
   return (
     <>
       <div className="pages_wrapper review_page">
@@ -241,7 +243,7 @@ function Review() {
                     <p>PnL за сегодня</p>
                     <div className="review_left_top_block_content_amount">
                       <p>
-                        {pnl == 0 ? "0.00" : pnl} <span>USDT</span>
+                        {pnl === 0 ? "0.00" : pnl} <span>USDT</span>
                         {/* 0.00 <span>USDT</span> */}
                       </p>
                     </div>
@@ -309,7 +311,7 @@ function Review() {
               </div>
               {ordersHistory && ordersHistory.length >= 1 ? (
                 <div className="main_block_wrapper_bottom">
-                  {ordersHistory.map((item, index) => (
+                  {ordersHistory.slice(0, 10).map((item, index) => (
                     <div
                       className="order_history_list_item_wrapper"
                       key={index}

@@ -5,7 +5,7 @@ import subDays from "date-fns/subDays";
 import { DateRangePicker } from "rsuite";
 import "rsuite/dist/rsuite-rtl.css";
 
-function DatePicker() {
+function DatePicker({setSelectedTime}) {
   const predefinedBottomRanges = [
     {
       label: "7 дней",
@@ -64,12 +64,15 @@ function DatePicker() {
 
   const handleDateRangeChange = (value) => {
     setSelectedRange(value);
+    setSelectedTime(value)
     setIsCalendarOpen(false);
   };
 
   const openCalendar = () => {
     setIsCalendarOpen(!isCalendarOpen);
   };
+
+  
   return (
     <div className="date_picker">
       <DateRangePicker

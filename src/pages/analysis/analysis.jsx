@@ -8,13 +8,15 @@ import "./analysis.css";
 import DataPickerMob from "../../components/data-picker-mob/data-picker-mob";
 import empty_block from "../../assets/icons/empty-block.png";
 import { format } from "date-fns";
+import subDays from "date-fns/subDays";
 
 function Analysis() {
   React.useEffect(() => {
     document.title = `Анализ  | &Volume`;
   }, []);
   const [pnl, setPnl] = useState(81);
-  const [pnlToday, setPnlToday] = useState('0.00');
+  const [pnlPeriod, setPnlPeriod] = useState("0.00");
+  const [pnlToday, setPnlToday] = useState("0.00");
   const [activeOrders, setActiveOrders] = useState([]);
   const [pnlDays, setPnlDays] = useState("98");
   const [ordersHistory, setOrdersHistory] = useState();
@@ -27,7 +29,6 @@ function Analysis() {
 
     fetch("https://trade.margelet.org/private-api/v1/users/deals/last-closed", {
       method: "GET",
-
       headers: headersList,
     })
       .then((response) => response.json())
@@ -79,12 +80,36 @@ function Analysis() {
         console.log(error);
       });
   };
+  const getPnlRange = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("start_date", `${selectedTime[0].toLocaleDateString()}`);
+    bodyContent.append("end_date", `${selectedTime[1].toLocaleDateString()}`);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/pnl-by-period", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setPnlPeriod(data.data.pnl);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getHistoryOrders();
       getActiveOrders();
       getPnl();
+      getPnlRange();
     }
   }, [localStorage.getItem("token")]);
 
@@ -95,16 +120,21 @@ function Analysis() {
     return formattedDate;
   };
 
+  const [selectedTime, setSelectedTime] = useState([
+    subDays(new Date(), 6),
+    new Date(),
+  ]);
+console.log(selectedTime);
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
         <div className="page_title analyse_title">
           <h2>Анализ</h2>
           <div className="data_picker_desctop">
-            <DatePicker />
+            <DatePicker setSelectedTime={setSelectedTime} />
           </div>
           <div className="data_picker_mobile">
-            <DataPickerMob />
+            <DataPickerMob setSelectedTime={setSelectedTime} />
           </div>
         </div>
       </div>
@@ -138,7 +168,7 @@ function Analysis() {
                 <p>PnL за сегодня</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    {pnlToday == 0 ? '0.00' : pnlToday} <span>USDT</span>
+                    {pnlToday == 0 ? "0.00" : pnlToday} <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -152,10 +182,14 @@ function Analysis() {
             </div>
             <div className="main_block_wrapper_bottom">
               <div className="review_left_top_block_content">
-                <p>PnL c 21.11.2023 - 27.11.2023</p>
+                <p>
+                  PnL c {selectedTime[0].toLocaleDateString()}
+                  {" - "}
+                  {selectedTime[1].toLocaleDateString()}
+                </p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    0.00 <span>USDT</span>
+                    {pnlPeriod} <span>USDT</span>
                   </p>
                 </div>
               </div>

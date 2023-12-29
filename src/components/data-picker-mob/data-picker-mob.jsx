@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./data-picker-mob.css";
 import DatePicker from "react-mobile-datepicker";
 import subDays from "date-fns/subDays";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
-function DataPickerMob() {
+function DataPickerMob({ setSelectedTime }) {
   function formatDate(dateString) {
     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
     return new Date(dateString).toLocaleDateString("en-US", options);
@@ -71,6 +71,9 @@ function DataPickerMob() {
     setTime(subDays(new Date(), 29 * 6));
     setTime2(new Date());
   };
+  useEffect(() => {
+    setSelectedTime([time, time2]);
+  }, [setSelectedTime, time, time2]);
 
   return (
     <>

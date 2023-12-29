@@ -239,6 +239,7 @@ function Investments() {
         if (data.success) {
           closeModals();
           snackOptions("Метод успешно удалён!", "success");
+          getBots()
         } else {
           snackOptions("Ошибка! Бот не найден", "error");
         }
