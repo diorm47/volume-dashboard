@@ -155,39 +155,29 @@ function Investments() {
       headers: headersList,
     })
       .then((response) => {
-        return response.json().then((errorData) => {
-          console.log("Error data from server:", errorData);
-          handleErrors(errorData.error);
+        return response.json().then((data) => {
+          if (!data.success && data.error.api_keys_not_found) {
+            snackOptions("Ошибка, не добавлен апи-ключ!", "error");
+          } else if (!data.success && data.error.bots_limit) {
+            snackOptions("Ошибка, достигнут лимит ботов!", "error");
+          } else if (!data.success && data.error.unpaid_tariff) {
+            snackOptions("Ошибка, нет активного тарифа!", "error");
+          }
+
           throw new Error("Bad response from server");
         });
 
         // return response.json();
       })
       .then((data) => {
-        console.log("Success data from server:", data);
         if (data.success) {
           snackOptions("Метод успешно добавлен!", "success");
           closeModals();
-        } else {
-          handleErrors(data.error);
         }
       })
       .catch((error) => {
-        console.error("Fetch error:", error);
         snackOptions("Ошибка при выполнении запроса!", "error");
       });
-  };
-
-  const handleErrors = (errorData) => {
-    if (errorData.api_keys_not_found) {
-      snackOptions("Ошибка, не добавлен апи-ключ!", "error");
-    } else if (errorData.bots_limit) {
-      snackOptions("Ошибка, достигнут лимит ботов!", "error");
-    } else if (errorData.unpaid_tariff) {
-      snackOptions("Ошибка, нет активного тарифа!", "error");
-    } else {
-      snackOptions("Произошла неизвестная ошибка.", "error");
-    }
   };
 
   return (
