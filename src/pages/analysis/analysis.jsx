@@ -87,8 +87,27 @@ function Analysis() {
     };
 
     let bodyContent = new FormData();
-    bodyContent.append("start_date", `${selectedTime[0].toLocaleDateString()}`);
-    bodyContent.append("end_date", `${selectedTime[1].toLocaleDateString()}`);
+    bodyContent.append(
+      "start_date",
+      selectedTime[0]
+        .toLocaleDateString("ru-RU", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        })
+        .replace(/\//g, ".")
+    );
+
+    bodyContent.append(
+      "end_date",
+      selectedTime[1]
+        .toLocaleDateString("ru-RU", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        })
+        .replace(/\//g, ".")
+    );
 
     fetch("https://trade.margelet.org/private-api/v1/users/pnl-by-period", {
       method: "POST",
@@ -124,7 +143,7 @@ function Analysis() {
     subDays(new Date(), 6),
     new Date(),
   ]);
-console.log(selectedTime);
+
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
@@ -168,7 +187,7 @@ console.log(selectedTime);
                 <p>PnL за сегодня</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    {pnlToday == 0 ? "0.00" : pnlToday} <span>USDT</span>
+                    {pnlToday} <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -183,9 +202,22 @@ console.log(selectedTime);
             <div className="main_block_wrapper_bottom">
               <div className="review_left_top_block_content">
                 <p>
-                  PnL c {selectedTime[0].toLocaleDateString()}
+                  PnL c{" "}
+                  {selectedTime[0]
+                    .toLocaleDateString("ru-RU", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })
+                    .replace(/\//g, ".")}
                   {" - "}
-                  {selectedTime[1].toLocaleDateString()}
+                  {selectedTime[1]
+                    .toLocaleDateString("ru-RU", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })
+                    .replace(/\//g, ".")}
                 </p>
                 <div className="review_left_top_block_content_amount">
                   <p>

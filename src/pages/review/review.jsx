@@ -71,7 +71,6 @@ function Review() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setPnl(data.pnl);
       })
       .catch((error) => {
@@ -243,7 +242,7 @@ function Review() {
                     <p>PnL за сегодня</p>
                     <div className="review_left_top_block_content_amount">
                       <p>
-                        {pnl === 0 ? "0.00" : pnl} <span>USDT</span>
+                        {pnl} <span>USDT</span>
                         {/* 0.00 <span>USDT</span> */}
                       </p>
                     </div>
