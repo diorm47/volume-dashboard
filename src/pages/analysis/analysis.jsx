@@ -21,23 +21,36 @@ function Analysis() {
   const [pnlDays, setPnlDays] = useState("98");
   const [ordersHistory, setOrdersHistory] = useState();
 
-  const getHistoryOrders = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+
+  const getHistoryOrders = (pageNumber = 1) => {
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    fetch("https://trade.margelet.org/private-api/v1/users/deals/last-closed", {
-      method: "GET",
-      headers: headersList,
-    })
+    fetch(
+      `https://trade.margelet.org/private-api/v1/users/deals/closed?page=${pageNumber}`,
+      {
+        method: "GET",
+        headers: headersList,
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
-        setOrdersHistory(data.data.deals);
+        setOrdersHistory(data.data.data);
+
+        setCurrentPage(data.data.current_page);
+        setTotalPages(Math.ceil(data.data.total / data.data.per_page));
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handlePageChange = (newPageNumber) => {
+    getHistoryOrders(newPageNumber);
   };
   const getActiveOrders = () => {
     let headersList = {
@@ -146,6 +159,9 @@ function Analysis() {
   useEffect(() => {
     getPnlRange();
   }, [selectedTime]);
+
+  console.log(ordersHistory);
+
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
@@ -345,7 +361,7 @@ function Analysis() {
             </div>
           </div>
 
-          {ordersHistory ? (
+          {ordersHistory && ordersHistory.length ? (
             <>
               <div className="main_block_wrapper_bottom analysis_history">
                 {ordersHistory.map((item, index) => (
@@ -408,39 +424,45 @@ function Analysis() {
                   </div>
                 ))}
               </div>
-              <div className="main_block_wrapper_bottom">
-                <div className="pagination">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M7.21871 8.00001L10.5187 11.3L9.57604 12.2427L5.33337 8.00001L9.57604 3.75734L10.5187 4.70067L7.21871 8.00068"
-                      fill="#111112"
-                    />
-                  </svg>
-                  <p>1</p>
-                  <p>2</p>
-                  <p>3</p>
-                  <p>...</p>
-                  <p>5</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M8.78129 7.99999L5.48129 4.69999L6.42396 3.75732L10.6666 7.99999L6.42396 12.2427L5.48129 11.2993L8.78129 7.99932"
-                      fill="#111112"
-                    />
-                  </svg>
+              {ordersHistory && ordersHistory.length < 9 ? (
+                ""
+              ) : (
+                <div className="main_block_wrapper_bottom">
+                  <div className="pagination">
+                    {currentPage > 1 && (
+                      <svg
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M7.21871 8.00001L10.5187 11.3L9.57604 12.2427L5.33337 8.00001L9.57604 3.75734L10.5187 4.70067L7.21871 8.00068"
+                          fill="#111112"
+                        />
+                      </svg>
+                    )}
+                    <p>{currentPage}</p>
+                    {currentPage < totalPages && (
+                      <svg
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M8.78129 7.99999L5.48129 4.69999L6.42396 3.75732L10.6666 7.99999L6.42396 12.2427L5.48129 11.2993L8.78129 7.99932"
+                          fill="#111112"
+                        />
+                      </svg>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </>
           ) : (
             <div className="main_block_wrapper_bottom">

@@ -4,11 +4,20 @@ import "./line-chart.css";
 import subDays from "date-fns/subDays";
 
 const LineChart = ({ setPnl }) => {
+  const getLast7Days = () => {
+    const dates = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date();
+      date.setDate(date.getDate() - i);
+      dates.push(date.toISOString().split("T")[0]);
+    }
+    return dates;
+  };
   const [chartData, setChartData] = useState({
     series: [
       {
         name: "PnL",
-        data: [31, 40, 28, 51, 42, 109, 100],
+        data: [0, 0, 0, 0, 0, 0, 0],
       },
     ],
     options: {
@@ -37,15 +46,7 @@ const LineChart = ({ setPnl }) => {
       },
       xaxis: {
         type: "datetime",
-        categories: [
-          "2023-12-21",
-          "2023-12-22",
-          "2023-12-23",
-          "2023-12-24",
-          "2023-12-25",
-          "2023-12-26",
-          "2023-12-27",
-        ],
+        categories: getLast7Days(),
         labels: {
           format: "MM/dd", // Format date as 'month/day'
 
