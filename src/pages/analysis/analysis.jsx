@@ -74,7 +74,7 @@ function Analysis() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setPnlToday(data.pnl);
+        setPnlToday(data.data.pnl);
       })
       .catch((error) => {
         console.log(error);

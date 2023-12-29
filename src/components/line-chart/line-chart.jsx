@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./line-chart.css";
+import subDays from "date-fns/subDays";
 
 const LineChart = ({ setPnl }) => {
   const [chartData, setChartData] = useState({
@@ -73,6 +74,60 @@ const LineChart = ({ setPnl }) => {
       },
     },
   });
+
+  const [selectedTime, setSelectedTime] = useState([
+    subDays(new Date(), 6),
+    new Date(),
+  ]);
+  const getPnl = (value) => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append(
+      "start_date",
+      selectedTime[0]
+        .toLocaleDateString("ru-RU", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        })
+        .replace(/\//g, ".")
+    );
+
+    bodyContent.append(
+      "end_date",
+      selectedTime[1]
+        .toLocaleDateString("ru-RU", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        })
+        .replace(/\//g, ".")
+    );
+
+    fetch("https://trade.margelet.org/private-api/v1/users/pnl-chart", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // setPnl(data.data.pnl);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      getPnl();
+    }
+  }, [localStorage.getItem("token")]);
 
   return (
     <div id="chart">

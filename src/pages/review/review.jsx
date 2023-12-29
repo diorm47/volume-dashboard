@@ -71,12 +71,13 @@ function Review() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setPnl(data.pnl);
+        setPnl(data.data.pnl);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  
   console.log(selectedOption);
   const getHistoryOrders = () => {
     let headersList = {
