@@ -156,7 +156,7 @@ function Investments() {
     })
       .then((response) => {
         if (!response.ok) {
-          console.log(response);
+          console.log(response.json());
           if (!response.success && response.error.api_keys_not_found) {
             snackOptions("Ошибка, не добавлен апи-ключ!", "error");
           } else if (!response.success && response.error.bots_limit) {
@@ -169,6 +169,7 @@ function Investments() {
         return response.json();
       })
       .then((data) => {
+        console.log("2", data);
         if (data.success) {
           snackOptions("Метод усешно добавлен!", "success");
           closeModals();
