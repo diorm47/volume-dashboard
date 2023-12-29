@@ -156,6 +156,14 @@ function Investments() {
     })
       .then((response) => {
         if (!response.ok) {
+          console.log(response);
+          if (!response.success && response.error.api_keys_not_found) {
+            snackOptions("Ошибка, не добавлен апи-ключ!", "error");
+          } else if (!response.success && response.error.bots_limit) {
+            snackOptions("Ошибка, достигнут лимит ботов!", "error");
+          } else if (!response.success && response.error.unpaid_tariff) {
+            snackOptions("Ошибка, нет активного тарифа!", "error");
+          }
           throw new Error("Network response was not ok");
         }
         return response.json();
@@ -174,7 +182,6 @@ function Investments() {
         }
       })
       .catch((error) => {
-        console.error("Error:", error);
         snackOptions("Ошибка!", "error");
       });
   };
