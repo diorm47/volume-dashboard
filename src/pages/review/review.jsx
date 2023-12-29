@@ -9,9 +9,6 @@ import empty_block from "../../assets/icons/empty-block.png";
 import inviteImg from "../../assets/images/invite.png";
 import LineChart from "../../components/line-chart/line-chart";
 import { mainApi } from "../../components/utils/main-api";
-import sha256 from "crypto-js/sha256";
-import HmacSHA256 from "crypto-js/hmac-sha256";
-import Hex from "crypto-js/enc-hex";
 
 function Review() {
   React.useEffect(() => {
@@ -21,7 +18,7 @@ function Review() {
   const [pnl, setPnl] = useState("0.00");
   const [ordersHistory, setOrdersHistory] = useState();
 
-  const [pnlGraph, setPnlGraph] = useState(301);
+  const [pnlGraph, setPnlGraph] = useState(0);
   const [selectedOption, setSelectedOption] = useState("today");
 
   const optionsMap = {
@@ -77,8 +74,7 @@ function Review() {
         console.log(error);
       });
   };
-  
-  console.log(selectedOption);
+
   const getHistoryOrders = () => {
     let headersList = {
       Accept: "*/*",
@@ -98,47 +94,12 @@ function Review() {
         console.log(error);
       });
   };
-  const getBalance = () => {
-    const apiKey =
-      "U7oFbrGNPbOicTYEiCtmYdYcr8XyLGp1CtAFyPrvdEkGc01HnOr1ftsog8ZPqKB3";
-    const apiSecret =
-      "Fvgb6lFCHPRnG5ZdlRlJUeHx3VHtDH6G45IZE7tvqU8hzM1cbwOha1S8sK99wo4P";
-    const burl = "https://api.binance.com";
-    const endPoint = "/api/v3/account";
-    const dataQueryString = "timestamp=" + Date.now();
-    const keys = {
-      APIkey: apiKey,
-      SECRETkey: apiSecret,
-    };
-
-    // Генерация подписи
-    const signature = HmacSHA256(dataQueryString, keys.SECRETkey).toString(Hex);
-
-    const url = `${burl}${endPoint}?${dataQueryString}&signature=${signature}`;
-
-    fetch(url, {
-      method: "GET",
-      headers: {
-        "X-MBX-APIKEY": keys.APIkey,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const arrayCleaned = data.balances.map((ele) => ({
-          asset: ele.asset,
-          free: ele.free,
-        }));
-        console.log(arrayCleaned);
-      })
-      .catch((error) => console.error("Error:", error));
-  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       refresh();
       getPnl();
       getHistoryOrders();
-      // getBalance();
     }
   }, [localStorage.getItem("token")]);
 
@@ -169,7 +130,6 @@ function Review() {
     return () => clearInterval(interval);
   }, [targetDate]);
 
-  console.log(pnl);
   return (
     <>
       <div className="pages_wrapper review_page">
@@ -388,7 +348,8 @@ function Review() {
             </div>
           </div>
           <div className="review_right">
-            {userData && userData.tariff ? (
+            {(userData && userData.tariff && userData.tariff_paid_to) ||
+            userData.demo_used ? (
               <div className="secondary_block_wrapper">
                 <div className="main_block_wrapper_title">
                   <h2>Тарифный план</h2>

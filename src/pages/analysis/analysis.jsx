@@ -1,24 +1,22 @@
+import { format } from "date-fns";
+import subDays from "date-fns/subDays";
 import React, { useEffect, useState } from "react";
-import { ReactComponent as BTC } from "../../assets/icons/btc.svg";
-import { ReactComponent as Etherium } from "../../assets/icons/etherium-icon.svg";
+import empty_block from "../../assets/icons/empty-block.png";
 import ColumnChart from "../../components/column-chart/column-chart";
+import DataPickerMob from "../../components/data-picker-mob/data-picker-mob";
 import DatePicker from "../../components/date-picker/date-picker";
 import LineChart from "../../components/line-chart/line-chart";
 import "./analysis.css";
-import DataPickerMob from "../../components/data-picker-mob/data-picker-mob";
-import empty_block from "../../assets/icons/empty-block.png";
-import { format } from "date-fns";
-import subDays from "date-fns/subDays";
 
 function Analysis() {
   React.useEffect(() => {
     document.title = `Анализ  | &Volume`;
   }, []);
-  const [pnl, setPnl] = useState(81);
+  const [pnl, setPnl] = useState(0);
   const [pnlPeriod, setPnlPeriod] = useState("0.00");
   const [pnlToday, setPnlToday] = useState("0.00");
   const [activeOrders, setActiveOrders] = useState([]);
-  const [pnlDays, setPnlDays] = useState("98");
+  const [pnlDays, setPnlDays] = useState(0);
   const [ordersHistory, setOrdersHistory] = useState();
 
   const [currentPage, setCurrentPage] = useState(1);

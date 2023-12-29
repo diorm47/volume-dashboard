@@ -150,7 +150,8 @@ function RatesPage() {
           транзакции. <br /> Внимательно указывайте сумму с учётом комиссии.
         </p>
       </div>
-      {userData && userData.tariff ? (
+      {(userData && userData.tariff && userData.tariff_paid_to) ||
+      userData.demo_used ? (
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
             <h2>Тарифный план</h2>
