@@ -168,6 +168,7 @@ function Review() {
     return () => clearInterval(interval);
   }, [targetDate]);
 
+  console.log(pnl);
   return (
     <>
       <div className="pages_wrapper review_page">

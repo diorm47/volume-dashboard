@@ -143,7 +143,9 @@ function Analysis() {
     subDays(new Date(), 6),
     new Date(),
   ]);
-
+  useEffect(() => {
+    getPnlRange();
+  }, [selectedTime]);
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
