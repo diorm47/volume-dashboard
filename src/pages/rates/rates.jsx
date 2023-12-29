@@ -5,7 +5,7 @@ import "./rates.css";
 import Transactions from "./transactions";
 import { useTranslation } from "react-i18next";
 
-function Rates() {
+function Rates({updatebalance}) {
   const { t, i18n } = useTranslation();
 
   return (
@@ -22,7 +22,7 @@ function Rates() {
         <div className="settings_page_wrapper">
           <Routes>
             <Route path="/" element={<RatesPage />} />
-            <Route path="rates" element={<RatesPage />} />
+            <Route path="rates" element={<RatesPage  updatebalance={updatebalance}/>} />
             <Route path="transactions" element={<Transactions />} />
           </Routes>
         </div>

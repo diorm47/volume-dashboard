@@ -4,7 +4,7 @@ import { mainApi } from "../../components/utils/main-api";
 import Snackbar from "../../components/snackbar/snackbar";
 import { useTranslation } from "react-i18next";
 
-function RatesPage() {
+function RatesPage({ updatebalance }) {
   React.useEffect(() => {
     document.title = `Выберите план | &Volume`;
   }, []);
@@ -135,6 +135,7 @@ function RatesPage() {
       })
       .then((data) => {
         snackOptions("Тарифный план усешно подключён!", "success");
+        updatebalance();
       })
       .catch((error) => {
         console.error("Error:", error);

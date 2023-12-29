@@ -150,8 +150,8 @@ function Review() {
                     <p> {t("rev_3")}</p>
                     <div className="review_left_top_block_content_amount">
                       <p>
-                        {/* {userData.balance || "-"} <span>USDT</span> */}
-                        0.00 <span>USDT</span>
+                        {userData.balance || '0.00'} <span>USDT</span>
+                       
                       </p>
                     </div>
                   </div>

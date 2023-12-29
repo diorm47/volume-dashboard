@@ -5,8 +5,9 @@ import empty_block from "../../assets/icons/empty-block.png";
 import Snackbar from "../../components/snackbar/snackbar";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
+import { mainApi } from "../../components/utils/main-api";
 
-function Investments() {
+function Investments({ updatebalance }) {
   const { t } = useTranslation();
 
   React.useEffect(() => {
@@ -95,6 +96,7 @@ function Investments() {
   const [active2, setActive2] = useState("1 месяц");
   const [active3, setActive3] = useState("1 месяц");
   const [activeCardSelect, setactiveCardSelect] = useState("");
+  const [userData, setUserData] = useState({});
 
   // modals
   const [modal1, setModal1] = useState(false);
@@ -201,6 +203,7 @@ function Investments() {
             snackOptions("Метод успешно добавлен!", "success");
             closeModals();
             getBots();
+            updatebalance();
           }
           throw new Error("Bad response from server");
         });
@@ -235,15 +238,25 @@ function Investments() {
         if (data.success) {
           setActiveInvests(data.data.bots[0]);
         }
-        
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  const refresh = () => {
+    mainApi
+      .reEnter()
+      .then((res) => {
+        setUserData(res.data.user);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getBots();
+      refresh();
     }
   }, [localStorage.getItem("token")]);
 
@@ -284,8 +297,6 @@ function Investments() {
         snackOptions("Ошибка!", "error");
       });
   };
-
-  console.log(activeInvests);
 
   return (
     <>
@@ -815,7 +826,7 @@ function Investments() {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                {t("available")}: 0,00 USDT
+                {t("available")}: {userData.balance || "0.00"} <span>USDT</span>
               </p>
             </div>
             <div className="invest_modal_bottom_content_item">
@@ -993,7 +1004,7 @@ function Investments() {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                {t("available")}: 0,00 USDT
+                {t("available")}:    {userData.balance || "0.00"} <span>USDT</span>
               </p>
             </div>
             <div className="invest_modal_bottom_content_item">
@@ -1173,7 +1184,7 @@ function Investments() {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                {t("available")}: 0,00 USDT
+                {t("available")}:    {userData.balance || "0.00"} <span>USDT</span>
               </p>
             </div>
             <div className="invest_modal_bottom_content_item">

@@ -8,6 +8,7 @@ import DatePicker from "../../components/date-picker/date-picker";
 import LineChart from "../../components/line-chart/line-chart";
 import "./analysis.css";
 import { useTranslation } from "react-i18next";
+import { mainApi } from "../../components/utils/main-api";
 
 function Analysis() {
   const { t } = useTranslation();
@@ -15,7 +16,9 @@ function Analysis() {
   React.useEffect(() => {
     document.title = `${t("nav_menu_2")}  | &Volume`;
   }, [t]);
-  const [pnl, setPnl] = useState(0);
+
+  const [userData, setUserData] = useState({});
+
   const [pnlPeriod, setPnlPeriod] = useState("0.00");
   const [pnlToday, setPnlToday] = useState("0.00");
   const [activeOrders, setActiveOrders] = useState([]);
@@ -136,13 +139,23 @@ function Analysis() {
         console.log(error);
       });
   };
-
+  const refresh = () => {
+    mainApi
+      .reEnter()
+      .then((res) => {
+        setUserData(res.data.user);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getHistoryOrders();
       getActiveOrders();
       getPnl();
       getPnlRange();
+      refresh();
     }
   }, [localStorage.getItem("token")]);
 
@@ -187,7 +200,7 @@ function Analysis() {
                 <p>{t("main_account")}</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    0.00 <span>USDT</span>
+                    {userData.balance || "0.00"} <span>USDT</span>
                   </p>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/footer/footer";
 import NavBar from "./components/nav-bar/nav-bar";
@@ -27,6 +27,30 @@ function App() {
   const location = useLocation();
   const [mode, setMode] = useState(localStorage.getItem("mode"));
 
+  const updatebalance = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch("https://trade.margelet.org/private-api/v1/users/balance/update", {
+      method: "POST",
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      updatebalance();
+    }
+  }, [localStorage.getItem("token")]);
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&
@@ -42,9 +66,9 @@ function App() {
           <Route path="/" element={<Review />} />
           <Route path="/review" element={<Review />} />
           <Route path="/analysis" element={<Analysis />} />
-          <Route path="/investments" element={<Investments />} />
+          <Route path="/investments" element={<Investments updatebalance={updatebalance}/>} />
           <Route path="/settings/*" element={<Settings />} />
-          <Route path="/rates/*" element={<Rates />} />
+          <Route path="/rates/*" element={<Rates updatebalance={updatebalance} />} />
           <Route path="/base/*" element={<Base />} />
           <Route path="/register-acc" element={<Register />} />
           <Route path="/login" element={<Login />} />
