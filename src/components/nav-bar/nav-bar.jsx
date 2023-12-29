@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import "./nav-bar.css";
-import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as Down } from "../../assets/icons/bottom-arrow.svg";
+import { ReactComponent as ExitIcon } from "../../assets/icons/exit-nav-mob.svg";
 import { ReactComponent as ChatIcon } from "../../assets/icons/nav-chat-icon.svg";
 import { ReactComponent as MenuIcon } from "../../assets/icons/nav-menu-burger.svg";
-import { ReactComponent as ExitIcon } from "../../assets/icons/exit-nav-mob.svg";
-import { ReactComponent as NotificationICon } from "../../assets/icons/nav-notification-icon.svg";
-import { ReactComponent as LightMode } from "../../assets/icons/ligt-mode.svg";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+import "./nav-bar.css";
+// import { ReactComponent as NotificationICon } from "../../assets/icons/nav-notification-icon.svg";
+import { useTranslation } from "react-i18next";
 import { ReactComponent as BlackMode } from "../../assets/icons/black_theme.svg";
+import { ReactComponent as LightMode } from "../../assets/icons/ligt-mode.svg";
 
 import avatar from "../../assets/images/avatar.png";
+import LanguageSwitcher from "../lang-switcher";
 import { mainApi } from "../utils/main-api";
 import { changeTheme } from "../utils/utils";
 
@@ -54,6 +56,8 @@ function NavBar({ setMode }) {
     }
   }, [localStorage.getItem("token")]);
 
+  const { t } = useTranslation();
+
   return (
     <nav>
       <div className="nav_wrapper">
@@ -66,35 +70,37 @@ function NavBar({ setMode }) {
           <div className="nav_bar_menu">
             <NavLink to="/review">
               <div className="nav_menu_item">
-                <p>Обзор</p>
+                <p> {t("nav_menu_1")} </p>
               </div>
             </NavLink>
             <NavLink to="/analysis">
               <div className="nav_menu_item">
-                <p>Анализ</p>
+                <p> {t("nav_menu_2")} </p>
               </div>
             </NavLink>
             <NavLink to="/investments">
               <div className="nav_menu_item">
-                <p>Инвестиции</p>
+                <p> {t("nav_menu_3")} </p>
               </div>
             </NavLink>
 
             <div className="nav_menu_item ">
-              <p>Тарифы</p>
+              <p> {t("nav_menu_4")} </p>
+
               <Down className="drop_down_icon" />
               <div className="nav_menu_item_drop">
                 <NavLink to="/rates/rates">
-                  <p>Тарифы</p>
+                  <p> {t("nav_menu_4")} </p>
                 </NavLink>
                 <NavLink to="/rates/transactions">
-                  <p>Транзакции</p>
+                  <p> {t("nav_menu_5")} </p>
                 </NavLink>
               </div>
             </div>
 
             <div className="nav_menu_item">
-              <p>Настройки</p>
+              <p> {t("nav_menu_6")} </p>
+
               <Down className="drop_down_icon" />
               <div className="nav_menu_item_drop nav_menu_item_drop_settings">
                 <NavLink to="/settings/profile">
@@ -130,7 +136,7 @@ function NavBar({ setMode }) {
           </div>
         </div>
         <div className="nav_wrapper_right">
-          <div className="nav_menu_item">
+          {/* <div className="nav_menu_item">
             <p>RU</p>
             <Down className="drop_down_icon" />
             <div className="nav_menu_item_drop">
@@ -144,7 +150,8 @@ function NavBar({ setMode }) {
                 <p>SE</p>
               </NavLink>
             </div>
-          </div>
+          </div> */}
+          <LanguageSwitcher />
           <div className="mode_toggler">
             {localStorage.getItem("mode") === "dark" ? (
               <BlackMode onClick={toggleMode} className="black_mode_handler" />
