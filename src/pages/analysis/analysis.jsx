@@ -250,46 +250,14 @@ function Analysis() {
             <h2>{t("pnl_main_title")}</h2>
           </div>
 
-          {Number(pnl) !== 0 ? (
-            <>
-              <div className="pnl_value">
-                <p>
-                  + {pnl} <span>USDT</span>
-                </p>
-              </div>
-
-              <div className="review_chart">
-                <LineChart setPnl={pnl} />
-              </div>
-            </>
-          ) : (
-            <div className="empty_block">
-              <img src={empty_block} alt="" />
-              <p>Нет данных по Pnl</p>
-            </div>
-          )}
+          <LineChart />
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
             <h2>{t("pnl_by_days_title")}</h2>
           </div>
 
-          {Number(pnl) !== 0 ? (
-            <>
-              <div className="pnl_value">
-                <p>
-                  {pnlDays > 0 ? `+${pnlDays}` : pnlDays} <span>USDT</span>
-                </p>
-              </div>
-
-              <ColumnChart setPnlDays={setPnlDays} />
-            </>
-          ) : (
-            <div className="empty_block">
-              <img src={empty_block} alt="" />
-              <p>Нет данных по Pnl</p>
-            </div>
-          )}
+          <ColumnChart setPnlDays={setPnlDays} />
         </div>
 
         <div className="orders_history_list main_block_wrapper">

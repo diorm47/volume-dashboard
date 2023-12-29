@@ -255,24 +255,7 @@ function Review() {
                   </div>
                 </div>
               </div>
-              {Number(pnl) !== 0 ? (
-                <>
-                  <div className="pnl_value">
-                    <p>
-                      + {pnlGraph} <span>USDT</span>
-                    </p>
-                  </div>
-
-                  <div className="review_chart">
-                    <LineChart setPnl={setPnlGraph} />
-                  </div>
-                </>
-              ) : (
-                <div className="empty_block">
-                  <img src={empty_block} alt="" />
-                  <p>Нет данных по Pnl</p>
-                </div>
-              )}
+              <LineChart />
             </div>
             <div className="orders_history_list main_block_wrapper">
               <div className="main_block_wrapper_top">
@@ -334,9 +317,7 @@ function Review() {
                             <p>
                               {t("profit_or_loss")}{" "}
                               {item.trading_result < 0 ? (
-                                <span >
-                                  {item.trading_result} USDT
-                                </span>
+                                <span>{item.trading_result} USDT</span>
                               ) : (
                                 <span>{item.trading_result} USDT</span>
                               )}

@@ -2,17 +2,27 @@ import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./line-chart.css";
 import subDays from "date-fns/subDays";
+import empty_block from "../../assets/icons/empty-block.png";
 
-const LineChart = ({ setPnl }) => {
+const LineChart = () => {
+  const [pnl, setPnl] = useState(false);
+  const formatDate = (date) => {
+    let day = date.getDate().toString().padStart(2, "0");
+    let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
+    let year = date.getFullYear();
+    return `${year}-${month}-${day}`;
+  };
+
   const getLast7Days = () => {
     const dates = [];
-    for (let i = 6; i >= 0; i--) {
+    for (let i = 0; i < 7; i++) {
       const date = new Date();
       date.setDate(date.getDate() - i);
-      dates.push(date.toISOString().split("T")[0]);
+      dates.unshift(formatDate(date)); // Manually format the date
     }
     return dates;
   };
+
   const [chartData, setChartData] = useState({
     series: [
       {
@@ -82,7 +92,15 @@ const LineChart = ({ setPnl }) => {
   ]);
   const updateChartData = (serverData) => {
     const last7Days = getLast7Days();
-    const updatedData = last7Days.map((date) => serverData[date] || 0);
+
+    // Convert the server data keys to 'yyyy-mm-dd' format for matching
+    const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
+      const [dd, mm, yyyy] = key.split("-");
+      acc[`${yyyy}-${mm}-${dd}`] = serverData[key];
+      return acc;
+    }, {});
+
+    const updatedData = last7Days.map((date) => serverDataConverted[date] || 0);
 
     setChartData((prevState) => ({
       ...prevState,
@@ -128,6 +146,7 @@ const LineChart = ({ setPnl }) => {
       .then((data) => {
         if (data.success && data.data.chart_data) {
           updateChartData(data.data.chart_data);
+          setPnl(true);
         }
       })
       .catch((error) => {
@@ -138,19 +157,38 @@ const LineChart = ({ setPnl }) => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getPnl();
+      // updateChartData({ "30-12-2023": 1 });
     }
   }, [localStorage.getItem("token")]);
 
   return (
-    <div id="chart">
-      <ReactApexChart
-        options={chartData.options}
-        series={chartData.series}
-        type="area"
-        height={350}
-        width="100%"
-      />
-    </div>
+    <>
+      {pnl ? (
+        <>
+          <div className="pnl_value">
+            <p>
+              + {pnl} <span>USDT</span>
+            </p>
+          </div>
+          <div className="review_chart">
+            <div id="chart">
+              <ReactApexChart
+                options={chartData.options}
+                series={chartData.series}
+                type="area"
+                height={350}
+                width="100%"
+              />
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="empty_block">
+          <img src={empty_block} alt="" />
+          <p>Нет данных по Pnl</p>
+        </div>
+      )}
+    </>
   );
 };
 
