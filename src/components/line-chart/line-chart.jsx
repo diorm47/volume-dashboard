@@ -6,6 +6,7 @@ import empty_block from "../../assets/icons/empty-block.png";
 
 const LineChart = () => {
   const [pnl, setPnl] = useState(false);
+  const [pnlData, setPnlData] = useState('0.00');
   const formatDate = (date) => {
     let day = date.getDate().toString().padStart(2, "0");
     let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
@@ -78,7 +79,7 @@ const LineChart = () => {
         },
         y: {
           formatter: function (value) {
-            setPnl(value);
+            setPnlData(value);
             return `${value} USDT`;
           },
         },
@@ -157,7 +158,6 @@ const LineChart = () => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getPnl();
-      // updateChartData({ "30-12-2023": 1 });
     }
   }, [localStorage.getItem("token")]);
 
@@ -167,7 +167,7 @@ const LineChart = () => {
         <>
           <div className="pnl_value">
             <p>
-              + {pnl} <span>USDT</span>
+              + {pnlData} <span>USDT</span>
             </p>
           </div>
           <div className="review_chart">
