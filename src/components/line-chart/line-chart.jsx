@@ -108,7 +108,17 @@ const LineChart = () => {
       series: [{ ...prevState.series[0], data: updatedData }],
     }));
   };
+  const sumData = (data) => {
+    return data.reduce((acc, value) => acc + value, 0).toFixed(2);
+  };
 
+  // Effect to update pnlData whenever chartData.series changes
+  useEffect(() => {
+    if (chartData.series.length > 0 && chartData.series[0].data.length > 0) {
+      const total = sumData(chartData.series[0].data);
+      setPnlData(total);
+    }
+  }, [chartData.series]);
   const getPnl = (value) => {
     let headersList = {
       Accept: "*/*",

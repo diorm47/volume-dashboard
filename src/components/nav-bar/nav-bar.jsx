@@ -134,7 +134,7 @@ function NavBar({ setMode }) {
                   target="_blank"
                   to="https://nvolume.com/white-paper.html"
                 >
-                  <p>Whatepaper</p>
+                  <p>Whitepaper</p>
                 </NavLink>
                 <NavLink target="_blank" to="https://nvolume.com/policy.html">
                   <p> {t("nav_menu_12")} </p>
