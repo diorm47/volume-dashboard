@@ -3,6 +3,7 @@ import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import { format, parseISO } from "date-fns";
 import { ru } from "date-fns/locale";
 import { mainApi } from "../../components/utils/main-api";
+import { useTranslation } from "react-i18next";
 
 function Security() {
   React.useEffect(() => {
@@ -120,16 +121,17 @@ function Security() {
       refresh();
     }
   }, [localStorage.getItem("token")]);
+  const { t, i18n } = useTranslation();
 
   return (
     <>
       <div className="profile_page security_page">
         <div className="secondary_block_wrapper user_image_block">
-          <h2>Настройки безопасности</h2>
-          <p>Вы можете поменять настройки или отключить их ниже</p>
+          <h2>{t("securitySettings")}</h2>
+          <p>{t("changeSettingsBelow")}</p>
           <div className="order_history_list_line"></div>
           <div className="user_data_item">
-            <span>Текущий пароль</span>
+            <span>{t("currentPassword")}</span>
             <div>
               <svg
                 className="password_templ"
@@ -198,7 +200,8 @@ function Security() {
               </svg>
 
               <p onClick={() => setPasswordModal(true)}>
-                Изменить <span>пароль</span>
+                {t("changePassword")}
+                <span>{t("password")}</span>
               </p>
             </div>
           </div>
@@ -212,13 +215,13 @@ function Security() {
           </div> */}
         </div>
         <div className="secondary_block_wrapper user_image_block">
-          <h2>История входов в аккаунт</h2>
-          <p>Здесь отображается список последних 10 входов</p>
+          <h2>{t("loginHistory.title")}</h2>
+          <p>{t("loginHistory.description")}</p>
           <div className="user_login_history">
             <div className="user_login_history_titles">
-              <p>Время</p>
-              <p>Местонахождение</p>
-              <p>IP-адрес</p>
+              <p>{t("loginHistory.time")}</p>
+              <p>{t("loginHistory.location")}</p>
+              <p>{t("loginHistory.ipAddress")}</p>
             </div>
             <div className="order_history_list_line"></div>
             {loginHistory && loginHistory.length >= 1
@@ -252,7 +255,6 @@ function Security() {
         }
         onClick={closeModals}
       ></div>
-
       <div
         className={
           passwordModal
@@ -261,20 +263,20 @@ function Security() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Изменить пароль</p>
+          <p>{t("passwordChange.title")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Текущий пароль</p>
+            <p>{t("passwordChange.currentPassword")}</p>
             <input type="password" />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Новый пароль</p>
+            <p>{t("passwordChange.newPassword")}</p>
             <input type="password" />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Новый пароль ещё раз</p>
+            <p>{t("passwordChange.confirmNewPassword")}</p>
             <input type="password" />
           </div>
           <div className="modal_wrapper_btns">
@@ -285,11 +287,11 @@ function Security() {
                   setPasswordConfirmModal(true);
                 }}
               >
-                Подтвердить
+                {t("passwordChange.confirm")}
               </button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
+              <button>{t("passwordChange.cancel")}</button>
             </div>
           </div>
         </div>
@@ -301,16 +303,16 @@ function Security() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Изменить электронную почту</p>
+          <p>{t("emailChange.title")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Новая электронная почта</p>
+            <p>{t("emailChange.newEmail")}</p>
             <input type="text" />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Новая электронная почта ещё раз</p>
+            <p>{t("emailChange.confirmNewEmail")}</p>
             <input type="text" />
           </div>
           <div className="modal_wrapper_btns">
@@ -321,11 +323,11 @@ function Security() {
                   setPasswordConfirmModal(true);
                 }}
               >
-                Подтвердить
+                {t("emailChange.confirm")}
               </button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
+              <button>{t("emailChange.cancel")}</button>
             </div>
           </div>
         </div>
@@ -339,64 +341,25 @@ function Security() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Изменить пароль</p>
+          <p>{t("passwordChange.title")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Мы отправили код на nvolume@mail.ru</p>
+            <p>{t("passwordChange.codeSentTo", { email })}</p>
             <div className="recovery_inputs">
-              <input
-                type="text"
-                value={input1}
-                onChange={(e) => handleInput(e, setInput1, input2Ref)}
-                maxLength={1}
-              />
-              <input
-                ref={input2Ref}
-                type="text"
-                value={input2}
-                onChange={(e) => handleInput(e, setInput2, input3Ref)}
-                maxLength={1}
-              />
-              <input
-                ref={input3Ref}
-                type="text"
-                value={input3}
-                onChange={(e) => handleInput(e, setInput3, input4Ref)}
-                maxLength={1}
-              />
-              <input
-                ref={input4Ref}
-                type="text"
-                value={input4}
-                onChange={(e) => handleInput(e, setInput4, input5Ref)}
-                maxLength={1}
-              />
-              <input
-                ref={input5Ref}
-                type="text"
-                value={input5}
-                onChange={(e) => handleInput(e, setInput5, input6Ref)}
-                maxLength={1}
-              />
-              <input
-                ref={input6Ref}
-                type="text"
-                value={input6}
-                onChange={(e) => handleInput(e, setInput6, null)}
-                maxLength={1}
-                onKeyUp={(e) => e.key === "Enter"}
-              />
+              {/* Добавьте здесь поля ввода кода подтверждения */}
             </div>
-            <p className="recovery_time">Отправить повторно (5:00)</p>
+            <p className="recovery_time">
+              {t("passwordChange.resendCode", { timer: "5:00" })}
+            </p>
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button>Подтвердить</button>
+              <button>{t("passwordChange.confirm")}</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
+              <button>{t("passwordChange.cancel")}</button>
             </div>
           </div>
         </div>

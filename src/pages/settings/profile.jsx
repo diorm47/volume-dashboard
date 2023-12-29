@@ -4,6 +4,7 @@ import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import avatarImg from "../../assets/images/avatar-big.png";
 import { mainApi } from "../../components/utils/main-api";
 import Snackbar from "../../components/snackbar/snackbar";
+import { useTranslation } from "react-i18next";
 
 function Profile() {
   React.useEffect(() => {
@@ -293,7 +294,7 @@ function Profile() {
       .then((data) => {
         snackOptions("Аватар yспушно обновлён!", "success");
         setSelectedFile(null);
-        refresh()
+        refresh();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -304,12 +305,14 @@ function Profile() {
       updateAvatar();
     }
   }, [selectedFile]);
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <div className="profile_page">
         <div className="secondary_block_wrapper user_image_block">
-          <h2>Изображение профиля</h2>
-          <p>Вы можете изменить изображение вашего профиля</p>
+          <h2>{t("profileImage")}</h2>
+          <p>{t("changeProfileImage")}</p>
           <div className="order_history_list_line"></div>
           <div className="user_img">
             <div
@@ -329,55 +332,55 @@ function Profile() {
             />
 
             <p>
-              Поддерживаются форматы JPG, PNG. Максимальный размер файла <br />{" "}
-              для загрузки: 10 Мб
+              {t("supportedFormats")} <br />
+              {t("maxFileSize")}
             </p>
           </div>
         </div>
         <div className="secondary_block_wrapper user_image_block">
-          <h2>Информация об учетной записи</h2>
-          <p>Вы можете поменять данные ниже</p>
+          <h2>{t("accountInfo")}</h2>
+          <p>{t("changeDataBelow")}</p>
           <div className="order_history_list_line"></div>
           <div className="user_data_item">
-            <span>Полное имя</span>
+            <span>{t("fullName")}</span>
             <div>
               <p>
                 {`${formData.lastName} ${formData.firstName} ${formData.middleName}`}{" "}
               </p>
               <p onClick={() => setNameModal(true)}>
-                Изменить <span>имя</span>
+                {t("change")} <span>{t("name")}</span>
               </p>
             </div>
           </div>
           <div className="order_history_list_line"></div>
           <div className="user_data_item">
-            <span>Псевдоним</span>
+            <span>{t("nickname")}</span>
             <div>
               <p>{userName || "---"}</p>
               <p onClick={() => setUserNameModal(true)}>
-                Изменить <span>псевдоним</span>
+                {t("change")} <span>{t("nickname")}</span>
               </p>
             </div>
           </div>
           <div className="order_history_list_line"></div>
 
           <div className="user_data_item">
-            <span>Адрес электронной почты</span>
+            <span>{t("email")}</span>
             <div>
               <p>{email || "---"}</p>
               <p onClick={() => setEmailModal(true)}>
-                Изменить <span>электронную почту</span>
+                {t("change")} <span>{t("email")}</span>
               </p>
             </div>
           </div>
           <div className="order_history_list_line"></div>
 
           <div className="user_data_item">
-            <span>Номер телефона</span>
+            <span>{t("phoneNumber")}</span>
             <div>
               <p>+{phone || ""}</p>
               <p onClick={() => setNumberModal(true)}>
-                Изменить <span>номер телефона</span>
+                {t("change")} <span>{t("phoneNumber")}</span>
               </p>
             </div>
           </div>
@@ -403,12 +406,12 @@ function Profile() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Изменить имя</p>
+          <p>{t("changeName")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Фамилия</p>
+            <p>{t("lastName")}</p>
             <input
               type="text"
               name="lastName"
@@ -417,7 +420,7 @@ function Profile() {
             />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Имя</p>
+            <p>{t("firstName")}</p>
             <input
               type="text"
               name="firstName"
@@ -426,7 +429,7 @@ function Profile() {
             />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Отчество</p>
+            <p>{t("middleName")}</p>
             <input
               type="text"
               name="middleName"
@@ -436,10 +439,10 @@ function Profile() {
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button onClick={handleChangeName}>Сохранить</button>
+              <button onClick={handleChangeName}>{t("save")}</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button onClick={closeModals}>Отмена</button>
+              <button onClick={closeModals}>{t("cancel")}</button>
             </div>{" "}
           </div>
         </div>
@@ -453,12 +456,12 @@ function Profile() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Изменить псевдоним</p>
+          <p>{t("changeUsername")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Псевдоним</p>
+            <p>{t("username")}</p>
             <input
               type="text"
               value={userName}
@@ -467,10 +470,10 @@ function Profile() {
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button onClick={handleChangeUserName}>Сохранить</button>
+              <button onClick={handleChangeUserName}>{t("save")}</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button onClick={closeModals}>Отмена</button>
+              <button onClick={closeModals}>{t("cancel")}</button>
             </div>
           </div>
         </div>
@@ -482,12 +485,12 @@ function Profile() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Изменить номер телефона</p>
+          <p>{t("changePhoneNumber")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Номер телефона</p>
+            <p>{t("phoneNumber")}</p>
             <input
               type="number"
               value={phone}
@@ -496,10 +499,10 @@ function Profile() {
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button onClick={handleChangePhone}>Сохранить</button>
+              <button onClick={handleChangePhone}>{t("save")}</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button onClick={closeModals}>Отмена</button>
+              <button onClick={closeModals}>{t("cancel")}</button>
             </div>
           </div>
         </div>
@@ -511,12 +514,12 @@ function Profile() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Изменить электронную почту</p>
+          <p>{t("changeEmail")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Новая электронная почта</p>
+            <p>{t("newEmail")}</p>
             <input
               type="text"
               value={email}
@@ -524,7 +527,7 @@ function Profile() {
             />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Новая электронная почта ещё раз</p>
+            <p>{t("confirmNewEmail")}</p>
             <input
               type="text"
               value={email2}
@@ -533,14 +536,15 @@ function Profile() {
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button onClick={handleChangeEmail}>Подтвердить</button>
+              <button onClick={handleChangeEmail}>{t("confirm")}</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button onClick={closeModals}>Отмена</button>
+              <button onClick={closeModals}>{t("cancel")}</button>
             </div>
           </div>
         </div>
       </div>
+
       <div
         className={
           passwordConfirmModal
@@ -549,12 +553,12 @@ function Profile() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Введите код</p>
+          <p>{t("enterCode")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Мы отправили код на {email}</p>
+            <p>{t("codeSentTo", { email })}</p>
             <div id="otp" className="fillcode_inputs">
               {otp.map((data, index) => (
                 <input
@@ -570,7 +574,7 @@ function Profile() {
               ))}
             </div>
             <div className="getcode_timer">
-              <p>Отправить повторно ({formatTimer()})</p>
+              <p>{t("resendCodeIn", { timer: formatTimer() })}</p>
             </div>
           </div>
           <div className="modal_wrapper_btns">
@@ -579,11 +583,11 @@ function Profile() {
                 onClick={handleSubmitCode}
                 disabled={otp.join("").length < 6}
               >
-                Подтвердить
+                {t("confirm")}
               </button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button onClick={closeModals}>Отмена</button>
+              <button onClick={closeModals}>{t("cancel")}</button>
             </div>
           </div>
         </div>

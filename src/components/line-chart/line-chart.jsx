@@ -80,6 +80,16 @@ const LineChart = ({ setPnl }) => {
     subDays(new Date(), 6),
     new Date(),
   ]);
+  const updateChartData = (serverData) => {
+    const last7Days = getLast7Days();
+    const updatedData = last7Days.map((date) => serverData[date] || 0);
+
+    setChartData((prevState) => ({
+      ...prevState,
+      series: [{ ...prevState.series[0], data: updatedData }],
+    }));
+  };
+
   const getPnl = (value) => {
     let headersList = {
       Accept: "*/*",
@@ -116,8 +126,9 @@ const LineChart = ({ setPnl }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // setPnl(data.data.pnl);
-        console.log(data);
+        if (data.success && data.data.chart_data) {
+          updateChartData(data.data.chart_data);
+        }
       })
       .catch((error) => {
         console.log(error);
