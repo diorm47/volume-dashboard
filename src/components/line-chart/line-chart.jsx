@@ -3,7 +3,7 @@ import ReactApexChart from "react-apexcharts";
 import "./line-chart.css";
 import subDays from "date-fns/subDays";
 import empty_block from "../../assets/icons/empty-block.png";
-
+import { eachDayOfInterval, format } from "date-fns";
 const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
   const [pnl, setPnl] = useState(false);
   const [pnlData, setPnlData] = useState("0.00");
@@ -92,38 +92,28 @@ const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
   //   new Date(),
   // ]);
   const updateChartData = (serverData) => {
-    console.log("Server Data:", serverData); // Debug log
-
-    const formattedSelectedTimeStart = formatDate(selectedTime[0]);
-    const formattedSelectedTimeEnd = formatDate(selectedTime[1]);
-
-    console.log("Selected Time Range:", formattedSelectedTimeStart, formattedSelectedTimeEnd); // Debug log
-
-    // Filter and process server data
-    const processedData = Object.entries(serverData)
-      .filter(([date, _]) => date >= formattedSelectedTimeStart && date <= formattedSelectedTimeEnd)
-      .reduce((acc, [date, value]) => {
-        acc[date] = value;
-        return acc;
-      }, {});
-
-    console.log("Processed Data:", processedData); // Debug log
-
-    // Prepare data for chart
     const last7Days = getLast7Days();
-    const updatedData = last7Days.map(date => processedData[date] || 0);
 
-    // Update chart and pnl data
-    setChartData(prevState => ({
+    // Convert the server data keys to 'yyyy-mm-dd' format for matching
+    const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
+      const [dd, mm, yyyy] = key.split("-");
+      acc[`${yyyy}-${mm}-${dd}`] = serverData[key];
+      return acc;
+    }, {});
+
+    const updatedData = last7Days.map((date) => serverDataConverted[date] || 0);
+
+    setChartData((prevState) => ({
       ...prevState,
       series: [{ ...prevState.series[0], data: updatedData }],
     }));
-
-    const total = sumData(updatedData);
-    setPnlData(total);
   };
   const sumData = (data) => {
     return data.reduce((acc, value) => acc + value, 0).toFixed(2);
+  };
+  const getDatesInRange = (startDate, endDate) => {
+    const interval = eachDayOfInterval({ start: startDate, end: endDate });
+    return interval.map(date => format(date, "yyyy-MM-dd"));
   };
 
   // Effect to update pnlData whenever chartData.series changes
@@ -170,9 +160,15 @@ const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success && data.data.chart_data) {
-          updateChartData(data.data.chart_data);
-          setPnl(true);
-        }
+          const formattedSelectedTime = selectedTime.map(date => format(date, "yyyy-MM-dd"));
+          const dateRange = getDatesInRange(...formattedSelectedTime);
+          const relevantData = dateRange.reduce((acc, date) => {
+            acc[date] = data.data.chart_data[date] || 0;
+            return acc;
+          }, {});
+  
+          updateChartData(relevantData);
+          setPnl(true)}
       })
       .catch((error) => {
         console.log(error);
@@ -184,7 +180,6 @@ const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
       getPnl();
     }
   }, [localStorage.getItem("token"), selectedTime]);
-console.log(selectedTime);
 
   return (
     <>
