@@ -92,21 +92,28 @@ const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
   //   new Date(),
   // ]);
   const updateChartData = (serverData) => {
+    console.log("Server Data:", serverData); // Debug log
+
+    const formattedSelectedTimeStart = formatDate(selectedTime[0]);
+    const formattedSelectedTimeEnd = formatDate(selectedTime[1]);
+
+    console.log("Selected Time Range:", formattedSelectedTimeStart, formattedSelectedTimeEnd); // Debug log
+
+    // Filter and process server data
+    const processedData = Object.entries(serverData)
+      .filter(([date, _]) => date >= formattedSelectedTimeStart && date <= formattedSelectedTimeEnd)
+      .reduce((acc, [date, value]) => {
+        acc[date] = value;
+        return acc;
+      }, {});
+
+    console.log("Processed Data:", processedData); // Debug log
+
+    // Prepare data for chart
     const last7Days = getLast7Days();
-    
-    // Convert server data to 'yyyy-mm-dd' format
-    const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
-      const [dd, mm, yyyy] = key.split("-");
-      acc[`${yyyy}-${mm}-${dd}`] = serverData[key];
-      return acc;
-    }, {});
+    const updatedData = last7Days.map(date => processedData[date] || 0);
 
-    // Filter data to include only within the selectedTime range
-    const formattedSelectedTime = selectedTime.map(date => formatDate(date));
-    const updatedData = last7Days
-      .filter(date => formattedSelectedTime.includes(date))
-      .map(date => serverDataConverted[date] || 0);
-
+    // Update chart and pnl data
     setChartData(prevState => ({
       ...prevState,
       series: [{ ...prevState.series[0], data: updatedData }],
@@ -176,11 +183,12 @@ const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
     if (localStorage.getItem("token")) {
       getPnl();
     }
-  }, [localStorage.getItem("token")]);
+  }, [localStorage.getItem("token"), selectedTime]);
+console.log(selectedTime);
 
   return (
     <>
-      {pnl ? (
+      {true ? (
         <>
           <div className="pnl_value">
             <p>
