@@ -121,7 +121,7 @@ function RatesPage() {
     let bodyContent = new FormData();
     bodyContent.append("tariff", data);
 
-    fetch("https://trade.margelet.org/private-api/v1/users/two-factor", {
+    fetch("https://trade.margelet.org/private-api/v1/users/invoice/create", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
