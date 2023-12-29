@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { mainApi } from "../../components/utils/main-api";
 
 function RatesPage() {
   React.useEffect(() => {
@@ -13,28 +14,68 @@ function RatesPage() {
     },
     {
       question: "Какая должна быть минимальная сумма депозита?",
-      answer: "Сервис доступен при балансе депозита от $100. Чтобы получить доход и одновременно окупить стоимость подписки рекомендуем использовать не менее $250 - $500. Также рекомендуем не использовать больше $3 000 в первый месяц.",
+      answer:
+        "Сервис доступен при балансе депозита от $100. Чтобы получить доход и одновременно окупить стоимость подписки рекомендуем использовать не менее $250 - $500. Также рекомендуем не использовать больше $3 000 в первый месяц.",
     },
     {
       question: "Какие комиссии и условия использования?",
-      answer: "Не берём комиссии со сделок и не взимаем процент с дохода. Чтобы использовать сервис, нужно купить подписку. Стоимость подписки зависит от суммы инвестиций: чем выше депозит, тем дороже подписка. В будущем для пользователей с депозитами выше $5 000 может появиться подписка с оплатой от прибыли.",
+      answer:
+        "Не берём комиссии со сделок и не взимаем процент с дохода. Чтобы использовать сервис, нужно купить подписку. Стоимость подписки зависит от суммы инвестиций: чем выше депозит, тем дороже подписка. В будущем для пользователей с депозитами выше $5 000 может появиться подписка с оплатой от прибыли.",
     },
     {
-      question: "Могу ли я изменить тарифный план пока действует пробный период?",
-      answer: "Да. Чтобы купить подписку на нужный тариф, выберете его на странице “Тарифы” и следуйте инструкциям для оплаты. Если в процессе возникнут вопросы - обращайтесь в службу поддержки.",
+      question:
+        "Могу ли я изменить тарифный план пока действует пробный период?",
+      answer:
+        "Да. Чтобы купить подписку на нужный тариф, выберете его на странице “Тарифы” и следуйте инструкциям для оплаты. Если в процессе возникнут вопросы - обращайтесь в службу поддержки.",
     },
     {
       question: "Как я могу оформить возврат?",
-      answer: "Чтобы получить возврат за неиспользованные дни, нужно обратиться в службу поддержки, либо через форму обратной связи, либо в Телегра-бота.",
+      answer:
+        "Чтобы получить возврат за неиспользованные дни, нужно обратиться в службу поддержки, либо через форму обратной связи, либо в Телегра-бота.",
     },
   ];
   const [opened, setOpened] = useState();
+  const [userData, setUserData] = useState({});
+  const refresh = () => {
+    mainApi
+      .reEnter()
+      .then((res) => {
+        setUserData(res.data.user);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      refresh();
+    }
+  }, [localStorage.getItem("token")]);
   const toggleTabs = (data) => {
     if (data == opened) {
       setOpened("");
     } else {
       setOpened(data);
     }
+  };
+  const activateDemoTariff = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch("https://trade.margelet.org/private-api/v1/users/demo/activate", {
+      method: "POST",
+
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>
@@ -45,40 +86,54 @@ function RatesPage() {
           транзакции. <br /> Внимательно указывайте сумму с учётом комиссии.
         </p>
       </div>
-      <div className="secondary_block_wrapper">
-        <div className="main_block_wrapper_title">
-          <h2>Пробный период</h2>
-          {/* <h2>Тарифный план</h2> */}
-        </div>
-        <div className="tarif_plan">
-          <div className="tarif_plan_top">
-            {/* <p>{userData.tariff || "-"}</p>
-                <p>$ 100</p> */}
-            <p>7 дней бесплатно</p>
+      {userData && userData.tariff ? (
+        <div className="secondary_block_wrapper">
+          <div className="main_block_wrapper_title">
+            <h2>Тарифный план</h2>
           </div>
-          <div className="free_tarif">
-            <p>
-              Активируйте тестовый период уже сегодня и получите доступ к
-              широкому спектру возможностей.{" "}
-            </p>
-          </div>
-          {/* <div className="tarif_plan_time">
-                <div className="tarif_plan_time_title">
-                  <p>30 дней</p>
-                  <p>12 дней</p>
-                </div>
-                <div className="tarif_plan_time_block">
-                  <div className="tarif_plan_time_block_value"></div>
-                </div>
-              </div> */}
-          <div className="review_right_link">
-            <NavLink to="/rates/rates">
-              {/* <p>Добавить + 30 дней</p> */}
-              <p>Активировать</p>
-            </NavLink>
+          <div className="tarif_plan">
+            <div className="tarif_plan_top">
+              <p>{userData.tariff}</p>
+              <p>$ 100</p>
+            </div>
+
+            <div className="tarif_plan_time">
+              <div className="tarif_plan_time_title">
+                <p>30 дней</p>
+                <p>12 дней</p>
+              </div>
+              <div className="tarif_plan_time_block">
+                <div className="tarif_plan_time_block_value"></div>
+              </div>
+            </div>
+            <div className="review_right_link">
+              <NavLink to="/rates/rates">
+                <p>Добавить + 30 дней</p>
+              </NavLink>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="secondary_block_wrapper">
+          <div className="main_block_wrapper_title">
+            <h2>Пробный период</h2>
+          </div>
+          <div className="tarif_plan">
+            <div className="tarif_plan_top">
+              <p>7 дней бесплатно</p>
+            </div>
+            <div className="free_tarif">
+              <p>
+                Активируйте тестовый период уже сегодня и получите доступ к
+                широкому спектру возможностей.{" "}
+              </p>
+            </div>
+            <div className="review_right_link">
+              <p onClick={activateDemoTariff}>Активировать</p>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="rates_cards">
         <div className="secondary_block_wrapper rates_card">
           <div className="main_block_wrapper_title">

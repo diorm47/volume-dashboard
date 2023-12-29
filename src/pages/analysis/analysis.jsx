@@ -14,6 +14,7 @@ function Analysis() {
     document.title = `Анализ  | &Volume`;
   }, []);
   const [pnl, setPnl] = useState(81);
+  const [pnlToday, setPnlToday] = useState('0.00');
   const [activeOrders, setActiveOrders] = useState([]);
   const [pnlDays, setPnlDays] = useState("98");
   const [ordersHistory, setOrdersHistory] = useState();
@@ -56,11 +57,34 @@ function Analysis() {
         console.log(error);
       });
   };
+  const getPnl = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("period", "today");
+
+    fetch("https://trade.margelet.org/private-api/v1/users/pnl", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setPnlToday(data.pnl);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getHistoryOrders();
       getActiveOrders();
+      getPnl();
     }
   }, [localStorage.getItem("token")]);
 
@@ -114,7 +138,7 @@ function Analysis() {
                 <p>PnL за сегодня</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    0.00 <span>USDT</span>
+                    {pnlToday == 0 ? '0.00' : pnlToday} <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -222,8 +246,8 @@ function Analysis() {
                       <p>
                         Прибыль или убыток{" "}
                         {item.trading_result < 0 ? (
-                          <span >
-                          {/* <span style={{ color: "red" }}> */}
+                          <span>
+                            {/* <span style={{ color: "red" }}> */}
                             {item.trading_result} USDT
                           </span>
                         ) : (
@@ -305,9 +329,7 @@ function Analysis() {
                           Прибыль или убыток{" "}
                           {item.trading_result < 0 ? (
                             // <span style={{ color: "red" }}>
-                            <span >
-                              {item.trading_result} USDT
-                            </span>
+                            <span>{item.trading_result} USDT</span>
                           ) : (
                             <span>{item.trading_result} USDT</span>
                           )}

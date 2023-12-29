@@ -136,7 +136,7 @@ function Review() {
       refresh();
       getPnl();
       getHistoryOrders();
-      getBalance();
+      // getBalance();
     }
   }, [localStorage.getItem("token")]);
 
@@ -146,41 +146,97 @@ function Review() {
     const formattedDate = format(parsedDate, "dd.MM.yyyy, HH:mm:ss");
     return formattedDate;
   };
+
   return (
-    <div className="pages_wrapper review_page">
-      <div className="review_page_wrapper">
-        <div className="review_left">
-          <div className="review_left_top">
-            <div className="main_block_wrapper">
-              <div className="main_block_wrapper_top">
-                <div className="main_block_wrapper_title">
-                  <h2>Баланс</h2>
+    <>
+      <div className="pages_wrapper review_page">
+        <div className="review_page_wrapper">
+          <div className="review_left">
+            <div className="review_left_top">
+              <div className="main_block_wrapper">
+                <div className="main_block_wrapper_top">
+                  <div className="main_block_wrapper_title">
+                    <h2>Баланс</h2>
+                  </div>
+                </div>
+                <div className="main_block_wrapper_bottom">
+                  <div className="review_left_top_block_content">
+                    <p>Основной аккаунт</p>
+                    <div className="review_left_top_block_content_amount">
+                      <p>
+                        {/* {userData.balance || "-"} <span>USDT</span> */}
+                        0.00 <span>USDT</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="main_block_wrapper_bottom">
-                <div className="review_left_top_block_content">
-                  <p>Основной аккаунт</p>
-                  <div className="review_left_top_block_content_amount">
-                    <p>
-                      {/* {userData.balance || "-"} <span>USDT</span> */}
-                      0.00 <span>USDT</span>
-                    </p>
+              <div className="main_block_wrapper">
+                <div className="main_block_wrapper_top p24_28px">
+                  <div className="main_block_wrapper_title">
+                    <h2>PnL</h2>
+                    <div className="main_select_item">
+                      <Dropdown
+                        options={options}
+                        onChange={handleSelect}
+                        value={options.find(
+                          (option) => optionsMap[option] === selectedOption
+                        )}
+                        placeholder={options[0]}
+                        arrowClosed={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                          >
+                            <path
+                              d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
+                              fill="#111112"
+                            />
+                          </svg>
+                        }
+                        arrowOpen={
+                          <svg
+                            className="open_arrow"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                          >
+                            <path
+                              d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
+                              fill="#111112"
+                            />
+                          </svg>
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="main_block_wrapper_bottom">
+                  <div className="review_left_top_block_content">
+                    <p>PnL за сегодня</p>
+                    <div className="review_left_top_block_content_amount">
+                      <p>
+                        {pnl == 0 ? "0.00" : pnl} <span>USDT</span>
+                        {/* 0.00 <span>USDT</span> */}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="main_block_wrapper">
-              <div className="main_block_wrapper_top p24_28px">
-                <div className="main_block_wrapper_title">
-                  <h2>PnL</h2>
+            <div className="secondary_block_wrapper">
+              <div className="main_block_wrapper_title">
+                <h2>PnL</h2>
+                <div className="main_select_item">
                   <div className="main_select_item">
                     <Dropdown
-                      options={options}
-                      onChange={handleSelect}
-                      value={options.find(
-                        (option) => optionsMap[option] === selectedOption
-                      )}
-                      placeholder={options[0]}
+                      options={options2}
+                      placeholder={options2[0]}
                       arrowClosed={
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -214,281 +270,250 @@ function Review() {
                   </div>
                 </div>
               </div>
-              <div className="main_block_wrapper_bottom">
-                <div className="review_left_top_block_content">
-                  <p>PnL за сегодня</p>
-                  <div className="review_left_top_block_content_amount">
-                    <p>
-                      {/* {pnl} <span>USDT</span> */}
-                      0.00 <span>USDT</span>
-                    </p>
-                  </div>
-                </div>
+              <div className="pnl_value">
+                <p>
+                  + {pnlGraph} <span>USDT</span>
+                </p>
               </div>
-            </div>
-          </div>
-          <div className="secondary_block_wrapper">
-            <div className="main_block_wrapper_title">
-              <h2>PnL</h2>
-              <div className="main_select_item">
-                <div className="main_select_item">
-                  <Dropdown
-                    options={options2}
-                    placeholder={options2[0]}
-                    arrowClosed={
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                      >
-                        <path
-                          d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
-                          fill="#111112"
-                        />
-                      </svg>
-                    }
-                    arrowOpen={
-                      <svg
-                        className="open_arrow"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                      >
-                        <path
-                          d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
-                          fill="#111112"
-                        />
-                      </svg>
-                    }
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="pnl_value">
-              <p>
-                + {pnlGraph} <span>USDT</span>
-              </p>
-            </div>
 
-            <div className="review_chart">
-              <LineChart setPnl={setPnlGraph} />
-            </div>
-          </div>
-          <div className="orders_history_list main_block_wrapper">
-            <div className="main_block_wrapper_top">
-              <div className="main_block_wrapper_title secondary_title">
-                <h2>История ордеров</h2>
-                <p>Здесь отображается список последних 10 ордеров</p>
+              <div className="review_chart">
+                <LineChart setPnl={setPnlGraph} />
               </div>
             </div>
-            {ordersHistory && ordersHistory.length >= 1 ? (
-              <div className="main_block_wrapper_bottom">
-                {ordersHistory.map((item, index) => (
-                  <div className="order_history_list_item_wrapper" key={index}>
-                    <div className="order_history_list_item">
-                      <div className="order_history_list_item_title">
-                        {/* <Etherium /> */}
-                        <h2>{item.ticker}</h2>
-                        {item.direction == "long" ? (
-                          <div className="order_item_top_status order_item_top_status_success">
-                            <p>Long {item.leverage}x</p>
-                          </div>
-                        ) : (
-                          <div className="order_item_top_status">
-                            <p>Short {item.leverage}x</p>
-                          </div>
-                        )}
-                      </div>
-                      <div className="order_history_list_item_content">
-                        <div className="order_history_list_item_content_item">
-                          <p>
-                            Время открытия{" "}
-                            <span>{formatTime(item.trade_start_at)}</span>
-                          </p>
-                          <p>
-                            Время закрытия{" "}
-                            <span>{formatTime(item.trade_end_at)}</span>
-                          </p>
-                        </div>
-                        <div className="order_history_list_item_content_item">
+            <div className="orders_history_list main_block_wrapper">
+              <div className="main_block_wrapper_top">
+                <div className="main_block_wrapper_title secondary_title">
+                  <h2>История ордеров</h2>
+                  <p>Здесь отображается список последних 10 ордеров</p>
+                </div>
+              </div>
+              {ordersHistory && ordersHistory.length >= 1 ? (
+                <div className="main_block_wrapper_bottom">
+                  {ordersHistory.map((item, index) => (
+                    <div
+                      className="order_history_list_item_wrapper"
+                      key={index}
+                    >
+                      <div className="order_history_list_item">
+                        <div className="order_history_list_item_title">
+                          {/* <Etherium /> */}
+                          <h2>{item.ticker}</h2>
                           {item.direction == "long" ? (
-                            <p>
-                              Цена покупки <span>{item.price_start} USDT</span>
-                            </p>
+                            <div className="order_item_top_status order_item_top_status_success">
+                              <p>Long {item.leverage}x</p>
+                            </div>
                           ) : (
-                            <p>
-                              Цена продажи <span>{item.price_start} USDT</span>
-                            </p>
+                            <div className="order_item_top_status">
+                              <p>Short {item.leverage}x</p>
+                            </div>
                           )}
-                          <p>
-                            Объем позиции <span>{item.volume} USDT</span>
-                          </p>
                         </div>
-                        <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
-                          <p>
-                            Прибыль или убыток{" "}
-                            {item.trading_result < 0 ? (
-                              <span>
-                                {/* <span style={{ color: "red" }}> */}
-                                {item.trading_result} USDT
-                              </span>
+                        <div className="order_history_list_item_content">
+                          <div className="order_history_list_item_content_item">
+                            <p>
+                              Время открытия{" "}
+                              <span>{formatTime(item.trade_start_at)}</span>
+                            </p>
+                            <p>
+                              Время закрытия{" "}
+                              <span>{formatTime(item.trade_end_at)}</span>
+                            </p>
+                          </div>
+                          <div className="order_history_list_item_content_item">
+                            {item.direction == "long" ? (
+                              <p>
+                                Цена покупки{" "}
+                                <span>{item.price_start} USDT</span>
+                              </p>
                             ) : (
-                              <span>{item.trading_result} USDT</span>
+                              <p>
+                                Цена продажи{" "}
+                                <span>{item.price_start} USDT</span>
+                              </p>
                             )}
-                          </p>
+                            <p>
+                              Объем позиции <span>{item.volume} USDT</span>
+                            </p>
+                          </div>
+                          <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
+                            <p>
+                              Прибыль или убыток{" "}
+                              {item.trading_result < 0 ? (
+                                <span>
+                                  {/* <span style={{ color: "red" }}> */}
+                                  {item.trading_result} USDT
+                                </span>
+                              ) : (
+                                <span>{item.trading_result} USDT</span>
+                              )}
+                            </p>
+                          </div>
                         </div>
                       </div>
+                      <div className="order_history_list_line"></div>
                     </div>
-                    <div className="order_history_list_line"></div>
+                  ))}
+                </div>
+              ) : (
+                <div className="main_block_wrapper_bottom">
+                  <div className="empty_block">
+                    <img src={empty_block} alt="" />
+                    <p>Нет истории ордеров</p>
                   </div>
-                ))}
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="review_right">
+            {userData && userData.tariff ? (
+              <div className="secondary_block_wrapper">
+                <div className="main_block_wrapper_title">
+                  <h2>Тарифный план</h2>
+                </div>
+                <div className="tarif_plan">
+                  <div className="tarif_plan_top">
+                    <p>{userData.tariff}</p>
+                    <p>$ 100</p>
+                  </div>
+
+                  <div className="tarif_plan_time">
+                    <div className="tarif_plan_time_title">
+                      <p>30 дней</p>
+                      <p>12 дней</p>
+                    </div>
+                    <div className="tarif_plan_time_block">
+                      <div className="tarif_plan_time_block_value"></div>
+                    </div>
+                  </div>
+                  <div className="review_right_link">
+                    <NavLink to="/rates/rates">
+                      <p>Добавить + 30 дней</p>
+                    </NavLink>
+                  </div>
+                </div>
               </div>
             ) : (
-              <div className="main_block_wrapper_bottom">
-                <div className="empty_block">
-                  <img src={empty_block} alt="" />
-                  <p>Нет истории ордеров</p>
+              <div className="secondary_block_wrapper">
+                <div className="main_block_wrapper_title">
+                  <h2>Пробный период</h2>
+                </div>
+                <div className="tarif_plan">
+                  <div className="tarif_plan_top">
+                    <p>7 дней бесплатно</p>
+                  </div>
+                  <div className="free_tarif">
+                    <p>
+                      Активируйте тестовый период уже сегодня и получите доступ
+                      к широкому спектру возможностей.{" "}
+                    </p>
+                  </div>
+                  <div className="review_right_link">
+                    <NavLink to="/rates/rates">
+                      <p>Активировать</p>
+                    </NavLink>
+                  </div>
                 </div>
               </div>
             )}
-          </div>
-        </div>
-        <div className="review_right">
-          <div className="secondary_block_wrapper">
-            <div className="main_block_wrapper_title">
-              <h2>Пробный период</h2>
-              {/* <h2>Тарифный план</h2> */}
-            </div>
-            <div className="tarif_plan">
-              <div className="tarif_plan_top">
-                {/* <p>{userData.tariff || "-"}</p>
-                <p>$ 100</p> */}
-                <p>7 дней бесплатно</p>
+
+            <div className="secondary_block_wrapper invite_block">
+              <div className="main_block_wrapper_title">
+                <h2>Приглашение</h2>
               </div>
-              <div className="free_tarif">
+              <div className="invite_block_desc">
                 <p>
-                  Активируйте тестовый период уже сегодня и получите доступ к
-                  широкому спектру возможностей.{" "}
+                  Приглашайте друзей в &Volume и получайте награды в размере 10%
+                  от стоимости тарифа
+                </p>
+                <img src={inviteImg} alt="" />
+              </div>
+              <div className="review_right_link">
+                <p>Пригласить</p>
+              </div>
+            </div>
+            <div className="secondary_block_wrapper most_questions">
+              <div className="main_block_wrapper_title">
+                <h2>Часть задаваемые вопросы</h2>
+              </div>
+              <div className="most_questions_desc">
+                <p>
+                  В нашей базе знаний вы можете найти ответы на самые часто
+                  задаваемые вопросы.
                 </p>
               </div>
-              {/* <div className="tarif_plan_time">
-                <div className="tarif_plan_time_title">
-                  <p>30 дней</p>
-                  <p>12 дней</p>
+              <div className="most_questions_list">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                  >
+                    <circle cx="5" cy="5" r="5" fill="#0077FF" />
+                  </svg>
+                  <p>Как &Volume решает куда инвестировать средства?</p>
                 </div>
-                <div className="tarif_plan_time_block">
-                  <div className="tarif_plan_time_block_value"></div>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                  >
+                    <circle cx="5" cy="5" r="5" fill="#0077FF" />
+                  </svg>
+                  <p>Какая минимальная сумма?</p>
                 </div>
-              </div> */}
+
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                  >
+                    <circle cx="5" cy="5" r="5" fill="#0077FF" />
+                  </svg>
+                  <p>Могу я использовать заёмные деньги?</p>
+                </div>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                  >
+                    <circle cx="5" cy="5" r="5" fill="#0077FF" />
+                  </svg>
+                  <p>Какие комиссии и условия использования?</p>
+                </div>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                  >
+                    <circle cx="5" cy="5" r="5" fill="#0077FF" />
+                  </svg>
+                  <p>Какие гарантии безопасности?</p>
+                </div>
+              </div>
               <div className="review_right_link">
-                <NavLink to="/rates/rates">
-                  {/* <p>Добавить + 30 дней</p> */}
-                  <p>Активировать</p>
+                <NavLink to="/base">
+                  <p>Перейти в базу знаний</p>
                 </NavLink>
               </div>
             </div>
           </div>
-          <div className="secondary_block_wrapper invite_block">
-            <div className="main_block_wrapper_title">
-              <h2>Приглашение</h2>
-            </div>
-            <div className="invite_block_desc">
-              <p>
-                Приглашайте друзей в &Volume и получайте награды в размере 10%
-                от стоимости тарифа
-              </p>
-              <img src={inviteImg} alt="" />
-            </div>
-            <div className="review_right_link">
-              <p>Пригласить</p>
-            </div>
-          </div>
-          <div className="secondary_block_wrapper most_questions">
-            <div className="main_block_wrapper_title">
-              <h2>Часть задаваемые вопросы</h2>
-            </div>
-            <div className="most_questions_desc">
-              <p>
-                В нашей базе знаний вы можете найти ответы на самые часто
-                задаваемые вопросы.
-              </p>
-            </div>
-            <div className="most_questions_list">
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                >
-                  <circle cx="5" cy="5" r="5" fill="#0077FF" />
-                </svg>
-                <p>Как &Volume решает куда инвестировать средства?</p>
-              </div>
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                >
-                  <circle cx="5" cy="5" r="5" fill="#0077FF" />
-                </svg>
-                <p>Какая минимальная сумма?</p>
-              </div>
-
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                >
-                  <circle cx="5" cy="5" r="5" fill="#0077FF" />
-                </svg>
-                <p>Могу я использовать заёмные деньги?</p>
-              </div>
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                >
-                  <circle cx="5" cy="5" r="5" fill="#0077FF" />
-                </svg>
-                <p>Какие комиссии и условия использования?</p>
-              </div>
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                >
-                  <circle cx="5" cy="5" r="5" fill="#0077FF" />
-                </svg>
-                <p>Какие гарантии безопасности?</p>
-              </div>
-            </div>
-            <div className="review_right_link">
-              <NavLink to="/base">
-                <p>Перейти в базу знаний</p>
-              </NavLink>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

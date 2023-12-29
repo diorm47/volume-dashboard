@@ -369,7 +369,12 @@ function ApiKeys() {
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button onClick={addApi}>Добавить</button>
+              <button
+                onClick={addApi}
+                disabled={!name || !publickKey || !secretKey}
+              >
+                Добавить
+              </button>
             </div>
             <div className="modal_wrapper_cancel">
               <button onClick={closeModals}>Отмена</button>
@@ -472,7 +477,9 @@ function ApiKeys() {
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button onClick={editApi}>Сохранить</button>
+              <button onClick={editApi} disabled={!publickKey || !secretKey}>
+                Сохранить
+              </button>
             </div>
             <div className="modal_wrapper_cancel api_delete_btn">
               <button onClick={closeModals}>Удалить</button>
