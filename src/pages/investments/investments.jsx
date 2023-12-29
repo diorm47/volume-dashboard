@@ -4,11 +4,14 @@ import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import empty_block from "../../assets/icons/empty-block.png";
 import Snackbar from "../../components/snackbar/snackbar";
 import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 function Investments() {
+  const { t } = useTranslation();
+
   React.useEffect(() => {
-    document.title = `Выберите метод | &Volume`;
-  }, []);
+    document.title = `${t("investment_title")}  | &Volume`;
+  }, [t]);
   const faq = [
     {
       question: "Как управлять рисками при инвестировании?",
@@ -36,6 +39,35 @@ function Investments() {
         "&Volume прибылен на средних и длинных отрезках времени. Не нужно выключать систему, если вы увидели первые просадки депозита. \n Почему так может происходить: \n При выборе рисковой и самой доходной стратегии &Volume может открывать сразу несколько сделок одновременно, однако если сделка разворачивается и уходит в противоположную сторону, до определённой границы, то сделка закрывается. Таких сделок может быть несколько подряд, и даже несколько дней подряд.  \n Поэтому, нужно набраться терпения и выдержки.",
     },
   ];
+  const faqEn = [
+    {
+      question: "How to manage risks when investing?",
+      answer:
+        "Cryptocurrency is a high-risk investment. Depending on the market situation, investments can bring both significant profit and substantial loss. We strongly recommend using only the part of your savings that you are willing to lose. When choosing an investment method, take into account your personal financial situation and do not risk more than you can afford.",
+    },
+    {
+      question: "How is the projected income calculated?",
+      answer:
+        "Projected income is calculated based on historical profitability data for previous periods.",
+    },
+    {
+      question: "How can I tell if everything is working?",
+      answer:
+        "Make sure that:\n1. Your futures trading account has at least 100 USDT.\n2. API keys are created on the exchange and connected in the &Volume Personal Cabinet in the 'Investments' section.\nOnce you connect the exchange API keys to your personal cabinet, the trading system will start to activate. This may take a few hours. If you are sure that you have done everything correctly but there are still no trades, contact customer support.",
+    },
+    {
+      question:
+        "I have been waiting for more than a day, but there are no trades, what should I do?",
+      answer:
+        "&Volume constantly monitors the market situation and opens trades only when the conditions are suitable. The frequency of trades depends on the selected risk level:\n1. If you have chosen low risk, the frequency of trades can vary from one trade per day to one trade per week.\n2. If you have chosen medium risk, there is typically one trade per day on average. In this risk mode, the system may be in one trade for several days.\n3. If you have chosen high risk, there are usually multiple trades per day, possibly several trades simultaneously, up to 150 trades per week or more.\nIf you are sure you have done everything correctly but there have been no trades for a day or more, please contact us for support.",
+    },
+    {
+      question: "The system is closing all trades at a loss, what should I do?",
+      answer:
+        "&Volume is profitable on medium and long time frames. Do not turn off the system if you see initial deposit drawdowns. Why this may happen:\nWhen choosing a high-risk and highly profitable strategy, &Volume may open several trades simultaneously, but if a trade reverses and moves in the opposite direction beyond a certain threshold, it will be closed. There can be several such trades in a row, and even for several days.\nTherefore, you need to be patient and resilient.",
+    },
+  ];
+
   const [opened, setOpened] = useState();
   const [activeInvests, setActiveInvests] = useState({});
   const toggleTabs = (data) => {
@@ -239,7 +271,7 @@ function Investments() {
         if (data.success) {
           closeModals();
           snackOptions("Метод успешно удалён!", "success");
-          getBots()
+          getBots();
         } else {
           snackOptions("Ошибка! Бот не найден", "error");
         }
@@ -255,11 +287,8 @@ function Investments() {
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
       <div className="pages_wrapper investments_page">
         <div className="page_title investments_page_title">
-          <h2>Выберите метод </h2>
-          <p>
-            Выберите свой метод инвестирования и чувствуйте себя уверенно на
-            любом временном промежутке.
-          </p>
+          <h2>{t("investments_page_title.main_title")}</h2>
+          <p>{t("investments_page_title.sub_title")}</p>
         </div>
         <div className="investments_page_wrapper">
           <div className="investing_top_cards">

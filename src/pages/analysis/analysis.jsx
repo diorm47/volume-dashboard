@@ -7,11 +7,14 @@ import DataPickerMob from "../../components/data-picker-mob/data-picker-mob";
 import DatePicker from "../../components/date-picker/date-picker";
 import LineChart from "../../components/line-chart/line-chart";
 import "./analysis.css";
+import { useTranslation } from "react-i18next";
 
 function Analysis() {
+  const { t } = useTranslation();
+
   React.useEffect(() => {
-    document.title = `Анализ  | &Volume`;
-  }, []);
+    document.title = `${t("nav_menu_2")}  | &Volume`;
+  }, [t]);
   const [pnl, setPnl] = useState(0);
   const [pnlPeriod, setPnlPeriod] = useState("0.00");
   const [pnlToday, setPnlToday] = useState("0.00");
@@ -164,7 +167,7 @@ function Analysis() {
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
         <div className="page_title analyse_title">
-          <h2>Анализ</h2>
+          <h2>{t("nav_menu_2")}</h2>
           <div className="data_picker_desctop">
             <DatePicker setSelectedTime={setSelectedTime} />
           </div>
@@ -178,12 +181,12 @@ function Analysis() {
           <div className="main_block_wrapper">
             <div className="main_block_wrapper_top">
               <div className="main_block_wrapper_title">
-                <h2>Баланс</h2>
+                <h2>{t("balance_title")}</h2>
               </div>
             </div>
             <div className="main_block_wrapper_bottom">
               <div className="review_left_top_block_content">
-                <p>Основной аккаунт</p>
+                <p>{t("main_account")}</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
                     0.00 <span>USDT</span>
@@ -195,12 +198,12 @@ function Analysis() {
           <div className="main_block_wrapper">
             <div className="main_block_wrapper_top">
               <div className="main_block_wrapper_title">
-                <h2>PnL</h2>
+                <h2>{t("pnl_title")}</h2>
               </div>
             </div>
             <div className="main_block_wrapper_bottom">
               <div className="review_left_top_block_content">
-                <p>PnL за сегодня</p>
+                <p>{t("pnl_today")}</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
                     {pnlToday} <span>USDT</span>
@@ -212,13 +215,13 @@ function Analysis() {
           <div className="main_block_wrapper">
             <div className="main_block_wrapper_top">
               <div className="main_block_wrapper_title">
-                <h2>PnL за период</h2>
+                <h2>{t("pnl_period_title")}</h2>
               </div>
             </div>
             <div className="main_block_wrapper_bottom">
               <div className="review_left_top_block_content">
                 <p>
-                  PnL c{" "}
+                  {t("pnl_period")}{" "}
                   {selectedTime[0]
                     .toLocaleDateString("ru-RU", {
                       year: "numeric",
@@ -246,7 +249,7 @@ function Analysis() {
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
-            <h2>PnL</h2>
+            <h2>{t("pnl_main_title")}</h2>
           </div>
           <div className="pnl_value">
             <p>
@@ -259,7 +262,7 @@ function Analysis() {
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
-            <h2>PnL по дням</h2>
+            <h2>{t("pnl_by_days_title")}</h2>
           </div>
           <div className="pnl_value">
             <p>
@@ -272,8 +275,8 @@ function Analysis() {
         <div className="orders_history_list main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title secondary_title">
-              <h2>Исполняемые ордера</h2>
-              <p>Здесь отображается список открытых ордеров</p>
+              <h2>{t("executed_orders_title")}</h2>
+              <p>{t("executed_orders_description")}</p>
             </div>
           </div>
           {activeOrders && activeOrders.length >= 1 ? (
@@ -287,51 +290,52 @@ function Analysis() {
                     <h2>{item.ticker}</h2>
                     {item.direction == "long" ? (
                       <div className="order_item_top_status order_item_top_status_success">
-                        <p>Long {item.leverage}x</p>
+                        <p>
+                          {t("long_order")} {item.leverage}x
+                        </p>
                       </div>
                     ) : (
                       <div className="order_item_top_status">
-                        <p>Short {item.leverage}x</p>
+                        <p>
+                          {t("short_order")} {item.leverage}x
+                        </p>
                       </div>
                     )}
                   </div>
                   <div className="order_history_list_item_content analysis_order_items">
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Время открытия{" "}
+                        {t("trade_open_time")}{" "}
                         <span>{formatTime(item.trade_start_at)}</span>
                       </p>
                     </div>
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Время закрытия <span>.....</span>
+                        {t("trade_close_time")} <span>.....</span>
                       </p>
                     </div>
                     <div className="order_history_list_item_content_item">
                       {item.direction == "long" ? (
                         <p>
-                          Цена покупки <span>{item.price_start} USDT</span>
+                          {t("buy_price")} <span>{item.price_start} USDT</span>
                         </p>
                       ) : (
                         <p>
-                          Цена продажи <span>{item.price_start} USDT</span>
+                          {t("sell_price")} <span>{item.price_start} USDT</span>
                         </p>
                       )}
                     </div>
                     <div className="order_history_list_item_content_item">
                       <p>
-                        Объем позиции <span>{item.volume} USDT</span>
+                        {t("position_volume")} <span>{item.volume} USDT</span>
                       </p>
                     </div>
 
                     <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
                       <p>
-                        Прибыль или убыток{" "}
+                        {t("profit_or_loss")}{" "}
                         {item.trading_result < 0 ? (
-                          <span>
-                            {/* <span style={{ color: "red" }}> */}
-                            {item.trading_result} USDT
-                          </span>
+                          <span>{item.trading_result} USDT</span>
                         ) : (
                           <span>{item.trading_result} USDT</span>
                         )}
@@ -346,7 +350,7 @@ function Analysis() {
             <div className="main_block_wrapper_bottom ">
               <div className="empty_block">
                 <img src={empty_block} alt="" />
-                <p>Нет открытых ордеров</p>
+                <p>{t("no_open_orders")}</p>
               </div>
             </div>
           )}
@@ -355,7 +359,7 @@ function Analysis() {
         <div className="orders_history_list main_block_wrapper ">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title secondary_title">
-              <h2>История ордеров</h2>
+              <h2>{t("rev_5")} </h2>
             </div>
           </div>
 
@@ -368,47 +372,53 @@ function Analysis() {
                       <h2>{item.ticker}</h2>
                       {item.direction == "long" ? (
                         <div className="order_item_top_status order_item_top_status_success">
-                          <p>Long {item.leverage}x</p>
+                          <p>
+                            {t("long_order")} {item.leverage}x
+                          </p>
                         </div>
                       ) : (
                         <div className="order_item_top_status">
-                          <p>Short {item.leverage}x</p>
+                          <p>
+                            {t("short_order")} {item.leverage}x
+                          </p>
                         </div>
                       )}
                     </div>
                     <div className="order_history_list_item_content analysis_order_items">
                       <div className="order_history_list_item_content_item">
                         <p>
-                          Время открытия{" "}
+                          {t("trade_open_time")}{" "}
                           <span>{formatTime(item.trade_start_at)}</span>
                         </p>
                       </div>
                       <div className="order_history_list_item_content_item">
                         <p>
-                          Время закрытия{" "}
+                          {t("trade_close_time")}{" "}
                           <span>{formatTime(item.trade_end_at)}</span>
                         </p>
                       </div>
                       <div className="order_history_list_item_content_item">
                         {item.direction == "long" ? (
                           <p>
-                            Цена покупки <span>{item.price_start} USDT</span>
+                            {t("buy_price")}{" "}
+                            <span>{item.price_start} USDT</span>
                           </p>
                         ) : (
                           <p>
-                            Цена продажи <span>{item.price_start} USDT</span>
+                            {t("sell_price")}{" "}
+                            <span>{item.price_start} USDT</span>
                           </p>
                         )}
                       </div>
                       <div className="order_history_list_item_content_item">
                         <p>
-                          Объем позиции <span>{item.volume} USDT</span>
+                          {t("position_volume")} <span>{item.volume} USDT</span>
                         </p>
                       </div>
 
                       <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
                         <p>
-                          Прибыль или убыток{" "}
+                          {t("profit_or_loss")}{" "}
                           {item.trading_result < 0 ? (
                             // <span style={{ color: "red" }}>
                             <span>{item.trading_result} USDT</span>
@@ -466,7 +476,7 @@ function Analysis() {
             <div className="main_block_wrapper_bottom">
               <div className="empty_block">
                 <img src={empty_block} alt="" />
-                <p>Нет истории ордеров</p>
+                <p>{t("no_order_history")}</p>
               </div>
             </div>
           )}
