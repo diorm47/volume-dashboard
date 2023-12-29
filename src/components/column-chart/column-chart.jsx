@@ -6,7 +6,7 @@ import subDays from "date-fns/subDays";
 
 const ColumnChart = () => {
   const [pnl, setPnl] = useState(false);
-  const [pnlData, setPnlData] = useState('0.00');
+  const [pnlData, setPnlData] = useState("0.00");
   const formatDate = (date) => {
     let day = date.getDate().toString().padStart(2, "0");
     let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
@@ -24,17 +24,7 @@ const ColumnChart = () => {
     }
     return dates;
   };
-  const sumData = (data) => {
-    return data.reduce((acc, value) => acc + value, 0).toFixed(2);
-  };
 
-  // Effect to update pnlData whenever chartData.series changes
-  useEffect(() => {
-    if (chartData.series.length > 0 && chartData.series[0].data.length > 0) {
-      const total = sumData(chartData.series[0].data);
-      setPnlData(total);
-    }
-  }, [chartData.series]);
   const [chartData, setChartData] = useState({
     series: [
       {
@@ -174,9 +164,20 @@ const ColumnChart = () => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getPnl();
-
     }
   }, [localStorage.getItem("token")]);
+
+  const sumData = (data) => {
+    return data.reduce((acc, value) => acc + value, 0).toFixed(2);
+  };
+
+  // Effect to update pnlData whenever chartData.series changes
+  useEffect(() => {
+    if (chartData.series.length > 0 && chartData.series[0].data.length > 0) {
+      const total = sumData(chartData.series[0].data);
+      setPnlData(total);
+    }
+  }, [chartData.series]);
 
   return (
     <>
