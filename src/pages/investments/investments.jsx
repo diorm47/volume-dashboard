@@ -143,27 +143,28 @@ function Investments() {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-  
+
     let bodyContent = new FormData();
     bodyContent.append("level_risk", level_risk);
     bodyContent.append("amount_investment", amountInvestment);
     bodyContent.append("stop_loss", stopLos);
-  
+
     fetch("https://trade.margelet.org/private-api/v1/users/bots/store", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
     })
       .then((response) => {
-        if (!response.ok) {
-          return response.json().then((errorData) => {
-            handleErrors(errorData);
-            throw new Error("Network response was not ok");
-          });
-        }
-        return response.json();
+        return response.json().then((errorData) => {
+          console.log("Error data from server:", errorData);
+          handleErrors(errorData.error);
+          throw new Error("Bad response from server");
+        });
+
+        // return response.json();
       })
       .then((data) => {
+        console.log("Success data from server:", data);
         if (data.success) {
           snackOptions("Метод успешно добавлен!", "success");
           closeModals();
@@ -172,10 +173,11 @@ function Investments() {
         }
       })
       .catch((error) => {
+        console.error("Fetch error:", error);
         snackOptions("Ошибка при выполнении запроса!", "error");
       });
   };
-  
+
   const handleErrors = (errorData) => {
     if (errorData.api_keys_not_found) {
       snackOptions("Ошибка, не добавлен апи-ключ!", "error");
@@ -187,7 +189,7 @@ function Investments() {
       snackOptions("Произошла неизвестная ошибка.", "error");
     }
   };
-  
+
   return (
     <>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
