@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./investments.css";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import empty_block from "../../assets/icons/empty-block.png";
+import Snackbar from "../../components/snackbar/snackbar";
 
 function Investments() {
   React.useEffect(() => {
@@ -66,7 +67,7 @@ function Investments() {
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [modal3, setModal3] = useState(false);
-  const [stopLos, setStopLos] = useState("");
+
   const [informations, setInformations] = useState(true);
 
   const closeModals = () => {
@@ -117,8 +118,64 @@ function Investments() {
     }
     return "inputfocused";
   };
+
+  // snackbar
+
+  const [visibleSnack, setVisibleSnack] = useState(false);
+  const [snackText, setSnackText] = useState("");
+  const [snackStatus, setSnackStatus] = useState("");
+  const snackOptions = (text, status) => {
+    setVisibleSnack(true);
+    setSnackText(text);
+    setSnackStatus(status);
+    setTimeout(() => {
+      setVisibleSnack(false);
+    }, 2000);
+  };
+
+  // add bot
+
+  const [amountInvestment, setAmountInvestment] = useState("");
+  const [stopLos, setStopLos] = useState("");
+
+  const addBot = (level_risk) => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("level_risk", level_risk);
+    bodyContent.append("amount_investment", amountInvestment);
+    bodyContent.append("stop_loss", stopLos);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/bots/store", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.success) {
+          snackOptions("Метод усешно добавлен !", "success");
+          closeModals();
+        } else {
+          snackOptions("Ошибка!", "error");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        snackOptions("Ошибка!", "error");
+      });
+  };
   return (
     <>
+      <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
       <div className="pages_wrapper investments_page">
         <div className="page_title investments_page_title">
           <h2>Выберите метод </h2>
@@ -218,7 +275,8 @@ function Investments() {
               </div>
               <div className="investing_top_card_item investing_top_card_warning">
                 <p>
-                * Доходность рассчитана на основе исторических данных и не является гарантией будущей доходности.
+                  * Доходность рассчитана на основе исторических данных и не
+                  является гарантией будущей доходности.
                 </p>
               </div>
               <div className="investing_top_card_select">
@@ -320,7 +378,8 @@ function Investments() {
               </div>
               <div className="investing_top_card_item investing_top_card_warning">
                 <p>
-                * Доходность рассчитана на основе исторических данных и не является гарантией будущей доходности.
+                  * Доходность рассчитана на основе исторических данных и не
+                  является гарантией будущей доходности.
                 </p>
               </div>
               <div className="investing_top_card_select">
@@ -422,7 +481,8 @@ function Investments() {
               </div>
               <div className="investing_top_card_item investing_top_card_warning">
                 <p>
-                * Доходность рассчитана на основе исторических данных и не является гарантией будущей доходности.
+                  * Доходность рассчитана на основе исторических данных и не
+                  является гарантией будущей доходности.
                 </p>
               </div>
               <div className="investing_top_card_select ">
@@ -539,6 +599,7 @@ function Investments() {
         </div>
       </div>
 
+      {/* overlay */}
       <div
         className={
           modal1 || modal2 || modal3 ? "overlay visible_overlay" : "overlay"
@@ -610,6 +671,8 @@ function Investments() {
                   className={getInputClass("field1")}
                   onFocus={() => handleFocus("field1")}
                   onBlur={handleBlur}
+                  value={amountInvestment}
+                  onChange={(e) => setAmountInvestment(e.target.value)}
                 />
                 <p>USDT</p>
               </div>
@@ -695,7 +758,9 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="aditional_invest_modal_content">
-                  <h3>В &Volume стоп-лосс это ручной механизм ограничения потерь.</h3>
+                  <h3>
+                    В &Volume стоп-лосс это ручной механизм ограничения потерь.
+                  </h3>
                   <p>
                     Вы указываете общий абсолютный уровень потерь в USDT, а не
                     процентный. Например, сумма торгов $1000, вы устанавливаете
@@ -723,7 +788,12 @@ function Investments() {
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
-              <button onClick={() => setactiveCardSelect(1)}>Выбрать</button>
+              <button
+                onClick={() => addBot("conservative")}
+                disabled={!amountInvestment}
+              >
+                Выбрать
+              </button>
             </div>
           </div>
         </div>
@@ -793,6 +863,8 @@ function Investments() {
                   className={getInputClass("field3")}
                   onFocus={() => handleFocus("field3")}
                   onBlur={handleBlur}
+                  value={amountInvestment}
+                  onChange={(e) => setAmountInvestment(e.target.value)}
                 />
                 <p>USDT</p>
               </div>
@@ -878,7 +950,9 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="aditional_invest_modal_content">
-                  <h3>В &Volume стоп-лосс это ручной механизм ограничения потерь.</h3>
+                  <h3>
+                    В &Volume стоп-лосс это ручной механизм ограничения потерь.
+                  </h3>
                   <p>
                     Вы указываете общий абсолютный уровень потерь в USDT, а не
                     процентный. Например, сумма торгов $1000, вы устанавливаете
@@ -906,7 +980,12 @@ function Investments() {
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
-              <button onClick={() => setactiveCardSelect(2)}>Выбрать</button>
+              <button
+                onClick={() => addBot("moderate")}
+                disabled={!amountInvestment}
+              >
+                Выбрать
+              </button>
             </div>
           </div>
         </div>
@@ -978,6 +1057,8 @@ function Investments() {
                   className={getInputClass("field5")}
                   onFocus={() => handleFocus("field5")}
                   onBlur={handleBlur}
+                  value={amountInvestment}
+                  onChange={(e) => setAmountInvestment(e.target.value)}
                 />
                 <p>USDT</p>
               </div>
@@ -1063,7 +1144,9 @@ function Investments() {
                   </svg>
                 </div>
                 <div className="aditional_invest_modal_content">
-                  <h3>В &Volume стоп-лосс это ручной механизм ограничения потерь.</h3>
+                  <h3>
+                    В &Volume стоп-лосс это ручной механизм ограничения потерь.
+                  </h3>
                   <p>
                     Вы указываете общий абсолютный уровень потерь в USDT, а не
                     процентный. Например, сумма торгов $1000, вы устанавливаете
@@ -1091,7 +1174,12 @@ function Investments() {
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
-              <button onClick={() => setactiveCardSelect(3)}>Выбрать</button>
+              <button
+                onClick={() => addBot("aggressive")}
+                disabled={!amountInvestment}
+              >
+                Выбрать
+              </button>
             </div>
           </div>
         </div>
