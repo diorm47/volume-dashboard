@@ -232,7 +232,10 @@ function Investments() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setActiveInvests(data.bots.bots[0]);
+        if (data.success) {
+          setActiveInvests(data.data.bots[0]);
+        }
+        
       })
       .catch((error) => {
         console.log(error);
@@ -259,7 +262,7 @@ function Investments() {
     };
 
     let bodyContent = new FormData();
-    bodyContent.append("bot_id", activeInvests.bot_id);
+    bodyContent.append("bot_id", activeInvests.id);
 
     fetch("https://trade.margelet.org/private-api/v1/users/bots/destroy", {
       method: "POST",
@@ -281,6 +284,8 @@ function Investments() {
         snackOptions("Ошибка!", "error");
       });
   };
+
+  console.log(activeInvests);
 
   return (
     <>
