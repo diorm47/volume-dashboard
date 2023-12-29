@@ -162,8 +162,13 @@ function Investments() {
             snackOptions("Ошибка, достигнут лимит ботов!", "error");
           } else if (!data.success && data.error.unpaid_tariff) {
             snackOptions("Ошибка, нет активного тарифа!", "error");
+          } else if (!data.success && data.error.amount_investment) {
+            snackOptions(data.error.amount_investment[0], "error");
           }
-
+          if (data.success) {
+            snackOptions("Метод успешно добавлен!", "success");
+            closeModals();
+          }
           throw new Error("Bad response from server");
         });
 
