@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import img1 from "../../assets/images/api/api-b-1.png";
+import img2 from "../../assets/images/api/api-b-2.png";
+import img3 from "../../assets/images/api/api-b-3.png";
+import img4 from "../../assets/images/api/api-b-4.png";
+import img5 from "../../assets/images/api/api-b-5.png";
+import img6 from "../../assets/images/api/api-b-6.png";
+import img7 from "../../assets/images/api/api-b-7.png";
 
 // import bybit1 from "../../assets/images/api/api-by-1.png";
 import { ReactComponent as Bybit1 } from "../../assets/images/api/api-by-1.svg";
@@ -148,6 +154,33 @@ function ApiConnectiong() {
             </div>
             <div className="register_page_text">
               <p>2. Снимите галочку с элементов управления безопасности</p>
+            </div>
+            <img src={img2} alt="" />
+            <div className="register_page_text">
+              <p>3. Нажмите Создать API.</p>
+            </div>
+            <img src={img3} alt="" />
+            <div className="register_page_text">
+              <p>4. Выберите тип API-ключа сгенерированный системой Bybit.</p>
+            </div>
+            <img src={img4} alt="" />
+            <div className="register_page_text">
+              <p>5. Введите название подключения API </p>
+            </div>
+            <img src={img5} alt="" />
+            <div className="register_page_text">
+              <p>
+                6. Подтвердите запрос с помощью устройств двухфакторной
+                аутентификации и Passkey.{" "}
+              </p>
+            </div>
+            <img src={img6} alt="" />
+            <div className="register_page_text">
+              <p>7. Выставите необходимые настройки </p>
+            </div>
+            <img src={img7} alt="" />
+            <div className="register_page_text">
+              <p>8. API-ключ готов.  </p>
             </div>
           </>
         ) : (
