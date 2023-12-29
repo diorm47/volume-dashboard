@@ -147,6 +147,26 @@ function Review() {
     return formattedDate;
   };
 
+  const targetDate = new Date(userData.tariff_paid_to);
+
+
+  const [remainingDays, setRemainingDays] = useState(0);
+  const [progressWidth, setProgressWidth] = useState("0%");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+      const daysLeft = Math.max(
+        Math.floor(difference / (1000 * 60 * 60 * 24)),
+        0
+      );
+      setRemainingDays(daysLeft);
+      setProgressWidth(`${Math.min((daysLeft / 30) * 100, 100)}%`);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
   return (
     <>
       <div className="pages_wrapper review_page">
@@ -373,16 +393,24 @@ function Review() {
                 <div className="tarif_plan">
                   <div className="tarif_plan_top">
                     <p>{userData.tariff}</p>
-                    <p>$ 100</p>
+                    <p>$ -</p>
                   </div>
 
                   <div className="tarif_plan_time">
                     <div className="tarif_plan_time_title">
-                      <p>30 дней</p>
-                      <p>12 дней</p>
+                      {userData.tariff == "Пробный" ? (
+                        <p> 7 дней</p>
+                      ) : (
+                        <p> 30 дней</p>
+                      )}
+
+                      <p>{remainingDays} дней</p>
                     </div>
                     <div className="tarif_plan_time_block">
-                      <div className="tarif_plan_time_block_value"></div>
+                      <div
+                        className="tarif_plan_time_block_value"
+                        style={{ width: progressWidth }}
+                      ></div>
                     </div>
                   </div>
                   <div className="review_right_link">

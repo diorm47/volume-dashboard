@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { mainApi } from "../../components/utils/main-api";
+import Snackbar from "../../components/snackbar/snackbar";
 
 function RatesPage() {
   React.useEffect(() => {
@@ -36,6 +37,17 @@ function RatesPage() {
   ];
   const [opened, setOpened] = useState();
   const [userData, setUserData] = useState({});
+  const [visibleSnack, setVisibleSnack] = useState(false);
+  const [snackText, setSnackText] = useState("");
+  const [snackStatus, setSnackStatus] = useState("");
+  const snackOptions = (text, status) => {
+    setVisibleSnack(true);
+    setSnackText(text);
+    setSnackStatus(status);
+    setTimeout(() => {
+      setVisibleSnack(false);
+    }, 2000);
+  };
   const refresh = () => {
     mainApi
       .reEnter()
@@ -71,14 +83,66 @@ function RatesPage() {
     })
       .then((response) => response.json())
       .then((data) => {
+        refresh();
         console.log(data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  // remaining
+  const targetDate = new Date(userData.tariff_paid_to);
+
+  const [remainingDays, setRemainingDays] = useState(0);
+  const [progressWidth, setProgressWidth] = useState("0%");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+      const daysLeft = Math.max(
+        Math.floor(difference / (1000 * 60 * 60 * 24)),
+        0
+      );
+      setRemainingDays(daysLeft);
+      setProgressWidth(`${Math.min((daysLeft / 30) * 100, 100)}%`);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  const setTarif = (data) => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("tariff", data);
+
+    fetch("https://trade.margelet.org/private-api/v1/users/two-factor", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        snackOptions("Тарифный план усешно подключён!", "success");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        snackOptions("Ошибка!", "error");
+      });
+  };
   return (
     <>
+      <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
       <div className="page_title investments_page_title rate_title">
         <h2>Выберите план</h2>
         <p>
@@ -94,16 +158,24 @@ function RatesPage() {
           <div className="tarif_plan">
             <div className="tarif_plan_top">
               <p>{userData.tariff}</p>
-              <p>$ 100</p>
+              <p>$ -</p>
             </div>
 
             <div className="tarif_plan_time">
               <div className="tarif_plan_time_title">
-                <p>30 дней</p>
-                <p>12 дней</p>
+                {userData.tariff == "Пробный" ? (
+                  <p> 7 дней</p>
+                ) : (
+                  <p> 30 дней</p>
+                )}
+
+                <p>{remainingDays} дней</p>
               </div>
               <div className="tarif_plan_time_block">
-                <div className="tarif_plan_time_block_value"></div>
+                <div
+                  className="tarif_plan_time_block_value"
+                  style={{ width: progressWidth }}
+                ></div>
               </div>
             </div>
             <div className="review_right_link">
@@ -153,7 +225,7 @@ function RatesPage() {
           </div>
           <div className="order_history_list_line"></div>
           <div className="investing_top_card_select">
-            <button>Купить</button>
+            <button onClick={() => setTarif("start")}>Купить</button>
           </div>
         </div>
         <div className="secondary_block_wrapper rates_card">
@@ -174,7 +246,7 @@ function RatesPage() {
           </div>
           <div className="order_history_list_line"></div>
           <div className="investing_top_card_select">
-            <button>Купить</button>
+            <button onClick={() => setTarif("advanced")}>Купить</button>
           </div>
         </div>
         <div className="secondary_block_wrapper rates_card">
@@ -195,7 +267,7 @@ function RatesPage() {
           </div>
           <div className="order_history_list_line"></div>
           <div className="investing_top_card_select">
-            <button>Купить</button>
+            <button onClick={() => setTarif("professional")}>Купить</button>
           </div>
         </div>
       </div>
