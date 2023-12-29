@@ -170,7 +170,7 @@ function Register() {
               </p>
             </div>
             {/* <img src={bybit3} alt="" /> */}
-            <Img3 />
+            <Img3 className="by_bit_api_img_" />
             <div className="register_page_text">
               <p>4. Поздравляем! Вы создали аккаунт Bybit.</p>
             </div>

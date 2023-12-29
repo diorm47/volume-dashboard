@@ -202,14 +202,14 @@ function Security() {
               </p>
             </div>
           </div>
-          <div className="order_history_list_line"></div>
-          <div className="user_data_item">
+          {/* <div className="order_history_list_line"></div> */}
+          {/* <div className="user_data_item">
             <span>Аутентификация по email</span>
             <div>
               <p>{email || ""}</p>
               <p onClick={() => setEmailModal(true)}>Отключить </p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="secondary_block_wrapper user_image_block">
           <h2>История входов в аккаунт</h2>

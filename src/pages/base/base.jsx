@@ -120,7 +120,7 @@ function Base() {
                   </NavLink>
                 </div>
                 <div>
-                  <p>Статистика</p>
+                  <p>Статистика <button>В разработке</button></p>
                   <span>
                     Открытая статистика результатов инвестиций &Volume
                   </span>
@@ -150,15 +150,15 @@ function Base() {
               <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
-                  <p>Партнеры</p>
+                  <p>Партнеры <button>В разработке</button></p>
                   <span>Узнайте больше о партнерской программе &Volume</span>
                 </div>
                 <div>
-                  <p>Приглашение</p>
+                  <p>Приглашение <button>В разработке</button></p>
                   <span>Приглашайте друзей и зарабатывайте вместе</span>
                 </div>
                 <div>
-                  <p>Реферальные награды</p>
+                  <p>Реферальные награды <button>В разработке</button></p>
                   <span>
                     Получайте награды за использования сервиса &Volume вашими
                     рефералими{" "}
@@ -186,7 +186,7 @@ function Base() {
                   </NavLink>
                 </div>
                 <div>
-                  <p>Оплата</p>
+                  <p>Оплата <button>В разработке</button></p>
                   <span>
                     Руководство по оплате тарифов с помощью сервиса партнера
                   </span>

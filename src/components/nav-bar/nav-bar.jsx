@@ -191,7 +191,7 @@ function NavBar({ setMode }) {
                   />
                 </svg>
               </NavLink>
-              <NavLink to="https://">
+              {/* <NavLink to="https://">
                 <p>Discord</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +205,7 @@ function NavBar({ setMode }) {
                     fill="black"
                   />
                 </svg>
-              </NavLink>
+              </NavLink> */}
             </div>
           </div>
 

@@ -342,7 +342,9 @@
   height: 4px;
   margin-bottom: 30px;
 }
-
+.black_mode .tarif_plan_time_block {
+  background: var(--Stroke_Black, #343436);
+}
 .tarif_plan_time_block_value {
   border-radius: 6px;
   background: var(--2420FC, #0077ff);

@@ -51,7 +51,7 @@ function TopupTypes() {
         </div>
       </div>
 
-      <div className="pages_wrapper register_page">
+      <div className="pages_wrapper register_page topup_base">
         <div className="register_page_top_data">
           <p>Опубликовано 1 дек 2023 г.</p>
           <p>|</p>

@@ -161,8 +161,6 @@ function Analysis() {
     getPnlRange();
   }, [selectedTime]);
 
-  console.log(ordersHistory);
-
   return (
     <div className="pages_wrapper analysis_page">
       <div className="analysing_page_title_wrapper">
@@ -206,7 +204,7 @@ function Analysis() {
                 <p>{t("pnl_today")}</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    {pnlToday} <span>USDT</span>
+                    {pnlToday == 0 ? "0.00" : pnlToday} <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -240,7 +238,7 @@ function Analysis() {
                 </p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    {pnlPeriod} <span>USDT</span>
+                    {pnlPeriod == 0 ? "0.00" : pnlPeriod} <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -251,25 +249,47 @@ function Analysis() {
           <div className="main_block_wrapper_title">
             <h2>{t("pnl_main_title")}</h2>
           </div>
-          <div className="pnl_value">
-            <p>
-              + {pnl} <span>USDT</span>
-            </p>
-          </div>
-          <div className="review_chart">
-            <LineChart setPnl={setPnl} />
-          </div>
+
+          {Number(pnl) !== 0 ? (
+            <>
+              <div className="pnl_value">
+                <p>
+                  + {pnl} <span>USDT</span>
+                </p>
+              </div>
+
+              <div className="review_chart">
+                <LineChart setPnl={pnl} />
+              </div>
+            </>
+          ) : (
+            <div className="empty_block">
+              <img src={empty_block} alt="" />
+              <p>Нет данных по Pnl</p>
+            </div>
+          )}
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
             <h2>{t("pnl_by_days_title")}</h2>
           </div>
-          <div className="pnl_value">
-            <p>
-              {pnlDays > 0 ? `+${pnlDays}` : pnlDays} <span>USDT</span>
-            </p>
-          </div>
-          <ColumnChart setPnlDays={setPnlDays} />
+
+          {Number(pnl) !== 0 ? (
+            <>
+              <div className="pnl_value">
+                <p>
+                  {pnlDays > 0 ? `+${pnlDays}` : pnlDays} <span>USDT</span>
+                </p>
+              </div>
+
+              <ColumnChart setPnlDays={setPnlDays} />
+            </>
+          ) : (
+            <div className="empty_block">
+              <img src={empty_block} alt="" />
+              <p>Нет данных по Pnl</p>
+            </div>
+          )}
         </div>
 
         <div className="orders_history_list main_block_wrapper">

@@ -61,6 +61,20 @@
   font-weight: 700;
   line-height: 24px; /* 141.176% */
 }
+.base_question_card_content button {
+  border-radius: 6px;
+  background: var(--Color_Lite_Gray, #f7f7f7);
+  color: var(--Color_Gray, #92979c);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+ padding: 5px 15px;
+ margin-left: 12px;
+  /* 13px/Medium */
+  font-family: TTInterfaces500;
+  font-size: 13px !important;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 123.077% */
+}
 .black_mode .base_question_card_content p {
   color: #fff;
 }
@@ -430,6 +444,12 @@
 .black_mode .formula_img img {
   background: #fff;
 }
+.topup_base h2{
+ font-size: 17px;
+}
+.topup_base h2:first-child {
+  font-size: 23px;
+}
 @media only screen and (max-width: 1300px) {
   .base_top_block_wrapper {
     width: 100%;
@@ -439,6 +459,7 @@
   .by_bit_api_img_ {
     width: 100%;
     height: auto;
+    margin-bottom: 13px;
   }
 }
 
@@ -538,7 +559,6 @@
 
   .register_page_block_title h2,
   .api_list_ul_ol h4,
- 
   .whitepaper_page h2,
   .whitepaper_page h3,
   .policy_agreeement h2 {
@@ -549,7 +569,8 @@
   .whitepaper_page p,
   .whitepaper_page p,
   .policy_agreeement p,
-  .policy_agreeement li,  .text_pages_wrapper h2 {
+  .policy_agreeement li,
+  .text_pages_wrapper h2 {
     font-size: 13px !important;
   }
   .whitepaper_page h3,
@@ -567,7 +588,8 @@
   .text_pages_wrapper h2:first-child,
   .text_pages_wrapper h2,
   .api_list_ul_ol,
-  .text_pages_wrapper p, .register_top_togglers {
+  .text_pages_wrapper p,
+  .register_top_togglers {
     margin-bottom: 24px;
   }
   .register_top_togglers button {

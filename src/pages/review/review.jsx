@@ -207,8 +207,7 @@ function Review() {
                     <p> {t("rev_4")}</p>
                     <div className="review_left_top_block_content_amount">
                       <p>
-                        {pnl} <span>USDT</span>
-                        {/* 0.00 <span>USDT</span> */}
+                        {pnl == 0 ? "0.00" : pnl} <span>USDT</span>
                       </p>
                     </div>
                   </div>
@@ -256,15 +255,24 @@ function Review() {
                   </div>
                 </div>
               </div>
-              <div className="pnl_value">
-                <p>
-                  + {pnlGraph} <span>USDT</span>
-                </p>
-              </div>
+              {Number(pnl) !== 0 ? (
+                <>
+                  <div className="pnl_value">
+                    <p>
+                      + {pnlGraph} <span>USDT</span>
+                    </p>
+                  </div>
 
-              <div className="review_chart">
-                <LineChart setPnl={setPnlGraph} />
-              </div>
+                  <div className="review_chart">
+                    <LineChart setPnl={setPnlGraph} />
+                  </div>
+                </>
+              ) : (
+                <div className="empty_block">
+                  <img src={empty_block} alt="" />
+                  <p>Нет данных по Pnl</p>
+                </div>
+              )}
             </div>
             <div className="orders_history_list main_block_wrapper">
               <div className="main_block_wrapper_top">
@@ -326,7 +334,7 @@ function Review() {
                             <p>
                               {t("profit_or_loss")}{" "}
                               {item.trading_result < 0 ? (
-                                <span style={{ color: "red" }}>
+                                <span >
                                   {item.trading_result} USDT
                                 </span>
                               ) : (
@@ -360,7 +368,7 @@ function Review() {
                 <div className="tarif_plan">
                   <div className="tarif_plan_top">
                     <p>{userData.tariff}</p>
-                    <p>$ -</p>
+                    <p>$ 0.00</p>
                   </div>
                   <div className="tarif_plan_time">
                     <div className="tarif_plan_time_title">

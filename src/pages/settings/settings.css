@@ -147,7 +147,7 @@
 }
 .user_login_history_item p {
   color: var(--111112, #111112);
-
+ width: 33%;
   /* 17px/Regular */
   font-family: TTInterfaces400;
   font-size: 17px;
@@ -155,12 +155,18 @@
   font-weight: 400;
   line-height: 24px; /* 141.176% */
 }
+.user_login_history_item p:nth-child(2) {
+  text-align: center;
+}
+.user_login_history_item p:nth-child(3) {
+  text-align: right;
+}
 .black_mode .user_login_history_item p {
   color: #fff;
 }
 
 .user_login_history_titles p:nth-child(2) {
-  margin-right: -8.6%;
+  margin-right: -1%;
 }
 .api_keys_title {
   display: flex;
@@ -683,9 +689,11 @@
 }
 .black_mode .Dropdown-option:hover {
   background: #18181ad7 !important;
+  color: #fff;
 }
 .black_mode .is-selected  {
   background: #18181ad7 !important;
+  color: #fff;
 }
 .user_login_history_item p {
   margin: 0;
