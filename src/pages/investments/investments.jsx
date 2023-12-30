@@ -200,9 +200,7 @@ function Investments({ updatebalance }) {
             );
           } else if (!data.success && data.error.unpaid_tariff) {
             snackOptions("Ошибка, нет активного тарифа!", "error");
-          } else if (!data.success && data.error.amount_investment) {
-            snackOptions(data.error.amount_investment[0], "error");
-          }
+          } 
           if (data.success) {
             snackOptions("Метод успешно добавлен!", "success");
             closeModals();

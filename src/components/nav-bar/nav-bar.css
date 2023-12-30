@@ -85,7 +85,7 @@ nav {
 .nav_menu_item .drop_down_icon {
   transition: all 0.4s ease;
 }
-.nav_menu_item:hover .drop_down_icon {
+.nav_menu_item p:hover + .drop_down_icon {
   transition: all 0.4s ease;
   transform: rotate(-180deg);
 }
@@ -96,7 +96,7 @@ nav {
 .nav_menu_item_drop {
   position: absolute;
   width: auto;
-  top: 90px;
+  top: 85px;
   padding: 12px;
   border-radius: 6px;
   background: #fff;
@@ -106,7 +106,7 @@ nav {
   z-index: 12;
   opacity: 0;
   transform: translateY(20%);
-  transition: all 0.4s ease;
+  transition: all 1s ease;
   visibility: hidden;
 }
 .black_mode .nav_menu_item_drop {

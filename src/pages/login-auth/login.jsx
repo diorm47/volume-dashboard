@@ -229,8 +229,8 @@ function Login() {
           <div className="login_privacy">
             <p>
               Продолжая регистрацию или вход, вы принимаете условия <br />
-              <a href="./agreement.html">Пользовательского соглашения</a> и{" "}
-              <a href="./policy.html">Политики конфиденциальности.</a>
+              <a target="_blank" href="https://nvolume.com/agreement.html">Пользовательского соглашения</a> и{" "}
+              <a target="_blank" href="https://nvolume.com/policy.html">Политики конфиденциальности.</a>
             </p>
           </div>
         </div>

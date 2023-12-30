@@ -84,7 +84,7 @@ function RatesPage({ updatebalance }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        snackOptions("Вы успешно активировали пробный период.", "error");
+        snackOptions("Вы успешно активировали пробный период.", "success");
         refresh();
       })
       .catch((error) => {

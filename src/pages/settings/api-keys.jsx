@@ -198,6 +198,9 @@ function ApiKeys() {
   };
   const { t } = useTranslation();
 
+  const handleSetEditode = () => {
+    setapiActiveEditModal(true)
+  }
   return (
     <>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
@@ -236,7 +239,7 @@ function ApiKeys() {
                   </td>
                   <td>
                     <div className="api_actions">
-                      <p onClick={() => setapiActiveEditModal(true)}>
+                      <p onClick={handleSetEditode}>
                         {t("apiTable.edit")}
                       </p>
                       <p>|</p>
