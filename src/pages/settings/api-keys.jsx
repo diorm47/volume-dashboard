@@ -104,27 +104,29 @@ function ApiKeys() {
     const localization = {
       en: {
         apiAddedSuccess: "API key successfully added.",
-        apiAddError: "Error adding API key. Check the entered data or create a new API key.",
+        apiAddError:
+          "Error adding API key. Check the entered data or create a new API key.",
         requestError: "Error!",
       },
       ru: {
         apiAddedSuccess: "API ключ успешно добавлен.",
-        apiAddError: "Ошибка добавления API ключа. Проверьте правильность введенных данных или создайте новый API ключ.",
+        apiAddError:
+          "Ошибка добавления API ключа. Проверьте правильность введенных данных или создайте новый API ключ.",
         requestError: "Ошибка!",
       },
     };
-  
+
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-  
+
     let bodyContent = new FormData();
     bodyContent.append("title", name);
     bodyContent.append("exchange", selectedOption);
     bodyContent.append("api_key", publickKey);
     bodyContent.append("api_secret", secretKey);
-  
+
     fetch("https://trade.margelet.org/private-api/v1/users/api-keys/store", {
       method: "POST",
       body: bodyContent,
@@ -145,7 +147,7 @@ function ApiKeys() {
         snackOptions(localization[userLanguage].requestError, "error");
       });
   };
-  
+
   const deleteApi = () => {
     const localization = {
       en: {
@@ -157,15 +159,15 @@ function ApiKeys() {
         apiDeleteError: "Ошибка!",
       },
     };
-  
+
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-  
+
     let bodyContent = new FormData();
     bodyContent.append("id", apiList.id);
-  
+
     fetch("https://trade.margelet.org/private-api/v1/users/api-keys/destroy", {
       method: "POST",
       body: bodyContent,
@@ -186,7 +188,7 @@ function ApiKeys() {
         snackOptions(localization[userLanguage].apiDeleteError, "error");
       });
   };
-  
+
   const editApi = () => {
     const localization = {
       en: {
@@ -198,17 +200,17 @@ function ApiKeys() {
         apiUpdateError: "Ошибка!",
       },
     };
-  
+
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-  
+
     let bodyContent = new FormData();
     bodyContent.append("id", apiList.id);
     bodyContent.append("api_key", publickKey);
     bodyContent.append("api_secret", secretKey);
-  
+
     fetch("https://trade.margelet.org/private-api/v1/users/api-keys/update", {
       method: "POST",
       body: bodyContent,
@@ -229,8 +231,6 @@ function ApiKeys() {
         snackOptions(localization[userLanguage].apiUpdateError, "error");
       });
   };
-  
-
 
   const handleSetEditode = () => {
     setapiActiveEditModal(true);
@@ -323,11 +323,11 @@ function ApiKeys() {
               onClick={() => setapiActiveModal(true)}
             >
               <div>
-                <p>Время добавления</p>
+                <p>{t("labels.timeAdded")}</p>
                 <h4>-</h4>
               </div>
               <div>
-                <p>Биржа</p>
+                <p>{t("labels.exchange")}</p>
                 <h4 style={{ textTransform: "capitalize" }}>
                   {apiList.exchange}
                 </h4>

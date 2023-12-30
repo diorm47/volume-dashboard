@@ -629,4 +629,8 @@ export const ru_locale = {
   six_month: "6 месяцев",
   three_month: "3 месяца",
   one_month: "1 месяц",
+  labels: {
+    timeAdded: "Time Added",
+    exchange: "Exchange",
+  },
 };

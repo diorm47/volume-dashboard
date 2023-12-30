@@ -6,6 +6,8 @@ import { DateRangePicker } from "rsuite";
 import "rsuite/dist/rsuite-rtl.css";
 
 function DatePicker({setSelectedTime}) {
+
+  
   const predefinedBottomRanges = [
     {
       label: "7 дней",
