@@ -343,9 +343,9 @@ function NavBar({ setMode }) {
                 </div>
               )}
 
-              <div className="nav_mob_bottom_action">
+              {/* <div className="nav_mob_bottom_action">
                 <p>Sv</p>
-              </div>
+              </div> */}
               <div className="nav_mob_bottom_action mob_lang_toggler">
                 {localStorage.getItem("mode") === "dark" ? (
                   <BlackMode

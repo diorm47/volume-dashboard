@@ -21,7 +21,7 @@ function LanguageSwitcher() {
         <p onClick={() => changeLanguage("en")}>EN</p>
         {/* </NavLink> */}
         {/* <NavLink to="/se"> */}
-        <p>SE</p>
+        {/* <p>SE</p> */}
         {/* </NavLink> */}
       </div>
     </div>
