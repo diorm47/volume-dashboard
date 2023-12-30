@@ -3,10 +3,10 @@ import ReactApexChart from "react-apexcharts";
 import "./line-chart.css";
 import subDays from "date-fns/subDays";
 import empty_block from "../../assets/icons/empty-block.png";
-import { eachDayOfInterval, format } from "date-fns";
-const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
+
+const LineChart = () => {
   const [pnl, setPnl] = useState(false);
-  const [pnlData, setPnlData] = useState("0.00");
+  const [pnlData, setPnlData] = useState('0.00');
   const formatDate = (date) => {
     let day = date.getDate().toString().padStart(2, "0");
     let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
@@ -87,10 +87,10 @@ const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
     },
   });
 
-  // const [selectedTime, setSelectedTime] = useState([
-  //   subDays(new Date(), 6),
-  //   new Date(),
-  // ]);
+  const [selectedTime, setSelectedTime] = useState([
+    subDays(new Date(), 6),
+    new Date(),
+  ]);
   const updateChartData = (serverData) => {
     const last7Days = getLast7Days();
 
@@ -108,21 +108,7 @@ const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
       series: [{ ...prevState.series[0], data: updatedData }],
     }));
   };
-  const sumData = (data) => {
-    return data.reduce((acc, value) => acc + value, 0).toFixed(2);
-  };
-  const getDatesInRange = (startDate, endDate) => {
-    const interval = eachDayOfInterval({ start: startDate, end: endDate });
-    return interval.map(date => format(date, "yyyy-MM-dd"));
-  };
 
-  // Effect to update pnlData whenever chartData.series changes
-  useEffect(() => {
-    if (chartData.series.length > 0 && chartData.series[0].data.length > 0) {
-      const total = sumData(chartData.series[0].data);
-      setPnlData(total);
-    }
-  }, [chartData.series]);
   const getPnl = (value) => {
     let headersList = {
       Accept: "*/*",
@@ -160,15 +146,9 @@ const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success && data.data.chart_data) {
-          const formattedSelectedTime = selectedTime.map(date => format(date, "yyyy-MM-dd"));
-          const dateRange = getDatesInRange(...formattedSelectedTime);
-          const relevantData = dateRange.reduce((acc, date) => {
-            acc[date] = data.data.chart_data[date] || 0;
-            return acc;
-          }, {});
-  
-          updateChartData(relevantData);
-          setPnl(true)}
+          updateChartData(data.data.chart_data);
+          setPnl(true);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -179,11 +159,11 @@ const LineChart = ({ selectedTime = [subDays(new Date(), 6), new Date()] }) => {
     if (localStorage.getItem("token")) {
       getPnl();
     }
-  }, [localStorage.getItem("token"), selectedTime]);
+  }, [localStorage.getItem("token")]);
 
   return (
     <>
-      {true ? (
+      {pnl ? (
         <>
           <div className="pnl_value">
             <p>
