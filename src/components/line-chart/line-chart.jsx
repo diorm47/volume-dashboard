@@ -4,9 +4,9 @@ import "./line-chart.css";
 import subDays from "date-fns/subDays";
 import empty_block from "../../assets/icons/empty-block.png";
 
-const LineChart = () => {
+const LineChart = ({ selectedTime }) => {
   const [pnl, setPnl] = useState(false);
-  const [pnlData, setPnlData] = useState('0.00');
+  const [pnlData, setPnlData] = useState("0.00");
   const formatDate = (date) => {
     let day = date.getDate().toString().padStart(2, "0");
     let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
@@ -21,6 +21,17 @@ const LineChart = () => {
       date.setDate(date.getDate() - i);
       dates.unshift(formatDate(date)); // Manually format the date
     }
+    return dates;
+  };
+  const getDatesInRange = (startDate, endDate) => {
+    const dates = [];
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= endDate) {
+      dates.push(formatDate(new Date(currentDate)));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
     return dates;
   };
 
@@ -57,7 +68,8 @@ const LineChart = () => {
       },
       xaxis: {
         type: "datetime",
-        categories: getLast7Days(),
+
+        categories: getDatesInRange(),
         labels: {
           format: "MM/dd", // Format date as 'month/day'
 
@@ -87,27 +99,28 @@ const LineChart = () => {
     },
   });
 
-  const [selectedTime, setSelectedTime] = useState([
-    subDays(new Date(), 6),
-    new Date(),
-  ]);
   const updateChartData = (serverData) => {
-    const last7Days = getLast7Days();
-
-    // Convert the server data keys to 'yyyy-mm-dd' format for matching
+    // Предполагается, что selectedTime содержит две даты: начальную и конечную
+    const startDate = new Date(selectedTime[0]);
+    const endDate = new Date(selectedTime[1]);
+    const datesInRange = getDatesInRange(startDate, endDate);
+  
+    // Преобразование данных сервера в нужный формат (если требуется)
     const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
-      const [dd, mm, yyyy] = key.split("-");
-      acc[`${yyyy}-${mm}-${dd}`] = serverData[key];
+      const formattedKey = formatDate(new Date(key));
+      acc[formattedKey] = serverData[key];
       return acc;
     }, {});
-
-    const updatedData = last7Days.map((date) => serverDataConverted[date] || 0);
-
+  
+    // Заполняем нулями дни без данных
+    const updatedData = datesInRange.map((date) => serverDataConverted[date] || 0);
+  
     setChartData((prevState) => ({
       ...prevState,
       series: [{ ...prevState.series[0], data: updatedData }],
     }));
   };
+  
 
   const getPnl = (value) => {
     let headersList = {
@@ -160,10 +173,45 @@ const LineChart = () => {
       getPnl();
     }
   }, [localStorage.getItem("token")]);
+  const sumData = (data) => {
+    return data.reduce((acc, value) => acc + value, 0).toFixed(2);
+  };
+
+  useEffect(() => {
+    if (chartData.series.length > 0 && chartData.series[0].data.length > 0) {
+      const total = sumData(chartData.series[0].data);
+      setPnlData(total);
+    }
+  }, [chartData.series]);
+ 
+  useEffect(() => {
+    if (selectedTime && selectedTime.length === 2) {
+      getPnl(selectedTime);
+    }
+  }, [selectedTime]);
+
+  useEffect(() => {
+    if (selectedTime && selectedTime.length === 2) {
+      const startDate = new Date(selectedTime[0]);
+      const endDate = new Date(selectedTime[1]);
+      const datesInRange = getDatesInRange(startDate, endDate);
+
+      setChartData((prevState) => ({
+        ...prevState,
+        options: {
+          ...prevState.options,
+          xaxis: {
+            ...prevState.options.xaxis,
+            categories: datesInRange,
+          },
+        },
+      }));
+    }
+  }, [selectedTime]);
 
   return (
     <>
-      {pnl ? (
+      {true ? (
         <>
           <div className="pnl_value">
             <p>
