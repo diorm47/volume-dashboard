@@ -4,27 +4,26 @@ import "./column-chart.css";
 import empty_block from "../../assets/icons/empty-block.png";
 import subDays from "date-fns/subDays";
 
-const ColumnChart = () => {
+const ColumnChart = ({ selectedTime }) => {
   const [pnl, setPnl] = useState(false);
   const [pnlData, setPnlData] = useState("0.00");
   const formatDate = (date) => {
     let day = date.getDate().toString().padStart(2, "0");
-    let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
+    let month = (date.getMonth() + 1).toString().padStart(2, "0");
     let year = date.getFullYear();
     return `${year}-${month}-${day}`;
   };
-
-  // Function to get the last 7 days in yyyy-mm-dd format
-  const getLast7Days = () => {
+  const getDatesInRange = (startDate, endDate) => {
     const dates = [];
-    for (let i = 0; i < 7; i++) {
-      const date = new Date();
-      date.setDate(date.getDate() - i);
-      dates.unshift(formatDate(date)); // Manually format the date
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= endDate) {
+      dates.push(formatDate(new Date(currentDate)));
+      currentDate.setDate(currentDate.getDate() + 1);
     }
+
     return dates;
   };
-
   const [chartData, setChartData] = useState({
     series: [
       {
@@ -74,7 +73,7 @@ const ColumnChart = () => {
       },
       xaxis: {
         type: "datetime",
-        categories: getLast7Days(),
+        categories: getDatesInRange(),
         labels: {
           format: "MM/dd", // Format date as 'month/day'
           style: {
@@ -94,27 +93,31 @@ const ColumnChart = () => {
   });
 
   const updateChartData = (serverData) => {
-    const last7Days = getLast7Days();
-
-    // Convert the server data keys to 'yyyy-mm-dd' format for matching
+    // Предполагается, что selectedTime содержит две даты: начальную и конечную
+    const startDate = new Date(selectedTime[0]);
+    const endDate = new Date(selectedTime[1]);
+    const datesInRange = getDatesInRange(startDate, endDate);
+  
+    // Преобразование данных сервера в нужный формат (если требуется)
     const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
-      const [dd, mm, yyyy] = key.split("-");
-      acc[`${yyyy}-${mm}-${dd}`] = serverData[key];
+      const [day, month, year] = key.split("-").map(Number);
+      const date = new Date(year, month - 1, day);
+      const formattedKey = formatDate(date);
+      acc[formattedKey] = serverData[key];
       return acc;
-    }, {});
+    }, {}); 
 
-    const updatedData = last7Days.map((date) => serverDataConverted[date] || 0);
-
+    // Заполняем нулями дни без данных
+    const updatedData = datesInRange.map(
+      (date) => serverDataConverted[date] || 0
+    );
+    console.log(updatedData);
     setChartData((prevState) => ({
       ...prevState,
       series: [{ ...prevState.series[0], data: updatedData }],
     }));
   };
 
-  const [selectedTime, setSelectedTime] = useState([
-    subDays(new Date(), 6),
-    new Date(),
-  ]);
   const getPnl = (value) => {
     let headersList = {
       Accept: "*/*",
@@ -164,6 +167,7 @@ const ColumnChart = () => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getPnl();
+      // updateChartData({ "30-12-2023": 1 });
     }
   }, [localStorage.getItem("token")]);
 
@@ -178,6 +182,30 @@ const ColumnChart = () => {
       setPnlData(total);
     }
   }, [chartData.series]);
+  useEffect(() => {
+    if (selectedTime && selectedTime.length === 2) {
+      getPnl(selectedTime);
+    }
+  }, [selectedTime]);
+
+  useEffect(() => {
+    if (selectedTime && selectedTime.length === 2) {
+      const startDate = new Date(selectedTime[0]);
+      const endDate = new Date(selectedTime[1]);
+      const datesInRange = getDatesInRange(startDate, endDate);
+
+      setChartData((prevState) => ({
+        ...prevState,
+        options: {
+          ...prevState.options,
+          xaxis: {
+            ...prevState.options.xaxis,
+            categories: datesInRange,
+          },
+        },
+      }));
+    }
+  }, [selectedTime]);
 
   return (
     <>

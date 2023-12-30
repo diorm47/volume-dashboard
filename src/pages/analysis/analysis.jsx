@@ -22,7 +22,7 @@ function Analysis() {
   const [pnlPeriod, setPnlPeriod] = useState("0.00");
   const [pnlToday, setPnlToday] = useState("0.00");
   const [activeOrders, setActiveOrders] = useState([]);
-  const [pnlDays, setPnlDays] = useState(0);
+
   const [ordersHistory, setOrdersHistory] = useState();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -270,7 +270,7 @@ function Analysis() {
             <h2>{t("pnl_by_days_title")}</h2>
           </div>
 
-          <ColumnChart setPnlDays={setPnlDays} />
+          <ColumnChart selectedTime={selectedTime} />
         </div>
 
         <div className="orders_history_list main_block_wrapper">
