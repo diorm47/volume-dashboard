@@ -7,7 +7,6 @@ import empty_block from "../../assets/icons/empty-block.png";
 const LineChart = ({ selectedTime }) => {
   const [pnl, setPnl] = useState(false);
   const [pnlData, setPnlData] = useState("0.00");
-  const [pnlDataGraph, setPnlDataGraph] = useState("0.00");
   // const formatDate = (date) => {
   //   let day = date.getDate().toString().padStart(2, "0");
   //   let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
@@ -88,7 +87,7 @@ const LineChart = ({ selectedTime }) => {
         },
         y: {
           formatter: function (value) {
-            setPnlDataGraph(`${value}.00`);
+            setPnlData(value);
             return `${value} USDT`;
           },
         },
@@ -102,20 +101,20 @@ const LineChart = ({ selectedTime }) => {
     const endDate = new Date(selectedTime[1]);
     const datesInRange = getDatesInRange(startDate, endDate);
     console.log(serverData);
-    // Преобразование данных сервера в нужный формат (если требуется)
-    const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
-      const [day, month, year] = key.split("-").map(Number);
-      const date = new Date(year, month - 1, day);
-      const formattedKey = formatDate(date);
-      acc[formattedKey] = serverData[key];
-      return acc;
-    }, {});
+      // Преобразование данных сервера в нужный формат (если требуется)
+      const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
+        const [day, month, year] = key.split("-").map(Number);
+        const date = new Date(year, month - 1, day);
+        const formattedKey = formatDate(date);
+        acc[formattedKey] = serverData[key];
+        return acc;
+      }, {});
 
-    // Заполняем нулями дни без данных
-    const updatedData = datesInRange.map(
-      (date) => serverDataConverted[date] || 0
-    );
-    console.log(updatedData);
+      // Заполняем нулями дни без данных
+      const updatedData = datesInRange.map(
+        (date) => serverDataConverted[date] || 0
+      );
+      console.log(updatedData);
     setChartData((prevState) => ({
       ...prevState,
       series: [{ ...prevState.series[0], data: updatedData }],
@@ -170,8 +169,8 @@ const LineChart = ({ selectedTime }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      getPnl();
-      // updateChartData({ "30-12-2023": 1 });
+      // getPnl();
+      updateChartData({ "30-12-2023": 1 });
     }
   }, [localStorage.getItem("token")]);
   const sumData = (data) => {
@@ -179,16 +178,26 @@ const LineChart = ({ selectedTime }) => {
   };
 
   useEffect(() => {
-    if (chartData.series.length > 0 && chartData.series[0].data.length > 0) {
+    if (chartData.series.length > 0) {
       const total = sumData(chartData.series[0].data);
       setPnlData(total);
+  
+      // Проверяем, что сумма данных больше нуля
+      if (parseFloat(total) > 0) { 
+        setPnl(true);
+      } else {
+        setPnl(false);
+      }
+    } else {
+      setPnl(false);
     }
   }, [chartData.series]);
+  
 
   useEffect(() => {
     if (selectedTime && selectedTime.length === 2) {
       getPnl(selectedTime);
-    }
+    } 
   }, [selectedTime]);
 
   useEffect(() => {
@@ -212,11 +221,11 @@ const LineChart = ({ selectedTime }) => {
 
   return (
     <>
-      {pnl || pnlData === 0 ? (
+      {pnl ? (
         <>
           <div className="pnl_value">
             <p>
-              + {pnlDataGraph} <span>USDT</span>
+              + {pnlData} <span>USDT</span>
             </p>
           </div>
           <div className="review_chart">
