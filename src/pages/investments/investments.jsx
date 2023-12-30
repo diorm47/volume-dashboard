@@ -173,7 +173,7 @@ function Investments({ updatebalance }) {
   const [stopLos, setStopLos] = useState("");
   const [errorInvest, setErrorInvest] = useState("");
 
-  const addBot = (level_risk) => {
+  const handleAddBot = (level_risk) => {
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -225,30 +225,24 @@ function Investments({ updatebalance }) {
         console.log("Ошибка при выполнении запроса!", "error");
       });
   };
-
-  const handleSetAmountInvestment = (data) => {
-    setAmountInvestment(data);
-    console.log(data);
-    if (Number(data) < 100) {
+  const addBot = (level_risk) => {
+    if (Number(amountInvestment) < 100) {
       snackOptions("Минимальная сумма инвестиции 100 USDT.", "error");
       setErrorInvest(true);
     } else {
       setErrorInvest(false);
     }
-  };
 
-  const handleSetStopLos = (data) => {
-    setStopLos(data);
     const precent50 = (userData.balance / 100) * 50;
     const precent20 = (userData.balance / 100) * 20;
 
-    if (Number(data) > precent50) {
+    if (isChecked && Number(stopLos) > precent50) {
       snackOptions(
         "Вы указали значение стоп-лосс более 50% от общего счета.",
         "error"
       );
       setErrorInvest(true);
-    } else if (Number(data) < precent20) {
+    } else if (isChecked && Number(stopLos) < precent20) {
       snackOptions(
         "Вы указали значение стоп-лосс менее 20% от общего счета.",
         "error"
@@ -257,6 +251,17 @@ function Investments({ updatebalance }) {
     } else {
       setErrorInvest(false);
     }
+    if (errorInvest == false) {
+      handleAddBot(level_risk);
+    }
+  };
+
+  const handleSetAmountInvestment = (data) => {
+    setAmountInvestment(data);
+  };
+
+  const handleSetStopLos = (data) => {
+    setStopLos(data);
   };
 
   // get bot
@@ -969,10 +974,7 @@ function Investments({ updatebalance }) {
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
-              <button
-                onClick={() => addBot("conservative")}
-                disabled={!amountInvestment || errorInvest}
-              >
+              <button onClick={() => addBot("conservative")}>
                 {t("select")}
               </button>
             </div>
@@ -1147,12 +1149,7 @@ function Investments({ updatebalance }) {
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
-              <button
-                onClick={() => addBot("moderate")}
-                disabled={!amountInvestment || errorInvest}
-              >
-                {t("select")}
-              </button>
+              <button onClick={() => addBot("moderate")}>{t("select")}</button>
             </div>
           </div>
         </div>
@@ -1327,10 +1324,7 @@ function Investments({ updatebalance }) {
               </p>
             </div>
             <div class="investing_top_card_select invest_modal_select">
-              <button
-                onClick={() => addBot("aggressive")}
-                disabled={!amountInvestment || errorInvest}
-              >
+              <button onClick={() => addBot("aggressive")}>
                 {t("select")}
               </button>
             </div>

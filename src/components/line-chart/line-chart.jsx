@@ -88,7 +88,7 @@ const LineChart = ({ selectedTime }) => {
         y: {
           formatter: function (value) {
             setPnlData(value);
-            return `${value} USDT`;
+            return `${Number(value).toFixed(2)} USDT`;
           },
         },
       },

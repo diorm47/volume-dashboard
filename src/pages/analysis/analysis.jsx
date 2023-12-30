@@ -212,7 +212,7 @@ function Analysis() {
                 <p>{t("main_account")}</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    {userData.balance || "0.00"} <span>USDT</span>
+                    {Number(userData.balance || 0).toFixed(2)} <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -229,7 +229,7 @@ function Analysis() {
                 <p>{t("pnl_today")}</p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    {pnlToday == 0 ? "0.00" : pnlToday} <span>USDT</span>
+                    {Number(pnlToday || 0).toFixed(2)} <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -263,7 +263,7 @@ function Analysis() {
                 </p>
                 <div className="review_left_top_block_content_amount">
                   <p>
-                    {pnlPeriod == 0 ? "0.00" : pnlPeriod} <span>USDT</span>
+                    {Number(pnlPeriod || 0).toFixed(2)} <span>USDT</span>
                   </p>
                 </div>
               </div>
@@ -330,11 +330,19 @@ function Analysis() {
                     <div className="order_history_list_item_content_item">
                       {item.direction == "long" ? (
                         <p>
-                          {t("buy_price")} <span>{item.price_start} USDT</span>
+                          {t("buy_price")}{" "}
+                          <span>
+                            {" "}
+                            {Number(item.price_start || 0).toFixed(2)} USDT
+                          </span>
                         </p>
                       ) : (
                         <p>
-                          {t("sell_price")} <span>{item.price_start} USDT</span>
+                          {t("sell_price")}{" "}
+                          <span>
+                            {" "}
+                            {Number(item.price_start || 0).toFixed(2)} USDT
+                          </span>
                         </p>
                       )}
                     </div>
@@ -348,9 +356,14 @@ function Analysis() {
                       <p>
                         {t("profit_or_loss")}{" "}
                         {item.trading_result < 0 ? (
-                          <span>{item.trading_result} USDT</span>
+                          <span>
+                            {" "}
+                            {Number(item.trading_result || 0).toFixed(2)} USDT
+                          </span>
                         ) : (
-                          <span>{item.trading_result} USDT</span>
+                          <span>
+                            {Number(item.trading_result || 0).toFixed(2)} USDT
+                          </span>
                         )}
                       </p>
                     </div>
@@ -376,7 +389,9 @@ function Analysis() {
             </div>
           </div>
 
-          {ordersHistory && ordersHistory.length && filteredOrdersHistory.length ? (
+          {ordersHistory &&
+          ordersHistory.length &&
+          filteredOrdersHistory.length ? (
             <>
               <div className="main_block_wrapper_bottom analysis_history">
                 {filteredOrdersHistory.map((item, index) => (

@@ -91,7 +91,7 @@ const ColumnChart = ({ selectedTime }) => {
         y: {
           formatter: function (value) {
             setPnlData(`${value}.00`);
-            return `${value} USDT`;
+            return `${Number(value).toFixed(2)} USDT`;
           },
         },
       },

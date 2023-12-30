@@ -25,7 +25,6 @@ function Review() {
   const [pnl, setPnl] = useState("0.00");
   const [ordersHistory, setOrdersHistory] = useState();
 
-  const [pnlGraph, setPnlGraph] = useState(0);
   const [selectedOption, setSelectedOption] = useState("today");
 
   const optionsMap = {
@@ -138,7 +137,6 @@ function Review() {
     return () => clearInterval(interval);
   }, [targetDate]);
 
-
   const getReverseMap = (map) => {
     const reverseMap = {};
     Object.keys(map).forEach((key) => {
@@ -146,10 +144,10 @@ function Review() {
     });
     return reverseMap;
   };
-  
+
   // Создание обратного отображения
   const reverseOptionsMap = getReverseMap(optionsMap);
-  
+
   // Получение соответствующего значения по selectedOption
   const selectedValue = reverseOptionsMap[selectedOption];
 
@@ -170,8 +168,8 @@ function Review() {
                     <p> {t("rev_3")}</p>
                     <div className="review_left_top_block_content_amount">
                       <p>
-                        {userData.balance || '0.00'} <span>USDT</span>
-                       
+                        {Number(userData.balance || 0).toFixed(2)}{" "}
+                        <span>USDT</span>
                       </p>
                     </div>
                   </div>
@@ -224,10 +222,16 @@ function Review() {
                 </div>
                 <div className="main_block_wrapper_bottom">
                   <div className="review_left_top_block_content">
-                    <p> PnL <span style={{textTransform: "lowercase"}}>{selectedValue}</span></p>
+                    <p>
+                      {" "}
+                      PnL{" "}
+                      <span style={{ textTransform: "lowercase" }}>
+                        {selectedValue}
+                      </span>
+                    </p>
                     <div className="review_left_top_block_content_amount">
                       <p>
-                        {pnl == 0 ? "0.00" : pnl} <span>USDT</span>
+                        {Number(pnl || 0).toFixed(2)} <span>USDT</span>
                       </p>
                     </div>
                   </div>
@@ -320,26 +324,53 @@ function Review() {
                             {item.direction === "long" ? (
                               <p>
                                 {t("buy_price")}{" "}
-                                <span>{item.price_start} USDT</span>
+                                <span>
+                                  {" "}
+                                  {Number(item.price_start || 0).toFixed(
+                                    2
+                                  )}{" "}
+                                  USDT
+                                </span>
                               </p>
                             ) : (
                               <p>
                                 {t("sell_price")}{" "}
-                                <span>{item.price_start} USDT</span>
+                                <span>
+                                  {" "}
+                                  {Number(item.price_start || 0).toFixed(
+                                    2
+                                  )}{" "}
+                                  USDT
+                                </span>
                               </p>
                             )}
                             <p>
                               {t("position_volume")}{" "}
-                              <span>{item.volume} USDT</span>
+                              <span>
+                                {" "}
+                                {Number(item.volume || 0).toFixed(2)} USDT
+                              </span>
                             </p>
                           </div>
                           <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
                             <p>
                               {t("profit_or_loss")}{" "}
                               {item.trading_result < 0 ? (
-                                <span>{item.trading_result} USDT</span>
+                                <span>
+                                  {" "}
+                                  {Number(item.trading_result || 0).toFixed(
+                                    2
+                                  )}{" "}
+                                  USDT
+                                </span>
                               ) : (
-                                <span>{item.trading_result} USDT</span>
+                                <span>
+                                  {" "}
+                                  {Number(item.trading_result || 0).toFixed(
+                                    2
+                                  )}{" "}
+                                  USDT
+                                </span>
                               )}
                             </p>
                           </div>
