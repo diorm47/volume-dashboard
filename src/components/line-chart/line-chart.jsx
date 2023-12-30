@@ -169,8 +169,8 @@ const LineChart = ({ selectedTime }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      // getPnl();
-      updateChartData({ "30-12-2023": 1 });
+      getPnl();
+      // updateChartData({ "30-12-2023": 1 });
     }
   }, [localStorage.getItem("token")]);
   const sumData = (data) => {
