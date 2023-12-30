@@ -229,7 +229,7 @@ const ColumnChart = ({ selectedTime }) => {
         <>
           <div className="pnl_value">
             <p>
-              + {pnlData} <span>USDT</span>
+            + {Number(pnlData).toFixed(2)} <span>USDT</span>
             </p>
           </div>
           <div id="chart">

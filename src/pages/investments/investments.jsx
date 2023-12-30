@@ -171,6 +171,7 @@ function Investments({ updatebalance }) {
   // add bot
   const [amountInvestment, setAmountInvestment] = useState("");
   const [stopLos, setStopLos] = useState("");
+  const [errorInvest, setErrorInvest] = useState("");
 
   const addBot = (level_risk) => {
     let headersList = {
@@ -193,7 +194,10 @@ function Investments({ updatebalance }) {
           if (!data.success && data.error.api_keys_not_found) {
             snackOptions("Ошибка, не добавлен апи-ключ!", "error");
           } else if (!data.success && data.error.bots_limit) {
-            snackOptions("Ошибка, достигнут лимит ботов!", "error");
+            snackOptions(
+              "Лимит, методов инвестирования. Активный метод инвестирования может быть только один.",
+              "error"
+            );
           } else if (!data.success && data.error.unpaid_tariff) {
             snackOptions("Ошибка, нет активного тарифа!", "error");
           } else if (!data.success && data.error.amount_investment) {
@@ -220,6 +224,39 @@ function Investments({ updatebalance }) {
       .catch((error) => {
         console.log("Ошибка при выполнении запроса!", "error");
       });
+  };
+
+  const handleSetAmountInvestment = (data) => {
+    setAmountInvestment(data);
+    console.log(data);
+    if (Number(data) < 100) {
+      snackOptions("Минимальная сумма инвестиции 100 USDT.", "error");
+      setErrorInvest(true);
+    } else {
+      setErrorInvest(false);
+    }
+  };
+
+  const handleSetStopLos = (data) => {
+    setStopLos(data);
+    const precent50 = (userData.balance / 100) * 50;
+    const precent20 = (userData.balance / 100) * 20;
+
+    if (Number(data) > precent50) {
+      snackOptions(
+        "Вы указали значение стоп-лосс более 50% от общего счета.",
+        "error"
+      );
+      setErrorInvest(true);
+    } else if (Number(data) < precent20) {
+      snackOptions(
+        "Вы указали значение стоп-лосс менее 20% от общего счета.",
+        "error"
+      );
+      setErrorInvest(true);
+    } else {
+      setErrorInvest(false);
+    }
   };
 
   // get bot
@@ -830,7 +867,7 @@ function Investments({ updatebalance }) {
                   onFocus={() => handleFocus("field1")}
                   onBlur={handleBlur}
                   value={amountInvestment}
-                  onChange={(e) => setAmountInvestment(e.target.value)}
+                  onChange={(e) => handleSetAmountInvestment(e.target.value)}
                 />
                 <p>USDT</p>
               </div>
@@ -873,7 +910,7 @@ function Investments({ updatebalance }) {
                   type="number"
                   value={stopLos}
                   disabled={!isChecked}
-                  onChange={(e) => setStopLos(e.target.value)}
+                  onChange={(e) => handleSetStopLos(e.target.value)}
                   placeholder={t("enterMaxAcceptableLoss")}
                   className={getInputClass("field2")}
                   onFocus={() => handleFocus("field2")}
@@ -934,7 +971,7 @@ function Investments({ updatebalance }) {
             <div class="investing_top_card_select invest_modal_select">
               <button
                 onClick={() => addBot("conservative")}
-                disabled={!amountInvestment}
+                disabled={!amountInvestment || errorInvest}
               >
                 {t("select")}
               </button>
@@ -1008,7 +1045,7 @@ function Investments({ updatebalance }) {
                   onFocus={() => handleFocus("field3")}
                   onBlur={handleBlur}
                   value={amountInvestment}
-                  onChange={(e) => setAmountInvestment(e.target.value)}
+                  onChange={(e) => handleSetAmountInvestment(e.target.value)}
                 />
                 <p>USDT</p>
               </div>
@@ -1051,7 +1088,7 @@ function Investments({ updatebalance }) {
                   type="number"
                   value={stopLos}
                   disabled={!isChecked}
-                  onChange={(e) => setStopLos(e.target.value)}
+                  onChange={(e) => handleSetStopLos(e.target.value)}
                   placeholder={t("enterMaxAcceptableLoss")}
                   className={getInputClass("field4")}
                   onFocus={() => handleFocus("field4")}
@@ -1112,7 +1149,7 @@ function Investments({ updatebalance }) {
             <div class="investing_top_card_select invest_modal_select">
               <button
                 onClick={() => addBot("moderate")}
-                disabled={!amountInvestment}
+                disabled={!amountInvestment || errorInvest}
               >
                 {t("select")}
               </button>
@@ -1188,7 +1225,7 @@ function Investments({ updatebalance }) {
                   onFocus={() => handleFocus("field5")}
                   onBlur={handleBlur}
                   value={amountInvestment}
-                  onChange={(e) => setAmountInvestment(e.target.value)}
+                  onChange={(e) => handleSetAmountInvestment(e.target.value)}
                 />
                 <p>USDT</p>
               </div>
@@ -1231,7 +1268,7 @@ function Investments({ updatebalance }) {
                   type="number"
                   value={stopLos}
                   disabled={!isChecked}
-                  onChange={(e) => setStopLos(e.target.value)}
+                  onChange={(e) => handleSetStopLos(e.target.value)}
                   placeholder={t("enterMaxAcceptableLoss")}
                   className={getInputClass("field6")}
                   onFocus={() => handleFocus("field6")}
@@ -1292,7 +1329,7 @@ function Investments({ updatebalance }) {
             <div class="investing_top_card_select invest_modal_select">
               <button
                 onClick={() => addBot("aggressive")}
-                disabled={!amountInvestment}
+                disabled={!amountInvestment || errorInvest}
               >
                 {t("select")}
               </button>

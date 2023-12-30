@@ -176,6 +176,7 @@ const LineChart = ({ selectedTime }) => {
   const sumData = (data) => {
     return data.reduce((acc, value) => acc + value, 0).toFixed(2);
   };
+  
 
   useEffect(() => {
     if (chartData.series.length > 0) {
@@ -219,13 +220,14 @@ const LineChart = ({ selectedTime }) => {
     }
   }, [selectedTime]);
 
+
   return (
     <>
       {pnl ? (
         <>
           <div className="pnl_value">
             <p>
-              + {pnlData} <span>USDT</span>
+            + {Number(pnlData).toFixed(2)} <span>USDT</span>
             </p>
           </div>
           <div className="review_chart">
