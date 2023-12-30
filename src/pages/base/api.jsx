@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import img1 from "../../assets/images/api/api-b-1.png";
 import img2 from "../../assets/images/api/api-b-2.png";
@@ -7,6 +7,7 @@ import img4 from "../../assets/images/api/api-b-4.png";
 import img5 from "../../assets/images/api/api-b-5.png";
 import img6 from "../../assets/images/api/api-b-6.png";
 import img7 from "../../assets/images/api/api-b-7.png";
+import { useNavigate } from "react-router-dom";
 
 // import bybit1 from "../../assets/images/api/api-by-1.png";
 import { ReactComponent as Bybit1 } from "../../assets/images/api/api-by-1.svg";
@@ -20,12 +21,18 @@ import "./base.css";
 import { useTranslation } from "react-i18next";
 
 function ApiConnectiong() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, [localStorage.getItem("token")]);
   const { t, i18n } = useTranslation();
   React.useEffect(() => {
     document.title = `${t("api")} | &Volume`;
   }, [t]);
   const [section, setSection] = useState(1);
-  
 
   return (
     <div className="base_page_wrapper">
@@ -93,188 +100,170 @@ function ApiConnectiong() {
           </button>
         </div>
         {section == 1 ? (
-         <>
-         {" "}
-         <div className="register_page_block_title">
-           <h2>{t('createAPIKey.title')}</h2>
-         </div>
-         <div className="api_list_ul_ol">
-           <h4>{t('createAPIKey.note')}</h4>
-           <ul>
-             <li>
-               {t('createAPIKey.noteContent')}
-             </li>
-           </ul>
-         </div>
-         <div className="register_page_text">
-           <p>
-             {t('createAPIKey.step1')}
-             <a
-               target="_blank"
-               href="https://www.binance.com/ru/my/settings/api-management"
-             >
-               {t('createAPIKey.apiManagement')}
-             </a>{" "}
-           </p>
-         </div>
-         <img src={img1} alt="" />
-         <div className="api_list_ul_ol">
-           <h4>
-             {t('createAPIKey.preRequirements')}
-           </h4>
-           <ul>
-             <li>
-               {t('createAPIKey.enable2FA')}
-               <a
-                 target="_blank"
-                 href="https://www.binance.com/ru/support/faq/account-functions?c=1&navId=1#11"
-               >
-                 {t('createAPIKey.2FA')}
-               </a>{" "}
-               {t('createAPIKey.onYourAccount')}
-             </li>
-             <li>
-               {t('createAPIKey.depositSpotWallet')}
-             </li>
-             <li>
-               {t('createAPIKey.completeVerification')}
-               <a
-                 target="_blank"
-                 href="https://www.binance.com/ru/support/faq/360027287111"
-               >
-                 {t('createAPIKey.verifyIdentity')}
-               </a>{" "}
-             </li>{" "}
-             <li>
-               {t('createAPIKey.goToFutures')}
-               <a
-                 target="_blank"
-                 href="https://www.binance.com/en/futures/BNXUSDT"
-               >
-                 {t('createAPIKey.futuresAccount')}
-               </a>{" "}
-             </li>
-           </ul>
-         </div>
-         <div className="register_page_text">
-           <p>{t('createAPIKey.step2')}</p>
-         </div>
-         <img src={img2} alt="" />
-         <div className="register_page_text">
-           <p>{t('createAPIKey.step3')}</p>
-         </div>
-         <img src={img3} alt="" />
-         <div className="register_page_text">
-           <p>{t('createAPIKey.step4')}</p>
-         </div>
-         <img src={img4} alt="" />
-         <div className="register_page_text">
-           <p>{t('createAPIKey.step5')}</p>
-         </div>
-         <img src={img5} alt="" />
-         <div className="register_page_text">
-           <p>
-             {t('createAPIKey.step6')}
-           </p>
-         </div>
-         <img src={img6} alt="" />
-         <div className="register_page_text">
-           <p>{t('createAPIKey.step7')}</p>
-         </div>
-         <img src={img7} alt="" />
-         <div className="register_page_text">
-           <p>{t('createAPIKey.step8')}</p>
-         </div>
-       </>
+          <>
+            {" "}
+            <div className="register_page_block_title">
+              <h2>{t("createAPIKey.title")}</h2>
+            </div>
+            <div className="api_list_ul_ol">
+              <h4>{t("createAPIKey.note")}</h4>
+              <ul>
+                <li>{t("createAPIKey.noteContent")}</li>
+              </ul>
+            </div>
+            <div className="register_page_text">
+              <p>
+                {t("createAPIKey.step1")}
+                <a
+                  target="_blank"
+                  href="https://www.binance.com/ru/my/settings/api-management"
+                >
+                  {t("createAPIKey.apiManagement")}
+                </a>{" "}
+              </p>
+            </div>
+            <img src={img1} alt="" />
+            <div className="api_list_ul_ol">
+              <h4>{t("createAPIKey.preRequirements")}</h4>
+              <ul>
+                <li>
+                  {t("createAPIKey.enable2FA")}
+                  <a
+                    target="_blank"
+                    href="https://www.binance.com/ru/support/faq/account-functions?c=1&navId=1#11"
+                  >
+                    {t("createAPIKey.2FA")}
+                  </a>{" "}
+                  {t("createAPIKey.onYourAccount")}
+                </li>
+                <li>{t("createAPIKey.depositSpotWallet")}</li>
+                <li>
+                  {t("createAPIKey.completeVerification")}
+                  <a
+                    target="_blank"
+                    href="https://www.binance.com/ru/support/faq/360027287111"
+                  >
+                    {t("createAPIKey.verifyIdentity")}
+                  </a>{" "}
+                </li>{" "}
+                <li>
+                  {t("createAPIKey.goToFutures")}
+                  <a
+                    target="_blank"
+                    href="https://www.binance.com/en/futures/BNXUSDT"
+                  >
+                    {t("createAPIKey.futuresAccount")}
+                  </a>{" "}
+                </li>
+              </ul>
+            </div>
+            <div className="register_page_text">
+              <p>{t("createAPIKey.step2")}</p>
+            </div>
+            <img src={img2} alt="" />
+            <div className="register_page_text">
+              <p>{t("createAPIKey.step3")}</p>
+            </div>
+            <img src={img3} alt="" />
+            <div className="register_page_text">
+              <p>{t("createAPIKey.step4")}</p>
+            </div>
+            <img src={img4} alt="" />
+            <div className="register_page_text">
+              <p>{t("createAPIKey.step5")}</p>
+            </div>
+            <img src={img5} alt="" />
+            <div className="register_page_text">
+              <p>{t("createAPIKey.step6")}</p>
+            </div>
+            <img src={img6} alt="" />
+            <div className="register_page_text">
+              <p>{t("createAPIKey.step7")}</p>
+            </div>
+            <img src={img7} alt="" />
+            <div className="register_page_text">
+              <p>{t("createAPIKey.step8")}</p>
+            </div>
+          </>
         ) : (
           <>
-          <div className="register_page_block_title">
-            <h2>{t('createAPIKeyBybit.title')}</h2>
-          </div>
-          <div className="api_list_ul_ol">
-            <h4>{t('createAPIKeyBybit.note')}</h4>
-            <ul>
-              <li>
-                {t('createAPIKeyBybit.noteContent')}
-              </li>
-            </ul>
-          </div>
-          <div className="register_page_text">
-            <p>
-              {t('createAPIKeyBybit.step1')}
-              <a
-                target="_blank"
-                href="https://www.bybit.com/app/user/api-management"
-              >
-                {t('createAPIKeyBybit.api')}
-              </a>{" "}
-            </p>
-          </div>
-          {/* <img src={bybit1} alt="" /> */}
-          <Bybit1 className="by_bit_api_img_" />
-          <div className="api_list_ul_ol">
-            <h4>
-              {t('createAPIKeyBybit.preRequirements')}
-            </h4>
-            <ul>
-              <li>
-                {t('createAPIKeyBybit.enable2FA')}
+            <div className="register_page_block_title">
+              <h2>{t("createAPIKeyBybit.title")}</h2>
+            </div>
+            <div className="api_list_ul_ol">
+              <h4>{t("createAPIKeyBybit.note")}</h4>
+              <ul>
+                <li>{t("createAPIKeyBybit.noteContent")}</li>
+              </ul>
+            </div>
+            <div className="register_page_text">
+              <p>
+                {t("createAPIKeyBybit.step1")}
                 <a
                   target="_blank"
-                  href="https://www.bybit.com/app/user/security"
+                  href="https://www.bybit.com/app/user/api-management"
                 >
-                  {t('createAPIKeyBybit.2FA')}
+                  {t("createAPIKeyBybit.api")}
                 </a>{" "}
-                {t('createAPIKeyBybit.onYourAccount')}
-              </li>
-              <li>
-                {t('createAPIKeyBybit.depositSpotWallet')}
-              </li>
-              <li>
-                {t('createAPIKeyBybit.completeVerification')}
-                <a
-                  target="_blank"
-                  href="https://www.bybit.com/app/user/security"
-                >
-                  {t('createAPIKeyBybit.verifyIdentity')}
-                </a>{" "}
-              </li>{" "}
-            </ul>
-          </div>
-          <div className="register_page_text">
-            <p>{t('createAPIKeyBybit.step2')}</p>
-          </div>
-          <img src={bybit2} alt="" />
-          <div className="register_page_text">
-            <p>{t('createAPIKeyBybit.step3')}</p>
-          </div>
-          <img src={bybit3} alt="" />
-          <div className="register_page_text">
-            <p>{t('createAPIKeyBybit.step4')}</p>
-          </div>
-          <img src={bybit4} alt="" />
-          <img src={bybit5} alt="" />
-          <div className="register_page_text">
-            <p>
-              {t('createAPIKeyBybit.step5')}
-            </p>
-          </div>
-          <div className="register_page_text">
-            <p>{t('createAPIKeyBybit.step6')}</p>
-          </div>
-          <div className="api_list_ul_ol">
-            <h4>{t('createAPIKeyBybit.note2')}</h4>
-            <ul>
-              <li>
-                {t('createAPIKeyBybit.noteContent2')}
-              </li>
-            </ul>
-          </div>
-          <img src={bybit6} alt="" />
-          <div className="register_page_text">
-            <p>{t('createAPIKeyBybit.step7')}</p>
-          </div>
-        </>
+              </p>
+            </div>
+            {/* <img src={bybit1} alt="" /> */}
+            <Bybit1 className="by_bit_api_img_" />
+            <div className="api_list_ul_ol">
+              <h4>{t("createAPIKeyBybit.preRequirements")}</h4>
+              <ul>
+                <li>
+                  {t("createAPIKeyBybit.enable2FA")}
+                  <a
+                    target="_blank"
+                    href="https://www.bybit.com/app/user/security"
+                  >
+                    {t("createAPIKeyBybit.2FA")}
+                  </a>{" "}
+                  {t("createAPIKeyBybit.onYourAccount")}
+                </li>
+                <li>{t("createAPIKeyBybit.depositSpotWallet")}</li>
+                <li>
+                  {t("createAPIKeyBybit.completeVerification")}
+                  <a
+                    target="_blank"
+                    href="https://www.bybit.com/app/user/security"
+                  >
+                    {t("createAPIKeyBybit.verifyIdentity")}
+                  </a>{" "}
+                </li>{" "}
+              </ul>
+            </div>
+            <div className="register_page_text">
+              <p>{t("createAPIKeyBybit.step2")}</p>
+            </div>
+            <img src={bybit2} alt="" />
+            <div className="register_page_text">
+              <p>{t("createAPIKeyBybit.step3")}</p>
+            </div>
+            <img src={bybit3} alt="" />
+            <div className="register_page_text">
+              <p>{t("createAPIKeyBybit.step4")}</p>
+            </div>
+            <img src={bybit4} alt="" />
+            <img src={bybit5} alt="" />
+            <div className="register_page_text">
+              <p>{t("createAPIKeyBybit.step5")}</p>
+            </div>
+            <div className="register_page_text">
+              <p>{t("createAPIKeyBybit.step6")}</p>
+            </div>
+            <div className="api_list_ul_ol">
+              <h4>{t("createAPIKeyBybit.note2")}</h4>
+              <ul>
+                <li>{t("createAPIKeyBybit.noteContent2")}</li>
+              </ul>
+            </div>
+            <img src={bybit6} alt="" />
+            <div className="register_page_text">
+              <p>{t("createAPIKeyBybit.step7")}</p>
+            </div>
+          </>
         )}
       </div>
     </div>

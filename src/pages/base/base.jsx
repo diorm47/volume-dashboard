@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./base.css";
 
 import baseBottom from "../../assets/images/base-bottom.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 function Base() {
@@ -10,7 +10,13 @@ function Base() {
   React.useEffect(() => {
     document.title = `${t("faqBlock.knowledgeBase")} | &Volume`;
   }, []);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, [localStorage.getItem("token")]);
   return (
     <div className="base_page_wrapper">
       <div className="base_top_block">

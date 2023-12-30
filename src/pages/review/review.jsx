@@ -5,7 +5,7 @@ import subDays from "date-fns/subDays";
 import { format } from "date-fns";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import empty_block from "../../assets/icons/empty-block.png";
 import inviteImg from "../../assets/images/invite.png";
 import LineChart from "../../components/line-chart/line-chart";
@@ -13,6 +13,13 @@ import { mainApi } from "../../components/utils/main-api";
 import { useTranslation } from "react-i18next";
 
 function Review() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, [localStorage.getItem("token")]);
   const { t } = useTranslation();
   React.useEffect(() => {
     document.title = `${t("rev_1")} | &Volume`;
@@ -278,43 +285,43 @@ function Review() {
                         </svg>
                       }
                     /> */}
-                       <Dropdown
-                        options={options}
-                        onChange={handleSelect}
-                        value={options.find(
-                          (option) => optionsMap[option] === selectedOption
-                        )}
-                        placeholder={options[0]}
-                        arrowClosed={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                          >
-                            <path
-                              d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
-                              fill="#111112"
-                            />
-                          </svg>
-                        }
-                        arrowOpen={
-                          <svg
-                            className="open_arrow"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                          >
-                            <path
-                              d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
-                              fill="#111112"
-                            />
-                          </svg>
-                        }
-                      />
+                    <Dropdown
+                      options={options}
+                      onChange={handleSelect}
+                      value={options.find(
+                        (option) => optionsMap[option] === selectedOption
+                      )}
+                      placeholder={options[0]}
+                      arrowClosed={
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                        >
+                          <path
+                            d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
+                            fill="#111112"
+                          />
+                        </svg>
+                      }
+                      arrowOpen={
+                        <svg
+                          className="open_arrow"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                        >
+                          <path
+                            d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
+                            fill="#111112"
+                          />
+                        </svg>
+                      }
+                    />
                   </div>
                 </div>
               </div>

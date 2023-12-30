@@ -35,9 +35,7 @@ function App() {
       headers: headersList,
     })
       .then((response) => response.json())
-      .then((data) => {
-      
-      })
+      .then((data) => {})
       .catch((error) => {
         console.log(error);
       });
@@ -49,8 +47,6 @@ function App() {
     }
   }, [localStorage.getItem("token")]);
 
-
-  
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&

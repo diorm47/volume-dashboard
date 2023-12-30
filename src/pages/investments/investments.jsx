@@ -6,8 +6,16 @@ import Snackbar from "../../components/snackbar/snackbar";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { mainApi } from "../../components/utils/main-api";
+import { useNavigate } from "react-router-dom";
 
 function Investments({ updatebalance }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, [localStorage.getItem("token")]);
   const { t } = useTranslation();
 
   React.useEffect(() => {

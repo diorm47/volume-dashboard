@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import "./base.css";
 import { useTranslation } from "react-i18next";
@@ -10,7 +10,12 @@ function ConnectiongInvest() {
   React.useEffect(() => {
     document.title = `${t("nav_menu_3")} | &Volume`;
   }, [t]);
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, [localStorage.getItem("token")]);
   return (
     <div className="base_page_wrapper">
       <div className="base_top_block">

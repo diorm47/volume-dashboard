@@ -9,9 +9,17 @@ import LineChart from "../../components/line-chart/line-chart";
 import "./analysis.css";
 import { useTranslation } from "react-i18next";
 import { mainApi } from "../../components/utils/main-api";
+import { useNavigate } from "react-router-dom";
 
 function Analysis() {
   const { t } = useTranslation();
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, [localStorage.getItem("token")]);
 
   React.useEffect(() => {
     document.title = `${t("nav_menu_2")}  | &Volume`;

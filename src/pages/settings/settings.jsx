@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./settings.css";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import Profile from "./profile";
 import ApiKeys from "./api-keys";
 import Security from "./security";
@@ -8,7 +8,14 @@ import { useTranslation } from "react-i18next";
 
 function Settings() {
   const { t, i18n } = useTranslation();
-  
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  }, [localStorage.getItem("token")]);
+
   return (
     <>
       <div className="settings_navigation">
