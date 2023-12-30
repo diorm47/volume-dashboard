@@ -199,12 +199,11 @@ function ApiKeys() {
   const { t } = useTranslation();
 
   const handleSetEditode = () => {
-    setapiActiveEditModal(true)
-  }
+    setapiActiveEditModal(true);
+  };
+
   return (
     <>
-      <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
-
       <div className="page_title analyse_title api_key_title">
         <h2>{t("apiKeyPage.title")}</h2>
         <div className="add_key_btn">
@@ -239,9 +238,7 @@ function ApiKeys() {
                   </td>
                   <td>
                     <div className="api_actions">
-                      <p onClick={handleSetEditode}>
-                        {t("apiTable.edit")}
-                      </p>
+                      <p onClick={handleSetEditode}>{t("apiTable.edit")}</p>
                       <p>|</p>
                       <p onClick={deleteApi}>{t("apiTable.delete")}</p>
                     </div>
@@ -265,6 +262,46 @@ function ApiKeys() {
         </div>
       </div>
 
+      <div className="secondary_block_wrapper mob_api_list">
+        {!apiList ? (
+          <div className="main_block_wrapper_bottom empty_block_wrapper">
+            <div className="empty_block">
+              <img src={empty_block} alt="" />
+              <p>{t("apiTable.noApiConnected")}</p>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className="add_key_history_mobile_title ">
+              <h2>{apiList.title}</h2>
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="10" height="10" rx="5" fill="#31BD65" />
+              </svg>
+            </div>
+            <div
+              className="add_key_history_mobile_list"
+              onClick={() => setapiActiveModal(true)}
+            >
+              <div>
+                <p>Время добавления</p>
+                <h4>-</h4>
+              </div>
+              <div>
+                <p>Биржа</p>
+                <h4 style={{ textTransform: "capitalize" }}>
+                  {apiList.exchange}
+                </h4>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
       <div
         className={
           apiModal || apiActiveModal || apiActiveEditModal
@@ -472,6 +509,7 @@ function ApiKeys() {
           </div>
         </div>
       </div>
+      <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
     </>
   );
 }

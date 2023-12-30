@@ -2,11 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import "./base.css";
+import { useTranslation } from "react-i18next";
 
 function Differences() {
   React.useEffect(() => {
     document.title = `Различия | &Volume`;
   }, []);
+  const { t } = useTranslation();
 
   return (
     <div className="base_page_wrapper">
@@ -16,7 +18,7 @@ function Differences() {
             <div className="base_top_block_wrapper_nav">
               <div>
                 <p>
-                  <NavLink to="/base">База знаний</NavLink>{" "}
+                  <NavLink to="/base">{t("knowledgeBase")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -29,7 +31,7 @@ function Differences() {
                       fill="#92979C"
                     />
                   </svg>
-                  <NavLink to="/base">Инвестиции</NavLink>{" "}
+                  <NavLink to="/base"> {t("nav_menu_3")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -42,56 +44,45 @@ function Differences() {
                       fill="#92979C"
                     />
                   </svg>
-                  Различия
+                  {t("differencesTitle")}
                 </p>
               </div>
             </div>
-            <h1>Различия</h1>
+            <h1> {t("differencesTitle")}</h1>
           </div>
         </div>
       </div>
 
       <div className="pages_wrapper register_page">
         <div className="register_page_top_data">
-          <p>Опубликовано 1 дек 2023 г.</p>
+          <p>
+            {t("published")} 1 {t("dec")} 2023 {t("year")}
+          </p>
           <p>|</p>
-          <p>2 мин на чтение</p>
+          <p>2 {t("minToRead")}</p>
         </div>
         <div className="text_pages_wrapper">
-          <h2>Различия методов инвестирования</h2>
+          <h2>{t("investmentMethodD.differences")}</h2>
           <p>
-            Методы инвестирования на финансовых рынках могут значительно
-            различаться в зависимости от предпочтений инвестора в отношении
-            рисков и ожидаемой доходности. В данном случае речь идет о трех
-            методах инвестирования, предлагаемых сервисом &Volume.
-            <br /> <br /> Консервативный метод подразумевает осторожное
-            взаимодействие с рынком и минимизацию рисков. &Volume использует
-            небольшие суммы для каждой инвестиции и стремится максимально
-            ограничить убытки. Ожидаемая доходность при этом методе не превышает
-            10% в месяц и количество сделок не превышает 5 в день. Этот метод
-            рекомендуется для инвесторов с большими суммами, которые не хотят
-            рисковать.
-            <br /> <br /> Умеренный метод предполагает более активное участие в
-            рынке и использование больших сумм. Количество сделок может
-            достигать 10, и, хотя количество неудачных инвестиций может
-            увеличиться, ожидаемая доходность также возрастает.
-            <br /> <br /> Агрессивный метод предназначен для опытных инвесторов,
-            готовых к большим рискам и потенциальной высокой доходности. В этом
-            режиме, &Volume может осуществлять большое количество сделок,
-            использовать большие суммы и активно контролировать риски. Ожидаемая
-            прибыль может быть значительно выше, но и риски возрастают.
+            {t("investmentMethodD.investmentMethodsDescription")}
+            <br /> <br />
+            {t("investmentMethodD.conservativeMethodDescription")}
+            <br /> <br />
+            {t("investmentMethodD.moderateMethodDescription")}
+            <br /> <br />
+            {t("investmentMethodD.aggressiveMethodDescription")}
             <br />
             <br />
-            <b>Исходя из этого, можно сделать вывод:</b>
+            <b>{t("investmentMethodD.conclusion")}</b>
             <br />
             <br />
-            Консервативный метод подходит для тех, кто хочет минимизировать
-            риски и не готов к активным действиям на рынке. <br />
-            <br /> Умеренный метод инвестирования может быть более подходящей
-            для тех, кто готов к большему риску и ожидает большей доходности.{" "}
+            {t("investmentMethodD.conservativeMethodConclusion")}
             <br />
-            <br /> Агрессивный метод предназначена для опытных инвесторов,
-            которые готовы к высоким рискам в надежде на высокую доходность.
+            <br />
+            {t("investmentMethodD.moderateMethodConclusion")}
+            <br />
+            <br />
+            {t("investmentMethodD.aggressiveMethodConclusion")}
           </p>
         </div>
       </div>

@@ -10,12 +10,16 @@ import bybit1 from "../../assets/images/register/bybit/1.png";
 import bybit2 from "../../assets/images/register/bybit/2.png";
 // import bybit3 from "../../assets/images/register/bybit/3.png";
 import "./base.css";
+import { useTranslation } from "react-i18next";
 
 function Register() {
   React.useEffect(() => {
     document.title = `Регистрация биржевого аккаунта | &Volume`;
   }, []);
   const [section, setSection] = useState(1);
+
+  const { t } = useTranslation();
+
   return (
     <div className="base_page_wrapper">
       <div className="base_top_block">
@@ -24,7 +28,7 @@ function Register() {
             <div className="base_top_block_wrapper_nav">
               <div>
                 <p>
-                  <NavLink to="/base">База знаний</NavLink>{" "}
+                  <NavLink to="/base">{t("knowledgeBase")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -37,7 +41,7 @@ function Register() {
                       fill="#92979C"
                     />
                   </svg>
-                  <NavLink to="/base">Подключение</NavLink>{" "}
+                  <NavLink to="/base">{t("connection")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -50,20 +54,22 @@ function Register() {
                       fill="#92979C"
                     />
                   </svg>
-                  Регистрация биржевого аккаунта
+                  {t("registrationbase")}
                 </p>
               </div>
             </div>
-            <h1>Регистрация биржевого аккаунта</h1>
+            <h1>{t("registrationbase")}</h1>
           </div>
         </div>
       </div>
 
       <div className="pages_wrapper register_page">
         <div className="register_page_top_data">
-          <p>Опубликовано 1 дек 2023 г.</p>
+          <p>
+            {t("published")} 1 {t("dec")} 2023 {t("year")}
+          </p>
           <p>|</p>
-          <p>2 мин на чтение</p>
+          <p>2 {t("minToRead")}</p>
         </div>
         <div className="register_top_togglers">
           <button
@@ -83,96 +89,64 @@ function Register() {
           <>
             {" "}
             <div className="register_page_block_title">
-              <h2>Как зарегистрировать личный аккаунт на сайте Binance</h2>
+              <h2>{t("registration.title")}</h2>
             </div>
             <div className="register_page_text">
               <p>
-                1. Перейдите на сайт{" "}
+                {t("registration.step1")}
                 <a target="_blank" href="https://www.binance.com/">
+                  {" "}
                   Binance
                 </a>{" "}
-                и нажмите Зарегистрироваться или выберите метод регистрации
-                напрямую: с помощью электронной почты, номера телефона или
-                учетной записи Apple или Google.
+                {t("registration.step2")}
               </p>
             </div>
             <img src={img1} alt="" />
             <div className="register_page_text_block">
-              <p>
-                Внимательно выбирайте тип учетной записи. После регистрации его
-                нельзя будет изменить. Если вы хотите создать аккаунт
-                организации, перейдите на вкладку «Корпоративный аккаунт», где
-                представлено подробное руководство.
-              </p>
+              <p>{t("registration.info1")}</p>
             </div>
             <div className="register_page_text">
-              <p>
-                2. Введите адрес электронной почты / номер телефона. Если вы
-                регистрируетесь на Binance по ссылке друга, укажите реферальный
-                ID (необязательно). Прочитайте и примите Условия использования и
-                Политику конфиденциальности и нажмите Далее.
-              </p>
+              <p>{t("registration.step3")}</p>
             </div>
             <img src={img2} alt="" />
-            
             <div className="register_page_text">
-              <p>
-                3. На вашу электронную почту или телефон придет код верификации
-                из шести цифр. Введите его в течение 30 минут и нажмите
-                Подтвердить.
-              </p>
+              <p>{t("registration.step4")}</p>
             </div>
             <img src={img3} alt="" />
             <img src={img4} alt="" />
             <div className="register_page_text">
-              <p>
-                4. Затем создайте надежный пароль. Пароль должен содержать не
-                менее восьми символов, одну заглавную букву и одну цифру.
-                Нажмите Далее.
-              </p>
+              <p>{t("registration.step5")}</p>
             </div>
             <img src={img5} alt="" />
             <div className="register_page_text">
-              <p>5. Поздравляем! Вы создали аккаунт Binance.</p>
+              <p>{t("registration.step6")}</p>
             </div>
           </>
         ) : (
           <>
             <div className="register_page_block_title">
-              <h2>Как зарегистрировать личный аккаунт на сайте Bybit</h2>
+              <h2>{t("bybitRegistration.title")}</h2>
             </div>
             <div className="register_page_text">
               <p>
-                1. Перейдите на сайт{" "}
+                {t("bybitRegistration.step1")}
                 <a target="_blank" href="https://www.bybit.com/en/login">
-                  Bybit
+                {" "} Bybit
                 </a>{" "}
-                и нажмите Зарегистрироваться или выберите метод регистрации
-                напрямую: с помощью электронной почты, номера телефона или
-                учетной записи Apple или Google.
+                {t("bybitRegistration.step1.continuation")}
               </p>
             </div>
             <img src={bybit1} alt="" />
             <div className="register_page_text">
-              <p>
-                2. Введите адрес электронной почты / номер телефона. Если вы
-                регистрируетесь на Bybit по ссылке друга, укажите реферальный ID
-                (необязательно). Прочитайте и примите Условия использования и
-                Политику конфиденциальности и нажмите Далее.
-              </p>
+              <p>{t("bybitRegistration.step2")}</p>
             </div>
             <img src={bybit2} alt="" />
             <div className="register_page_text">
-              <p>
-                3. На вашу электронную почту или телефон придет код верификации
-                из шести цифр. Введите его в течение 30 минут и нажмите
-                Подтвердить.
-              </p>
+              <p>{t("bybitRegistration.step3")}</p>
             </div>
-            {/* <img src={bybit3} alt="" /> */}
             <Img3 className="by_bit_api_img_" />
             <div className="register_page_text">
-              <p>4. Поздравляем! Вы создали аккаунт Bybit.</p>
+              <p>{t("bybitRegistration.step4")}</p>
             </div>
           </>
         )}

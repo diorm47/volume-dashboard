@@ -2,11 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import "./base.css";
+import { useTranslation } from "react-i18next";
 
 function Limits() {
   React.useEffect(() => {
     document.title = `Торговые лимиты | &Volume`;
   }, []);
+  const { t } = useTranslation();
 
   return (
     <div className="base_page_wrapper">
@@ -16,7 +18,7 @@ function Limits() {
             <div className="base_top_block_wrapper_nav">
               <div>
                 <p>
-                  <NavLink to="/base">База знаний</NavLink>{" "}
+                  <NavLink to="/base">{t("knowledgeBase")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -29,7 +31,7 @@ function Limits() {
                       fill="#92979C"
                     />
                   </svg>
-                  <NavLink to="/base">Тарифы</NavLink>{" "}
+                  <NavLink to="/base"> {t("nav_menu_4")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -42,51 +44,43 @@ function Limits() {
                       fill="#92979C"
                     />
                   </svg>
-                  Торговые лимиты
+                  {t("tradeLimitTitle")}
                 </p>
               </div>
             </div>
-            <h1>Торговые лимиты</h1>
+            <h1> {t("tradeLimitTitle")}</h1>
           </div>
         </div>
       </div>
 
       <div className="pages_wrapper register_page">
         <div className="register_page_top_data">
-          <p>Опубликовано 1 дек 2023 г.</p>
+          <p>
+            {t("published")} 1 {t("dec")} 2023 {t("year")}
+          </p>
           <p>|</p>
-          <p>2 мин на чтение</p>
+          <p>2 {t("minToRead")}</p>
         </div>
         <div className="text_pages_wrapper">
-          <h2>Лимит суммы торгов</h2>
+          <h2>{t("tradeAmountLimit.title")}</h2>
+          <p>{t("tradeAmountLimit.description1")}</p>
           <p>
-            Лимит суммы торгов - это та сумма, которую Volume будет использовать
-            для торговли парами криптовалют. Для каждого тарифа эта сумма
-            разная.
+            <b>{t("tradeAmountLimit.exampleTitle")}</b>
           </p>
           <p>
-            <b>Пример:</b>
+            {t("tradeAmountLimit.exampleDescription", {
+              tariffName: t("tradeAmountLimit.startTariffName"),
+              amount: "$400",
+              totalAmount: "$10,000",
+            })}
           </p>
           <p>
-            В тарифе “Стартовый” эта сумма составляет $400. Это значит, что
-            Volume будет использовать в торговле $400, даже если общий размер
-            вашего депозита на криптовалютной бирже составляет, к примеру, $10
-            000 или больше.
-            <br />
-            <br />
-            Предположим, что после успешного месяца ваш баланс увеличился до
-            $600. Тем не менее, используя тариф “Стартовый”, в торговле все
-            равно будет использоваться сумма в $400.
-            <br />
-            <br />
-            Чтобы увеличить сумму, доступную для торговли, вы можете
-            переключиться на более высокий тариф.
-            <br />
-            <br />
-            Это гибкая система, которая позволяет пользователям выбирать
-            оптимальный лимит суммы торгов в зависимости от своих инвестиционных
-            целей и степени комфорта.
+            {t("tradeAmountLimit.exampleContinuation", {
+              tariffName: t("tradeAmountLimit.startTariffName"),
+              amount: "$400",
+            })}
           </p>
+          <p>{t("tradeAmountLimit.increaseAmountDescription")}</p>
         </div>
       </div>
     </div>

@@ -543,6 +543,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid var(--DBDBDB, #dbdbdb);
+  padding-bottom: 24px;
+  margin-bottom: 24px;
 }
 .add_key_history_mobile_title h2 {
   color: var(--111112, #111112);
@@ -561,6 +564,12 @@
 .black_mode .add_key_history_mobile_list h4 {
   color: #fff;
 }
+.add_key_history_mobile_list  {
+  justify-content: space-between;
+}
+.add_key_history_mobile_list div:last-child {
+  text-align: right;
+} 
 .user_img_wrapper {
   position: relative;
 }
@@ -584,7 +593,9 @@
   bottom: 10px;
   transition: all 0.4s ease;
 }
-
+.mob_api_list {
+  display: none;
+}
 @media only screen and (max-width: 750px) {
   .api_key_title {
     flex-direction: column;
@@ -618,6 +629,9 @@
   }
   .add_key_history {
     display: none;
+  }
+  .mob_api_list {
+    display: block;
   }
   .add_key_history_mobile_title {
     display: flex;

@@ -2,11 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 import "./base.css";
+import { useTranslation } from "react-i18next";
 
 function Risks() {
   React.useEffect(() => {
     document.title = `Риски | &Volume`;
   }, []);
+  const { t } = useTranslation();
 
   return (
     <div className="base_page_wrapper">
@@ -16,7 +18,7 @@ function Risks() {
             <div className="base_top_block_wrapper_nav">
               <div>
                 <p>
-                  <NavLink to="/base">База знаний</NavLink>{" "}
+                  <NavLink to="/base">{t("knowledgeBase")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -29,7 +31,7 @@ function Risks() {
                       fill="#92979C"
                     />
                   </svg>
-                  <NavLink to="/base">Инвестиции</NavLink>{" "}
+                  <NavLink to="/base">{t("nav_menu_3")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -42,136 +44,107 @@ function Risks() {
                       fill="#92979C"
                     />
                   </svg>
-                  Риски
+                  {t("risks.title")}
                 </p>
               </div>
             </div>
-            <h1>Риски</h1>
+            <h1>{t("risks.title")}</h1>
           </div>
         </div>
       </div>
 
       <div className="pages_wrapper register_page">
         <div className="register_page_top_data">
-          <p>Опубликовано 1 дек 2023 г.</p>
+          <p>
+            {t("published")} 1 {t("dec")} 2023 {t("year")}
+          </p>
           <p>|</p>
-          <p>2 мин на чтение</p>
+          <p>2 {t("minToRead")}</p>
         </div>
         <div className="text_pages_wrapper">
-          <h2>Риски</h2>
+          <h2>{t("risks.title")}</h2>
+          <p>{t("risks.intro")}</p>
+
           <p>
-            При торговле криптовалютой существует ряд потенциальных рисков,
-            которые инвесторы должны учитывать. &Volume старается минимизировать
-            ваши риски, однако есть области вне нашего контроля.
-          </p>
-          <p>
-            <b>1. Волатильность рынка:</b>
+            <b>1. {t("risks.marketVolatility.title")}:</b>
           </p>
           <p>
             <div className="api_list_ul_ol">
               <ul>
-                <li>
-                  Рынок криптовалюты очень волатилен. Цены на крипто могут резко
-                  изменяться в очень короткие промежутки времени (минуты, часы).
-                  Наша система руководствуется текущей ситуацией, а не
-                  прогнозирует будущее.
-                </li>
+                <li>{t("risks.marketVolatility.description")}</li>
               </ul>
               <br />
-              Последствия: Возможность больших прибылей также сопряжена с риском
-              значительных потерь.
+              {t("risks.marketVolatility.consequences")}
             </div>
           </p>
+
           <p>
-            <b>2. Рыночный риск:</b>
+            <b>2. {t("risks.marketConditions.title")}:</b>
           </p>
           <p>
             <div className="api_list_ul_ol">
               <ul>
-                <li>
-                  Рыночные условия могут существенно влиять на цены криптовалют.
-                  Это включает в себя новости, регулирование, технологические
-                  изменения и другие факторы, которые не поддаются 100%-му
-                  прогнозированию.
-                </li>
+                <li>{t("risks.marketConditions.description")}</li>
               </ul>
               <br />
-              Последствия: Негативные события на рынке могут привести к снижению
-              стоимости криптовалют и убыткам для инвесторов.
+              {t("risks.marketConditions.consequences")}
             </div>
           </p>
+
           <p>
-            <b>3. Технологические риски:</b>
+            <b>3. {t("risks.technical.title")}:</b>
           </p>
           <p>
             <div className="api_list_ul_ol">
               <ul>
-                <li>
-                  Технические проблемы, кибератаки, проблемы безопасности и
-                  другие технические сбои могут повлиять на функционирование
-                  криптовалютных бирж и кошельков.
-                </li>
+                <li>{t("risks.technical.description")}</li>
               </ul>
               <br />
-              Последствия: Потеря доступа к средствам, утечка личной информации,
-              а также другие негативные последствия.
+              {t("risks.technical.consequences")}
             </div>
           </p>
+
           <p>
-            <b>4. Регуляторные риски:</b>
+            <b>4. {t("risks.regulatory.title")}:</b>
           </p>
           <p>
             <div className="api_list_ul_ol">
               <ul>
-                <li>
-                  Изменения в законодательстве и регулировании криптовалют в
-                  различных странах могут повлиять на легальность и статус
-                  криптовалют, следите за новостями в вашей стране.
-                </li>
+                <li>{t("risks.regulatory.description")}</li>
               </ul>
               <br />
-              Последствия: Введение ограничений, запретов или изменений в
-              законодательстве может повлиять на торговлю и владение
-              криптовалютами.
+              {t("risks.regulatory.consequences")}
             </div>
           </p>
+
           <p>
-            <b>5. Партнерский риск:</b>
+            <b>5. {t("risks.partner.title")}:</b>
           </p>
           <p>
             <div className="api_list_ul_ol">
               <ul>
-                <li>
-                  Риск связанный с ненадежностью контрагентов, таких как биржи
-                  или другие торговые платформы.
-                </li>
+                <li>{t("risks.partner.description")}</li>
               </ul>
               <br />
-              Последствия: Проблемы с выводом средств, недоступность биржи.
+              {t("risks.partner.consequences")}
             </div>
           </p>
+
           <p>
-            <b>6. Ликвидность:</b>
+            <b>6. {t("risks.liquidity.title")}:</b>
           </p>
           <p>
             <div className="api_list_ul_ol">
               <ul>
-                <li>
-                  Отсутствие ликвидности на рынке может затруднить исполнение
-                  сделок по желаемым ценам.
-                </li>
+                <li>{t("risks.liquidity.description")}</li>
               </ul>
               <br />
-              Последствия: Значительные расхождения между ценами ожидания и
-              фактическими ценами при совершении сделок.
+              {t("risks.liquidity.consequences")}
             </div>
           </p>
+
           <p>
-            {" "}
-            <b>
-              Инвесторы должны осознавать эти риски и принимать меры по их
-              снижению, вне зависимости от условий рынка.
-            </b>
+            <b>{t("risks.investorsShouldBeAware")}</b>
           </p>
         </div>
       </div>

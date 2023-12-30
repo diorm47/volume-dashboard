@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import "./base.css";
+import { useTranslation } from "react-i18next";
 
 function ConnectiongInvest() {
   React.useEffect(() => {
     document.title = `Инвестиции | &Volume`;
   }, []);
+  const { t } = useTranslation();
 
   return (
     <div className="base_page_wrapper">
@@ -16,7 +18,7 @@ function ConnectiongInvest() {
             <div className="base_top_block_wrapper_nav">
               <div>
                 <p>
-                  <NavLink to="/base">База знаний</NavLink>{" "}
+                  <NavLink to="/base">{t("nav_menu_11")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -29,7 +31,7 @@ function ConnectiongInvest() {
                       fill="#92979C"
                     />
                   </svg>
-                  <NavLink to="/base">Подключение</NavLink>{" "}
+                  <NavLink to="/base">{t("connection")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -42,93 +44,65 @@ function ConnectiongInvest() {
                       fill="#92979C"
                     />
                   </svg>
-                  Инвестиции
+                  {t("nav_menu_3")}
                 </p>
               </div>
             </div>
-            <h1>Инвестиции</h1>
+            <h1>{t("nav_menu_3")}</h1>
           </div>
         </div>
       </div>
 
       <div className="pages_wrapper register_page">
         <div className="register_page_top_data">
-          <p>Опубликовано 1 дек 2023 г.</p>
+          <p>
+            {t("published")} 1 {t("dec")} 2023 {t("year")}
+          </p>
           <p>|</p>
-          <p>2 мин на чтение</p>
+          <p>2 {t("minToRead")}</p>
         </div>
         <div className="text_pages_wrapper">
-          <h2>Выбор метода инвестирования</h2>
-          <p>
-            Мы предлагаем настроить автоматическую торговлю парами криптовалют
-            выбрав одну из трёх доступных стратегий. Каждая из них адаптирована
-            под различные уровни риска.
-          </p>
-          <h2>Консервативный</h2>
-          <p>
-            &Volume придерживается осторожного подхода к выбору моментов для
-            совершения сделок. Используем небольшие доли депозита на каждую
-            операцию, стремясь к минимизации рисков. Ожидайте небольшого числа
-            сделок, не более 2-3 одновременно, чаще всего не более 5 сделок в
-            день. В зависимости от ситуации на рынке, сделок может совсем не
-            быть несколько дней. Продолжительность одной сделки может быть от 24
-            часов, до нескольких суток.
-            <br />
-            <br />
-            Особенности:
-            <div className="api_list_ul_ol">
-              <ul>
-                <li>Минимальный уровень риска.</li>
-                <li>Прогнозируемая прибыльность до ~10% в месяц.</li>
-              </ul>
-              <br />
-              Рекомендуется для людей с крупными депозитами и низкой готовностью
-              к риску.
-            </div>
-          </p>
-          <h2>Умеренный</h2>
-          <p>
-            С умеренным подходом, &Volume более активно взаимодействует с
-            рынком, используя больше средств и открывая до 5 - 10 сделок
-            одновременно. Время удержания сделок сокращается, и, хотя количество
-            убыточных сделок может быть выше, стратегия ориентирована на
-            достижение более высокой прибыльности на средней дистанции, по
-            сравнению с консервативной стратегией.
-            <br />
-            <br />
-            Особенности:
-            <div className="api_list_ul_ol">
-              <ul>
-                <li>Умеренный уровень риска.</li>
-                <li>Прогнозируемая прибыльность до ~20% в месяц.</li>
-              </ul>
-              <br />
-              Рекомендуется для людей, готовых к умеренному риску.
-            </div>
-          </p>
-          <h2>Агресивный</h2>
-          <p>
-            Самая прибыльная, но и рискованная стратегия. &Volume использует
-            значительные средства и открывает до 40 сделок одновременно.
-            Стратегия ориентирована на высокую интенсивность торговли, высокую
-            прибыль. При этом, ожидайте значительных колебаний и возможных
-            просадок до 30% депозита в моменте. Однако, среднесрочно стратегия
-            демонстрирует высокий винрейт, который компенсирует потенциальные
-            убытки и приносит значимую прибыль.
-            <br />
-            <br />
-            Особенности:
-            <div className="api_list_ul_ol">
-              <ul>
-                <li>Высокий уровень риска.</li>
-                <li>Прогнозируемая прибыльность до ~30% в месяц.</li>
-              </ul>
-              <br />
-              Рекомендуется для тех, кто готов к значительному риску, но не
-              рекомендуется для больших депозитов.
-            </div>
-          </p>
-        </div>
+    <h2>{t('investmentMethodBase.selection')}</h2>
+    <p>
+      {t('investmentMethodBase.autoTradeDescription')}
+    </p>
+    <h2>{t('investmentMethodBase.conservative')}</h2>
+    <p>
+      {t('investmentMethodBase.conservativeDescription')}
+    </p>
+    <div className="api_list_ul_ol">
+      <ul>
+        <li>{t('investmentMethodBase.lowRisk')}</li>
+        <li>{t('investmentMethodBase.predictedProfit1')}</li>
+      </ul>
+      <br />
+      {t('investmentMethodBase.recommendedForLowRisk')}
+    </div>
+    <h2>{t('investmentMethodBase.moderate')}</h2>
+    <p>
+      {t('investmentMethodBase.moderateDescription')}
+    </p>
+    <div className="api_list_ul_ol">
+      <ul>
+        <li>{t('investmentMethodBase.moderateRisk')}</li>
+        <li>{t('investmentMethodBase.predictedProfit2')}</li>
+      </ul>
+      <br />
+      {t('investmentMethodBase.recommendedForModerateRisk')}
+    </div>
+    <h2>{t('investmentMethodBase.aggressive')}</h2>
+    <p>
+      {t('investmentMethodBase.aggressiveDescription')}
+    </p>
+    <div className="api_list_ul_ol">
+      <ul>
+        <li>{t('investmentMethodBase.highRisk')}</li>
+        <li>{t('investmentMethodBase.predictedProfit3')}</li>
+      </ul>
+      <br />
+      {t('investmentMethodBase.recommendedForHighRisk')}
+    </div>
+  </div>
       </div>
     </div>
   );

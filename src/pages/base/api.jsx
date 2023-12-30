@@ -17,12 +17,15 @@ import bybit5 from "../../assets/images/api/api-by-5.png";
 import bybit6 from "../../assets/images/api/api-by-6.png";
 
 import "./base.css";
+import { useTranslation } from "react-i18next";
 
 function ApiConnectiong() {
   React.useEffect(() => {
     document.title = `API | &Volume`;
   }, []);
   const [section, setSection] = useState(1);
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="base_page_wrapper">
       <div className="base_top_block">
@@ -31,7 +34,7 @@ function ApiConnectiong() {
             <div className="base_top_block_wrapper_nav">
               <div>
                 <p>
-                  <NavLink to="/base">База знаний</NavLink>{" "}
+                  <NavLink to="/base">{t("knowledgeBase")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -44,7 +47,7 @@ function ApiConnectiong() {
                       fill="#92979C"
                     />
                   </svg>
-                  <NavLink to="/base">Подключение</NavLink>{" "}
+                  <NavLink to="/base">{t("connection")}</NavLink>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -57,20 +60,22 @@ function ApiConnectiong() {
                       fill="#92979C"
                     />
                   </svg>
-                  API
+                  {t("api")}
                 </p>
               </div>
             </div>
-            <h1>API</h1>
+            <h1>{t("api")}</h1>
           </div>
         </div>
       </div>
 
       <div className="pages_wrapper register_page">
         <div className="register_page_top_data">
-          <p>Опубликовано 1 дек 2023 г.</p>
+          <p>
+            {t("published")} 1 {t("dec")} 2023 {t("year")}
+          </p>
           <p>|</p>
-          <p>2 мин на чтение</p>
+          <p>2 {t("minToRead")}</p>
         </div>
         <div className="register_top_togglers">
           <button
@@ -87,198 +92,188 @@ function ApiConnectiong() {
           </button>
         </div>
         {section == 1 ? (
-          <>
-            {" "}
-            <div className="register_page_block_title">
-              <h2>Как создать API ключ на бирже Binance</h2>
-            </div>
-            <div className="api_list_ul_ol">
-              <h4>Примечание:</h4>
-              <ul>
-                <li>
-                  Создание API ключа может быть выполнено только с помощью ПК
-                  или веб-сайта, так как нет возможности сделать это через
-                  мобильное приложение Binance.
-                </li>
-              </ul>
-            </div>
-            <div className="register_page_text">
-              <p>
-                Войдите в аккаунт Binance и выберите Профиль —
-                <a
-                  target="_blank"
-                  href="https://www.binance.com/ru/my/settings/api-management"
-                >
-                  Управление API.
-                </a>{" "}
-              </p>
-            </div>
-            <img src={img1} alt="" />
-            <div className="api_list_ul_ol">
-              <h4>
-                Обратите внимание, что перед созданием API-ключа вы должны:
-              </h4>
-              <ul>
-                <li>
-                  Активировать{" "}
-                  <a
-                    target="_blank"
-                    href="https://www.binance.com/ru/support/faq/account-functions?c=1&navId=1#11"
-                  >
-                    двухфакторную аутентификацию (2FA)
-                  </a>{" "}
-                  на своем аккаунте.
-                </li>
-                <li>
-                  Внести любую сумму на спотовый кошелек для активации аккаунта.
-                </li>
-                <li>
-                  Пройти{" "}
-                  <a
-                    target="_blank"
-                    href="https://www.binance.com/ru/support/faq/360027287111"
-                  >
-                    проверку личности.
-                  </a>{" "}
-                </li>{" "}
-                <li>
-                  Перейти в деривативы и создать{" "}
-                  <a
-                    target="_blank"
-                    href="https://www.binance.com/en/futures/BNXUSDT"
-                  >
-                    фьючерсный аккаунт.
-                  </a>{" "}
-                </li>
-              </ul>
-            </div>
-            <div className="register_page_text">
-              <p>2. Снимите галочку с элементов управления безопасности</p>
-            </div>
-            <img src={img2} alt="" />
-            <div className="register_page_text">
-              <p>3. Нажмите Создать API.</p>
-            </div>
-            <img src={img3} alt="" />
-            <div className="register_page_text">
-              <p>4. Выберите тип API-ключа сгенерированный системой Bybit.</p>
-            </div>
-            <img src={img4} alt="" />
-            <div className="register_page_text">
-              <p>5. Введите название подключения API </p>
-            </div>
-            <img src={img5} alt="" />
-            <div className="register_page_text">
-              <p>
-                6. Подтвердите запрос с помощью устройств двухфакторной
-                аутентификации и Passkey.{" "}
-              </p>
-            </div>
-            <img src={img6} alt="" />
-            <div className="register_page_text">
-              <p>7. Выставите необходимые настройки </p>
-            </div>
-            <img src={img7} alt="" />
-            <div className="register_page_text">
-              <p>8. API-ключ готов.  </p>
-            </div>
-          </>
+         <>
+         {" "}
+         <div className="register_page_block_title">
+           <h2>{t('createAPIKey.title')}</h2>
+         </div>
+         <div className="api_list_ul_ol">
+           <h4>{t('createAPIKey.note')}</h4>
+           <ul>
+             <li>
+               {t('createAPIKey.noteContent')}
+             </li>
+           </ul>
+         </div>
+         <div className="register_page_text">
+           <p>
+             {t('createAPIKey.step1')}
+             <a
+               target="_blank"
+               href="https://www.binance.com/ru/my/settings/api-management"
+             >
+               {t('createAPIKey.apiManagement')}
+             </a>{" "}
+           </p>
+         </div>
+         <img src={img1} alt="" />
+         <div className="api_list_ul_ol">
+           <h4>
+             {t('createAPIKey.preRequirements')}
+           </h4>
+           <ul>
+             <li>
+               {t('createAPIKey.enable2FA')}
+               <a
+                 target="_blank"
+                 href="https://www.binance.com/ru/support/faq/account-functions?c=1&navId=1#11"
+               >
+                 {t('createAPIKey.2FA')}
+               </a>{" "}
+               {t('createAPIKey.onYourAccount')}
+             </li>
+             <li>
+               {t('createAPIKey.depositSpotWallet')}
+             </li>
+             <li>
+               {t('createAPIKey.completeVerification')}
+               <a
+                 target="_blank"
+                 href="https://www.binance.com/ru/support/faq/360027287111"
+               >
+                 {t('createAPIKey.verifyIdentity')}
+               </a>{" "}
+             </li>{" "}
+             <li>
+               {t('createAPIKey.goToFutures')}
+               <a
+                 target="_blank"
+                 href="https://www.binance.com/en/futures/BNXUSDT"
+               >
+                 {t('createAPIKey.futuresAccount')}
+               </a>{" "}
+             </li>
+           </ul>
+         </div>
+         <div className="register_page_text">
+           <p>{t('createAPIKey.step2')}</p>
+         </div>
+         <img src={img2} alt="" />
+         <div className="register_page_text">
+           <p>{t('createAPIKey.step3')}</p>
+         </div>
+         <img src={img3} alt="" />
+         <div className="register_page_text">
+           <p>{t('createAPIKey.step4')}</p>
+         </div>
+         <img src={img4} alt="" />
+         <div className="register_page_text">
+           <p>{t('createAPIKey.step5')}</p>
+         </div>
+         <img src={img5} alt="" />
+         <div className="register_page_text">
+           <p>
+             {t('createAPIKey.step6')}
+           </p>
+         </div>
+         <img src={img6} alt="" />
+         <div className="register_page_text">
+           <p>{t('createAPIKey.step7')}</p>
+         </div>
+         <img src={img7} alt="" />
+         <div className="register_page_text">
+           <p>{t('createAPIKey.step8')}</p>
+         </div>
+       </>
         ) : (
           <>
-            <div className="register_page_block_title">
-              <h2>Как создать API ключ на бирже Bybit</h2>
-            </div>
-            <div className="api_list_ul_ol">
-              <h4>Примечание:</h4>
-              <ul>
-                <li>
-                  Создание API ключа может быть выполнено только с помощью ПК
-                  или веб-сайта, так как нет возможности сделать это через
-                  мобильное приложение Bybit.
-                </li>
-              </ul>
-            </div>
-            <div className="register_page_text">
-              <p>
-                Войдите в аккаунт Bybit и выберите Профиль —{" "}
+          <div className="register_page_block_title">
+            <h2>{t('createAPIKeyBybit.title')}</h2>
+          </div>
+          <div className="api_list_ul_ol">
+            <h4>{t('createAPIKeyBybit.note')}</h4>
+            <ul>
+              <li>
+                {t('createAPIKeyBybit.noteContent')}
+              </li>
+            </ul>
+          </div>
+          <div className="register_page_text">
+            <p>
+              {t('createAPIKeyBybit.step1')}
+              <a
+                target="_blank"
+                href="https://www.bybit.com/app/user/api-management"
+              >
+                {t('createAPIKeyBybit.api')}
+              </a>{" "}
+            </p>
+          </div>
+          {/* <img src={bybit1} alt="" /> */}
+          <Bybit1 className="by_bit_api_img_" />
+          <div className="api_list_ul_ol">
+            <h4>
+              {t('createAPIKeyBybit.preRequirements')}
+            </h4>
+            <ul>
+              <li>
+                {t('createAPIKeyBybit.enable2FA')}
                 <a
                   target="_blank"
-                  href="https://www.bybit.com/app/user/api-management"
+                  href="https://www.bybit.com/app/user/security"
                 >
-                  API.
-                </a>
-              </p>
-            </div>
-            {/* <img src={bybit1} alt="" /> */}
-            <Bybit1 className="by_bit_api_img_" />
-            <div className="api_list_ul_ol">
-              <h4>
-                Обратите внимание, что перед созданием API-ключа вы должны:
-              </h4>
-              <ul>
-                <li>
-                  Активировать{" "}
-                  <a
-                    target="_blank"
-                    href="https://www.bybit.com/app/user/security"
-                  >
-                    двухфакторную аутентификацию (2FA)
-                  </a>{" "}
-                  на своем аккаунте.
-                </li>
-                <li>
-                  Внести любую сумму на спотовый кошелек для активации аккаунта.
-                </li>
-                <li>
-                  Пройти{" "}
-                  <a
-                    target="_blank"
-                    href="https://www.bybit.com/app/user/security"
-                  >
-                    проверку личности.
-                  </a>{" "}
-                </li>{" "}
-              </ul>
-            </div>
-            <div className="register_page_text">
-              <p>2. Нажмите Создать API.</p>
-            </div>
-            <img src={bybit2} alt="" />
-            <div className="register_page_text">
-              <p>3. Выберите тип API-ключа сгенерированный системой Bybit.</p>
-            </div>
-            <img src={bybit3} alt="" />
-            <div className="register_page_text">
-              <p>4. Укажите данные донные для API ключа согласно скриншоту.</p>
-            </div>
-            <img src={bybit4} alt="" />
-            <img src={bybit5} alt="" />
-            <div className="register_page_text">
-              <p>
-                5. Нажмите отправить и подтвердите запрос с помощью устройств
-                двухфакторной аутентификации.
-              </p>
-            </div>
-            <div className="register_page_text">
-              <p>
-                6. Сохраните полученный API key и API Secret для дальнейшего
-                использования.{" "}
-              </p>
-            </div>
-            <div className="api_list_ul_ol">
-              <h4>Примечание:</h4>
-              <ul>
-                <li>
-                  Полученный API Secret сохранить возможно только один раз.
-                  Сохраняйте ключи сразу после получения.
-                </li>
-              </ul>
-            </div>
-            <img src={bybit6} alt="" />
-            <div className="register_page_text">
-              <p>7. API-ключ готов.</p>
-            </div>
-          </>
+                  {t('createAPIKeyBybit.2FA')}
+                </a>{" "}
+                {t('createAPIKeyBybit.onYourAccount')}
+              </li>
+              <li>
+                {t('createAPIKeyBybit.depositSpotWallet')}
+              </li>
+              <li>
+                {t('createAPIKeyBybit.completeVerification')}
+                <a
+                  target="_blank"
+                  href="https://www.bybit.com/app/user/security"
+                >
+                  {t('createAPIKeyBybit.verifyIdentity')}
+                </a>{" "}
+              </li>{" "}
+            </ul>
+          </div>
+          <div className="register_page_text">
+            <p>{t('createAPIKeyBybit.step2')}</p>
+          </div>
+          <img src={bybit2} alt="" />
+          <div className="register_page_text">
+            <p>{t('createAPIKeyBybit.step3')}</p>
+          </div>
+          <img src={bybit3} alt="" />
+          <div className="register_page_text">
+            <p>{t('createAPIKeyBybit.step4')}</p>
+          </div>
+          <img src={bybit4} alt="" />
+          <img src={bybit5} alt="" />
+          <div className="register_page_text">
+            <p>
+              {t('createAPIKeyBybit.step5')}
+            </p>
+          </div>
+          <div className="register_page_text">
+            <p>{t('createAPIKeyBybit.step6')}</p>
+          </div>
+          <div className="api_list_ul_ol">
+            <h4>{t('createAPIKeyBybit.note2')}</h4>
+            <ul>
+              <li>
+                {t('createAPIKeyBybit.noteContent2')}
+              </li>
+            </ul>
+          </div>
+          <img src={bybit6} alt="" />
+          <div className="register_page_text">
+            <p>{t('createAPIKeyBybit.step7')}</p>
+          </div>
+        </>
         )}
       </div>
     </div>
