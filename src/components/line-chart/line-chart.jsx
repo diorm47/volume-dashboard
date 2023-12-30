@@ -7,21 +7,17 @@ import empty_block from "../../assets/icons/empty-block.png";
 const LineChart = ({ selectedTime }) => {
   const [pnl, setPnl] = useState(false);
   const [pnlData, setPnlData] = useState("0.00");
+  // const formatDate = (date) => {
+  //   let day = date.getDate().toString().padStart(2, "0");
+  //   let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
+  //   let year = date.getFullYear();
+  //   return `${year}-${month}-${day}`;
+  // };
   const formatDate = (date) => {
     let day = date.getDate().toString().padStart(2, "0");
-    let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
+    let month = (date.getMonth() + 1).toString().padStart(2, "0");
     let year = date.getFullYear();
     return `${year}-${month}-${day}`;
-  };
-
-  const getLast7Days = () => {
-    const dates = [];
-    for (let i = 0; i < 7; i++) {
-      const date = new Date();
-      date.setDate(date.getDate() - i);
-      dates.unshift(formatDate(date)); // Manually format the date
-    }
-    return dates;
   };
   const getDatesInRange = (startDate, endDate) => {
     const dates = [];
@@ -104,23 +100,26 @@ const LineChart = ({ selectedTime }) => {
     const startDate = new Date(selectedTime[0]);
     const endDate = new Date(selectedTime[1]);
     const datesInRange = getDatesInRange(startDate, endDate);
-  
-    // Преобразование данных сервера в нужный формат (если требуется)
-    const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
-      const formattedKey = formatDate(new Date(key));
-      acc[formattedKey] = serverData[key];
-      return acc;
-    }, {});
-  
-    // Заполняем нулями дни без данных
-    const updatedData = datesInRange.map((date) => serverDataConverted[date] || 0);
-  
+    console.log(serverData);
+      // Преобразование данных сервера в нужный формат (если требуется)
+      const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
+        const [day, month, year] = key.split("-").map(Number);
+        const date = new Date(year, month - 1, day);
+        const formattedKey = formatDate(date);
+        acc[formattedKey] = serverData[key];
+        return acc;
+      }, {});
+
+      // Заполняем нулями дни без данных
+      const updatedData = datesInRange.map(
+        (date) => serverDataConverted[date] || 0
+      );
+      console.log(updatedData);
     setChartData((prevState) => ({
       ...prevState,
       series: [{ ...prevState.series[0], data: updatedData }],
     }));
   };
-  
 
   const getPnl = (value) => {
     let headersList = {
@@ -171,6 +170,7 @@ const LineChart = ({ selectedTime }) => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getPnl();
+      // updateChartData({ "30-12-2023": 1 });
     }
   }, [localStorage.getItem("token")]);
   const sumData = (data) => {
@@ -183,11 +183,11 @@ const LineChart = ({ selectedTime }) => {
       setPnlData(total);
     }
   }, [chartData.series]);
- 
+
   useEffect(() => {
     if (selectedTime && selectedTime.length === 2) {
       getPnl(selectedTime);
-    }
+    } 
   }, [selectedTime]);
 
   useEffect(() => {
@@ -211,7 +211,7 @@ const LineChart = ({ selectedTime }) => {
 
   return (
     <>
-      {true ? (
+      {pnl ? (
         <>
           <div className="pnl_value">
             <p>
