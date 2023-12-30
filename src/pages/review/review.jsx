@@ -41,6 +41,7 @@ function Review() {
     setSelectedOption(value);
     getPnl(value);
   };
+  console.log(optionsMap);
 
   const options2 = [
     "За последние 30 дн.",
@@ -137,6 +138,21 @@ function Review() {
     return () => clearInterval(interval);
   }, [targetDate]);
 
+
+  const getReverseMap = (map) => {
+    const reverseMap = {};
+    Object.keys(map).forEach((key) => {
+      reverseMap[map[key]] = key;
+    });
+    return reverseMap;
+  };
+  
+  // Создание обратного отображения
+  const reverseOptionsMap = getReverseMap(optionsMap);
+  
+  // Получение соответствующего значения по selectedOption
+  const selectedValue = reverseOptionsMap[selectedOption];
+
   return (
     <>
       <div className="pages_wrapper review_page">
@@ -208,7 +224,7 @@ function Review() {
                 </div>
                 <div className="main_block_wrapper_bottom">
                   <div className="review_left_top_block_content">
-                    <p> {t("rev_4")}</p>
+                    <p> PnL <span style={{textTransform: "lowercase"}}>{selectedValue}</span></p>
                     <div className="review_left_top_block_content_amount">
                       <p>
                         {pnl == 0 ? "0.00" : pnl} <span>USDT</span>
