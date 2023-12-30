@@ -3,6 +3,7 @@ import ReactApexChart from "react-apexcharts";
 import "./line-chart.css";
 import subDays from "date-fns/subDays";
 import empty_block from "../../assets/icons/empty-block.png";
+import { useTranslation } from "react-i18next";
 
 const LineChart = ({ selectedTime }) => {
   const [pnl, setPnl] = useState(false);
@@ -101,20 +102,20 @@ const LineChart = ({ selectedTime }) => {
     const endDate = new Date(selectedTime[1]);
     const datesInRange = getDatesInRange(startDate, endDate);
     console.log(serverData);
-      // Преобразование данных сервера в нужный формат (если требуется)
-      const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
-        const [day, month, year] = key.split("-").map(Number);
-        const date = new Date(year, month - 1, day);
-        const formattedKey = formatDate(date);
-        acc[formattedKey] = serverData[key];
-        return acc;
-      }, {});
+    // Преобразование данных сервера в нужный формат (если требуется)
+    const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
+      const [day, month, year] = key.split("-").map(Number);
+      const date = new Date(year, month - 1, day);
+      const formattedKey = formatDate(date);
+      acc[formattedKey] = serverData[key];
+      return acc;
+    }, {});
 
-      // Заполняем нулями дни без данных
-      const updatedData = datesInRange.map(
-        (date) => serverDataConverted[date] || 0
-      );
-      console.log(updatedData);
+    // Заполняем нулями дни без данных
+    const updatedData = datesInRange.map(
+      (date) => serverDataConverted[date] || 0
+    );
+    console.log(updatedData);
     setChartData((prevState) => ({
       ...prevState,
       series: [{ ...prevState.series[0], data: updatedData }],
@@ -176,15 +177,14 @@ const LineChart = ({ selectedTime }) => {
   const sumData = (data) => {
     return data.reduce((acc, value) => acc + value, 0).toFixed(2);
   };
-  
 
   useEffect(() => {
     if (chartData.series.length > 0) {
       const total = sumData(chartData.series[0].data);
       setPnlData(total);
-  
+
       // Проверяем, что сумма данных больше нуля
-      if (parseFloat(total) > 0) { 
+      if (parseFloat(total) > 0) {
         setPnl(true);
       } else {
         setPnl(false);
@@ -193,12 +193,11 @@ const LineChart = ({ selectedTime }) => {
       setPnl(false);
     }
   }, [chartData.series]);
-  
 
   useEffect(() => {
     if (selectedTime && selectedTime.length === 2) {
       getPnl(selectedTime);
-    } 
+    }
   }, [selectedTime]);
 
   useEffect(() => {
@@ -220,6 +219,7 @@ const LineChart = ({ selectedTime }) => {
     }
   }, [selectedTime]);
 
+  const { t } = useTranslation();
 
   return (
     <>
@@ -227,7 +227,7 @@ const LineChart = ({ selectedTime }) => {
         <>
           <div className="pnl_value">
             <p>
-            + {Number(pnlData).toFixed(2)} <span>USDT</span>
+              + {Number(pnlData).toFixed(2)} <span>USDT</span>
             </p>
           </div>
           <div className="review_chart">
@@ -245,7 +245,7 @@ const LineChart = ({ selectedTime }) => {
       ) : (
         <div className="empty_block">
           <img src={empty_block} alt="" />
-          <p>Нет данных по Pnl</p>
+          <p>{t("pnl_no_data")}</p>
         </div>
       )}
     </>

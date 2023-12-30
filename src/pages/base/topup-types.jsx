@@ -5,10 +5,10 @@ import "./base.css";
 import { useTranslation } from "react-i18next";
 
 function TopupTypes() {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `Способы пополнения | &Volume`;
-  }, []);
-  const { t } = useTranslation();
+    document.title = `${t("repl_method")} | &Volume`;
+  }, [t]);
 
   return (
     <div className="base_page_wrapper">

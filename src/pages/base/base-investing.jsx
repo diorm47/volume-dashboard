@@ -5,10 +5,11 @@ import "./base.css";
 import { useTranslation } from "react-i18next";
 
 function ConnectiongInvest() {
+  const { t, i18n } = useTranslation();
+
   React.useEffect(() => {
-    document.title = `Инвестиции | &Volume`;
-  }, []);
-  const { t } = useTranslation();
+    document.title = `${t("nav_menu_3")} | &Volume`;
+  }, [t]);
 
   return (
     <div className="base_page_wrapper">
@@ -62,47 +63,39 @@ function ConnectiongInvest() {
           <p>2 {t("minToRead")}</p>
         </div>
         <div className="text_pages_wrapper">
-    <h2>{t('investmentMethodBase.selection')}</h2>
-    <p>
-      {t('investmentMethodBase.autoTradeDescription')}
-    </p>
-    <h2>{t('investmentMethodBase.conservative')}</h2>
-    <p>
-      {t('investmentMethodBase.conservativeDescription')}
-    </p>
-    <div className="api_list_ul_ol">
-      <ul>
-        <li>{t('investmentMethodBase.lowRisk')}</li>
-        <li>{t('investmentMethodBase.predictedProfit1')}</li>
-      </ul>
-      <br />
-      {t('investmentMethodBase.recommendedForLowRisk')}
-    </div>
-    <h2>{t('investmentMethodBase.moderate')}</h2>
-    <p>
-      {t('investmentMethodBase.moderateDescription')}
-    </p>
-    <div className="api_list_ul_ol">
-      <ul>
-        <li>{t('investmentMethodBase.moderateRisk')}</li>
-        <li>{t('investmentMethodBase.predictedProfit2')}</li>
-      </ul>
-      <br />
-      {t('investmentMethodBase.recommendedForModerateRisk')}
-    </div>
-    <h2>{t('investmentMethodBase.aggressive')}</h2>
-    <p>
-      {t('investmentMethodBase.aggressiveDescription')}
-    </p>
-    <div className="api_list_ul_ol">
-      <ul>
-        <li>{t('investmentMethodBase.highRisk')}</li>
-        <li>{t('investmentMethodBase.predictedProfit3')}</li>
-      </ul>
-      <br />
-      {t('investmentMethodBase.recommendedForHighRisk')}
-    </div>
-  </div>
+          <h2>{t("investmentMethodBase.selection")}</h2>
+          <p>{t("investmentMethodBase.autoTradeDescription")}</p>
+          <h2>{t("investmentMethodBase.conservative")}</h2>
+          <p>{t("investmentMethodBase.conservativeDescription")}</p>
+          <div className="api_list_ul_ol">
+            <ul>
+              <li>{t("investmentMethodBase.lowRisk")}</li>
+              <li>{t("investmentMethodBase.predictedProfit1")}</li>
+            </ul>
+            <br />
+            {t("investmentMethodBase.recommendedForLowRisk")}
+          </div>
+          <h2>{t("investmentMethodBase.moderate")}</h2>
+          <p>{t("investmentMethodBase.moderateDescription")}</p>
+          <div className="api_list_ul_ol">
+            <ul>
+              <li>{t("investmentMethodBase.moderateRisk")}</li>
+              <li>{t("investmentMethodBase.predictedProfit2")}</li>
+            </ul>
+            <br />
+            {t("investmentMethodBase.recommendedForModerateRisk")}
+          </div>
+          <h2>{t("investmentMethodBase.aggressive")}</h2>
+          <p>{t("investmentMethodBase.aggressiveDescription")}</p>
+          <div className="api_list_ul_ol">
+            <ul>
+              <li>{t("investmentMethodBase.highRisk")}</li>
+              <li>{t("investmentMethodBase.predictedProfit3")}</li>
+            </ul>
+            <br />
+            {t("investmentMethodBase.recommendedForHighRisk")}
+          </div>
+        </div>
       </div>
     </div>
   );

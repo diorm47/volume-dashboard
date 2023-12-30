@@ -580,4 +580,17 @@ export const en_locale = {
     investorsShouldBeAware:
       "Investors should be aware of these risks and take measures to mitigate them, regardless of market conditions.",
   },
+  timeFrame: {
+    today: "Today",
+    last7Days: "Last 7 days",
+    last30Days: "Last 30 days",
+    last90Days: "Last 90 days",
+    allTime: "All Time",
+  },
+  pnl_no_data: "No data on Pnl",
+  not_have: "Not indicated",
+  one_year: "1 year",
+  six_month: "6 months",
+  three_month: "3 months",
+  one_month: "1 month",
 };

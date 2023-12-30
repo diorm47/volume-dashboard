@@ -28,10 +28,10 @@ function Review() {
   const [selectedOption, setSelectedOption] = useState("today");
 
   const optionsMap = {
-    "За сегодня": "today",
-    "За последние 7 дн.": "d7",
-    "За последние 30 дн.": "d30",
-    "За последние 90 дн.": "d90",
+    [t("timeFrame.today")]: "today",
+    [t("timeFrame.last7Days")]: "d7",
+    [t("timeFrame.last30Days")]: "d30",
+    [t("timeFrame.last90Days")]: "d90",
   };
   const options = Object.keys(optionsMap);
 
@@ -40,14 +40,13 @@ function Review() {
     setSelectedOption(value);
     getPnl(value);
   };
-  console.log(optionsMap);
 
-  const options2 = [
-    "За последние 30 дн.",
-    "За последние 90 дн.",
-    "За все время",
-  ];
-
+  const optionKeys = {
+    [t("timeFrame.last30Days")]: "d7",
+    [t("timeFrame.last90Days")]: "d30",
+    [t("timeFrame.allTime")]: "d90",
+  };
+  const options2 = Object.keys(optionKeys);
   const refresh = () => {
     mainApi
       .reEnter()
@@ -243,9 +242,12 @@ function Review() {
                 <h2>PnL</h2>
                 <div className="main_select_item">
                   <div className="main_select_item">
-                    <Dropdown
+                    {/* <Dropdown
                       options={options2}
                       placeholder={options2[0]}
+                      value={options2.find(
+                        (option) => optionsMap[option] === selectedOption
+                      )}
                       arrowClosed={
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -275,7 +277,44 @@ function Review() {
                           />
                         </svg>
                       }
-                    />
+                    /> */}
+                       <Dropdown
+                        options={options}
+                        onChange={handleSelect}
+                        value={options.find(
+                          (option) => optionsMap[option] === selectedOption
+                        )}
+                        placeholder={options[0]}
+                        arrowClosed={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                          >
+                            <path
+                              d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
+                              fill="#111112"
+                            />
+                          </svg>
+                        }
+                        arrowOpen={
+                          <svg
+                            className="open_arrow"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                          >
+                            <path
+                              d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
+                              fill="#111112"
+                            />
+                          </svg>
+                        }
+                      />
                   </div>
                 </div>
               </div>

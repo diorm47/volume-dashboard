@@ -6,10 +6,10 @@ import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 function Base() {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `Часто задаваемые вопросы | &Volume`;
+    document.title = `${t("faqBlock.knowledgeBase")} | &Volume`;
   }, []);
-  const { t } = useTranslation();
 
   return (
     <div className="base_page_wrapper">

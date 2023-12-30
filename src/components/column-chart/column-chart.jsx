@@ -3,6 +3,7 @@ import ReactApexChart from "react-apexcharts";
 import "./column-chart.css";
 import empty_block from "../../assets/icons/empty-block.png";
 import subDays from "date-fns/subDays";
+import { useTranslation } from "react-i18next";
 
 const ColumnChart = ({ selectedTime }) => {
   const [pnl, setPnl] = useState(false);
@@ -222,6 +223,7 @@ const ColumnChart = ({ selectedTime }) => {
       }));
     }
   }, [selectedTime]);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -229,7 +231,7 @@ const ColumnChart = ({ selectedTime }) => {
         <>
           <div className="pnl_value">
             <p>
-            + {Number(pnlData).toFixed(2)} <span>USDT</span>
+              + {Number(pnlData).toFixed(2)} <span>USDT</span>
             </p>
           </div>
           <div id="chart">
@@ -244,7 +246,7 @@ const ColumnChart = ({ selectedTime }) => {
       ) : (
         <div className="empty_block">
           <img src={empty_block} alt="" />
-          <p>Нет данных по Pnl</p>
+          <p>{t("pnl_no_data")}</p>
         </div>
       )}
     </>

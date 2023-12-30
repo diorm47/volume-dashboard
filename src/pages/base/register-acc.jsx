@@ -13,12 +13,11 @@ import "./base.css";
 import { useTranslation } from "react-i18next";
 
 function Register() {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `Регистрация биржевого аккаунта | &Volume`;
-  }, []);
+    document.title = `${t("registrationbase")} | &Volume`;
+  }, [t]);
   const [section, setSection] = useState(1);
-
-  const { t } = useTranslation();
 
   return (
     <div className="base_page_wrapper">
@@ -131,7 +130,8 @@ function Register() {
               <p>
                 {t("bybitRegistration.step1")}
                 <a target="_blank" href="https://www.bybit.com/en/login">
-                {" "} Bybit
+                  {" "}
+                  Bybit
                 </a>{" "}
                 {t("bybitRegistration.step1.continuation")}
               </p>

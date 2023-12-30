@@ -615,4 +615,18 @@ export const ru_locale = {
     investorsShouldBeAware:
       "Инвесторы должны осознавать эти риски и принимать меры по их снижению, вне зависимости от условий рынка.",
   },
+  timeFrame: {
+    today: "За сегодня",
+    last7Days: "За последние 7 дн.",
+    last30Days: "За последние 30 дн.",
+    last90Days: "За последние 90 дн.",
+    allTime: "За все время",
+  },
+  pnl_no_data: "Нет данных по Pnl",
+  not_have: "Не указано",
+
+  one_year: "1 год",
+  six_month: "6 месяцев",
+  three_month: "3 месяца",
+  one_month: "1 месяц",
 };

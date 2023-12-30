@@ -5,10 +5,11 @@ import "./base.css";
 import { useTranslation } from "react-i18next";
 
 function Differences() {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `Различия | &Volume`;
-  }, []);
-  const { t } = useTranslation();
+    document.title = `${t("differencesTitle")} | &Volume`;
+  }, [t]);
+
 
   return (
     <div className="base_page_wrapper">

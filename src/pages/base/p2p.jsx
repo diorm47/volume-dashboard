@@ -5,10 +5,10 @@ import "./base.css";
 import { useTranslation } from "react-i18next";
 
 function P2p() {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `P2P-торговля | &Volume`;
-  }, []);
-  const { t } = useTranslation();
+    document.title = `${t("ptop")} | &Volume`;
+  }, [t]);
 
   return (
     <div className="base_page_wrapper">

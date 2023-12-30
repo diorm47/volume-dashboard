@@ -7,8 +7,9 @@ import Snackbar from "../../components/snackbar/snackbar";
 import { useTranslation } from "react-i18next";
 
 function Profile() {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `Профиль | &Volume`;
+    document.title = `${t('profile')} | &Volume`;
   }, []);
   const [nameModal, setNameModal] = useState(false);
   const [usernameModal, setUserNameModal] = useState(false);
@@ -41,7 +42,7 @@ function Profile() {
   }, [nameModal, usernameModal, numberModal, emailModal, passwordConfirmModal]);
 
   // crud
-
+  const userLanguage = localStorage.getItem("locale") || "ru";
   const [userName, setUserName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [email, setEmail] = useState("");
@@ -98,16 +99,27 @@ function Profile() {
   }, [localStorage.getItem("token")]);
 
   const handleChangeName = () => {
+    const localization = {
+      en: {
+        nameUpdatedSuccess: "Full name updated successfully!",
+        requestError: "Error!",
+      },
+      ru: {
+        nameUpdatedSuccess: "ФИО успешно обновлено!",
+        requestError: "Ошибка!",
+      },
+    };
+  
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-
+  
     let bodyContent = new FormData();
     bodyContent.append("name", formData.firstName);
     bodyContent.append("last_name", formData.lastName);
     bodyContent.append("patronymic", formData.middleName);
-
+  
     fetch("https://trade.margelet.org/private-api/v1/users/profile/fio", {
       method: "POST",
       body: bodyContent,
@@ -116,23 +128,34 @@ function Profile() {
       .then((response) => response.json())
       .then((data) => {
         closeModals();
-        snackOptions("ФИО успешно обновлён!", "success");
+        snackOptions(localization[userLanguage].nameUpdatedSuccess, "success");
       })
       .catch((error) => {
         console.log(error);
-        snackOptions("Ошибка!", "error");
+        snackOptions(localization[userLanguage].requestError, "error");
       });
   };
-
+  
   const handleChangeUserName = () => {
+    const localization = {
+      en: {
+        usernameUpdatedSuccess: "Username updated successfully!",
+        requestError: "Error!",
+      },
+      ru: {
+        usernameUpdatedSuccess: "Юзернейм успешно обновлен!",
+        requestError: "Ошибка!",
+      },
+    };
+  
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-
+  
     let bodyContent = new FormData();
     bodyContent.append("username", userName);
-
+  
     fetch("https://trade.margelet.org/private-api/v1/users/profile/username", {
       method: "POST",
       body: bodyContent,
@@ -141,24 +164,35 @@ function Profile() {
       .then((response) => response.json())
       .then((data) => {
         closeModals();
-        snackOptions("Юзернейм успeшно обновлён!", "success");
+        snackOptions(localization[userLanguage].usernameUpdatedSuccess, "success");
       })
       .catch((error) => {
         console.log(error);
-        snackOptions("Ошибка!", "error");
+        snackOptions(localization[userLanguage].requestError, "error");
       });
   };
-
+  
   const handleChangeEmail = () => {
+    const localization = {
+      en: {
+        emailUpdatedSuccess: "Email address updated successfully!",
+        requestError: "Error!",
+      },
+      ru: {
+        emailUpdatedSuccess: "Адрес электронной почты успешно обновлен!",
+        requestError: "Ошибка!",
+      },
+    };
+  
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-
+  
     let bodyContent = new FormData();
     bodyContent.append("new_email", email);
     bodyContent.append("new_email_confirmation", email2);
-
+  
     fetch("https://trade.margelet.org/private-api/v1/users/profile/email", {
       method: "POST",
       body: bodyContent,
@@ -167,25 +201,36 @@ function Profile() {
       .then((response) => response.json())
       .then((data) => {
         closeModals();
-
         setEmailModal(false);
         setPasswordConfirmModal(true);
+        snackOptions(localization[userLanguage].emailUpdatedSuccess, "success");
       })
       .catch((error) => {
         console.log(error);
-        snackOptions("Ошибка!", "error");
+        snackOptions(localization[userLanguage].requestError, "error");
       });
   };
-
+  
   const handleChangePhone = () => {
+    const localization = {
+      en: {
+        phoneUpdatedSuccess: "Phone number updated successfully!",
+        requestError: "Error!",
+      },
+      ru: {
+        phoneUpdatedSuccess: "Номер телефона успешно обновлен!",
+        requestError: "Ошибка!",
+      },
+    };
+  
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-
+  
     let bodyContent = new FormData();
     bodyContent.append("phone", phone);
-
+  
     fetch("https://trade.margelet.org/private-api/v1/users/profile/phone", {
       method: "POST",
       body: bodyContent,
@@ -194,13 +239,14 @@ function Profile() {
       .then((response) => response.json())
       .then((data) => {
         closeModals();
-        snackOptions("Телефон номер успeшно обновлён!", "success");
+        snackOptions(localization[userLanguage].phoneUpdatedSuccess, "success");
       })
       .catch((error) => {
         console.log(error);
-        snackOptions("Ошибка!", "error");
+        snackOptions(localization[userLanguage].requestError, "error");
       });
   };
+  
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [timer, setTimer] = useState(300);
   const inputsRef = useRef([]);
@@ -272,14 +318,25 @@ function Profile() {
   };
 
   const updateAvatar = async () => {
+    const localization = {
+      en: {
+        avatarUpdatedSuccess: "Avatar updated successfully!",
+        networkError: "Network error occurred.",
+      },
+      ru: {
+        avatarUpdatedSuccess: "Аватар успешно обновлен!",
+        networkError: "Произошла ошибка сети.",
+      },
+    };
+  
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-
+  
     let bodyContent = new FormData();
     bodyContent.append("avatar", selectedFile);
-
+  
     fetch("https://trade.margelet.org/private-api/v1/users/profile/avatar", {
       method: "POST",
       body: bodyContent,
@@ -287,25 +344,27 @@ function Profile() {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error(localization[userLanguage].networkError);
         }
         return response.json();
       })
       .then((data) => {
-        snackOptions("Аватар yспушно обновлён!", "success");
+        snackOptions(localization[userLanguage].avatarUpdatedSuccess, "success");
         setSelectedFile(null);
         refresh();
       })
       .catch((error) => {
         console.error("Error:", error);
+        snackOptions(error.message, "error");
       });
   };
+  
   useEffect(() => {
     if (selectedFile) {
       updateAvatar();
     }
   }, [selectedFile]);
-  const { t, i18n } = useTranslation();
+
 
   return (
     <>
@@ -358,7 +417,7 @@ function Profile() {
           <div className="user_data_item">
             <span>{t("nickname")}</span>
             <div>
-              <p>{userName || "Не указано "}</p>
+              <p>{userName || t('not_have')}</p>
               <p onClick={() => setUserNameModal(true)}>
                 {t("change")} <span>{t("nickname")}</span>
               </p>
@@ -369,7 +428,7 @@ function Profile() {
           <div className="user_data_item">
             <span>{t("email")}</span>
             <div>
-              <p>{email || "Не указано "}</p>
+              <p>{email ||  t('not_have')}</p>
               <p onClick={() => setEmailModal(true)}>
                 {t("change")} <span>{t("email")}</span>
               </p>
@@ -380,7 +439,7 @@ function Profile() {
           <div className="user_data_item">
             <span>{t("phoneNumber")}</span>
             <div>
-              {phone ? <p>+{phone}</p> : <p>Не указано</p>}
+              {phone ? <p>+{phone}</p> : <p>{ t('not_have')}</p>}
 
               <p onClick={() => setNumberModal(true)}>
                 {t("change")} <span>{t("phoneNumber")}</span>

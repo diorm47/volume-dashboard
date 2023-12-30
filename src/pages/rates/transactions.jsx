@@ -4,9 +4,10 @@ import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 
 function Transactions() {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `Транзакции | &Volume`;
-  }, []);
+    document.title = `${t("transactions")} | &Volume`;
+  }, [t]);
   const [transactions, setTransactions] = useState([]);
 
   const getTransactions = () => {
@@ -40,7 +41,7 @@ function Transactions() {
     const formattedDate = format(parsedDate, "dd.MM.yyyy, HH:mm:ss");
     return formattedDate;
   };
-  const { t, i18n } = useTranslation();
+
 
   return (
     <div className="orders_history_list main_block_wrapper">

@@ -68,6 +68,8 @@ function Investments({ updatebalance }) {
         "&Volume is profitable on medium and long time frames. Do not turn off the system if you see initial deposit drawdowns. Why this may happen:\nWhen choosing a high-risk and highly profitable strategy, &Volume may open several trades simultaneously, but if a trade reverses and moves in the opposite direction beyond a certain threshold, it will be closed. There can be several such trades in a row, and even for several days.\nTherefore, you need to be patient and resilient.",
     },
   ];
+  const locale = localStorage.getItem("locale");
+  const faqArray = locale === "en" ? faqEn : faq;
 
   const [opened, setOpened] = useState();
   const [activeInvests, setActiveInvests] = useState({});
@@ -80,16 +82,16 @@ function Investments({ updatebalance }) {
   };
   const invest_times = [
     {
-      name: "1 год",
+      name: t("one_year"),
     },
     {
-      name: "6 месяцев",
+      name: t("six_month"),
     },
     {
-      name: "3 месяца",
+      name: t("three_month"),
     },
     {
-      name: "1 месяц",
+      name: t("one_month"),
     },
   ];
   const [active1, setActive1] = useState("1 месяц");
@@ -172,8 +174,43 @@ function Investments({ updatebalance }) {
   const [amountInvestment, setAmountInvestment] = useState("");
   const [stopLos, setStopLos] = useState("");
   const [errorInvest, setErrorInvest] = useState("");
+  const localization = {
+    en: {
+      minimumInvestment: "Minimum investment amount is 100 USDT.",
+      stopLossGreaterThan50:
+        "Stop loss value is greater than 50% of the total balance.",
+      stopLossLessThan20:
+        "Stop loss value is less than 20% of the total balance.",
+    },
+    ru: {
+      minimumInvestment: "Минимальная сумма инвестиции 100 USDT.",
+      stopLossGreaterThan50:
+        "Вы указали значение стоп-лосс более 50% от общего счета.",
+      stopLossLessThan20:
+        "Вы указали значение стоп-лосс менее 20% от общего счета.",
+    },
+  };
+  const userLanguage = localStorage.getItem("locale") || "ru";
+  const handleAddBot = (level_risk, userLanguage) => {
+    const localization = {
+      en: {
+        apiKeysNotFound: "Error, API key not added!",
+        botsLimit:
+          "Error, maximum investment methods reached. Only one active investment method is allowed.",
+        unpaidTariff: "Error, no active tariff!",
+        botAddedSuccess: "Method added successfully!",
+        requestError: "Error executing the request!",
+      },
+      ru: {
+        apiKeysNotFound: "Ошибка, не добавлен апи-ключ!",
+        botsLimit:
+          "Лимит, методов инвестирования. Активный метод инвестирования может быть только один.",
+        unpaidTariff: "Ошибка, нет активного тарифа!",
+        botAddedSuccess: "Метод успешно добавлен!",
+        requestError: "Ошибка при выполнении запроса!",
+      },
+    };
 
-  const handleAddBot = (level_risk) => {
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -191,41 +228,34 @@ function Investments({ updatebalance }) {
     })
       .then((response) => {
         return response.json().then((data) => {
-          if (!data.success && data.error.api_keys_not_found) {
-            snackOptions("Ошибка, не добавлен апи-ключ!", "error");
-          } else if (!data.success && data.error.bots_limit) {
-            snackOptions(
-              "Лимит, методов инвестирования. Активный метод инвестирования может быть только один.",
-              "error"
-            );
-          } else if (!data.success && data.error.unpaid_tariff) {
-            snackOptions("Ошибка, нет активного тарифа!", "error");
-          } 
+          if (!data.success) {
+            if (data.error.api_keys_not_found) {
+              snackOptions(localization[userLanguage].apiKeysNotFound, "error");
+            } else if (data.error.bots_limit) {
+              snackOptions(localization[userLanguage].botsLimit, "error");
+            } else if (data.error.unpaid_tariff) {
+              snackOptions(localization[userLanguage].unpaidTariff, "error");
+            }
+            throw new Error("Bad response from server");
+          }
+
           if (data.success) {
-            snackOptions("Метод успешно добавлен!", "success");
+            snackOptions(localization[userLanguage].botAddedSuccess, "success");
             closeModals();
             getBots();
             updatebalance();
           }
-          throw new Error("Bad response from server");
         });
-
-        // return response.json();
-      })
-      .then((data) => {
-        if (data.success) {
-          snackOptions("Метод успешно добавлен!", "success");
-          closeModals();
-          getBots();
-        }
       })
       .catch((error) => {
-        console.log("Ошибка при выполнении запроса!", "error");
+        snackOptions(localization[userLanguage].requestError, "error");
+        console.log("Error executing the request!");
       });
   };
+
   const addBot = (level_risk) => {
     if (Number(amountInvestment) < 100) {
-      snackOptions("Минимальная сумма инвестиции 100 USDT.", "error");
+      snackOptions(localization[userLanguage].minimumInvestment, "error");
       setErrorInvest(true);
     } else {
       setErrorInvest(false);
@@ -235,20 +265,15 @@ function Investments({ updatebalance }) {
     const precent20 = (userData.balance / 100) * 20;
 
     if (isChecked && Number(stopLos) > precent50) {
-      snackOptions(
-        "Вы указали значение стоп-лосс более 50% от общего счета.",
-        "error"
-      );
+      snackOptions(localization[userLanguage].stopLossGreaterThan50, "error");
       setErrorInvest(true);
     } else if (isChecked && Number(stopLos) < precent20) {
-      snackOptions(
-        "Вы указали значение стоп-лосс менее 20% от общего счета.",
-        "error"
-      );
+      snackOptions(localization[userLanguage].stopLossLessThan20, "error");
       setErrorInvest(true);
     } else {
       setErrorInvest(false);
     }
+
     if (errorInvest == false) {
       handleAddBot(level_risk);
     }
@@ -308,7 +333,20 @@ function Investments({ updatebalance }) {
 
   // deleteBot
 
-  const deleteBot = () => {
+  const deleteBot = (userLanguage) => {
+    const localization = {
+      en: {
+        botDeletedSuccess: "Method deleted successfully!",
+        botNotFound: "Error! Bot not found.",
+        requestError: "Error!",
+      },
+      ru: {
+        botDeletedSuccess: "Метод успешно удалён!",
+        botNotFound: "Ошибка! Бот не найден.",
+        requestError: "Ошибка!",
+      },
+    };
+
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -326,15 +364,15 @@ function Investments({ updatebalance }) {
       .then((data) => {
         if (data.success) {
           closeModals();
-          snackOptions("Метод успешно удалён!", "success");
+          snackOptions(localization[userLanguage].botDeletedSuccess, "success");
           getBots();
         } else {
-          snackOptions("Ошибка! Бот не найден", "error");
+          snackOptions(localization[userLanguage].botNotFound, "error");
         }
       })
       .catch((error) => {
         console.log(error);
-        snackOptions("Ошибка!", "error");
+        snackOptions(localization[userLanguage].requestError, "error");
       });
   };
 
@@ -757,7 +795,7 @@ function Investments({ updatebalance }) {
           </div>
 
           <div className="faq_invest">
-            {faq.map((item) => (
+            {faqArray.map((item) => (
               <div
                 className={
                   opened == item.question

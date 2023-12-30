@@ -60,7 +60,9 @@ function NavBar({ setMode }) {
 
   const { i18n } = useTranslation();
 
-  const changeLanguage = (language) => {
+  const handlechangeLanguage = (language) => {
+    localStorage.setItem("locale", language);
+
     i18n.changeLanguage(language);
     setMenuVisible(false);
   };
@@ -335,11 +337,11 @@ function NavBar({ setMode }) {
             <div className="nav_mob_bottom_actions">
               {i18n.language == "en" ? (
                 <div className="nav_mob_bottom_action">
-                  <p onClick={() => changeLanguage("ru")}>Ru</p>
+                  <p onClick={() => handlechangeLanguage("ru")}>Ru</p>
                 </div>
               ) : (
                 <div className="nav_mob_bottom_action">
-                  <p onClick={() => changeLanguage("en")}>En</p>
+                  <p onClick={() => handlechangeLanguage("en")}>En</p>
                 </div>
               )}
 

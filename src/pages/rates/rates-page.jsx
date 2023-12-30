@@ -5,9 +5,10 @@ import Snackbar from "../../components/snackbar/snackbar";
 import { useTranslation } from "react-i18next";
 
 function RatesPage({ updatebalance }) {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `Выберите план | &Volume`;
-  }, []);
+    document.title = `${t("selectPlan")} | &Volume`;
+  }, [t]);
   const faq = [
     {
       question: "Могу ли я перейти на другой тариф после оплаты?",
@@ -36,6 +37,37 @@ function RatesPage({ updatebalance }) {
         "Чтобы получить возврат за неиспользованные дни, нужно обратиться в службу поддержки, либо через форму обратной связи, либо в Телегра-бота.",
     },
   ];
+  const faqEn = [
+    {
+      question: "Can I switch to a different plan after payment?",
+      answer:
+        "Yes. If you want to switch to a more expensive plan, you will need to pay the price difference based on the days used. If you want to switch to a lower-priced plan, you will need to request a refund for the remaining days and then make the payment for the new plan. Both operations cannot be performed independently at the moment; please contact customer support through the feedback form on the website or via the Telegram bot.",
+    },
+    {
+      question: "What should be the minimum deposit amount?",
+      answer:
+        "The service is available with a deposit balance of $100 or more. To earn income and cover the subscription cost simultaneously, we recommend using at least $250 - $500. We also recommend not using more than $3,000 in the first month.",
+    },
+    {
+      question: "What are the fees and usage conditions?",
+      answer:
+        "We do not charge fees for transactions, and we do not deduct a percentage from your earnings. To use the service, you need to purchase a subscription. The subscription cost depends on the investment amount: the higher the deposit, the more expensive the subscription. In the future, users with deposits exceeding $5,000 may have the option of a subscription fee based on profits.",
+    },
+    {
+      question: "Can I change my tariff plan during the trial period?",
+      answer:
+        "Yes. To subscribe to the desired plan during the trial period, select it on the 'Plans' page and follow the payment instructions. If you have any questions during the process, please contact customer support.",
+    },
+    {
+      question: "How can I request a refund?",
+      answer:
+        "To get a refund for unused days, you need to contact customer support, either through the feedback form or via the Telegram bot.",
+    },
+  ];
+
+  const locale = localStorage.getItem("locale");
+  const faqArray = locale === "en" ? faqEn : faq;
+
   const [opened, setOpened] = useState();
   const [userData, setUserData] = useState({});
   const [visibleSnack, setVisibleSnack] = useState(false);
@@ -142,7 +174,7 @@ function RatesPage({ updatebalance }) {
         snackOptions("Ошибка!", "error");
       });
   };
-  const { t, i18n } = useTranslation();
+
 
   return (
     <>
@@ -289,7 +321,7 @@ function RatesPage({ updatebalance }) {
         <h1 className="questions_title">{t("faq_title")}</h1>
       </div>
       <div className="faq_invest">
-        {faq.map((item) => (
+        {faqArray.map((item) => (
           <div
             className={
               opened == item.question

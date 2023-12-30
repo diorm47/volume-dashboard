@@ -5,10 +5,10 @@ import "./base.css";
 import { useTranslation } from "react-i18next";
 
 function Limits() {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `Торговые лимиты | &Volume`;
-  }, []);
-  const { t } = useTranslation();
+    document.title = `${t("tradeLimitTitle")} | &Volume`;
+  }, [t]);
 
   return (
     <div className="base_page_wrapper">

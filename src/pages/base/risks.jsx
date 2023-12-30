@@ -5,10 +5,10 @@ import "./base.css";
 import { useTranslation } from "react-i18next";
 
 function Risks() {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `Риски | &Volume`;
-  }, []);
-  const { t } = useTranslation();
+    document.title = `${t("risks.title")} | &Volume`;
+  }, [t]);
 
   return (
     <div className="base_page_wrapper">

@@ -20,11 +20,12 @@ import "./base.css";
 import { useTranslation } from "react-i18next";
 
 function ApiConnectiong() {
-  React.useEffect(() => {
-    document.title = `API | &Volume`;
-  }, []);
-  const [section, setSection] = useState(1);
   const { t, i18n } = useTranslation();
+  React.useEffect(() => {
+    document.title = `${t("api")} | &Volume`;
+  }, [t]);
+  const [section, setSection] = useState(1);
+  
 
   return (
     <div className="base_page_wrapper">

@@ -6,9 +6,10 @@ import { mainApi } from "../../components/utils/main-api";
 import { useTranslation } from "react-i18next";
 
 function Security() {
+  const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `Настройки безопасности | &Volume`;
-  }, []);
+    document.title = `${t("securitySettings")} | &Volume`;
+  }, [t]);
   const [passwordModal, setPasswordModal] = useState(false);
   const [passwordConfirmModal, setPasswordConfirmModal] = useState(false);
   const [emailModal, setEmailModal] = useState(false);
@@ -121,7 +122,6 @@ function Security() {
       refresh();
     }
   }, [localStorage.getItem("token")]);
-  const { t, i18n } = useTranslation();
 
   return (
     <>
