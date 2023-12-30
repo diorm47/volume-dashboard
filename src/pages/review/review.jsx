@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./review.css";
+import subDays from "date-fns/subDays";
 
 import { format } from "date-fns";
 import Dropdown from "react-dropdown";
@@ -16,7 +17,10 @@ function Review() {
   React.useEffect(() => {
     document.title = `${t("rev_1")} | &Volume`;
   }, [t]);
-
+  const [selectedTime, setSelectedTime] = useState([
+    subDays(new Date(), 6),
+    new Date(),
+  ]);
   const [userData, setUserData] = useState({});
   const [pnl, setPnl] = useState("0.00");
   const [ordersHistory, setOrdersHistory] = useState();
@@ -255,7 +259,7 @@ function Review() {
                   </div>
                 </div>
               </div>
-              <LineChart />
+              <LineChart selectedTime={selectedTime} />
             </div>
             <div className="orders_history_list main_block_wrapper">
               <div className="main_block_wrapper_top">
