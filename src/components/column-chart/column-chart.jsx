@@ -70,6 +70,12 @@ const ColumnChart = ({ selectedTime }) => {
             return y.toFixed(0);
           },
         },
+        min: (min) => {
+          return Math.floor(min * 0.9);
+        },
+        max: (max) => {
+          return Math.ceil(max * 1.1);
+        },
       },
       xaxis: {
         type: "datetime",
@@ -84,7 +90,7 @@ const ColumnChart = ({ selectedTime }) => {
       tooltip: {
         y: {
           formatter: function (value) {
-            setPnlData(value);
+            setPnlData(`${value}.00`);
             return `${value} USDT`;
           },
         },
@@ -97,7 +103,7 @@ const ColumnChart = ({ selectedTime }) => {
     const startDate = new Date(selectedTime[0]);
     const endDate = new Date(selectedTime[1]);
     const datesInRange = getDatesInRange(startDate, endDate);
-  
+
     // Преобразование данных сервера в нужный формат (если требуется)
     const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
       const [day, month, year] = key.split("-").map(Number);
@@ -105,7 +111,7 @@ const ColumnChart = ({ selectedTime }) => {
       const formattedKey = formatDate(date);
       acc[formattedKey] = serverData[key];
       return acc;
-    }, {}); 
+    }, {});
 
     // Заполняем нулями дни без данных
     const updatedData = datesInRange.map(
@@ -166,8 +172,8 @@ const ColumnChart = ({ selectedTime }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      // getPnl();
-      updateChartData({ "30-12-2023": 1 });
+      getPnl();
+      // updateChartData({ "30-12-2023": 1 });
     }
   }, [localStorage.getItem("token")]);
 
@@ -209,7 +215,7 @@ const ColumnChart = ({ selectedTime }) => {
 
   return (
     <>
-      {true ? (
+      {pnl ? (
         <>
           <div className="pnl_value">
             <p>
