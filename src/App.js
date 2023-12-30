@@ -3,18 +3,15 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/footer/footer";
 import NavBar from "./components/nav-bar/nav-bar";
 import Analysis from "./pages/analysis/analysis";
-import Agreement from "./pages/base/agreement";
 import ApiConnectiong from "./pages/base/api";
 import Base from "./pages/base/base";
 import ConnectiongInvest from "./pages/base/base-investing";
 import Differences from "./pages/base/differences";
 import Limits from "./pages/base/limits";
 import P2p from "./pages/base/p2p";
-import Policy from "./pages/base/policy";
 import Register from "./pages/base/register-acc";
 import Risks from "./pages/base/risks";
 import TopupTypes from "./pages/base/topup-types";
-import Whitepaper from "./pages/base/white-paper";
 import Investments from "./pages/investments/investments";
 import Auth from "./pages/login-auth/auth";
 import Login from "./pages/login-auth/login";
@@ -66,9 +63,15 @@ function App() {
           <Route path="/" element={<Review />} />
           <Route path="/review" element={<Review />} />
           <Route path="/analysis" element={<Analysis />} />
-          <Route path="/investments" element={<Investments updatebalance={updatebalance}/>} />
+          <Route
+            path="/investments"
+            element={<Investments updatebalance={updatebalance} />}
+          />
           <Route path="/settings/*" element={<Settings />} />
-          <Route path="/rates/*" element={<Rates updatebalance={updatebalance} />} />
+          <Route
+            path="/rates/*"
+            element={<Rates updatebalance={updatebalance} />}
+          />
           <Route path="/base/*" element={<Base />} />
           <Route path="/register-acc" element={<Register />} />
           <Route path="/login" element={<Login />} />
@@ -81,9 +84,6 @@ function App() {
           <Route path="/limits" element={<Limits />} />
           <Route path="/topup-types" element={<TopupTypes />} />
           <Route path="/p2p" element={<P2p />} />
-          <Route path="/policy" element={<Policy />} />
-          <Route path="/agreement" element={<Agreement />} />
-          <Route path="/whitepaper" element={<Whitepaper />} />
         </Routes>
 
         {location.pathname !== "/login" &&

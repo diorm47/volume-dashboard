@@ -23,7 +23,7 @@ function Analysis() {
   const [pnlToday, setPnlToday] = useState("0.00");
   const [activeOrders, setActiveOrders] = useState([]);
 
-  const [ordersHistory, setOrdersHistory] = useState();
+  const [ordersHistory, setOrdersHistory] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -173,6 +173,18 @@ function Analysis() {
   useEffect(() => {
     getPnlRange();
   }, [selectedTime]);
+
+  const isWithinRange = (date, range) => {
+    const startDate = range[0];
+    const endDate = range[1];
+    return date >= startDate && date <= endDate;
+  };
+
+  // Filter ordersHistory to only include items within the selected time range
+  const filteredOrdersHistory = ordersHistory.filter((item) => {
+    const tradeStartDate = new Date(item.trade_start_at);
+    return isWithinRange(tradeStartDate, selectedTime);
+  });
 
   return (
     <div className="pages_wrapper analysis_page">
@@ -364,10 +376,10 @@ function Analysis() {
             </div>
           </div>
 
-          {ordersHistory && ordersHistory.length ? (
+          {ordersHistory && ordersHistory.length && filteredOrdersHistory.length ? (
             <>
               <div className="main_block_wrapper_bottom analysis_history">
-                {ordersHistory.map((item, index) => (
+                {filteredOrdersHistory.map((item, index) => (
                   <div className="order_history_list_item " key={index}>
                     <div className="order_history_list_item_title">
                       <h2>{item.ticker}</h2>
@@ -433,7 +445,7 @@ function Analysis() {
                   </div>
                 ))}
               </div>
-              {ordersHistory && ordersHistory.length < 9 ? (
+              {filteredOrdersHistory && filteredOrdersHistory.length < 9 ? (
                 ""
               ) : (
                 <div className="main_block_wrapper_bottom">

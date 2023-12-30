@@ -5,6 +5,7 @@ import empty_block from "../../assets/icons/empty-block.png";
 
 import "react-dropdown/style.css";
 import Snackbar from "../../components/snackbar/snackbar";
+import { useTranslation } from "react-i18next";
 
 function ApiKeys() {
   React.useEffect(() => {
@@ -195,19 +196,20 @@ function ApiKeys() {
         snackOptions("Ошибка !", "error");
       });
   };
+  const { t } = useTranslation();
 
   return (
     <>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
 
       <div className="page_title analyse_title api_key_title">
-        <h2>Ключи API</h2>
+        <h2>{t("apiKeyPage.title")}</h2>
         <div className="add_key_btn">
           <button
             onClick={() => setapiModal(true)}
             disabled={apiList && apiList.id}
           >
-            Добавить ключ API
+            {t("apiKeyPage.addApiKey")}
           </button>
         </div>
       </div>
@@ -216,18 +218,18 @@ function ApiKeys() {
           <table>
             <thead>
               <tr>
-                <td>Время добавления</td>
-                <td>Статус</td>
-                <td>Название</td>
-                <td>Биржа</td>
-                <td>Действие</td>
+                <td>{t("apiTable.timeAdded")}</td>
+                <td>{t("apiTable.status")}</td>
+                <td>{t("apiTable.name")}</td>
+                <td>{t("apiTable.exchange")}</td>
+                <td>{t("apiTable.action")}</td>
               </tr>
             </thead>
             {apiList && apiList.id ? (
               <tbody>
                 <tr>
                   <td>-</td>
-                  <td>Активное</td>
+                  <td>{t("apiTable.activeStatus")}</td>
                   <td>{apiList.title}</td>
                   <td style={{ textTransform: "capitalize" }}>
                     {apiList.exchange}
@@ -235,10 +237,10 @@ function ApiKeys() {
                   <td>
                     <div className="api_actions">
                       <p onClick={() => setapiActiveEditModal(true)}>
-                        Редактировать{" "}
+                        {t("apiTable.edit")}
                       </p>
                       <p>|</p>
-                      <p onClick={deleteApi}>Удалить</p>
+                      <p onClick={deleteApi}>{t("apiTable.delete")}</p>
                     </div>
                   </td>
                 </tr>
@@ -251,7 +253,7 @@ function ApiKeys() {
             <div className="main_block_wrapper_bottom empty_block_wrapper">
               <div className="empty_block">
                 <img src={empty_block} alt="" />
-                <p>Нет подключенных API.</p>
+                <p>{t("apiTable.noApiConnected")}</p>
               </div>
             </div>
           ) : (
@@ -259,45 +261,6 @@ function ApiKeys() {
           )}
         </div>
       </div>
-      {apiList && apiList.id ? (
-        <div className="secondary_block_wrapper add_key_history_mobile">
-          <div className="add_key_history_mobile_title">
-            <h2> {apiList.title}</h2>
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="10" height="10" rx="5" fill="#31BD65" />
-            </svg>
-          </div>
-          <div className="order_history_list_line"></div>
-          <div
-            className="add_key_history_mobile_list"
-            onClick={() => setapiActiveModal(true)}
-          >
-            <div>
-              <p>Время добавления</p>
-              <h4>-</h4>
-            </div>
-            <div>
-              <p>Биржа</p>
-              <h4 style={{ textTransform: "capitalize" }}>
-                {apiList.exchange}
-              </h4>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="main_block_wrapper_bottom empty_block_wrapper">
-          <div className="empty_block">
-            <img src={empty_block} alt="" />
-            <p>Нет подключенных API.</p>
-          </div>
-        </div>
-      )}
 
       <div
         className={
@@ -314,12 +277,12 @@ function ApiKeys() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>API</p>
+          <p>{t("apiModal.title")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Название</p>
+            <p>{t("apiModal.name")}</p>
             <input
               type="text"
               value={name}
@@ -327,7 +290,7 @@ function ApiKeys() {
             />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Биржа</p>
+            <p>{t("apiModal.exchange")}</p>
             <Dropdown
               options={options}
               placeholder={options[0]}
@@ -367,7 +330,7 @@ function ApiKeys() {
             />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Публичный ключ</p>
+            <p>{t("apiModal.publicKey")}</p>
             <input
               type="text"
               value={publickKey}
@@ -375,7 +338,7 @@ function ApiKeys() {
             />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Приватный ключ</p>
+            <p>{t("apiModal.privateKey")}</p>
             <input
               type="text"
               value={secretKey}
@@ -388,11 +351,13 @@ function ApiKeys() {
                 onClick={addApi}
                 disabled={!name || !publickKey || !secretKey}
               >
-                Добавить
+                {t("apiModal.addButton")}
               </button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button onClick={closeModals}>Отмена</button>
+              <button onClick={closeModals}>
+                {t("apiModal.cancelButton")}
+              </button>
             </div>
           </div>
         </div>
@@ -470,12 +435,12 @@ function ApiKeys() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Редактировать ключь API</p>
+          <p>{t("apiEditModal.title")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>Публичный ключ</p>
+            <p>{t("apiEditModal.publicKey")}</p>
             <input
               type="text"
               value={publickKey}
@@ -483,7 +448,7 @@ function ApiKeys() {
             />
           </div>
           <div className="modal_wrapper_content_item">
-            <p>Приватный ключ</p>
+            <p>{t("apiEditModal.privateKey")}</p>
             <input
               type="text"
               value={secretKey}
@@ -493,11 +458,13 @@ function ApiKeys() {
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
               <button onClick={editApi} disabled={!publickKey || !secretKey}>
-                Сохранить
+                {t("apiEditModal.saveButton")}
               </button>
             </div>
             <div className="modal_wrapper_cancel api_delete_btn">
-              <button onClick={deleteApi}>Удалить</button>
+              <button onClick={deleteApi}>
+                {t("apiEditModal.deleteButton")}
+              </button>
             </div>
           </div>
         </div>

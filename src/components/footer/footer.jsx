@@ -1,8 +1,11 @@
 import React from "react";
 import "./footer.css";
 import QuestionWidget from "../question/question";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer>
       {" "}
@@ -10,14 +13,13 @@ function Footer() {
       <div className="footer_wrapper">
         <div className="footer_left">
           <p>
-            <span>© 2023</span> &amp;Volume, <span>все права защищены</span>
+            <span>{t("rightsReserved")}</span>
           </p>
           <p>
-            <a href="#">Политика</a>
-            <a href="#">Соглашение</a>
+            <a href="#">{t("policy")}</a>
+            <a href="#">{t("agreement")}</a>
           </p>
         </div>
-   
       </div>
     </footer>
   );

@@ -166,8 +166,8 @@ const ColumnChart = ({ selectedTime }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      getPnl();
-      // updateChartData({ "30-12-2023": 1 });
+      // getPnl();
+      updateChartData({ "30-12-2023": 1 });
     }
   }, [localStorage.getItem("token")]);
 
@@ -209,7 +209,7 @@ const ColumnChart = ({ selectedTime }) => {
 
   return (
     <>
-      {pnl ? (
+      {true ? (
         <>
           <div className="pnl_value">
             <p>

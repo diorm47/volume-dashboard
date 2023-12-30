@@ -3,18 +3,21 @@ import "./base.css";
 
 import baseBottom from "../../assets/images/base-bottom.png";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Base() {
   React.useEffect(() => {
     document.title = `Часто задаваемые вопросы | &Volume`;
   }, []);
+  const { t } = useTranslation();
+
   return (
     <div className="base_page_wrapper">
       <div className="base_top_block">
         <div className="base_top_block_wrapper">
           <div>
-            <p>База знаний</p>
-            <h1>Часто задаваемые вопросы</h1>
+            <p>{t("faqBlock.knowledgeBase")}</p>
+            <h1>{t("faqBlock.frequentlyAskedQuestions")}</h1>
           </div>
         </div>
       </div>
@@ -24,18 +27,16 @@ function Base() {
           <div className="base_questions_column">
             <div className="secondary_block_wrapper base_question_card">
               <div className="main_block_wrapper_title">
-                <h2>Подключение</h2>
+                <h2>{t("baseQuestionsColumn.connection")}</h2>
               </div>
               <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
                   <NavLink to="/register-acc">
                     <div>
-                      <p>Регистрация биржевого аккаунта</p>
-
+                      <p>{t("baseQuestionsColumn.registration")}</p>
                       <span>
-                        Узнайте как зарегистрироваться и пройти верификацию на
-                        биржах партнерах
+                        {t("baseQuestionsColumn.registrationDescription")}
                       </span>
                     </div>
                   </NavLink>
@@ -43,11 +44,8 @@ function Base() {
                 <div>
                   <NavLink to="/api">
                     <div>
-                      <p>API</p>
-                      <span>
-                        Инструкция по созданию API ключей и подключение к
-                        &Volume
-                      </span>
+                      <p>{t("baseQuestionsColumn.api")}</p>
+                      <span>{t("baseQuestionsColumn.apiDescription")}</span>
                     </div>
                   </NavLink>
                 </div>
@@ -55,29 +53,27 @@ function Base() {
                 <div>
                   <NavLink to="/base-investing">
                     <div>
-                      <p>Инвестиции</p>
-                      <span>Выбор и подключение метода инвестиций</span>
+                      <p>{t("baseQuestionsColumn.investments")}</p>
+                      <span>
+                        {t("baseQuestionsColumn.investmentsDescription")}
+                      </span>
                     </div>
                   </NavLink>
                 </div>
-                {/* <div>
-                  <p>Пробный период</p>
-                  <span>Используйте сервис на 100% в пробный период</span>
-                </div> */}
               </div>
             </div>
             <div className="secondary_block_wrapper base_question_card">
               <div className="main_block_wrapper_title">
-                <h2>Покупка и продажа криптовалюты</h2>
+                <h2>{t("baseQuestionsColumn.buySellCrypto")}</h2>
               </div>
               <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
                   <NavLink to="/topup-types">
                     <div>
-                      <p>Способы пополнения</p>
+                      <p>{t("baseQuestionsColumn.topupMethods")}</p>
                       <span>
-                        Способы и сервисы пополнения биржевого аккаунта{" "}
+                        {t("baseQuestionsColumn.topupMethodsDescription")}
                       </span>
                     </div>
                   </NavLink>
@@ -85,160 +81,152 @@ function Base() {
                 <div>
                   <NavLink to="/p2p">
                     <div>
-                      <p>P2P-торговля</p>
+                      <p>{t("baseQuestionsColumn.p2pTrading")}</p>
                       <span>
-                        Узнайте как использовать P2P для пополнения и вывода
-                        средств с биржевого аккаунта
+                        {t("baseQuestionsColumn.p2pTradingDescription")}
                       </span>
                     </div>
                   </NavLink>
                 </div>
-                {/* <div>
-                  <p>Сторонние платежные каналы</p>
-                  <span>
-                    Покупайте и продавайте криптовалюту через другие платформы
-                  </span>
-                </div> */}
               </div>
             </div>
           </div>
           <div className="base_questions_column">
             <div className="secondary_block_wrapper base_question_card">
               <div className="main_block_wrapper_title">
-                <h2>Инвестиции</h2>
+                <h2>{t("baseQuestionsColumn2.investments")}</h2>
               </div>
               <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
                   <NavLink to="/differences">
                     <div>
-                      <p>Различия</p>
+                      <p>{t("baseQuestionsColumn2.differences")}</p>
                       <span>
-                        Сделайте правильный выбор и зарабатывайте больше
+                        {t("baseQuestionsColumn2.differencesDescription")}
                       </span>
                     </div>
                   </NavLink>
                 </div>
                 <div>
-                  <p>Статистика <button>В разработке</button></p>
-                  <span>
-                    Открытая статистика результатов инвестиций &Volume
-                  </span>
+                  <p>
+                    {t("baseQuestionsColumn2.statistics")}{" "}
+                    <button>{t("common.inDevelopment")}</button>
+                  </p>
+                  <span>{t("baseQuestionsColumn2.statisticsDescription")}</span>
                 </div>
 
                 <div>
                   <NavLink to="/risks">
                     <div>
-                      <p>Риски</p>
-                      <span>
-                        Не теряйте самоконтроль. Криптовалюты — это рискованная
-                        инвестиция с высокой волатильностью.
-                      </span>
+                      <p>{t("baseQuestionsColumn2.risks")}</p>
+                      <span>{t("baseQuestionsColumn2.risksDescription")}</span>
                     </div>
                   </NavLink>
                 </div>
-                {/* <div>
-                  <p>Прочее</p>
-                  <span>Распространенные вопросы по инвестициям</span>
-                </div> */}
               </div>
             </div>
             <div className="secondary_block_wrapper base_question_card">
               <div className="main_block_wrapper_title">
-                <h2>Награды и рефералы</h2>
+                <h2>{t("baseQuestionsColumn2.rewardsReferrals")}</h2>
               </div>
               <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
-                  <p>Партнеры <button>В разработке</button></p>
-                  <span>Узнайте больше о партнерской программе &Volume</span>
+                  <p>
+                    {t("baseQuestionsColumn2.partners")}{" "}
+                    <button>{t("common.inDevelopment")}</button>
+                  </p>
+                  <span>{t("baseQuestionsColumn2.partnersDescription")}</span>
                 </div>
                 <div>
-                  <p>Приглашение <button>В разработке</button></p>
-                  <span>Приглашайте друзей и зарабатывайте вместе</span>
+                  <p>
+                    {t("baseQuestionsColumn2.invitation")}{" "}
+                    <button>{t("common.inDevelopment")}</button>
+                  </p>
+                  <span>{t("baseQuestionsColumn2.invitationDescription")}</span>
                 </div>
                 <div>
-                  <p>Реферальные награды <button>В разработке</button></p>
+                  <p>
+                    {t("baseQuestionsColumn2.referralRewards")}{" "}
+                    <button>{t("common.inDevelopment")}</button>
+                  </p>
                   <span>
-                    Получайте награды за использования сервиса &Volume вашими
-                    рефералими{" "}
+                    {t("baseQuestionsColumn2.referralRewardsDescription")}
                   </span>
                 </div>
               </div>
             </div>
           </div>
+
           <div className="base_questions_column">
             <div className="secondary_block_wrapper base_question_card">
               <div className="main_block_wrapper_title">
-                <h2>Тарифы</h2>
+                <h2>{t("baseQuestionsColumn3.tariffs")}</h2>
               </div>
               <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
                   <NavLink to="/limits">
                     <div>
-                      <p>Торговые лимиты</p>
+                      <p>{t("baseQuestionsColumn3.tradeLimits")}</p>
                       <span>
-                        Узнайте что такое торговые лимиты и как они влияют на
-                        торговый результат
+                        {t("baseQuestionsColumn3.tradeLimitsDescription")}
                       </span>
                     </div>
                   </NavLink>
                 </div>
                 <div>
-                  <p>Оплата <button>В разработке</button></p>
-                  <span>
-                    Руководство по оплате тарифов с помощью сервиса партнера
-                  </span>
+                  <p>
+                    {t("baseQuestionsColumn3.payment")}{" "}
+                    <button>{t("common.inDevelopment")}</button>
+                  </p>
+                  <span>{t("baseQuestionsColumn3.paymentDescription")}</span>
                 </div>
               </div>
             </div>
             <div className="secondary_block_wrapper base_question_card">
               <div className="main_block_wrapper_title">
-                <h2>Другое</h2>
+                <h2>{t("baseQuestionsColumn3.other")}</h2>
               </div>
               <div className="order_history_list_line"></div>
               <div className="base_question_card_content">
                 <div>
-                  <NavLink to="/whitepaper">
+                  <NavLink
+                    target="_blank"
+                    to="https://nvolume.com/white-paper.html"
+                  >
                     <div>
-                      <p>Whitepaper</p>
+                      <p>{t("baseQuestionsColumn3.whitepaper")}</p>
                       <span>
-                        Узнайте больше о партнерской программе &Volume
+                        {t("baseQuestionsColumn3.whitepaperDescription")}
                       </span>
                     </div>
                   </NavLink>
                 </div>
                 <div>
-                  <NavLink to="/agreement">
+                  <NavLink
+                    target="_blank"
+                    to="https://nvolume.com/agreement.html"
+                  >
                     <div>
-                      <p>Клиентское соглашение</p>
+                      <p>{t("baseQuestionsColumn3.clientAgreement")}</p>
                       <span>
-                        Изучите документ, который регулирует отношения между
-                        клиентом и компанией
+                        {t("baseQuestionsColumn3.clientAgreementDescription")}
                       </span>
                     </div>
                   </NavLink>
                 </div>
                 <div>
-                  <NavLink to="/policy">
+                  <NavLink target="_blank" to="https://nvolume.com/policy.html">
                     <div>
-                      <p>Политика конфиденциальности </p>
+                      <p>{t("baseQuestionsColumn3.privacyPolicy")}</p>
                       <span>
-                        Изучите документ, который описывает, как компания
-                        собирает, использует и раскрывает информацию о клиентах
+                        {t("baseQuestionsColumn3.privacyPolicyDescription")}
                       </span>
                     </div>
                   </NavLink>
                 </div>
-                {/* <div>
-                  <p>Прочее</p>
-                  <span>Распространенные вопросы по другим темам</span>
-                </div>
-                <div>
-                  <p>Дорожная карта &Volume</p>
-                  <span>&Volume — из криптов фондовый рынок</span>
-                </div> */}
               </div>
             </div>
           </div>
@@ -299,19 +287,19 @@ function Base() {
         <div className="base_bottom_blocks">
           <div className="secondary_block_wrapper base_bottom_block">
             <div className="base_bottom_blocks_left">
-              <p>Остались вопросы?</p>
-              <span>Мы готовы помочь вам в любое время</span>
+              <p>{t("haveQuestions")}</p>
+              <span>{t("readyToHelp")}</span>
               <a target="_blank" href="https://t.me/NvolumeSupport_bot">
-                <button>Открыть чат</button>
+                <button>{t("openChat")}</button>
               </a>
             </div>
             <img src={baseBottom} alt="" />
           </div>
           <div className="secondary_block_wrapper base_bottom_block">
             <div className="base_bottom_blocks_left">
-              <p>Предложение по улучшению</p>
-              <span>Что бы вы хотели улучшить в нашем сервисе?</span>
-              <button>Предложить идею</button>
+              <p>{t("suggestImprovement")}</p>
+              <span>{t("whatWouldYouLikeToImprove")}</span>
+              <button>{t("suggestIdea")}</button>
             </div>
           </div>
         </div>

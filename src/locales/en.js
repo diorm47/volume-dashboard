@@ -220,4 +220,111 @@ export const en_locale = {
     confirm: "Confirm",
     cancel: "Cancel",
   },
+  apiKeyPage: {
+    title: "API Keys",
+    addApiKey: "Add API Key",
+  },
+  apiTable: {
+    timeAdded: "Time Added",
+    status: "Status",
+    name: "Name",
+    exchange: "Exchange",
+    action: "Action",
+    activeStatus: "Active",
+    edit: "Edit",
+    delete: "Delete",
+    noApiConnected: "No APIs connected.",
+  },
+  apiMobile: {
+    timeAdded: "Time Added",
+    exchange: "Exchange",
+    noApiConnected: "No APIs connected.",
+  },
+  apiModal: {
+    title: "API",
+    name: "Name",
+    exchange: "Exchange",
+    publicKey: "Public Key",
+    privateKey: "Private Key",
+    addButton: "Add",
+    cancelButton: "Cancel",
+  },
+  apiEditModal: {
+    title: "Edit API Key",
+    publicKey: "Public Key",
+    privateKey: "Private Key",
+    saveButton: "Save",
+    deleteButton: "Delete",
+    cancelButton: "Cancel",
+  },
+  faqBlock: {
+    knowledgeBase: "Knowledge Base",
+    frequentlyAskedQuestions: "Frequently Asked Questions",
+  },
+  baseQuestionsColumn: {
+    connection: "Connection",
+    registration: "Registration of Exchange Account",
+    registrationDescription:
+      "Learn how to register and verify on partner exchanges",
+    api: "API",
+    apiDescription:
+      "Instructions on creating API keys and connecting to &Volume",
+    investments: "Investments",
+    investmentsDescription: "Choosing and connecting investment methods",
+    buySellCrypto: "Buying and Selling Cryptocurrency",
+    topupMethods: "Top-up Methods",
+    topupMethodsDescription:
+      "Ways and services to top up your exchange account",
+    p2pTrading: "P2P Trading",
+    p2pTradingDescription:
+      "Learn how to use P2P for depositing and withdrawing funds from your exchange account",
+  },
+  baseQuestionsColumn2: {
+    investments: "Investments",
+    differences: "Differences",
+    differencesDescription: "Make the right choice and earn more",
+    statistics: "Statistics",
+    statisticsDescription: "Open statistics of &Volume investment results",
+    risks: "Risks",
+    risksDescription:
+      "Don't lose self-control. Cryptocurrencies are a risky investment with high volatility",
+    rewardsReferrals: "Rewards and Referrals",
+    partners: "Partners",
+    partnersDescription: "Learn more about the &Volume partnership program",
+    invitation: "Invitation",
+    invitationDescription: "Invite friends and earn together",
+    referralRewards: "Referral Rewards",
+    referralRewardsDescription:
+      "Receive rewards for using the &Volume service by your referrals",
+  },
+  common: {
+    inDevelopment: "In Development",
+  },
+  baseQuestionsColumn3: {
+    tariffs: "Tariffs",
+    tradeLimits: "Trade Limits",
+    tradeLimitsDescription:
+      "Learn what trade limits are and how they affect your trading results",
+    payment: "Payment",
+    paymentDescription:
+      "Guidelines on payment of tariffs using a partner service",
+    other: "Other",
+    whitepaper: "Whitepaper",
+    whitepaperDescription: "Learn more about the &Volume partnership program",
+    clientAgreement: "Client Agreement",
+    clientAgreementDescription:
+      "Study the document that regulates the relationship between the client and the company",
+    privacyPolicy: "Privacy Policy",
+    privacyPolicyDescription:
+      "Study the document that describes how the company collects, uses, and discloses information about customers",
+  },
+  haveQuestions: "Have questions?",
+  readyToHelp: "We are ready to help you anytime",
+  openChat: "Open Chat",
+  suggestImprovement: "Suggest an improvement",
+  whatWouldYouLikeToImprove: "What would you like to improve in our service?",
+  suggestIdea: "Suggest an Idea",
+  rightsReserved: '© 2023 &Volume, all rights reserved',
+  policy: 'Policy',
+  agreement: 'Agreement',
 };
