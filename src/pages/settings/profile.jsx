@@ -380,7 +380,7 @@ function Profile() {
           <div className="user_data_item">
             <span>{t("phoneNumber")}</span>
             <div>
-              {phone ? <p>+${phone}</p> : <p>Не указано</p>}
+              {phone ? <p>+{phone}</p> : <p>Не указано</p>}
 
               <p onClick={() => setNumberModal(true)}>
                 {t("change")} <span>{t("phoneNumber")}</span>

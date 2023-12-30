@@ -183,11 +183,21 @@ const ColumnChart = ({ selectedTime }) => {
 
   // Effect to update pnlData whenever chartData.series changes
   useEffect(() => {
-    if (chartData.series.length > 0 && chartData.series[0].data.length > 0) {
+    if (chartData.series.length > 0) {
       const total = sumData(chartData.series[0].data);
       setPnlData(total);
+
+      // Проверяем, что сумма данных больше нуля
+      if (parseFloat(total) > 0) {
+        setPnl(true);
+      } else {
+        setPnl(false);
+      }
+    } else {
+      setPnl(false);
     }
   }, [chartData.series]);
+
   useEffect(() => {
     if (selectedTime && selectedTime.length === 2) {
       getPnl(selectedTime);
