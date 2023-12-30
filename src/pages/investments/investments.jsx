@@ -378,7 +378,10 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  <p>{t("upTo")} 10.43%</p>
+                  {active1 == "1 месяц" ? <p>{t("upTo")} 10.43%</p> : ""}
+                  {active1 == "3 месяца" ? <p>{t("upTo")} 31.29%</p> : ""}
+                  {active1 == "6 месяцев" ? <p>{t("upTo")} 62.58%</p> : ""}
+                  {active1 == "1 год" ? <p>{t("upTo")} 125.16%</p> : ""}
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -487,7 +490,10 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  <p>{t("upTo")} 21.65%</p>
+                  {active2 == "1 месяц" ? <p>{t("upTo")} 21.65%</p> : ""}
+                  {active2 == "3 месяца" ? <p>{t("upTo")} 64.95%</p> : ""}
+                  {active2 == "6 месяцев" ? <p>{t("upTo")} 129.9%</p> : ""}
+                  {active2 == "1 год" ? <p>{t("upTo")} 259.8%</p> : ""}
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -596,7 +602,10 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  <p>{t("upTo")} 30.14%</p>
+                  {active3 == "1 месяц" ? <p>{t("upTo")} 30.14%</p> : ""}
+                  {active3 == "3 месяца" ? <p>{t("upTo")} 90.42%</p> : ""}
+                  {active3 == "6 месяцев" ? <p>{t("upTo")} 180.84%</p> : ""}
+                  {active3 == "1 год" ? <p>{t("upTo")} 361.68%</p> : ""}
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -1004,7 +1013,7 @@ function Investments({ updatebalance }) {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                {t("available")}:    {userData.balance || "0.00"} <span>USDT</span>
+                {t("available")}: {userData.balance || "0.00"} <span>USDT</span>
               </p>
             </div>
             <div className="invest_modal_bottom_content_item">
@@ -1184,7 +1193,7 @@ function Investments({ updatebalance }) {
                 <p>USDT</p>
               </div>
               <p className="invest_modal_bottom_content_item_text">
-                {t("available")}:    {userData.balance || "0.00"} <span>USDT</span>
+                {t("available")}: {userData.balance || "0.00"} <span>USDT</span>
               </p>
             </div>
             <div className="invest_modal_bottom_content_item">

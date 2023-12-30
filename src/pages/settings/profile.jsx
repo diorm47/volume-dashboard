@@ -345,7 +345,9 @@ function Profile() {
             <span>{t("fullName")}</span>
             <div>
               <p>
-                {`${formData.lastName} ${formData.firstName} ${formData.middleName}`}{" "}
+                {`${formData.lastName || ""} ${formData.firstName || ""} ${
+                  formData.middleName || ""
+                }`}{" "}
               </p>
               <p onClick={() => setNameModal(true)}>
                 {t("change")} <span>{t("name")}</span>
@@ -356,7 +358,7 @@ function Profile() {
           <div className="user_data_item">
             <span>{t("nickname")}</span>
             <div>
-              <p>{userName || "---"}</p>
+              <p>{userName || "Не указано "}</p>
               <p onClick={() => setUserNameModal(true)}>
                 {t("change")} <span>{t("nickname")}</span>
               </p>
@@ -367,7 +369,7 @@ function Profile() {
           <div className="user_data_item">
             <span>{t("email")}</span>
             <div>
-              <p>{email || "---"}</p>
+              <p>{email || "Не указано "}</p>
               <p onClick={() => setEmailModal(true)}>
                 {t("change")} <span>{t("email")}</span>
               </p>
@@ -378,7 +380,8 @@ function Profile() {
           <div className="user_data_item">
             <span>{t("phoneNumber")}</span>
             <div>
-              <p>+{phone || ""}</p>
+              {phone ? <p>+${phone}</p> : <p>Не указано</p>}
+
               <p onClick={() => setNumberModal(true)}>
                 {t("change")} <span>{t("phoneNumber")}</span>
               </p>
