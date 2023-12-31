@@ -256,7 +256,7 @@ function Investments({ updatebalance }) {
         });
       })
       .catch((error) => {
-        snackOptions(localization[userLanguage].requestError, "error");
+    
         console.log("Error executing the request!");
       });
   };

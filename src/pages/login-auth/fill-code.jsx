@@ -25,7 +25,10 @@ function FillCode({ email }) {
   }, []);
 
   const handleChange = (element, index) => {
-    const value = element.value;
+    let  value = element.value;
+    if (value.length > 1) {
+      value = value[0];
+    }
     setOtp([...otp.slice(0, index), value, ...otp.slice(index + 1)]);
     setErrorResponce(false);
     // Move to next input

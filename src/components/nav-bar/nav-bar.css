@@ -89,6 +89,10 @@ nav {
   transition: all 0.4s ease;
   transform: rotate(-180deg);
 }
+.nav_menu_item .drop_down_icon:hover  {
+  transition: all 0.4s ease;
+  transform: rotate(-180deg);
+}
 .nav_wrapper_right svg *,
 .nav_bar_menu svg * {
   fill: #111112;
