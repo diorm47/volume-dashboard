@@ -90,7 +90,7 @@ function Reset() {
     bodyContent.append("email", email);
 
     fetch(
-      "https://trade.margelet.org/public-api/v1/users/send-password-reset-token",
+      "https://api.nvolume.com/public-api/v1/users/send-password-reset-token",
       {
         method: "POST",
         body: bodyContent,
@@ -119,7 +119,7 @@ function Reset() {
     bodyContent.append("token", otp.join(""));
 
     fetch(
-      "https://trade.margelet.org/public-api/v1/users/validate-password-reset-token",
+      "https://api.nvolume.com/public-api/v1/users/validate-password-reset-token",
       {
         method: "POST",
         body: bodyContent,
@@ -150,7 +150,7 @@ function Reset() {
     bodyContent.append("password", password);
     bodyContent.append("password_confirmation", password);
 
-    fetch("https://trade.margelet.org/public-api/v1/users/set-new-password", {
+    fetch("https://api.nvolume.com/public-api/v1/users/set-new-password", {
       method: "POST",
       body: bodyContent,
       headers: headersList,

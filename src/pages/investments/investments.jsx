@@ -229,7 +229,7 @@ function Investments({ updatebalance }) {
     bodyContent.append("amount_investment", amountInvestment);
     bodyContent.append("stop_loss", stopLos);
 
-    fetch("https://trade.margelet.org/private-api/v1/users/bots/store", {
+    fetch("https://api.nvolume.com/private-api/v1/users/bots/store", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -302,7 +302,7 @@ function Investments({ updatebalance }) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    fetch("https://trade.margelet.org/private-api/v1/users/bots", {
+    fetch("https://api.nvolume.com/private-api/v1/users/bots", {
       method: "GET",
       headers: headersList,
     })
@@ -363,7 +363,7 @@ function Investments({ updatebalance }) {
     let bodyContent = new FormData();
     bodyContent.append("bot_id", activeInvests.id);
 
-    fetch("https://trade.margelet.org/private-api/v1/users/bots/destroy", {
+    fetch("https://api.nvolume.com/private-api/v1/users/bots/destroy", {
       method: "POST",
       body: bodyContent,
       headers: headersList,

@@ -58,7 +58,7 @@ function FillCode({ email }) {
     let bodyContent = new FormData();
     bodyContent.append("code", otp.join(""));
 
-    fetch("https://trade.margelet.org/private-api/v1/users/two-factor", {
+    fetch("https://api.nvolume.com/private-api/v1/users/two-factor", {
       method: "POST",
       body: bodyContent,
       headers: headersList,

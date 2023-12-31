@@ -43,7 +43,7 @@ function Analysis() {
     };
 
     fetch(
-      `https://trade.margelet.org/private-api/v1/users/deals/closed?page=${pageNumber}`,
+      `https://api.nvolume.com/private-api/v1/users/deals/closed?page=${pageNumber}`,
       {
         method: "GET",
         headers: headersList,
@@ -70,7 +70,7 @@ function Analysis() {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    fetch("https://trade.margelet.org/private-api/v1/users/deals/open", {
+    fetch("https://api.nvolume.com/private-api/v1/users/deals/open", {
       method: "GET",
 
       headers: headersList,
@@ -92,7 +92,7 @@ function Analysis() {
     let bodyContent = new FormData();
     bodyContent.append("period", "today");
 
-    fetch("https://trade.margelet.org/private-api/v1/users/pnl", {
+    fetch("https://api.nvolume.com/private-api/v1/users/pnl", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -134,7 +134,7 @@ function Analysis() {
         .replace(/\//g, ".")
     );
 
-    fetch("https://trade.margelet.org/private-api/v1/users/pnl-by-period", {
+    fetch("https://api.nvolume.com/private-api/v1/users/pnl-by-period", {
       method: "POST",
       body: bodyContent,
       headers: headersList,

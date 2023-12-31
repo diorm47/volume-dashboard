@@ -120,7 +120,7 @@ function Profile() {
     bodyContent.append("last_name", formData.lastName);
     bodyContent.append("patronymic", formData.middleName);
   
-    fetch("https://trade.margelet.org/private-api/v1/users/profile/fio", {
+    fetch("https://api.nvolume.com/private-api/v1/users/profile/fio", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -156,7 +156,7 @@ function Profile() {
     let bodyContent = new FormData();
     bodyContent.append("username", userName);
   
-    fetch("https://trade.margelet.org/private-api/v1/users/profile/username", {
+    fetch("https://api.nvolume.com/private-api/v1/users/profile/username", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -193,7 +193,7 @@ function Profile() {
     bodyContent.append("new_email", email);
     bodyContent.append("new_email_confirmation", email2);
   
-    fetch("https://trade.margelet.org/private-api/v1/users/profile/email", {
+    fetch("https://api.nvolume.com/private-api/v1/users/profile/email", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -231,7 +231,7 @@ function Profile() {
     let bodyContent = new FormData();
     bodyContent.append("phone", phone);
   
-    fetch("https://trade.margelet.org/private-api/v1/users/profile/phone", {
+    fetch("https://api.nvolume.com/private-api/v1/users/profile/phone", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -291,7 +291,7 @@ function Profile() {
     let bodyContent = new FormData();
     bodyContent.append("code", otp.join(""));
 
-    fetch("https://trade.margelet.org/private-api/v1/users/two-factor", {
+    fetch("https://api.nvolume.com/private-api/v1/users/two-factor", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -337,7 +337,7 @@ function Profile() {
     let bodyContent = new FormData();
     bodyContent.append("avatar", selectedFile);
   
-    fetch("https://trade.margelet.org/private-api/v1/users/profile/avatar", {
+    fetch("https://api.nvolume.com/private-api/v1/users/profile/avatar", {
       method: "POST",
       body: bodyContent,
       headers: headersList,

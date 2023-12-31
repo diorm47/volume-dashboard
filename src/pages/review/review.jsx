@@ -74,7 +74,7 @@ function Review() {
     let bodyContent = new FormData();
     bodyContent.append("period", value || selectedOption);
 
-    fetch("https://trade.margelet.org/private-api/v1/users/pnl", {
+    fetch("https://api.nvolume.com/private-api/v1/users/pnl", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -94,7 +94,7 @@ function Review() {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    fetch("https://trade.margelet.org/private-api/v1/users/deals/last-closed", {
+    fetch("https://api.nvolume.com/private-api/v1/users/deals/last-closed", {
       method: "GET",
 
       headers: headersList,

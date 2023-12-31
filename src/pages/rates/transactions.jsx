@@ -16,7 +16,7 @@ function Transactions() {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    fetch("https://trade.margelet.org/private-api/v1/users/transactions", {
+    fetch("https://api.nvolume.com/private-api/v1/users/transactions", {
       method: "GET",
       headers: headersList,
     })

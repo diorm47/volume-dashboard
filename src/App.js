@@ -30,7 +30,7 @@ function App() {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    fetch("https://trade.margelet.org/private-api/v1/users/balance/update", {
+    fetch("https://api.nvolume.com/private-api/v1/users/balance/update", {
       method: "POST",
       headers: headersList,
     })

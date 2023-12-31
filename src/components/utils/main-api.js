@@ -1,5 +1,5 @@
 const mainApiOptions = {
-  baseUrl: "https://trade.margelet.org",
+  baseUrl: "https://api.nvolume.com",
 
   headers: {
     Accept: "*/*",

@@ -154,7 +154,7 @@ const ColumnChart = ({ selectedTime }) => {
         .replace(/\//g, ".")
     );
 
-    fetch("https://trade.margelet.org/private-api/v1/users/pnl-chart", {
+    fetch("https://api.nvolume.com/private-api/v1/users/pnl-chart", {
       method: "POST",
       body: bodyContent,
       headers: headersList,

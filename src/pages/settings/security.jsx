@@ -86,7 +86,7 @@ function Security() {
     };
 
     fetch(
-      "https://trade.margelet.org/private-api/v1/users/security/ips-history",
+      "https://api.nvolume.com/private-api/v1/users/security/ips-history",
       {
         method: "GET",
 

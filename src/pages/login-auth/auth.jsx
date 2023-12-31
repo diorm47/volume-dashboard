@@ -49,7 +49,7 @@ function Auth() {
     let bodyContent = new FormData();
     bodyContent.append("email", email);
 
-    fetch("https://trade.margelet.org/public-api/v1/users/email-check", {
+    fetch("https://api.nvolume.com/public-api/v1/users/email-check", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -101,7 +101,7 @@ function Auth() {
     bodyContent.append("last_name", lastName);
     bodyContent.append("password_confirmation", password);
 
-    fetch("https://trade.margelet.org/public-api/v1/users/register", {
+    fetch("https://api.nvolume.com/public-api/v1/users/register", {
       method: "POST",
       body: bodyContent,
       headers: headersList,

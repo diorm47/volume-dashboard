@@ -109,7 +109,7 @@ function RatesPage({ updatebalance }) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    fetch("https://trade.margelet.org/private-api/v1/users/demo/activate", {
+    fetch("https://api.nvolume.com/private-api/v1/users/demo/activate", {
       method: "POST",
 
       headers: headersList,
@@ -154,7 +154,7 @@ function RatesPage({ updatebalance }) {
     let bodyContent = new FormData();
     bodyContent.append("tariff", data);
 
-    fetch("https://trade.margelet.org/private-api/v1/users/invoice/create", {
+    fetch("https://api.nvolume.com/private-api/v1/users/invoice/create", {
       method: "POST",
       body: bodyContent,
       headers: headersList,

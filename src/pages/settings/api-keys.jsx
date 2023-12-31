@@ -76,7 +76,7 @@ function ApiKeys() {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    fetch("https://trade.margelet.org/private-api/v1/users/api-keys", {
+    fetch("https://api.nvolume.com/private-api/v1/users/api-keys", {
       method: "GET",
       headers: headersList,
     })
@@ -127,7 +127,7 @@ function ApiKeys() {
     bodyContent.append("api_key", publickKey);
     bodyContent.append("api_secret", secretKey);
 
-    fetch("https://trade.margelet.org/private-api/v1/users/api-keys/store", {
+    fetch("https://api.nvolume.com/private-api/v1/users/api-keys/store", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -168,7 +168,7 @@ function ApiKeys() {
     let bodyContent = new FormData();
     bodyContent.append("id", apiList.id);
 
-    fetch("https://trade.margelet.org/private-api/v1/users/api-keys/destroy", {
+    fetch("https://api.nvolume.com/private-api/v1/users/api-keys/destroy", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
@@ -211,7 +211,7 @@ function ApiKeys() {
     bodyContent.append("api_key", publickKey);
     bodyContent.append("api_secret", secretKey);
 
-    fetch("https://trade.margelet.org/private-api/v1/users/api-keys/update", {
+    fetch("https://api.nvolume.com/private-api/v1/users/api-keys/update", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
