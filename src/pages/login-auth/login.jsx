@@ -5,7 +5,7 @@ import "./login-auth.css";
 import Snackbar from "../../components/snackbar/snackbar";
 
 function Login() {
-  const [section, setSection] = useState(2);
+  const [section, setSection] = useState(1);
   const [errorResponce, setErrorResponce] = useState(false);
   useEffect(() => {
     if (errorResponce) {
