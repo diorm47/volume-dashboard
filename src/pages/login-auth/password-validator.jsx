@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ReactComponent as Error } from "../../assets/icons/password_error.svg";
 import { ReactComponent as Okey } from "../../assets/icons/password_ok.svg";
+import { useTranslation } from "react-i18next";
 
 function PasswordValidator({ setSection, setAuthPassword, setNewPassword }) {
   const [password, setPassword] = useState("");
@@ -81,14 +82,16 @@ function PasswordValidator({ setSection, setAuthPassword, setNewPassword }) {
     setSection(4);
     setNewPassword();
   };
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="auth_section set_password">
       <div className="login_title">
-        <h2>Создать пароль</h2>
+        <h2>{t("createPassword")}</h2>
       </div>
       <div className="login_form_temp">
         <div className="login_input_titles">
-          <p>Пароль</p>
+          <p>{t("labels2.password")}</p>
         </div>
         <div className="login_input mb_10px">
           <input
@@ -135,27 +138,27 @@ function PasswordValidator({ setSection, setAuthPassword, setNewPassword }) {
           )}
         </div>
         <ul className="set_password_rules">
-          <p>Ваш пароль должен содержать:</p>
+          <p>{t("labels2.passwordRequirements")}</p>
           <li id="eight-plus">
             {passwordCriteria.minLength ? <Okey /> : <Error />}
 
-            <p>Длина 8-32 символа</p>
+            <p>{t("labels2.passwordLength")}</p>
           </li>
           <li id="uppercase">
             {passwordCriteria.uppercase ? <Okey /> : <Error />}
-            <p>1 символ верхнего регистра</p>
+            <p>{t("labels2.uppercase")}</p>
           </li>
           <li id="lowercase">
             {passwordCriteria.lowercase ? <Okey /> : <Error />}
-            <p>1 символ нижнего регистра</p>
+            <p>{t("labels2.lowercase")}</p>
           </li>
           <li id="numbers">
             {passwordCriteria.number ? <Okey /> : <Error />}
-            <p>1 цифра</p>
+            <p>{t("labels2.number")}</p>
           </li>
         </ul>
         <div className="login_input_titles">
-          <p>Пароль ещё раз</p>
+          <p>{t("labels2.confirmPassword")}</p>
         </div>
         <div className="login_input">
           <input
@@ -207,7 +210,7 @@ function PasswordValidator({ setSection, setAuthPassword, setNewPassword }) {
           disabled={isButtonDisabled}
           onClick={finishSubmit}
         >
-          Далее
+          {t("buttons.next")}
         </button>
       </div>
     </div>

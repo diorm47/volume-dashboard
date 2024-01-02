@@ -27,6 +27,9 @@ export const ru_locale = {
 
   trial_period: "7 дней",
   paid_period: "30 дней",
+  day_90: '90 дней',
+  last_180: 'Последний 180 дней',
+
   remaining_days: "дней осталось",
   add_30_days: "Добавить + 30 дней",
   trial_period_title: "Пробный период",
@@ -643,4 +646,48 @@ export const ru_locale = {
     create: "Создать сейчас",
     bybitQuest: "Нет аккаунта на Bybit?",
   },
+  login: {
+    log_title: "Войти",
+    incorrectEmail: "Неправильный email",
+    em_pass: "Введите email и пароль",
+    email: "Электронная почта",
+    password: "Пароль",
+    pass_forgot: "Забыли пароль",
+    no_acc: "Еще нет аккаунта?",
+    create_acc: "Создать аккаунт",
+    rules: "Продолжая регистрацию или вход, вы принимаете условия",
+    agreement: "Пользовательское Соглашение",
+    policy: "Политики конфиденциальности.",
+    log_error:
+      "Ошибка электронной почты или пароля. Проверьте правильность введенных данных.",
+  },
+  auth: {
+    error:
+      "Кажется, вы уже зарегистрированы в нашей системе. Пожалуйста, нажмите войти.",
+    error2: "Имя и фамилия должны быть не менее 3 символов",
+    title: "Регистрация",
+    referal: "Реферальный код (необязательно)",
+    datas: "Введите данные",
+    have_acc: "Уже есть аккаунт?",
+  },
+  createPassword: "Создать пароль",
+  labels2: {
+    password: "Пароль",
+    passwordRequirements: "Ваш пароль должен содержать:",
+    passwordLength: "Длина 8-32 символа",
+    confirmPassword: "Пароль ещё раз",
+    uppercase: "1 символ верхнего регистра",
+    lowercase: "1 символ нижнего регистра",
+    number: "1 цифра",
+  },
+  buttons: {
+    next: "Далее",
+  },
+  resetPassword: "Сбросить пароль",
+
+  invalidEmail: "Неправильный email",
+  getConfirmationCode: "Получить код подтверждения",
+  resendCode: "Отправить повторно ",
+  passwordChanged: "Пароль изменен",
+  passwordChangedMessage: "Ваш пароль успешно изменен",
 };

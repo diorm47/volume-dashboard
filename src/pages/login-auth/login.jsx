@@ -3,8 +3,11 @@ import { NavLink } from "react-router-dom";
 import FillCode from "./fill-code";
 import "./login-auth.css";
 import Snackbar from "../../components/snackbar/snackbar";
+import { useTranslation } from "react-i18next";
 
 function Login() {
+  const { t, i18n } = useTranslation();
+
   const [section, setSection] = useState(1);
   const [errorResponce, setErrorResponce] = useState(false);
   useEffect(() => {
@@ -30,7 +33,7 @@ function Login() {
     setEmail(newEmail);
     setErrorResponce(false);
     if (!validateEmail(newEmail)) {
-      setEmailError("Неправильный email");
+      setEmailError(t("login.incorrectEmail"));
     } else {
       setEmailError("");
     }
@@ -74,7 +77,7 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!email || !password) {
-      setPasswordError("Введите email и пароль");
+      setPasswordError(t("em_pass"));
     } else {
       setPasswordError("");
       loginAction();
@@ -115,7 +118,7 @@ function Login() {
       {section === 1 ? (
         <div className="login_page">
           <div className="login_title">
-            <h2>Войти</h2>
+            <h2>{t("login.log_title")}</h2>
           </div>
           <div
             id="loginForm"
@@ -123,7 +126,7 @@ function Login() {
           >
             <div>
               <div className="login_input_titles">
-                <p>Электронная почта</p>
+                <p>{t("login.email")}</p>
               </div>
               <div className={`login_input ${emailError ? "error_input" : ""}`}>
                 <input
@@ -156,8 +159,8 @@ function Login() {
             </div>
             <div>
               <div className="login_input_titles recovery_password">
-                <p>Пароль</p>
-                <NavLink to="/reset"> Забыли пароль?</NavLink>
+                <p>{t("login.password")}</p>
+                <NavLink to="/reset"> {t("login.pass_forgot")} ?</NavLink>
               </div>
 
               <div
@@ -217,21 +220,40 @@ function Login() {
               disabled={!email || !password}
               onClick={handleSubmit}
             >
-              Войти
+              {t("login.log_title")}
             </button>
           </div>
           <div className="toggle_auth">
             <p>
-              Еще нет аккаунта? <NavLink to="/auth">Создать аккаунт</NavLink>
+              {t("login.no_acc")}{" "}
+              <NavLink to="/auth">{t("login.create_acc")}</NavLink>
             </p>
           </div>
           <div className="login_line"></div>
           <div className="login_privacy">
-            <p>
-              Продолжая регистрацию или вход, вы принимаете условия <br />
-              <a target="_blank" href="https://nvolume.com/agreement.html">Пользовательского соглашения</a> и{" "}
-              <a target="_blank" href="https://nvolume.com/policy.html">Политики конфиденциальности.</a>
-            </p>
+            {localStorage.getItem("locale") == "en" ? (
+              <p>
+                {t("login.rules")} <br />
+                <a target="_blank" href="https://nvolume.com/en/agreement.html">
+                  {t("login.agreement")}
+                </a>{" "}
+                и{" "}
+                <a target="_blank" href="https://nvolume.com/en/policy.html">
+                  {t("login.policy")}
+                </a>
+              </p>
+            ) : (
+              <p>
+                {t("login.rules")} <br />
+                <a target="_blank" href="https://nvolume.com/agreement.html">
+                  {t("login.agreement")}
+                </a>{" "}
+                и{" "}
+                <a target="_blank" href="https://nvolume.com/policy.html">
+                  {t("login.policy")}
+                </a>
+              </p>
+            )}
           </div>
         </div>
       ) : (
@@ -245,9 +267,10 @@ function Login() {
       ) : (
         ""
       )}
+  
 
       <Snackbar
-        text="Ошибка электронной почты или пароля. Проверьте правильность введенных данных."
+        text={t("login.log_error")}
         status="error"
         visible={errorResponce}
       />

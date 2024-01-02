@@ -1,15 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import { ReactComponent as UpdateIcon } from "../../assets/icons/update-img.svg";
-import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
-import avatarImg from "../../assets/images/avatar-big.png";
-import { mainApi } from "../../components/utils/main-api";
-import Snackbar from "../../components/snackbar/snackbar";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
+import { ReactComponent as UpdateIcon } from "../../assets/icons/update-img.svg";
+import avatarImg from "../../assets/images/avatar-big.png";
+import Snackbar from "../../components/snackbar/snackbar";
+import { mainApi } from "../../components/utils/main-api";
 
 function Profile() {
   const { t, i18n } = useTranslation();
   React.useEffect(() => {
-    document.title = `${t('profile')} | &Volume`;
+    document.title = `${t("profile")} | &Volume`;
   }, []);
   const [nameModal, setNameModal] = useState(false);
   const [usernameModal, setUserNameModal] = useState(false);
@@ -109,17 +109,17 @@ function Profile() {
         requestError: "Ошибка!",
       },
     };
-  
+
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-  
+
     let bodyContent = new FormData();
     bodyContent.append("name", formData.firstName);
     bodyContent.append("last_name", formData.lastName);
     bodyContent.append("patronymic", formData.middleName);
-  
+
     fetch("https://api.nvolume.com/private-api/v1/users/profile/fio", {
       method: "POST",
       body: bodyContent,
@@ -135,7 +135,7 @@ function Profile() {
         snackOptions(localization[userLanguage].requestError, "error");
       });
   };
-  
+
   const handleChangeUserName = () => {
     const localization = {
       en: {
@@ -147,15 +147,15 @@ function Profile() {
         requestError: "Ошибка!",
       },
     };
-  
+
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-  
+
     let bodyContent = new FormData();
     bodyContent.append("username", userName);
-  
+
     fetch("https://api.nvolume.com/private-api/v1/users/profile/username", {
       method: "POST",
       body: bodyContent,
@@ -164,14 +164,17 @@ function Profile() {
       .then((response) => response.json())
       .then((data) => {
         closeModals();
-        snackOptions(localization[userLanguage].usernameUpdatedSuccess, "success");
+        snackOptions(
+          localization[userLanguage].usernameUpdatedSuccess,
+          "success"
+        );
       })
       .catch((error) => {
         console.log(error);
         snackOptions(localization[userLanguage].requestError, "error");
       });
   };
-  
+
   const handleChangeEmail = () => {
     const localization = {
       en: {
@@ -183,16 +186,16 @@ function Profile() {
         requestError: "Ошибка!",
       },
     };
-  
+
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-  
+
     let bodyContent = new FormData();
     bodyContent.append("new_email", email);
     bodyContent.append("new_email_confirmation", email2);
-  
+
     fetch("https://api.nvolume.com/private-api/v1/users/profile/email", {
       method: "POST",
       body: bodyContent,
@@ -210,7 +213,7 @@ function Profile() {
         snackOptions(localization[userLanguage].requestError, "error");
       });
   };
-  
+
   const handleChangePhone = () => {
     const localization = {
       en: {
@@ -222,15 +225,15 @@ function Profile() {
         requestError: "Ошибка!",
       },
     };
-  
+
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-  
+
     let bodyContent = new FormData();
     bodyContent.append("phone", phone);
-  
+
     fetch("https://api.nvolume.com/private-api/v1/users/profile/phone", {
       method: "POST",
       body: bodyContent,
@@ -246,10 +249,9 @@ function Profile() {
         snackOptions(localization[userLanguage].requestError, "error");
       });
   };
-  
-  const [otp, setOtp] = useState(new Array(6).fill(""));
+
+  const [otp, setOtp] = useState("");
   const [timer, setTimer] = useState(300);
-  const inputsRef = useRef([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -259,19 +261,9 @@ function Profile() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleChange = (element, index) => {
-    const value = element.value;
-    setOtp([...otp.slice(0, index), value, ...otp.slice(index + 1)]);
-
-    if (value && index < 5) {
-      inputsRef.current[index + 1].focus();
-    }
-  };
-
-  const handleKeyUp = (event, index) => {
-    if (event.keyCode === 8 && index > 0) {
-      // Move to previous input
-      inputsRef.current[index - 1].focus();
+  const handleChange = (value) => {
+    if (value.length <= 6) {
+      setOtp(value);
     }
   };
 
@@ -328,15 +320,15 @@ function Profile() {
         networkError: "Произошла ошибка сети.",
       },
     };
-  
+
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
-  
+
     let bodyContent = new FormData();
     bodyContent.append("avatar", selectedFile);
-  
+
     fetch("https://api.nvolume.com/private-api/v1/users/profile/avatar", {
       method: "POST",
       body: bodyContent,
@@ -349,7 +341,10 @@ function Profile() {
         return response.json();
       })
       .then((data) => {
-        snackOptions(localization[userLanguage].avatarUpdatedSuccess, "success");
+        snackOptions(
+          localization[userLanguage].avatarUpdatedSuccess,
+          "success"
+        );
         setSelectedFile(null);
         refresh();
       })
@@ -358,13 +353,12 @@ function Profile() {
         snackOptions(error.message, "error");
       });
   };
-  
+
   useEffect(() => {
     if (selectedFile) {
       updateAvatar();
     }
   }, [selectedFile]);
-
 
   return (
     <>
@@ -417,7 +411,7 @@ function Profile() {
           <div className="user_data_item">
             <span>{t("nickname")}</span>
             <div>
-              <p>{userName || t('not_have')}</p>
+              <p>{userName || t("not_have")}</p>
               <p onClick={() => setUserNameModal(true)}>
                 {t("change")} <span>{t("nickname")}</span>
               </p>
@@ -428,7 +422,7 @@ function Profile() {
           <div className="user_data_item">
             <span>{t("email")}</span>
             <div>
-              <p>{email ||  t('not_have')}</p>
+              <p>{email || t("not_have")}</p>
               <p onClick={() => setEmailModal(true)}>
                 {t("change")} <span>{t("email")}</span>
               </p>
@@ -439,7 +433,7 @@ function Profile() {
           <div className="user_data_item">
             <span>{t("phoneNumber")}</span>
             <div>
-              {phone ? <p>+{phone}</p> : <p>{ t('not_have')}</p>}
+              {phone ? <p>+{phone}</p> : <p>{t("not_have")}</p>}
 
               <p onClick={() => setNumberModal(true)}>
                 {t("change")} <span>{t("phoneNumber")}</span>
@@ -622,18 +616,13 @@ function Profile() {
           <div className="modal_wrapper_content_item">
             <p>{t("codeSentTo", { email })}</p>
             <div id="otp" className="fillcode_inputs">
-              {otp.map((data, index) => (
-                <input
-                  key={index}
-                  className="text-center form-control"
-                  type="number"
-                  maxLength="1"
-                  value={data}
-                  onChange={(e) => handleChange(e.target, index)}
-                  onKeyUp={(e) => handleKeyUp(e, index)}
-                  ref={(ref) => (inputsRef.current[index] = ref)}
-                />
-              ))}
+              <input
+                className="text-center form-control"
+                type="number"
+                maxLength="1"
+                value={otp}
+                onChange={(e) => handleChange(e.target.value)}
+              />
             </div>
             <div className="getcode_timer">
               <p>{t("resendCodeIn", { timer: formatTimer() })}</p>

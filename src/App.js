@@ -73,7 +73,27 @@ function App() {
 
   useEffect(() => {
     if (!localStorage.getItem("locale")) {
-      localStorage.setItem("locale", "ru");
+      let headersList = {
+        Accept: "*/*",
+      };
+
+      fetch("https://ipwho.is/", {
+        method: "GET",
+
+        headers: headersList,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.country_code == "RU") {
+            localStorage.setItem("locale", "ru");
+          } else {
+            localStorage.setItem("locale", "en");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          localStorage.setItem("locale", "ru");
+        });
     }
   }, [localStorage.getItem("locale")]);
 
@@ -86,7 +106,10 @@ function App() {
       ) : (
         ""
       )}
-      {rec ? (
+      {rec &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/reset" &&
+      location.pathname !== "/auth" ? (
         <div className="connect_api_recom">
           <div className="connect_api_recom_wrapper">
             <p>

@@ -174,6 +174,13 @@ function Review() {
       ? tariffNames[tariff]
       : tariff;
   };
+
+  const [tariffffsss, setTar] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setTar(true);
+    }, 1300);
+  }, []);
   return (
     <>
       <div className="pages_wrapper review_page">
@@ -454,61 +461,67 @@ function Review() {
             </div>
           </div>
           <div className="review_right">
-            {(userData && userData.tariff && userData.tariff_paid_to) ||
-            userData.demo_used ? (
-              <div className="secondary_block_wrapper">
-                <div className="main_block_wrapper_title">
-                  <h2> {t("tariffPlanTitle")}</h2>
-                </div>
-                <div className="tarif_plan">
-                  <div className="tarif_plan_top">
-                    <p>{displayTariff(i18n.language, userData.tariff)}</p>
-                    <p>$ 0.00</p>
-                  </div>
-                  <div className="tarif_plan_time">
-                    <div className="tarif_plan_time_title">
-                      {userData.tariff === "Пробный" ? (
-                        <p>{t("trial_period")}</p>
-                      ) : (
-                        <p>{t("paid_period")}</p>
-                      )}
-                      <p>
-                        {remainingDays} {t("remaining_days")}
-                      </p>
+            {tariffffsss ? (
+              <>
+                {(userData && userData.tariff && userData.tariff_paid_to) ||
+                userData.demo_used ? (
+                  <div className="secondary_block_wrapper">
+                    <div className="main_block_wrapper_title">
+                      <h2> {t("tariffPlanTitle")}</h2>
                     </div>
-                    <div className="tarif_plan_time_block">
-                      <div
-                        className="tarif_plan_time_block_value"
-                        style={{ width: progressWidth }}
-                      ></div>
+                    <div className="tarif_plan">
+                      <div className="tarif_plan_top">
+                        <p>{displayTariff(i18n.language, userData.tariff)}</p>
+                        <p>$ 0.00</p>
+                      </div>
+                      <div className="tarif_plan_time">
+                        <div className="tarif_plan_time_title">
+                          {userData.tariff === "Пробный" ? (
+                            <p>{t("trial_period")}</p>
+                          ) : (
+                            <p>{t("paid_period")}</p>
+                          )}
+                          <p>
+                            {remainingDays} {t("remaining_days")}
+                          </p>
+                        </div>
+                        <div className="tarif_plan_time_block">
+                          <div
+                            className="tarif_plan_time_block_value"
+                            style={{ width: progressWidth }}
+                          ></div>
+                        </div>
+                      </div>
+                      <div className="review_right_link">
+                        <NavLink to="/rates/rates">
+                          <p>{t("add_30_days")}</p>
+                        </NavLink>
+                      </div>
                     </div>
                   </div>
-                  <div className="review_right_link">
-                    <NavLink to="/rates/rates">
-                      <p>{t("add_30_days")}</p>
-                    </NavLink>
+                ) : (
+                  <div className="secondary_block_wrapper">
+                    <div className="main_block_wrapper_title">
+                      <h2>{t("trial_period_title")}</h2>
+                    </div>
+                    <div className="tarif_plan">
+                      <div className="tarif_plan_top">
+                        <p>{t("free_trial")}</p>
+                      </div>
+                      <div className="free_tarif">
+                        <p>{t("activate_trial")}</p>
+                      </div>
+                      <div className="review_right_link">
+                        <NavLink to="/rates/rates">
+                          <p>{t("activate")}</p>
+                        </NavLink>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                )}
+              </>
             ) : (
-              <div className="secondary_block_wrapper">
-                <div className="main_block_wrapper_title">
-                  <h2>{t("trial_period_title")}</h2>
-                </div>
-                <div className="tarif_plan">
-                  <div className="tarif_plan_top">
-                    <p>{t("free_trial")}</p>
-                  </div>
-                  <div className="free_tarif">
-                    <p>{t("activate_trial")}</p>
-                  </div>
-                  <div className="review_right_link">
-                    <NavLink to="/rates/rates">
-                      <p>{t("activate")}</p>
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
+              <div className="secondary_block_wrapper"></div>
             )}
 
             {/* <div className="secondary_block_wrapper invite_block">

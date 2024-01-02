@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Snackbar from "../../components/snackbar/snackbar";
 
 function FillCode({ email }) {
-  const [otp, setOtp] = useState(new Array(6).fill(""));
-  const [timer, setTimer] = useState(300); // 5 minutes timer
-  const inputsRef = useRef([]);
+  const [otp, setOtp] = useState("");
+  const [timer, setTimer] = useState(300);
+
   const navigate = useNavigate();
   const [errorResponce, setErrorResponce] = useState(false);
   useEffect(() => {
@@ -24,23 +24,9 @@ function FillCode({ email }) {
     return () => clearInterval(interval);
   }, []);
 
-  const handleChange = (element, index) => {
-    let  value = element.value;
-    if (value.length > 1) {
-      value = value[0];
-    }
-    setOtp([...otp.slice(0, index), value, ...otp.slice(index + 1)]);
-    setErrorResponce(false);
-    // Move to next input
-    if (value && index < 5) {
-      inputsRef.current[index + 1].focus();
-    }
-  };
-
-  const handleKeyUp = (event, index) => {
-    if (event.keyCode === 8 && index > 0) {
-      // Move to previous input
-      inputsRef.current[index - 1].focus();
+  const handleChange = (value) => {
+    if (value.length <= 6) {
+      setOtp(value);
     }
   };
 
@@ -59,7 +45,7 @@ function FillCode({ email }) {
     };
 
     let bodyContent = new FormData();
-    bodyContent.append("code", otp.join(""));
+    bodyContent.append("code", otp);
 
     fetch("https://api.nvolume.com/private-api/v1/users/two-factor", {
       method: "POST",
@@ -97,18 +83,13 @@ function FillCode({ email }) {
             : " fillcode_inputs"
         }
       >
-        {otp.map((data, index) => (
-          <input
-            key={index}
-            className="text-center form-control"
-            type="number"
-            maxLength="1"
-            value={data}
-            onChange={(e) => handleChange(e.target, index)}
-            onKeyUp={(e) => handleKeyUp(e, index)}
-            ref={(ref) => (inputsRef.current[index] = ref)}
-          />
-        ))}
+        <input
+          className="text-center form-control"
+          type="number"
+          maxLength="6"
+          value={otp}
+          onChange={(e) => handleChange(e.target.value)}
+        />
       </div>
       <div className="getcode_timer">
         <p>Отправить повторно ({formatTimer()})</p>
@@ -117,7 +98,7 @@ function FillCode({ email }) {
         id="submitBtn"
         className="fill_code_svm"
         onClick={handleSubmitCode}
-        disabled={otp.join("").length < 6}
+        disabled={otp.length < 6}
       >
         Проверить
       </button>

@@ -86,6 +86,8 @@ function ApiKeys({ setRec }) {
         setapiList(data.data.api_keys[0]);
         if (!data.data.api_keys[0] && localStorage.getItem("token")) {
           setRec(true);
+        } else {
+          setRec(false);
         }
       })
       .catch((error) => {
@@ -185,6 +187,7 @@ function ApiKeys({ setRec }) {
           refresh();
           closeModals();
           snackOptions(localization[userLanguage].apiDeletedSuccess, "success");
+          setRec(true);
         } else {
           snackOptions(localization[userLanguage].apiDeleteError, "error");
         }
@@ -228,6 +231,7 @@ function ApiKeys({ setRec }) {
           closeModals();
           refresh();
           snackOptions(localization[userLanguage].apiUpdatedSuccess, "success");
+          setRec(false);
         } else {
           snackOptions(localization[userLanguage].apiUpdateError, "error");
         }

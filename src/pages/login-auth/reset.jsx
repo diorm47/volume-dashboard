@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import PasswordValidator from "./password-validator";
 import { NavLink } from "react-router-dom";
 import Snackbar from "../../components/snackbar/snackbar";
+import { useTranslation } from "react-i18next";
 
 function Reset() {
   const [section, setSection] = useState(1);
@@ -30,9 +31,8 @@ function Reset() {
     setIsEmailError(!isValidEmail);
   };
 
-  const [otp, setOtp] = useState(new Array(6).fill(""));
-  const [timer, setTimer] = useState(300); // 5 minutes timer
-  const inputsRef = useRef([]);
+  const [otp, setOtp] = useState("");
+  const [timer, setTimer] = useState(300);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -42,23 +42,9 @@ function Reset() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleChange = (element, index) => {
-    let value = element.value;
-    if (value.length > 1) {
-      value = value[0];
-    }
-    setOtp([...otp.slice(0, index), value, ...otp.slice(index + 1)]);
-
-    // Move to next input
-    if (value && index < 5) {
-      inputsRef.current[index + 1].focus();
-    }
-  };
-
-  const handleKeyUp = (event, index) => {
-    if (event.keyCode === 8 && index > 0) {
-      // Move to previous input
-      inputsRef.current[index - 1].focus();
+  const handleChange = (value) => {
+    if (value.length <= 6) {
+      setOtp(value);
     }
   };
 
@@ -119,7 +105,7 @@ function Reset() {
 
     let bodyContent = new FormData();
     bodyContent.append("email", email);
-    bodyContent.append("token", otp.join(""));
+    bodyContent.append("token", otp);
 
     fetch(
       "https://api.nvolume.com/public-api/v1/users/validate-password-reset-token",
@@ -170,6 +156,7 @@ function Reset() {
         console.log(error);
       });
   };
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="login_page_wrapper">
@@ -177,12 +164,12 @@ function Reset() {
         {section === 1 ? (
           <div className="reset_section reset_username_section">
             <div className="login_title">
-              <h2>Сбросить пароль</h2>
+              <h2>{t("resetPassword")}</h2>
             </div>
             <div id="loginForm">
               <div>
                 <div className="login_input_titles">
-                  <p>Электронная почта</p>
+                  <p>{t("email")}</p>
                 </div>
                 <div className="login_input">
                   <input
@@ -211,7 +198,7 @@ function Reset() {
                   )}
                   {email.length >= 1 ? (
                     <div className="error_email">
-                      {!isEmailError ? "" : "Неправильный email"}
+                      {!isEmailError ? "" : t("invalidEmail")}
                     </div>
                   ) : (
                     ""
@@ -226,7 +213,7 @@ function Reset() {
                 onClick={handleSubmit}
                 disabled={isSubmitDisabled}
               >
-                Получить код подтверждения
+                {t("getConfirmationCode")}
               </button>
             </div>
           </div>
@@ -237,36 +224,32 @@ function Reset() {
         {section === 2 ? (
           <div className="auth_section fill_code">
             <div className="login_title">
-              <h2>Введите код</h2>
+              <h2>{t("enterCode")}</h2>
               <p>
-                Мы отправили код на{" "}
-                <span className="sending_email">{email}</span>
+                {t("codeSentTo")} <span className="sending_email">{email}</span>
               </p>
             </div>
             <div id="otp" className="fillcode_inputs">
-              {otp.map((data, index) => (
-                <input
-                  key={index}
-                  className="text-center form-control"
-                  type="number"
-                  maxLength="1"
-                  value={data}
-                  onChange={(e) => handleChange(e.target, index)}
-                  onKeyUp={(e) => handleKeyUp(e, index)}
-                  ref={(ref) => (inputsRef.current[index] = ref)}
-                />
-              ))}
+              <input
+                className="text-center form-control"
+                type="number"
+                maxLength="1"
+                value={otp}
+                onChange={(e) => handleChange(e.target.value)}
+              />
             </div>
             <div className="getcode_timer">
-              <p>Отправить повторно ({formatTimer()})</p>
+              <p>
+                {t("resendCode")} ({formatTimer()})
+              </p>
             </div>
             <button
               id="submitBtn"
               className="fill_code_svm"
               onClick={handleSubmitCode}
-              disabled={otp.join("").length < 6}
+              disabled={otp.length < 6}
             >
-              Проверить
+              {t("verify")}
             </button>
           </div>
         ) : (
@@ -286,12 +269,12 @@ function Reset() {
         {section === 4 ? (
           <div className="reset_section reset_username_block">
             <div className="login_title">
-              <h2>Пароль изменен</h2>
+              <h2>{t("passwordChanged")}</h2>
             </div>
-            <p className="reset_text">Ваш пароль успешно изменен</p>
+            <p className="reset_text">{t("passwordChangedMessage")}</p>
             <NavLink to="/login">
               <button type="submit" id="submitBtn">
-                Войти
+                {t("login.log_title")}
               </button>
             </NavLink>
           </div>

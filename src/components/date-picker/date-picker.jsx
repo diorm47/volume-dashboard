@@ -4,25 +4,26 @@ import "./date-picker.css";
 import subDays from "date-fns/subDays";
 import { DateRangePicker } from "rsuite";
 import "rsuite/dist/rsuite-rtl.css";
+import { useTranslation } from "react-i18next";
 
-function DatePicker({setSelectedTime}) {
+function DatePicker({ setSelectedTime }) {
+  const { t, i18n } = useTranslation();
 
-  
   const predefinedBottomRanges = [
     {
-      label: "7 дней",
+      label: t("trial_period"),
       value: [subDays(new Date(), 6), new Date()],
     },
     {
-      label: "30 дней",
+      label: t("paid_period"),
       value: [subDays(new Date(), 29), new Date()],
     },
     {
-      label: "90 дней",
+      label: t("day_90"),
       value: [subDays(new Date(), 29 * 3), new Date()],
     },
     {
-      label: "Последний 180 дней",
+      label: t("last_180"),
       value: [subDays(new Date(), 29 * 3), new Date()],
     },
   ];
@@ -58,6 +59,36 @@ function DatePicker({setSelectedTime}) {
     november: "Ноябрь",
     december: "Декабрь",
   };
+  const customLocaleEn = {
+    ok: "Confirm",
+    sunday: "Sun",
+    monday: "Mon",
+    tuesday: "Tue",
+    wednesday: "Wed",
+    thursday: "Thu",
+    friday: "Fri",
+    saturday: "Sat",
+    today: "Today",
+    yesterday: "Yesterday",
+    last7Days: "Last 7 Days",
+    last30Days: "Last 30 Days",
+    last90Days: "Last 90 Days",
+    last180Days: "Last 180 Days",
+    thisMonth: "This Month",
+    lastMonth: "Last Month",
+    january: "January",
+    february: "February",
+    march: "March",
+    april: "April",
+    may: "May",
+    june: "June",
+    july: "July",
+    august: "August",
+    september: "September",
+    october: "October",
+    november: "November",
+    december: "December",
+  };
 
   const [selectedRange, setSelectedRange] = useState([
     subDays(new Date(), 6),
@@ -66,7 +97,7 @@ function DatePicker({setSelectedTime}) {
 
   const handleDateRangeChange = (value) => {
     setSelectedRange(value);
-    setSelectedTime(value)
+    setSelectedTime(value);
     setIsCalendarOpen(false);
   };
 
@@ -74,20 +105,19 @@ function DatePicker({setSelectedTime}) {
     setIsCalendarOpen(!isCalendarOpen);
   };
 
-  
   return (
     <div className="date_picker">
       <DateRangePicker
         ranges={predefinedBottomRanges}
-        locale={customLocale}
+        locale={i18n.language == "en" ? customLocaleEn : customLocale}
+        customLocaleEn
         value={selectedRange}
         onChange={handleDateRangeChange}
         onShortcutClick={(shortcut, event) => {
           console.log(shortcut);
         }}
         open={isCalendarOpen}
-        okButtonLabel="Подтвердить"
-        placement='bottomEnd'
+        placement="bottomEnd"
       />
 
       <div className="analysis_top_toggler" onClick={openCalendar}>

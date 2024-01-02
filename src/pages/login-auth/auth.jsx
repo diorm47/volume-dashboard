@@ -3,8 +3,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import PasswordValidator from "./password-validator";
 import FillCode from "./fill-code";
 import Snackbar from "../../components/snackbar/snackbar";
+import { useTranslation } from "react-i18next";
 
 function Auth() {
+  const { t, i18n } = useTranslation();
+
   const [section, setSection] = useState(1);
   const [email, setEmail] = useState("");
   const [password, setAuthPassword] = useState("");
@@ -76,10 +79,7 @@ function Auth() {
           setSection(3);
         } else {
           setErrorResponce(true);
-          snackOptions(
-            "Кажется, вы уже зарегистрированы в нашей системе. Пожалуйста, нажмите войти.",
-            "error"
-          );
+          snackOptions(t("auth.error"), "error");
         }
       })
       .catch((error) => {
@@ -121,7 +121,7 @@ function Auth() {
     bodyContent.append("last_name", lastName);
     bodyContent.append("password_confirmation", password);
     if (realName.length < 3 || lastName.length < 3) {
-      snackOptions("Имя и фамилия должны быть не менее 3 символов", "error");
+      snackOptions(t("auth.error2"), "error");
       return; // Stop the function execution
     }
     fetch("https://api.nvolume.com/public-api/v1/users/register", {
@@ -164,12 +164,12 @@ function Auth() {
         {section === 1 ? (
           <div className="auth_section auth_input">
             <div className="login_title">
-              <h2>Регистрация</h2>
+              <h2>{t("auth.title")}</h2>
             </div>
             <div id="loginForm" className="authForm">
               <div>
                 <div className="login_input_titles">
-                  <p>Электронная почта</p>
+                  <p>{t("login.email")}</p>
                 </div>
                 <div className="login_input">
                   <input
@@ -201,7 +201,7 @@ function Auth() {
                   )}
                   {email.length >= 1 ? (
                     <div className="error_email">
-                      {!isEmailError ? "" : "Неправильный email"}
+                      {!isEmailError ? "" : t("login.incorrectEmail")}
                     </div>
                   ) : (
                     ""
@@ -213,7 +213,7 @@ function Auth() {
                 className={isReferralHidden ? "hidden_referal" : ""}
               >
                 <div className="login_input_titles">
-                  <p>Реферальный код (необязательно)</p>
+                  <p>{t("auth.referal")}</p>
                   <svg
                     onClick={toggleReferral}
                     xmlns="http://www.w3.org/2000/svg"
@@ -250,7 +250,7 @@ function Auth() {
                 onClick={handleSubmit}
                 disabled={isSubmitDisabled}
               >
-                Создать аккаунт
+                {t("login.create_acc")}
               </button>
             </div>
           </div>
@@ -270,12 +270,12 @@ function Auth() {
         {section === 4 ? (
           <div className="auth_section user_datas">
             <div className="login_title">
-              <h2>Введите данные</h2>
+              <h2>{t("auth.datas")}</h2>
             </div>
             <div id="loginForm" className="authForm" onSubmit={finishAuth}>
               <div>
                 <div className="login_input_titles">
-                  <p>Имя</p>
+                  <p>{t("firstName")} </p>
                 </div>
                 <div className="login_input">
                   <input
@@ -305,7 +305,8 @@ function Auth() {
               </div>
               <div>
                 <div className="login_input_titles">
-                  <p>Фамилия</p>
+                <p>{t("lastName")} </p>
+
                 </div>
                 <div className="login_input">
                   <input
@@ -339,7 +340,7 @@ function Auth() {
                 disabled={!isFormComplete}
                 onClick={() => finishAuth()}
               >
-                Создать аккаунт
+                {t('login.create_acc')}
               </button>
             </div>
           </div>
@@ -351,22 +352,35 @@ function Auth() {
           <>
             <div className="toggle_auth">
               <p>
-                Уже есть аккаунт? <NavLink to="/login">Войти</NavLink>
+                {t('auth.have_acc')} <NavLink to="/login">{t('login.log_title')}</NavLink>
               </p>
             </div>
             <div className="login_line"></div>
             <div className="login_privacy">
+            {localStorage.getItem("locale") == "en" ? (
               <p>
-                Продолжая регистрацию или вход, вы принимаете условия <br />
+                {t("login.rules")} <br />
+                <a target="_blank" href="https://nvolume.com/en/agreement.html">
+                  {t("login.agreement")}
+                </a>{" "}
+                и{" "}
+                <a target="_blank" href="https://nvolume.com/en/policy.html">
+                  {t("login.policy")}
+                </a>
+              </p>
+            ) : (
+              <p>
+                {t("login.rules")} <br />
                 <a target="_blank" href="https://nvolume.com/agreement.html">
-                  Пользовательского соглашения
+                  {t("login.agreement")}
                 </a>{" "}
                 и{" "}
                 <a target="_blank" href="https://nvolume.com/policy.html">
-                  Политики конфиденциальности.
+                  {t("login.policy")}
                 </a>
               </p>
-            </div>
+            )}
+          </div>
           </>
         ) : (
           ""

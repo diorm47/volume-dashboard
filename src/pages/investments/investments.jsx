@@ -189,6 +189,12 @@ function Investments({ updatebalance }) {
         "Stop loss value is greater than 50% of the total balance.",
       stopLossLessThan20:
         "Stop loss value is less than 20% of the total balance.",
+      apiKeysNotFound: "Error, API key not added!",
+      botsLimit:
+        "Error, maximum investment methods reached. Only one active investment method is allowed.",
+      unpaidTariff: "Error, no active tariff!",
+      botAddedSuccess: "Method added successfully!",
+      requestError: "Error executing the request!",
     },
     ru: {
       minimumInvestment: "Минимальная сумма инвестиции 100 USDT.",
@@ -196,12 +202,24 @@ function Investments({ updatebalance }) {
         "Вы указали значение стоп-лосс более 50% от общего счета.",
       stopLossLessThan20:
         "Вы указали значение стоп-лосс менее 20% от общего счета.",
+      apiKeysNotFound: "Ошибка, не добавлен апи-ключ!",
+      botsLimit:
+        "Лимит, методов инвестирования. Активный метод инвестирования может быть только один.",
+      unpaidTariff: "Ошибка, нет активного тарифа!",
+      botAddedSuccess: "Метод успешно добавлен!",
+      requestError: "Ошибка при выполнении запроса!",
     },
   };
   const userLanguage = localStorage.getItem("locale") || "ru";
-  const handleAddBot = (level_risk, userLanguage) => {
-    const localization = {
+
+  const handleAddBot = (level_risk) => {
+    const localizatioooooooooooon = {
       en: {
+        minimumInvestment: "Minimum investment amount is 100 USDT.",
+        stopLossGreaterThan50:
+          "Stop loss value is greater than 50% of the total balance.",
+        stopLossLessThan20:
+          "Stop loss value is less than 20% of the total balance.",
         apiKeysNotFound: "Error, API key not added!",
         botsLimit:
           "Error, maximum investment methods reached. Only one active investment method is allowed.",
@@ -210,6 +228,11 @@ function Investments({ updatebalance }) {
         requestError: "Error executing the request!",
       },
       ru: {
+        minimumInvestment: "Минимальная сумма инвестиции 100 USDT.",
+        stopLossGreaterThan50:
+          "Вы указали значение стоп-лосс более 50% от общего счета.",
+        stopLossLessThan20:
+          "Вы указали значение стоп-лосс менее 20% от общего счета.",
         apiKeysNotFound: "Ошибка, не добавлен апи-ключ!",
         botsLimit:
           "Лимит, методов инвестирования. Активный метод инвестирования может быть только один.",
@@ -218,7 +241,6 @@ function Investments({ updatebalance }) {
         requestError: "Ошибка при выполнении запроса!",
       },
     };
-
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -238,17 +260,29 @@ function Investments({ updatebalance }) {
         return response.json().then((data) => {
           if (!data.success) {
             if (data.error.api_keys_not_found) {
-              snackOptions(localization[userLanguage].apiKeysNotFound, "error");
+              snackOptions(
+                localizatioooooooooooon[userLanguage].apiKeysNotFound,
+                "error"
+              );
             } else if (data.error.bots_limit) {
-              snackOptions(localization[userLanguage].botsLimit, "error");
+              snackOptions(
+                localizatioooooooooooon[userLanguage].botsLimit,
+                "error"
+              );
             } else if (data.error.unpaid_tariff) {
-              snackOptions(localization[userLanguage].unpaidTariff, "error");
+              snackOptions(
+                localizatioooooooooooon[userLanguage].unpaidTariff,
+                "error"
+              );
             }
             throw new Error("Bad response from server");
           }
 
           if (data.success) {
-            snackOptions(localization[userLanguage].botAddedSuccess, "success");
+            snackOptions(
+              localizatioooooooooooon[userLanguage].botAddedSuccess,
+              "success"
+            );
             closeModals();
             getBots();
             updatebalance();
@@ -256,8 +290,7 @@ function Investments({ updatebalance }) {
         });
       })
       .catch((error) => {
-    
-        console.log("Error executing the request!");
+        console.log("Error ex!");
       });
   };
 
@@ -341,7 +374,7 @@ function Investments({ updatebalance }) {
 
   // deleteBot
 
-  const deleteBot = (userLanguage) => {
+  const deleteBot = () => {
     const localization = {
       en: {
         botDeletedSuccess: "Method deleted successfully!",
@@ -464,10 +497,10 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active1 == "1 месяц" ? <p>{t("upTo")} 10.43%</p> : ""}
-                  {active1 == "3 месяца" ? <p>{t("upTo")} 31.29%</p> : ""}
-                  {active1 == "6 месяцев" ? <p>{t("upTo")} 62.58%</p> : ""}
-                  {active1 == "1 год" ? <p>{t("upTo")} 125.16%</p> : ""}
+                  {active1 == t('one_month') ? <p>{t("upTo")} 10.43%</p> : ""}
+                  {active1 == t('three_month')  ? <p>{t("upTo")} 31.29%</p> : ""}
+                  {active1 == t('six_month') ? <p>{t("upTo")} 62.58%</p> : ""}
+                  {active1 == t('one_year') ? <p>{t("upTo")} 125.16%</p> : ""}
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -576,10 +609,10 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active2 == "1 месяц" ? <p>{t("upTo")} 21.65%</p> : ""}
-                  {active2 == "3 месяца" ? <p>{t("upTo")} 64.95%</p> : ""}
-                  {active2 == "6 месяцев" ? <p>{t("upTo")} 129.9%</p> : ""}
-                  {active2 == "1 год" ? <p>{t("upTo")} 259.8%</p> : ""}
+                  {active2 == t('one_month')  ? <p>{t("upTo")} 21.65%</p> : ""}
+                  {active2 == t('three_month') ? <p>{t("upTo")} 64.95%</p> : ""}
+                  {active2 == t('six_month') ? <p>{t("upTo")} 129.9%</p> : ""}
+                  {active2 == t('one_year') ? <p>{t("upTo")} 259.8%</p> : ""}
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -688,10 +721,10 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active3 == "1 месяц" ? <p>{t("upTo")} 30.14%</p> : ""}
-                  {active3 == "3 месяца" ? <p>{t("upTo")} 90.42%</p> : ""}
-                  {active3 == "6 месяцев" ? <p>{t("upTo")} 180.84%</p> : ""}
-                  {active3 == "1 год" ? <p>{t("upTo")} 361.68%</p> : ""}
+                  {active3 == t('one_month') ? <p>{t("upTo")} 30.14%</p> : ""}
+                  {active3 == t('three_month') ? <p>{t("upTo")} 90.42%</p> : ""}
+                  {active3 == t('six_month') ? <p>{t("upTo")} 180.84%</p> : ""}
+                  {active3 == t('one_year') ? <p>{t("upTo")} 361.68%</p> : ""}
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
