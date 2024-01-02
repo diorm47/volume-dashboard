@@ -281,7 +281,7 @@ function Profile() {
     };
 
     let bodyContent = new FormData();
-    bodyContent.append("code", otp.join(""));
+    bodyContent.append("code", otp);
 
     fetch("https://api.nvolume.com/private-api/v1/users/two-factor", {
       method: "POST",
@@ -632,7 +632,7 @@ function Profile() {
             <div className="modal_wrapper_save_btn">
               <button
                 onClick={handleSubmitCode}
-                disabled={otp.join("").length < 6}
+                disabled={otp.length < 6}
               >
                 {t("confirm")}
               </button>

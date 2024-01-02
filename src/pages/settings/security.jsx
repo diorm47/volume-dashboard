@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import { format, parseISO } from "date-fns";
 import { ru } from "date-fns/locale";
-import { mainApi } from "../../components/utils/main-api";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
+import { mainApi } from "../../components/utils/main-api";
 
 function Security() {
   const { t, i18n } = useTranslation();
@@ -17,25 +17,6 @@ function Security() {
     setPasswordModal(false);
     setEmailModal(false);
     setPasswordConfirmModal(false);
-  };
-  const [input1, setInput1] = useState("");
-  const [input2, setInput2] = useState("");
-  const [input3, setInput3] = useState("");
-  const [input4, setInput4] = useState("");
-  const [input5, setInput5] = useState("");
-  const [input6, setInput6] = useState("");
-  const input2Ref = useRef();
-  const input3Ref = useRef();
-  const input4Ref = useRef();
-  const input5Ref = useRef();
-  const input6Ref = useRef();
-
-  const handleInput = (e, setInput, nextInputRef) => {
-    const value = e.target.value;
-    setInput(value);
-    if (value.length === 1 && nextInputRef) {
-      nextInputRef.current.focus();
-    }
   };
 
   useEffect(() => {
@@ -85,14 +66,11 @@ function Security() {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    fetch(
-      "https://api.nvolume.com/private-api/v1/users/security/ips-history",
-      {
-        method: "GET",
+    fetch("https://api.nvolume.com/private-api/v1/users/security/ips-history", {
+      method: "GET",
 
-        headers: headersList,
-      }
-    )
+      headers: headersList,
+    })
       .then((response) => response.json())
       .then((data) => {
         setLoginHistory(data.data.ips);
@@ -199,7 +177,10 @@ function Security() {
                 />
               </svg>
 
-              <p onClick={() => setPasswordModal(true)} className="change_password_security_btn">
+              <p
+                onClick={() => setPasswordModal(true)}
+                className="change_password_security_btn"
+              >
                 {t("changePassword")}
                 <span>{t("password")}</span>
               </p>
@@ -291,7 +272,9 @@ function Security() {
               </button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button onClick={closeModals}>{t("passwordChange.cancel")}</button>
+              <button onClick={closeModals}>
+                {t("passwordChange.cancel")}
+              </button>
             </div>
           </div>
         </div>
@@ -346,12 +329,12 @@ function Security() {
         </div>
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
-            <p>{t("passwordChange.codeSentTo", { email })}</p>
+            <p>{t("codeSentTo", { email })}</p>
             <div className="recovery_inputs">
-              {/* Добавьте здесь поля ввода кода подтверждения */}
+            
             </div>
             <p className="recovery_time">
-              {t("passwordChange.resendCode", { timer: "5:00" })}
+              {t("resendCode", { timer: "5:00" })}
             </p>
           </div>
           <div className="modal_wrapper_btns">
@@ -359,7 +342,7 @@ function Security() {
               <button>{t("passwordChange.confirm")}</button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>{t("passwordChange.cancel")}</button>
+              <button onClick={closeModals}>{t("cancel")}</button>
             </div>
           </div>
         </div>

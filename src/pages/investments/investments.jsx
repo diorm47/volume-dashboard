@@ -224,7 +224,7 @@ function Investments({ updatebalance }) {
         botsLimit:
           "Error, maximum investment methods reached. Only one active investment method is allowed.",
         unpaidTariff: "Error, no active tariff!",
-        botAddedSuccess: "Method added successfully!",
+        botAddedSuccess: "You have successfully added an investment method.",
         requestError: "Error executing the request!",
       },
       ru: {
@@ -237,7 +237,7 @@ function Investments({ updatebalance }) {
         botsLimit:
           "Лимит, методов инвестирования. Активный метод инвестирования может быть только один.",
         unpaidTariff: "Ошибка, нет активного тарифа!",
-        botAddedSuccess: "Метод успешно добавлен!",
+        botAddedSuccess: "Вы успешно добавили метод инвестирования.",
         requestError: "Ошибка при выполнении запроса!",
       },
     };

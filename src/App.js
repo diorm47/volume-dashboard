@@ -72,30 +72,28 @@ function App() {
   }, [localStorage.getItem("token")]);
 
   useEffect(() => {
-    if (!localStorage.getItem("locale")) {
-      let headersList = {
-        Accept: "*/*",
-      };
+    let headersList = {
+      Accept: "*/*",
+    };
 
-      fetch("https://ipwho.is/", {
-        method: "GET",
+    fetch("https://ipwho.is/", {
+      method: "GET",
 
-        headers: headersList,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.country_code == "RU") {
-            localStorage.setItem("locale", "ru");
-          } else {
-            localStorage.setItem("locale", "en");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.country_code == "RU") {
           localStorage.setItem("locale", "ru");
-        });
-    }
-  }, [localStorage.getItem("locale")]);
+        } else {
+          localStorage.setItem("locale", "en");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        localStorage.setItem("locale", "ru");
+      });
+  }, []);
 
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
