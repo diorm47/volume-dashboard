@@ -241,12 +241,12 @@ export const en_locale = {
     noApiConnected: "No APIs connected.",
   },
   apiModal: {
-    title: "API",
+    title: "Add API key",
     name: "Name",
     exchange: "Exchange",
     publicKey: "Public Key",
     privateKey: "Private Key",
-    addButton: "Add",
+    addButton: "To plug",
     cancelButton: "Cancel",
   },
   apiEditModal: {
@@ -596,5 +596,15 @@ export const en_locale = {
   labels: {
     timeAdded: "Время добавления",
     exchange: "Биржа",
+  },
+  apiRecNot: {
+    text1: "You do not have API keys connected. In confirmation,",
+    text2: " you need to add a connection.",
+  },
+  apiADittionals: {
+    question: "How to connect?",
+    binanceQuest: "Don't have an account on Binance?",
+    create: "Create now",
+    bybitQuest: "Don't have a Bybit account?",
   },
 };

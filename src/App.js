@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { NavLink, Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/footer/footer";
 import NavBar from "./components/nav-bar/nav-bar";
 import Analysis from "./pages/analysis/analysis";
@@ -19,10 +19,14 @@ import Reset from "./pages/login-auth/reset";
 import Rates from "./pages/rates/rates";
 import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
+import { useTranslation } from "react-i18next";
 
 function App() {
+  const { t, i18n } = useTranslation();
+
   const location = useLocation();
   const [mode, setMode] = useState(localStorage.getItem("mode"));
+  const [rec, setRec] = useState(false);
 
   const updatebalance = () => {
     let headersList = {
@@ -40,12 +44,38 @@ function App() {
         console.log(error);
       });
   };
+  const refreshApiNotification = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
 
+    fetch("https://api.nvolume.com/private-api/v1/users/api-keys", {
+      method: "GET",
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data.data.api_keys[0] && localStorage.getItem("token")) {
+          setRec(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   useEffect(() => {
     if (localStorage.getItem("token")) {
       updatebalance();
+      refreshApiNotification();
     }
   }, [localStorage.getItem("token")]);
+
+  useEffect(() => {
+    if (!localStorage.getItem("locale")) {
+      localStorage.setItem("locale", "ru");
+    }
+  }, [localStorage.getItem("locale")]);
 
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
@@ -53,6 +83,18 @@ function App() {
       location.pathname !== "/reset" &&
       location.pathname !== "/auth" ? (
         <NavBar setMode={setMode} />
+      ) : (
+        ""
+      )}
+      {rec ? (
+        <div className="connect_api_recom">
+          <div className="connect_api_recom_wrapper">
+            <p>
+              {t("apiRecNot.text1")}{" "}
+              <NavLink to="/settings/api-keys">{t("apiRecNot.text2")}</NavLink>
+            </p>
+          </div>
+        </div>
       ) : (
         ""
       )}
@@ -66,7 +108,7 @@ function App() {
             path="/investments"
             element={<Investments updatebalance={updatebalance} />}
           />
-          <Route path="/settings/*" element={<Settings />} />
+          <Route path="/settings/*" element={<Settings setRec={setRec} />} />
           <Route
             path="/rates/*"
             element={<Rates updatebalance={updatebalance} />}

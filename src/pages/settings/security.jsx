@@ -199,7 +199,7 @@ function Security() {
                 />
               </svg>
 
-              <p onClick={() => setPasswordModal(true)}>
+              <p onClick={() => setPasswordModal(true)} className="change_password_security_btn">
                 {t("changePassword")}
                 <span>{t("password")}</span>
               </p>
@@ -291,7 +291,7 @@ function Security() {
               </button>
             </div>
             <div className="modal_wrapper_cancel">
-              <button>{t("passwordChange.cancel")}</button>
+              <button onClick={closeModals}>{t("passwordChange.cancel")}</button>
             </div>
           </div>
         </div>

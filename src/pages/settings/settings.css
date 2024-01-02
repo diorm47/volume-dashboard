@@ -8,7 +8,6 @@
   justify-content: center;
   gap: 36px;
   border-bottom: 1px solid var(--Stroke_White, #dbdbdb);
- 
 }
 .black_mode .settings_navigation {
   background: transparent;
@@ -95,8 +94,7 @@
   justify-content: space-between;
   margin-top: 10px;
 }
-.black_mode
-.user_data_item div svg * {
+.black_mode .user_data_item div svg * {
   fill: #fff;
 }
 .user_data_item div p:first-child {
@@ -117,7 +115,7 @@
   margin-bottom: 50px;
 }
 .user_data_item p:last-child {
-  color: #0077FFcc;
+  color: #0077ffcc;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 13px/Regular */
@@ -129,7 +127,7 @@
   line-height: 16px; /* 123.077% */
 }
 .user_data_item p:last-child span {
-  color: #0077FFcc;
+  color: #0077ffcc;
 }
 
 .user_login_history_titles {
@@ -147,7 +145,7 @@
 }
 .user_login_history_item p {
   color: var(--111112, #111112);
- width: 33%;
+  width: 33%;
   /* 17px/Regular */
   font-family: TTInterfaces400;
   font-size: 17px;
@@ -255,8 +253,6 @@
 }
 .black_mode .user_login_history thead td {
   border-bottom: 1px solid var(--Stroke_Black, #343436);
- 
-
 }
 .user_login_history table {
   width: 100%;
@@ -268,7 +264,7 @@
 }
 .api_actions p {
   font-family: TTInterfaces400;
- cursor: pointer;
+  cursor: pointer;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
@@ -318,6 +314,12 @@
   transition: all 0.5s ease;
   background: #00000068;
   visibility: visible;
+}
+.user_data_item p span {
+  text-transform: lowercase;
+}
+.change_password_security_btn span {
+  padding-left: 5px;
 }
 .modal_wrapper {
   position: fixed;
@@ -564,12 +566,12 @@
 .black_mode .add_key_history_mobile_list h4 {
   color: #fff;
 }
-.add_key_history_mobile_list  {
+.add_key_history_mobile_list {
   justify-content: space-between;
 }
 .add_key_history_mobile_list div:last-child {
   text-align: right;
-} 
+}
 .user_img_wrapper {
   position: relative;
 }
@@ -705,12 +707,42 @@
   background: #18181ad7 !important;
   color: #fff;
 }
-.black_mode .is-selected  {
+.black_mode .is-selected {
   background: #18181ad7 !important;
   color: #fff;
 }
 .user_login_history_item p {
   margin: 0;
+}
+.add_api_btns button,
+.add_api_btns .modal_wrapper_save_btn {
+  width: 100%;
+}
+.add_api_btns {
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.redirect_btn p {
+  color: var(--Color_Accent, #07f);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  font-family: TTInterfaces400;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+  margin-bottom: 24px;
+}
+.create_acc_r p {
+  color: var(--Color_Gray, #92979c);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+  margin-top: 15px;
+  /* 13px/Regular */
+  font-family: TTInterfaces400 ;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
 }
 @media only screen and (max-width: 450px) {
   .api_key_title h2 {

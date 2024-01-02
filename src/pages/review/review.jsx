@@ -129,6 +129,8 @@ function Review() {
   const [progressWidth, setProgressWidth] = useState("0%");
 
   useEffect(() => {
+    const totalDays = userData.tariff === "Пробный" ? 7 : 30;
+
     const interval = setInterval(() => {
       const now = new Date();
       const difference = targetDate - now;
@@ -136,8 +138,11 @@ function Review() {
         Math.floor(difference / (1000 * 60 * 60 * 24)),
         0
       );
+
+      const remainingPercentage = Math.max((daysLeft / totalDays) * 100, 0);
+
       setRemainingDays(daysLeft);
-      setProgressWidth(`${Math.min((daysLeft / 30) * 100, 100)}%`);
+      setProgressWidth(`${100 - remainingPercentage}%`);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -156,7 +161,19 @@ function Review() {
 
   // Получение соответствующего значения по selectedOption
   const selectedValue = reverseOptionsMap[selectedOption];
+  const tariffNames = {
+    Пробный: "Trial",
+    Стартовый: "Starter",
+    Улучшенный: "Advanced",
+    Продвинутый: "Professional",
+  };
+  const { i18n } = useTranslation();
 
+  const displayTariff = (language, tariff) => {
+    return language === "en" && tariffNames[tariff]
+      ? tariffNames[tariff]
+      : tariff;
+  };
   return (
     <>
       <div className="pages_wrapper review_page">
@@ -441,11 +458,11 @@ function Review() {
             userData.demo_used ? (
               <div className="secondary_block_wrapper">
                 <div className="main_block_wrapper_title">
-                  <h2>{t("tariff_title")}</h2>
+                  <h2> {t("tariffPlanTitle")}</h2>
                 </div>
                 <div className="tarif_plan">
                   <div className="tarif_plan_top">
-                    <p>{userData.tariff}</p>
+                    <p>{displayTariff(i18n.language, userData.tariff)}</p>
                     <p>$ 0.00</p>
                   </div>
                   <div className="tarif_plan_time">

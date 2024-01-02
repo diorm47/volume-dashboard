@@ -131,6 +131,8 @@ function RatesPage({ updatebalance }) {
   const [progressWidth, setProgressWidth] = useState("0%");
 
   useEffect(() => {
+    const totalDays = userData.tariff === "Пробный" ? 7 : 30;
+
     const interval = setInterval(() => {
       const now = new Date();
       const difference = targetDate - now;
@@ -138,8 +140,11 @@ function RatesPage({ updatebalance }) {
         Math.floor(difference / (1000 * 60 * 60 * 24)),
         0
       );
+
+      const remainingPercentage = Math.max((daysLeft / totalDays) * 100, 0);
+
       setRemainingDays(daysLeft);
-      setProgressWidth(`${Math.min((daysLeft / 30) * 100, 100)}%`);
+      setProgressWidth(`${100 - remainingPercentage}%`);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -174,8 +179,18 @@ function RatesPage({ updatebalance }) {
         snackOptions("Ошибка!", "error");
       });
   };
+  const tariffNames = {
+    Пробный: "Trial",
+    Стартовый: "Starter",
+    Улучшенный: "Advanced",
+    Продвинутый: "Professional",
+  };
 
-
+  const displayTariff = (language, tariff) => {
+    return language === "en" && tariffNames[tariff]
+      ? tariffNames[tariff]
+      : tariff;
+  };
   return (
     <>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
@@ -191,7 +206,7 @@ function RatesPage({ updatebalance }) {
           </div>
           <div className="tarif_plan">
             <div className="tarif_plan_top">
-              <p>{userData.tariff}</p>
+              <p>{displayTariff(i18n.language, userData.tariff)}</p>
               <p>$ 0.00</p>
             </div>
 

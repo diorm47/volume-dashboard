@@ -241,12 +241,12 @@ export const ru_locale = {
     noApiConnected: "Нет подключенных API.",
   },
   apiModal: {
-    title: "API",
+    title: "Добавить ключ API",
     name: "Название",
     exchange: "Биржа",
     publicKey: "Публичный ключ",
     privateKey: "Приватный ключ",
-    addButton: "Добавить",
+    addButton: "Подключить",
     cancelButton: "Отмена",
   },
   apiEditModal: {
@@ -632,5 +632,15 @@ export const ru_locale = {
   labels: {
     timeAdded: "Time Added",
     exchange: "Exchange",
+  },
+  apiRecNot: {
+    text1: "У вас не подключены API-ключи. Чтобы продолжить,",
+    text2: " необходимо добавить подключение.",
+  },
+  apiADittionals: {
+    question: "Как подключить?",
+    binanceQuest: "Нет аккаунта на Binance?",
+    create: "Создать сейчас",
+    bybitQuest: "Нет аккаунта на Bybit?",
   },
 };

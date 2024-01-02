@@ -6,8 +6,9 @@ import empty_block from "../../assets/icons/empty-block.png";
 import "react-dropdown/style.css";
 import Snackbar from "../../components/snackbar/snackbar";
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
 
-function ApiKeys() {
+function ApiKeys({ setRec }) {
   const { t, i18n } = useTranslation();
   React.useEffect(() => {
     document.title = `${t("apiKeyPage.title")} | &Volume`;
@@ -83,6 +84,9 @@ function ApiKeys() {
       .then((response) => response.json())
       .then((data) => {
         setapiList(data.data.api_keys[0]);
+        if (!data.data.api_keys[0] && localStorage.getItem("token")) {
+          setRec(true);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -103,13 +107,15 @@ function ApiKeys() {
   const addApi = () => {
     const localization = {
       en: {
-        apiAddedSuccess: "API key successfully added.",
+        apiAddedSuccess:
+          "The API key was successfully connected. Connection may take up to 5 minutes.",
         apiAddError:
           "Error adding API key. Check the entered data or create a new API key.",
         requestError: "Error!",
       },
       ru: {
-        apiAddedSuccess: "API ключ успешно добавлен.",
+        apiAddedSuccess:
+          "API ключ успешно подключен. Подключение может занять до 5 минут.",
         apiAddError:
           "Ошибка добавления API ключа. Проверьте правильность введенных данных или создайте новый API ключ.",
         requestError: "Ошибка!",
@@ -419,7 +425,12 @@ function ApiKeys() {
               onChange={(e) => setSecretKey(e.target.value)}
             />
           </div>
-          <div className="modal_wrapper_btns">
+          <div className="modal_wrapper_btns add_api_btns">
+            <div className="redirect_btn">
+              <NavLink to="">
+                <p>{t("apiADittionals.question")}</p>
+              </NavLink>
+            </div>
             <div className="modal_wrapper_save_btn">
               <button
                 onClick={addApi}
@@ -428,10 +439,22 @@ function ApiKeys() {
                 {t("apiModal.addButton")}
               </button>
             </div>
-            <div className="modal_wrapper_cancel">
-              <button onClick={closeModals}>
-                {t("apiModal.cancelButton")}
-              </button>
+            <div className="create_acc_r">
+              {selectedOption == "binance" ? (
+                <p>
+                  {t("apiADittionals.binanceQuest")}{" "}
+                  <a href="https://www.binance.com/en" target="_blank">
+                    {t("apiADittionals.create")}
+                  </a>
+                </p>
+              ) : (
+                <p>
+                  {t("apiADittionals.bybitQuest")}{" "}
+                  <a href="https://www.bybit.com/en/" target="_blank">
+                    {t("apiADittionals.create")}
+                  </a>
+                </p>
+              )}
             </div>
           </div>
         </div>

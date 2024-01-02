@@ -6,7 +6,7 @@ import ApiKeys from "./api-keys";
 import Security from "./security";
 import { useTranslation } from "react-i18next";
 
-function Settings() {
+function Settings({setRec}) {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ function Settings() {
             <Route path="/" element={<Profile />} />
             <Route path="profile" element={<Profile />} />
             <Route path="security" element={<Security />} />
-            <Route path="api-keys" element={<ApiKeys />} />
+            <Route path="api-keys" element={<ApiKeys setRec={setRec} />} />
           </Routes>
         </div>
       </div>
