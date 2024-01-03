@@ -598,6 +598,78 @@
 .mob_api_list {
   display: none;
 }
+.drop_api_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.drop_api_item_name {
+  display: flex;
+  align-items: center;
+}
+.drop_api_item_name p {
+  margin: 0;
+  padding-left: 8px;
+
+  color: #000;
+
+  font-family: TTInterfaces400;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+.drop_api_item span {
+  color: var(--Color_Gray, #92979c);
+  font-family: TTInterfaces400;
+
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+.api_modal_dropdown {
+  margin-bottom: 30px;
+}
+.drop_api_item_name svg {
+  width: 10px;
+}
+.api_modal_dropdown input {
+  height: auto;
+}
+.css-13cymwt-control {
+  height: 40px;
+  border-radius: 5px !important;
+  border: 1px solid #eaeaea;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+.css-t3ipsp-control {
+  border: 1px solid #eaeaea !important;
+  box-shadow: none !important;
+}
+.css-1u9des2-indicatorSeparator {
+  display: none;
+}
+.css-1fdsijx-ValueContainer {
+  padding-right: 0 !important;
+}
+.css-tr4s17-option {
+  background: #1111121a;
+}
+.css-t3ipsp-control:hover {
+  border-color: #eaeaea !important;
+}
+
+.black_mode .css-13cymwt-control, .black_mode .css-t3ipsp-control {
+  border: 1px solid var(--Stroke_Black, #343436) !important;
+  background: transparent !important;
+  color: #fff !important;
+}
+.black_mode .drop_api_item_name p {
+  color: #fff;
+}
 @media only screen and (max-width: 750px) {
   .api_key_title {
     flex-direction: column;
@@ -738,7 +810,7 @@
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   margin-top: 15px;
   /* 13px/Regular */
-  font-family: TTInterfaces400 ;
+  font-family: TTInterfaces400;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;

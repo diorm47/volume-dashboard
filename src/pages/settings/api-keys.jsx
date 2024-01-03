@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import Dropdown from "react-dropdown";
+import Select from "react-select";
 import empty_block from "../../assets/icons/empty-block.png";
 
 import "react-dropdown/style.css";
@@ -45,19 +46,55 @@ function ApiKeys({ setRec }) {
 
   const [selectedOption, setSelectedOption] = useState("binance");
 
-  const optionsMap = {
-    Binance: "binance",
-    ByBit: "bybit",
-  };
-  const options = Object.keys(optionsMap);
+  const customOptions = [
+    {
+      value: "binance",
+      label: (
+        <div className="drop_api_item">
+          <div className="drop_api_item_name">
+            <svg
+              width="5"
+              height="6"
+              viewBox="0 0 5 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect y="0.5" width="5" height="5" rx="2.5" fill="#31BD65" />
+            </svg>
 
-  const handleSelect = (option) => {
-    const value = optionsMap[option.value];
-    setSelectedOption(value);
+            <p>Binance</p>
+          </div>{" "}
+          <span>Поддерживается</span>
+        </div>
+      ),
+    },
+    {
+      value: "bybit",
+      label: (
+        <div className="drop_api_item">
+          <div className="drop_api_item_name">
+            <svg
+              width="5"
+              height="6"
+              viewBox="0 0 5 6"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect y="0.5" width="5" height="5" rx="2.5" fill="#31BD65" />
+            </svg>
+            <p>ByBit</p>
+          </div>{" "}
+          <span>Поддерживается</span>
+        </div>
+      ),
+    },
+  ];
+
+  const handleSelect = (selectedOption) => {
+    setSelectedOption(selectedOption.value);
   };
 
   // snackbar
-
   const [visibleSnack, setVisibleSnack] = useState(false);
   const [snackText, setSnackText] = useState("");
   const [snackStatus, setSnackStatus] = useState("");
@@ -246,6 +283,16 @@ function ApiKeys({ setRec }) {
     setapiActiveEditModal(true);
   };
 
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? "#1111121a" : provided.backgroundColor,
+      color: state.isSelected ? "white" : provided.color,
+      // Additional styles for active (selected) state
+    }),
+    // You can also customize other parts of the dropdown here
+  };
+
   return (
     <>
       <div className="page_title analyse_title api_key_title">
@@ -375,43 +422,16 @@ function ApiKeys({ setRec }) {
           </div>
           <div className="modal_wrapper_content_item">
             <p>{t("apiModal.exchange")}</p>
-            <Dropdown
-              options={options}
-              placeholder={options[0]}
-              onChange={handleSelect}
-              value={options.find(
-                (option) => optionsMap[option] === selectedOption
-              )}
-              arrowClosed={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                >
-                  <path
-                    d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
-                    fill="#111112"
-                  />
-                </svg>
-              }
-              arrowOpen={
-                <svg
-                  className="open_arrow"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                >
-                  <path
-                    d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
-                    fill="#111112"
-                  />
-                </svg>
-              }
-            />
+            <div className="api_modal_dropdown">
+              <Select
+                options={customOptions}
+                styles={customStyles}
+                onChange={handleSelect}
+                value={customOptions.find(
+                  (option) => option.value === selectedOption
+                )}
+              />{" "}
+            </div>
           </div>
           <div className="modal_wrapper_content_item">
             <p>{t("apiModal.publicKey")}</p>
