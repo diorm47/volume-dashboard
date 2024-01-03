@@ -74,8 +74,7 @@ function Login() {
       });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = () => {
     if (!email || !password) {
       setPasswordError(t("em_pass"));
     } else {
@@ -262,12 +261,11 @@ function Login() {
 
       {section === 2 ? (
         <div className="login_page">
-          <FillCode email={email} />
+          <FillCode email={email} reset={handleSubmit} />
         </div>
       ) : (
         ""
       )}
-  
 
       <Snackbar
         text={t("login.log_error")}

@@ -631,7 +631,7 @@ function Profile() {
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
               <button onClick={handleSubmitCode} disabled={otp.length < 6}>
-                {t("confirm")}
+                {t("emailChange.confirm")}
               </button>
             </div>
             <div className="modal_wrapper_cancel">

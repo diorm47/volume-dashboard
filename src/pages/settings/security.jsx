@@ -70,7 +70,7 @@ function Security() {
   }, []);
 
   const [loginHistory, setLoginHistory] = useState();
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("");
 
   const getLoginHistory = () => {
     let headersList = {
@@ -94,7 +94,6 @@ function Security() {
 
   const refresh = () => {
     mainApi
-
       .reEnter()
       .then((res) => {
         const data = res.data.user;
@@ -113,94 +112,146 @@ function Security() {
     }
   }, [localStorage.getItem("token")]);
 
+  // timer
+  const [timer, setTimer] = useState(300);
+  const startTimer = () => {
+    setTimer(300);
+    const interval = setInterval(() => {
+      setTimer((prevTime) => {
+        if (prevTime > 0) return prevTime - 1;
+        clearInterval(interval);
+        return 0;
+      });
+    }, 1000);
+  };
+  const formatTimer = () => {
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+    return `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  };
+
   // reset
   const [token, setToken] = useState("");
+  const [otp, setOtp] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, confirmNetNewPassword] = useState("");
 
-  // const handleSubmit = () => {
-  //   let headersList = {
-  //     Accept: "*/*",
-  //   };
+  const handleChangeOtp = (value) => {
+    if (value.length <= 6) {
+      setOtp(value);
+    }
+  };
 
-  //   let bodyContent = new FormData();
-  //   bodyContent.append("email", email);
+  const handleSubmit = () => {
+    let headersList = {
+      Accept: "*/*",
+    };
 
-  //   fetch(
-  //     "https://api.nvolume.com/public-api/v1/users/send-password-reset-token",
-  //     {
-  //       method: "POST",
-  //       body: bodyContent,
-  //       headers: headersList,
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-  // const setNewPassword = () => {
-  //   let headersList = {
-  //     Accept: "*/*",
-  //   };
+    let bodyContent = new FormData();
+    bodyContent.append("email", email);
 
-  //   let bodyContent = new FormData();
-  //   bodyContent.append("email", email);
-  //   bodyContent.append("token", token);
-  //   bodyContent.append("password", password);
-  //   bodyContent.append("password_confirmation", password);
+    fetch(
+      "https://api.nvolume.com/public-api/v1/users/send-password-reset-token",
+      {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data.success);
+        } else {
+          snackOptions("Такой email не зарегистрирован!", "error");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleSubmitCode = () => {
+    let headersList = {
+      Accept: "*/*",
+    };
 
-  //   fetch("https://api.nvolume.com/public-api/v1/users/set-new-password", {
-  //     method: "POST",
-  //     body: bodyContent,
-  //     headers: headersList,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         snackOptions("Ваш пароль успешно изменен. ", "error");
-  //       } else {
-  //         snackOptions(
-  //           "Неверный старый пароль. Проверьте правильность введенных данных.",
-  //           "error"
-  //         );
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-  // const handleSubmitCode = () => {
-  //   let headersList = {
-  //     Accept: "*/*",
-  //   };
+    let bodyContent = new FormData();
+    bodyContent.append("email", email);
+    bodyContent.append("token", otp);
 
-  //   let bodyContent = new FormData();
-  //   bodyContent.append("email", email);
-  //   bodyContent.append("token", otp);
+    fetch(
+      "https://api.nvolume.com/public-api/v1/users/validate-password-reset-token",
+      {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setToken(data.data.token);
+          handleSetNewPassword(data.data.token);
+        } else {
+          snackOptions("Неправильный код подтверждения!", "error");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleSetNewPassword = (tokenData) => {
+    let headersList = {
+      Accept: "*/*",
+    };
 
-  //   fetch(
-  //     "https://api.nvolume.com/public-api/v1/users/validate-password-reset-token",
-  //     {
-  //       method: "POST",
-  //       body: bodyContent,
-  //       headers: headersList,
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         setToken(data.data.token);
-  //         setNewPassword();
-  //       } else {
-  //         snackOptions("Неправильный код подтверждения!", "error");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+    let bodyContent = new FormData();
+    bodyContent.append("email", email);
+    bodyContent.append("token", tokenData);
+    bodyContent.append("password", newPassword);
+    bodyContent.append("password_confirmation", confirmNewPassword);
+
+    fetch("https://api.nvolume.com/public-api/v1/users/set-new-password", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data.success);
+          snackOptions(t("passwordChangeSuccess"), "success");
+        } else {
+          snackOptions(t("passwordChangeError"), "error");
+        }
+        setPasswordConfirmModal(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getCodeModal = () => {
+    if (newPassword !== confirmNewPassword) {
+      snackOptions("Пароль не совпадает", "error");
+    } else if (newPassword.length < 8 || confirmNewPassword.length < 8) {
+      snackOptions(
+        "Количество символов в поле должно быть не меньше 8",
+        "error"
+      );
+    } else {
+      setPasswordModal(false);
+      setPasswordConfirmModal(true);
+      handleSubmit();
+      startTimer();
+    }
+  };
+
+  const sumbitModalHandle = () => {
+    handleSubmitCode();
+  };
 
   return (
     <>
@@ -356,20 +407,23 @@ function Security() {
           </div>
           <div className="modal_wrapper_content_item">
             <p>{t("passwordChange.newPassword")}</p>
-            <input type="password" />
+            <input
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_content_item">
             <p>{t("passwordChange.confirmNewPassword")}</p>
-            <input type="password" />
+            <input
+              type="password"
+              value={confirmNewPassword}
+              onChange={(e) => confirmNetNewPassword(e.target.value)}
+            />
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button
-                onClick={() => {
-                  setPasswordModal(false);
-                  setPasswordConfirmModal(true);
-                }}
-              >
+              <button onClick={getCodeModal}>
                 {t("passwordChange.confirm")}
               </button>
             </div>
@@ -383,6 +437,55 @@ function Security() {
       </div>
 
       <div
+        className={
+          passwordConfirmModal
+            ? "modal_wrapper visible_modal_wrapper"
+            : "modal_wrapper "
+        }
+      >
+        <div className="modal_wrapper_title">
+          <p>{t("passwordChange.title")}</p>
+          <ExitModal onClick={closeModals} />
+        </div>
+        <div className="modal_wrapper_content">
+          <div className="modal_wrapper_content_item">
+            <p>
+              {t("codeSentTo")} {email}
+            </p>
+            <div className="recovery_inputs">
+              <input
+                type="text"
+                value={otp}
+                onChange={(e) => handleChangeOtp(e.target.value)}
+              />
+            </div>
+            <p className="recovery_time">
+              {formatTimer() == "00:00" ? (
+                <p onClick={getCodeModal} style={{ cursor: "pointer" }}>
+                  {t("resendCodeIn")}
+                </p>
+              ) : (
+                <p>
+                  {t("resendCodeIn")} ({formatTimer()})
+                </p>
+              )}
+            </p>
+          </div>
+          <div className="modal_wrapper_btns">
+            <div className="modal_wrapper_save_btn">
+              <button onClick={sumbitModalHandle} disabled={otp.length < 6}>
+                {t("passwordChange.confirm")}
+              </button>
+            </div>
+            <div className="modal_wrapper_cancel">
+              <button onClick={closeModals}>{t("cancel")}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
+
+      {/* <div
         className={
           emailModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
         }
@@ -416,38 +519,7 @@ function Security() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div
-        className={
-          passwordConfirmModal
-            ? "modal_wrapper visible_modal_wrapper"
-            : "modal_wrapper "
-        }
-      >
-        <div className="modal_wrapper_title">
-          <p>{t("passwordChange.title")}</p>
-          <ExitModal onClick={closeModals} />
-        </div>
-        <div className="modal_wrapper_content">
-          <div className="modal_wrapper_content_item">
-            <p>{t("codeSentTo", { email })}</p>
-            <div className="recovery_inputs"></div>
-            <p className="recovery_time">
-              {t("resendCode", { timer: "5:00" })}
-            </p>
-          </div>
-          <div className="modal_wrapper_btns">
-            <div className="modal_wrapper_save_btn">
-              <button>{t("passwordChange.confirm")}</button>
-            </div>
-            <div className="modal_wrapper_cancel">
-              <button onClick={closeModals}>{t("cancel")}</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
+      </div> */}
     </>
   );
 }

@@ -347,7 +347,7 @@ function Auth() {
         ) : (
           ""
         )}
-        {section === 5 ? <FillCode email={email} /> : ""}
+        {section === 5 ? <FillCode reset={finishAuth} email={email} /> : ""}
         {section !== 5 ? (
           <>
             <div className="toggle_auth">

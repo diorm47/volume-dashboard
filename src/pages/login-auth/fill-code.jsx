@@ -1,13 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Snackbar from "../../components/snackbar/snackbar";
+import { useTranslation } from "react-i18next";
 
-function FillCode({ email }) {
+function FillCode({ email, reset }) {
   const [otp, setOtp] = useState("");
-  const [timer, setTimer] = useState(300);
 
   const navigate = useNavigate();
   const [errorResponce, setErrorResponce] = useState(false);
+
+  // timer
+  const [timer, setTimer] = useState(300);
+  const startTimer = () => {
+    setTimer(300);
+    const interval = setInterval(() => {
+      setTimer((prevTime) => {
+        if (prevTime > 0) return prevTime - 1;
+        clearInterval(interval);
+        return 0;
+      });
+    }, 1000);
+  };
+  const formatTimer = () => {
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+    return `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  };
+  useEffect(() => {
+    startTimer();
+  }, []);
   useEffect(() => {
     if (errorResponce) {
       setTimeout(() => {
@@ -16,26 +39,10 @@ function FillCode({ email }) {
     }
   }, [errorResponce]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   const handleChange = (value) => {
     if (value.length <= 6) {
       setOtp(value);
     }
-  };
-
-  const formatTimer = () => {
-    const minutes = Math.floor(timer / 60);
-    const seconds = timer % 60;
-    return `${minutes.toString().padStart(2, "0")}:${seconds
-      .toString()
-      .padStart(2, "0")}`;
   };
 
   const handleSubmitCode = async () => {
@@ -67,12 +74,18 @@ function FillCode({ email }) {
       });
   };
 
+  const restart = () => {
+    startTimer();
+    reset()
+  };
+
+  const { t } = useTranslation();
   return (
     <div className="auth_section fill_code">
       <div className="login_title">
-        <h2>Введите код</h2>
+        <h2>{t("enterCode")}</h2>
         <p>
-          Мы отправили код на <span className="sending_email">{email}</span>
+          {t("codeSentTo")} <span className="sending_email">{email}</span>
         </p>
       </div>
       <div
@@ -92,7 +105,15 @@ function FillCode({ email }) {
         />
       </div>
       <div className="getcode_timer">
-        <p>Отправить повторно ({formatTimer()})</p>
+        {formatTimer() == "00:00" ? (
+          <p onClick={restart} style={{ cursor: "pointer" }}>
+            {t("resendCodeIn")}
+          </p>
+        ) : (
+          <p>
+            {t("resendCodeIn")} ({formatTimer()})
+          </p>
+        )}
       </div>
       <button
         id="submitBtn"
@@ -100,14 +121,10 @@ function FillCode({ email }) {
         onClick={handleSubmitCode}
         disabled={otp.length < 6}
       >
-        Проверить
+        {t("check")}
       </button>
 
-      <Snackbar
-        text="Ошибка проверочного кода. Проверьте правильность введенных данных."
-        status="error"
-        visible={errorResponce}
-      />
+      <Snackbar text={t("error_code")} status="error" visible={errorResponce} />
     </div>
   );
 }

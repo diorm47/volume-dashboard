@@ -3,8 +3,10 @@ import "./data-picker-mob.css";
 import DatePicker from "react-mobile-datepicker";
 import subDays from "date-fns/subDays";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
+import { useTranslation } from "react-i18next";
 
 function DataPickerMob({ setSelectedTime }) {
+  const { t } = useTranslation();
   function formatDate(dateString) {
     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
     return new Date(dateString).toLocaleDateString("en-US", options);
@@ -23,20 +25,11 @@ function DataPickerMob({ setSelectedTime }) {
     }
   };
 
-  const monthMap = {
-    1: "Январь",
-    2: "Февраль",
-    3: "Март",
-    4: "Апрель",
-    5: "Май",
-    6: "Июнь",
-    7: "Июль",
-    8: "Август",
-    9: "Сентябрь",
-    10: "Октябрь",
-    11: "Ноябрь",
-    12: "Декабрь",
+  const getMonthName = (monthNumber) => {
+    const monthKey = `months.${monthNumber}`;
+    return t(monthKey);
   };
+
   const dateConfig = {
     year: {
       format: "YYYY",
@@ -44,7 +37,7 @@ function DataPickerMob({ setSelectedTime }) {
       step: 1,
     },
     month: {
-      format: (value) => monthMap[value.getMonth() + 1],
+      format: (value) => getMonthName(value.getMonth() + 1),
       caption: "Mon",
       step: 1,
     },
@@ -87,16 +80,16 @@ function DataPickerMob({ setSelectedTime }) {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Выберите дату</p>
+          <p>{t("select_date")}</p>
           <ExitModal onClick={() => setVisible(false)} />
         </div>
         <div className="modal_wrapper_content ">
           <div className="date_picker_mob">
             <div className="date_picker_mob_buttons">
-              <button onClick={setSevenDays}>7 дней</button>
-              <button onClick={setMonth}>30 дней</button>
-              <button onClick={setThreeMonth}>90 дней</button>
-              <button onClick={setSixMonth}>Последний 180 дней</button>
+              <button onClick={setSevenDays}>{t("trial_period")}</button>
+              <button onClick={setMonth}> {t("paid_period")}</button>
+              <button onClick={setThreeMonth}> {t("day_90")}</button>
+              <button onClick={setSixMonth}> {t("last_180")}</button>
             </div>
             <div className="date_picker_mob_inputs">
               <button
@@ -139,10 +132,10 @@ function DataPickerMob({ setSelectedTime }) {
 
           <div className="modal_wrapper_btns date_picker_mob_btns">
             <div className="modal_wrapper_cancel">
-              <button onClick={() => setVisible(false)}>Отмена</button>
+              <button onClick={() => setVisible(false)}>{t("cancel")}</button>
             </div>
             <div className="modal_wrapper_save_btn">
-              <button onClick={() => setVisible(false)}>Сохранить</button>
+              <button onClick={() => setVisible(false)}>{t("save")}</button>
             </div>
           </div>
         </div>
