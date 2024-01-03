@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ReactComponent as Down } from "../../assets/icons/bottom-arrow.svg";
 import { ReactComponent as ExitIcon } from "../../assets/icons/exit-nav-mob.svg";
 import { ReactComponent as ChatIcon } from "../../assets/icons/nav-chat-icon.svg";
@@ -17,6 +17,7 @@ import { mainApi } from "../utils/main-api";
 import { changeTheme } from "../utils/utils";
 
 function NavBar({ setMode }) {
+  const navigate = useNavigate();
   const [menuVisible, setMenuVisible] = useState(false);
   const [userData, setUserData] = useState({});
 
@@ -51,7 +52,10 @@ function NavBar({ setMode }) {
           setUserData(res.data.user);
         })
         .catch((error) => {
-          console.log("error", error);
+          console.log(error);
+          localStorage.removeItem("token");
+
+          navigate("/login");
         });
     }
   }, [localStorage.getItem("token")]);

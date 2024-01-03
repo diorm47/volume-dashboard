@@ -399,7 +399,7 @@ function Profile() {
             <div>
               <p>
                 {`${formData.lastName || ""} ${formData.firstName || ""} ${
-                  formData.middleName || ""
+                  formData.middleName == "null" ? "" : formData.middleName
                 }`}{" "}
               </p>
               <p onClick={() => setNameModal(true)}>
@@ -630,10 +630,7 @@ function Profile() {
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button
-                onClick={handleSubmitCode}
-                disabled={otp.length < 6}
-              >
+              <button onClick={handleSubmitCode} disabled={otp.length < 6}>
                 {t("confirm")}
               </button>
             </div>

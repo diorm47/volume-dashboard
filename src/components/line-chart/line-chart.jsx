@@ -85,7 +85,7 @@ const LineChart = ({ selectedTime }) => {
           },
         },
       },
-      
+
       tooltip: {
         x: {
           format: "dd/MM/yy",
@@ -175,10 +175,6 @@ const LineChart = ({ selectedTime }) => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getPnl();
-      // updateChartData({
-      //   "02-01-2024": -0.08000000000000007,
-      // });
-      // setPnl(true);
     }
   }, [localStorage.getItem("token")]);
   const sumData = (data) => {
@@ -234,7 +230,10 @@ const LineChart = ({ selectedTime }) => {
         <>
           <div className="pnl_value">
             <p>
-              {Number(pnlData).toFixed(2) > 0 ? `+ ${Number(pnlData).toFixed(2)}` : Number(pnlData).toFixed(2)} <span>USDT</span>
+              {Number(pnlData).toFixed(2) > 0
+                ? `+ ${Number(pnlData).toFixed(2)}`
+                : Number(pnlData).toFixed(2)}{" "}
+              <span>USDT</span>
             </p>
           </div>
           <div className="review_chart">

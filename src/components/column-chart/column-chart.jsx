@@ -72,24 +72,6 @@ const ColumnChart = ({ selectedTime }) => {
           },
         },
       },
-      // yaxis: {
-      //   labels: {
-      //     formatter: function (y) {
-      //       // Округление до ближайшего чётного числа
-      //       let rounded = Math.round(y);
-      //       return rounded % 2 === 0 ? rounded : rounded + (rounded > 0 ? 1 : -1);
-      //     },
-      //   },
-      //   min: (min) => {
-      //     let buffer = Math.abs(min * 0.1);
-      //     return min - buffer;
-      //   },
-      //   max: (max) => {
-      //     let buffer = Math.abs(max * 0.1);
-      //     return max + buffer;
-      //   },
-      // },
-      
 
       xaxis: {
         type: "datetime",
@@ -187,9 +169,6 @@ const ColumnChart = ({ selectedTime }) => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getPnl();
-
-      // updateChartData({ "03-01-2024": -0.8, "02-01-2024": -3 , "01-01-2024": 3});
-      // setPnl(true);
     }
   }, [localStorage.getItem("token")]);
 
