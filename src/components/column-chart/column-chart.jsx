@@ -68,18 +68,18 @@ const ColumnChart = ({ selectedTime }) => {
       yaxis: {
         labels: {
           formatter: function (y) {
-            return y.toFixed(0);
+            return y.toFixed(2);
           },
         },
         min: (min) => {
-          // Устанавливаем минимальный "буфер" для оси Y
-          let buffer = Math.max(1, Math.abs(min * 0.1));
-          return Math.min(0, min - buffer); // Гарантируем, что минимальное значение не больше 0
+          // Устанавливаем фиксированный "буфер" для минимального значения
+          let buffer = 1;
+          return min - buffer; // Уменьшаем минимальное значение на величину буфера
         },
         max: (max) => {
-          // Устанавливаем максимальный "буфер" для оси Y
-          let buffer = Math.max(1, max * 0.1);
-          return Math.max(1, max + buffer); // Гарантируем, что максимальное значение не меньше 1
+          // Устанавливаем фиксированный "буфер" для максимального значения
+          let buffer = 1;
+          return max + buffer; // Увеличиваем максимальное значение на величину буфера
         },
       },
       
@@ -98,8 +98,8 @@ const ColumnChart = ({ selectedTime }) => {
       tooltip: {
         y: {
           formatter: function (value) {
-            setPnlData(`${value}.00`);
-            return `${Number(value)} USDT`;
+            setPnlData(value);
+            return `${Number(value).toFixed(2)} USDT`;
           },
         },
       },
@@ -182,7 +182,7 @@ const ColumnChart = ({ selectedTime }) => {
     if (localStorage.getItem("token")) {
       getPnl();
 
-      // updateChartData({ "30-12-2023": 6 });
+      // updateChartData({"03-01-2024":  -0.3434234123});
       // setPnl(true);
     }
   }, [localStorage.getItem("token")]);

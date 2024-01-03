@@ -77,11 +77,15 @@ const LineChart = ({ selectedTime }) => {
       },
       yaxis: {
         labels: {
+          formatter: function (value) {
+            return `${value.toFixed(2)}`; // Отображаем значение с двумя цифрами после запятой
+          },
           style: {
             colors: "#92979C",
           },
         },
       },
+      
       tooltip: {
         x: {
           format: "dd/MM/yy",
