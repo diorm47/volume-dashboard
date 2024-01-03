@@ -364,8 +364,7 @@ function Analysis() {
                       <p>
                         {t("profit_or_loss")}{" "}
                         {item.trading_result < 0 ? (
-                          <span>
-                            {" "}
+                          <span style={{ color: "#F1507B" }}>
                             {Number(item.trading_result || 0).toFixed(2)} USDT
                           </span>
                         ) : (
@@ -456,8 +455,9 @@ function Analysis() {
                         <p>
                           {t("profit_or_loss")}{" "}
                           {item.trading_result < 0 ? (
-                            // <span style={{ color: "red" }}>
-                            <span>{item.trading_result} USDT</span>
+                            <span style={{ color: "#F1507B" }}>
+                              {item.trading_result} USDT
+                            </span>
                           ) : (
                             <span>{item.trading_result} USDT</span>
                           )}

@@ -72,12 +72,19 @@ const ColumnChart = ({ selectedTime }) => {
           },
         },
         min: (min) => {
-          return Math.floor(min * 0.9);
+          // Устанавливаем минимальный "буфер" для оси Y
+          let buffer = Math.max(1, Math.abs(min * 0.1));
+          return Math.min(0, min - buffer); // Гарантируем, что минимальное значение не больше 0
         },
         max: (max) => {
-          return Math.ceil(max * 1.1);
+          // Устанавливаем максимальный "буфер" для оси Y
+          let buffer = Math.max(1, max * 0.1);
+          return Math.max(1, max + buffer); // Гарантируем, что максимальное значение не меньше 1
         },
       },
+      
+      
+      
       xaxis: {
         type: "datetime",
         categories: getDatesInRange(),
@@ -92,7 +99,7 @@ const ColumnChart = ({ selectedTime }) => {
         y: {
           formatter: function (value) {
             setPnlData(`${value}.00`);
-            return `${Number(value).toFixed(2)} USDT`;
+            return `${Number(value)} USDT`;
           },
         },
       },
@@ -118,7 +125,7 @@ const ColumnChart = ({ selectedTime }) => {
     const updatedData = datesInRange.map(
       (date) => serverDataConverted[date] || 0
     );
-    console.log(updatedData);
+
     setChartData((prevState) => ({
       ...prevState,
       series: [{ ...prevState.series[0], data: updatedData }],
@@ -174,22 +181,24 @@ const ColumnChart = ({ selectedTime }) => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getPnl();
-      // updateChartData({ "30-12-2023": 1 });
+
+      // updateChartData({ "30-12-2023": 6 });
+      // setPnl(true);
     }
   }, [localStorage.getItem("token")]);
 
   const sumData = (data) => {
-    return data.reduce((acc, value) => acc + value, 0).toFixed(2);
+    return data.reduce((acc, value) => acc + value, 0);
   };
 
   // Effect to update pnlData whenever chartData.series changes
   useEffect(() => {
-    if (chartData.series.length > 0) {
+    if (chartData.series.length !== 0) {
       const total = sumData(chartData.series[0].data);
       setPnlData(total);
 
       // Проверяем, что сумма данных больше нуля
-      if (parseFloat(total) > 0) {
+      if (parseFloat(total) !== 0) {
         setPnl(true);
       } else {
         setPnl(false);
@@ -231,7 +240,10 @@ const ColumnChart = ({ selectedTime }) => {
         <>
           <div className="pnl_value">
             <p>
-              + {Number(pnlData).toFixed(2)} <span>USDT</span>
+              {Number(pnlData).toFixed(2) > 0
+                ? `+ ${Number(pnlData).toFixed(2)}`
+                : Number(pnlData).toFixed(2)}{" "}
+              <span>USDT</span>
             </p>
           </div>
           <div id="chart">

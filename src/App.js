@@ -95,6 +95,7 @@ function App() {
       });
   }, []);
 
+
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&

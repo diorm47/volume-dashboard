@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import { mainApi } from "../../components/utils/main-api";
+import Snackbar from "../../components/snackbar/snackbar";
 
 function Security() {
   const { t, i18n } = useTranslation();
@@ -17,6 +18,17 @@ function Security() {
     setPasswordModal(false);
     setEmailModal(false);
     setPasswordConfirmModal(false);
+  };
+  const [visibleSnack, setVisibleSnack] = useState(false);
+  const [snackText, setSnackText] = useState("");
+  const [snackStatus, setSnackStatus] = useState("");
+  const snackOptions = (text, status) => {
+    setVisibleSnack(true);
+    setSnackText(text);
+    setSnackStatus(status);
+    setTimeout(() => {
+      setVisibleSnack(false);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -100,6 +112,95 @@ function Security() {
       refresh();
     }
   }, [localStorage.getItem("token")]);
+
+  // reset
+  const [token, setToken] = useState("");
+
+  // const handleSubmit = () => {
+  //   let headersList = {
+  //     Accept: "*/*",
+  //   };
+
+  //   let bodyContent = new FormData();
+  //   bodyContent.append("email", email);
+
+  //   fetch(
+  //     "https://api.nvolume.com/public-api/v1/users/send-password-reset-token",
+  //     {
+  //       method: "POST",
+  //       body: bodyContent,
+  //       headers: headersList,
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+  // const setNewPassword = () => {
+  //   let headersList = {
+  //     Accept: "*/*",
+  //   };
+
+  //   let bodyContent = new FormData();
+  //   bodyContent.append("email", email);
+  //   bodyContent.append("token", token);
+  //   bodyContent.append("password", password);
+  //   bodyContent.append("password_confirmation", password);
+
+  //   fetch("https://api.nvolume.com/public-api/v1/users/set-new-password", {
+  //     method: "POST",
+  //     body: bodyContent,
+  //     headers: headersList,
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         snackOptions("Ваш пароль успешно изменен. ", "error");
+  //       } else {
+  //         snackOptions(
+  //           "Неверный старый пароль. Проверьте правильность введенных данных.",
+  //           "error"
+  //         );
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+  // const handleSubmitCode = () => {
+  //   let headersList = {
+  //     Accept: "*/*",
+  //   };
+
+  //   let bodyContent = new FormData();
+  //   bodyContent.append("email", email);
+  //   bodyContent.append("token", otp);
+
+  //   fetch(
+  //     "https://api.nvolume.com/public-api/v1/users/validate-password-reset-token",
+  //     {
+  //       method: "POST",
+  //       body: bodyContent,
+  //       headers: headersList,
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         setToken(data.data.token);
+  //         setNewPassword();
+  //       } else {
+  //         snackOptions("Неправильный код подтверждения!", "error");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     <>
@@ -236,6 +337,7 @@ function Security() {
         }
         onClick={closeModals}
       ></div>
+
       <div
         className={
           passwordModal
@@ -330,9 +432,7 @@ function Security() {
         <div className="modal_wrapper_content">
           <div className="modal_wrapper_content_item">
             <p>{t("codeSentTo", { email })}</p>
-            <div className="recovery_inputs">
-            
-            </div>
+            <div className="recovery_inputs"></div>
             <p className="recovery_time">
               {t("resendCode", { timer: "5:00" })}
             </p>
@@ -347,6 +447,7 @@ function Security() {
           </div>
         </div>
       </div>
+      <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
     </>
   );
 }

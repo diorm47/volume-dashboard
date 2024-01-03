@@ -396,9 +396,7 @@ function Review() {
                                 {t("buy_price")}{" "}
                                 <span>
                                   {" "}
-                                  {Number(item.price_start || 0).toFixed(
-                                    2
-                                  )}{" "}
+                                  {Number(item.price_start || 0)}{" "}
                                   USDT
                                 </span>
                               </p>
@@ -407,9 +405,7 @@ function Review() {
                                 {t("sell_price")}{" "}
                                 <span>
                                   {" "}
-                                  {Number(item.price_start || 0).toFixed(
-                                    2
-                                  )}{" "}
+                                  {Number(item.price_start || 0)}{" "}
                                   USDT
                                 </span>
                               </p>
@@ -418,7 +414,7 @@ function Review() {
                               {t("position_volume")}{" "}
                               <span>
                                 {" "}
-                                {Number(item.volume || 0).toFixed(2)} USDT
+                                {Number(item.volume || 0)} USDT
                               </span>
                             </p>
                           </div>
@@ -426,19 +422,15 @@ function Review() {
                             <p>
                               {t("profit_or_loss")}{" "}
                               {item.trading_result < 0 ? (
-                                <span>
+                                <span style={{color: '#F1507B'}}>
                                   {" "}
-                                  {Number(item.trading_result || 0).toFixed(
-                                    2
-                                  )}{" "}
+                                  {Number(item.trading_result || 0)}{" "}
                                   USDT
                                 </span>
                               ) : (
                                 <span>
                                   {" "}
-                                  {Number(item.trading_result || 0).toFixed(
-                                    2
-                                  )}{" "}
+                                  {Number(item.trading_result || 0)}{" "}
                                   USDT
                                 </span>
                               )}

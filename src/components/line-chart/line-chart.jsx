@@ -171,7 +171,10 @@ const LineChart = ({ selectedTime }) => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getPnl();
-      // updateChartData({ "30-12-2023": 1 });
+      // updateChartData({
+      //   "02-01-2024": -0.08000000000000007,
+      // });
+      // setPnl(true);
     }
   }, [localStorage.getItem("token")]);
   const sumData = (data) => {
@@ -179,12 +182,12 @@ const LineChart = ({ selectedTime }) => {
   };
 
   useEffect(() => {
-    if (chartData.series.length > 0) {
+    if (chartData.series.length !== 0) {
       const total = sumData(chartData.series[0].data);
       setPnlData(total);
 
       // Проверяем, что сумма данных больше нуля
-      if (parseFloat(total) > 0) {
+      if (parseFloat(total) !== 0) {
         setPnl(true);
       } else {
         setPnl(false);
@@ -227,7 +230,7 @@ const LineChart = ({ selectedTime }) => {
         <>
           <div className="pnl_value">
             <p>
-              + {Number(pnlData).toFixed(2)} <span>USDT</span>
+              {Number(pnlData).toFixed(2) > 0 ? `+ ${Number(pnlData).toFixed(2)}` : Number(pnlData).toFixed(2)} <span>USDT</span>
             </p>
           </div>
           <div className="review_chart">
