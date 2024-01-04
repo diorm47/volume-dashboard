@@ -198,17 +198,17 @@ const LineChart = ({ selectedTime }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      // getPnl();
-      updateChartData({
-        "04-01-2024": 0,
-        "03-01-2024": 50,
-        "02-01-2024": 30,
-        "01-01-2024": -40,
-        "31-12-2023": 69,
-        "30-12-2023": 11,
-        "29-12-2023": -43,
-      });
-      setPnl(true);
+      getPnl();
+      // updateChartData({
+      //   "04-01-2024": -10,
+      //   "03-01-2024": 50,
+      //   "02-01-2024": 30,
+      //   "01-01-2024": -40,
+      //   "31-12-2023": 69,
+      //   "30-12-2023": 11,
+      //   "29-12-2023": -43,
+      // });
+      // setPnl(true);
     }
   }, [localStorage.getItem("token")]);
   const sumData = (data) => {

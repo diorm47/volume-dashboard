@@ -55,7 +55,8 @@ function Analysis() {
 
         setCurrentPage(data.data.current_page);
         // setTotalPages(Math.ceil(data.data.total / data.data.per_page));
-        setTotalPages(Math.ceil(53 / data.data.per_page));
+        const total = data.data.total || 60;
+        setTotalPages(Math.ceil(total / data.data.per_page));
       })
       .catch((error) => {
         console.log(error);
@@ -490,22 +491,26 @@ function Analysis() {
                         />
                       </svg>
                     )}
-                    {totalPages &&
-                    totalPages > 3 &&
-                    currentPage > 4 ? (
-                      <p className="first_page" onClick={() => handlePageChange(1)}>1</p>
+                    {totalPages && totalPages > 3 && currentPage > 4 ? (
+                      <p
+                        className="first_page"
+                        onClick={() => handlePageChange(1)}
+                      >
+                        1
+                      </p>
                     ) : (
                       ""
                     )}
-                    {totalPages &&
-                    totalPages > 3 &&
-                    currentPage > 4 ? (
+                    {totalPages && totalPages > 3 && currentPage > 4 ? (
                       <p className="left_dots">...</p>
                     ) : (
                       ""
                     )}
                     {currentPage - 1 > 0 ? (
-                      <p className="left_amout" onClick={() => handlePageChange(currentPage - 1)}>
+                      <p
+                        className="left_amout"
+                        onClick={() => handlePageChange(currentPage - 1)}
+                      >
                         {currentPage - 1}
                       </p>
                     ) : (
@@ -514,23 +519,33 @@ function Analysis() {
 
                     <p className="active_page">{currentPage}</p>
 
-                    {currentPage - 1 < totalPages && currentPage < totalPages ? (
-                      <p className="right_amount" onClick={() => handlePageChange(currentPage + 1)}>
+                    {currentPage - 1 < totalPages &&
+                    currentPage < totalPages ? (
+                      <p
+                        className="right_amount"
+                        onClick={() => handlePageChange(currentPage + 1)}
+                      >
                         {currentPage + 1}
                       </p>
                     ) : (
                       ""
                     )}
 
-                    {totalPages > 3 && currentPage + 1 !== totalPages && currentPage !== totalPages ? (
+                    {totalPages > 3 &&
+                    currentPage + 1 !== totalPages &&
+                    currentPage !== totalPages ? (
                       <p className="last_dots">...</p>
                     ) : (
                       ""
                     )}
                     {totalPages &&
                       totalPages > 3 &&
-                      currentPage + 1 !== totalPages && currentPage !== totalPages && (
-                        <p className="total_pages_last" onClick={() => handlePageChange(totalPages)}>
+                      currentPage + 1 !== totalPages &&
+                      currentPage !== totalPages && (
+                        <p
+                          className="total_pages_last"
+                          onClick={() => handlePageChange(totalPages)}
+                        >
                           {totalPages}
                         </p>
                       )}
