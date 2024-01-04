@@ -5,7 +5,7 @@ import subDays from "date-fns/subDays";
 import empty_block from "../../assets/icons/empty-block.png";
 import { useTranslation } from "react-i18next";
 
-const LineChart = ({ selectedTime }) => {
+const LineChart = ({ selectedTime, pnlToday }) => {
   const [pnl, setPnl] = useState(false);
   const [pnlData, setPnlData] = useState("0.00");
 
@@ -95,38 +95,12 @@ const LineChart = ({ selectedTime }) => {
     },
   });
 
-  // const updateChartData = (serverData) => {
-  //   // Предполагается, что selectedTime содержит две даты: начальную и конечную
-  //   const startDate = new Date(selectedTime[0]);
-  //   const endDate = new Date(selectedTime[1]);
-  //   const datesInRange = getDatesInRange(startDate, endDate);
-
-  //   // Преобразование данных сервера в нужный формат (если требуется)
-  //   const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
-  //     const [day, month, year] = key.split("-").map(Number);
-  //     const date = new Date(year, month - 1, day);
-  //     const formattedKey = formatDate(date);
-  //     acc[formattedKey] = serverData[key];
-  //     return acc;
-  //   }, {});
-
-  //   // Заполняем нулями дни без данных
-  //   const updatedData = datesInRange.map(
-  //     (date) => serverDataConverted[date] || 0
-  //   );
-  //   console.log(updatedData);
-  //   setChartData((prevState) => ({
-  //     ...prevState,
-  //     series: [{ ...prevState.series[0], data: updatedData }],
-  //   }));
-  // };
-
   const updateChartData = (serverData) => {
     // Предполагается, что selectedTime содержит две даты: начальную и конечную
     const startDate = new Date(selectedTime[0]);
     const endDate = new Date(selectedTime[1]);
     const datesInRange = getDatesInRange(startDate, endDate);
-  
+
     // Преобразование данных сервера в нужный формат
     const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
       const [day, month, year] = key.split("-").map(Number);
@@ -135,20 +109,19 @@ const LineChart = ({ selectedTime }) => {
       acc[formattedKey] = serverData[key];
       return acc;
     }, {});
-  
+
     // Вычисление кумулятивной суммы данных
     let cumulativeSum = 0;
-    const cumulativeData = datesInRange.map(date => {
+    const cumulativeData = datesInRange.map((date) => {
       cumulativeSum += serverDataConverted[date] || 0;
       return cumulativeSum;
     });
-  
-    setChartData(prevState => ({
+
+    setChartData((prevState) => ({
       ...prevState,
       series: [{ ...prevState.series[0], data: cumulativeData }],
     }));
   };
-  
 
   const getPnl = (value) => {
     let headersList = {
@@ -211,23 +184,12 @@ const LineChart = ({ selectedTime }) => {
       // setPnl(true);
     }
   }, [localStorage.getItem("token")]);
-  const sumData = (data) => {
-    return data.reduce((acc, value) => acc + value, 0).toFixed(2);
-  };
 
   useEffect(() => {
-    if (chartData.series.length !== 0) {
-      const total = sumData(chartData.series[0].data);
-      setPnlData(total);
-      if (parseFloat(total) !== 0) {
-        setPnl(true);
-      } else {
-        setPnl(false);
-      }
-    } else {
-      setPnl(false);
+    if (pnlToday) {
+      setPnlData(pnlToday);
     }
-  }, [chartData.series]);
+  }, [pnlToday]);
 
   useEffect(() => {
     if (selectedTime && selectedTime.length === 2) {

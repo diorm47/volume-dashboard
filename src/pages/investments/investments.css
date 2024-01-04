@@ -683,3 +683,9 @@
     letter-spacing: -0.48px;
   }
 }
+
+@media screen and (max-height: 850px) {
+  .invest_modal{
+    top: 40px !important;
+  }
+}

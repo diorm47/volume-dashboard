@@ -349,7 +349,7 @@ function Review() {
                   </div>
                 </div>
               </div>
-              <LineChart selectedTime={selectedTime} />
+              <LineChart selectedTime={selectedTime} pnlToday={pnl} />
             </div>
             <div className="orders_history_list main_block_wrapper">
               <div className="main_block_wrapper_top">
