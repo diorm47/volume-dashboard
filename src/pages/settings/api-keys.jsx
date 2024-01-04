@@ -64,7 +64,7 @@ function ApiKeys({ setRec }) {
 
             <p>Binance</p>
           </div>{" "}
-          <span>Поддерживается</span>
+          <span>{t("supported")}</span>
         </div>
       ),
     },
@@ -84,7 +84,7 @@ function ApiKeys({ setRec }) {
             </svg>
             <p>ByBit</p>
           </div>{" "}
-          <span>Поддерживается</span>
+          <span>{t("supported")}</span>
         </div>
       ),
     },
@@ -286,7 +286,9 @@ function ApiKeys({ setRec }) {
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isSelected ? "#1111121a" : provided.backgroundColor,
+      backgroundColor: state.isSelected
+        ? "#1111121a"
+        : provided.backgroundColor,
       color: state.isSelected ? "white" : provided.color,
       // Additional styles for active (selected) state
     }),
@@ -493,7 +495,7 @@ function ApiKeys({ setRec }) {
           }
         >
           <div className="modal_wrapper_title">
-            <p>API</p>
+            <p>{i18n.t("modals.api")}</p>
             <ExitModal onClick={closeModals} />
           </div>
           <div className="modal_wrapper_content">
@@ -516,11 +518,11 @@ function ApiKeys({ setRec }) {
                 onClick={() => setapiActiveModal(true)}
               >
                 <div>
-                  <p>Время добавления</p>
+                  <p>{i18n.t("modals.addedTime")}</p>
                   <h4>-</h4>
                 </div>
                 <div>
-                  <p>Биржа</p>
+                  <p>{i18n.t("modals.exchange")}</p>
                   <h4 style={{ textTransform: "capitalize" }}>
                     {apiList.exchange}
                   </h4>
@@ -535,11 +537,11 @@ function ApiKeys({ setRec }) {
                     setapiActiveEditModal(true);
                   }}
                 >
-                  Редактировать
+                  {i18n.t("modals.edit")}
                 </button>
               </div>
               <div className="modal_wrapper_cancel api_delete_btn">
-                <button onClick={deleteApi}>Удалить</button>
+                <button onClick={deleteApi}>{i18n.t("modals.delete")}</button>
               </div>
             </div>
           </div>

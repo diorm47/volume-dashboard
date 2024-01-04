@@ -593,9 +593,10 @@ export const en_locale = {
   six_month: "6 months",
   three_month: "3 months",
   one_month: "1 month",
+
   labels: {
-    timeAdded: "Время добавления",
-    exchange: "Биржа",
+    timeAdded: "Time Added",
+    exchange: "Exchange",
   },
   apiRecNot: {
     text1: "You do not have API keys connected. In confirmation,",
@@ -623,6 +624,7 @@ export const en_locale = {
     log_error:
       "Email or password error. Check that the entered data is correct.",
   },
+  canceled: 'Canceled',
   auth: {
     error:
       "It seems you are already registered in our system. Please click login.",
@@ -674,4 +676,12 @@ export const en_locale = {
     "Verification code error. Check that the entered data is correct.",
   passwordChangeSuccess: "Your password has been successfully changed.",
   passwordChangeError: "Incorrect old password. Please check your entries.",
+  supported: "Supported",
+  modals: {
+    api: "API",
+    addedTime: "Added Time",
+    exchange: "Exchange",
+    edit: "Edit",
+    delete: "Delete",
+  },
 };

@@ -42,7 +42,6 @@ function Transactions() {
     return formattedDate;
   };
 
-
   return (
     <div className="orders_history_list main_block_wrapper">
       <div className="main_block_wrapper_top">
@@ -59,16 +58,19 @@ function Transactions() {
               key={index}
             >
               <div className="order_history_list_item_title">
-                <h2>ID {item.invoice_id}</h2>
+                <a target="_blank" href={`https://pay.cryptocloud.plus/${item.invoice_id}`}>
+                  <h2>ID {item.invoice_id}</h2>
+                </a>
+
                 {item.status === "created" ? (
                   <div className="order_item_top_status order_item_top_status_process">
                     <p>{t("processing")}</p>
                   </div>
-                ) : item.status === "error" ? (
+                ) : item.status === "canceled" ? (
                   <div className="order_item_top_status">
-                    <p>{t("error")}</p>
+                    <p>{t("canceled")}</p>
                   </div>
-                ) : item.status === "success" ? (
+                ) : item.status === "completed" ? (
                   <div className="order_item_top_status order_item_top_status_success">
                     <p>{t("completed")}</p>
                   </div>

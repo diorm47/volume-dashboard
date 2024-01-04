@@ -125,7 +125,7 @@ export const ru_locale = {
   transactionListDescription: "Здесь отображается список транзакций",
   processing: "В обработке",
   error: "Ошибка",
-  completed: "Выполнена",
+  completed: "Завершён",
   createdAt: "Время создания",
   transactionType: "Тип транзакции",
   commission: "Комиссия",
@@ -633,8 +633,8 @@ export const ru_locale = {
   three_month: "3 месяца",
   one_month: "1 месяц",
   labels: {
-    timeAdded: "Time Added",
-    exchange: "Exchange",
+    timeAdded: "Время добавления",
+    exchange: "Биржа",
   },
   apiRecNot: {
     text1: "У вас не подключены API-ключи. Чтобы продолжить,",
@@ -661,6 +661,7 @@ export const ru_locale = {
     log_error:
       "Ошибка электронной почты или пароля. Проверьте правильность введенных данных.",
   },
+  canceled: 'Отменен',
   auth: {
     error:
       "Кажется, вы уже зарегистрированы в нашей системе. Пожалуйста, нажмите войти.",
@@ -711,4 +712,12 @@ export const ru_locale = {
   passwordChangeSuccess: "Ваш пароль успешно изменен.",
   passwordChangeError:
     "Неверный старый пароль. Проверьте правильность введенных данных.",
+  supported: "Поддерживается",
+  modals: {
+    api: "API",
+    addedTime: "Время добавления",
+    exchange: "Биржа",
+    edit: "Редактировать",
+    delete: "Удалить",
+  },
 };

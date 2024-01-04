@@ -149,7 +149,10 @@ function RatesPage({ updatebalance }) {
 
     return () => clearInterval(interval);
   }, [targetDate]);
-
+  const openInvoice = (invoiceId) => {
+    const url = `https://pay.cryptocloud.plus/${invoiceId}`;
+    window.open(url, '_blank');
+  };
   const setTarif = (data) => {
     let headersList = {
       Accept: "*/*",
@@ -173,6 +176,8 @@ function RatesPage({ updatebalance }) {
       .then((data) => {
         snackOptions("Тарифный план усешно подключён!", "success");
         updatebalance();
+        openInvoice(data.data.invoice_id)
+        
       })
       .catch((error) => {
         console.error("Error:", error);

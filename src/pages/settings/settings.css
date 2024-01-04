@@ -736,6 +736,13 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+  .redirect_btn p, .create_acc_r p {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .add_api_btns {
+    gap: 0 !important;
+  }
 }
 .modal_wrapper_content_item .Dropdown-control {
   display: flex;
