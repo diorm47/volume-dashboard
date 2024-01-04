@@ -181,8 +181,6 @@ const ColumnChart = ({ selectedTime }) => {
     if (chartData.series.length !== 0) {
       const total = sumData(chartData.series[0].data);
       setPnlData(total);
-
-      // Проверяем, что сумма данных больше нуля
       if (parseFloat(total) !== 0) {
         setPnl(true);
       } else {

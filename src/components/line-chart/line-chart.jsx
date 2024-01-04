@@ -8,12 +8,7 @@ import { useTranslation } from "react-i18next";
 const LineChart = ({ selectedTime }) => {
   const [pnl, setPnl] = useState(false);
   const [pnlData, setPnlData] = useState("0.00");
-  // const formatDate = (date) => {
-  //   let day = date.getDate().toString().padStart(2, "0");
-  //   let month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
-  //   let year = date.getFullYear();
-  //   return `${year}-${month}-${day}`;
-  // };
+
   const formatDate = (date) => {
     let day = date.getDate().toString().padStart(2, "0");
     let month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -100,13 +95,39 @@ const LineChart = ({ selectedTime }) => {
     },
   });
 
+  // const updateChartData = (serverData) => {
+  //   // Предполагается, что selectedTime содержит две даты: начальную и конечную
+  //   const startDate = new Date(selectedTime[0]);
+  //   const endDate = new Date(selectedTime[1]);
+  //   const datesInRange = getDatesInRange(startDate, endDate);
+
+  //   // Преобразование данных сервера в нужный формат (если требуется)
+  //   const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
+  //     const [day, month, year] = key.split("-").map(Number);
+  //     const date = new Date(year, month - 1, day);
+  //     const formattedKey = formatDate(date);
+  //     acc[formattedKey] = serverData[key];
+  //     return acc;
+  //   }, {});
+
+  //   // Заполняем нулями дни без данных
+  //   const updatedData = datesInRange.map(
+  //     (date) => serverDataConverted[date] || 0
+  //   );
+  //   console.log(updatedData);
+  //   setChartData((prevState) => ({
+  //     ...prevState,
+  //     series: [{ ...prevState.series[0], data: updatedData }],
+  //   }));
+  // };
+
   const updateChartData = (serverData) => {
     // Предполагается, что selectedTime содержит две даты: начальную и конечную
     const startDate = new Date(selectedTime[0]);
     const endDate = new Date(selectedTime[1]);
     const datesInRange = getDatesInRange(startDate, endDate);
-    console.log(serverData);
-    // Преобразование данных сервера в нужный формат (если требуется)
+  
+    // Преобразование данных сервера в нужный формат
     const serverDataConverted = Object.keys(serverData).reduce((acc, key) => {
       const [day, month, year] = key.split("-").map(Number);
       const date = new Date(year, month - 1, day);
@@ -114,17 +135,20 @@ const LineChart = ({ selectedTime }) => {
       acc[formattedKey] = serverData[key];
       return acc;
     }, {});
-
-    // Заполняем нулями дни без данных
-    const updatedData = datesInRange.map(
-      (date) => serverDataConverted[date] || 0
-    );
-    console.log(updatedData);
-    setChartData((prevState) => ({
+  
+    // Вычисление кумулятивной суммы данных
+    let cumulativeSum = 0;
+    const cumulativeData = datesInRange.map(date => {
+      cumulativeSum += serverDataConverted[date] || 0;
+      return cumulativeSum;
+    });
+  
+    setChartData(prevState => ({
       ...prevState,
-      series: [{ ...prevState.series[0], data: updatedData }],
+      series: [{ ...prevState.series[0], data: cumulativeData }],
     }));
   };
+  
 
   const getPnl = (value) => {
     let headersList = {
@@ -174,7 +198,17 @@ const LineChart = ({ selectedTime }) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      getPnl();
+      // getPnl();
+      updateChartData({
+        "04-01-2024": 0,
+        "03-01-2024": 50,
+        "02-01-2024": 30,
+        "01-01-2024": -40,
+        "31-12-2023": 69,
+        "30-12-2023": 11,
+        "29-12-2023": -43,
+      });
+      setPnl(true);
     }
   }, [localStorage.getItem("token")]);
   const sumData = (data) => {
@@ -185,8 +219,6 @@ const LineChart = ({ selectedTime }) => {
     if (chartData.series.length !== 0) {
       const total = sumData(chartData.series[0].data);
       setPnlData(total);
-
-      // Проверяем, что сумма данных больше нуля
       if (parseFloat(total) !== 0) {
         setPnl(true);
       } else {

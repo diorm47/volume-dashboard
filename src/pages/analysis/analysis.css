@@ -36,6 +36,9 @@
   align-items: center;
   justify-content: space-between;
 }
+.active_page {
+  font-weight: 900 !important;
+}
 
 .analysis_top_toggler {
   padding: 8px;
