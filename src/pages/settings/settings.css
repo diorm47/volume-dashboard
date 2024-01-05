@@ -670,6 +670,12 @@
 .black_mode .drop_api_item_name p {
   color: #fff;
 }
+.black_mode .css-1nmdiq5-menu {
+  background: #18181a;
+}
+.black_mode .css-1nmdiq5-menu .css-1fdsijx-ValueContainer:hover {
+  background: #18181a74;
+}
 @media only screen and (max-width: 750px) {
   .api_key_title {
     flex-direction: column;

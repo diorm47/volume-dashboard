@@ -123,7 +123,7 @@ const LineChart = ({ selectedTime, pnlToday }) => {
     }));
   };
 
-  const getPnl = (value) => {
+  const getPnl = () => {
     let headersList = {
       Accept: "*/*",
       Authorization: `Bearer ${localStorage.getItem("token")}`,

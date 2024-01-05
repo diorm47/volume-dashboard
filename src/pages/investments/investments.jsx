@@ -497,10 +497,10 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active1 == t('one_month') ? <p>{t("upTo")} 10.43%</p> : ""}
-                  {active1 == t('three_month')  ? <p>{t("upTo")} 31.29%</p> : ""}
-                  {active1 == t('six_month') ? <p>{t("upTo")} 62.58%</p> : ""}
-                  {active1 == t('one_year') ? <p>{t("upTo")} 125.16%</p> : ""}
+                  {active1 == t("one_month") ? <p>{t("upTo")} 10.43%</p> : ""}
+                  {active1 == t("three_month") ? <p>{t("upTo")} 31.29%</p> : ""}
+                  {active1 == t("six_month") ? <p>{t("upTo")} 62.58%</p> : ""}
+                  {active1 == t("one_year") ? <p>{t("upTo")} 125.16%</p> : ""}
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -609,10 +609,10 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active2 == t('one_month')  ? <p>{t("upTo")} 21.65%</p> : ""}
-                  {active2 == t('three_month') ? <p>{t("upTo")} 64.95%</p> : ""}
-                  {active2 == t('six_month') ? <p>{t("upTo")} 129.9%</p> : ""}
-                  {active2 == t('one_year') ? <p>{t("upTo")} 259.8%</p> : ""}
+                  {active2 == t("one_month") ? <p>{t("upTo")} 21.65%</p> : ""}
+                  {active2 == t("three_month") ? <p>{t("upTo")} 64.95%</p> : ""}
+                  {active2 == t("six_month") ? <p>{t("upTo")} 129.9%</p> : ""}
+                  {active2 == t("one_year") ? <p>{t("upTo")} 259.8%</p> : ""}
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -721,10 +721,10 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active3 == t('one_month') ? <p>{t("upTo")} 30.14%</p> : ""}
-                  {active3 == t('three_month') ? <p>{t("upTo")} 90.42%</p> : ""}
-                  {active3 == t('six_month') ? <p>{t("upTo")} 180.84%</p> : ""}
-                  {active3 == t('one_year') ? <p>{t("upTo")} 361.68%</p> : ""}
+                  {active3 == t("one_month") ? <p>{t("upTo")} 30.14%</p> : ""}
+                  {active3 == t("three_month") ? <p>{t("upTo")} 90.42%</p> : ""}
+                  {active3 == t("six_month") ? <p>{t("upTo")} 180.84%</p> : ""}
+                  {active3 == t("one_year") ? <p>{t("upTo")} 361.68%</p> : ""}
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -953,11 +953,11 @@ function Investments({ updatebalance }) {
                 />
                 <p>USDT</p>
               </div>
-              <p className="invest_modal_bottom_content_item_text">
+              <p className="invest_modal_bottom_content_item_text ">
                 {t("available")}: {userData.balance || "0.00"} <span>USDT</span>
               </p>
             </div>
-            <div className="invest_modal_bottom_content_item">
+            <div className="invest_modal_bottom_content_item stop_los_toggler">
               <div
                 className="invest_modal_item_title"
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
@@ -986,61 +986,63 @@ function Investments({ updatebalance }) {
                   </label>
                 </div>
               </div>
-
-              <div className="invest_modal_item_input">
-                <input
-                  type="number"
-                  value={stopLos}
-                  disabled={!isChecked}
-                  onChange={(e) => handleSetStopLos(e.target.value)}
-                  placeholder={t("enterMaxAcceptableLoss")}
-                  className={getInputClass("field2")}
-                  onFocus={() => handleFocus("field2")}
-                  onBlur={handleBlur}
-                />
-                <p>USDT</p>
-              </div>
-              <p className="invest_modal_bottom_content_item_text">
-                {t("ifNetLossReaches")} {stopLos ? stopLos : "--"} USDT,{" "}
-                {t("investmentsWillStop")}
-              </p>
             </div>
             {isChecked ? (
-              <div
-                className={
-                  !informations
-                    ? "hidden_referal   aditional_invest_modal"
-                    : "aditional_invest_modal aditional_invest_modal_hidden"
-                }
-              >
+              <>
+                <div className="invest_modal_item_input">
+                  <input
+                    type="number"
+                    value={stopLos}
+                    disabled={!isChecked}
+                    onChange={(e) => handleSetStopLos(e.target.value)}
+                    placeholder={t("enterMaxAcceptableLoss")}
+                    className={getInputClass("field2")}
+                    onFocus={() => handleFocus("field2")}
+                    onBlur={handleBlur}
+                  />
+                  <p>USDT</p>
+                </div>
+                <p className="invest_modal_bottom_content_item_text mb_20px">
+                  {t("ifNetLossReaches")} {stopLos ? stopLos : "--"} USDT,{" "}
+                  {t("investmentsWillStop")}
+                </p>
+
                 <div
-                  className="login_input_titles"
-                  onClick={() => setInformations(!informations)}
+                  className={
+                    !informations
+                      ? "hidden_referal   aditional_invest_modal"
+                      : "aditional_invest_modal aditional_invest_modal_hidden"
+                  }
                 >
-                  <p>{t("additionalInformation")}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
+                  <div
+                    className="login_input_titles"
+                    onClick={() => setInformations(!informations)}
                   >
-                    <path
-                      d="M7 10L12 15L17 10"
-                      stroke="black"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
+                    <p>{t("additionalInformation")}</p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M7 10L12 15L17 10"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div className="aditional_invest_modal_content">
+                    <h3>{t("volumeStopLoss")}</h3>
+                    <p>{t("volumeStopLossDescription")}</p>
+                    <p>{t("volumeStopLossExample")}</p>
+                    <p>{t("volumeStopLossDefault")}</p>
+                  </div>
                 </div>
-                <div className="aditional_invest_modal_content">
-                  <h3>{t("volumeStopLoss")}</h3>
-                  <p>{t("volumeStopLossDescription")}</p>
-                  <p>{t("volumeStopLossExample")}</p>
-                  <p>{t("volumeStopLossDefault")}</p>
-                </div>
-              </div>
+              </>
             ) : (
               ""
             )}
@@ -1161,61 +1163,62 @@ function Investments({ updatebalance }) {
                   </label>
                 </div>
               </div>
-
-              <div className="invest_modal_item_input">
-                <input
-                  type="number"
-                  value={stopLos}
-                  disabled={!isChecked}
-                  onChange={(e) => handleSetStopLos(e.target.value)}
-                  placeholder={t("enterMaxAcceptableLoss")}
-                  className={getInputClass("field4")}
-                  onFocus={() => handleFocus("field4")}
-                  onBlur={handleBlur}
-                />
-                <p>USDT</p>
-              </div>
-              <p className="invest_modal_bottom_content_item_text">
-                {t("ifNetLossReaches")} {stopLos ? stopLos : "--"} USDT,{" "}
-                {t("investmentsWillStop")}
-              </p>
             </div>
             {isChecked ? (
-              <div
-                className={
-                  !informations
-                    ? "hidden_referal   aditional_invest_modal"
-                    : "aditional_invest_modal aditional_invest_modal_hidden"
-                }
-              >
+              <>
+                <div className="invest_modal_item_input">
+                  <input
+                    type="number"
+                    value={stopLos}
+                    disabled={!isChecked}
+                    onChange={(e) => handleSetStopLos(e.target.value)}
+                    placeholder={t("enterMaxAcceptableLoss")}
+                    className={getInputClass("field4")}
+                    onFocus={() => handleFocus("field4")}
+                    onBlur={handleBlur}
+                  />
+                  <p>USDT</p>
+                </div>
+                <p className="invest_modal_bottom_content_item_text mb_20px">
+                  {t("ifNetLossReaches")} {stopLos ? stopLos : "--"} USDT,{" "}
+                  {t("investmentsWillStop")}
+                </p>
                 <div
-                  className="login_input_titles"
-                  onClick={() => setInformations(!informations)}
+                  className={
+                    !informations
+                      ? "hidden_referal   aditional_invest_modal"
+                      : "aditional_invest_modal aditional_invest_modal_hidden"
+                  }
                 >
-                  <p>{t("additionalInformation")}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
+                  <div
+                    className="login_input_titles"
+                    onClick={() => setInformations(!informations)}
                   >
-                    <path
-                      d="M7 10L12 15L17 10"
-                      stroke="black"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div className="aditional_invest_modal_content">
-                  <h3>{t("volumeStopLoss")}</h3>
-                  <p>{t("volumeStopLossDescription")}</p>
-                  <p>{t("volumeStopLossExample")}</p>
-                  <p>{t("volumeStopLossDefault")}</p>
-                </div>
-              </div>
+                    <p>{t("additionalInformation")}</p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M7 10L12 15L17 10"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div className="aditional_invest_modal_content">
+                    <h3>{t("volumeStopLoss")}</h3>
+                    <p>{t("volumeStopLossDescription")}</p>
+                    <p>{t("volumeStopLossExample")}</p>
+                    <p>{t("volumeStopLossDefault")}</p>
+                  </div>
+                </div>{" "}
+              </>
             ) : (
               ""
             )}
@@ -1336,61 +1339,62 @@ function Investments({ updatebalance }) {
                   </label>
                 </div>
               </div>
-
-              <div className="invest_modal_item_input">
-                <input
-                  type="number"
-                  value={stopLos}
-                  disabled={!isChecked}
-                  onChange={(e) => handleSetStopLos(e.target.value)}
-                  placeholder={t("enterMaxAcceptableLoss")}
-                  className={getInputClass("field6")}
-                  onFocus={() => handleFocus("field6")}
-                  onBlur={handleBlur}
-                />
-                <p>USDT</p>
-              </div>
-              <p className="invest_modal_bottom_content_item_text">
-                {t("ifNetLossReaches")} {stopLos ? stopLos : "--"} USDT,{" "}
-                {t("investmentsWillStop")}
-              </p>
             </div>
             {isChecked ? (
-              <div
-                className={
-                  !informations
-                    ? "hidden_referal   aditional_invest_modal"
-                    : "aditional_invest_modal aditional_invest_modal_hidden"
-                }
-              >
+              <>
+                <div className="invest_modal_item_input">
+                  <input
+                    type="number"
+                    value={stopLos}
+                    disabled={!isChecked}
+                    onChange={(e) => handleSetStopLos(e.target.value)}
+                    placeholder={t("enterMaxAcceptableLoss")}
+                    className={getInputClass("field6")}
+                    onFocus={() => handleFocus("field6")}
+                    onBlur={handleBlur}
+                  />
+                  <p>USDT</p>
+                </div>
+                <p className="invest_modal_bottom_content_item_text mb_20px">
+                  {t("ifNetLossReaches")} {stopLos ? stopLos : "--"} USDT,{" "}
+                  {t("investmentsWillStop")}
+                </p>
                 <div
-                  className="login_input_titles"
-                  onClick={() => setInformations(!informations)}
+                  className={
+                    !informations
+                      ? "hidden_referal   aditional_invest_modal"
+                      : "aditional_invest_modal aditional_invest_modal_hidden"
+                  }
                 >
-                  <p>{t("additionalInformation")}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
+                  <div
+                    className="login_input_titles"
+                    onClick={() => setInformations(!informations)}
                   >
-                    <path
-                      d="M7 10L12 15L17 10"
-                      stroke="black"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
+                    <p>{t("additionalInformation")}</p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M7 10L12 15L17 10"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div className="aditional_invest_modal_content">
+                    <h3>{t("volumeStopLoss")}</h3>
+                    <p>{t("volumeStopLossDescription")}</p>
+                    <p>{t("volumeStopLossExample")}</p>
+                    <p>{t("volumeStopLossDefault")}</p>
+                  </div>
                 </div>
-                <div className="aditional_invest_modal_content">
-                  <h3>{t("volumeStopLoss")}</h3>
-                  <p>{t("volumeStopLossDescription")}</p>
-                  <p>{t("volumeStopLossExample")}</p>
-                  <p>{t("volumeStopLossDefault")}</p>
-                </div>
-              </div>
+              </>
             ) : (
               ""
             )}

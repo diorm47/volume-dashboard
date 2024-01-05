@@ -489,7 +489,7 @@ function Profile() {
             <input
               type="text"
               name="middleName"
-              value={formData.middleName}
+              value={formData.middleName && formData.middleName == 'null' ? '': formData.middleName}
               onChange={handleInputChange}
             />
           </div>

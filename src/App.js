@@ -72,28 +72,30 @@ function App() {
   }, [localStorage.getItem("token")]);
 
   useEffect(() => {
-    let headersList = {
-      Accept: "*/*",
-    };
+    if (!localStorage.getItem("locale")) {
+      let headersList = {
+        Accept: "*/*",
+      };
 
-    fetch("https://ipwho.is/", {
-      method: "GET",
+      fetch("https://ipwho.is/", {
+        method: "GET",
 
-      headers: headersList,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.country_code == "RU") {
-          localStorage.setItem("locale", "ru");
-        } else {
-          localStorage.setItem("locale", "en");
-        }
+        headers: headersList,
       })
-      .catch((error) => {
-        console.log(error);
-        localStorage.setItem("locale", "ru");
-      });
-  }, []);
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.country_code == "RU") {
+            localStorage.setItem("locale", "ru");
+          } else {
+            localStorage.setItem("locale", "en");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          localStorage.setItem("locale", "ru");
+        });
+    }
+  }, [localStorage.getItem("locale")]);
 
   // localStorage.setItem('token', '121|Xx6L0mwYSCxcsMa9Cvxbsk3inyQAIjkn723RfeH2')
   return (

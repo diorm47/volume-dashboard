@@ -435,6 +435,7 @@ function ApiKeys({ setRec }) {
               />{" "}
             </div>
           </div>
+
           <div className="modal_wrapper_content_item">
             <p>{t("apiModal.publicKey")}</p>
             <input

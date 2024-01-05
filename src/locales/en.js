@@ -154,12 +154,12 @@ export const en_locale = {
   advancedPlanDescription: "For experienced investors",
   advancedPlanPrice: "$ 50",
   advancedPlanPricePerMonth: "/ per month",
-  advancedPlanTradingLimit: "Trading limit from $401 to $900",
+  advancedPlanTradingLimit: "Trading limit to $900",
   professionalPlanTitle: "Professional",
   professionalPlanDescription: "For professionals",
   professionalPlanPrice: "$ 100",
   professionalPlanPricePerMonth: "/ per month",
-  professionalPlanTradingLimit: "Trading limit from $901 to $3,000",
+  professionalPlanTradingLimit: "Trading limit to $3,000",
   controlTitle: "Maintain Self-Control",
   controlDescription:
     "Investing in cryptocurrency trading is riskier than traditional instruments (bank deposits, long-term stock purchases, etc.). Calculate your risks and don't invest all your savings.",
@@ -624,7 +624,7 @@ export const en_locale = {
     log_error:
       "Email or password error. Check that the entered data is correct.",
   },
-  canceled: 'Canceled',
+  canceled: "Canceled",
   auth: {
     error:
       "It seems you are already registered in our system. Please click login.",
