@@ -97,7 +97,7 @@ function App() {
     }
   }, [localStorage.getItem("locale")]);
 
-  // localStorage.setItem('token', '121|Xx6L0mwYSCxcsMa9Cvxbsk3inyQAIjkn723RfeH2')
+  // localStorage.setItem('token', '140|irVJb9y2NiVSqy4W7Bw0YGmNsMmt23sBKhUJHwrV')
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&

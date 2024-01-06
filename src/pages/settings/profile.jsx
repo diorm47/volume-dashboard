@@ -84,7 +84,7 @@ function Profile() {
         setFormData({
           lastName: data.last_name,
           firstName: data.name,
-          middleName: data.patronymic,
+          patronymic: data.patronymic,
         });
         setAvatar(data.avatar);
       })
@@ -118,7 +118,7 @@ function Profile() {
     let bodyContent = new FormData();
     bodyContent.append("name", formData.firstName);
     bodyContent.append("last_name", formData.lastName);
-    bodyContent.append("patronymic", formData.middleName);
+    bodyContent.append("patronymic", formData.middleName || '');
 
     fetch("https://api.nvolume.com/private-api/v1/users/profile/fio", {
       method: "POST",
@@ -399,7 +399,7 @@ function Profile() {
             <div>
               <p>
                 {`${formData.lastName || ""} ${formData.firstName || ""} ${
-                  formData.middleName == "null" ? "" : formData.middleName
+                  formData.patronymic == "null" ? "" : formData.patronymic
                 }`}{" "}
               </p>
               <p onClick={() => setNameModal(true)}>
@@ -488,8 +488,8 @@ function Profile() {
             <p>{t("middleName")}</p>
             <input
               type="text"
-              name="middleName"
-              value={formData.middleName && formData.middleName == 'null' ? '': formData.middleName}
+              name="patronymic"
+              value={ formData.patronymic == "null" || formData.patronymic == null ? "" : formData.patronymic}
               onChange={handleInputChange}
             />
           </div>

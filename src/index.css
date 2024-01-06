@@ -145,6 +145,9 @@ input {
   font-weight: 500;
   line-height: 24px;
 }
+.connect_api_recom_wrapper a, .create_acc_r a {
+  color: #0077ff;
+}
 .black_mode .connect_api_recom{
   border-bottom: 1px solid var(--Stroke_Black, #343436);
 }

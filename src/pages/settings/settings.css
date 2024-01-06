@@ -662,7 +662,8 @@
   border-color: #eaeaea !important;
 }
 
-.black_mode .css-13cymwt-control, .black_mode .css-t3ipsp-control {
+.black_mode .css-13cymwt-control,
+.black_mode .css-t3ipsp-control {
   border: 1px solid var(--Stroke_Black, #343436) !important;
   background: transparent !important;
   color: #fff !important;
@@ -670,12 +671,13 @@
 .black_mode .drop_api_item_name p {
   color: #fff;
 }
+
 .black_mode .css-1nmdiq5-menu {
   background: #18181a;
+  /* color: #2727291a; */
 }
-.black_mode .css-1nmdiq5-menu .css-1fdsijx-ValueContainer:hover {
-  background: #18181a74;
-}
+
+
 @media only screen and (max-width: 750px) {
   .api_key_title {
     flex-direction: column;
@@ -742,7 +744,8 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-  .redirect_btn p, .create_acc_r p {
+  .redirect_btn p,
+  .create_acc_r p {
     text-align: center;
     margin-bottom: 24px;
   }

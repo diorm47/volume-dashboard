@@ -100,7 +100,7 @@ nav {
 .nav_menu_item_drop {
   position: absolute;
   width: auto;
-  top: 80px;
+  top: 75px;
   padding: 12px;
   border-radius: 6px;
   background: #fff;
@@ -110,7 +110,7 @@ nav {
   z-index: 12;
   opacity: 0;
   transform: translateY(15%);
-  transition: all 0.5s ease;
+  transition: all 0.35s ease;
   visibility: hidden;
 }
 .black_mode .nav_menu_item_drop {

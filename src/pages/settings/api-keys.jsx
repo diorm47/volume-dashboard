@@ -283,6 +283,7 @@ function ApiKeys({ setRec }) {
     setapiActiveEditModal(true);
   };
 
+  // const hoverColor = "#383838" ||
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
@@ -290,9 +291,17 @@ function ApiKeys({ setRec }) {
         ? "#1111121a"
         : provided.backgroundColor,
       color: state.isSelected ? "white" : provided.color,
-      // Additional styles for active (selected) state
     }),
-    // You can also customize other parts of the dropdown here
+  };
+  const customStylesDark = {
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isSelected
+        ? "#1111121a"
+        : provided.backgroundColor,
+      color: state.isSelected ? "white" : provided.color,
+      backgroundColor: state.isFocused ? "#343436" : "#18181a",
+    }),
   };
 
   return (
@@ -427,7 +436,12 @@ function ApiKeys({ setRec }) {
             <div className="api_modal_dropdown">
               <Select
                 options={customOptions}
-                styles={customStyles}
+                styles={
+                  localStorage.getItem("mode") &&
+                  localStorage.getItem("mode") == "dark"
+                    ? customStylesDark
+                    : customStyles
+                }
                 onChange={handleSelect}
                 value={customOptions.find(
                   (option) => option.value === selectedOption
