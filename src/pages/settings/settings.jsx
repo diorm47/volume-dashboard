@@ -25,7 +25,7 @@ function Settings({setRec}) {
         <NavLink to="security">
           <p>{t("security")}</p>
         </NavLink>
-        <NavLink to="api-keys">
+        <NavLink to="api">
           <p>{t("apiKeys")}</p>
         </NavLink>
       </div>
@@ -35,7 +35,7 @@ function Settings({setRec}) {
             <Route path="/" element={<Profile />} />
             <Route path="profile" element={<Profile />} />
             <Route path="security" element={<Security />} />
-            <Route path="api-keys" element={<ApiKeys setRec={setRec} />} />
+            <Route path="api" element={<ApiKeys setRec={setRec} />} />
           </Routes>
         </div>
       </div>

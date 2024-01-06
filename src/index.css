@@ -148,6 +148,9 @@ input {
 .connect_api_recom_wrapper a, .create_acc_r a {
   color: #0077ff;
 }
+.connect_api_recom_wrapper a:hover , .create_acc_r a:hover {
+   color: #0077ff !important;
+}
 .black_mode .connect_api_recom{
   border-bottom: 1px solid var(--Stroke_Black, #343436);
 }

@@ -18,7 +18,7 @@ function Rates({updatebalance}) {
   return (
     <>
       <div className="settings_navigation">
-        <NavLink to="rates">
+        <NavLink to="pricing">
           <p>{t("rates")}</p>
         </NavLink>
         <NavLink to="transactions">
@@ -29,7 +29,7 @@ function Rates({updatebalance}) {
         <div className="settings_page_wrapper">
           <Routes>
             <Route path="/" element={<RatesPage />} />
-            <Route path="rates" element={<RatesPage  updatebalance={updatebalance}/>} />
+            <Route path="pricing" element={<RatesPage  updatebalance={updatebalance}/>} />
             <Route path="transactions" element={<Transactions />} />
           </Routes>
         </div>

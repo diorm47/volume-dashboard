@@ -720,4 +720,5 @@ export const ru_locale = {
     edit: "Редактировать",
     delete: "Удалить",
   },
+  tg_chat: "Telegram чат",
 };

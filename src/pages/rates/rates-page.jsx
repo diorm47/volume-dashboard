@@ -245,7 +245,7 @@ function RatesPage({ updatebalance }) {
                   </div>
                 </div>
                 <div className="review_right_link">
-                  <NavLink to="/rates/rates">
+                  <NavLink to="/pricing/pricing">
                     <p>{t("addDaysLink")}</p>
                   </NavLink>
                 </div>

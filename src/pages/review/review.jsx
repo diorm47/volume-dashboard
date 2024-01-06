@@ -485,7 +485,7 @@ function Review() {
                         </div>
                       </div>
                       <div className="review_right_link">
-                        <NavLink to="/rates/rates">
+                        <NavLink to="/pricing/pricing">
                           <p>{t("add_30_days")}</p>
                         </NavLink>
                       </div>
@@ -504,7 +504,7 @@ function Review() {
                         <p>{t("activate_trial")}</p>
                       </div>
                       <div className="review_right_link">
-                        <NavLink to="/rates/rates">
+                        <NavLink to="/pricing/pricing">
                           <p>{t("activate")}</p>
                         </NavLink>
                       </div>

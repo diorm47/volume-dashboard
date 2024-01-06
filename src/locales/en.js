@@ -2,7 +2,7 @@ export const en_locale = {
   nav_menu_1: "Review",
   nav_menu_2: "Analysis",
   nav_menu_3: "Investments",
-  nav_menu_4: "Rates",
+  nav_menu_4: "Pricing",
   nav_menu_5: "Transactions",
   nav_menu_6: "Settings",
   nav_menu_7: "Profile",
@@ -130,7 +130,7 @@ export const en_locale = {
   commission: "Commission",
   transactionAmount: "Transaction Amount",
   noTransactions: "No transactions",
-  rates: "Rates",
+  rates: "Pricing",
   selectPlan: "Select a Plan",
   paymentDisclaimer:
     "When paying for the tariff, the payment service charges a commission for the transaction. Please specify the amount taking into account the commission.",
@@ -684,4 +684,5 @@ export const en_locale = {
     edit: "Edit",
     delete: "Delete",
   },
+  tg_chat: "Telegram Chat",
 };

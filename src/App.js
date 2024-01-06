@@ -115,7 +115,7 @@ function App() {
           <div className="connect_api_recom_wrapper">
             <p>
               {t("apiRecNot.text1")}{" "}
-              <NavLink to="/settings/api-keys">{t("apiRecNot.text2")}</NavLink>
+              <NavLink to="/settings/api">{t("apiRecNot.text2")}</NavLink>
             </p>
           </div>
         </div>
@@ -134,7 +134,7 @@ function App() {
           />
           <Route path="/settings/*" element={<Settings setRec={setRec} />} />
           <Route
-            path="/rates/*"
+            path="/pricing/*"
             element={<Rates updatebalance={updatebalance} />}
           />
           <Route path="/base/*" element={<Base />} />
