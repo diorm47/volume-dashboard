@@ -317,6 +317,17 @@ nav {
   justify-content: space-between;
 }
 
+.mob_menu_socials {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 24px;
+}
+.mob_menu_socials svg * {
+  fill: #92979C;
+}
 @media only screen and (max-width: 1300px) {
   .nav_bar_menu,
   .nav_wrapper_right {
