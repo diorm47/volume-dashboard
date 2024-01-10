@@ -221,7 +221,7 @@ function NavBar({ setMode }) {
           <div className="nav_menu_item">
             <ChatIcon />
             <div className="nav_menu_item_drop nav_menu_item_drop_chat">
-              {i18n.language == "en" ? (
+              {/* {i18n.language == "en" ? (
                 <NavLink target="_blank" to="https://t.me/nvolume_official">
                   <p>Telegram</p>
                   <svg
@@ -274,7 +274,7 @@ function NavBar({ setMode }) {
                     fill="black"
                   />
                 </svg>
-              </NavLink>
+              </NavLink> */}
               <NavLink
                 target="_blank"
                 to="https://www.youtube.com/@nvolume_official"
@@ -470,7 +470,7 @@ function NavBar({ setMode }) {
                   />
                 </svg>
               </NavLink>
-              {i18n.language == "en" ? (
+              {/* {i18n.language == "en" ? (
                 <NavLink target="_blank" to="https://t.me/nvolume_official">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -504,7 +504,7 @@ function NavBar({ setMode }) {
                     />
                   </svg>
                 </NavLink>
-              )}
+              )} */}
             </div>
           </div>
         </div>

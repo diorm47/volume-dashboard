@@ -28,7 +28,7 @@ export const en_locale = {
   remaining_days: "days left",
   add_30_days: "Add + 30 days",
   trial_period_title: "Trial Period",
-  free_trial: "7 days for free",
+  free_trial: "7 days test period",
   activate_trial:
     "Activate the trial period today and get access to a wide range of features.",
   activate: "Activate",
