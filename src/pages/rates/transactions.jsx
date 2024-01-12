@@ -52,7 +52,7 @@ function Transactions() {
       </div>
       {transactions && transactions.length ? (
         <div className="main_block_wrapper_bottom ">
-          {transactions.map((item, index) => (
+          {transactions.reverse().map((item, index) => (
             <div
               className="order_history_list_item transaction_item"
               key={index}

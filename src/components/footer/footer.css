@@ -47,6 +47,18 @@ footer a {
 .black_mode footer {
   border-top: 1px solid var(--Stroke_Black, #343436);
 }
+.footer_adress {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  font-family: IBMPlexMono500;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 184.615% */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
 @media only screen and (max-width: 450px) {
   footer {
     margin-top: 70px;
