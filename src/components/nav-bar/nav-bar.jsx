@@ -348,9 +348,9 @@ function NavBar({ setMode }) {
               <NavLink to="/settings/profile">
                 <p> {t("nav_menu_7")} </p>
               </NavLink>
-              {/* <NavLink to="/referals">
+              <NavLink to="/referal">
                 <p> {t("nav_menu_14")} </p>
-              </NavLink> */}
+              </NavLink>
               <NavLink to="/login" onClick={handleLogout}>
                 <p> {t("nav_menu_15")} </p>
               </NavLink>

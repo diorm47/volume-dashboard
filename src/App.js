@@ -20,6 +20,7 @@ import Rates from "./pages/rates/rates";
 import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
 import { useTranslation } from "react-i18next";
+import Referal from "./pages/referal/referal";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -97,7 +98,7 @@ function App() {
     }
   }, [localStorage.getItem("locale")]);
 
-  // localStorage.setItem('token', '143|wtykf3RTmVUbo3fUoqz6MUDdo8Nhve94dPUY66v5')
+  // localStorage.setItem('token', '302|bmGijaRxvLzbu2ll86LJJntgmC3x4d7YxfV6MFFf')
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&
@@ -149,6 +150,7 @@ function App() {
           <Route path="/limits" element={<Limits />} />
           <Route path="/topup-types" element={<TopupTypes />} />
           <Route path="/p2p" element={<P2p />} />
+          <Route path="/referal" element={<Referal />} />
         </Routes>
 
         {location.pathname !== "/login" &&

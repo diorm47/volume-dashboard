@@ -30,9 +30,11 @@ function Review() {
   ]);
   const [userData, setUserData] = useState({});
   const [pnl, setPnl] = useState("0.00");
+
   const [ordersHistory, setOrdersHistory] = useState();
 
   const [selectedOption, setSelectedOption] = useState("today");
+  const [selectedOption2, setSelectedOption2] = useState("today");
 
   const optionsMap = {
     [t("timeFrame.today")]: "today",
@@ -47,13 +49,26 @@ function Review() {
     setSelectedOption(value);
     getPnl(value);
   };
+  const handleSelect2 = (option) => {
+    const value = optionsMap[option.value];
+    setSelectedOption2(value);
+
+    if (value == "d7") {
+      setSelectedTime([subDays(new Date(), 7), new Date()]);
+    } else if (value == "d30") {
+      setSelectedTime([subDays(new Date(), 30), new Date()]);
+    } else if (value == "d90") {
+      setSelectedTime([subDays(new Date(), 90), new Date()]);
+    }
+  };
 
   const optionKeys = {
-    [t("timeFrame.last30Days")]: "d7",
-    [t("timeFrame.last90Days")]: "d30",
-    [t("timeFrame.allTime")]: "d90",
+    [t("timeFrame.last7Days")]: "d7",
+    [t("timeFrame.last30Days")]: "d30",
+    [t("timeFrame.last90Days")]: "d90",
   };
   const options2 = Object.keys(optionKeys);
+
   const refresh = () => {
     mainApi
       .reEnter()
@@ -273,49 +288,13 @@ function Review() {
                 <h2>PnL</h2>
                 <div className="main_select_item">
                   <div className="main_select_item">
-                    {/* <Dropdown
-                      options={options2}
-                      placeholder={options2[0]}
-                      value={options2.find(
-                        (option) => optionsMap[option] === selectedOption
-                      )}
-                      arrowClosed={
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                        >
-                          <path
-                            d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
-                            fill="#111112"
-                          />
-                        </svg>
-                      }
-                      arrowOpen={
-                        <svg
-                          className="open_arrow"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                        >
-                          <path
-                            d="M8.00001 8.78141L11.3 5.48141L12.2427 6.42408L8.00001 10.6667L3.75734 6.42408L4.70068 5.48141L8.00068 8.78141"
-                            fill="#111112"
-                          />
-                        </svg>
-                      }
-                    /> */}
                     <Dropdown
-                      options={options}
-                      onChange={handleSelect}
-                      value={options.find(
-                        (option) => optionsMap[option] === selectedOption
+                      options={options2}
+                      onChange={handleSelect2}
+                      value={options2.find(
+                        (option) => optionsMap[option] === selectedOption2
                       )}
-                      placeholder={options[0]}
+                      placeholder={options2[0]}
                       arrowClosed={
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -396,8 +375,7 @@ function Review() {
                                 {t("buy_price")}{" "}
                                 <span>
                                   {" "}
-                                  {Number(item.price_start || 0)}{" "}
-                                  USDT
+                                  {Number(item.price_start || 0)} USDT
                                 </span>
                               </p>
                             ) : (
@@ -405,33 +383,27 @@ function Review() {
                                 {t("sell_price")}{" "}
                                 <span>
                                   {" "}
-                                  {Number(item.price_start || 0)}{" "}
-                                  USDT
+                                  {Number(item.price_start || 0)} USDT
                                 </span>
                               </p>
                             )}
                             <p>
                               {t("position_volume")}{" "}
-                              <span>
-                                {" "}
-                                {Number(item.volume || 0)} USDT
-                              </span>
+                              <span> {Number(item.volume || 0)} USDT</span>
                             </p>
                           </div>
                           <div className="order_history_list_item_content_item order_history_list_item_content_item_last">
                             <p>
                               {t("profit_or_loss")}{" "}
                               {item.trading_result < 0 ? (
-                                <span style={{color: '#F1507B'}}>
+                                <span style={{ color: "#F1507B" }}>
                                   {" "}
-                                  {Number(item.trading_result || 0)}{" "}
-                                  USDT
+                                  {Number(item.trading_result || 0)} USDT
                                 </span>
                               ) : (
                                 <span>
                                   {" "}
-                                  {Number(item.trading_result || 0)}{" "}
-                                  USDT
+                                  {Number(item.trading_result || 0)} USDT
                                 </span>
                               )}
                             </p>

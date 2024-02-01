@@ -1,0 +1,116 @@
+.referal_title h1 {
+  color: var(--Color_Black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* ExtraBold/52px */
+  font-family: "TTInterfaces800";
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  letter-spacing: -2.58px;
+  margin: 55px 0;
+}
+
+.marg_ref {
+  margin-top: 56px !important;
+}
+
+.ref_line {
+  margin: 28px 0;
+  height: 1px;
+  width: 100%;
+  background: #dbdbdb;
+}
+
+.ref_link {
+  display: flex;
+  align-items: center;
+}
+.ref_link p {
+  color: var(--Color_Black, #111112);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 17px/Regular */
+  font-family: "TTInterfaces400";
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+  margin: 0;
+  margin-right: 10px;
+}
+
+.copy_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.ref_block .main_block_wrapper_title h2 {
+  font-family: "TTInterfaces700";
+
+  font-weight: 700;
+}
+
+.ref_block .main_block_wrapper_top {
+  border-bottom: none !important;
+}
+
+.refs_list {
+  width: 100%;
+}
+.refs_list_title,
+.refs_content_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.refs_list_title p {
+  color: var(--Color_Gray, #92979c);
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 13px/Regular */
+  font-family: "TTInterfaces400";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 123.077% */
+}
+
+.refs_content_item p {
+  color: var(--Color_Black, #111112);
+  text-align: right;
+  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+
+  /* 17px/Regular */
+  font-family: "TTInterfaces400";
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 141.176% */
+}
+
+.refs_content .refs_content_item_wrapper:last-child .ref_line {
+  display: none;
+}
+@media only screen and (max-width: 450px) {
+  .referal_title h1 {
+    margin: 0;
+    font-size: 30px;
+    margin-bottom: 20px;
+    line-height: 38.55px;
+  }
+  .ref_link p {
+    font-size: 13px;
+  }
+  .ref_block .main_block_wrapper_top {
+    padding: 20px;
+  }
+  .marg_ref {
+    margin-top: 30px !important;
+  }
+  .ref_line {
+    margin: 20px 0;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import PasswordValidator from "./password-validator";
 import FillCode from "./fill-code";
 import Snackbar from "../../components/snackbar/snackbar";
@@ -24,8 +24,18 @@ function Auth() {
     }
   }, [errorResponce]);
 
-  // snackbar
+  // ref
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const refCode = queryParams.get("ref");
 
+  useEffect(() => {
+    if (refCode) {
+      setIsReferralHidden(false);
+    }
+  }, [refCode]);
+
+  // snackbar
   const [visibleSnack, setVisibleSnack] = useState(false);
   const [snackText, setSnackText] = useState("");
   const [snackStatus, setSnackStatus] = useState("");
@@ -50,7 +60,9 @@ function Auth() {
   };
 
   const toggleReferral = () => {
-    setIsReferralHidden(!isReferralHidden);
+    if (!refCode) {
+      setIsReferralHidden(!isReferralHidden);
+    }
   };
 
   const validateEmail = (email) => {
@@ -120,6 +132,7 @@ function Auth() {
     bodyContent.append("name", realName);
     bodyContent.append("last_name", lastName);
     bodyContent.append("password_confirmation", password);
+    bodyContent.append("referral_code", refCode);
     if (realName.length < 3 || lastName.length < 3) {
       snackOptions(t("auth.error2"), "error");
       return; // Stop the function execution
@@ -236,7 +249,8 @@ function Auth() {
                   <input
                     type="text"
                     id="referal"
-                    value={referralCode}
+                    disabled={refCode}
+                    value={refCode}
                     onChange={handleReferralChange}
                     className={getInputClass("field2")}
                     onFocus={() => handleFocus("field2")}
@@ -305,8 +319,7 @@ function Auth() {
               </div>
               <div>
                 <div className="login_input_titles">
-                <p>{t("lastName")} </p>
-
+                  <p>{t("lastName")} </p>
                 </div>
                 <div className="login_input">
                   <input
@@ -340,7 +353,7 @@ function Auth() {
                 disabled={!isFormComplete}
                 onClick={() => finishAuth()}
               >
-                {t('login.create_acc')}
+                {t("login.create_acc")}
               </button>
             </div>
           </div>
@@ -352,35 +365,39 @@ function Auth() {
           <>
             <div className="toggle_auth">
               <p>
-                {t('auth.have_acc')} <NavLink to="/login">{t('login.log_title')}</NavLink>
+                {t("auth.have_acc")}{" "}
+                <NavLink to="/login">{t("login.log_title")}</NavLink>
               </p>
             </div>
             <div className="login_line"></div>
             <div className="login_privacy">
-            {localStorage.getItem("locale") == "en" ? (
-              <p>
-                {t("login.rules")} <br />
-                <a target="_blank" href="https://nvolume.com/en/agreement.html">
-                  {t("login.agreement")}
-                </a>{" "}
-                и{" "}
-                <a target="_blank" href="https://nvolume.com/en/policy.html">
-                  {t("login.policy")}
-                </a>
-              </p>
-            ) : (
-              <p>
-                {t("login.rules")} <br />
-                <a target="_blank" href="https://nvolume.com/agreement.html">
-                  {t("login.agreement")}
-                </a>{" "}
-                и{" "}
-                <a target="_blank" href="https://nvolume.com/policy.html">
-                  {t("login.policy")}
-                </a>
-              </p>
-            )}
-          </div>
+              {localStorage.getItem("locale") == "en" ? (
+                <p>
+                  {t("login.rules")} <br />
+                  <a
+                    target="_blank"
+                    href="https://nvolume.com/en/agreement.html"
+                  >
+                    {t("login.agreement")}
+                  </a>{" "}
+                  и{" "}
+                  <a target="_blank" href="https://nvolume.com/en/policy.html">
+                    {t("login.policy")}
+                  </a>
+                </p>
+              ) : (
+                <p>
+                  {t("login.rules")} <br />
+                  <a target="_blank" href="https://nvolume.com/agreement.html">
+                    {t("login.agreement")}
+                  </a>{" "}
+                  и{" "}
+                  <a target="_blank" href="https://nvolume.com/policy.html">
+                    {t("login.policy")}
+                  </a>
+                </p>
+              )}
+            </div>
           </>
         ) : (
           ""

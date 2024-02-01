@@ -61,6 +61,12 @@ class MainApi {
       requiresToken: true,
     });
   }
+  async getReferals() {
+    return this._sendRequest({
+      endpoint: "/private-api/v1/users/referrals/list",
+      requiresToken: true,
+    });
+  }
   async logout() {
     return this._sendRequest({
       endpoint: "/private-api/v1/users/logout",

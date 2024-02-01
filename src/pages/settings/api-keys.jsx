@@ -62,7 +62,7 @@ function ApiKeys({ setRec }) {
               <rect y="0.5" width="5" height="5" rx="2.5" fill="#31BD65" />
             </svg>
 
-            <p>Binance</p>
+            <p>Binance Futures</p>
           </div>{" "}
           <span>{t("supported")}</span>
         </div>
@@ -82,7 +82,7 @@ function ApiKeys({ setRec }) {
             >
               <rect y="0.5" width="5" height="5" rx="2.5" fill="#31BD65" />
             </svg>
-            <p>ByBit</p>
+            <p>ByBit Futures</p>
           </div>{" "}
           <span>{t("supported")}</span>
         </div>
@@ -468,7 +468,7 @@ function ApiKeys({ setRec }) {
           </div>
           <div className="modal_wrapper_btns add_api_btns">
             <div className="redirect_btn">
-              <NavLink to="">
+              <NavLink to="/api">
                 <p>{t("apiADittionals.question")}</p>
               </NavLink>
             </div>

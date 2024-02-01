@@ -195,6 +195,11 @@ function Investments({ updatebalance }) {
       unpaidTariff: "Error, no active tariff!",
       botAddedSuccess: "Method added successfully!",
       requestError: "Error executing the request!",
+
+      trial: "Your tariff plan does not allow usage beyond $200.",
+      starter: "Your tariff plan does not allow usage beyond $400.",
+      advanced: "Your tariff plan does not allow usage beyond $900.",
+      professional: "Your tariff plan does not allow usage beyond $3000.",
     },
     ru: {
       minimumInvestment: "Минимальная сумма инвестиции 100 USDT.",
@@ -208,6 +213,11 @@ function Investments({ updatebalance }) {
       unpaidTariff: "Ошибка, нет активного тарифа!",
       botAddedSuccess: "Метод успешно добавлен!",
       requestError: "Ошибка при выполнении запроса!",
+
+      trial: "Ваш тарифный план не позволяет использовать более $200.",
+      starter: "Ваш тарифный план не позволяет использовать более $400.",
+      advanced: "Ваш тарифный план не позволяет использовать более $900.",
+      professional: "Ваш тарифный план не позволяет использовать более $3000.",
     },
   };
   const userLanguage = localStorage.getItem("locale") || "ru";
@@ -310,6 +320,18 @@ function Investments({ updatebalance }) {
       setErrorInvest(true);
     } else if (isChecked && Number(stopLos) < precent20) {
       snackOptions(localization[userLanguage].stopLossLessThan20, "error");
+      setErrorInvest(true);
+    } else if (userData.tariff == "Пробный" && amountInvestment > 200) {
+      snackOptions(localization[userLanguage].trial, "error");
+      setErrorInvest(true);
+    } else if (userData.tariff == "Стартовый" && amountInvestment > 400) {
+      snackOptions(localization[userLanguage].starter, "error");
+      setErrorInvest(true);
+    } else if (userData.tariff == "Улучшенный" && amountInvestment > 900) {
+      snackOptions(localization[userLanguage].advanced, "error");
+      setErrorInvest(true);
+    } else if (userData.tariff == "Продвинутый" && amountInvestment > 3000) {
+      snackOptions(localization[userLanguage].professional, "error");
       setErrorInvest(true);
     } else {
       setErrorInvest(false);
