@@ -221,7 +221,7 @@ function NavBar({ setMode }) {
           <div className="nav_menu_item">
             <ChatIcon />
             <div className="nav_menu_item_drop nav_menu_item_drop_chat">
-              {/* {i18n.language == "en" ? (
+              {i18n.language == "en" ? (
                 <NavLink target="_blank" to="https://t.me/nvolume_official">
                   <p>Telegram</p>
                   <svg
@@ -274,7 +274,7 @@ function NavBar({ setMode }) {
                     fill="black"
                   />
                 </svg>
-              </NavLink> */}
+              </NavLink>
               <NavLink
                 target="_blank"
                 to="https://www.youtube.com/@nvolume_official"
@@ -348,9 +348,9 @@ function NavBar({ setMode }) {
               <NavLink to="/settings/profile">
                 <p> {t("nav_menu_7")} </p>
               </NavLink>
-              <NavLink to="/referal">
+              {/* <NavLink to="/referal">
                 <p> {t("nav_menu_14")} </p>
-              </NavLink>
+              </NavLink> */}
               <NavLink to="/login" onClick={handleLogout}>
                 <p> {t("nav_menu_15")} </p>
               </NavLink>
