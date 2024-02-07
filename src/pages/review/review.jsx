@@ -431,12 +431,12 @@ function Review() {
                 userData.demo_used ? (
                   <div className="secondary_block_wrapper">
                     <div className="main_block_wrapper_title">
-                      <h2> {t("tariffPlanTitle")}</h2>
+                      <h2>  {displayTariff(i18n.language, userData.tariff)}</h2>
                     </div>
                     <div className="tarif_plan">
                       <div className="tarif_plan_top">
-                        <p>{displayTariff(i18n.language, userData.tariff)}</p>
-                        <p>$ 0.00</p>
+                        <p>{t("tariffPlanTitle")}</p>
+                 
                       </div>
                       <div className="tarif_plan_time">
                         <div className="tarif_plan_time_title">
@@ -510,7 +510,7 @@ function Review() {
               <div className="most_questions_desc">
                 <p>{t("faq_description")}</p>
               </div>
-              <div className="most_questions_list">
+              {/* <div className="most_questions_list">
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -572,7 +572,7 @@ function Review() {
                   </svg>
                   <p>{t("faq_question_5")}</p>
                 </div>
-              </div>
+              </div> */}
               <div className="review_right_link">
                 <NavLink to="/base">
                   <p>{t("knowledge_base_link")}</p>

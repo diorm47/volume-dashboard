@@ -2,11 +2,11 @@ export const ru_locale = {
   // navbar
   nav_menu_1: "Обзор",
   nav_menu_2: "Анализ",
-  nav_menu_3: "Инвестиции",
+  nav_menu_3: "Алгоритм",
   nav_menu_4: "Тарифы",
   nav_menu_5: "Транзакции",
   nav_menu_6: "Настройки",
-  nav_menu_7: "Профиль",
+  nav_menu_7: "Редактировать профиль",
   nav_menu_8: "Безопасность",
   nav_menu_9: "Подключение API",
   nav_menu_10: "Изучить",
@@ -67,11 +67,11 @@ export const ru_locale = {
   short_order: "Short",
   no_open_orders: "Нет открытых ордеров",
   no_order_history: "Нет истории ордеров",
-  investment_title: "Выберите метод",
+  investment_title: "Выберите уровень риска",
   investments_page_title: {
-    main_title: "Выберите метод",
+    main_title: "Выберите уровень риска",
     sub_title:
-      "Выберите свой метод инвестирования и чувствуйте себя уверенно на любом временном промежутке.",
+      "Чем выше уровень риска, тем выше потенциальная доходность, однако вероятность просадки депозита тоже увеличивается, учтите это при выборе",
   },
   conservative: "Консервативный",
   minimumInvestmentAmount: "Минимальная сумма инвестиции",
@@ -103,7 +103,7 @@ export const ru_locale = {
 
   maxDrawdown: "Макс. просадка",
   pnl30Days: "Pnl(%) за 30 дней",
-  investment: "Инвестиции",
+  investment: "Депозит",
   min100: "Мин. 100",
   available: "Доступно",
   totalStopLoss: "Общий стоп-лосс",
@@ -661,7 +661,7 @@ export const ru_locale = {
     log_error:
       "Ошибка электронной почты или пароля. Проверьте правильность введенных данных.",
   },
-  canceled: 'Отменен',
+  canceled: "Отменен",
   auth: {
     error:
       "Кажется, вы уже зарегистрированы в нашей системе. Пожалуйста, нажмите войти.",
@@ -721,4 +721,10 @@ export const ru_locale = {
     delete: "Удалить",
   },
   tg_chat: "Telegram чат",
+  tariff: {
+    title: "Купить тарифный план",
+    descr:
+      "Купить тарифный план, чтобы продолжить использование сервиса &Volume",
+    button: "Купить тариф",
+  },
 };

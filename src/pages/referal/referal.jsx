@@ -61,6 +61,28 @@ function Referal() {
         <div className="ref_top main_block_wrapper ref_block">
           <div class="main_block_wrapper_top">
             <div class="main_block_wrapper_title secondary_title">
+              <h2>Доход</h2>
+              <p>Здесь отображается ваш доход с рефералов</p>
+              <div className="ref_bonus">
+                <div className="ref_bonuses">
+                  <div>
+                    <p>Общий доход</p>
+                    <span>30.00 USDT</span>
+                  </div>
+                  <div>
+                    <p>Доступно</p>
+                    <span>30.00 USDT</span>
+                  </div>
+                </div>
+
+                <button className="ref_bonus_output">Вывести</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="ref_top main_block_wrapper ref_block">
+          <div class="main_block_wrapper_top">
+            <div class="main_block_wrapper_title secondary_title">
               <h2>Реферальная ссылка</h2>
               <p>Здесь отображается ваша актуальная реферальная ссылка</p>
               <p className="marg_ref">Ссылка</p>
@@ -102,6 +124,8 @@ function Referal() {
             <div className="refs_list marg_ref">
               <div className="refs_list_title">
                 <p>ID Пользователя</p>
+                <p>Оплаченный тариф</p>
+                <p>Доход</p>
                 <p>Дата регистрации</p>
               </div>
               <div className="ref_line"></div>

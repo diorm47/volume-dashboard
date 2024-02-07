@@ -1,0 +1,82 @@
+.buy_tariff_wrapper {
+  max-width: 1250px;
+  padding: 28px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+.buy_tariff_wrapper_left {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.buy_tariff_wrapper_left p {
+  /* 23px/SemiBold */
+  color: rgb(17, 17, 18);
+  font-family: TTInterfaces600;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.buy_tariff_wrapper_left span {
+  /* 17px/Regular */
+  color: rgb(17, 17, 18);
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.buy_tariff_wrapper a {
+  border-radius: 40px;
+  padding: 11px 28px 11px 28px;
+  background: rgb(0, 119, 255);
+  transition: all 0.4s ease;
+}
+
+.buy_tariff_wrapper a p {
+  /* 13px/SemiBold */
+  color: rgb(255, 255, 255);
+  font-family: TTInterfaces600;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.buy_tariff_wrapper a:hover {
+  background: rgba(36, 32, 252, 0.8);
+  transition: all 0.4s ease;
+}
+
+@media only screen and (max-width: 450px) {
+  button,
+  .connect_api_recom_wrapper p {
+    font-size: 13px !important;
+  }
+  .buy_tariff_wrapper {
+    padding: 15px;
+    flex-direction: column;
+  }
+  .buy_tariff_notif {
+    padding: 0 20px;
+  }
+  .buy_tariff_wrapper a {
+    width: 100%;
+    margin-top: 15px;
+  }
+}

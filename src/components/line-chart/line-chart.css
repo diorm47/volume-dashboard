@@ -40,6 +40,9 @@
   border: 1px solid #343436 !important;
 
 }
+.review_chart {
+  padding-top: 30px;
+}
 @media only screen and (max-width: 450px) {
   #chart {
     margin-left: -20px;

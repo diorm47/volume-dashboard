@@ -21,6 +21,8 @@ import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
 import { useTranslation } from "react-i18next";
 import Referal from "./pages/referal/referal";
+import BuyTariff from "./components/buy-tariff/but-tarif";
+import { mainApi } from "./components/utils/main-api";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -28,6 +30,7 @@ function App() {
   const location = useLocation();
   const [mode, setMode] = useState(localStorage.getItem("mode"));
   const [rec, setRec] = useState(false);
+  const [tarif, setTarif] = useState({});
 
   const updatebalance = () => {
     let headersList = {
@@ -73,6 +76,19 @@ function App() {
   }, [localStorage.getItem("token")]);
 
   useEffect(() => {
+    if (localStorage.getItem("token")) {
+      mainApi
+        .reEnter()
+        .then((res) => {
+          setTarif(res.data.user);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [localStorage.getItem("token")]);
+
+  useEffect(() => {
     if (!localStorage.getItem("locale")) {
       let headersList = {
         Accept: "*/*",
@@ -98,7 +114,6 @@ function App() {
     }
   }, [localStorage.getItem("locale")]);
 
-  // localStorage.setItem('token', '317|sFZEhjR226XTKdwtlHvrVB94KybPlBD22PCDWAmN')
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&
@@ -108,7 +123,7 @@ function App() {
       ) : (
         ""
       )}
-      {rec &&
+      {!tarif.tariff_paid_to &&
       location.pathname !== "/login" &&
       location.pathname !== "/reset" &&
       location.pathname !== "/auth" ? (
@@ -120,6 +135,14 @@ function App() {
             </p>
           </div>
         </div>
+      ) : (
+        ""
+      )}
+      {true &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/reset" &&
+      location.pathname !== "/auth" ? (
+        <BuyTariff />
       ) : (
         ""
       )}

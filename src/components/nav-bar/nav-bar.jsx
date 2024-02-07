@@ -123,7 +123,7 @@ function NavBar({ setMode }) {
                 </NavLink>
               </div>
             </div>
-
+{/* 
             <div className="nav_menu_item">
               <p> {t("nav_menu_6")} </p>
 
@@ -139,7 +139,7 @@ function NavBar({ setMode }) {
                   <p> {t("nav_menu_9")} </p>
                 </NavLink>
               </div>
-            </div>
+            </div> */}
 
             <div className="nav_menu_item">
               <p> {t("nav_menu_10")} </p>
@@ -346,11 +346,11 @@ function NavBar({ setMode }) {
                 <p>{displayTariff(i18n.language, userData.tariff)}</p>
               </div>
               <NavLink to="/settings/profile">
-                <p> {t("nav_menu_7")} </p>
+                <p> {t("nav_menu_7")} </p> 
               </NavLink>
-              {/* <NavLink to="/referal">
+              <NavLink to="/referal">
                 <p> {t("nav_menu_14")} </p>
-              </NavLink> */}
+              </NavLink>
               <NavLink to="/login" onClick={handleLogout}>
                 <p> {t("nav_menu_15")} </p>
               </NavLink>
@@ -470,7 +470,7 @@ function NavBar({ setMode }) {
                   />
                 </svg>
               </NavLink>
-              {/* {i18n.language == "en" ? (
+              {i18n.language == "en" ? (
                 <NavLink target="_blank" to="https://t.me/nvolume_official">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -504,7 +504,7 @@ function NavBar({ setMode }) {
                     />
                   </svg>
                 </NavLink>
-              )} */}
+              )}
             </div>
           </div>
         </div>

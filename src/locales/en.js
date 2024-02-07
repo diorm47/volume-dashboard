@@ -1,11 +1,11 @@
 export const en_locale = {
   nav_menu_1: "Review",
   nav_menu_2: "Analysis",
-  nav_menu_3: "Investments",
+  nav_menu_3: "Algorithm",
   nav_menu_4: "Pricing",
   nav_menu_5: "Transactions",
   nav_menu_6: "Settings",
-  nav_menu_7: "Profile",
+  nav_menu_7: "Edit profile",
   nav_menu_8: "Security",
   nav_menu_9: "API connection",
   nav_menu_10: "Explore",
@@ -62,11 +62,11 @@ export const en_locale = {
   short_order: "Short",
   no_open_orders: "No open orders",
   no_order_history: "No order history",
-  investment_title: "Select method",
+  investment_title: "Select risk level",
   investments_page_title: {
-    main_title: "Choose Your Method",
+    main_title: "Select risk level",
     sub_title:
-      "Choose your investment method and feel confident on any time frame.",
+      "The higher the risk level, the higher the potential profitability, however, the probability of deposit drawdown also increases, take this into account when choosing",
   },
   conservative: "Conservative",
   minimumInvestmentAmount: "Minimum Investment Amount",
@@ -99,7 +99,7 @@ export const en_locale = {
 
   maxDrawdown: "Max Drawdown",
   pnl30Days: "PnL(%) for 30 days",
-  investment: "Investment",
+  investment: "Deposite",
   min100: "Min. 100",
   available: "Available",
   totalStopLoss: "Total Stop Loss",
@@ -685,4 +685,10 @@ export const en_locale = {
     delete: "Delete",
   },
   tg_chat: "Telegram Chat",
+
+  tariff: {
+    title: "Buy a tariff plan",
+    descr: "Buy a tariff plan to continue using the &Volume service",
+    button: "Buy tariff",
+  },
 };

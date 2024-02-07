@@ -94,6 +94,65 @@
 .refs_content .refs_content_item_wrapper:last-child .ref_line {
   display: none;
 }
+.ref_bonus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 38px;
+  width: 100%;
+}
+.ref_bonuses {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+.ref_bonuses p {
+  /* 17px/Regular */
+  color: rgb(17, 17, 18);
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.ref_bonuses span {
+  /* 23px/SemiBold */
+  color: rgb(17, 17, 18);
+  font-family: TTInterfaces700;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.ref_bonus_output {
+  padding: 18px 50px 18px 50px;
+  border-radius: 40px;
+  /* 17px/Medium */
+  color: rgb(255, 255, 255);
+  font-family: TTInterfaces500;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+  background: rgb(0, 119, 255);
+}
+
+@media only screen and (max-width: 700px) {
+  .ref_bonus {
+    flex-direction: column;
+    align-items: start;
+  }
+  .ref_bonus_output {
+    width: 100%;
+    text-align: center;
+    padding: 18px;
+    margin-top: 50px;
+  }
+}
 @media only screen and (max-width: 450px) {
   .referal_title h1 {
     margin: 0;
@@ -112,5 +171,17 @@
   }
   .ref_line {
     margin: 20px 0;
+  }
+  .ref_bonuses p {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    margin-bottom: 10px;
+  }
+  .ref_bonuses span {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0%;
   }
 }

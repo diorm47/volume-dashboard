@@ -49,12 +49,15 @@
   color: var(--text-black, var(--111112, #111112));
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 17px/Bold */
-  font-family: TTInterfaces600;
+  font-weight: 700;
+  font-family: TTInterfaces700;
   font-size: 17px;
   font-style: normal;
-  font-weight: 600;
+
   line-height: 24px; /* 141.176% */
+}
+.invest_modal_top_content_descriptions {
+  display: none !important;
 }
 .investing_top_card_item {
   margin-bottom: 24px;
@@ -64,6 +67,7 @@
 }
 .investing_top_card_value_blue p {
   color: #0077ffcc;
+ 
 }
 .black_mode .investing_top_card_value_blue p {
   color: #0077ffcc;
@@ -295,8 +299,8 @@
 .invest_modal_top_content h2 {
   color: var(--Color_Black, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-  margin-bottom: 36px;
-  /* ExtraBold/52px */
+  margin-bottom: 24px;
+
   font-family: TTInterfaces800;
   font-size: 52px;
   font-style: normal;
@@ -589,6 +593,9 @@
 .mb_20px {
   margin-bottom: 20px;
 }
+.investing_top_card_btns {
+  display: none !important;
+}
 
 @media only screen and (max-width: 1050px) {
   .investing_top_cards {
@@ -624,7 +631,7 @@
     right: 15px;
   }
   .invest_modal {
-   top: auto !important;
+    top: auto !important;
     bottom: 0 !important;
   }
   .invest_modal_item_input input {
@@ -688,7 +695,7 @@
 }
 
 @media screen and (max-height: 850px) {
-  .invest_modal{
+  .invest_modal {
     top: 40px !important;
   }
 }

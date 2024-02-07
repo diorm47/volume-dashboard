@@ -221,14 +221,14 @@ const ColumnChart = ({ selectedTime }) => {
     <>
       {pnl ? (
         <>
-          <div className="pnl_value">
+          {/* <div className="pnl_value">
             <p>
               {Number(pnlData).toFixed(2) > 0
                 ? `+ ${Number(pnlData).toFixed(2)}`
                 : Number(pnlData).toFixed(2)}{" "}
               <span>USDT</span>
             </p>
-          </div>
+          </div> */}
           <div id="chart">
             <ReactApexChart
               options={chartData.options}

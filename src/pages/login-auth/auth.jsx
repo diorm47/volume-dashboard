@@ -132,7 +132,9 @@ function Auth() {
     bodyContent.append("name", realName);
     bodyContent.append("last_name", lastName);
     bodyContent.append("password_confirmation", password);
-    bodyContent.append("referral_code", refCode);
+    if (refCode) {
+      bodyContent.append("referral_code", refCode);
+    }
     if (realName.length < 3 || lastName.length < 3) {
       snackOptions(t("auth.error2"), "error");
       return; // Stop the function execution

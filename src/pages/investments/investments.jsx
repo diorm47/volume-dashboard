@@ -543,7 +543,10 @@ function Investments({ updatebalance }) {
                 <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select">
-                {activeCardSelect == 1 ? (
+              
+                  
+                   
+                {activeInvests && activeInvests.exchange && activeInvests.level_risk === "conservative" ? (
                   <button className="investing_top_card_select_active">
                     {t("select")}
                   </button>
@@ -655,7 +658,7 @@ function Investments({ updatebalance }) {
                 <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select">
-                {activeCardSelect == 2 ? (
+                {activeInvests && activeInvests.exchange && activeInvests.level_risk === "moderate" ? (
                   <button className="investing_top_card_select_active">
                     {t("select")}
                   </button>
@@ -767,7 +770,7 @@ function Investments({ updatebalance }) {
                 <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select ">
-                {activeCardSelect === 3 ? (
+                {activeInvests && activeInvests.exchange && activeInvests.level_risk === "aggressive" ? (
                   <button className="investing_top_card_select_active">
                     {t("select")}
                   </button>
@@ -950,18 +953,7 @@ function Investments({ updatebalance }) {
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
                 <p>{t("investment")}</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                >
-                  <path
-                    d="M7.00033 1.16797C3.78033 1.16797 1.16699 3.7813 1.16699 7.0013C1.16699 10.2213 3.78033 12.8346 7.00033 12.8346C10.2203 12.8346 12.8337 10.2213 12.8337 7.0013C12.8337 3.7813 10.2203 1.16797 7.00033 1.16797ZM7.58366 9.91797H6.41699V8.7513H7.58366V9.91797ZM7.58366 7.58464H6.41699V4.08464H7.58366V7.58464Z"
-                    fill="#92979C"
-                  />
-                </svg>
+  
               </div>
               <div className="invest_modal_item_input">
                 <input
