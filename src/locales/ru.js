@@ -1,7 +1,7 @@
 export const ru_locale = {
   // navbar
-  nav_menu_1: "Обзор",
-  nav_menu_2: "Анализ",
+  nav_menu_1: "Дашборд",
+  nav_menu_2: "Статистика",
   nav_menu_3: "Алгоритм",
   nav_menu_4: "Тарифы",
   nav_menu_5: "Транзакции",
@@ -30,8 +30,8 @@ export const ru_locale = {
   day_90: "90 дней",
   last_180: "Последний 180 дней",
 
-  remaining_days: "дней осталось",
-  add_30_days: "Добавить + 30 дней",
+  remaining_days: "Осталось:",
+  add_30_days: "Продлить",
   trial_period_title: "Пробный период",
   free_trial: "7 дней тестовый период",
   activate_trial:
@@ -88,8 +88,8 @@ export const ru_locale = {
   medium: "Средний",
   projectedYieldPeriod: "Прогнозируемая доходность за период",
   high: "Высокий",
-  investments: "Инвестиции",
-  activeInvestmentsDescription: "Здесь отображаются активные инвестиции",
+  investments: "Алгоритмы",
+  activeInvestmentsDescription: "Здесь отображаются активные алгоритмы",
   creationTime: "Время создания",
   investmentMethod: "Метод инвестирования",
 
@@ -135,7 +135,7 @@ export const ru_locale = {
   selectPlan: "Выберите план",
   paymentDisclaimer:
     "При оплате тарифа платёжный сервис берет комиссию за проведение транзакции. Внимательно указывайте сумму с учётом комиссии.",
-  tariffPlanTitle: "Тарифный план",
+  tariffPlanTitle: "Текущий тарифный план",
   trialPlanDuration: "7 дней",
   paidPlanDuration: "30 дней",
   remainingDays: "дней",
@@ -325,7 +325,7 @@ export const ru_locale = {
   suggestImprovement: "Предложение по улучшению",
   whatWouldYouLikeToImprove: "Что бы вы хотели улучшить в нашем сервисе?",
   suggestIdea: "Предложить идею",
-  rightsReserved: "© 2023 &Volume, все права защищены",
+  rightsReserved: "© 2024 &Volume, все права защищены",
   policy: "Политика",
   agreement: "Соглашение",
   registration: {
@@ -727,4 +727,11 @@ export const ru_locale = {
       "Купить тарифный план, чтобы продолжить использование сервиса &Volume",
     button: "Купить тариф",
   },
+  not_found: {
+    title: "Ой....",
+    p: "Страница не найдена",
+    desc: "Эта страница не существует или была удалена! Мы предлагаем вам вернуться обратно.",
+    button: "Вернуться обратно",
+  },
+  all_balance: "Использовать все",
 };

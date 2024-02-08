@@ -99,31 +99,32 @@ function NavBar({ setMode }) {
                 <p> {t("nav_menu_1")} </p>
               </div>
             </NavLink>
-            <NavLink to="/analysis">
-              <div className="nav_menu_item">
-                <p> {t("nav_menu_2")} </p>
-              </div>
-            </NavLink>
+
             <NavLink to="/investments">
               <div className="nav_menu_item">
                 <p> {t("nav_menu_3")} </p>
               </div>
             </NavLink>
-
+            <NavLink to="/analysis">
+              <div className="nav_menu_item">
+                <p> {t("nav_menu_2")} </p>
+              </div>
+            </NavLink>
             <div className="nav_menu_item ">
-              <p> {t("nav_menu_4")} </p>
+              <NavLink to="/pricing/pricing">
+                <p> {t("nav_menu_4")} </p>
+              </NavLink>
 
-              <Down className="drop_down_icon" />
-              <div className="nav_menu_item_drop">
+              {/* <div className="nav_menu_item_drop">
                 <NavLink to="/pricing/pricing">
                   <p> {t("nav_menu_4")} </p>
                 </NavLink>
                 <NavLink to="/pricing/transactions">
                   <p> {t("nav_menu_5")} </p>
                 </NavLink>
-              </div>
+              </div> */}
             </div>
-{/* 
+            {/* 
             <div className="nav_menu_item">
               <p> {t("nav_menu_6")} </p>
 
@@ -142,8 +143,10 @@ function NavBar({ setMode }) {
             </div> */}
 
             <div className="nav_menu_item">
-              <p> {t("nav_menu_10")} </p>
-
+              <NavLink to="/base">
+                <p> {t("nav_menu_11")} </p>
+              </NavLink>
+              {/* 
               <Down className="drop_down_icon" />
               <div className="nav_menu_item_drop nav_menu_item_drop_learn">
                 <NavLink to="/base">
@@ -179,7 +182,7 @@ function NavBar({ setMode }) {
                 >
                   <p> {t("nav_menu_13")} </p>
                 </NavLink>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -346,7 +349,7 @@ function NavBar({ setMode }) {
                 <p>{displayTariff(i18n.language, userData.tariff)}</p>
               </div>
               <NavLink to="/settings/profile">
-                <p> {t("nav_menu_7")} </p> 
+                <p> {t("nav_menu_7")} </p>
               </NavLink>
               <NavLink to="/referal">
                 <p> {t("nav_menu_14")} </p>

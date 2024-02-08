@@ -5,14 +5,15 @@ import subDays from "date-fns/subDays";
 import { format } from "date-fns";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import empty_block from "../../assets/icons/empty-block.png";
 import inviteImg from "../../assets/images/invite.png";
 import LineChart from "../../components/line-chart/line-chart";
 import { mainApi } from "../../components/utils/main-api";
 import { useTranslation } from "react-i18next";
+import BuyTariff from "../../components/buy-tariff/but-tarif";
 
-function Review() {
+function Review(rec) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -196,8 +197,37 @@ function Review() {
       setTar(true);
     }, 1300);
   }, []);
+
+  const location = useLocation();
+
   return (
     <>
+      {/* Api */}
+      {rec &&
+      rec.rec &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/reset" &&
+      location.pathname !== "/auth" ? (
+        <div className="connect_api_recom">
+          <div className="connect_api_recom_wrapper">
+            <p>
+              {t("apiRecNot.text1")}{" "}
+              <NavLink to="/settings/api">{t("apiRecNot.text2")}</NavLink>
+            </p>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      {/* Tarif */}
+      {!userData.tariff_paid_to &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/reset" &&
+      location.pathname !== "/auth" ? (
+        <BuyTariff />
+      ) : (
+        ""
+      )}
       <div className="pages_wrapper review_page">
         <div className="review_page_wrapper">
           <div className="review_left">
@@ -431,22 +461,16 @@ function Review() {
                 userData.demo_used ? (
                   <div className="secondary_block_wrapper">
                     <div className="main_block_wrapper_title">
-                      <h2>  {displayTariff(i18n.language, userData.tariff)}</h2>
+                      <h2> {displayTariff(i18n.language, userData.tariff)}</h2>
                     </div>
                     <div className="tarif_plan">
                       <div className="tarif_plan_top">
                         <p>{t("tariffPlanTitle")}</p>
-                 
                       </div>
                       <div className="tarif_plan_time">
                         <div className="tarif_plan_time_title">
-                          {userData.tariff === "Пробный" ? (
-                            <p>{t("trial_period")}</p>
-                          ) : (
-                            <p>{t("paid_period")}</p>
-                          )}
                           <p>
-                            {remainingDays} {t("remaining_days")}
+                            {t("remaining_days")} {remainingDays} дней
                           </p>
                         </div>
                         <div className="tarif_plan_time_block">
@@ -487,6 +511,68 @@ function Review() {
             ) : (
               <div className="secondary_block_wrapper"></div>
             )}
+            <div className="secondary_block_wrapper most_questions">
+              <div className="main_block_wrapper_title">
+                <h2>Помощь</h2>
+              </div>
+              <div className="review_help_blog">
+                <div className="review_help_blog_number">
+                  <div>
+                    <p>1</p>
+                  </div>
+                  <h4>Купить тарифный план</h4>
+                </div>
+                <div className="review_help_blog_descr">
+                  <p>
+                    Купить тарифный план, чтобы продолжить использование сервиса
+                    &Volume
+                  </p>
+                </div>
+                <NavLink to="/pricing/pricing">
+                  <button className="review_help_blog_btn">
+                    <p>Купить тариф</p>
+                  </button>{" "}
+                </NavLink>
+              </div>
+              <div className="review_help_blog">
+                <div className="review_help_blog_number">
+                  <div>
+                    <p>2</p>
+                  </div>
+                  <h4>Подключите API ключи</h4>
+                </div>
+                <div className="review_help_blog_descr">
+                  <p>
+                    Это нужно для того, чтобы ваш алгоритм мог совершать
+                    торговые операции на вашем аккаунте.
+                  </p>
+                </div>
+                <NavLink to="/pricing/pricing">
+                  <button className="review_help_blog_btn">
+                    <p>Подключить API ключи</p>
+                  </button>{" "}
+                </NavLink>
+              </div>
+              <div className="review_help_blog">
+                <div className="review_help_blog_number">
+                  <div>
+                    <p>3</p>
+                  </div>
+                  <h4>Создайте алгоритм</h4>
+                </div>
+                <div className="review_help_blog_descr">
+                  <p>
+                    Создайте алгоритм и начните зарабатывать вместе с сервисом
+                    &Volume
+                  </p>
+                </div>
+                <NavLink to="/investments">
+                  <button className="review_help_blog_btn">
+                    <p>Создать алгоритм</p>
+                  </button>
+                </NavLink>
+              </div>
+            </div>
 
             {/* <div className="secondary_block_wrapper invite_block">
               <div className="main_block_wrapper_title">

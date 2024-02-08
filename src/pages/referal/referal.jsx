@@ -56,22 +56,22 @@ function Referal() {
     <div className="pages_wrapper referal_page">
       <div className="referal_page_wrapper">
         <div className="referal_title">
-          <h1>Реферальная программа</h1>
+          <h1 className="color_white">Реферальная программа</h1>
         </div>
         <div className="ref_top main_block_wrapper ref_block">
           <div class="main_block_wrapper_top">
             <div class="main_block_wrapper_title secondary_title">
-              <h2>Доход</h2>
+              <h2 className="color_white">Доход</h2>
               <p>Здесь отображается ваш доход с рефералов</p>
               <div className="ref_bonus">
-                <div className="ref_bonuses">
+                <div className="ref_bonuses ">
                   <div>
-                    <p>Общий доход</p>
-                    <span>30.00 USDT</span>
+                    <p className="color_white">Общий доход</p>
+                    <span className="color_white">30.00 USDT</span>
                   </div>
                   <div>
-                    <p>Доступно</p>
-                    <span>30.00 USDT</span>
+                    <p className="color_white">Доступно</p>
+                    <span className="color_white">30.00 USDT</span>
                   </div>
                 </div>
 
@@ -88,7 +88,7 @@ function Referal() {
               <p className="marg_ref">Ссылка</p>
               <div className="ref_line"></div>
               <div className="ref_link">
-                <p>{`https://dashboard.nvolume.com/auth?ref=${refCode}`}</p>
+                <p  className="color_white"> {`https://dashboard.nvolume.com/auth?ref=${refCode}`}</p>
                 <div className="copy_icon" onClick={copyToClipboard}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

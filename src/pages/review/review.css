@@ -349,7 +349,6 @@
   border-radius: 6px;
   background: var(--2420FC, #0077ff);
   height: 4px;
- 
 }
 
 .review_right_link p {
@@ -426,6 +425,72 @@
   color: #fff;
 }
 
+.review_help_blog {
+  padding: 24px;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  margin-top: 24px;
+}
+.review_help_blog_number {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.review_help_blog_number div {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgb(0, 119, 255);
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.review_help_blog_number div p {
+  /* 13px/Regular */
+  color: rgb(0, 119, 255);
+  font-family: TTInterfaces400;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0%;
+}
+.review_help_blog_number h4 {
+  /* 17px/SemiBold */
+  color: rgb(17, 17, 18);
+  font-family: TTInterfaces600;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.review_help_blog_descr p {
+  /* 17px/Regular */
+  color: rgb(17, 17, 18);
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 24px;
+}
+.review_help_blog_btn {
+  border-radius: 40px;
+  width: 100%;
+  padding: 11px 0;
+  /* 13px/SemiBold */
+  color: rgb(255, 255, 255);
+  font-family: TTInterfaces600;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: center;
+  background: rgb(0, 119, 255);
+}
 @media only screen and (max-width: 1300px) {
   .review_left {
     width: 66%;
@@ -497,7 +562,8 @@
   .invite_block_title p,
   .invite_block_desc p,
   .most_questions_desc p,
-  .most_questions_list p, .free_tarif p {
+  .most_questions_list p,
+  .free_tarif p {
     font-size: 13px;
   }
   .tarif_plan_top {
@@ -505,7 +571,8 @@
   }
   .invite_block_desc p,
   .most_questions_desc p,
-  .most_questions_list p,  .free_tarif p {
+  .most_questions_list p,
+  .free_tarif p {
     line-height: 16px;
   }
   .secondary_block_wrapper {

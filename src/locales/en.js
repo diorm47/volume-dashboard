@@ -1,6 +1,6 @@
 export const en_locale = {
-  nav_menu_1: "Review",
-  nav_menu_2: "Analysis",
+  nav_menu_1: "Dashboard",
+  nav_menu_2: "Statistics",
   nav_menu_3: "Algorithm",
   nav_menu_4: "Pricing",
   nav_menu_5: "Transactions",
@@ -25,8 +25,8 @@ export const en_locale = {
   tariff_title: "Tariff Plan",
   trial_period: "7 days",
   paid_period: "30 days",
-  remaining_days: "days left",
-  add_30_days: "Add + 30 days",
+  remaining_days: "Left",
+  add_30_days: "Extend",
   trial_period_title: "Trial Period",
   free_trial: "7 days test period",
   activate_trial:
@@ -134,7 +134,7 @@ export const en_locale = {
   selectPlan: "Select a Plan",
   paymentDisclaimer:
     "When paying for the tariff, the payment service charges a commission for the transaction. Please specify the amount taking into account the commission.",
-  tariffPlanTitle: "Tariff Plan",
+  tariffPlanTitle: "Current tariff Plan",
   trialPlanDuration: "7 days",
   paidPlanDuration: "30 days",
   remainingDays: "days",
@@ -324,7 +324,7 @@ export const en_locale = {
   suggestImprovement: "Suggest an improvement",
   whatWouldYouLikeToImprove: "What would you like to improve in our service?",
   suggestIdea: "Suggest an Idea",
-  rightsReserved: "© 2023 &Volume, all rights reserved",
+  rightsReserved: "© 2024 &Volume, all rights reserved",
   policy: "Policy",
   agreement: "Agreement",
   registration: {
@@ -691,4 +691,11 @@ export const en_locale = {
     descr: "Buy a tariff plan to continue using the &Volume service",
     button: "Buy tariff",
   },
+  not_found: {
+    title: "Oh....",
+    p: "Page not found",
+    desc: "This page does not exist or has been deleted! We suggest you return back.",
+    button: "Go back",
+  },
+  all_balance: "Use all",
 };

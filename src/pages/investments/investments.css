@@ -67,7 +67,6 @@
 }
 .investing_top_card_value_blue p {
   color: #0077ffcc;
- 
 }
 .black_mode .investing_top_card_value_blue p {
   color: #0077ffcc;
@@ -692,6 +691,22 @@
     font-size: 23px;
     letter-spacing: -0.48px;
   }
+}
+.user_balance_invest {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user_balance_invest h4 {
+  cursor: pointer;
+  /* 13px/Regular */
+  color: rgb(0, 119, 255);
+  font-family: TTInterfaces400;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: right;
 }
 
 @media screen and (max-height: 850px) {

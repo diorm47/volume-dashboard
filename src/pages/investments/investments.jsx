@@ -439,6 +439,7 @@ function Investments({ updatebalance }) {
       });
   };
 
+ 
   return (
     <>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
@@ -519,7 +520,7 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active1 == t("one_month") ? <p>{t("upTo")} 10.43%</p> : ""}
+                  {active1 == t("one_month") ? <p>{t("upTo")} 10.43% / мес</p> : ""}
                   {active1 == t("three_month") ? <p>{t("upTo")} 31.29%</p> : ""}
                   {active1 == t("six_month") ? <p>{t("upTo")} 62.58%</p> : ""}
                   {active1 == t("one_year") ? <p>{t("upTo")} 125.16%</p> : ""}
@@ -543,10 +544,9 @@ function Investments({ updatebalance }) {
                 <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select">
-              
-                  
-                   
-                {activeInvests && activeInvests.exchange && activeInvests.level_risk === "conservative" ? (
+                {activeInvests &&
+                activeInvests.exchange &&
+                activeInvests.level_risk === "conservative" ? (
                   <button className="investing_top_card_select_active">
                     {t("select")}
                   </button>
@@ -634,7 +634,7 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active2 == t("one_month") ? <p>{t("upTo")} 21.65%</p> : ""}
+                  {active2 == t("one_month") ? <p>{t("upTo")} 21.65% / мес</p> : ""}
                   {active2 == t("three_month") ? <p>{t("upTo")} 64.95%</p> : ""}
                   {active2 == t("six_month") ? <p>{t("upTo")} 129.9%</p> : ""}
                   {active2 == t("one_year") ? <p>{t("upTo")} 259.8%</p> : ""}
@@ -658,7 +658,9 @@ function Investments({ updatebalance }) {
                 <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select">
-                {activeInvests && activeInvests.exchange && activeInvests.level_risk === "moderate" ? (
+                {activeInvests &&
+                activeInvests.exchange &&
+                activeInvests.level_risk === "moderate" ? (
                   <button className="investing_top_card_select_active">
                     {t("select")}
                   </button>
@@ -746,7 +748,7 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active3 == t("one_month") ? <p>{t("upTo")} 30.14%</p> : ""}
+                  {active3 == t("one_month") ? <p>{t("upTo")} 30.14% / мес</p> : ""}
                   {active3 == t("three_month") ? <p>{t("upTo")} 90.42%</p> : ""}
                   {active3 == t("six_month") ? <p>{t("upTo")} 180.84%</p> : ""}
                   {active3 == t("one_year") ? <p>{t("upTo")} 361.68%</p> : ""}
@@ -770,7 +772,9 @@ function Investments({ updatebalance }) {
                 <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select ">
-                {activeInvests && activeInvests.exchange && activeInvests.level_risk === "aggressive" ? (
+                {activeInvests &&
+                activeInvests.exchange &&
+                activeInvests.level_risk === "aggressive" ? (
                   <button className="investing_top_card_select_active">
                     {t("select")}
                   </button>
@@ -953,7 +957,6 @@ function Investments({ updatebalance }) {
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
                 <p>{t("investment")}</p>
-  
               </div>
               <div className="invest_modal_item_input">
                 <input
@@ -967,9 +970,19 @@ function Investments({ updatebalance }) {
                 />
                 <p>USDT</p>
               </div>
-              <p className="invest_modal_bottom_content_item_text ">
-                {t("available")}: {userData.balance || "0.00"} <span>USDT</span>
-              </p>
+              <div className="user_balance_invest">
+                <p className="invest_modal_bottom_content_item_text ">
+                  {t("available")}: {userData.balance || "0.00"}{" "}
+                  <span>USDT</span>
+                </p>
+                <h4
+                  onClick={() =>
+                    handleSetAmountInvestment(userData.balance !== 0.00 ? userData.balance : "")
+                  }
+                >
+                  {t('all_balance')}
+                </h4>
+              </div>
             </div>
             <div className="invest_modal_bottom_content_item stop_los_toggler">
               <div
@@ -1144,9 +1157,19 @@ function Investments({ updatebalance }) {
                 />
                 <p>USDT</p>
               </div>
-              <p className="invest_modal_bottom_content_item_text">
-                {t("available")}: {userData.balance || "0.00"} <span>USDT</span>
-              </p>
+              <div className="user_balance_invest">
+                <p className="invest_modal_bottom_content_item_text ">
+                  {t("available")}: {userData.balance || "0.00"}{" "}
+                  <span>USDT</span>
+                </p>
+                <h4
+                  onClick={() =>
+                    handleSetAmountInvestment(userData.balance !== 0.00 ? userData.balance : "")
+                  }
+                >
+                  {t('all_balance')}
+                </h4>
+              </div>
             </div>
             <div className="invest_modal_bottom_content_item">
               <div
@@ -1320,9 +1343,19 @@ function Investments({ updatebalance }) {
                 />
                 <p>USDT</p>
               </div>
-              <p className="invest_modal_bottom_content_item_text">
-                {t("available")}: {userData.balance || "0.00"} <span>USDT</span>
-              </p>
+              <div className="user_balance_invest">
+                <p className="invest_modal_bottom_content_item_text ">
+                  {t("available")}: {userData.balance || "0.00"}{" "}
+                  <span>USDT</span>
+                </p>
+                <h4
+                  onClick={() =>
+                    handleSetAmountInvestment(userData.balance !== 0.00 ? userData.balance : "")
+                  }
+                >
+                  {t('all_balance')}
+                </h4>
+              </div>
             </div>
             <div className="invest_modal_bottom_content_item">
               <div

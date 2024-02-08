@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { NavLink, Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/footer/footer";
 import NavBar from "./components/nav-bar/nav-bar";
@@ -16,13 +17,11 @@ import Investments from "./pages/investments/investments";
 import Auth from "./pages/login-auth/auth";
 import Login from "./pages/login-auth/login";
 import Reset from "./pages/login-auth/reset";
+import NotFound from "./pages/not-found/not-found";
 import Rates from "./pages/rates/rates";
+import Referal from "./pages/referal/referal";
 import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
-import { useTranslation } from "react-i18next";
-import Referal from "./pages/referal/referal";
-import BuyTariff from "./components/buy-tariff/but-tarif";
-import { mainApi } from "./components/utils/main-api";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -30,7 +29,6 @@ function App() {
   const location = useLocation();
   const [mode, setMode] = useState(localStorage.getItem("mode"));
   const [rec, setRec] = useState(false);
-  const [tarif, setTarif] = useState({});
 
   const updatebalance = () => {
     let headersList = {
@@ -76,19 +74,6 @@ function App() {
   }, [localStorage.getItem("token")]);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      mainApi
-        .reEnter()
-        .then((res) => {
-          setTarif(res.data.user);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [localStorage.getItem("token")]);
-
-  useEffect(() => {
     if (!localStorage.getItem("locale")) {
       let headersList = {
         Accept: "*/*",
@@ -123,34 +108,11 @@ function App() {
       ) : (
         ""
       )}
-      {!tarif.tariff_paid_to &&
-      location.pathname !== "/login" &&
-      location.pathname !== "/reset" &&
-      location.pathname !== "/auth" ? (
-        <div className="connect_api_recom">
-          <div className="connect_api_recom_wrapper">
-            <p>
-              {t("apiRecNot.text1")}{" "}
-              <NavLink to="/settings/api">{t("apiRecNot.text2")}</NavLink>
-            </p>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
-      {true &&
-      location.pathname !== "/login" &&
-      location.pathname !== "/reset" &&
-      location.pathname !== "/auth" ? (
-        <BuyTariff />
-      ) : (
-        ""
-      )}
 
       <div className="page_content ">
         <Routes>
-          <Route path="/" element={<Review />} />
-          <Route path="/review" element={<Review />} />
+          <Route path="/" element={<Review rec={rec}/>} />
+          <Route path="/review" element={<Review rec={rec} />} />
           <Route path="/analysis" element={<Analysis />} />
           <Route
             path="/investments"
@@ -174,6 +136,7 @@ function App() {
           <Route path="/topup-types" element={<TopupTypes />} />
           <Route path="/p2p" element={<P2p />} />
           <Route path="/referal" element={<Referal />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         {location.pathname !== "/login" &&
