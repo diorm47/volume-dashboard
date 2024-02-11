@@ -1,5 +1,6 @@
 export const ru_locale = {
   // navbar
+  active: 'Активный',
   nav_menu_1: "Дашборд",
   nav_menu_2: "Статистика",
   nav_menu_3: "Алгоритм",
@@ -104,7 +105,7 @@ export const ru_locale = {
   maxDrawdown: "Макс. просадка",
   pnl30Days: "Pnl(%) за 30 дней",
   investment: "Депозит",
-  min100: "Мин. 100",
+  min100: "Мин.100 - Макс.3000",
   available: "Доступно",
   totalStopLoss: "Общий стоп-лосс",
   enterMaxAcceptableLoss: "Введите максимально приемлемый убыток",
@@ -119,7 +120,7 @@ export const ru_locale = {
   volumeStopLossDefault:
     "Если не установить значение вручную, то по умолчанию общий стоп-лосс составит 50% от депозита на бирже.",
   iHaveReadAndAccept: "Я прочитал(-а) и принимаю",
-  termsOfUse: "Условия использования",
+  termsOfUse: "Условия торговли",
   moderateTitle: "Умеренный",
   transactions: "Транзакции",
   transactionListDescription: "Здесь отображается список транзакций",

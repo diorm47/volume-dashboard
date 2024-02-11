@@ -314,6 +314,7 @@ function ApiKeys({ setRec }) {
               <button
                 onClick={() => setapiModal(true)}
                 disabled={apiList && apiList.id}
+                
               >
                 {t("apiKeyPage.addApiKey")}
               </button>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./base.css";
 
-import baseBottom from "../../assets/images/base-bottom.png";
+
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -299,7 +299,7 @@ function Base() {
                 <button>{t("openChat")}</button>
               </a>
             </div>
-            <img src={baseBottom} alt="" />
+     
           </div>
           <div className="secondary_block_wrapper base_bottom_block">
             <div className="base_bottom_blocks_left">

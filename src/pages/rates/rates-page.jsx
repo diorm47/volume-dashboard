@@ -228,24 +228,17 @@ function RatesPage({ updatebalance }) {
           userData.demo_used ? (
             <div className="secondary_block_wrapper">
               <div className="main_block_wrapper_title">
-                <h2>{t("tariffPlanTitle")}</h2>
+                <h2>{displayTariff(i18n.language, userData.tariff)}</h2>
               </div>
               <div className="tarif_plan">
                 <div className="tarif_plan_top">
-                  <p>{displayTariff(i18n.language, userData.tariff)}</p>
-                  <p>$ 0.00</p>
+                  <p>{t("tariffPlanTitle")} </p>
                 </div>
 
                 <div className="tarif_plan_time">
                   <div className="tarif_plan_time_title">
-                    {userData.tariff == "Пробный" ? (
-                      <p>{t("trialPlanDuration")}</p>
-                    ) : (
-                      <p>{t("paidPlanDuration")}</p>
-                    )}
-
                     <p>
-                      {remainingDays} {t("remainingDays")}
+                      {t("remaining_days")} {remainingDays} дней
                     </p>
                   </div>
                   <div className="tarif_plan_time_block">
@@ -257,7 +250,7 @@ function RatesPage({ updatebalance }) {
                 </div>
                 <div className="review_right_link">
                   <NavLink to="/pricing/pricing">
-                    <p>{t("addDaysLink")}</p>
+                  <p>{t("add_30_days")}</p>
                   </NavLink>
                 </div>
               </div>

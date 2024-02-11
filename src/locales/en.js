@@ -1,4 +1,5 @@
 export const en_locale = {
+  active: 'Active',
   nav_menu_1: "Dashboard",
   nav_menu_2: "Statistics",
   nav_menu_3: "Algorithm",
@@ -100,7 +101,7 @@ export const en_locale = {
   maxDrawdown: "Max Drawdown",
   pnl30Days: "PnL(%) for 30 days",
   investment: "Deposite",
-  min100: "Min. 100",
+  min100: "Min. 100 - Max. 3000",
   available: "Available",
   totalStopLoss: "Total Stop Loss",
   enterMaxAcceptableLoss: "Enter Max Acceptable Loss",
@@ -115,7 +116,7 @@ export const en_locale = {
   volumeStopLossDefault:
     "If not set manually, the default total stop loss will be 50% of the exchange deposit.",
   iHaveReadAndAccept: "I have read and accept",
-  termsOfUse: "Terms of Use",
+  termsOfUse: "Terms of trade",
   moderateTitle: "Moderate",
 
   // transactions

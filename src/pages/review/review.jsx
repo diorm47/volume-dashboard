@@ -234,7 +234,7 @@ function Review(rec) {
         ""
       )}
       {/* Tarif */}
-      {!userData.tariff_paid_to ? <BuyTariff /> : ""}
+      {/* {!userData.tariff_paid_to ? <BuyTariff /> : ""} */}
       <div className="pages_wrapper review_page">
         <div className="review_page_wrapper">
           <div className="review_left">

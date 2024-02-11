@@ -460,18 +460,6 @@ function Investments({ updatebalance, setRec }) {
                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                 >
                   <p>{t("minimumInvestmentAmount")}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <path
-                      d="M6.99996 1.16667C3.77996 1.16667 1.16663 3.78 1.16663 7C1.16663 10.22 3.77996 12.8333 6.99996 12.8333C10.22 12.8333 12.8333 10.22 12.8333 7C12.8333 3.78 10.22 1.16667 6.99996 1.16667ZM7.58329 9.91667H6.41663V8.75H7.58329V9.91667ZM7.58329 7.58334H6.41663V4.08334H7.58329V7.58334Z"
-                      fill="#747A80"
-                    />
-                  </svg>
                 </div>
                 <div className="investing_top_card_value">
                   <p>100 USDT</p>
@@ -483,18 +471,6 @@ function Investments({ updatebalance, setRec }) {
                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                 >
                   <p>{t("riskLevel")}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <path
-                      d="M6.99996 1.16667C3.77996 1.16667 1.16663 3.78 1.16663 7C1.16663 10.22 3.77996 12.8333 6.99996 12.8333C10.22 12.8333 12.8333 10.22 12.8333 7C12.8333 3.78 10.22 1.16667 6.99996 1.16667ZM7.58329 9.91667H6.41663V8.75H7.58329V9.91667ZM7.58329 7.58334H6.41663V4.08334H7.58329V7.58334Z"
-                      fill="#747A80"
-                    />
-                  </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
                   <p>{t("low")}</p>
@@ -506,18 +482,6 @@ function Investments({ updatebalance, setRec }) {
                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                 >
                   <p>{t("projectedYield")}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <path
-                      d="M6.99996 1.16667C3.77996 1.16667 1.16663 3.78 1.16663 7C1.16663 10.22 3.77996 12.8333 6.99996 12.8333C10.22 12.8333 12.8333 10.22 12.8333 7C12.8333 3.78 10.22 1.16667 6.99996 1.16667ZM7.58329 9.91667H6.41663V8.75H7.58329V9.91667ZM7.58329 7.58334H6.41663V4.08334H7.58329V7.58334Z"
-                      fill="#747A80"
-                    />
-                  </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
                   {active1 == t("one_month") ? (
@@ -552,7 +516,7 @@ function Investments({ updatebalance, setRec }) {
                 activeInvests.exchange &&
                 activeInvests.level_risk === "conservative" ? (
                   <button className="investing_top_card_select_active">
-                    {t("select")}
+                    {t("active")}
                   </button>
                 ) : (
                   <button onClick={() => setModal1(true)}>
@@ -575,18 +539,6 @@ function Investments({ updatebalance, setRec }) {
                     {" "}
                     <p>{t("minimumInvestmentAmount")}</p>
                   </p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <path
-                      d="M6.99996 1.16667C3.77996 1.16667 1.16663 3.78 1.16663 7C1.16663 10.22 3.77996 12.8333 6.99996 12.8333C10.22 12.8333 12.8333 10.22 12.8333 7C12.8333 3.78 10.22 1.16667 6.99996 1.16667ZM7.58329 9.91667H6.41663V8.75H7.58329V9.91667ZM7.58329 7.58334H6.41663V4.08334H7.58329V7.58334Z"
-                      fill="#747A80"
-                    />
-                  </svg>
                 </div>
                 <div className="investing_top_card_value">
                   <p>100 USDT</p>
@@ -601,18 +553,6 @@ function Investments({ updatebalance, setRec }) {
                     {" "}
                     <p>{t("riskLevel")}</p>
                   </p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <path
-                      d="M6.99996 1.16667C3.77996 1.16667 1.16663 3.78 1.16663 7C1.16663 10.22 3.77996 12.8333 6.99996 12.8333C10.22 12.8333 12.8333 10.22 12.8333 7C12.8333 3.78 10.22 1.16667 6.99996 1.16667ZM7.58329 9.91667H6.41663V8.75H7.58329V9.91667ZM7.58329 7.58334H6.41663V4.08334H7.58329V7.58334Z"
-                      fill="#747A80"
-                    />
-                  </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
                   <p>{t("medium")}</p>
@@ -624,18 +564,6 @@ function Investments({ updatebalance, setRec }) {
                   title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
                 >
                   <p>{t("projectedYield")}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <path
-                      d="M6.99996 1.16667C3.77996 1.16667 1.16663 3.78 1.16663 7C1.16663 10.22 3.77996 12.8333 6.99996 12.8333C10.22 12.8333 12.8333 10.22 12.8333 7C12.8333 3.78 10.22 1.16667 6.99996 1.16667ZM7.58329 9.91667H6.41663V8.75H7.58329V9.91667ZM7.58329 7.58334H6.41663V4.08334H7.58329V7.58334Z"
-                      fill="#747A80"
-                    />
-                  </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
                   {active2 == t("one_month") ? (
@@ -670,7 +598,7 @@ function Investments({ updatebalance, setRec }) {
                 activeInvests.exchange &&
                 activeInvests.level_risk === "moderate" ? (
                   <button className="investing_top_card_select_active">
-                    {t("select")}
+                    {t("active")}
                   </button>
                 ) : (
                   <button onClick={() => setModal2(true)}>
@@ -692,18 +620,6 @@ function Investments({ updatebalance, setRec }) {
                   )}
                 >
                   <p>{t("minimumInvestmentAmount")}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <path
-                      d="M6.99996 1.16667C3.77996 1.16667 1.16663 3.78 1.16663 7C1.16663 10.22 3.77996 12.8333 6.99996 12.8333C10.22 12.8333 12.8333 10.22 12.8333 7C12.8333 3.78 10.22 1.16667 6.99996 1.16667ZM7.58329 9.91667H6.41663V8.75H7.58329V9.91667ZM7.58329 7.58334H6.41663V4.08334H7.58329V7.58334Z"
-                      fill="#747A80"
-                    />
-                  </svg>
                 </div>
                 <div className="investing_top_card_value">
                   <p>100 USDT</p>
@@ -717,18 +633,6 @@ function Investments({ updatebalance, setRec }) {
                   )}
                 >
                   <p>{t("riskLevel")}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <path
-                      d="M6.99996 1.16667C3.77996 1.16667 1.16663 3.78 1.16663 7C1.16663 10.22 3.77996 12.8333 6.99996 12.8333C10.22 12.8333 12.8333 10.22 12.8333 7C12.8333 3.78 10.22 1.16667 6.99996 1.16667ZM7.58329 9.91667H6.41663V8.75H7.58329V9.91667ZM7.58329 7.58334H6.41663V4.08334H7.58329V7.58334Z"
-                      fill="#747A80"
-                    />
-                  </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
                   <p>{t("high")}</p>
@@ -742,18 +646,6 @@ function Investments({ updatebalance, setRec }) {
                   )}
                 >
                   <p>{t("projectedYield")}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <path
-                      d="M6.99996 1.16667C3.77996 1.16667 1.16663 3.78 1.16663 7C1.16663 10.22 3.77996 12.8333 6.99996 12.8333C10.22 12.8333 12.8333 10.22 12.8333 7C12.8333 3.78 10.22 1.16667 6.99996 1.16667ZM7.58329 9.91667H6.41663V8.75H7.58329V9.91667ZM7.58329 7.58334H6.41663V4.08334H7.58329V7.58334Z"
-                      fill="#747A80"
-                    />
-                  </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
                   {active3 == t("one_month") ? (
@@ -784,11 +676,9 @@ function Investments({ updatebalance, setRec }) {
                 <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select ">
-                {activeInvests &&
-                activeInvests.exchange &&
-                activeInvests.level_risk === "aggressive" ? (
+                {activeInvests && activeInvests.level_risk === "aggressive" ? (
                   <button className="investing_top_card_select_active">
-                    {t("select")}
+                    {t("active")}
                   </button>
                 ) : (
                   <button onClick={() => setModal3(true)}>{t("select")}</button>
@@ -872,7 +762,7 @@ function Investments({ updatebalance, setRec }) {
               </div>
             )}
           </div>
-          <ApiKeys setRec={setRec}/>
+          <ApiKeys setRec={setRec} />
           <div className="page_title investments_block_title">
             <h1 className="questions_title">{t("faqTitle")}</h1>
           </div>
@@ -991,7 +881,7 @@ function Investments({ updatebalance, setRec }) {
                 <h4
                   onClick={() =>
                     handleSetAmountInvestment(
-                      userData.balance !== 0.0 ? userData.balance : ""
+                      userData.balance >= 3000 ? userData.balance : ""
                     )
                   }
                 >
@@ -1005,18 +895,7 @@ function Investments({ updatebalance, setRec }) {
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
                 <p>{t("totalStopLoss")}</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                >
-                  <path
-                    d="M7.00033 1.16797C3.78033 1.16797 1.16699 3.7813 1.16699 7.0013C1.16699 10.2213 3.78033 12.8346 7.00033 12.8346C10.2203 12.8346 12.8337 10.2213 12.8337 7.0013C12.8337 3.7813 10.2203 1.16797 7.00033 1.16797ZM7.58366 9.91797H6.41699V8.7513H7.58366V9.91797ZM7.58366 7.58464H6.41699V4.08464H7.58366V7.58464Z"
-                    fill="#92979C"
-                  />
-                </svg>
+
                 <div className="switch_toggler">
                   <label className="switch">
                     <input
@@ -1147,18 +1026,6 @@ function Investments({ updatebalance, setRec }) {
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
                 <p>{t("investment")}</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                >
-                  <path
-                    d="M7.00033 1.16797C3.78033 1.16797 1.16699 3.7813 1.16699 7.0013C1.16699 10.2213 3.78033 12.8346 7.00033 12.8346C10.2203 12.8346 12.8337 10.2213 12.8337 7.0013C12.8337 3.7813 10.2203 1.16797 7.00033 1.16797ZM7.58366 9.91797H6.41699V8.7513H7.58366V9.91797ZM7.58366 7.58464H6.41699V4.08464H7.58366V7.58464Z"
-                    fill="#92979C"
-                  />
-                </svg>
               </div>
               <div className="invest_modal_item_input">
                 <input
@@ -1180,7 +1047,7 @@ function Investments({ updatebalance, setRec }) {
                 <h4
                   onClick={() =>
                     handleSetAmountInvestment(
-                      userData.balance !== 0.0 ? userData.balance : ""
+                      userData.balance >= 3000 ? userData.balance : ""
                     )
                   }
                 >
@@ -1194,18 +1061,7 @@ function Investments({ updatebalance, setRec }) {
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
                 <p>{t("totalStopLoss")}</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                >
-                  <path
-                    d="M7.00033 1.16797C3.78033 1.16797 1.16699 3.7813 1.16699 7.0013C1.16699 10.2213 3.78033 12.8346 7.00033 12.8346C10.2203 12.8346 12.8337 10.2213 12.8337 7.0013C12.8337 3.7813 10.2203 1.16797 7.00033 1.16797ZM7.58366 9.91797H6.41699V8.7513H7.58366V9.91797ZM7.58366 7.58464H6.41699V4.08464H7.58366V7.58464Z"
-                    fill="#92979C"
-                  />
-                </svg>
+
                 <div className="switch_toggler">
                   <label className="switch">
                     <input
@@ -1335,18 +1191,6 @@ function Investments({ updatebalance, setRec }) {
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
                 <p>{t("investment")}</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                >
-                  <path
-                    d="M7.00033 1.16797C3.78033 1.16797 1.16699 3.7813 1.16699 7.0013C1.16699 10.2213 3.78033 12.8346 7.00033 12.8346C10.2203 12.8346 12.8337 10.2213 12.8337 7.0013C12.8337 3.7813 10.2203 1.16797 7.00033 1.16797ZM7.58366 9.91797H6.41699V8.7513H7.58366V9.91797ZM7.58366 7.58464H6.41699V4.08464H7.58366V7.58464Z"
-                    fill="#92979C"
-                  />
-                </svg>
               </div>
               <div className="invest_modal_item_input">
                 <input
@@ -1368,7 +1212,7 @@ function Investments({ updatebalance, setRec }) {
                 <h4
                   onClick={() =>
                     handleSetAmountInvestment(
-                      userData.balance !== 0.0 ? userData.balance : ""
+                      userData.balance >= 3000 ? userData.balance : ""
                     )
                   }
                 >
@@ -1382,18 +1226,7 @@ function Investments({ updatebalance, setRec }) {
                 title="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
               >
                 <p>{t("totalStopLoss")}</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                >
-                  <path
-                    d="M7.00033 1.16797C3.78033 1.16797 1.16699 3.7813 1.16699 7.0013C1.16699 10.2213 3.78033 12.8346 7.00033 12.8346C10.2203 12.8346 12.8337 10.2213 12.8337 7.0013C12.8337 3.7813 10.2203 1.16797 7.00033 1.16797ZM7.58366 9.91797H6.41699V8.7513H7.58366V9.91797ZM7.58366 7.58464H6.41699V4.08464H7.58366V7.58464Z"
-                    fill="#92979C"
-                  />
-                </svg>
+
                 <div className="switch_toggler">
                   <label className="switch">
                     <input

@@ -22,6 +22,9 @@
   width: 100%;
   background: #dbdbdb;
 }
+.black_mode .ref_line {
+  background: #343436;
+}
 
 .ref_link {
   display: flex;
