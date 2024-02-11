@@ -735,4 +735,5 @@ export const ru_locale = {
     button: "Вернуться обратно",
   },
   all_balance: "Использовать все",
+  mon: 'мес'
 };

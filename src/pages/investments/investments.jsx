@@ -513,14 +513,9 @@ function Investments({ updatebalance, setRec }) {
                   <p>{t("projectedYield")}</p>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active1 == t("one_month") ? (
-                    <p>{t("upTo")} 10.43% / мес</p>
-                  ) : (
-                    ""
-                  )}
-                  {active1 == t("three_month") ? <p>{t("upTo")} 31.29%</p> : ""}
-                  {active1 == t("six_month") ? <p>{t("upTo")} 62.58%</p> : ""}
-                  {active1 == t("one_year") ? <p>{t("upTo")} 125.16%</p> : ""}
+                  <p>
+                    {t("upTo")} 10.43% / {t("mon")}
+                  </p>
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -595,14 +590,9 @@ function Investments({ updatebalance, setRec }) {
                   <p>{t("projectedYield")}</p>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active2 == t("one_month") ? (
-                    <p>{t("upTo")} 21.65% / мес</p>
-                  ) : (
-                    ""
-                  )}
-                  {active2 == t("three_month") ? <p>{t("upTo")} 64.95%</p> : ""}
-                  {active2 == t("six_month") ? <p>{t("upTo")} 129.9%</p> : ""}
-                  {active2 == t("one_year") ? <p>{t("upTo")} 259.8%</p> : ""}
+                  <p>
+                    {t("upTo")} 21.65% / {t("mon")}
+                  </p>
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -633,10 +623,7 @@ function Investments({ updatebalance, setRec }) {
                     {t("active")}
                   </button>
                 ) : (
-                  <button onClick={() => active2Modal()}>
-                    {" "}
-                    {t("select")}
-                  </button>
+                  <button onClick={() => active2Modal()}> {t("select")}</button>
                 )}
               </div>
             </div>
@@ -680,14 +667,9 @@ function Investments({ updatebalance, setRec }) {
                   <p>{t("projectedYield")}</p>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active3 == t("one_month") ? (
-                    <p>{t("upTo")} 30.14% / мес</p>
-                  ) : (
-                    ""
-                  )}
-                  {active3 == t("three_month") ? <p>{t("upTo")} 90.42%</p> : ""}
-                  {active3 == t("six_month") ? <p>{t("upTo")} 180.84%</p> : ""}
-                  {active3 == t("one_year") ? <p>{t("upTo")} 361.68%</p> : ""}
+                  <p>
+                    {t("upTo")} 30.14% / {t("mon")}
+                  </p>
                 </div>
               </div>
               <div className="investing_top_card_item investing_top_card_btns">
@@ -716,7 +698,7 @@ function Investments({ updatebalance, setRec }) {
                     {t("active")}
                   </button>
                 ) : (
-                  <button onClick={() =>active3Modal()}>{t("select")}</button>
+                  <button onClick={() => active3Modal()}>{t("select")}</button>
                 )}
               </div>
             </div>

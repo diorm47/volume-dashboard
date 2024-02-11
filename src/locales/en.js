@@ -699,4 +699,5 @@ export const en_locale = {
     button: "Go back",
   },
   all_balance: "Use all",
+  mon: 'mon'
 };

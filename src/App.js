@@ -99,8 +99,6 @@ function App() {
     }
   }, [localStorage.getItem("locale")]);
 
-  // localStorage.setItem('token', '412|wK69m4Xrs3aBCWQqnmrWbVwQDCuRf83HlYIDVGiI')
-
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&
