@@ -549,6 +549,10 @@
   padding-bottom: 24px;
   margin-bottom: 24px;
 }
+.black_mode .add_key_history_mobile_title {
+
+  border-bottom: 1px solid #343436;
+}
 .add_key_history_mobile_title h2 {
   color: var(--111112, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;

@@ -41,6 +41,7 @@
   font-weight: 400;
   line-height: 24px; /* 141.176% */
   margin: 0;
+  margin-top: 0 !important;
   margin-right: 10px;
 }
 
@@ -93,6 +94,9 @@
   font-weight: 400;
   line-height: 24px; /* 141.176% */
 }
+.black_mode .refs_content_item p {
+  color: #fff !important;
+}
 
 .refs_content .refs_content_item_wrapper:last-child .ref_line {
   display: none;
@@ -143,9 +147,8 @@
   text-align: left;
   background: rgb(0, 119, 255);
 }
-.black_mode
-.color_white {
- color: #fff;
+.black_mode .color_white {
+  color: #fff;
 }
 
 @media only screen and (max-width: 700px) {
@@ -190,5 +193,9 @@
     font-weight: 600;
     line-height: 24px;
     letter-spacing: 0%;
+  }
+  .refs_list_title p:nth-child(2),
+  .refs_list_title p:nth-child(3) {
+    display: none;
   }
 }

@@ -43,6 +43,10 @@
   margin-bottom: 28px;
   border-bottom: 1px solid rgb(219, 219, 219);
 }
+.black_mode .add_api_keys_block_title {
+  border-bottom: 1px solid #343436;
+
+}
 .investing_top_card_descr p {
   color: #747a80;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -603,6 +607,13 @@
 }
 .investing_top_card_btns {
   display: none !important;
+}
+.add_api_keys_block_title div {
+  width: 100%;
+}
+.black_mode
+.add_api_keys_block_title h2 {
+ color: #fff;
 }
 
 @media only screen and (max-width: 1050px) {

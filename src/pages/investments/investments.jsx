@@ -185,6 +185,8 @@ function Investments({ updatebalance, setRec }) {
   const [errorInvest, setErrorInvest] = useState("");
   const localization = {
     en: {
+      algorithBought: "The algorithm has already been created",
+
       minimumInvestment: "Minimum investment amount is 100 USDT.",
       stopLossGreaterThan50:
         "Stop loss value is greater than 50% of the total balance.",
@@ -203,6 +205,7 @@ function Investments({ updatebalance, setRec }) {
       professional: "Your tariff plan does not allow usage beyond $3000.",
     },
     ru: {
+      algorithBought: "Алгоритм уже создан",
       minimumInvestment: "Минимальная сумма инвестиции 100 USDT.",
       stopLossGreaterThan50:
         "Вы указали значение стоп-лосс более 50% от общего счета.",
@@ -439,6 +442,9 @@ function Investments({ updatebalance, setRec }) {
         snackOptions(localization[userLanguage].requestError, "error");
       });
   };
+  const algorithmBought = () => {
+    snackOptions(localization[userLanguage].algorithBought, "error");
+  }
 
   return (
     <>
@@ -515,7 +521,7 @@ function Investments({ updatebalance, setRec }) {
                 {activeInvests &&
                 activeInvests.exchange &&
                 activeInvests.level_risk === "conservative" ? (
-                  <button className="investing_top_card_select_active">
+                  <button className="investing_top_card_select_active" onClick={algorithmBought}>
                     {t("active")}
                   </button>
                 ) : (
@@ -597,7 +603,7 @@ function Investments({ updatebalance, setRec }) {
                 {activeInvests &&
                 activeInvests.exchange &&
                 activeInvests.level_risk === "moderate" ? (
-                  <button className="investing_top_card_select_active">
+                  <button className="investing_top_card_select_active"  onClick={algorithmBought}>
                     {t("active")}
                   </button>
                 ) : (
@@ -672,12 +678,12 @@ function Investments({ updatebalance, setRec }) {
                   </button>
                 ))}
               </div>
-              <div className="investing_top_card_item investing_top_card_warning">
+              <div className="investing_top_card_item investing_top_card_warning" >
                 <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select ">
                 {activeInvests && activeInvests.level_risk === "aggressive" ? (
-                  <button className="investing_top_card_select_active">
+                  <button className="investing_top_card_select_active"  onClick={algorithmBought}>
                     {t("active")}
                   </button>
                 ) : (
