@@ -608,9 +608,7 @@
 .investing_top_card_btns {
   display: none !important;
 }
-.add_api_keys_block_title div {
-  width: 100%;
-}
+
 .black_mode
 .add_api_keys_block_title h2 {
  color: #fff;
@@ -637,6 +635,9 @@
     font-weight: 600;
     line-height: 24px;
     letter-spacing: -1px;
+  }
+  .add_api_keys_block_title div {
+    width: 100%;
   }
   .add_api_keys_block_title {
     flex-direction: column;

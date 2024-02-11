@@ -149,6 +149,7 @@ function Review(rec) {
       refresh();
       getPnl();
       getHistoryOrders();
+      getBots()
     }
   }, [localStorage.getItem("token")]);
 
@@ -217,6 +218,7 @@ function Review(rec) {
       setTar(true);
     }, 1300);
   }, []);
+  console.log(bots);
 
   return (
     <>
