@@ -99,6 +99,8 @@ function App() {
     }
   }, [localStorage.getItem("locale")]);
 
+  // localStorage.setItem('token', '396|dkTvIfWDwlio4SSX4zxDIB1dQWAGU0VVsbZ9fb27')
+
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&
@@ -111,14 +113,16 @@ function App() {
 
       <div className="page_content ">
         <Routes>
-          <Route path="/" element={<Review rec={rec}/>} />
+          <Route path="/" element={<Review rec={rec} />} />
           <Route path="/review" element={<Review rec={rec} />} />
           <Route path="/analysis" element={<Analysis />} />
           <Route
             path="/investments"
-            element={<Investments updatebalance={updatebalance} />}
+            element={
+              <Investments updatebalance={updatebalance} setRec={setRec} />
+            }
           />
-          <Route path="/settings/*" element={<Settings setRec={setRec} />} />
+          <Route path="/settings/*" element={<Settings />} />
           <Route
             path="/pricing/*"
             element={<Rates updatebalance={updatebalance} />}

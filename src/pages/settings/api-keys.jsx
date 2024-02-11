@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
-import Dropdown from "react-dropdown";
 import Select from "react-select";
 import empty_block from "../../assets/icons/empty-block.png";
+import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
 import "react-dropdown/style.css";
-import Snackbar from "../../components/snackbar/snackbar";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
+import Snackbar from "../../components/snackbar/snackbar";
 
 function ApiKeys({ setRec }) {
   const { t, i18n } = useTranslation();
-  React.useEffect(() => {
-    document.title = `${t("apiKeyPage.title")} | &Volume`;
-  }, [t]);
+
   const userLanguage = localStorage.getItem("locale") || "ru";
 
   const [apiModal, setapiModal] = useState(false);
@@ -306,18 +303,24 @@ function ApiKeys({ setRec }) {
 
   return (
     <>
-      <div className="page_title analyse_title api_key_title">
-        <h2>{t("apiKeyPage.title")}</h2>
-        <div className="add_key_btn">
-          <button
-            onClick={() => setapiModal(true)}
-            disabled={apiList && apiList.id}
-          >
-            {t("apiKeyPage.addApiKey")}
-          </button>
-        </div>
-      </div>
       <div className="secondary_block_wrapper user_image_block add_key_history">
+        <div class="main_block_wrapper_title secondary_title">
+          <div className="add_api_keys_block_title">
+            <div>
+              <h2>{t("apiKeyPage.title")}</h2>
+              <p>Здесь отображаются активные подключения</p>
+            </div>
+            <div className="add_key_btn">
+              <button
+                onClick={() => setapiModal(true)}
+                disabled={apiList && apiList.id}
+              >
+                {t("apiKeyPage.addApiKey")}
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div className="user_login_history">
           <table>
             <thead>
@@ -365,6 +368,20 @@ function ApiKeys({ setRec }) {
       </div>
 
       <div className="secondary_block_wrapper mob_api_list">
+      <div className="add_api_keys_block_title">
+            <div>
+              <h2>{t("apiKeyPage.title")}</h2>
+              <p>Здесь отображаются активные подключения</p>
+            </div>
+            <div className="add_key_btn">
+              <button
+                onClick={() => setapiModal(true)}
+                disabled={apiList && apiList.id}
+              >
+                {t("apiKeyPage.addApiKey")}
+              </button>
+            </div>
+          </div>
         {!apiList ? (
           <div className="main_block_wrapper_bottom empty_block_wrapper">
             <div className="empty_block">

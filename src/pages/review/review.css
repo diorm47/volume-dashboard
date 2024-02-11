@@ -491,6 +491,15 @@
   text-align: center;
   background: rgb(0, 119, 255);
 }
+.review_help_did {
+  background: rgb(247, 247, 247);
+  color: rgb(17, 17, 18);
+  cursor: default;
+}
+.review_help_did:hover {
+  background: rgb(247, 247, 247);
+  color: rgb(17, 17, 18);
+}
 @media only screen and (max-width: 1300px) {
   .review_left {
     width: 66%;
@@ -593,5 +602,17 @@
   .order_history_list_item_content_item span {
     padding: 0;
     padding-top: 10px;
+  }
+  .review_orders_history {
+    display: none;
+  }
+  .review_left .secondary_block_wrapper {
+    margin-bottom: 0;
+  }
+  .review_help_blog_number h4,
+  .review_help_blog_descr p {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0%;
   }
 }

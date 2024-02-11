@@ -1,17 +1,16 @@
+import subDays from "date-fns/subDays";
 import React, { useEffect, useState } from "react";
 import "./review.css";
-import subDays from "date-fns/subDays";
 
 import { format } from "date-fns";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { NavLink, useNavigate } from "react-router-dom";
 import empty_block from "../../assets/icons/empty-block.png";
-import inviteImg from "../../assets/images/invite.png";
+import BuyTariff from "../../components/buy-tariff/but-tarif";
 import LineChart from "../../components/line-chart/line-chart";
 import { mainApi } from "../../components/utils/main-api";
-import { useTranslation } from "react-i18next";
-import BuyTariff from "../../components/buy-tariff/but-tarif";
 
 function Review(rec) {
   const navigate = useNavigate();
@@ -30,6 +29,7 @@ function Review(rec) {
     new Date(),
   ]);
   const [userData, setUserData] = useState({});
+  const [bots, setBots] = useState();
   const [pnl, setPnl] = useState("0.00");
 
   const [ordersHistory, setOrdersHistory] = useState();
@@ -123,6 +123,26 @@ function Review(rec) {
         console.log(error);
       });
   };
+  const getBots = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch("https://api.nvolume.com/private-api/v1/users/bots", {
+      method: "GET",
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setBots(data.data.bots[0]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -198,16 +218,10 @@ function Review(rec) {
     }, 1300);
   }, []);
 
-  const location = useLocation();
-
   return (
     <>
       {/* Api */}
-      {rec &&
-      rec.rec &&
-      location.pathname !== "/login" &&
-      location.pathname !== "/reset" &&
-      location.pathname !== "/auth" ? (
+      {rec && rec.rec ? (
         <div className="connect_api_recom">
           <div className="connect_api_recom_wrapper">
             <p>
@@ -220,14 +234,7 @@ function Review(rec) {
         ""
       )}
       {/* Tarif */}
-      {!userData.tariff_paid_to &&
-      location.pathname !== "/login" &&
-      location.pathname !== "/reset" &&
-      location.pathname !== "/auth" ? (
-        <BuyTariff />
-      ) : (
-        ""
-      )}
+      {!userData.tariff_paid_to ? <BuyTariff /> : ""}
       <div className="pages_wrapper review_page">
         <div className="review_page_wrapper">
           <div className="review_left">
@@ -360,7 +367,7 @@ function Review(rec) {
               </div>
               <LineChart selectedTime={selectedTime} pnlToday={pnl} />
             </div>
-            <div className="orders_history_list main_block_wrapper">
+            <div className="orders_history_list review_orders_history main_block_wrapper">
               <div className="main_block_wrapper_top">
                 <div className="main_block_wrapper_title secondary_title">
                   <h2> {t("rev_5")}</h2>
@@ -528,11 +535,17 @@ function Review(rec) {
                     &Volume
                   </p>
                 </div>
-                <NavLink to="/pricing/pricing">
-                  <button className="review_help_blog_btn">
-                    <p>Купить тариф</p>
-                  </button>{" "}
-                </NavLink>
+                {userData && userData.tariff_paid_to ? (
+                  <button className="review_help_blog_btn review_help_did">
+                    <p>Выполнено</p>
+                  </button>
+                ) : (
+                  <NavLink to="/pricing/pricing">
+                    <button className="review_help_blog_btn">
+                      <p>Купить тариф</p>
+                    </button>{" "}
+                  </NavLink>
+                )}
               </div>
               <div className="review_help_blog">
                 <div className="review_help_blog_number">
@@ -547,11 +560,17 @@ function Review(rec) {
                     торговые операции на вашем аккаунте.
                   </p>
                 </div>
-                <NavLink to="/pricing/pricing">
-                  <button className="review_help_blog_btn">
-                    <p>Подключить API ключи</p>
-                  </button>{" "}
-                </NavLink>
+                {rec && rec.rec ? (
+                  <NavLink to="/pricing/pricing">
+                    <button className="review_help_blog_btn">
+                      <p>Подключить API ключи</p>
+                    </button>{" "}
+                  </NavLink>
+                ) : (
+                  <button className="review_help_blog_btn review_help_did">
+                    <p>Выполнено</p>
+                  </button>
+                )}
               </div>
               <div className="review_help_blog">
                 <div className="review_help_blog_number">
@@ -566,11 +585,17 @@ function Review(rec) {
                     &Volume
                   </p>
                 </div>
-                <NavLink to="/investments">
-                  <button className="review_help_blog_btn">
-                    <p>Создать алгоритм</p>
+                {bots ? (
+                  <button className="review_help_blog_btn review_help_did">
+                    <p>Выполнено</p>
                   </button>
-                </NavLink>
+                ) : (
+                  <NavLink to="/investments">
+                    <button className="review_help_blog_btn">
+                      <p>Создать алгоритм</p>
+                    </button>
+                  </NavLink>
+                )}
               </div>
             </div>
 

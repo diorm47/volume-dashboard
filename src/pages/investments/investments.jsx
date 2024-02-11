@@ -7,8 +7,9 @@ import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { mainApi } from "../../components/utils/main-api";
 import { useNavigate } from "react-router-dom";
+import ApiKeys from "../settings/api-keys";
 
-function Investments({ updatebalance }) {
+function Investments({ updatebalance, setRec }) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -439,7 +440,6 @@ function Investments({ updatebalance }) {
       });
   };
 
- 
   return (
     <>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
@@ -520,7 +520,11 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active1 == t("one_month") ? <p>{t("upTo")} 10.43% / мес</p> : ""}
+                  {active1 == t("one_month") ? (
+                    <p>{t("upTo")} 10.43% / мес</p>
+                  ) : (
+                    ""
+                  )}
                   {active1 == t("three_month") ? <p>{t("upTo")} 31.29%</p> : ""}
                   {active1 == t("six_month") ? <p>{t("upTo")} 62.58%</p> : ""}
                   {active1 == t("one_year") ? <p>{t("upTo")} 125.16%</p> : ""}
@@ -634,7 +638,11 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active2 == t("one_month") ? <p>{t("upTo")} 21.65% / мес</p> : ""}
+                  {active2 == t("one_month") ? (
+                    <p>{t("upTo")} 21.65% / мес</p>
+                  ) : (
+                    ""
+                  )}
                   {active2 == t("three_month") ? <p>{t("upTo")} 64.95%</p> : ""}
                   {active2 == t("six_month") ? <p>{t("upTo")} 129.9%</p> : ""}
                   {active2 == t("one_year") ? <p>{t("upTo")} 259.8%</p> : ""}
@@ -748,7 +756,11 @@ function Investments({ updatebalance }) {
                   </svg>
                 </div>
                 <div className="investing_top_card_value investing_top_card_value_blue">
-                  {active3 == t("one_month") ? <p>{t("upTo")} 30.14% / мес</p> : ""}
+                  {active3 == t("one_month") ? (
+                    <p>{t("upTo")} 30.14% / мес</p>
+                  ) : (
+                    ""
+                  )}
                   {active3 == t("three_month") ? <p>{t("upTo")} 90.42%</p> : ""}
                   {active3 == t("six_month") ? <p>{t("upTo")} 180.84%</p> : ""}
                   {active3 == t("one_year") ? <p>{t("upTo")} 361.68%</p> : ""}
@@ -860,6 +872,7 @@ function Investments({ updatebalance }) {
               </div>
             )}
           </div>
+          <ApiKeys setRec={setRec}/>
           <div className="page_title investments_block_title">
             <h1 className="questions_title">{t("faqTitle")}</h1>
           </div>
@@ -977,10 +990,12 @@ function Investments({ updatebalance }) {
                 </p>
                 <h4
                   onClick={() =>
-                    handleSetAmountInvestment(userData.balance !== 0.00 ? userData.balance : "")
+                    handleSetAmountInvestment(
+                      userData.balance !== 0.0 ? userData.balance : ""
+                    )
                   }
                 >
-                  {t('all_balance')}
+                  {t("all_balance")}
                 </h4>
               </div>
             </div>
@@ -1164,10 +1179,12 @@ function Investments({ updatebalance }) {
                 </p>
                 <h4
                   onClick={() =>
-                    handleSetAmountInvestment(userData.balance !== 0.00 ? userData.balance : "")
+                    handleSetAmountInvestment(
+                      userData.balance !== 0.0 ? userData.balance : ""
+                    )
                   }
                 >
-                  {t('all_balance')}
+                  {t("all_balance")}
                 </h4>
               </div>
             </div>
@@ -1350,10 +1367,12 @@ function Investments({ updatebalance }) {
                 </p>
                 <h4
                   onClick={() =>
-                    handleSetAmountInvestment(userData.balance !== 0.00 ? userData.balance : "")
+                    handleSetAmountInvestment(
+                      userData.balance !== 0.0 ? userData.balance : ""
+                    )
                   }
                 >
-                  {t('all_balance')}
+                  {t("all_balance")}
                 </h4>
               </div>
             </div>
