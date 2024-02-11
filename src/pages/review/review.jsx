@@ -8,7 +8,6 @@ import "react-dropdown/style.css";
 import { useTranslation } from "react-i18next";
 import { NavLink, useNavigate } from "react-router-dom";
 import empty_block from "../../assets/icons/empty-block.png";
-import BuyTariff from "../../components/buy-tariff/but-tarif";
 import LineChart from "../../components/line-chart/line-chart";
 import { mainApi } from "../../components/utils/main-api";
 
@@ -149,7 +148,7 @@ function Review(rec) {
       refresh();
       getPnl();
       getHistoryOrders();
-      getBots()
+      getBots();
     }
   }, [localStorage.getItem("token")]);
 
@@ -218,25 +217,9 @@ function Review(rec) {
       setTar(true);
     }, 1300);
   }, []);
-  console.log(bots);
 
   return (
     <>
-      {/* Api */}
-      {rec && rec.rec ? (
-        <div className="connect_api_recom">
-          <div className="connect_api_recom_wrapper">
-            <p>
-              {t("apiRecNot.text1")}{" "}
-              <NavLink to="/settings/api">{t("apiRecNot.text2")}</NavLink>
-            </p>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
-      {/* Tarif */}
-      {/* {!userData.tariff_paid_to ? <BuyTariff /> : ""} */}
       <div className="pages_wrapper review_page">
         <div className="review_page_wrapper">
           <div className="review_left">
@@ -563,7 +546,7 @@ function Review(rec) {
                   </p>
                 </div>
                 {rec && rec.rec ? (
-                  <NavLink to="/pricing/pricing">
+                  <NavLink to="/investments">
                     <button className="review_help_blog_btn">
                       <p>Подключить API ключи</p>
                     </button>{" "}
