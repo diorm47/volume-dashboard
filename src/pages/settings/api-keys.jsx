@@ -308,7 +308,7 @@ function ApiKeys({ setRec }) {
           <div className="add_api_keys_block_title">
             <div>
               <h2>{t("apiKeyPage.title")}</h2>
-              <p>Здесь отображаются активные подключения</p>
+              <p>{t('api_keys_desc')}</p>
             </div>
             <div className="add_key_btn">
               <button
@@ -372,7 +372,7 @@ function ApiKeys({ setRec }) {
       <div className="add_api_keys_block_title">
             <div>
               <h2>{t("apiKeyPage.title")}</h2>
-              <p>Здесь отображаются активные подключения</p>
+              <p>{t('api_keys_desc')}</p>
             </div>
             <div className="add_key_btn">
               <button

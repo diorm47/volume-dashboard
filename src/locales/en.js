@@ -1,5 +1,5 @@
 export const en_locale = {
-  active: 'Active',
+  active: "Active",
   nav_menu_1: "Dashboard",
   nav_menu_2: "Statistics",
   nav_menu_3: "Algorithm",
@@ -699,5 +699,22 @@ export const en_locale = {
     button: "Go back",
   },
   all_balance: "Use all",
-  mon: 'mon'
+  mon: "mon",
+  days: "day",
+  help: {
+    help_title: "Help",
+    help1_title: "Buy a tariff plan",
+    help1_desc: "Buy a tariff plan to continue using the &Volume service",
+    help1_btn: "Buy tariff",
+    help2_title: "Connect API keys",
+    help2_desc:
+      "This is necessary so that your algorithm can perform trading operations on your account.",
+    help2_btn: "Connect API keys",
+    help3_title: "Create an algorithm",
+    help3_desc:
+      "Create an algorithm and start earning money with the &Volume service",
+    help3_btn: "Create algorithm",
+    did_btn: "Done",
+  },
+  api_keys_desc: "Active connections are displayed here",
 };

@@ -98,7 +98,7 @@ function App() {
         });
     }
   }, [localStorage.getItem("locale")]);
-
+// localStorage.setItem('token', '436|k7HuGp5MgI8nreFleo4Rrb3C0fTqyNb2WMrnguwi')
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&

@@ -462,7 +462,7 @@ function Review(rec) {
                       <div className="tarif_plan_time">
                         <div className="tarif_plan_time_title">
                           <p>
-                            {t("remaining_days")} {remainingDays} дней
+                            {t("remaining_days")} {remainingDays} {t('days')}
                           </p>
                         </div>
                         <div className="tarif_plan_time_block">
@@ -505,29 +505,28 @@ function Review(rec) {
             )}
             <div className="secondary_block_wrapper most_questions">
               <div className="main_block_wrapper_title">
-                <h2>Помощь</h2>
+                <h2>{t('help.help_title')}</h2>
               </div>
               <div className="review_help_blog">
                 <div className="review_help_blog_number">
                   <div>
                     <p>1</p>
                   </div>
-                  <h4>Купить тарифный план</h4>
+                  <h4>{t('help.help1_title')}</h4>
                 </div>
                 <div className="review_help_blog_descr">
                   <p>
-                    Купить тарифный план, чтобы продолжить использование сервиса
-                    &Volume
+                  {t('help.help1_desc')}
                   </p>
                 </div>
                 {userData && userData.tariff_paid_to ? (
                   <button className="review_help_blog_btn review_help_did">
-                    <p>Выполнено</p>
+                    <p> {t('help.did_btn')}</p>
                   </button>
                 ) : (
                   <NavLink to="/pricing/pricing">
                     <button className="review_help_blog_btn">
-                      <p>Купить тариф</p>
+                      <p>{t('help.help1_btn')}</p>
                     </button>{" "}
                   </NavLink>
                 )}
@@ -537,23 +536,22 @@ function Review(rec) {
                   <div>
                     <p>2</p>
                   </div>
-                  <h4>Подключите API ключи</h4>
+                  <h4>{t('help.help2_title')}</h4>
                 </div>
                 <div className="review_help_blog_descr">
                   <p>
-                    Это нужно для того, чтобы ваш алгоритм мог совершать
-                    торговые операции на вашем аккаунте.
+                  {t('help.help2_desc')}
                   </p>
                 </div>
                 {rec && rec.rec ? (
                   <NavLink to="/investments">
                     <button className="review_help_blog_btn">
-                      <p>Подключить API ключи</p>
+                      <p>   {t('help.help2_btn')}</p>
                     </button>{" "}
                   </NavLink>
                 ) : (
                   <button className="review_help_blog_btn review_help_did">
-                    <p>Выполнено</p>
+                    <p> {t('help.did_btn')}</p>
                   </button>
                 )}
               </div>
@@ -562,22 +560,21 @@ function Review(rec) {
                   <div>
                     <p>3</p>
                   </div>
-                  <h4>Создайте алгоритм</h4>
+                  <h4>{t('help.help3_title')}</h4>
                 </div>
                 <div className="review_help_blog_descr">
                   <p>
-                    Создайте алгоритм и начните зарабатывать вместе с сервисом
-                    &Volume
+                  {t('help.help3_desc')}
                   </p>
                 </div>
                 {bots ? (
                   <button className="review_help_blog_btn review_help_did">
-                    <p>Выполнено</p>
+                    <p>     {t('help.did_btn')}</p>
                   </button>
                 ) : (
                   <NavLink to="/investments">
                     <button className="review_help_blog_btn">
-                      <p>Создать алгоритм</p>
+                      <p> {t('help.help3_btn')}</p>
                     </button>
                   </NavLink>
                 )}
