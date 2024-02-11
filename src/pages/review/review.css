@@ -477,6 +477,15 @@
   text-align: left;
   margin-bottom: 24px;
 }
+.black_mode .review_help_blog_number h4 {
+  color: #fff;
+}
+.black_mode .review_help_blog_descr p {
+  color: grey;
+}
+.black_mode .review_help_blog {
+  background: #1e1e1e;
+}
 .review_help_blog_btn {
   border-radius: 40px;
   width: 100%;
