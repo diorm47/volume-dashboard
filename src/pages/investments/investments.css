@@ -45,7 +45,6 @@
 }
 .black_mode .add_api_keys_block_title {
   border-bottom: 1px solid #343436;
-
 }
 .investing_top_card_descr p {
   color: #747a80;
@@ -609,11 +608,84 @@
   display: none !important;
 }
 
-.black_mode
-.add_api_keys_block_title h2 {
- color: #fff;
+.black_mode .add_api_keys_block_title h2 {
+  color: #fff;
 }
 
+.warning_delete_modal {
+  border-radius: 6px;
+  padding: 28px;
+  /* Тень */
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+  background: rgb(255, 255, 255);
+  max-width: 650px;
+}
+.warning_delete_modal_title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.warning_delete_modal_title h3 {
+  /* 23px/SemiBold */
+  color: rgb(17, 17, 18);
+  font-family: TTInterfaces600;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.warning_delete_modal_desc p {
+  /* 17px/Regular */
+  color: rgb(17, 17, 18);
+  font-family: TTInterfaces400;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 28px;
+}
+.warning_delete_modal_actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+}
+.warning_delete_modal_actions button {
+  width: 150px;
+  height: 40px;
+  border-radius: 40px;
+  color: rgb(17, 17, 18);
+  font-family: TTInterfaces600;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.warning_delete_modal_actions button:nth-child(2) {
+  color: rgb(255, 255, 255);
+  border-radius: 40px;
+
+  background: rgb(0, 119, 255);
+}
+.warning_delete_modal_actions button:nth-child(1):hover {
+  color: #fff;
+}
+
+.black_mode .warning_delete_modal {
+  border-radius: 6px;
+
+  /* Тень */
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+  background: rgb(24, 24, 26);
+}
+.black_mode .warning_delete_modal_title h3,
+.black_mode .warning_delete_modal_desc p {
+  color: rgb(255, 255, 255);
+}
 @media only screen and (max-width: 1050px) {
   .investing_top_cards {
     flex-direction: column;
@@ -629,6 +701,25 @@
   }
 }
 @media only screen and (max-width: 500px) {
+  .warning_delete_modal_title h3 {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0%;
+  }
+  .warning_delete_modal_desc p {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0%;
+  }
+  .warning_delete_modal_actions {
+    display: flex;
+    flex-direction: column;
+  }
+  .warning_delete_modal_actions button {
+    width: 100%;
+  }
   .invest_modal_top_content h2 {
     font-size: 17px;
     font-style: normal;

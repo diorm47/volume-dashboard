@@ -201,7 +201,7 @@ function Review(rec) {
     Пробный: "Trial",
     Стартовый: "Starter",
     Улучшенный: "Advanced",
-    Продвинутый: "Professional",
+    Профессиональный: "Professional",
   };
   const { i18n } = useTranslation();
 

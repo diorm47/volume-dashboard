@@ -3,6 +3,8 @@ import Select from "react-select";
 import empty_block from "../../assets/icons/empty-block.png";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
+import { ReactComponent as DeleteWarning } from "../../assets/icons/delete-warning.svg";
+
 import "react-dropdown/style.css";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
@@ -17,14 +19,17 @@ function ApiKeys({ setRec }) {
   const [apiActiveModal, setapiActiveModal] = useState(false);
   const [apiActiveEditModal, setapiActiveEditModal] = useState(false);
 
+  const [deleteModal, setDeleteModal] = useState(false);
+
   const closeModals = () => {
     setapiModal(false);
     setapiActiveModal(false);
     setapiActiveEditModal(false);
+    setDeleteModal(false);
   };
 
   useEffect(() => {
-    if (apiModal || apiActiveModal || apiActiveEditModal) {
+    if (apiModal || apiActiveModal || apiActiveEditModal || deleteModal) {
       const scrollY = window.scrollY;
       document.body.style.overflow = "hidden";
       document.body.style.width = "100%";
@@ -37,7 +42,7 @@ function ApiKeys({ setRec }) {
       document.body.style.top = "";
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
     }
-  }, [apiModal, apiActiveModal, apiActiveEditModal]);
+  }, [apiModal, apiActiveModal, apiActiveEditModal, deleteModal]);
 
   const [apiList, setapiList] = useState([]);
 
@@ -232,53 +237,53 @@ function ApiKeys({ setRec }) {
       });
   };
 
-  const editApi = () => {
-    const localization = {
-      en: {
-        apiUpdatedSuccess: "API key updated successfully!",
-        apiUpdateError: "Error!",
-      },
-      ru: {
-        apiUpdatedSuccess: "API ключ успешно обновлен!",
-        apiUpdateError: "Ошибка!",
-      },
-    };
+  // const editApi = () => {
+  //   const localization = {
+  //     en: {
+  //       apiUpdatedSuccess: "API key updated successfully!",
+  //       apiUpdateError: "Error!",
+  //     },
+  //     ru: {
+  //       apiUpdatedSuccess: "API ключ успешно обновлен!",
+  //       apiUpdateError: "Ошибка!",
+  //     },
+  //   };
 
-    let headersList = {
-      Accept: "*/*",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    };
+  //   let headersList = {
+  //     Accept: "*/*",
+  //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //   };
 
-    let bodyContent = new FormData();
-    bodyContent.append("id", apiList.id);
-    bodyContent.append("api_key", publickKey);
-    bodyContent.append("api_secret", secretKey);
+  //   let bodyContent = new FormData();
+  //   bodyContent.append("id", apiList.id);
+  //   bodyContent.append("api_key", publickKey);
+  //   bodyContent.append("api_secret", secretKey);
 
-    fetch("https://api.nvolume.com/private-api/v1/users/api-keys/update", {
-      method: "POST",
-      body: bodyContent,
-      headers: headersList,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          closeModals();
-          refresh();
-          snackOptions(localization[userLanguage].apiUpdatedSuccess, "success");
-          setRec(false);
-        } else {
-          snackOptions(localization[userLanguage].apiUpdateError, "error");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        snackOptions(localization[userLanguage].apiUpdateError, "error");
-      });
-  };
+  //   fetch("https://api.nvolume.com/private-api/v1/users/api-keys/update", {
+  //     method: "POST",
+  //     body: bodyContent,
+  //     headers: headersList,
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         closeModals();
+  //         refresh();
+  //         snackOptions(localization[userLanguage].apiUpdatedSuccess, "success");
+  //         setRec(false);
+  //       } else {
+  //         snackOptions(localization[userLanguage].apiUpdateError, "error");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       snackOptions(localization[userLanguage].apiUpdateError, "error");
+  //     });
+  // };
 
-  const handleSetEditode = () => {
-    setapiActiveEditModal(true);
-  };
+  // const handleSetEditode = () => {
+  //   setapiActiveEditModal(true);
+  // };
 
   // const hoverColor = "#383838" ||
   const customStyles = {
@@ -308,13 +313,12 @@ function ApiKeys({ setRec }) {
           <div className="add_api_keys_block_title">
             <div>
               <h2>{t("apiKeyPage.title")}</h2>
-              <p>{t('api_keys_desc')}</p>
+              <p>{t("api_keys_desc")}</p>
             </div>
             <div className="add_key_btn">
               <button
                 onClick={() => setapiModal(true)}
                 disabled={apiList && apiList.id}
-                
               >
                 {t("apiKeyPage.addApiKey")}
               </button>
@@ -344,9 +348,11 @@ function ApiKeys({ setRec }) {
                   </td>
                   <td>
                     <div className="api_actions">
-                      <p onClick={handleSetEditode}>{t("apiTable.edit")}</p>
-                      <p>|</p>
-                      <p onClick={deleteApi}>{t("apiTable.delete")}</p>
+                      {/* <p onClick={handleSetEditode}>{t("apiTable.edit")}</p>
+                      <p>|</p> */}
+                      <p onClick={() => setDeleteModal(true)}>
+                        {t("apiTable.delete")}
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -369,20 +375,20 @@ function ApiKeys({ setRec }) {
       </div>
 
       <div className="secondary_block_wrapper mob_api_list">
-      <div className="add_api_keys_block_title">
-            <div>
-              <h2>{t("apiKeyPage.title")}</h2>
-              <p>{t('api_keys_desc')}</p>
-            </div>
-            <div className="add_key_btn">
-              <button
-                onClick={() => setapiModal(true)}
-                disabled={apiList && apiList.id}
-              >
-                {t("apiKeyPage.addApiKey")}
-              </button>
-            </div>
+        <div className="add_api_keys_block_title">
+          <div>
+            <h2>{t("apiKeyPage.title")}</h2>
+            <p>{t("api_keys_desc")}</p>
           </div>
+          <div className="add_key_btn">
+            <button
+              onClick={() => setapiModal(true)}
+              disabled={apiList && apiList.id}
+            >
+              {t("apiKeyPage.addApiKey")}
+            </button>
+          </div>
+        </div>
         {!apiList ? (
           <div className="main_block_wrapper_bottom empty_block_wrapper">
             <div className="empty_block">
@@ -424,7 +430,7 @@ function ApiKeys({ setRec }) {
       </div>
       <div
         className={
-          apiModal || apiActiveModal || apiActiveEditModal
+          apiModal || apiActiveModal || apiActiveEditModal || deleteModal
             ? "overlay visible_overlay"
             : "overlay"
         }
@@ -563,7 +569,7 @@ function ApiKeys({ setRec }) {
               </div>
             </div>
             <div className="modal_wrapper_btns">
-              <div className="modal_wrapper_save_btn">
+              {/* <div className="modal_wrapper_save_btn">
                 <button
                   onClick={() => {
                     closeModals();
@@ -572,9 +578,11 @@ function ApiKeys({ setRec }) {
                 >
                   {i18n.t("modals.edit")}
                 </button>
-              </div>
+              </div> */}
               <div className="modal_wrapper_cancel api_delete_btn">
-                <button onClick={deleteApi}>{i18n.t("modals.delete")}</button>
+                <button onClick={() => setDeleteModal(true)}>
+                  {i18n.t("modals.delete")}
+                </button>
               </div>
             </div>
           </div>
@@ -612,13 +620,13 @@ function ApiKeys({ setRec }) {
             />
           </div>
           <div className="modal_wrapper_btns">
-            <div className="modal_wrapper_save_btn">
+            {/* <div className="modal_wrapper_save_btn">
               <button onClick={editApi} disabled={!publickKey || !secretKey}>
                 {t("apiEditModal.saveButton")}
               </button>
-            </div>
+            </div> */}
             <div className="modal_wrapper_cancel api_delete_btn">
-              <button onClick={deleteApi}>
+              <button onClick={() => setDeleteModal(true)}>
                 {t("apiEditModal.deleteButton")}
               </button>
             </div>
@@ -626,6 +634,30 @@ function ApiKeys({ setRec }) {
         </div>
       </div>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
+
+      {/* delete modal */}
+      <div
+        className={
+          deleteModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
+        }
+      >
+        <div className="warning_delete_modal">
+          <div className="warning_delete_modal_title">
+            <DeleteWarning /> <h3>{t("warning_del.title")} </h3>
+          </div>
+          <div className="warning_delete_modal_desc">
+            <p>{t("warning_del.desc_api")}</p>
+          </div>
+          <div className="warning_delete_modal_actions">
+            <button onClick={deleteApi}>
+              <p> {t("warning_del.delete")}</p>
+            </button>
+            <button onClick={() => setDeleteModal(false)}>
+              <p>{t("warning_del.cancel")}</p>
+            </button>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

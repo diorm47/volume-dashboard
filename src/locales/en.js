@@ -717,4 +717,13 @@ export const en_locale = {
     did_btn: "Done",
   },
   api_keys_desc: "Active connections are displayed here",
+  warning_del: {
+    title: "Warning",
+    desc_api:
+      "If you have active trades, deleting API keys may result in them being automatically closed and the algorithm deleted. Are you sure you want to delete API keys?",
+    desc_algo:
+      "If you have active trades, deleting an algorithm may cause them to close automatically. Are you sure you want to delete an algorithm?",
+    cancel: "Cancel",
+    delete: "Delete",
+  },
 };

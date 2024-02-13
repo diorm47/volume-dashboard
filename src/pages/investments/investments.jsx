@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { mainApi } from "../../components/utils/main-api";
 import { useNavigate } from "react-router-dom";
 import ApiKeys from "../settings/api-keys";
+import { ReactComponent as DeleteWarning } from "../../assets/icons/delete-warning.svg";
 
 function Investments({ updatebalance, setRec }) {
   const navigate = useNavigate();
@@ -108,6 +109,7 @@ function Investments({ updatebalance, setRec }) {
   const [active3, setActive3] = useState("1 месяц");
   const [activeCardSelect, setactiveCardSelect] = useState("");
   const [userData, setUserData] = useState({});
+  const [deleteModal, setDeleteModal] = useState(false);
 
   // modals
   const [modal1, setModal1] = useState(false);
@@ -120,6 +122,7 @@ function Investments({ updatebalance, setRec }) {
     setModal1(false);
     setModal2(false);
     setModal3(false);
+    setDeleteModal(false);
   };
 
   // Switch
@@ -132,7 +135,7 @@ function Investments({ updatebalance, setRec }) {
 
   // block site scroll
   useEffect(() => {
-    if (modal1 || modal2 || modal3) {
+    if (modal1 || modal2 || modal3 || deleteModal) {
       const scrollY = window.scrollY;
       document.body.style.overflow = "hidden";
       document.body.style.width = "100%";
@@ -145,7 +148,7 @@ function Investments({ updatebalance, setRec }) {
       document.body.style.top = "";
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
     }
-  }, [modal1, modal2, modal3]);
+  }, [deleteModal, modal1, modal2, modal3]);
 
   // active
   const [focusedField, setFocusedField] = useState(null);
@@ -766,7 +769,9 @@ function Investments({ updatebalance, setRec }) {
                 <div className="order_history_list_line"></div>
                 <div className="investing_actions">
                   <div className="add_key_btn">
-                    <button onClick={deleteBot}>{t("delete")}</button>
+                    <button onClick={() => setDeleteModal(true)}>
+                      {t("delete")}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -828,7 +833,9 @@ function Investments({ updatebalance, setRec }) {
       {/* overlay */}
       <div
         className={
-          modal1 || modal2 || modal3 ? "overlay visible_overlay" : "overlay"
+          modal1 || modal2 || modal3 || deleteModal
+            ? "overlay visible_overlay"
+            : "overlay"
         }
         onClick={closeModals}
       ></div>
@@ -1325,6 +1332,30 @@ function Investments({ updatebalance, setRec }) {
                 {t("select")}
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* delete modal */}
+      <div
+        className={
+          deleteModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
+        }
+      >
+        <div className="warning_delete_modal">
+          <div className="warning_delete_modal_title">
+            <DeleteWarning /> <h3>{t("warning_del.title")} </h3>
+          </div>
+          <div className="warning_delete_modal_desc">
+            <p>{t("warning_del.desc_algo")}</p>
+          </div>
+          <div className="warning_delete_modal_actions">
+            <button onClick={deleteBot}>
+              <p> {t("warning_del.delete")}</p>
+            </button>
+            <button onClick={() => setDeleteModal(false)}>
+              <p>{t("warning_del.cancel")}</p>
+            </button>
           </div>
         </div>
       </div>
