@@ -579,7 +579,7 @@ function ApiKeys({ setRec }) {
                   {i18n.t("modals.edit")}
                 </button>
               </div> */}
-              <div className="modal_wrapper_cancel api_delete_btn">
+              <div className="modal_wrapper_cancel api_delete_btn api_delete_btn_mob">
                 <button onClick={() => setDeleteModal(true)}>
                   {i18n.t("modals.delete")}
                 </button>

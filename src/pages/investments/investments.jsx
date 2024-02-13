@@ -693,7 +693,7 @@ function Investments({ updatebalance, setRec }) {
                 <p>{t("profitabilityDisclaimer")}</p>
               </div>
               <div className="investing_top_card_select ">
-                {activeInvests && activeInvests.level_risk === "aggressive" ? (
+                {activeInvests &&  activeInvests.exchange && activeInvests.level_risk === "aggressive" ? (
                   <button
                     className="investing_top_card_select_active"
                     onClick={algorithmBought}
@@ -905,7 +905,7 @@ function Investments({ updatebalance, setRec }) {
                 <h4
                   onClick={() =>
                     handleSetAmountInvestment(
-                      userData.balance >= 3000 ? userData.balance : ""
+                      userData.balance >= 3000 ? 3000 : ""
                     )
                   }
                 >
@@ -992,7 +992,7 @@ function Investments({ updatebalance, setRec }) {
               ""
             )}
             <div className="invest_modal_terms">
-              <input type="checkbox" />
+              <input type="checkbox"  checked/>
               <p>
                 {t("iHaveReadAndAccept")} <a href="#">{t("termsOfUse")}</a>
               </p>
@@ -1071,7 +1071,7 @@ function Investments({ updatebalance, setRec }) {
                 <h4
                   onClick={() =>
                     handleSetAmountInvestment(
-                      userData.balance >= 3000 ? userData.balance : ""
+                      userData.balance >= 3000 ? 3000 : ""
                     )
                   }
                 >
@@ -1157,7 +1157,7 @@ function Investments({ updatebalance, setRec }) {
               ""
             )}
             <div className="invest_modal_terms">
-              <input type="checkbox" />
+              <input type="checkbox" checked/>
               <p>
                 {t("iHaveReadAndAccept")} <a href="#">{t("termsOfUse")}</a>
               </p>
@@ -1236,7 +1236,7 @@ function Investments({ updatebalance, setRec }) {
                 <h4
                   onClick={() =>
                     handleSetAmountInvestment(
-                      userData.balance >= 3000 ? userData.balance : ""
+                      userData.balance >= 3000 ? 3000 : ""
                     )
                   }
                 >
@@ -1322,7 +1322,7 @@ function Investments({ updatebalance, setRec }) {
               ""
             )}
             <div className="invest_modal_terms">
-              <input type="checkbox" />
+              <input type="checkbox" checked />
               <p>
                 {t("iHaveReadAndAccept")} <a href="#">{t("termsOfUse")}</a>
               </p>

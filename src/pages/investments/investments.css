@@ -824,6 +824,11 @@
     font-size: 23px;
     letter-spacing: -0.48px;
   }
+  .api_delete_btn_mob button {
+    background: rgb(0, 119, 255) !important;
+    color: rgb(255, 255, 255) !important;
+    margin-bottom: 20px;
+  }
 }
 .user_balance_invest {
   display: flex;
@@ -840,10 +845,4 @@
   line-height: 16px;
   letter-spacing: 0%;
   text-align: right;
-}
-
-@media screen and (max-height: 850px) {
-  .invest_modal {
-    top: 40px !important;
-  }
 }
