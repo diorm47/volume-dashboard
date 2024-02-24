@@ -726,4 +726,11 @@ export const en_locale = {
     cancel: "Cancel",
     delete: "Delete",
   },
+
+  bybit: {
+    desc1: 'Click on the "Connect in one click" button',
+    desc2: 'Login to your Marketplace account',
+    desc3: 'Confirm connection to &Volume',
+    button: 'Connect in one click'
+  }
 };

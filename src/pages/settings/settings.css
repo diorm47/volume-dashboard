@@ -550,7 +550,6 @@
   margin-bottom: 24px;
 }
 .black_mode .add_key_history_mobile_title {
-
   border-bottom: 1px solid #343436;
 }
 .add_key_history_mobile_title h2 {
@@ -681,7 +680,53 @@
   /* color: #2727291a; */
 }
 
-
+.bybit_on_tap_desc_item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+.bybit_on_tap_desc_item p {
+  /* 13px/Medium */
+  color: rgb(0, 0, 0);
+  font-family: TTInterfaces500;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.black_mode .bybit_on_tap_desc_item p {
+  color: rgb(255, 255, 255);
+}
+.bybit_on_tap_desc_item_num {
+  background: rgb(0, 119, 255);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bybit_on_tap_desc_item_num p {
+  /* 13px/Medium */
+  color: rgb(255, 255, 255);
+  font-family: TTInterfaces500;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.bybit_on_tap_desc {
+  margin-bottom: 48px;
+}
+.modal_wrapper_save_btn button {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 16px;
+  font-family: TTInterfaces500 !important;
+}
 @media only screen and (max-width: 750px) {
   .api_key_title {
     flex-direction: column;

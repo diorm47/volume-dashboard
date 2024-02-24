@@ -22,6 +22,7 @@ import Rates from "./pages/rates/rates";
 import Referal from "./pages/referal/referal";
 import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
+import { BybitOneTap } from "./components/utils/bybit";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -98,7 +99,9 @@ function App() {
         });
     }
   }, [localStorage.getItem("locale")]);
-// localStorage.setItem('token', '464|ptMRKa91NQL9d6bImBwRXayFSuhYjlF30dk8vHCd')
+
+  // localStorage.setItem('token', '466|lXgMp4e6HPIFvig96Kd6QRVE2dd4DgDtcGjiEqbx')
+
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>
       {location.pathname !== "/login" &&
@@ -108,6 +111,7 @@ function App() {
       ) : (
         ""
       )}
+      <BybitOneTap />
 
       <div className="page_content ">
         <Routes>

@@ -7,7 +7,7 @@ import { ReactComponent as DeleteWarning } from "../../assets/icons/delete-warni
 
 import "react-dropdown/style.css";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Snackbar from "../../components/snackbar/snackbar";
 
 function ApiKeys({ setRec }) {
@@ -140,11 +140,12 @@ function ApiKeys({ setRec }) {
   }, [localStorage.getItem("token")]);
 
   // add key
-  const [name, setName] = useState("");
+  const [name, setName] = useState("&Volume");
 
   const [publickKey, setPublickKey] = useState("");
   const [secretKey, setSecretKey] = useState("");
 
+  const navigate = useNavigate();
   const addApi = () => {
     const localization = {
       en: {
@@ -185,6 +186,7 @@ function ApiKeys({ setRec }) {
           refresh();
           closeModals();
           snackOptions(localization[userLanguage].apiAddedSuccess, "success");
+          navigate("/investments");
         } else {
           snackOptions(localization[userLanguage].apiAddError, "error");
         }
@@ -437,6 +439,7 @@ function ApiKeys({ setRec }) {
         onClick={closeModals}
       ></div>
 
+      {/* Api modal */}
       <div
         className={
           apiModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
@@ -470,39 +473,76 @@ function ApiKeys({ setRec }) {
                 value={customOptions.find(
                   (option) => option.value === selectedOption
                 )}
-              />{" "}
+              />
             </div>
           </div>
 
-          <div className="modal_wrapper_content_item">
-            <p>{t("apiModal.publicKey")}</p>
-            <input
-              type="text"
-              value={publickKey}
-              onChange={(e) => setPublickKey(e.target.value)}
-            />
-          </div>
-          <div className="modal_wrapper_content_item">
-            <p>{t("apiModal.privateKey")}</p>
-            <input
-              type="text"
-              value={secretKey}
-              onChange={(e) => setSecretKey(e.target.value)}
-            />
-          </div>
-          <div className="modal_wrapper_btns add_api_btns">
-            <div className="redirect_btn">
-              <NavLink to="/api">
-                <p>{t("apiADittionals.question")}</p>
-              </NavLink>
+          {selectedOption == "binance" ? (
+            <>
+              <div className="modal_wrapper_content_item">
+                <p>{t("apiModal.publicKey")}</p>
+                <input
+                  type="text"
+                  value={publickKey}
+                  onChange={(e) => setPublickKey(e.target.value)}
+                />
+              </div>
+              <div className="modal_wrapper_content_item">
+                <p>{t("apiModal.privateKey")}</p>
+                <input
+                  type="text"
+                  value={secretKey}
+                  onChange={(e) => setSecretKey(e.target.value)}
+                />
+              </div>
+            </>
+          ) : (
+            <div className="bybit_on_tap_desc">
+              <div className="bybit_on_tap_desc_item">
+                <div className="bybit_on_tap_desc_item_num">
+                  <p>1</p>
+                </div>
+                <p>{t("bybit.desc1")} </p>
+              </div>
+
+              <div className="bybit_on_tap_desc_item">
+                <div className="bybit_on_tap_desc_item_num">
+                  <p>2</p>
+                </div>
+                <p>{t("bybit.desc2")} </p>
+              </div>
+
+              <div className="bybit_on_tap_desc_item">
+                <div className="bybit_on_tap_desc_item_num">
+                  <p>3</p>
+                </div>
+                <p>{t("bybit.desc3")} </p>
+              </div>
             </div>
+          )}
+          <div className="modal_wrapper_btns add_api_btns">
+            {selectedOption == "binance" ? (
+              <div className="redirect_btn">
+                <NavLink to="/api">
+                  <p>{t("apiADittionals.question")}</p>
+                </NavLink>
+              </div>
+            ) : (
+              ""
+            )}
             <div className="modal_wrapper_save_btn">
-              <button
-                onClick={addApi}
-                disabled={!name || !publickKey || !secretKey}
-              >
-                {t("apiModal.addButton")}
-              </button>
+              {selectedOption == "binance" ? (
+                <button
+                  onClick={addApi}
+                  disabled={!name || !publickKey || !secretKey}
+                >
+                  {t("apiModal.addButton")}
+                </button>
+              ) : (
+                <a href="https://www.bybit.com/en/oauth?client_id=bb8fc8894f7e&response_type=code&scope=openapi&redirect_uri=https://dashboard.nvolume.com/investments">
+                  <button>{t("bybit.button")}</button>
+                </a>
+              )}
             </div>
             <div className="create_acc_r">
               {selectedOption == "binance" ? (
@@ -515,7 +555,10 @@ function ApiKeys({ setRec }) {
               ) : (
                 <p>
                   {t("apiADittionals.bybitQuest")}{" "}
-                  <a href="https://www.bybit.com/en/" target="_blank">
+                  <a
+                    href="https://www.bybit.com/en/invite/?ref=Kw000411"
+                    target="_blank"
+                  >
                     {t("apiADittionals.create")}
                   </a>
                 </p>
