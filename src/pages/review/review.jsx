@@ -221,6 +221,9 @@ function Review(rec) {
   return (
     <>
       <div className="pages_wrapper review_page">
+        <div className="main_page_title_template">
+          <h1>Dashboard</h1>
+        </div>
         <div className="review_page_wrapper">
           <div className="review_left">
             <div className="review_left_top">
@@ -296,8 +299,9 @@ function Review(rec) {
                         {selectedValue}
                       </span>
                     </p>
-                    <div className="review_left_top_block_content_amount">
+                    <div className="review_left_top_block_content_amount review_pnl_today">
                       <p>
+                        {Number(pnl).toFixed(2) > 0 ? "+" : ""}{" "}
                         {Number(pnl || 0).toFixed(2)} <span>USDT</span>
                       </p>
                     </div>
@@ -462,7 +466,7 @@ function Review(rec) {
                       <div className="tarif_plan_time">
                         <div className="tarif_plan_time_title">
                           <p>
-                            {t("remaining_days")} {remainingDays} {t('days')}
+                            {t("remaining_days")} {remainingDays} {t("days")}
                           </p>
                         </div>
                         <div className="tarif_plan_time_block">
@@ -505,28 +509,26 @@ function Review(rec) {
             )}
             <div className="secondary_block_wrapper most_questions">
               <div className="main_block_wrapper_title">
-                <h2>{t('help.help_title')}</h2>
+                <h2>{t("help.help_title")}</h2>
               </div>
               <div className="review_help_blog">
                 <div className="review_help_blog_number">
                   <div>
                     <p>1</p>
                   </div>
-                  <h4>{t('help.help1_title')}</h4>
+                  <h4>{t("help.help1_title")}</h4>
                 </div>
                 <div className="review_help_blog_descr">
-                  <p>
-                  {t('help.help1_desc')}
-                  </p>
+                  <p>{t("help.help1_desc")}</p>
                 </div>
                 {userData && userData.tariff_paid_to ? (
                   <button className="review_help_blog_btn review_help_did">
-                    <p> {t('help.did_btn')}</p>
+                    <p> {t("help.did_btn")}</p>
                   </button>
                 ) : (
                   <NavLink to="/pricing/pricing">
                     <button className="review_help_blog_btn">
-                      <p>{t('help.help1_btn')}</p>
+                      <p>{t("help.help1_btn")}</p>
                     </button>{" "}
                   </NavLink>
                 )}
@@ -536,22 +538,20 @@ function Review(rec) {
                   <div>
                     <p>2</p>
                   </div>
-                  <h4>{t('help.help2_title')}</h4>
+                  <h4>{t("help.help2_title")}</h4>
                 </div>
                 <div className="review_help_blog_descr">
-                  <p>
-                  {t('help.help2_desc')}
-                  </p>
+                  <p>{t("help.help2_desc")}</p>
                 </div>
                 {rec && rec.rec ? (
                   <NavLink to="/investments">
                     <button className="review_help_blog_btn">
-                      <p>   {t('help.help2_btn')}</p>
+                      <p> {t("help.help2_btn")}</p>
                     </button>{" "}
                   </NavLink>
                 ) : (
                   <button className="review_help_blog_btn review_help_did">
-                    <p> {t('help.did_btn')}</p>
+                    <p> {t("help.did_btn")}</p>
                   </button>
                 )}
               </div>
@@ -560,28 +560,26 @@ function Review(rec) {
                   <div>
                     <p>3</p>
                   </div>
-                  <h4>{t('help.help3_title')}</h4>
+                  <h4>{t("help.help3_title")}</h4>
                 </div>
                 <div className="review_help_blog_descr">
-                  <p>
-                  {t('help.help3_desc')}
-                  </p>
+                  <p>{t("help.help3_desc")}</p>
                 </div>
                 {bots ? (
                   <button className="review_help_blog_btn review_help_did">
-                    <p>     {t('help.did_btn')}</p>
+                    <p> {t("help.did_btn")}</p>
                   </button>
                 ) : (
                   <NavLink to="/investments">
                     <button className="review_help_blog_btn">
-                      <p> {t('help.help3_btn')}</p>
+                      <p> {t("help.help3_btn")}</p>
                     </button>
                   </NavLink>
                 )}
               </div>
             </div>
 
-            {/* <div className="secondary_block_wrapper invite_block">
+            <div className="secondary_block_wrapper invite_block">
               <div className="main_block_wrapper_title">
                 <h2>Приглашение</h2>
               </div>
@@ -590,12 +588,13 @@ function Review(rec) {
                   Приглашайте друзей в &Volume и получайте награды в размере 10%
                   от стоимости тарифа
                 </p>
-                <img src={inviteImg} alt="" />
               </div>
               <div className="review_right_link">
-                <p>Пригласить</p>
+                <NavLink to="/referal">
+                  <p>Пригласить</p>
+                </NavLink>
               </div>
-            </div> */}
+            </div>
             <div className="secondary_block_wrapper most_questions">
               <div className="main_block_wrapper_title">
                 <h2>{t("faq_title")}</h2>
@@ -603,69 +602,7 @@ function Review(rec) {
               <div className="most_questions_desc">
                 <p>{t("faq_description")}</p>
               </div>
-              {/* <div className="most_questions_list">
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                  >
-                    <circle cx="5" cy="5" r="5" fill="#0077FF" />
-                  </svg>
-                  <p>{t("faq_question_1")}</p>
-                </div>
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                  >
-                    <circle cx="5" cy="5" r="5" fill="#0077FF" />
-                  </svg>
-                  <p>{t("faq_question_2")}</p>
-                </div>
 
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                  >
-                    <circle cx="5" cy="5" r="5" fill="#0077FF" />
-                  </svg>
-                  <p>{t("faq_question_3")}</p>
-                </div>
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                  >
-                    <circle cx="5" cy="5" r="5" fill="#0077FF" />
-                  </svg>
-                  <p>{t("faq_question_4")}</p>
-                </div>
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                  >
-                    <circle cx="5" cy="5" r="5" fill="#0077FF" />
-                  </svg>
-                  <p>{t("faq_question_5")}</p>
-                </div>
-              </div> */}
               <div className="review_right_link">
                 <NavLink to="/base">
                   <p>{t("knowledge_base_link")}</p>

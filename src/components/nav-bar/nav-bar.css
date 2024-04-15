@@ -1,7 +1,7 @@
 nav {
   padding: 0 36px;
-  /* background: var(--111112, #111112); */
-  border-bottom: 1px solid var(--Stroke_White, #dbdbdb);
+
+  border-bottom: 1px solid rgb(229, 231, 235);
 }
 .black_mode nav {
   border-bottom: 1px solid var(--Stroke_Black, #343436);
@@ -11,6 +11,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 65px;
 }
 .nav_wrapper_left {
   display: flex;
@@ -26,12 +27,48 @@ nav {
   cursor: pointer;
 }
 .user_nav_avatar {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   object-fit: cover;
 }
-
+.mode_toggler {
+  width: 58px;
+  height: 32px;
+  border-radius: 32px;
+  padding: 4px;
+  background: rgb(243, 244, 246);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.black_mode .mode_toggler {
+  background: rgb(40, 40, 40);
+}
+.mode_toggler_icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+/* .mode_toggler .mode_toggler_icon:nth-child(1) svg {
+  width: 15px;
+  height: 15px;
+}
+.mode_toggler .mode_toggler_icon:nth-child(2) svg {
+  width: 12.75px;
+  height: 12.75px;
+} */
+.active_mode_toggler_icon {
+  background: rgb(0, 104, 255);
+}
+.active_mode_toggler_icon svg *, .black_mode_toggler svg * {
+  fill: rgb(255, 255, 255) !important;
+}
+ 
 .nav_logo {
   display: flex;
   align-items: center;
@@ -54,10 +91,10 @@ nav {
 
   /* 17px/Medium */
   font-family: TTInterfaces500;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; /* 141.176% */
+  line-height: 17px; /* 141.176% */
 }
 .black_mode .nav_menu_item p {
   color: var(--Color_White, #fff);
@@ -75,12 +112,34 @@ nav {
 .nav_wrapper_right {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 8px;
+}
+.nav_wrapper_right .nav_menu_item {
+  background: rgb(243, 244, 246);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.black_mode
+.nav_wrapper_right .nav_menu_item {
+  background: rgb(40, 40, 40);
+}
+.nav_chat_icon svg {
+  width: 16px;
+  height: 16px;
+}
+.nav_user_nav_avatar {
+  background: transparent;
+  border-radius: 0;
+  width: auto;
 }
 .nav_menu_item {
   position: relative;
   padding: 10px 0;
-  height: 108px;
 }
 .nav_menu_item .drop_down_icon {
   transition: all 0.4s ease;
@@ -100,8 +159,8 @@ nav {
 .nav_menu_item_drop {
   position: absolute;
   width: auto;
-  top: 75px;
-  padding: 12px;
+  top: 40px;
+  padding: 4px;
   border-radius: 6px;
   background: #fff;
   display: flex;
@@ -112,6 +171,9 @@ nav {
   transform: translateY(15%);
   transition: all 0.35s ease;
   visibility: hidden;
+}
+.lang_switcher_wrapper .nav_menu_item_drop {
+  right: 0;
 }
 .black_mode .nav_menu_item_drop {
   border-radius: 6px;
@@ -138,7 +200,6 @@ nav {
   border-radius: 6px;
   background: #f9f9f9;
   transition: all 0.2s ease !important;
-
 }
 .black_mode .nav_menu_item_drop a:hover p {
   background: #111112;
@@ -258,7 +319,7 @@ nav {
 
 .nav_menu_item_drop_profile {
   right: 0;
-  top: 90px;
+  top: 40px;
   width: 260px;
 }
 .nav_menu_item_drop_profile_block {
@@ -326,7 +387,7 @@ nav {
   margin-top: 24px;
 }
 .mob_menu_socials svg * {
-  fill: #92979C;
+  fill: #92979c;
 }
 @media only screen and (max-width: 1300px) {
   .nav_bar_menu,
@@ -407,7 +468,7 @@ nav {
     font-style: normal;
     font-weight: 800;
     line-height: 24px; /* 109.091% */
-    letter-spacing: -0.44px;
+
     opacity: 0.8;
   }
   .nav_menu_itemm {

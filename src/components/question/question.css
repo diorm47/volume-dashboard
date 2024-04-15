@@ -24,7 +24,7 @@
   background: var(--Color_Block_Black, #0077ff);
 }
 .question_widget p {
-  color: var(--OnSecond, var(--FFFFFF, #fff));
+  color: #fff !important ;
   text-align: center;
 
   /* Title */

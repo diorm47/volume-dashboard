@@ -11,15 +11,19 @@ function Footer() {
       {" "}
       <QuestionWidget />
       <div className="footer_wrapper">
-        <div className="footer_left">
+        <p className="footer_left_text">
+          Ⓒ 2024 &Volume. Все права защищены. &Volume LTD. Enterprise Hub,
+          Appleton Tower, 11 Crichton Street Newington Student, Edinburgh EH8
+          9LE
+        </p>
+        <div className="footer_links">
           <p>
-            <span>{t("rightsReserved")}</span>
+            {" "}
+            <a href="#">{t("policy")}</a>
           </p>
           <p>
-            <a href="#">{t("policy")}</a>
             <a href="#">{t("agreement")}</a>
           </p>
-          <p className="footer_adress"><span>&VOLUME LTD. Student Enterprise Hub, Appleton Tower, 11 Crichton Street, Edinburgh, Scotland, EH8 9LE</span></p>
         </div>
       </div>
     </footer>

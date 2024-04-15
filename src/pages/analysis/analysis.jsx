@@ -196,12 +196,11 @@ function Analysis() {
     return isWithinRange(tradeStartDate, selectedTime);
   });
 
-  console.log(totalPages);
   return (
     <div className="pages_wrapper analysis_page">
-      <div className="analysing_page_title_wrapper">
+      <div className="analysing_page_title_wrapper main_page_title_template">
         <div className="page_title analyse_title">
-          <h2>{t("nav_menu_2")}</h2>
+          <h1>{t("nav_menu_2")}</h1>
           <div className="data_picker_desctop">
             <DatePicker setSelectedTime={setSelectedTime} />
           </div>

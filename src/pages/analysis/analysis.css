@@ -55,7 +55,7 @@
 
   /* 17px/Regular */
   font-family: TTInterfaces400;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 141.176% */
@@ -64,8 +64,8 @@
 .analysis_top_toggler svg {
   cursor: pointer;
 }
-.analysis_page_wrapper {
-  margin-top: 50px;
+.analysis_page {
+  padding-top: 0;
 }
 
 .analysis_order_items p {

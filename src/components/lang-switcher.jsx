@@ -11,9 +11,9 @@ function LanguageSwitcher() {
   };
 
   return (
-    <div className="nav_menu_item">
+    <div className="nav_menu_item lang_switcher_wrapper">
       <p style={{ textTransform: 'uppercase' }}>{i18n.language}</p>
-      <Down className="drop_down_icon" />
+      {/* <Down className="drop_down_icon" /> */}
       <div className="nav_menu_item_drop">
         {/* <NavLink to="/ru"> */}
         <p onClick={() => changeLanguage("ru")}>RU</p>

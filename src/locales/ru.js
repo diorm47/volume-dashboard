@@ -1,7 +1,7 @@
 export const ru_locale = {
   // navbar
   active: "Активный",
-  nav_menu_1: "Дашборд",
+  nav_menu_1: "Dashboard",
   nav_menu_2: "Статистика",
   nav_menu_3: "Алгоритм",
   nav_menu_4: "Тарифы",

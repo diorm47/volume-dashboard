@@ -203,13 +203,7 @@ function NavBar({ setMode }) {
             </div>
           </div> */}
           <LanguageSwitcher />
-          <div className="mode_toggler">
-            {localStorage.getItem("mode") === "dark" ? (
-              <BlackMode onClick={toggleMode} className="black_mode_handler" />
-            ) : (
-              <LightMode onClick={toggleMode} />
-            )}
-          </div>
+
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="2"
@@ -221,7 +215,7 @@ function NavBar({ setMode }) {
             <path d="M1 0V18" stroke="#dbdbdb" />
           </svg> */}
 
-          <div className="nav_menu_item">
+          <div className="nav_menu_item nav_chat_icon">
             <ChatIcon />
             <div className="nav_menu_item_drop nav_menu_item_drop_chat">
               {i18n.language == "en" ? (
@@ -313,7 +307,26 @@ function NavBar({ setMode }) {
               </NavLink> */}
             </div>
           </div>
-
+          <div className="mode_toggler">
+            <div
+              className={
+                localStorage.getItem("mode") === "light"
+                  ? "mode_toggler_icon active_mode_toggler_icon "
+                  : "mode_toggler_icon black_mode_toggler"
+              }
+            >
+              <BlackMode onClick={toggleMode} />
+            </div>
+            <div
+              className={
+                localStorage.getItem("mode") === "dark"
+                  ? "mode_toggler_icon active_mode_toggler_icon"
+                  : "mode_toggler_icon"
+              }
+            >
+              <LightMode onClick={toggleMode} />
+            </div>
+          </div>
           {/* <div className="nav_menu_item">
             <NotificationICon />
             <div className="nav_menu_item_drop nav_menu_item_drop_notifications">
@@ -335,7 +348,7 @@ function NavBar({ setMode }) {
               </NavLink>
             </div>
           </div> */}
-          <div className="nav_menu_item">
+          <div className="nav_menu_item nav_user_nav_avatar">
             <img
               className="user_nav_avatar"
               src={userData.avatar || avatar}
@@ -351,9 +364,9 @@ function NavBar({ setMode }) {
               <NavLink to="/settings/profile">
                 <p> {t("nav_menu_7")} </p>
               </NavLink>
-              {/* <NavLink to="/referal">
+              <NavLink to="/referal">
                 <p> {t("nav_menu_14")} </p>
-              </NavLink> */}
+              </NavLink>
               <NavLink to="/login" onClick={handleLogout}>
                 <p> {t("nav_menu_15")} </p>
               </NavLink>

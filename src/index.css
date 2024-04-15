@@ -15,7 +15,7 @@ a {
   text-decoration: none !important;
 }
 .white_mode {
-  background: #fff !important;
+  background: #fbfbfb !important;
 }
 a:hover {
   text-decoration: none !important;
@@ -35,10 +35,9 @@ p + p {
 .black_mode .main_block_wrapper,
 .black_mode .secondary_block_wrapper {
   border-radius: 6px;
-  background: var(--Color_Block_Black, #18181a);
+  border-radius: 6px;
 
-  /* Тень */
-  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+  background: rgb(40, 40, 40);
 }
 
 .main_block_wrapper_bottom,
@@ -47,7 +46,8 @@ p + p {
 }
 .main_block_wrapper_top {
   border: none !important;
-  border-bottom: 1px solid var(--Stroke_White, #dbdbdb) !important;
+
+  border-bottom: 1px solid rgb(229, 231, 235) !important;
 }
 .black_mode .main_block_wrapper_top {
   border-bottom: 1px solid var(--Stroke_Black, #343436) !important;
@@ -104,7 +104,7 @@ input {
   color: #111112;
 }
 .black_mode {
-  background: #111112;
+  background: #1c1c1c ;
 }
 .empty_block_wrapper {
   width: 100%;
@@ -145,17 +145,32 @@ input {
   font-weight: 500;
   line-height: 24px;
 }
-.connect_api_recom_wrapper a, .create_acc_r a {
+.connect_api_recom_wrapper a,
+.create_acc_r a {
   color: #0077ff;
 }
-.connect_api_recom_wrapper a:hover , .create_acc_r a:hover {
-   color: #0077ff !important;
+.connect_api_recom_wrapper a:hover,
+.create_acc_r a:hover {
+  color: #0077ff !important;
 }
-.black_mode .connect_api_recom{
+.black_mode .connect_api_recom {
   border-bottom: 1px solid var(--Stroke_Black, #343436);
 }
 .black_mode .connect_api_recom_wrapper p {
   color: #92979c;
+}
+.main_page_title_template h1 {
+  color: rgb(26, 26, 26);
+  font-family: TTInterfaces800;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -2.58px;
+  text-align: left;
+  margin: 48px 0;
+}
+.black_mode .main_page_title_template h1 {
+  color: rgb(255, 255, 255) !important;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -167,7 +182,8 @@ input {
   }
 }
 @media only screen and (max-width: 450px) {
-  button, .connect_api_recom_wrapper p {
+  button,
+  .connect_api_recom_wrapper p {
     font-size: 13px !important;
   }
 }

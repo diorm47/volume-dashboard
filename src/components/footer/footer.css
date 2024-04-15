@@ -1,64 +1,50 @@
 footer {
-  border-top: 1px solid var(--Stroke_White, #dbdbdb);
+  box-sizing: border-box;
+  border-top: 1px solid rgb(229, 231, 235);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  margin-top: 96px;
+  padding: 24px 36px;
+  margin-top: 40px;
 }
 .footer_wrapper {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
-footer p,
-footer a {
-  color: #000;
-  font-family: IBMPlexMono500;
-  font-size: 17px;
-  font-style: normal;
+.footer_left_text {
+  color: rgb(146, 151, 156);
+  font-family: TTInterfaces500;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  line-height: 17px;
+  letter-spacing: 0%;
 }
-.footer_wrapper span {
-  color: rgba(0, 0, 0, 0.6);
+.footer_links {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+.footer_links a {
+  color: rgb(146, 151, 156);
+  font-family: TTInterfaces600;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0px;
 }
 .black_mode footer p,
 .black_mode footer a {
-  color: var(--Color_White, #fff);
+  color: rgb(146, 151, 156);
 }
-.black_mode .footer_wrapper span {
-  color: rgba(255, 255, 255, 0.6);
-}
-.footer_left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-.footer_left p:nth-child(2) {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+
 .black_mode footer {
   border-top: 1px solid var(--Stroke_Black, #343436);
 }
-.footer_adress {
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.6);
-  text-align: center;
-  font-family: IBMPlexMono500;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px; /* 184.615% */
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
+
+
 @media only screen and (max-width: 450px) {
   footer {
     margin-top: 70px;
@@ -69,5 +55,9 @@ footer a {
   footer p,
   footer a {
     font-size: 11px;
+  }
+  .footer_wrapper {
+    flex-direction: column-reverse;
+    gap: 20px;
   }
 }

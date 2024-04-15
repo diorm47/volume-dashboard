@@ -1,13 +1,13 @@
 .main_block_wrapper_top {
   border-radius: 6px 6px 0 0;
   border: 1px solid var(--DBDBDB, #dbdbdb);
-  padding: 28px;
+  padding: 28px 24px;
 }
 .main_block_wrapper_bottom {
   border-radius: 0 0 6px 6px;
   border: 1px solid var(--DBDBDB, #dbdbdb);
   border-top: none;
-  padding: 28px;
+  padding: 24px;
 }
 
 .review_left {
@@ -54,7 +54,7 @@
 
   /* 23px/SemiBold */
   font-family: TTInterfaces600;
-  font-size: 23px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px; /* 104.348% */
@@ -86,24 +86,25 @@
   margin-bottom: 12px;
   /* 17px/Regular */
   font-family: TTInterfaces400;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 141.176% */
+  line-height: 12px; /* 141.176% */
 }
 
 .review_left_top_block_content_amount p {
   color: var(--text-black, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   font-family: TTInterfaces500;
-  font-size: 23px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   margin: 0;
 }
 .review_left_top_block_content_amount span {
-  font-size: 17px;
+  font-size: 15px;
+  font-weight: 500;
 }
 .main_select_item .Dropdown-control {
   border-radius: 6px;
@@ -116,7 +117,7 @@
   justify-content: space-between;
   /* 13px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -145,9 +146,12 @@
   line-height: 16px; /* 123.077% */
   z-index: 111 !important;
 }
+.review_pnl_today p {
+  color: rgb(22, 163, 74) !important;
+}
 
 .p24_28px {
-  padding: 24px 28px;
+  padding: 24px 24px;
 }
 .main_block_wrapper,
 .secondary_block_wrapper {
@@ -157,7 +161,7 @@
 .secondary_block_wrapper {
   border-radius: 6px;
   border: 1px solid var(--DBDBDB, #dbdbdb);
-  padding: 28px;
+  padding: 24px;
   width: 100%;
 }
 
@@ -283,6 +287,9 @@
 .black_mode .order_history_list_line {
   background-color: #343436;
 }
+.review_page {
+  padding-top: 0;
+}
 .review_page_wrapper {
   display: flex;
   align-items: start;
@@ -313,7 +320,7 @@
 
   /* 17px/Regular */
   font-family: TTInterfaces400;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 141.176% */
@@ -357,7 +364,7 @@
 
   /* 17px/Regular */
   font-family: TTInterfaces400;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   cursor: pointer;
   font-weight: 400;
@@ -373,7 +380,7 @@
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   font-family: TTInterfaces400;
 
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 141.176% */
@@ -390,15 +397,18 @@
 }
 
 .most_questions_desc p {
-  color: var(--92979C, #92979c);
+  color: rgb(26, 26, 26);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-  margin: 30px 0;
+  margin: 26px 0;
   /* 17px/Regular */
   font-family: TTInterfaces400;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 141.176% */
+}
+.black_mode .most_questions_desc p {
+  color: rgb(255, 255, 255);
 }
 
 .most_questions_list div {

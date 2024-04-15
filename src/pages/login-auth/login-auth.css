@@ -16,10 +16,10 @@
 .login_title h2 {
   color: #111112;
   font-family: TTInterfaces800;
-  font-size: 52px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 52px; /* 100% */
+  font-size: 32px;
+  font-style: normal;letter-spacing: -2.58px;
+  font-weight: 800;
+  line-height: 41px; /* 100% */
   margin-bottom: 45px;
   text-align: left;
 }
@@ -32,10 +32,10 @@
 .login_input_titles p {
   color: #111112;
   font-family: TTInterfaces400;
-  font-size: 17px;
-  font-style: normal;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 17px; /* 100% */
+  line-height: 17px;
+  letter-spacing: 0%;
 }
 .reset_text {
   color: #000;
@@ -68,6 +68,7 @@
   line-height: 24px; /* 141.176% */
   outline: none;
   text-indent: 10px;
+  
 }
 #loginForm input:active {
   border: 1px solid #111112;
@@ -78,14 +79,14 @@
 .recovery_password a {
   color: #0077ff;
   font-family: TTInterfaces400;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 17px; /* 100% */
 }
 #submitBtn {
   height: 60px;
-  border-radius: 87px;
+  border-radius: 6px;
   background: var(--2420FC, #0077ff);
   width: 100%;
   color: #fff;
@@ -112,7 +113,7 @@
 .toggle_auth p {
   color: #111112;
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 17px; /* 130.769% */
