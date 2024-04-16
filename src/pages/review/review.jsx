@@ -507,7 +507,7 @@ function Review(rec) {
             ) : (
               <div className="secondary_block_wrapper"></div>
             )}
-            <div className="secondary_block_wrapper most_questions">
+            {/* <div className="secondary_block_wrapper most_questions">
               <div className="main_block_wrapper_title">
                 <h2>{t("help.help_title")}</h2>
               </div>
@@ -577,7 +577,7 @@ function Review(rec) {
                   </NavLink>
                 )}
               </div>
-            </div>
+            </div> */}
 
             <div className="secondary_block_wrapper invite_block">
               <div className="main_block_wrapper_title">

@@ -279,7 +279,7 @@
   color: var(--31BD65, #31bd65);
 }
 .order_history_list_line {
-  margin: 28px auto;
+  margin: 24px auto;
   width: 100%;
   height: 1px;
   background: #dbdbdb;

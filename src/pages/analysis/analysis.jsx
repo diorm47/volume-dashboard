@@ -237,8 +237,9 @@ function Analysis() {
             <div className="main_block_wrapper_bottom">
               <div className="review_left_top_block_content">
                 <p>{t("pnl_today")}</p>
-                <div className="review_left_top_block_content_amount">
+                <div className="review_left_top_block_content_amount review_pnl_today">
                   <p>
+                    {Number(pnlToday).toFixed(2) > 0 ? "+" : ""}{" "}
                     {Number(pnlToday || 0).toFixed(2)} <span>USDT</span>
                   </p>
                 </div>
@@ -271,8 +272,9 @@ function Analysis() {
                     })
                     .replace(/\//g, ".")}
                 </p>
-                <div className="review_left_top_block_content_amount">
+                <div className="review_left_top_block_content_amount review_pnl_today">
                   <p>
+                    {Number(pnlPeriod).toFixed(2) > 0 ? "+" : ""}{" "}
                     {Number(pnlPeriod || 0).toFixed(2)} <span>USDT</span>
                   </p>
                 </div>
@@ -282,14 +284,14 @@ function Analysis() {
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
-            <h2>{t("pnl_main_title")}</h2>
+            <h2>График {t("pnl_main_title")}</h2>
           </div>
 
           <LineChart selectedTime={selectedTime} pnlToday={pnlToday} />
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
-            <h2>{t("pnl_by_days_title")}</h2>
+            <h2>График {t("pnl_by_days_title")}</h2>
           </div>
 
           <ColumnChart selectedTime={selectedTime} />

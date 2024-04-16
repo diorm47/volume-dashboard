@@ -119,6 +119,11 @@
   color: var(--FFFFFF, #fff);
   opacity: 1;
 }
+.black_mode .investing_top_card_select button {
+  border-radius: 6px;
+  color: rgb(255, 255, 255);
+background: rgb(50, 50, 50);
+}
 .investing_top_card_active_btn {
   color: var(--FFFFFF, #fff) !important;
   background: var(--111112, #0077ff) !important;
@@ -140,8 +145,9 @@
 }
 
 .investing_top_card_select button {
-  border-radius: 91px;
-  background: var(--F7F7F7, #f7f7f7);
+  border-radius: 6px;
+
+  background: rgb(247, 247, 247);
   width: 100%;
   height: 46px;
   color: var(--111112, #111112);
@@ -150,7 +156,7 @@
 
   /* 17px/Medium */
   font-family: TTInterfaces500;
-  font-size: 17px;
+  font-size: 14px !important;
   font-style: normal;
   font-weight: 500;
   line-height: 24px; /* 141.176% */
@@ -188,10 +194,12 @@
 }
 .black_mode .faq_invest {
   border-radius: 6px;
-  background: var(--Color_Block_Black, #18181a);
 
-  /* Тень */
+  background: rgb(40, 40, 40);
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+}
+.black_mode .faq_invest_item svg * {
+  fill:  rgb(217, 217, 217) !important;
 }
 .black_mode .faq_invest_item_question p {
   color: #fff;
@@ -219,10 +227,10 @@
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
   /* 17px/SemiBold */
-  font-family: TTInterfaces500;
-  font-size: 17px;
+  font-family: TTInterfaces600;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 24px; /* 141.176% */
 }
 
@@ -257,7 +265,7 @@
   text-align: center;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   font-family: TTInterfaces600;
-  font-size: 42px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;

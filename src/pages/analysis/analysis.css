@@ -2,9 +2,9 @@
   color: var(--111112, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   font-family: TTInterfaces800;
-  font-size: 52px;
-  font-style: normal;
+  font-size: 32px;
   font-weight: 800;
+  line-height: 41px;
   letter-spacing: -2.58px;
   line-height: normal;
 }
@@ -13,7 +13,7 @@
 }
 .black_mode .analysis_top_toggler {
   border-radius: 6px;
-  background: var(--Color_Block_Black, #18181a);
+  background: rgb(40, 40, 40);
 
   /* Тень */
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);

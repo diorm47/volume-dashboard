@@ -1,13 +1,11 @@
 .settings_navigation {
   padding: 20px;
 
-  border-bottom: 1px solid var(--F7F7F7, #f7f7f7);
-  /* background: var(--111112, #111112); */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 36px;
-  border-bottom: 1px solid var(--Stroke_White, #dbdbdb);
+  border-bottom: 1px solid rgb(229, 231, 235);
 }
 .black_mode .settings_navigation {
   background: transparent;
@@ -19,10 +17,10 @@
 
   /* 17px/Medium */
   font-family: TTInterfaces500;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; /* 141.176% */
+  line-height: 17px; /* 141.176% */
 }
 .black_mode .settings_navigation p {
   color: #fff;
@@ -38,7 +36,7 @@
   margin-bottom: 10px;
   /* 23px/SemiBold */
   font-family: TTInterfaces700;
-  font-size: 23px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: 24px; /* 104.348% */
@@ -53,7 +51,7 @@
   /* 13px/Regular */
   font-family: TTInterfaces400;
 
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -73,17 +71,17 @@
 
   /* 17px/Regular */
   font-family: TTInterfaces400;
-  font-size: 17px;
-  font-style: normal;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 24px; /* 141.176% */
+  line-height: 24px;
+  letter-spacing: 0%;
 }
 
 .user_data_item span {
   color: #747a80;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -103,7 +101,7 @@
 
   /* 17px/SemiBold */
   font-family: TTInterfaces600;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px; /* 141.176% */

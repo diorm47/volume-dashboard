@@ -250,7 +250,7 @@ function RatesPage({ updatebalance }) {
                 </div>
                 <div className="review_right_link">
                   <NavLink to="/pricing/pricing">
-                  <p>{t("add_30_days")}</p>
+                    <p>{t("add_30_days")}</p>
                   </NavLink>
                 </div>
               </div>
@@ -300,7 +300,10 @@ function RatesPage({ updatebalance }) {
             <button onClick={() => setTarif("start")}>{t("buyButton")}</button>
           </div>
         </div>
-        <div className="secondary_block_wrapper rates_card">
+        <div className="secondary_block_wrapper rates_card best_pricing_card">
+          <div className="best_pricing_card_ind">
+            <p>Самый популярный </p>
+          </div>
           <div className="main_block_wrapper_title">
             <h2>{t("advancedPlanTitle")}</h2>
             <p>{t("advancedPlanDescription")}</p>
@@ -350,12 +353,7 @@ function RatesPage({ updatebalance }) {
           </div>
         </div>
       </div>
-      <div className="secondary_block_wrapper rates_warning">
-        <div className="main_block_wrapper_title">
-          <h2>{t("controlTitle")}</h2>
-          <p>{t("controlDescription")}</p>
-        </div>
-      </div>
+
       <div className="page_title investments_block_title">
         <h1 className="questions_title">{t("faq_title")}</h1>
       </div>

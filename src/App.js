@@ -19,10 +19,10 @@ import Login from "./pages/login-auth/login";
 import Reset from "./pages/login-auth/reset";
 import NotFound from "./pages/not-found/not-found";
 import Rates from "./pages/rates/rates";
-import Referal from "./pages/referal/referal";
 import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
 import { BybitOneTap } from "./components/utils/bybit";
+import Referals from "./pages/referal/referal";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -141,7 +141,7 @@ function App() {
           <Route path="/limits" element={<Limits />} />
           <Route path="/topup-types" element={<TopupTypes />} />
           <Route path="/p2p" element={<P2p />} />
-          <Route path="/referal" element={<Referal />} />
+          <Route path="/referal/*" element={<Referals />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 
