@@ -89,7 +89,7 @@ export const ru_locale = {
   medium: "Средний",
   projectedYieldPeriod: "Прогнозируемая доходность за период",
   high: "Высокий",
-  investments: "Алгоритмы",
+  investments: "Мои Алгоритм",
   activeInvestmentsDescription: "Здесь отображаются активные алгоритмы",
   creationTime: "Время создания",
   investmentMethod: "Метод инвестирования",
@@ -167,7 +167,7 @@ export const ru_locale = {
     "Инвестиции в торговлю криптовалютой рискованнее, чем традиционные инструменты (вклад в банк, покупка акцией на долгий срок и т.п.), рассчитывайте свои риски и не инвестируйте все свои сбережения.",
   profile: "Профиль",
   security: "Безопасность",
-  apiKeys: "Ключи API",
+  apiKeys: "API Ключи",
   // profile
 
   profileImage: "Изображение профиля",
@@ -245,7 +245,7 @@ export const ru_locale = {
     noApiConnected: "Нет подключенных API.",
   },
   apiModal: {
-    title: "Добавить ключ API",
+    title: "Добавить новый API ключ",
     name: "Название",
     exchange: "Биржа",
     publicKey: "Публичный ключ",

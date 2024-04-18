@@ -4,11 +4,16 @@ import empty_block from "../../assets/icons/empty-block.png";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 
 import { ReactComponent as DeleteWarning } from "../../assets/icons/delete-warning.svg";
+import { ReactComponent as Info } from "../../assets/icons/info.svg";
 
 import "react-dropdown/style.css";
 import { useTranslation } from "react-i18next";
 import { NavLink, useNavigate } from "react-router-dom";
+import bybit from "../../assets/icons/bybit-icon.png";
+import binance from "../../assets/icons/binance-icon.png";
 import Snackbar from "../../components/snackbar/snackbar";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 function ApiKeys({ setRec }) {
   const { t, i18n } = useTranslation();
@@ -54,19 +59,10 @@ function ApiKeys({ setRec }) {
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
-            <svg
-              width="5"
-              height="6"
-              viewBox="0 0 5 6"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect y="0.5" width="5" height="5" rx="2.5" fill="#31BD65" />
-            </svg>
+            <img src={binance} alt="" />
 
             <p>Binance Futures</p>
           </div>{" "}
-          <span>{t("supported")}</span>
         </div>
       ),
     },
@@ -75,18 +71,9 @@ function ApiKeys({ setRec }) {
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
-            <svg
-              width="5"
-              height="6"
-              viewBox="0 0 5 6"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect y="0.5" width="5" height="5" rx="2.5" fill="#31BD65" />
-            </svg>
+            <img src={bybit} alt="" />
             <p>ByBit Futures</p>
           </div>{" "}
-          <span>{t("supported")}</span>
         </div>
       ),
     },
@@ -239,55 +226,6 @@ function ApiKeys({ setRec }) {
       });
   };
 
-  // const editApi = () => {
-  //   const localization = {
-  //     en: {
-  //       apiUpdatedSuccess: "API key updated successfully!",
-  //       apiUpdateError: "Error!",
-  //     },
-  //     ru: {
-  //       apiUpdatedSuccess: "API ключ успешно обновлен!",
-  //       apiUpdateError: "Ошибка!",
-  //     },
-  //   };
-
-  //   let headersList = {
-  //     Accept: "*/*",
-  //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //   };
-
-  //   let bodyContent = new FormData();
-  //   bodyContent.append("id", apiList.id);
-  //   bodyContent.append("api_key", publickKey);
-  //   bodyContent.append("api_secret", secretKey);
-
-  //   fetch("https://api.nvolume.com/private-api/v1/users/api-keys/update", {
-  //     method: "POST",
-  //     body: bodyContent,
-  //     headers: headersList,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         closeModals();
-  //         refresh();
-  //         snackOptions(localization[userLanguage].apiUpdatedSuccess, "success");
-  //         setRec(false);
-  //       } else {
-  //         snackOptions(localization[userLanguage].apiUpdateError, "error");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       snackOptions(localization[userLanguage].apiUpdateError, "error");
-  //     });
-  // };
-
-  // const handleSetEditode = () => {
-  //   setapiActiveEditModal(true);
-  // };
-
-  // const hoverColor = "#383838" ||
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
@@ -317,57 +255,62 @@ function ApiKeys({ setRec }) {
               <h2>{t("apiKeyPage.title")}</h2>
               <p>{t("api_keys_desc")}</p>
             </div>
-            <div className="add_key_btn">
-              <button
-                onClick={() => setapiModal(true)}
-                disabled={apiList && apiList.id}
-              >
-                {t("apiKeyPage.addApiKey")}
-              </button>
-            </div>
           </div>
         </div>
 
         <div className="user_login_history">
           <table>
-            <thead>
-              <tr>
-                <td>{t("apiTable.timeAdded")}</td>
-                <td>{t("apiTable.status")}</td>
-                <td>{t("apiTable.name")}</td>
-                <td>{t("apiTable.exchange")}</td>
-                <td>{t("apiTable.action")}</td>
-              </tr>
-            </thead>
             {apiList && apiList.id ? (
-              <tbody>
-                <tr>
-                  <td>-</td>
-                  <td>{t("apiTable.activeStatus")}</td>
-                  <td>{apiList.title}</td>
-                  <td style={{ textTransform: "capitalize" }}>
-                    {apiList.exchange}
-                  </td>
-                  <td>
-                    <div className="api_actions">
-                      {/* <p onClick={handleSetEditode}>{t("apiTable.edit")}</p>
-                      <p>|</p> */}
-                      <p onClick={() => setDeleteModal(true)}>
-                        {t("apiTable.delete")}
-                      </p>
+              <div className="active_api_item">
+                <div className="active_api_item_left">
+                  {apiList.exchange == "bybit" ? (
+                    <div className="api_item_type">
+                      <img src={bybit} alt="" />
+                      <p>Bybit Future</p>
                     </div>
-                  </td>
-                </tr>
-              </tbody>
+                  ) : (
+                    <div className="api_item_type">
+                      <img src={binance} alt="" />
+                      <p>Binance Future</p>
+                    </div>
+                  )}
+                  <div className="active_api_item_kesys">
+                    <div>
+                      <p>Приватный ключ:</p> <span>********************</span>
+                    </div>
+                    <div>
+                      <p>Секретный ключ:</p>{" "}
+                      <span>********************************************</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="api_delete_btn"
+                  onClick={() => setDeleteModal(true)}
+                >
+                  <p>{t("apiTable.delete")}</p>
+                </div>
+              </div>
             ) : (
               ""
             )}
           </table>
           {!apiList ? (
             <div className="main_block_wrapper_bottom empty_block_wrapper">
-              <div className="empty_block">
-                <img src={empty_block} alt="" />
-                <p>{t("apiTable.noApiConnected")}</p>
+              <div className="empty_api_block">
+                <p>Здесь будут ваши API ключи</p>
+                <span>
+                  У вас нет подключенных API ключей, <br /> подключите API ключи
+                  вашей биржи.
+                </span>
+                <div className="add_key_btn">
+                  <button
+                    onClick={() => setapiModal(true)}
+                    disabled={apiList && apiList.id}
+                  >
+                    {t("apiKeyPage.addApiKey")}
+                  </button>
+                </div>
               </div>
             </div>
           ) : (
@@ -430,6 +373,7 @@ function ApiKeys({ setRec }) {
           </>
         )}
       </div>
+
       <div
         className={
           apiModal || apiActiveModal || apiActiveEditModal || deleteModal
@@ -442,24 +386,22 @@ function ApiKeys({ setRec }) {
       {/* Api modal */}
       <div
         className={
-          apiModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
+          apiModal
+            ? "modal_wrapper api_modal_wrapper visible_modal_wrapper"
+            : "modal_wrapper api_modal_wrapper"
         }
       >
         <div className="modal_wrapper_title">
           <p>{t("apiModal.title")}</p>
           <ExitModal onClick={closeModals} />
         </div>
-        <div className="modal_wrapper_content">
+        <div className="modal_wrapper_content api_modal_content">
           <div className="modal_wrapper_content_item">
-            <p>{t("apiModal.name")}</p>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="modal_wrapper_content_item">
-            <p>{t("apiModal.exchange")}</p>
+            <div className="modal_wrapper_content_item_title">
+              <p>{t("apiModal.exchange")}</p>
+              <Info />
+            </div>
+
             <div className="api_modal_dropdown">
               <Select
                 options={customOptions}
@@ -477,9 +419,50 @@ function ApiKeys({ setRec }) {
             </div>
           </div>
 
-          {selectedOption == "binance" ? (
-            <>
-              <div className="modal_wrapper_content_item">
+          <Tabs>
+            <TabList>
+              <Tab>Быстрое подключение</Tab>
+              <Tab>Ручное подключение</Tab>
+            </TabList>
+
+            <TabPanel>
+              <div className="bybit_on_tap_desc">
+                <div className="bybit_on_tap_desc_item">
+                  <div className="bybit_on_tap_desc_item_num">
+                    <p>1</p>
+                  </div>
+                  <p>{t("bybit.desc1")} </p>
+                </div>
+
+                <div className="bybit_on_tap_desc_item">
+                  <div className="bybit_on_tap_desc_item_num">
+                    <p>2</p>
+                  </div>
+                  <p>{t("bybit.desc2")} </p>
+                </div>
+
+                <div className="bybit_on_tap_desc_item">
+                  <div className="bybit_on_tap_desc_item_num">
+                    <p>3</p>
+                  </div>
+                  <p>{t("bybit.desc3")} </p>
+                </div>
+              </div>
+              <div className="modal_wrapper_btns add_api_btns">
+                <div className="modal_wrapper_save_btn">
+                  <button>{t("bybit.button")}</button>
+                  {/* <a href="https://www.bybit.com/en/oauth?client_id=bb8fc8894f7e&response_type=code&scope=openapi&redirect_uri=https://dashboard.nvolume.com/investments">
+                  <button>{t("bybit.button")}</button>
+                </a> */}
+                </div>
+
+                <div className="modal_wrapper_cancel">
+                  <button onClick={closeModals}>{t("cancel")}</button>
+                </div>
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div className="modal_wrapper_content_item modal_wrapper_content_item_input">
                 <p>{t("apiModal.publicKey")}</p>
                 <input
                   type="text"
@@ -487,84 +470,27 @@ function ApiKeys({ setRec }) {
                   onChange={(e) => setPublickKey(e.target.value)}
                 />
               </div>
-              <div className="modal_wrapper_content_item">
+              <div className="modal_wrapper_content_item modal_wrapper_content_item_input">
                 <p>{t("apiModal.privateKey")}</p>
                 <input
                   type="text"
                   value={secretKey}
+                  className="mb_0"
                   onChange={(e) => setSecretKey(e.target.value)}
                 />
               </div>
-            </>
-          ) : (
-            <div className="bybit_on_tap_desc">
-              <div className="bybit_on_tap_desc_item">
-                <div className="bybit_on_tap_desc_item_num">
-                  <p>1</p>
+              <div className="modal_wrapper_btns add_api_btns">
+                <div className="modal_wrapper_save_btn">
+                  {/* onClick={addApi} */}
+                  <button> {t("apiModal.addButton")}</button>
                 </div>
-                <p>{t("bybit.desc1")} </p>
-              </div>
 
-              <div className="bybit_on_tap_desc_item">
-                <div className="bybit_on_tap_desc_item_num">
-                  <p>2</p>
+                <div className="modal_wrapper_cancel">
+                  <button onClick={closeModals}>{t("cancel")}</button>
                 </div>
-                <p>{t("bybit.desc2")} </p>
               </div>
-
-              <div className="bybit_on_tap_desc_item">
-                <div className="bybit_on_tap_desc_item_num">
-                  <p>3</p>
-                </div>
-                <p>{t("bybit.desc3")} </p>
-              </div>
-            </div>
-          )}
-          <div className="modal_wrapper_btns add_api_btns">
-            {selectedOption == "binance" ? (
-              <div className="redirect_btn">
-                <NavLink to="/api">
-                  <p>{t("apiADittionals.question")}</p>
-                </NavLink>
-              </div>
-            ) : (
-              ""
-            )}
-            <div className="modal_wrapper_save_btn">
-              {selectedOption == "binance" ? (
-                <button
-                  onClick={addApi}
-                  disabled={!name || !publickKey || !secretKey}
-                >
-                  {t("apiModal.addButton")}
-                </button>
-              ) : (
-                <a href="https://www.bybit.com/en/oauth?client_id=bb8fc8894f7e&response_type=code&scope=openapi&redirect_uri=https://dashboard.nvolume.com/investments">
-                  <button>{t("bybit.button")}</button>
-                </a>
-              )}
-            </div>
-            <div className="create_acc_r">
-              {selectedOption == "binance" ? (
-                <p>
-                  {t("apiADittionals.binanceQuest")}{" "}
-                  <a href="https://www.binance.com/en" target="_blank">
-                    {t("apiADittionals.create")}
-                  </a>
-                </p>
-              ) : (
-                <p>
-                  {t("apiADittionals.bybitQuest")}{" "}
-                  <a
-                    href="https://www.bybit.com/en/invite/?ref=Kw000411"
-                    target="_blank"
-                  >
-                    {t("apiADittionals.create")}
-                  </a>
-                </p>
-              )}
-            </div>
-          </div>
+            </TabPanel>
+          </Tabs>
         </div>
       </div>
 
@@ -634,48 +560,6 @@ function ApiKeys({ setRec }) {
         ""
       )}
 
-      <div
-        className={
-          apiActiveEditModal
-            ? "modal_wrapper visible_modal_wrapper"
-            : "modal_wrapper "
-        }
-      >
-        <div className="modal_wrapper_title">
-          <p>{t("apiEditModal.title")}</p>
-          <ExitModal onClick={closeModals} />
-        </div>
-        <div className="modal_wrapper_content">
-          <div className="modal_wrapper_content_item">
-            <p>{t("apiEditModal.publicKey")}</p>
-            <input
-              type="text"
-              value={publickKey}
-              onChange={(e) => setPublickKey(e.target.value)}
-            />
-          </div>
-          <div className="modal_wrapper_content_item">
-            <p>{t("apiEditModal.privateKey")}</p>
-            <input
-              type="text"
-              value={secretKey}
-              onChange={(e) => setSecretKey(e.target.value)}
-            />
-          </div>
-          <div className="modal_wrapper_btns">
-            {/* <div className="modal_wrapper_save_btn">
-              <button onClick={editApi} disabled={!publickKey || !secretKey}>
-                {t("apiEditModal.saveButton")}
-              </button>
-            </div> */}
-            <div className="modal_wrapper_cancel api_delete_btn">
-              <button onClick={() => setDeleteModal(true)}>
-                {t("apiEditModal.deleteButton")}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
 
       {/* delete modal */}

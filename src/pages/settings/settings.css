@@ -186,16 +186,17 @@
 }
 
 .add_key_btn button {
-  padding: 11px 40px 11px 40px;
-  border-radius: 40px;
-  background: var(--111112, #0077ff);
+  padding: 10px 16px;
+  border-radius: 6px;
+
+  background: rgb(37, 99, 235);
   color: var(--FFFFFF, #fff);
   font-family: TTInterfaces500;
   height: 46px;
-  font-size: 13px !important  ;
-  font-style: normal;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 16px; /* 123.077% */
+  line-height: 17px;
+  margin-top: 12px;
 }
 .add_key_btn button:hover {
   background: rgba(36, 32, 252, 0.8);
@@ -387,7 +388,7 @@
   cursor: pointer;
 }
 .modal_wrapper_content {
-  padding: 15px 15px 0;
+  padding: 24px 24px 0;
   background: var(--FFFFFF, #fff);
 }
 .modal_wrapper_content_item p {
@@ -612,14 +613,13 @@
 .drop_api_item_name p {
   margin: 0;
   padding-left: 8px;
-
-  color: #000;
-
+  color: rgb(27, 27, 27);
   font-family: TTInterfaces400;
-  font-size: 13px;
-  font-style: normal;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 16px; /* 123.077% */
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
 }
 .drop_api_item span {
   color: var(--Color_Gray, #92979c);
@@ -633,11 +633,22 @@
 .api_modal_dropdown {
   margin-bottom: 30px;
 }
+.api_modal_dropdown .css-13cymwt-control,
+.css-b62m3t-container,
+.css-1fdsijx-ValueContainer {
+  border: none;
+  border-radius: 6px;
+  height: 51px;
+  background: rgb(242, 242, 242);
+}
 .drop_api_item_name svg {
   width: 10px;
 }
 .api_modal_dropdown input {
   height: auto;
+}
+.api_modal_dropdown .css-1hb7zxy-IndicatorsContainer {
+  display: none;
 }
 .css-13cymwt-control {
   height: 40px;
@@ -659,8 +670,9 @@
 .css-tr4s17-option {
   background: #1111121a;
 }
-.css-t3ipsp-control:hover {
-  border-color: #eaeaea !important;
+.drop_api_item img {
+  width: 16px;
+  height: 16px;
 }
 
 .black_mode .css-13cymwt-control,
@@ -688,9 +700,9 @@
   /* 13px/Medium */
   color: rgb(0, 0, 0);
   font-family: TTInterfaces500;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
   letter-spacing: 0%;
   text-align: left;
 }
@@ -716,8 +728,11 @@
   letter-spacing: 0%;
   text-align: left;
 }
-.bybit_on_tap_desc {
-  margin-bottom: 48px;
+.bybit_on_tap_desc .bybit_on_tap_desc_item:nth-child(3) {
+  margin-bottom: 0;
+}
+.mb_0 {
+  margin-bottom: 0;
 }
 .modal_wrapper_save_btn button {
   font-size: 13px !important;
@@ -725,6 +740,117 @@
   line-height: 16px;
   font-family: TTInterfaces500 !important;
 }
+.active_api_item {
+  padding-top: 28px;
+  padding-bottom: 4px;
+}
+
+.api_item_type {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.api_item_type p {
+  color: rgb(27, 27, 27);
+  font-family: TTInterfaces500;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.active_api_item_kesys {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.active_api_item_kesys div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.active_api_item_left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.active_api_item_kesys p {
+  color: rgb(146, 151, 156);
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.active_api_item_kesys span {
+  color: rgb(27, 27, 27);
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.active_api_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.api_delete_btn {
+  padding: 4px 8px 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: rgb(254, 242, 242);
+}
+.api_delete_btn p {
+  color: rgb(220, 38, 38);
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.modal_wrapper_content_item_title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 5px;
+}
+.modal_wrapper_content_item_title p {
+  color: rgb(27, 27, 27);
+  font-family: TTInterfaces500;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin: 0;
+}
+.react-tabs__tab,
+.react-tabs__tab-list {
+  border: none !important;
+}
+.react-tabs__tab--selected {
+  border-bottom: 1px solid rgb(37, 99, 235) !important;
+  color: rgb(37, 99, 235) !important;
+}
+.react-tabs__tab {
+  color: rgb(146, 151, 156);
+  font-family: TTInterfaces500;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+  padding-left: 0 !important;
+}
+.react-tabs__tab-list {
+  margin-bottom: 34px !important;
+}
+
 @media only screen and (max-width: 750px) {
   .api_key_title {
     flex-direction: column;
@@ -854,31 +980,72 @@
   width: 100%;
 }
 .add_api_btns {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 24px;
+}
+
+.add_api_btns button {
+  width: 270px;
+  height: 40px;
+  padding: 0;
+  border-radius: 6px;
+}
+.api_modal_wrapper {
+  max-width: 600px;
+}
+.modal_wrapper_cancel button {
+  border-radius: 6px;
+  color: rgb(26, 26, 26);
+  font-family: TTInterfaces500;
+  font-size: 14px !important;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: center;
+  background: rgb(242, 242, 242);
+}
+.api_modal_wrapper .modal_wrapper_title {
+  padding: 24px;
+}
+
+.empty_api_block {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+  justify-content: center;
+  padding: 111px 0;
 }
-.redirect_btn p {
-  color: var(--Color_Accent, #07f);
-  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
+.empty_api_block p {
+  color: rgb(27, 27, 27);
+  font-family: TTInterfaces500;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.empty_api_block span {
+  color: rgb(146, 151, 156);
   font-family: TTInterfaces400;
-  font-size: 13px;
-  font-style: normal;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 16px; /* 123.077% */
-  margin-bottom: 24px;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: center;
 }
-.create_acc_r p {
-  color: var(--Color_Gray, #92979c);
-  font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
-  margin-top: 15px;
-  /* 13px/Regular */
+.modal_wrapper_content_item_input p {
+  color: rgb(146, 151, 156);
   font-family: TTInterfaces400;
-  font-size: 13px;
-  font-style: normal;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 16px; /* 123.077% */
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
 }
+
 @media only screen and (max-width: 450px) {
   .api_key_title h2 {
     width: auto;
@@ -974,3 +1141,14 @@
     margin-bottom: 24px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+

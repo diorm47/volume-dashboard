@@ -141,7 +141,7 @@
 }
 .ref_bonus_output {
   padding: 12px 50px;
-  
+
   /* 17px/Medium */
   color: rgb(255, 255, 255);
   font-family: TTInterfaces500;
@@ -157,7 +157,140 @@
 .black_mode .color_white {
   color: #fff;
 }
+.output_item {
+  box-sizing: border-box;
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 6px;
+  padding: 17px 15px 17px 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  justify-content: space-between;
+}
+.output_item_left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.output_item_left span {
+  color: rgb(27, 27, 27);
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.output_item_left p {
+  color: rgb(37, 99, 235);
+  font-family: TTInterfaces600;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin: 0;
+  box-sizing: border-box;
+  border: 1px solid rgb(37, 99, 235);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+.output_item_amount p {
+  color: rgb(146, 151, 156);
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin: 0;
+}
+.wallet_adress input {
+  height: 54px;
+}
+.output_desc {
+  padding: 24px;
+  border-radius: 6px;
 
+  background: rgb(243, 244, 246);
+}
+.output_desc_item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.output_desc_item:nth-child(3) {
+  margin: 0;
+}
+.output_desc_item_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+}
+.output_desc_item p {
+  color: rgb(0, 0, 0);
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.output_btn {
+  margin-top: 12px;
+  border-top: 1px solid rgb(229, 231, 235);
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+}
+.output_btn button {
+  border-radius: 6px;
+  width: 270px;
+  font-size: 13px;
+  height: 40px;
+  background: rgb(37, 99, 235);
+}
+.output_agree {
+  border-radius: 6px;
+  padding: 24px;
+  background: rgb(243, 244, 246);
+}
+.output_agree p {
+  color: rgb(0, 0, 0);
+  font-family: TTInterfaces500;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 24px;
+}
+.output_agree h2 {
+  color: rgb(0, 0, 0);
+  font-family: TTInterfaces400;
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-bottom: 24px;
+}
+.output_agree span {
+  color: rgb(0, 0, 0);
+font-family: TTInterfaces400;
+font-size: 14px;
+font-weight: 400;
+line-height: 17px;
+letter-spacing: 0%;
+text-align: left;
+}
 @media only screen and (max-width: 700px) {
   .ref_bonus {
     flex-direction: column;

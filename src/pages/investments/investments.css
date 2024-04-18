@@ -3,6 +3,9 @@
   flex-direction: column;
   margin-bottom: 50px;
 }
+.investments_page {
+  padding: 0;
+}
 .investments_page_title p {
   margin-top: 30px;
   color: var(--92979C, #92979c);
@@ -39,8 +42,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding-bottom: 28px;
-  margin-bottom: 28px;
+  padding-bottom: 24px;
+
   border-bottom: 1px solid rgb(219, 219, 219);
 }
 .black_mode .add_api_keys_block_title {
