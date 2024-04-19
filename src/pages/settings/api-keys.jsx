@@ -298,10 +298,9 @@ function ApiKeys({ setRec }) {
           {!apiList ? (
             <div className="main_block_wrapper_bottom empty_block_wrapper">
               <div className="empty_api_block">
-                <p>Здесь будут ваши API ключи</p>
+                <p>{t("api_empty.title")}</p>
                 <span>
-                  У вас нет подключенных API ключей, <br /> подключите API ключи
-                  вашей биржи.
+                {t("api_empty.desc1")} <br />  {t("api_empty.desc2")}
                 </span>
                 <div className="add_key_btn">
                   <button
@@ -421,8 +420,8 @@ function ApiKeys({ setRec }) {
 
           <Tabs>
             <TabList>
-              <Tab>Быстрое подключение</Tab>
-              <Tab>Ручное подключение</Tab>
+              <Tab>{t("api_auto")}</Tab>
+              <Tab>{t("api_handle")}</Tab>
             </TabList>
 
             <TabPanel>

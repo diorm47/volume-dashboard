@@ -284,14 +284,14 @@ function Analysis() {
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
-            <h2>График {t("pnl_main_title")}</h2>
+            <h2>{t('graph')} {t("pnl_main_title")}</h2>
           </div>
 
           <LineChart selectedTime={selectedTime} pnlToday={pnlToday} />
         </div>
         <div className="secondary_block_wrapper">
           <div className="main_block_wrapper_title">
-            <h2>График {t("pnl_by_days_title")}</h2>
+            <h2>{t('graph')} {t("pnl_by_days_title")}</h2>
           </div>
 
           <ColumnChart selectedTime={selectedTime} />

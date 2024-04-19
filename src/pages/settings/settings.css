@@ -635,11 +635,12 @@
 }
 .api_modal_dropdown .css-13cymwt-control,
 .css-b62m3t-container,
-.css-1fdsijx-ValueContainer {
-  border: none;
+.css-1fdsijx-ValueContainer, .css-t3ipsp-control {
+  border: none !important;
+  outline: none !important;
   border-radius: 6px;
   height: 51px;
-  background: rgb(242, 242, 242);
+  background: rgb(242, 242, 242) !important;
 }
 .drop_api_item_name svg {
   width: 10px;
@@ -1026,6 +1027,9 @@
   letter-spacing: 0%;
   text-align: center;
   margin-bottom: 12px;
+}
+.black_mode .empty_api_block p {
+  color: rgb(255, 255, 255);
 }
 .empty_api_block span {
   color: rgb(146, 151, 156);

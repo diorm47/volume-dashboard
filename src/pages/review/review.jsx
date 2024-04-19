@@ -581,17 +581,14 @@ function Review(rec) {
 
             <div className="secondary_block_wrapper invite_block">
               <div className="main_block_wrapper_title">
-                <h2>Приглашение</h2>
+                <h2>{t("invitation.title")}</h2>
               </div>
               <div className="invite_block_desc">
-                <p>
-                  Приглашайте друзей в &Volume и получайте награды в размере 10%
-                  от стоимости тарифа
-                </p>
+                <p>{t("invitation.desc")}</p>
               </div>
               <div className="review_right_link">
                 <NavLink to="/referal">
-                  <p>Пригласить</p>
+                  <p> {t("invitation.btn")}</p>
                 </NavLink>
               </div>
             </div>

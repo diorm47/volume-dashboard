@@ -84,7 +84,7 @@ export const en_locale = {
   projectedYieldPeriod: "Projected yield for the period",
   aggressive: "Aggressive",
   high: "High",
-  investments: "Investments",
+  investments: "My Algorithm",
   activeInvestmentsDescription: "Active investments are displayed here",
 
   creationTime: "Creation Time",
@@ -729,8 +729,73 @@ export const en_locale = {
 
   bybit: {
     desc1: 'Click on the "Connect in one click" button',
-    desc2: 'Login to your Marketplace account',
-    desc3: 'Confirm connection to &Volume',
-    button: 'Connect in one click'
-  }
+    desc2: "Login to your Marketplace account",
+    desc3: "Confirm connection to &Volume",
+    button: "Connect in one click",
+  },
+
+  algo_empty: {
+    title: "Your algorithms will be here",
+    desc1: "You have no active algorithms,",
+    desc2: "create your own algorithm.",
+    button: "Create algorithm",
+  },
+
+  api_empty: {
+    title: "Your API keys will be here",
+    desc1: "You do not have connected API keys,",
+    desc2: "connect your exchange's API keys.",
+  },
+
+  api_auto: "Quick connection",
+  api_handle: "Manual connection",
+
+  invitation: {
+    title: "Invitation",
+    desc: "Invite friends to &Volume and receive rewards in the amount of 10% of the tariff cost",
+    btn: "Invite",
+  },
+  graph: "Graph",
+  ref_prog: "Referral program",
+  ref_1_block: {
+    title: "Revenue",
+    desc: "Your income from referrals is displayed here",
+    all: "Total income",
+    have: "Available",
+    btn: "Withdraw",
+  },
+  ref_2_block: {
+    title: "Referral link",
+    desc: "Your current referral link is displayed here",
+    link: "Link",
+  },
+  ref_3_block: {
+    title: "Referrals",
+    desc: "A list of your referrals is displayed here",
+    thead1: "User ID",
+    thead2: "Paid tariff",
+    thead3: "Revenue",
+    thead4: "Registration date",
+    empty: "No referrals",
+  },
+  output1: {
+    title: "Application for withdrawal",
+    btitle1: "Select withdrawal currency",
+    btitle2: "Wallet address for transfer",
+    desc1: "On weekdays from 10:00 to 20:00 (GMT+3) withdrawals are made in",
+    desc1_1: "during the working day. The rest of the time - the next day.",
+    desc2:
+      "Only the full amount stored on the balance is available for withdrawal.",
+    desc3: "Minimum withdrawal amount is 100 USDT.",
+    path: "step 1 of 2",
+    btn: "Next",
+  },
+
+  output2: {
+    title: "Application for withdrawal",
+    text1: "You are sending",
+    text2: "Address",
+    path: "step 2 of 2",
+    btn: "Withdrawal",
+  },
 };

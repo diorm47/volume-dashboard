@@ -9,6 +9,7 @@ import { ReactComponent as Tether } from "../../assets/icons/tether.svg";
 import { ReactComponent as Output1 } from "../../assets/icons/output-1.svg";
 import { ReactComponent as Output2 } from "../../assets/icons/output-2.svg";
 import { ReactComponent as Output3 } from "../../assets/icons/output-3.svg";
+import { useTranslation } from "react-i18next";
 
 function ReferalPage() {
   const [visibleSnack, setVisibleSnack] = useState(false);
@@ -66,6 +67,12 @@ function ReferalPage() {
     setModal1(false);
     setModal2(false);
   };
+  const { t } = useTranslation();
+  const setSecondModal = () => {
+    setModal1(false);
+    setModal2(true);
+  };
+
   return (
     <>
       <div className="pages_wrapper referal_page">
@@ -73,16 +80,16 @@ function ReferalPage() {
           <div className="ref_top main_block_wrapper ref_block">
             <div class="main_block_wrapper_top">
               <div class="main_block_wrapper_title secondary_title">
-                <h2 className="color_white">Доход</h2>
-                <p>Здесь отображается ваш доход с рефералов</p>
+                <h2 className="color_white">{t("ref_1_block.title")}</h2>
+                <p>{t("ref_1_block.desc")}</p>
                 <div className="ref_bonus">
                   <div className="ref_bonuses ">
                     <div>
-                      <p className="color_white">Общий доход</p>
+                      <p className="color_white">{t("ref_1_block.all")}</p>
                       <span className="color_white">30.00 USDT</span>
                     </div>
                     <div>
-                      <p className="color_white">Доступно</p>
+                      <p className="color_white">{t("ref_1_block.have")}</p>
                       <span className="color_white">30.00 USDT</span>
                     </div>
                   </div>
@@ -91,7 +98,7 @@ function ReferalPage() {
                     className="ref_bonus_output"
                     onClick={() => setModal1(true)}
                   >
-                    Вывести
+                    {t("ref_1_block.btn")}
                   </button>
                 </div>
               </div>
@@ -100,9 +107,9 @@ function ReferalPage() {
           <div className="ref_top main_block_wrapper ref_block">
             <div class="main_block_wrapper_top">
               <div class="main_block_wrapper_title secondary_title">
-                <h2>Реферальная ссылка</h2>
-                <p>Здесь отображается ваша актуальная реферальная ссылка</p>
-                <p className="marg_ref">Ссылка</p>
+                <h2>{t("ref_2_block.title")}</h2>
+                <p>{t("ref_2_block.desc")}</p>
+                <p className="marg_ref">{t("ref_2_block.link")}</p>
                 <div className="ref_line"></div>
                 <div className="ref_link">
                   <p className="color_white">
@@ -138,15 +145,15 @@ function ReferalPage() {
           <div className="ref_bottom main_block_wrapper ref_block">
             <div class="main_block_wrapper_top">
               <div class="main_block_wrapper_title secondary_title">
-                <h2>Рефералы</h2>
-                <p>Здесь отображается список ваших рефералов</p>
+                <h2>{t("ref_3_block.title")}</h2>
+                <p>{t("ref_3_block.desc")}</p>
               </div>
               <div className="refs_list marg_ref">
                 <div className="refs_list_title">
-                  <p>ID Пользователя</p>
-                  <p>Оплаченный тариф</p>
-                  <p>Доход</p>
-                  <p>Дата регистрации</p>
+                  <p>{t("ref_3_block.thead1")}</p>
+                  <p>{t("ref_3_block.thead2")}</p>
+                  <p>{t("ref_3_block.thead3")}</p>
+                  <p>{t("ref_3_block.thead4")}</p>
                 </div>
                 <div className="ref_line"></div>
                 <div className="refs_content">
@@ -163,7 +170,7 @@ function ReferalPage() {
                   ) : (
                     <div className="empty_block">
                       <img src={empty_block} alt="" />
-                      <p>Нет рефералов</p>
+                      <p>{t("ref_3_block.empty")}</p>
                     </div>
                   )}
                 </div>
@@ -191,13 +198,13 @@ function ReferalPage() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Заявка на вывод</p>
+          <p>{t("output1.title")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content api_modal_content">
           <div className="modal_wrapper_content_item">
             <div className="modal_wrapper_content_item_title">
-              <p>Выберите валюту вывода</p>
+              <p>{t("output1.btitle1")}</p>
               <Info />
             </div>
             <div className="output_item">
@@ -213,7 +220,7 @@ function ReferalPage() {
           </div>
           <div className="modal_wrapper_content_item wallet_adress">
             <div className="modal_wrapper_content_item_title">
-              <p>Адрес кошелька для перевода</p>
+              <p>{t("output1.btitle2")}</p>
               <Info />
             </div>
             <input type="text" />
@@ -224,31 +231,28 @@ function ReferalPage() {
                 <Output1 />
               </div>{" "}
               <p>
-                В рабочие дни с 10:00 до 20:00 (GMT+3) вывод осуществляется в{" "}
-                <br />
-                течение рабочего дня. В остальное время — на следующий день.
+                {t("output1.desc1")} <br />
+                {t("output1.desc1_1")}
               </p>
             </div>
             <div className="output_desc_item">
               <div className="output_desc_item_icon">
                 <Output2 />
               </div>{" "}
-              <p>
-                К выводу доступна только полная сумма, хранящаяся на балансе.
-              </p>
+              <p>{t("output1.desc2")}</p>
             </div>
             <div className="output_desc_item">
               <div className="output_desc_item_icon">
                 <Output3 />{" "}
               </div>
-              <p>Минимальная сумма вывода 100 USDT.</p>
+              <p> {t("output1.desc3")}</p>
             </div>
           </div>
 
           <div className="output_btn">
-            <p>шаг 1 из 2</p>
+            <p>{t("output1.path")}</p>
             <div className="modal_wrapper_save_btn">
-              <button>Далее</button>
+              <button onClick={setSecondModal}>{t("output1.btn")}</button>
             </div>
           </div>
         </div>
@@ -262,21 +266,21 @@ function ReferalPage() {
         }
       >
         <div className="modal_wrapper_title">
-          <p>Заявка на вывод</p>
+          <p>{t("output2.title")}</p>
           <ExitModal onClick={closeModals} />
         </div>
         <div className="modal_wrapper_content api_modal_content">
           <div className="output_agree">
-            <p>Вы отправляете:</p>
+            <p>{t("output2.text1")}:</p>
             <h2>30.00 USDT</h2>
-            <p>Адрес:</p>
+            <p>{t("output2.text2")}:</p>
             <span>brA1UU9fnU1BqbdNw7PoFgXg8Bf7xVWdxq</span>
           </div>
 
           <div className="output_btn">
-            <p>шаг 2 из 2</p>
+            <p>{t("output2.path")}</p>
             <div className="modal_wrapper_save_btn">
-              <button onClick={closeModals}>Вывод средств</button>
+              <button onClick={closeModals}>{t("output2.btn")}</button>
             </div>
           </div>
         </div>

@@ -23,6 +23,7 @@ import Review from "./pages/review/review";
 import Settings from "./pages/settings/settings";
 import { BybitOneTap } from "./components/utils/bybit";
 import Referals from "./pages/referal/referal";
+import CreateAlgorithm from "./pages/create-algorithm/create-algorithm";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -138,6 +139,7 @@ function App() {
           <Route path="/base-investing" element={<ConnectiongInvest />} />
           <Route path="/differences" element={<Differences />} />
           <Route path="/risks" element={<Risks />} />
+          <Route path="/create-algorithm" element={<CreateAlgorithm />} />
           <Route path="/limits" element={<Limits />} />
           <Route path="/topup-types" element={<TopupTypes />} />
           <Route path="/p2p" element={<P2p />} />

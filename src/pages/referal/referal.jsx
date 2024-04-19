@@ -21,7 +21,7 @@ function Referals() {
     <>
       <div className="settings_navigation">
         <NavLink to="referals">
-          <p>Реферальная программа</p>
+          <p>{t("ref_prog")}</p>
         </NavLink>
         <NavLink to="transactions">
           <p>{t("transactions")}</p>

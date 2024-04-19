@@ -6,7 +6,7 @@ import Snackbar from "../../components/snackbar/snackbar";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { mainApi } from "../../components/utils/main-api";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { ReactComponent as DeleteWarning } from "../../assets/icons/delete-warning.svg";
 
@@ -436,7 +436,7 @@ function Investments({ updatebalance, setRec }) {
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
       <div className="pages_wrapper investments_page">
         <div className="main_page_title_template">
-          <h1>Алгоритм</h1>
+          <h1>{t("nav_menu_3")}</h1>
         </div>
         <div className="investments_page_wrapper">
           <div className="orders_history_list main_block_wrapper">
@@ -511,12 +511,16 @@ function Investments({ updatebalance, setRec }) {
             ) : (
               <div className="main_block_wrapper_bottom ">
                 <div className="empty_api_block">
-                  <p>Здесь будут ваши алгоритмы</p>
+                  <p> {t("algo_empty.title")}</p>
                   <span>
-                  У вас нет активных алгоритмов, <br /> создайте свой алгоритм.
+                    {t("algo_empty.desc1")} <br /> {t("algo_empty.desc2")}
                   </span>
+
                   <div className="add_key_btn">
-                    <button>Создать алгоритм</button>
+                    {" "}
+                    <NavLink to="/create-algorithm">
+                      <button>{t("algo_empty.button")}</button>
+                    </NavLink>
                   </div>
                 </div>
               </div>
