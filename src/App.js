@@ -101,7 +101,7 @@ function App() {
     }
   }, [localStorage.getItem("locale")]);
 
-  // localStorage.setItem('token', '466|lXgMp4e6HPIFvig96Kd6QRVE2dd4DgDtcGjiEqbx')
+  // localStorage.setItem('token', '601|xQLEtyQ8HvtbPjtQ0PzB0pYqQ499nY1G7lJWw343')
 
   return (
     <div className={mode === "dark" ? "black_mode" : "white_mode"}>

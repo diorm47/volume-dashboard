@@ -3,6 +3,7 @@ import "./create-algorithm.css";
 import { ReactComponent as Info } from "../../assets/icons/info.svg";
 import { ReactComponent as Allow } from "../../assets/icons/trade-allow.svg";
 import { ReactComponent as Refresh } from "../../assets/icons/refreah.svg";
+import { ReactComponent as RefreshBlack } from "../../assets/icons/refresh-black.svg";
 import Select from "react-select";
 import bybit from "../../assets/icons/bybit-icon.png";
 import binance from "../../assets/icons/binance-icon.png";
@@ -18,6 +19,7 @@ import trade7 from "../../assets/images/trade/7.png";
 import trade8 from "../../assets/images/trade/8.png";
 
 function CreateAlgorithm() {
+  const [mode, setMode] = useState(localStorage.getItem("mode"));
   const customOptions = [
     {
       value: "binance",
@@ -177,10 +179,13 @@ function CreateAlgorithm() {
     setSelectedOptionKey(selectedOption.value);
   };
   const handleSelectTrade = (selectedOption) => {
-    setSelectedOptionTrade(selectedOption.value);
+    setSelectedOptionTrade(selectedOption.value, () => {
+      console.log(selectedOptionTrade);
+    });
   };
 
   const [algorithmType, setAlgorithmType] = useState();
+
   return (
     <div className="algorithm_wrapper">
       <div className="algorithm_wrapper_title">
@@ -300,7 +305,8 @@ function CreateAlgorithm() {
               <input type="text" placeholder="Укажите сумму депозита" />
               <div className="algorithm_item_input_add">
                 <p>Доступно: 3500.13 USDT</p>
-                <Refresh />
+
+                {mode === "dark" ? <RefreshBlack /> : <Refresh />}
               </div>
             </div>
           </div>
