@@ -425,19 +425,19 @@ background: rgb(40, 40, 40);
   text-indent: 11px;
   /* 13px/SemiBold */
   font-family: TTInterfaces500;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 123.077% */
 }
 .modal_wrapper_save_btn button {
-  border-radius: 40px;
+  border-radius: 6px;
   background: var(--111112, #0077ff);
-  padding: 11px 20px 13px 20px;
+  padding: 11px 20px ;
 
   color: var(--FFFFFF, #fff);
   font-family: TTInterfaces500;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 123.077% */
@@ -446,7 +446,7 @@ background: rgb(40, 40, 40);
   background: rgba(36, 32, 252, 0.8);
 }
 .modal_wrapper_cancel button {
-  padding: 14px 10px;
+  padding: 11px 20px;
   color: var(--111112, #111112);
   text-align: center;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
@@ -1016,14 +1016,14 @@ background: rgb(40, 40, 40);
 }
 .modal_wrapper_cancel button {
   border-radius: 6px;
-  color: rgb(26, 26, 26);
+  color: rgb(37, 99, 235);
   font-family: TTInterfaces500;
   font-size: 14px !important;
   font-weight: 500;
   line-height: 17px;
   letter-spacing: 0%;
   text-align: center;
-  background: rgb(242, 242, 242);
+  background: transparent;
 }
 .api_modal_wrapper .modal_wrapper_title {
   padding: 24px;

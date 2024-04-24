@@ -593,7 +593,7 @@ function Profile() {
           </div>
           <div className="modal_wrapper_btns">
             <div className="modal_wrapper_save_btn">
-              <button onClick={handleChangeEmail}>{t("confirm")}</button>
+              <button onClick={handleChangeEmail}>{t("emailChange.confirm")}</button>
             </div>
             <div className="modal_wrapper_cancel">
               <button onClick={closeModals}>{t("cancel")}</button>

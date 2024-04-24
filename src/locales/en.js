@@ -6,7 +6,7 @@ export const en_locale = {
   nav_menu_4: "Pricing",
   nav_menu_5: "Transactions",
   nav_menu_6: "Settings",
-  nav_menu_7: "Edit profile",
+  nav_menu_7: "Settings",
   nav_menu_8: "Security",
   nav_menu_9: "API connection",
   nav_menu_10: "Explore",
@@ -752,7 +752,7 @@ export const en_locale = {
 
   invitation: {
     title: "Invitation",
-    desc: "Invite friends to &Volume and receive rewards in the amount of 10% of the tariff cost",
+    desc: "Invite friends to &Volume and receive rewards in the amount of 30% of the tariff cost",
     btn: "Invite",
   },
   graph: "Graph",

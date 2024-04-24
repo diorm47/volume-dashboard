@@ -195,7 +195,7 @@ function CreateAlgorithm() {
       <div className="algorithm_item">
         <div className="algorithm_item_title">
           <p>Биржа</p>
-          <Info />
+          <Info title="Выберите используемую биржу" />
         </div>
         <div className="api_modal_dropdown create_algo_birj">
           <Select
@@ -218,7 +218,7 @@ function CreateAlgorithm() {
       <div className="algorithm_item">
         <div className="algorithm_item_title">
           <p>API ключ</p>
-          <Info />
+          <Info title="Выберите API ключи из списка или создайте новый" />
         </div>
         <div className="api_modal_dropdown create_algo_birj">
           <Select
@@ -245,7 +245,7 @@ function CreateAlgorithm() {
       <div className="algorithm_item">
         <div className="algorithm_item_title">
           <p>Режим настройки</p>
-          <Info />
+          <Info title="Выберите режим настройки алгоритма" />
         </div>
         <div className="algo_regim ">
           <div
@@ -261,8 +261,8 @@ function CreateAlgorithm() {
               <div className="algo_regim_item_rec">Рекомендуем</div>
             </div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
+              Алгоритм самостоятельно подберёт оптимальные настройки в
+              зависимости от рыночной ситуации, без вашего участия.
             </p>
           </div>
           <div
@@ -277,8 +277,8 @@ function CreateAlgorithm() {
               <h4>Ручной</h4>
             </div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
+              Настройте алгоритм и подберите оптимальные параметры торговли,
+              которые подойдут именно вам.
             </p>
           </div>
         </div>
@@ -290,7 +290,7 @@ function CreateAlgorithm() {
             <div className="reinv_inputs">
               <div className="algorithm_item_title">
                 <p>Реинвестирование прибыли</p>
-                <Info />
+                <Info title="Использовать в торговле полученную прибыль" />
               </div>
               <Switch open={true} />
             </div>
@@ -299,7 +299,7 @@ function CreateAlgorithm() {
           <div className="algorithm_item">
             <div className="algorithm_item_title">
               <p>Депозит </p>
-              <Info />
+              <Info title="Укажите выделенную сумму депозита для алгоритма" />
             </div>
             <div className="algorithm_item_input">
               <input type="text" placeholder="Укажите сумму депозита" />
@@ -315,7 +315,7 @@ function CreateAlgorithm() {
             <div className="reinv_inputs">
               <div className="algorithm_item_title">
                 <p>Стоп-лосс</p>
-                <Info />
+                <Info title="Укажите сумму максимального убытка в % от депозита" />
               </div>
               <Switch open={true} />
             </div>
@@ -353,7 +353,7 @@ function CreateAlgorithm() {
           <div className="algorithm_item">
             <div className="algorithm_item_title">
               <p>Торговые пары</p>
-              <Info />
+              <Info title="Выберите торговые пары для торговли " />
             </div>
             <div className="api_modal_dropdown create_algo_birj trade_select">
               <Select
@@ -378,7 +378,7 @@ function CreateAlgorithm() {
             <div className="reinv_inputs">
               <div className="algorithm_item_title">
                 <p>Реинвестирование прибыли</p>
-                <Info />
+                <Info title="Использовать в торговле полученную прибыль" />
               </div>
               <Switch open={true} />
             </div>
@@ -388,7 +388,7 @@ function CreateAlgorithm() {
             <div className="reinv_inputs">
               <div className="algorithm_item_title">
                 <p>Объем сделки</p>
-                <Info />
+                <Info title="Укажите обьем сделки в % от депозита" />
               </div>
             </div>
             <div className="algorithm_item_input">
@@ -414,7 +414,7 @@ function CreateAlgorithm() {
           <div className="algorithm_item">
             <div className="algorithm_item_title">
               <p>Депозит </p>
-              <Info />
+              <Info title="Укажите выделенную сумму депозита для алгоритма" />
             </div>
             <div className="algorithm_item_input">
               <input type="text" placeholder="Укажите сумму депозита" />
@@ -429,7 +429,7 @@ function CreateAlgorithm() {
             <div className="reinv_inputs">
               <div className="algorithm_item_title">
                 <p>Стоп-лосс</p>
-                <Info />
+                <Info title="Укажите сумму максимального убытка в % от депозита" />
               </div>
               <Switch open={true} />
             </div>
