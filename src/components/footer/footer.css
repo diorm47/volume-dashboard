@@ -44,20 +44,15 @@ footer {
   border-top: 1px solid var(--Stroke_Black, #343436);
 }
 
-
 @media only screen and (max-width: 450px) {
-  footer {
-    margin-top: 70px;
-  }
-  .footer_wrapper p {
-    font-size: 13px;
-  }
-  footer p,
-  footer a {
-    font-size: 11px;
+
+  .footer_left_text p,
+  .footer_links {
+    font-size: 12px;
   }
   .footer_wrapper {
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 20px;
+    align-items: start;
   }
 }

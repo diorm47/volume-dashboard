@@ -752,7 +752,7 @@ export const en_locale = {
 
   invitation: {
     title: "Invitation",
-    desc: "Invite friends to &Volume and receive rewards in the amount of 30% of the tariff cost",
+    desc: "Invite friends to &Volume and receive rewards up to 30% of the tariff cost.",
     btn: "Invite",
   },
   graph: "Graph",
@@ -797,5 +797,10 @@ export const en_locale = {
     text2: "Address",
     path: "step 2 of 2",
     btn: "Withdrawal",
+  },
+
+  mob_nav_item: {
+    theme: "Dark theme",
+    language: "Language",
   },
 };

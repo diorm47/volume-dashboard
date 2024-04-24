@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./date-picker.css";
 
 import subDays from "date-fns/subDays";
@@ -104,7 +104,11 @@ function DatePicker({ setSelectedTime }) {
   const openCalendar = () => {
     setIsCalendarOpen(!isCalendarOpen);
   };
-
+  const [mode, setMode] = useState(localStorage.getItem("mode"));
+  const datepickerStyle = {
+    backgroundColor: mode === "dark" ? "#282828 !important" : "#fff",
+  
+  };
   return (
     <div className="date_picker">
       <DateRangePicker
@@ -118,6 +122,7 @@ function DatePicker({ setSelectedTime }) {
         }}
         open={isCalendarOpen}
         placement="bottomEnd"
+        style={datepickerStyle}
       />
 
       <div className="analysis_top_toggler" onClick={openCalendar}>

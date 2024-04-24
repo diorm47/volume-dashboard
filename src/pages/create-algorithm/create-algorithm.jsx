@@ -3,7 +3,6 @@ import "./create-algorithm.css";
 import { ReactComponent as Info } from "../../assets/icons/info.svg";
 import { ReactComponent as Allow } from "../../assets/icons/trade-allow.svg";
 import { ReactComponent as Refresh } from "../../assets/icons/refreah.svg";
-import { ReactComponent as RefreshBlack } from "../../assets/icons/refresh-black.svg";
 import Select from "react-select";
 import bybit from "../../assets/icons/bybit-icon.png";
 import binance from "../../assets/icons/binance-icon.png";
@@ -306,7 +305,9 @@ function CreateAlgorithm() {
               <div className="algorithm_item_input_add">
                 <p>Доступно: 3500.13 USDT</p>
 
-                {mode === "dark" ? <RefreshBlack /> : <Refresh />}
+                <div className="algo_refresh">
+                  <Refresh />
+                </div>
               </div>
             </div>
           </div>
@@ -407,7 +408,7 @@ function CreateAlgorithm() {
               </div>
             </div>
             <div className="algorithm_item_input">
-              <input type="text" placeholder="Укажите сумму депозита " />
+              <input type="text" placeholder="Укажите максимальное кол-во сделок " />
             </div>
           </div>
           <div className="algorithm_line"></div>

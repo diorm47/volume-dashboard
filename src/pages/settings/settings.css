@@ -7,6 +7,9 @@
   gap: 36px;
   border-bottom: 1px solid rgb(229, 231, 235);
 }
+.settings_page {
+  min-height: 80vh;
+}
 .black_mode .settings_navigation {
   background: transparent;
   border-bottom: 1px solid var(--Stroke_Black, #343436);
@@ -336,7 +339,7 @@
   overflow: hidden;
 }
 .black_mode .modal_wrapper {
-  background: #18181a;
+  background: #282828;
   border-radius: 6px;
 }
 .black_mode .modal_wrapper_title {
@@ -354,12 +357,12 @@
   background: transparent;
   color: #fff;
 }
-.black_mode .modal_wrapper_cancel button {
+/* .black_mode .modal_wrapper_cancel button {
   color: var(--Color_Accent, #07f);
   border-radius: 6px;
 
 background: rgb(40, 40, 40);
-}
+} */
 .visible_modal_wrapper {
   transform: translateY(0%);
   transition: all 0.5s ease;
@@ -852,7 +855,7 @@ background: rgb(40, 40, 40);
   border: none !important;
 }
 .react-tabs__tab--selected {
-  border-bottom: 1px solid rgb(37, 99, 235) !important;
+  /* border-bottom: 1px solid rgb(37, 99, 235) !important; */
   color: rgb(37, 99, 235) !important;
   
 }
@@ -988,7 +991,7 @@ background: rgb(40, 40, 40);
   color: #fff;
 }
 .black_mode .is-selected {
-  background: #18181ad7 !important;
+  background: rgb(40, 40, 40) !important;
   color: #fff;
 }
 .user_login_history_item p {

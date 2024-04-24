@@ -87,13 +87,14 @@
 
 .rs-picker-toolbar-right button {
   background: #0077ff;
-  border-radius: 40px;
+  border-radius: 6px;
   padding: 7px 14px;
   font-family: TTInterfaces500 !important;
 }
 .rs-calendar-table-cell-is-today .rs-calendar-table-cell-content {
   border-radius: 50%;
 }
+
 
 .rs-picker-toggle-wrapper {
   visibility: hidden;
@@ -106,7 +107,7 @@
 }
 
 .black_mode_datapicker .rs-picker-menu {
-  background: #18181a !important;
+  background: #282828 !important;
 }
 
 .data_picker_desctop {
@@ -115,4 +116,8 @@
 .rs-picker-toggle-wrapper {
   margin-right: -37px;
   margin-top: 10px;
+}
+
+.rs-picker-menu .dark { 
+  background-color: #282828 !important; /* Темная тема */
 }
