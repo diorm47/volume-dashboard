@@ -87,6 +87,11 @@ padding-top: 24px;
 
   transition: all 0.4s ease;
 }
+.nav_bar_menu .active  svg *,
+.settings_navigation .active svg *  {
+  opacity: 0.7;
+
+}
 .nav_bar_menu p:hover,
 .settings_navigation p:hover {
   opacity: 0.7;

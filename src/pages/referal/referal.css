@@ -220,7 +220,8 @@
 
   background: rgb(243, 244, 246);
 }
-.black_mode .output_desc, .black_mode .output_agree {
+.black_mode .output_desc,
+.black_mode .output_agree {
   background: rgb(40, 40, 40);
 }
 .output_desc_item {
@@ -306,7 +307,9 @@
   letter-spacing: 0%;
   text-align: left;
 }
-.black_mode .output_agree p, .black_mode .output_agree h2, .output_agree span {
+.black_mode .output_agree p,
+.black_mode .output_agree h2,
+.black_mode .output_agree span {
   color: #fff;
 }
 .black_mode .output_btn {
@@ -320,8 +323,9 @@
   .ref_bonus_output {
     width: 100%;
     text-align: center;
-    padding: 18px;
+    padding: 13px;
     margin-top: 50px;
+    font-size: 14px !important;
   }
 }
 @media only screen and (max-width: 450px) {
@@ -332,7 +336,7 @@
     line-height: 38.55px;
   }
   .ref_link p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .ref_block .main_block_wrapper_top {
     padding: 20px;
@@ -343,8 +347,11 @@
   .ref_line {
     margin: 20px 0;
   }
+  .output_desc {
+    padding: 12px;
+  }
   .ref_bonuses p {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 16px;
     margin-bottom: 10px;
@@ -358,5 +365,17 @@
   .refs_list_title p:nth-child(2),
   .refs_list_title p:nth-child(3) {
     display: none;
+  }
+  .referal_page {
+    padding: 0;
+  }
+  .output_desc_item_icon {
+    width: auto;
+    height: auto;
+    padding: 7px;
+  }
+  .output_btn {
+    flex-direction: column;
+    gap: 12px;
   }
 }

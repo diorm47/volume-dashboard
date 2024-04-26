@@ -896,20 +896,11 @@ background: rgb(40, 40, 40);
     flex-direction: column;
     margin-top: 0;
   }
-  .add_key_btn {
-    width: 100%;
-    margin-top: 24px;
-    margin-bottom: 14px;
-  }
+
   .add_key_btn button {
     width: 100%;
   }
-  .add_key_history {
-    display: none;
-  }
-  .mob_api_list {
-    display: block;
-  }
+
   .add_key_history_mobile_title {
     display: flex;
     align-items: center;
@@ -1075,10 +1066,7 @@ background: rgb(40, 40, 40);
   .api_key_title h2 {
     width: auto;
   }
-  .add_key_btn {
-    margin-bottom: 0;
-    margin-top: 24px;
-  }
+
   .modal_wrapper_title {
     padding: 14px 15px;
   }
@@ -1098,41 +1086,41 @@ background: rgb(40, 40, 40);
     height: 12px;
   }
   .modal_wrapper_btns {
-    flex-direction: column;
+    padding-bottom: 10px !important;
     justify-content: center;
     align-items: center;
     padding-bottom: 0;
-    gap: 14px;
+    gap: 12px !important;
   }
-  .modal_wrapper_btns div {
-    width: 100% !important;
-  }
+
   .modal_wrapper_save_btn button {
-    border-radius: 40px;
+    border-radius: 6px;
     background: var(--111112, #0077ff);
     padding: 11px 20px 13px 20px;
     width: 100%;
     color: var(--FFFFFF, #fff);
     font-family: TTInterfaces500;
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 16px; /* 123.077% */
   }
   .modal_wrapper_cancel button {
     width: 100%;
-    padding: 14px 10px;
+    padding: 11px 20px 13px 20px;
     color: var(--111112, #111112);
     text-align: center;
     font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
     border-radius: 40px;
     background: transparent;
     /* 13px/Regular */
-    font-family: TTInterfaces400;
+    font-family: TTInterfaces500;
     font-size: 13px;
     font-style: normal;
-    font-weight: 400;
-    line-height: 16px; /* 123.077% */
+    font-weight: 500;
+    line-height: 16px; /* 123.077% */border-radius: 6px;
+
+    background: rgb(242, 242, 242);
   }
   .user_image_block h2 {
     font-size: 17px;

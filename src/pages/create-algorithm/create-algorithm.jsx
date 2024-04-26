@@ -300,7 +300,7 @@ function CreateAlgorithm() {
               <p>Депозит </p>
               <Info title="Укажите выделенную сумму депозита для алгоритма" />
             </div>
-            <div className="algorithm_item_input">
+            <div className="algorithm_item_input algo_deposit">
               <input type="text" placeholder="Укажите сумму депозита" />
               <div className="algorithm_item_input_add">
                 <p>Доступно: 3500.13 USDT</p>
@@ -323,7 +323,7 @@ function CreateAlgorithm() {
             <div className="algorithm_item_input">
               <input
                 type="text"
-                placeholder="Введите максимально приемлемый убыток"
+                placeholder="Укажите стоп-лосс"
               />
               <div className="algorithm_item_input_add">
                 <p>%</p>
@@ -417,11 +417,13 @@ function CreateAlgorithm() {
               <p>Депозит </p>
               <Info title="Укажите выделенную сумму депозита для алгоритма" />
             </div>
-            <div className="algorithm_item_input">
+            <div className="algorithm_item_input algo_deposit">
               <input type="text" placeholder="Укажите сумму депозита" />
               <div className="algorithm_item_input_add">
                 <p>Доступно: 3500.13 USDT</p>
-                <Refresh />
+                <div className="algo_refresh">
+                  <Refresh />
+                </div>
               </div>
             </div>
           </div>
@@ -437,7 +439,7 @@ function CreateAlgorithm() {
             <div className="algorithm_item_input">
               <input
                 type="text"
-                placeholder="Введите максимально приемлемый убыток"
+                placeholder="Укажите стоп-лосс"
               />
               <div className="algorithm_item_input_add">
                 <p>%</p>

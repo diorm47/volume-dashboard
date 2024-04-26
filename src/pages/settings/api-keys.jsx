@@ -318,7 +318,7 @@ function ApiKeys({ setRec }) {
         </div>
       </div>
 
-      <div className="secondary_block_wrapper mob_api_list">
+      {/* <div className="secondary_block_wrapper mob_api_list">
         <div className="add_api_keys_block_title">
           <div>
             <h2>{t("apiKeyPage.title")}</h2>
@@ -371,7 +371,7 @@ function ApiKeys({ setRec }) {
             </div>
           </>
         )}
-      </div>
+      </div> */}
 
       <div
         className={

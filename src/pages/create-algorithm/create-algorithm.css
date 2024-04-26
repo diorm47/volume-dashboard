@@ -70,7 +70,7 @@
 .black_mode .algo_refresh {
   border-radius: 6px;
 
-background: rgb(40, 40, 40);
+  background: rgb(40, 40, 40);
 }
 .black_mode .algo_refresh svg * {
   fill: #fff;
@@ -279,4 +279,43 @@ background: rgb(40, 40, 40);
 .trade_select .css-t3ipsp-control {
   height: auto !important;
   min-height: 54px;
+}
+.algorithm_btns .modal_wrapper_cancel button {
+  border-radius: 6px;
+  color: rgb(27, 27, 27);
+  background: rgb(242, 242, 242);
+}
+@media only screen and (max-width: 830px) {
+  .algorithm_wrapper {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .algo_regim {
+    flex-direction: column;
+  }
+  .algorithm_btns {
+    justify-content: center;
+    gap: 13px;
+  }
+  .algorithm_btns .modal_wrapper_save_btn button {
+    width: 169px;
+  }
+  .algorithm_btns .modal_wrapper_cancel button {
+    width: 123px;
+  }
+  .algo_deposit .algorithm_item_input_add {
+    position: static;
+    height: 53px;
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 24px;
+    background: rgb(242, 242, 242);
+    justify-content: space-between;
+  }
+  .algo_refresh {
+    background: #fff;
+  }
 }

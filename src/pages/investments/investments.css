@@ -125,7 +125,7 @@
 .black_mode .investing_top_card_select button {
   border-radius: 6px;
   color: rgb(255, 255, 255);
-background: rgb(50, 50, 50);
+  background: rgb(50, 50, 50);
 }
 .investing_top_card_active_btn {
   color: var(--FFFFFF, #fff) !important;
@@ -202,7 +202,7 @@ background: rgb(50, 50, 50);
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
 }
 .black_mode .faq_invest_item svg * {
-  fill:  rgb(217, 217, 217) !important;
+  fill: rgb(217, 217, 217) !important;
 }
 .black_mode .faq_invest_item_question p {
   color: #fff;
@@ -697,6 +697,15 @@ background: rgb(50, 50, 50);
 .black_mode .warning_delete_modal_desc p {
   color: rgb(255, 255, 255);
 }
+@media only screen and (max-width: 1300px) {
+  .investments_page {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .faq_invest_item_question p {
+    word-wrap: break-word;
+  }
+}
 @media only screen and (max-width: 1050px) {
   .investing_top_cards {
     flex-direction: column;
@@ -801,8 +810,9 @@ background: rgb(50, 50, 50);
 @media only screen and (max-width: 450px) {
   .investing_top_card_value p,
   .faq_invest_item_question p {
-    font-size: 13px;
+    font-size: 14px;
     width: 90%;
+    line-height: 17px;
   }
   .order_history_list_item_content_item_last span {
     padding: 0 !important;
@@ -832,14 +842,21 @@ background: rgb(50, 50, 50);
     font-size: 13px;
   }
   .questions_title {
-    font-size: 23px;
-    letter-spacing: -0.48px;
+    font-size: 18px;
+
   }
   .api_delete_btn_mob button {
     background: rgb(0, 119, 255) !important;
     color: rgb(255, 255, 255) !important;
     margin-bottom: 20px;
   }
+  .main_block_wrapper_top {
+    padding: 24px 12px;
+  }
+  .faq_invest {
+    padding: 24px;
+  }
+
 }
 .user_balance_invest {
   display: flex;

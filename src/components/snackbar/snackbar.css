@@ -47,7 +47,8 @@
 
 @media only screen and (max-width: 620px) {
   .snackbar_wrapper {
-    padding: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
   .snackbar {
     top: 24px;
