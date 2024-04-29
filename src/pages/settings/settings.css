@@ -1069,9 +1069,12 @@ background: rgb(40, 40, 40);
   .api_key_title h2 {
     width: auto;
   }
-  .crud_modal .modal_wrapper_btns {
-    justify-content: flex-end;
-    flex-direction: row;
+  .crud_modal .modal_wrapper_btns, .add_api_btns {
+   
+    flex-direction: column;
+  }
+  .crud_modal .modal_wrapper_btns div, .crud_modal .modal_wrapper_btns button {
+    width: 100%;
   }
 
   .modal_wrapper_title {
@@ -1115,7 +1118,7 @@ background: rgb(40, 40, 40);
   .modal_wrapper_cancel button {
     width: 100%;
     padding: 11px 20px 14px 20px;
-    color: var(--111112, #111112);
+    color: rgb(37, 99, 235);
     text-align: center;
     font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
     border-radius: 40px;
@@ -1128,8 +1131,7 @@ background: rgb(40, 40, 40);
     line-height: 16px; /* 123.077% */
     border-radius: 6px;
 
-    background: rgb(242, 242, 242);
-  }
+   }
   .user_image_block h2 {
     font-size: 17px;
   }

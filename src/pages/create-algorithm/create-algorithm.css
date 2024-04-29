@@ -305,8 +305,12 @@
     flex-direction: column;
   }
   .algorithm_btns {
-    justify-content: space-between;
+   flex-direction: column;
     gap: 14px;
+  }
+  .algorithm_btns div,
+  .algorithm_btns  button {
+    width: 100% !important;
   }
   .algorithm_btns .modal_wrapper_save_btn button {
     width: 169px;
