@@ -51,7 +51,7 @@
   color: var(--92979C, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
 
   font-size: 14px;
@@ -119,10 +119,10 @@
   color: #0077ffcc;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -245,7 +245,7 @@
   font-family: TTInterfaces400;
   padding-bottom: 28px;
   border-bottom: 1px solid var(--DBDBDB, #dbdbdb);
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -401,10 +401,10 @@ background: rgb(40, 40, 40);
   color: #747a80;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
   margin-bottom: 10px;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -426,7 +426,7 @@ background: rgb(40, 40, 40);
   color: var(--text-black, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   text-indent: 11px;
-  /* 13px/SemiBold */
+  /* 14px/SemiBold */
   font-family: TTInterfaces500;
   font-size: 14px;
   font-style: normal;
@@ -436,7 +436,7 @@ background: rgb(40, 40, 40);
 .modal_wrapper_save_btn button {
   border-radius: 6px;
   background: var(--111112, #0077ff);
-  padding: 11px 20px ;
+  padding: 11px 20px;
 
   color: var(--FFFFFF, #fff);
   font-family: TTInterfaces500;
@@ -455,9 +455,9 @@ background: rgb(40, 40, 40);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   border-radius: 40px;
   background: transparent;
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces500;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 123.077% */
@@ -492,9 +492,9 @@ background: rgb(40, 40, 40);
   color: #000;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   padding-left: 11px;
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -516,9 +516,9 @@ background: rgb(40, 40, 40);
   color: var(--92979C, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   margin-bottom: 24px;
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -631,7 +631,7 @@ background: rgb(40, 40, 40);
   color: var(--Color_Gray, #92979c);
   font-family: TTInterfaces400;
 
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -654,7 +654,6 @@ background: rgb(40, 40, 40);
 .black_mode .css-1fdsijx-ValueContainer,
 .black_mode .css-t3ipsp-control {
   background: rgb(40, 40, 40) !important;
-  
 }
 .drop_api_item_name svg {
   width: 10px;
@@ -712,7 +711,7 @@ background: rgb(40, 40, 40);
   margin-bottom: 24px;
 }
 .bybit_on_tap_desc_item p {
-  /* 13px/Medium */
+  /* 14px/Medium */
   color: rgb(0, 0, 0);
   font-family: TTInterfaces500;
   font-size: 14px;
@@ -734,10 +733,10 @@ background: rgb(40, 40, 40);
   justify-content: center;
 }
 .bybit_on_tap_desc_item_num p {
-  /* 13px/Medium */
+  /* 14px/Medium */
   color: rgb(255, 255, 255);
   font-family: TTInterfaces500;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0%;
@@ -749,8 +748,9 @@ background: rgb(40, 40, 40);
 .mb_0 {
   margin-bottom: 0;
 }
+
 .modal_wrapper_save_btn button {
-  font-size: 13px !important;
+  font-size: 14px !important;
   font-weight: 500 !important;
   line-height: 16px;
   font-family: TTInterfaces500 !important;
@@ -857,7 +857,9 @@ background: rgb(40, 40, 40);
 .react-tabs__tab--selected {
   /* border-bottom: 1px solid rgb(37, 99, 235) !important; */
   color: rgb(37, 99, 235) !important;
-  
+}
+.react-tabs__tab--selected::after {
+  display: none;
 }
 .react-tabs__tab {
   color: rgb(146, 151, 156);
@@ -951,9 +953,9 @@ background: rgb(40, 40, 40);
   color: #000;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -970,9 +972,9 @@ background: rgb(40, 40, 40);
   color: #000;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -1061,10 +1063,19 @@ background: rgb(40, 40, 40);
   letter-spacing: 0%;
   text-align: left;
 }
+.black_mode .crud_modal .modal_wrapper_btns .modal_wrapper_cancel button {
+  color: rgb(255, 255, 255);
+  border-radius: 6px;
+  background: rgb(33, 33, 33);
+}
 
 @media only screen and (max-width: 450px) {
   .api_key_title h2 {
     width: auto;
+  }
+  .crud_modal .modal_wrapper_btns {
+    justify-content: flex-end;
+    flex-direction: row;
   }
 
   .modal_wrapper_title {
@@ -1096,7 +1107,7 @@ background: rgb(40, 40, 40);
   .modal_wrapper_save_btn button {
     border-radius: 6px;
     background: var(--111112, #0077ff);
-    padding: 11px 20px 13px 20px;
+    padding: 11px 20px 14px 20px;
     width: 100%;
     color: var(--FFFFFF, #fff);
     font-family: TTInterfaces500;
@@ -1107,18 +1118,19 @@ background: rgb(40, 40, 40);
   }
   .modal_wrapper_cancel button {
     width: 100%;
-    padding: 11px 20px 13px 20px;
+    padding: 11px 20px 14px 20px;
     color: var(--111112, #111112);
     text-align: center;
     font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
     border-radius: 40px;
     background: transparent;
-    /* 13px/Regular */
+    /* 14px/Regular */
     font-family: TTInterfaces500;
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    line-height: 16px; /* 123.077% */border-radius: 6px;
+    line-height: 16px; /* 123.077% */
+    border-radius: 6px;
 
     background: rgb(242, 242, 242);
   }
@@ -1128,7 +1140,7 @@ background: rgb(40, 40, 40);
   .user_img p,
   .user_data_item div p:first-child,
   .settings_navigation p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .security_page .secondary_block_wrapper svg {
     width: 100px;
@@ -1139,7 +1151,7 @@ background: rgb(40, 40, 40);
   .user_login_history_item p,
   .api_keys_title span,
   .add_key_history_mobile_list h4 {
-    font-size: 13px;
+    font-size: 14px;
   }
   .order_history_list_line {
     margin: 24px 0;

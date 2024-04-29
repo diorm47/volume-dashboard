@@ -55,4 +55,7 @@ footer {
     gap: 20px;
     align-items: start;
   }
+  footer {
+    padding: 24px;
+  }
 }

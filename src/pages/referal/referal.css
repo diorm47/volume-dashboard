@@ -79,7 +79,7 @@
   color: var(--Color_Gray, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: "TTInterfaces400";
   font-size: 14px;
   font-style: normal;
@@ -269,7 +269,7 @@
 .output_btn button {
   border-radius: 6px;
   width: 270px;
-  font-size: 13px;
+  font-size: 14px;
   height: 40px;
   background: rgb(37, 99, 235);
 }
@@ -323,7 +323,7 @@
   .ref_bonus_output {
     width: 100%;
     text-align: center;
-    padding: 13px;
+    padding: 14px;
     margin-top: 50px;
     font-size: 14px !important;
   }
@@ -377,5 +377,12 @@
   .output_btn {
     flex-direction: column;
     gap: 12px;
+  }
+  .output_btn
+  .modal_wrapper_save_btn {
+    width: 100%;
+  }
+  .output_btn button {
+    width: 100%;
   }
 }

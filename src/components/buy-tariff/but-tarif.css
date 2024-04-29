@@ -47,11 +47,11 @@
 }
 
 .buy_tariff_wrapper a p {
-  /* 13px/SemiBold */
+  /* 14px/SemiBold */
   color: rgb(255, 255, 255);
   font-family: TTInterfaces600;
 
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 16px;
   letter-spacing: 0%;
@@ -75,7 +75,7 @@
 @media only screen and (max-width: 450px) {
   button,
   .connect_api_recom_wrapper p {
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
   .buy_tariff_wrapper {
     padding: 15px;

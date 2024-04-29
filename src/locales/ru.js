@@ -832,6 +832,6 @@ export const ru_locale = {
   },
   mob_nav_item: {
     theme: "Темная тема",
-    lang: "Язык",
+    language: "Язык",
   },
 };

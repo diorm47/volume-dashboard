@@ -53,9 +53,9 @@
   color: #747a80;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -101,9 +101,9 @@
   text-align: center;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   transition: all 0.4s ease;
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px !important;
+  font-size: 14px !important;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -135,9 +135,9 @@
   color: #747a80;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -342,9 +342,9 @@
   color: var(--Color_Gray, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   margin-bottom: 15px;
-  /* 13px/Medium */
+  /* 14px/Medium */
   font-family: TTInterfaces500;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 123.077% */
@@ -353,9 +353,9 @@
   color: var(--Color_Green, #31bd65);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Medium */
+  /* 14px/Medium */
   font-family: TTInterfaces500;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 123.077% */
@@ -392,9 +392,9 @@
   color: var(--Color_Black, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -416,7 +416,7 @@
   color: var(--Color_Gray, #000);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
   font-size: 17px;
   font-style: normal;
@@ -514,9 +514,9 @@
   color: var(--Color_Black, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Medium */
+  /* 14px/Medium */
   font-family: TTInterfaces500;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 123.077% */
@@ -529,9 +529,9 @@
   color: var(--Color_Black, #111112);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   margin-bottom: 24px;
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -549,9 +549,9 @@
   color: var(--Color_Gray, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
@@ -583,9 +583,9 @@
   color: var(--Color_Gray, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -595,7 +595,7 @@
 }
 .invest_modal_select button {
   margin-bottom: 28px;
-  font-size: 13px !important;
+  font-size: 14px !important;
   background: var(--Color_Lite_Gray, #f7f7f7);
 }
 
@@ -670,7 +670,7 @@
   border-radius: 40px;
   color: rgb(17, 17, 18);
   font-family: TTInterfaces600;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 16px;
   letter-spacing: 0%;
@@ -728,7 +728,7 @@
     letter-spacing: 0%;
   }
   .warning_delete_modal_desc p {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 16px;
     letter-spacing: 0%;
@@ -766,7 +766,7 @@
     font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
     margin-top: 10px;
     font-family: TTInterfaces400;
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 16px;
@@ -788,7 +788,7 @@
   }
   .invest_modal_item_input input {
     padding: 12px 11px;
-    font-size: 13px;
+    font-size: 14px;
   }
   .aditional_invest_modal_content li,
   .aditional_invest_modal_content h4 {
@@ -819,7 +819,7 @@
   }
 
   .faq_invest_item_answer p {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 140%;
   }
   .investments_page_title p {
@@ -836,10 +836,10 @@
     width: 300px;
   }
   .investing_top_card_btns button {
-    font-size: 13px;
+    font-size: 14px;
   }
   .investing_top_card_select button {
-    font-size: 13px;
+    font-size: 14px;
   }
   .questions_title {
     font-size: 18px;
@@ -865,10 +865,10 @@
 }
 .user_balance_invest h4 {
   cursor: pointer;
-  /* 13px/Regular */
+  /* 14px/Regular */
   color: rgb(0, 119, 255);
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 0%;

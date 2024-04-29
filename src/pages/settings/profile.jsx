@@ -459,7 +459,7 @@ function Profile() {
 
       <div
         className={
-          nameModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
+          nameModal ? "modal_wrapper crud_modal visible_modal_wrapper" : "modal_wrapper crud_modal"
         }
       >
         <div className="modal_wrapper_title">
@@ -508,8 +508,8 @@ function Profile() {
       <div
         className={
           usernameModal
-            ? "modal_wrapper visible_modal_wrapper"
-            : "modal_wrapper "
+            ? "modal_wrapper crud_modal visible_modal_wrapper"
+            : "modal_wrapper crud_modal"
         }
       >
         <div className="modal_wrapper_title">
@@ -538,7 +538,7 @@ function Profile() {
 
       <div
         className={
-          numberModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
+          numberModal ? "modal_wrapper crud_modal visible_modal_wrapper" : "modal_wrapper crud_modal "
         }
       >
         <div className="modal_wrapper_title">
@@ -567,7 +567,7 @@ function Profile() {
 
       <div
         className={
-          emailModal ? "modal_wrapper visible_modal_wrapper" : "modal_wrapper "
+          emailModal ? "modal_wrapper crud_modal visible_modal_wrapper" : "modal_wrapper crud_modal"
         }
       >
         <div className="modal_wrapper_title">
@@ -605,8 +605,8 @@ function Profile() {
       <div
         className={
           passwordConfirmModal
-            ? "modal_wrapper visible_modal_wrapper"
-            : "modal_wrapper "
+            ? "modal_wrapper crud_modal visible_modal_wrapper"
+            : "modal_wrapper crud_modal"
         }
       >
         <div className="modal_wrapper_title">

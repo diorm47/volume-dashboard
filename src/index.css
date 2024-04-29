@@ -189,7 +189,7 @@ padding-top: 24px;
 @media only screen and (max-width: 450px) {
   button,
   .connect_api_recom_wrapper p {
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
 }
 

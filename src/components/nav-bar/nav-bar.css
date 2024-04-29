@@ -311,7 +311,7 @@ nav {
 
   font-family: TTInterfaces400;
   text-align-last: left;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -332,7 +332,7 @@ nav {
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   font-family: TTInterfaces400;
 
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -521,11 +521,11 @@ nav {
     width: 100%;
 
     background: var(--Accent, #0077ff);
-    padding: 11px 20px 13px 20px;
+    padding: 11px 20px 14px 20px;
 
     color: var(--OnSecond, var(--FFFFFF, #fff));
     font-family: TTInterfaces500;
-    font-size: 13px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 16px; /* 123.077% */

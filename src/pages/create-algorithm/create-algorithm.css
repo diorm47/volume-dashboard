@@ -288,20 +288,29 @@
 @media only screen and (max-width: 830px) {
   .algorithm_wrapper {
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
+}
+.black_mode .algo_deposit .algorithm_item_input_add {
+  background: rgb(40, 40, 40);
+}
+.black_mode .algorithm_btns .modal_wrapper_cancel button {
+  border-radius: 6px;
+  color: rgb(255, 255, 255);
+  background: rgb(40, 40, 40);
 }
 @media only screen and (max-width: 600px) {
   .algo_regim {
     flex-direction: column;
   }
   .algorithm_btns {
-    justify-content: center;
-    gap: 13px;
+    justify-content: space-between;
+    gap: 14px;
   }
   .algorithm_btns .modal_wrapper_save_btn button {
     width: 169px;
+    font-size: 14px;
   }
   .algorithm_btns .modal_wrapper_cancel button {
     width: 123px;

@@ -68,9 +68,9 @@
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
  padding: 5px 15px;
  margin-left: 12px;
-  /* 13px/Medium */
+  /* 14px/Medium */
   font-family: TTInterfaces500;
-  font-size: 13px !important;
+  font-size: 14px !important;
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 123.077% */
@@ -83,7 +83,7 @@
   color: var(--92979C, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -406,11 +406,11 @@
   color: var(--Color_Black, #111112) !important;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   margin-bottom: 80px !important;
-  /* 13px/Regular */
+  /* 14px/Regular */
   margin-top: 50px;
   padding-bottom: 60px;
   font-family: TTInterfaces400;
-  font-size: 13px !important;
+  font-size: 14px !important;
   font-style: normal;
   font-weight: 400;
   line-height: 16px !important; /* 123.077% */
@@ -459,7 +459,7 @@
   .by_bit_api_img_ {
     width: 100%;
     height: auto;
-    margin-bottom: 13px;
+    margin-bottom: 14px;
   }
 }
 
@@ -502,7 +502,7 @@
 
 @media only screen and (max-width: 500px) {
   .base_top_block_wrapper p {
-    font-size: 13px;
+    font-size: 14px;
     margin-bottom: 20px;
   }
   .base_top_block_wrapper h1 {
@@ -522,7 +522,7 @@
   .base_question_card_content p,
   .base_bottom_blocks_left span,
   .register_page_text p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .register_page_text p {
     line-height: 16px;
@@ -532,7 +532,7 @@
     padding: 24px;
   }
   .register_page_text_block p {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 16px;
   }
   .base_block_title h2,
@@ -544,9 +544,9 @@
     height: 100px;
   }
   .base_bottom_blocks_left button {
-    padding: 11px 20px 13px 20px;
+    padding: 11px 20px 14px 20px;
     width: 170px;
-    font-size: 13px;
+    font-size: 14px;
     margin-top: 24px;
   }
   .base_block_title h2,
@@ -554,7 +554,7 @@
     margin-bottom: 24px;
   }
   .register_page_top_data p {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .register_page_block_title h2,
@@ -571,7 +571,7 @@
   .policy_agreeement p,
   .policy_agreeement li,
   .text_pages_wrapper h2 {
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
   .whitepaper_page h3,
   .whitepaper_page h2 {
@@ -594,6 +594,6 @@
   }
   .register_top_togglers button {
     padding: 12px 36px;
-    font-size: 13px;
+    font-size: 14px;
   }
 }

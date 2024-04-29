@@ -69,10 +69,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* 13px/Regular */
+  /* 14px/Regular */
   color: rgb(255, 255, 255);
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 0%;
@@ -117,7 +117,7 @@
   }
   .not_found_left span {
     text-align: center;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 16px;
   }

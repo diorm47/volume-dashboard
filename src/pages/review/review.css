@@ -115,7 +115,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
   font-size: 14px;
   font-style: normal;
@@ -138,9 +138,9 @@
   color: #111112;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   z-index: 10 !important;
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px; /* 123.077% */
@@ -191,7 +191,7 @@
   color: var(--92979C, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
   margin-top: 10px;
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
   font-size: 14px;
   font-style: normal;
@@ -229,7 +229,7 @@
   color: var(--F1507B, #f1507b);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
   font-size: 14px;
   font-style: normal;
@@ -241,7 +241,7 @@
   color: var(--92979C, #92979c);
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Regular */
+  /* 14px/Regular */
   font-family: TTInterfaces400;
   font-size: 14px;
   font-style: normal;
@@ -331,7 +331,7 @@
   text-align: right;
   font-feature-settings: "cv11" on, "cv01" on, "ss01" on;
 
-  /* 13px/Medium */
+  /* 14px/Medium */
   font-family: TTInterfaces500;
   font-size: 14px;
   font-style: normal;
@@ -458,10 +458,10 @@
   justify-content: center;
 }
 .review_help_blog_number div p {
-  /* 13px/Regular */
+  /* 14px/Regular */
   color: rgb(0, 119, 255);
   font-family: TTInterfaces400;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 0%;
@@ -500,10 +500,10 @@
   border-radius: 40px;
   width: 100%;
   padding: 11px 0;
-  /* 13px/SemiBold */
+  /* 14px/SemiBold */
   color: rgb(255, 255, 255);
   font-family: TTInterfaces600;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 16px;
   letter-spacing: 0%;
@@ -574,7 +574,7 @@
     font-size: 17px;
   }
   .review_left_top_block_content p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .review_left_top_block_content_amount p,
   .pnl_value p {
@@ -592,7 +592,7 @@
   .most_questions_desc p,
   .most_questions_list p,
   .free_tarif p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .tarif_plan_top {
     margin: 20px 0;
@@ -630,7 +630,7 @@
   }
   .review_help_blog_number h4,
   .review_help_blog_descr p {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 16px;
     letter-spacing: 0%;
   }

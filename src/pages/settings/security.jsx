@@ -392,8 +392,8 @@ function Security() {
       <div
         className={
           passwordModal
-            ? "modal_wrapper visible_modal_wrapper"
-            : "modal_wrapper "
+            ? "modal_wrapper crud_modal visible_modal_wrapper"
+            : "modal_wrapper crud_modal"
         }
       >
         <div className="modal_wrapper_title">
@@ -439,8 +439,8 @@ function Security() {
       <div
         className={
           passwordConfirmModal
-            ? "modal_wrapper visible_modal_wrapper"
-            : "modal_wrapper "
+            ? "modal_wrapper crud_modal visible_modal_wrapper"
+            : "modal_wrapper  crud_modal"
         }
       >
         <div className="modal_wrapper_title">

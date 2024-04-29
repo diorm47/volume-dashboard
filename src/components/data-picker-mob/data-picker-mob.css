@@ -20,7 +20,7 @@
   background: #f7f7f7;
   color: #000;
   font-family: TTInterfaces500;
-  font-size: 13px;
+  font-size: 14px;
   padding: 5px 10px;
   border-radius: 6px;
 
@@ -78,8 +78,11 @@ visibility: hidden;
 
 @media only screen and (max-width: 450px) {
   .date_picker_mob_btns {
-    flex-direction: column-reverse !important;
+    flex-direction: row-reverse !important;
     gap: 0 !important;
     margin-top: 15px;
+  }
+  .date_picker_mob_btns div {
+    width: 50%;
   }
 }
