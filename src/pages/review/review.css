@@ -612,6 +612,10 @@
   }
   .order_history_list_item_content_item_last {
     width: 100%;
+    max-width: 100%;
+  }
+  .order_history_list_item_content_item_last p {
+    gap: 10px !important;
   }
 
   .order_history_list_item_content_item p {
