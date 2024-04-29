@@ -8,7 +8,7 @@
   border-bottom: 1px solid rgb(229, 231, 235);
 }
 .settings_page {
-  min-height: 80vh;
+  min-height: 86vh;
 }
 .black_mode .settings_navigation {
   background: transparent;
@@ -1063,11 +1063,7 @@ background: rgb(40, 40, 40);
   letter-spacing: 0%;
   text-align: left;
 }
-.black_mode .crud_modal .modal_wrapper_btns .modal_wrapper_cancel button {
-  color: rgb(255, 255, 255);
-  border-radius: 6px;
-  background: rgb(33, 33, 33);
-}
+
 
 @media only screen and (max-width: 450px) {
   .api_key_title h2 {

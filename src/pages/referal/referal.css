@@ -222,7 +222,7 @@
 }
 .black_mode .output_desc,
 .black_mode .output_agree {
-  background: rgb(40, 40, 40);
+  background: rgb(50, 50, 50);
 }
 .output_desc_item {
   display: flex;
@@ -313,7 +313,7 @@
   color: #fff;
 }
 .black_mode .output_btn {
-  border-top: 1px solid rgba(128, 128, 128, 0.678);
+  border-top: 1px solid #343436;
 }
 @media only screen and (max-width: 700px) {
   .ref_bonus {
