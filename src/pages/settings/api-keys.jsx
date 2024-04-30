@@ -419,12 +419,12 @@ function ApiKeys({ setRec }) {
           </div>
 
           <Tabs>
-            <TabList>
+            {/* <TabList>
               <Tab>{t("api_auto")}</Tab>
               <Tab>{t("api_handle")}</Tab>
-            </TabList>
+            </TabList> */}
 
-            <TabPanel>
+            {/* <TabPanel>
               <div className="bybit_on_tap_desc">
                 <div className="bybit_on_tap_desc_item">
                   <div className="bybit_on_tap_desc_item_num">
@@ -450,16 +450,16 @@ function ApiKeys({ setRec }) {
               <div className="modal_wrapper_btns add_api_btns">
                 <div className="modal_wrapper_save_btn">
                   <button>{t("bybit.button")}</button>
-                  {/* <a href="https://www.bybit.com/en/oauth?client_id=bb8fc8894f7e&response_type=code&scope=openapi&redirect_uri=https://dashboard.nvolume.com/investments">
+                  <a href="https://www.bybit.com/en/oauth?client_id=bb8fc8894f7e&response_type=code&scope=openapi&redirect_uri=https://dashboard.nvolume.com/investments">
                   <button>{t("bybit.button")}</button>
-                </a> */}
+                </a>
                 </div>
 
                 <div className="modal_wrapper_cancel">
                   <button onClick={closeModals}>{t("cancel")}</button>
                 </div>
               </div>
-            </TabPanel>
+            </TabPanel> */}
             <TabPanel>
               <div className="modal_wrapper_content_item modal_wrapper_content_item_input">
                 <p>{t("apiModal.publicKey")}</p>
@@ -481,7 +481,7 @@ function ApiKeys({ setRec }) {
               <div className="modal_wrapper_btns add_api_btns">
                 <div className="modal_wrapper_save_btn">
                   {/* onClick={addApi} */}
-                  <button> {t("apiModal.addButton")}</button>
+                  <button onClick={addApi}>  {t("apiModal.addButton")}</button>
                 </div>
 
                 <div className="modal_wrapper_cancel">
