@@ -317,7 +317,7 @@ function ReferalPage() {
           <div className="output_btn">
             <p>{t("output1.path")}</p>
             <div className="modal_wrapper_save_btn">
-              <button disabled={!wallet} onClick={setSecondModal}>
+              <button disabled={!wallet || refBalance.balance < 100} onClick={setSecondModal}>
                 {t("output1.btn")}
               </button>
             </div>
