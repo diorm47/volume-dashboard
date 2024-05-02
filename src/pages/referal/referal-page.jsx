@@ -12,6 +12,7 @@ import { ReactComponent as Output3 } from "../../assets/icons/output-3.svg";
 import { useTranslation } from "react-i18next";
 
 function ReferalPage() {
+  const userLanguage = localStorage.getItem("locale") || "ru";
   const [visibleSnack, setVisibleSnack] = useState(false);
   const [snackText, setSnackText] = useState("");
   const [snackStatus, setSnackStatus] = useState("");
@@ -25,6 +26,7 @@ function ReferalPage() {
   };
 
   const [refCode, setRefCode] = useState("");
+  const [refBalance, setRefBalance] = useState({});
   const [refsList, setRefList] = useState([]);
 
   const getReferalsList = () => {
@@ -37,9 +39,21 @@ function ReferalPage() {
         console.log(error);
       });
   };
+  const getReferalsBalance = () => {
+    mainApi
+      .getReferalsBalance()
+      .then((res) => {
+        setRefBalance(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       getReferalsList();
+      getReferalsBalance();
       mainApi
         .reEnter()
         .then((res) => {
@@ -62,6 +76,7 @@ function ReferalPage() {
   // output
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
+  const [wallet, setWallet] = useState("");
 
   const closeModals = () => {
     setModal1(false);
@@ -71,6 +86,48 @@ function ReferalPage() {
   const setSecondModal = () => {
     setModal1(false);
     setModal2(true);
+  };
+
+  const widrawalBalance = () => {
+    const localization = {
+      en: {
+        requestSuccess: "Success!",
+        requestError: "Error!",
+      },
+      ru: {
+        requestSuccess: "Удачно",
+        requestError: "Ошибка!",
+      },
+    };
+
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("network", "trc20");
+    bodyContent.append("wallet", wallet);
+
+    fetch("https://api.nvolume.com/private-api/v1/users/referrals/withdrawal", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          closeModals();
+          snackOptions(localization[userLanguage].requestSuccess, "success");
+          getReferalsBalance()
+        } else {
+          snackOptions(localization[userLanguage].requestError, "error");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        snackOptions(localization[userLanguage].requestError, "error");
+      });
   };
 
   return (
@@ -86,11 +143,15 @@ function ReferalPage() {
                   <div className="ref_bonuses ">
                     <div>
                       <p className="color_white">{t("ref_1_block.all")}</p>
-                      <span className="color_white">30.00 USDT</span>
+                      <span className="color_white">
+                        {refBalance.all_time_amount || 0.0} USDT
+                      </span>
                     </div>
                     <div>
                       <p className="color_white">{t("ref_1_block.have")}</p>
-                      <span className="color_white">30.00 USDT</span>
+                      <span className="color_white">
+                        {refBalance.balance || 0.0} USDT
+                      </span>
                     </div>
                   </div>
 
@@ -214,7 +275,7 @@ function ReferalPage() {
                 <p>TRC20</p>
               </div>
               <div className="output_item_amount">
-                <p>30.00 USDT</p>
+                <p>{refBalance.balance || 0.0} USDT</p>
               </div>
             </div>
           </div>
@@ -223,7 +284,11 @@ function ReferalPage() {
               <p>{t("output1.btitle2")}</p>
               <Info />
             </div>
-            <input type="text" />
+            <input
+              type="text"
+              value={wallet}
+              onChange={(e) => setWallet(e.target.value)}
+            />
           </div>
           <div className="output_desc">
             <div className="output_desc_item">
@@ -252,7 +317,9 @@ function ReferalPage() {
           <div className="output_btn">
             <p>{t("output1.path")}</p>
             <div className="modal_wrapper_save_btn">
-              <button onClick={setSecondModal}>{t("output1.btn")}</button>
+              <button disabled={!wallet} onClick={setSecondModal}>
+                {t("output1.btn")}
+              </button>
             </div>
           </div>
         </div>
@@ -272,15 +339,15 @@ function ReferalPage() {
         <div className="modal_wrapper_content api_modal_content">
           <div className="output_agree">
             <p>{t("output2.text1")}:</p>
-            <h2>30.00 USDT</h2>
+            <h2>{refBalance.balance || 0.0} USDT</h2>
             <p>{t("output2.text2")}:</p>
-            <span>brA1UU9fnU1BqbdNw7PoFgXg8Bf7xVWdxq</span>
+            <span>{wallet}</span>
           </div>
 
           <div className="output_btn">
             <p>{t("output2.path")}</p>
             <div className="modal_wrapper_save_btn">
-              <button onClick={closeModals}>{t("output2.btn")}</button>
+              <button onClick={widrawalBalance}>{t("output2.btn")}</button>
             </div>
           </div>
         </div>
