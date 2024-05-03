@@ -775,6 +775,9 @@ background: rgb(40, 40, 40);
   letter-spacing: 0%;
   text-align: left;
 }
+.black_mode .api_item_type p {
+  color: #fff;
+}
 .active_api_item_kesys {
   display: flex;
   align-items: center;
@@ -807,6 +810,9 @@ background: rgb(40, 40, 40);
   line-height: 17px;
   letter-spacing: 0%;
   text-align: left;
+}
+.black_mode .active_api_item_kesys span {
+  color: #fff;
 }
 .active_api_item {
   display: flex;
