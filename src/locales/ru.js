@@ -834,4 +834,8 @@ export const ru_locale = {
     theme: "Темная тема",
     language: "Язык",
   },
+  ref_tr: {
+    network: "Сеть",
+    wallet: "Кошелёк",
+  },
 };

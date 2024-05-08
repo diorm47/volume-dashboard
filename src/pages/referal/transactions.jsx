@@ -16,13 +16,13 @@ function ReferalTransactions() {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    fetch("https://api.nvolume.com/private-api/v1/users/transactions", {
+    fetch("https://api.nvolume.com/private-api/v1/users/referrals/withdrawal", {
       method: "GET",
       headers: headersList,
     })
       .then((response) => response.json())
       .then((data) => {
-        setTransactions(data.data.transactions);
+        setTransactions(data.data.withdrawals);
       })
       .catch((error) => {
         console.log(error);
@@ -58,9 +58,7 @@ function ReferalTransactions() {
               key={index}
             >
               <div className="order_history_list_item_title">
-                <a target="_blank" href={`https://pay.cryptocloud.plus/${item.invoice_id}`}>
-                  <h2>ID {item.invoice_id}</h2>
-                </a>
+                <h2>ID {item.id}</h2>
 
                 {item.status === "created" ? (
                   <div className="order_item_top_status order_item_top_status_process">
@@ -81,17 +79,17 @@ function ReferalTransactions() {
               <div className="order_history_list_item_content analysis_order_items">
                 <div className="order_history_list_item_content_item">
                   <p>
-                    {t("createdAt")} <span>{formatTime(item.created_at)}</span>
+                    {t("createdAt")} <span>-</span>
                   </p>
                 </div>
                 <div className="order_history_list_item_content_item">
                   <p>
-                    {t("transactionType")} <span>{t(item.method)}</span>
+                    {t("ref_tr.network")} <span>{item.network}</span>
                   </p>
                 </div>
                 <div className="order_history_list_item_content_item">
                   <p>
-                    {t("commission")} <span>$ -</span>
+                    {t("ref_tr.wallet")} <span>{item.wallet}</span>
                   </p>
                 </div>
                 <div className="order_history_list_item_content_item">

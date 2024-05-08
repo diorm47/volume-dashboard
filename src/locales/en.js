@@ -803,4 +803,8 @@ export const en_locale = {
     theme: "Dark theme",
     language: "Language",
   },
+  ref_tr: {
+    network: "Network",
+    wallet: "Wallet",
+  },
 };
