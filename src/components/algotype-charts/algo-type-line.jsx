@@ -7,7 +7,7 @@ const AlgoLineChart = () => {
     series: [
       {
         name: "PnL",
-        data: [20, 45, 12, 67, 34, 1, 23],
+        data: [20, -45, -12, 67, -34, -1, 23],
       },
     ],
     options: {
@@ -30,9 +30,9 @@ const AlgoLineChart = () => {
             color: "#F7F7F7",
           },
         },
-        padding: {
-          right: 58, // Increase right padding
-        },
+        // padding: {
+        //   right: 58, // Increase right padding
+        // },
       },
       xaxis: {
         type: "datetime",
