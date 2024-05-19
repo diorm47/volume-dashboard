@@ -465,11 +465,18 @@ function Investments({ updatebalance, setRec }) {
         </div>
         <div className="algo_cards">
           <div className="algo_card">
-            <div className="algo_card_title">
-              <div>
-                <AlgoIcon />
+            <div className="algo_card_title_wrapper">
+              <div className="algo_card_title">
+                <div>
+                  <AlgoIcon />
+                </div>{" "}
+                <h3>Long-Term AI</h3>
               </div>{" "}
-              <h3>Long-Term AI</h3>
+              <div className="algo_card_about">
+                <NavLink to="/algorithm-type">
+                  <p>Подробнее</p>
+                </NavLink>
+              </div>
             </div>
             <div className="algo_card_desc">
               <p>
@@ -498,11 +505,18 @@ function Investments({ updatebalance, setRec }) {
             <button className="algo_btn algo_btn_disabled">Скоро</button>
           </div>
           <div className="algo_card">
-            <div className="algo_card_title">
-              <div>
-                <AlgoIcon />
+            <div className="algo_card_title_wrapper">
+              <div className="algo_card_title">
+                <div>
+                  <AlgoIcon />
+                </div>{" "}
+                <h3>Лонг-Шорт</h3>
               </div>{" "}
-              <h3>Лонг-Шорт</h3>
+              <div className="algo_card_about">
+                <NavLink to="/algorithm-type">
+                  <p>Подробнее</p>
+                </NavLink>
+              </div>
             </div>
             <div className="algo_card_desc">
               <p>
@@ -533,11 +547,18 @@ function Investments({ updatebalance, setRec }) {
             </NavLink>
           </div>
           <div className="algo_card">
-            <div className="algo_card_title">
-              <div>
-                <AlgoIcon />
+            <div className="algo_card_title_wrapper">
+              <div className="algo_card_title">
+                <div>
+                  <AlgoIcon />
+                </div>{" "}
+                <h3>Лонг smart-grid</h3>
               </div>{" "}
-              <h3>Лонг smart-grid</h3>
+              <div className="algo_card_about">
+                <NavLink to="/algorithm-type">
+                  <p>Подробнее</p>
+                </NavLink>
+              </div>
             </div>
             <div className="algo_card_desc">
               <p>

@@ -760,7 +760,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 24px;
 }
 .algo_card_title div {
   display: flex;
@@ -844,6 +843,20 @@
 }
 .algo_btn_disabled:hover {
   background: rgb(243, 244, 246);
+}
+.algo_card_title_wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  justify-content: space-between;
+}
+.algo_card_about p {
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.22px;
+  color: #2563EB;
+  text-align: left;
 }
 @media only screen and (max-width: 1300px) {
   .investments_page {

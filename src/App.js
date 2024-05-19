@@ -24,6 +24,7 @@ import Settings from "./pages/settings/settings";
 import { BybitOneTap } from "./components/utils/bybit";
 import Referals from "./pages/referal/referal";
 import CreateAlgorithm from "./pages/create-algorithm/create-algorithm";
+import AlgorithmType from "./pages/algorithm-type/algorithm-type";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -144,6 +145,7 @@ function App() {
           <Route path="/topup-types" element={<TopupTypes />} />
           <Route path="/p2p" element={<P2p />} />
           <Route path="/referal/*" element={<Referals />} />
+          <Route path="/algorithm-type" element={<AlgorithmType />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 
