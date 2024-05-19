@@ -67,7 +67,7 @@ button {
   font-size: 17px;
 }
 button:hover {
-  background: #0077ffcc;
+  background: #0077ff ;
   transition: all 0.4s ease;
 }
 input {

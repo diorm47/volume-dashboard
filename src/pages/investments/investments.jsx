@@ -528,7 +528,9 @@ function Investments({ updatebalance, setRec }) {
                 <span>500 USDT</span>
               </div>
             </div>
-            <button className="algo_btn">Создать</button>
+            <NavLink to="/create-algorithm">
+              <button className="algo_btn">Создать</button>
+            </NavLink>
           </div>
           <div className="algo_card">
             <div className="algo_card_title">
@@ -561,7 +563,9 @@ function Investments({ updatebalance, setRec }) {
                 <span>500 USDT</span>
               </div>
             </div>
-            <button className="algo_btn">Создать</button>
+            <NavLink to="/create-algorithm">
+              <button className="algo_btn">Создать</button>
+            </NavLink>
           </div>
         </div>
 
@@ -642,13 +646,6 @@ function Investments({ updatebalance, setRec }) {
                   <span>
                     {t("algo_empty.desc1")} <br /> {t("algo_empty.desc2")}
                   </span>
-
-                  <div className="add_key_btn">
-                    {" "}
-                    <NavLink to="/create-algorithm">
-                      <button>{t("algo_empty.button")}</button>
-                    </NavLink>
-                  </div>
                 </div>
               </div>
             )}

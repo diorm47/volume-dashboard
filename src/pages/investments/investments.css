@@ -111,14 +111,14 @@
 .investing_top_card_btns button:hover {
   transition: all 0.4s ease;
 
-  background: var(--111112, #0077ffcc);
+  background: var(--111112, rgb(37, 99, 235));
   color: var(--FFFFFF, #fff);
   opacity: 1;
 }
 .investing_top_card_select button:hover {
   transition: all 0.4s ease;
 
-  background: var(--111112, #0077ffcc);
+  background: var(--111112, rgb(37, 99, 235));
   color: var(--FFFFFF, #fff);
   opacity: 1;
 }
@@ -831,7 +831,12 @@
   line-height: 17px;
   letter-spacing: 0%;
   text-align: center;
+  transition: all 0.3s ease;
 }
+/* .algo_btn:hover {
+  transition: all 0.3s ease;
+  background: rgb(37, 99, 235);
+} */
 .algo_btn_disabled {
   background: rgb(243, 244, 246);
   cursor: default;
@@ -839,7 +844,6 @@
 }
 .algo_btn_disabled:hover {
   background: rgb(243, 244, 246);
-
 }
 @media only screen and (max-width: 1300px) {
   .investments_page {
