@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { mainApi } from "../../components/utils/main-api";
 import Snackbar from "../../components/snackbar/snackbar";
 import { useTranslation } from "react-i18next";
+import { ReactComponent as Success } from "../../assets/icons/success.svg";
+import { ReactComponent as Fail } from "../../assets/icons/fail.svg";
 
 function RatesPage({ updatebalance }) {
   const { t, i18n } = useTranslation();
@@ -291,8 +293,34 @@ function RatesPage({ updatebalance }) {
                 {t("startPlanPrice")} <span>{t("startPlanPricePerMonth")}</span>
               </p>
             </div>
-            <div className="rates_card_descr_limit">
-              <p>{t("startPlanTradingLimit")}</p>
+            <div className="rates_card_limits">
+              <div className="rates_card_limits_item">
+                <div>
+                  <Success />
+                  <p>Лонг smart-grid</p>
+                </div>
+                <p>
+                  <span>Лимит депозита до $1,000</span>
+                </p>
+              </div>
+              <div className="rates_card_limits_item">
+                <div>
+                  <Success />
+                  <p>Лонг-Шорт</p>
+                </div>
+                <p>
+                  <span>Лимит депозита до $1,000</span>
+                </p>
+              </div>
+              <div className="rates_card_limits_item">
+                <div>
+                  <Fail />
+                  <p>Long-Term AI</p>
+                </div>
+                <p>
+                  <span>Лимит депозита до $1,000</span>
+                </p>
+              </div>
             </div>
           </div>
           <div className="order_history_list_line"></div>
@@ -316,8 +344,34 @@ function RatesPage({ updatebalance }) {
                 <span>{t("advancedPlanPricePerMonth")}</span>
               </p>
             </div>
-            <div className="rates_card_descr_limit">
-              <p>{t("advancedPlanTradingLimit")}</p>
+            <div className="rates_card_limits">
+              <div className="rates_card_limits_item">
+                <div>
+                  <Success />
+                  <p>Лонг smart-grid</p>
+                </div>
+                <p>
+                  <span>Лимит депозита до $2,000</span>
+                </p>
+              </div>
+              <div className="rates_card_limits_item">
+                <div>
+                  <Success />
+                  <p>Лонг-Шорт</p>
+                </div>
+                <p>
+                  <span>Лимит депозита до $2,000</span>
+                </p>
+              </div>
+              <div className="rates_card_limits_item">
+                <div>
+                  <Success />
+                  <p>Long-Term AI</p>
+                </div>
+                <p>
+                  <span>Лимит депозита до $2,000</span>
+                </p>
+              </div>
             </div>
           </div>
           <div className="order_history_list_line"></div>
@@ -341,8 +395,34 @@ function RatesPage({ updatebalance }) {
                 <span>{t("professionalPlanPricePerMonth")}</span>
               </p>
             </div>
-            <div className="rates_card_descr_limit">
-              <p>{t("professionalPlanTradingLimit")}</p>
+            <div className="rates_card_limits">
+              <div className="rates_card_limits_item">
+                <div>
+                  <Success />
+                  <p>Лонг smart-grid</p>
+                </div>
+                <p>
+                  <span>Лимит депозита до $5,000</span>
+                </p>
+              </div>
+              <div className="rates_card_limits_item">
+                <div>
+                  <Success />
+                  <p>Лонг-Шорт</p>
+                </div>
+                <p>
+                  <span>Лимит депозита до $5,000</span>
+                </p>
+              </div>
+              <div className="rates_card_limits_item">
+                <div>
+                  <Success />
+                  <p>Long-Term AI</p>
+                </div>
+                <p>
+                  <span>Лимит депозита до $5,000</span>
+                </p>
+              </div>
             </div>
           </div>
           <div className="order_history_list_line"></div>

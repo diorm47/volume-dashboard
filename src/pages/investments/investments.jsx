@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import "./investments.css";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import empty_block from "../../assets/icons/empty-block.png";
+import algo1 from "../../assets/images/algorithm-1.png";
+import algo2 from "../../assets/images/algorithm-2.png";
 import Snackbar from "../../components/snackbar/snackbar";
+import { ReactComponent as Icon } from "../../assets/icons/tarif-icon.svg";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { mainApi } from "../../components/utils/main-api";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { ReactComponent as DeleteWarning } from "../../assets/icons/delete-warning.svg";
+import { ReactComponent as AlgoIcon } from "../../assets/icons/algorithm.svg";
 
 function Investments({ updatebalance, setRec }) {
   const navigate = useNavigate();
@@ -440,10 +444,127 @@ function Investments({ updatebalance, setRec }) {
   return (
     <>
       <Snackbar text={snackText} status={snackStatus} visible={visibleSnack} />
+
       <div className="pages_wrapper investments_page">
         <div className="main_page_title_template">
           <h1>{t("nav_menu_3")}</h1>
         </div>
+
+        <div className="top_page_attention_wrapper container">
+          <div>
+            {" "}
+            <Icon />
+          </div>
+          <p>
+            Для каждого алгоритма есть подробная информация о принципах его
+            работы, рисках, рекомендациях и результатах, полученных на основе
+            анализа исторических данных. Исходя из своих целей, вы можете
+            выбрать один алгоритм или комбинировать несколько, настраивая
+            стратегию и уровень риска.
+          </p>
+        </div>
+        <div className="algo_cards">
+          <div className="algo_card">
+            <div className="algo_card_title">
+              <div>
+                <AlgoIcon />
+              </div>{" "}
+              <h3>Long-Term AI</h3>
+            </div>
+            <div className="algo_card_desc">
+              <p>
+                Больше зарабатывает на росте, меньше на падении. При
+                значительном снижении рынка депозит остаётся нетронутым. В
+                среднем совершает до 10 сделок в день.
+              </p>
+            </div>
+            <div className="algo_card_graph">
+              <img src={algo1} alt="" />
+            </div>
+            <div className="algo_card_spec">
+              <div>
+                <p>Торгуемая площадка</p>
+                <span>Спот</span>
+              </div>
+              <div>
+                <p>Уровень риска</p>
+                <span>Минимальный</span>
+              </div>
+              <div>
+                <p>Рекомендуемый депозит</p>
+                <span>3 000 USDT</span>
+              </div>
+            </div>
+            <button className="algo_btn algo_btn_disabled">Скоро</button>
+          </div>
+          <div className="algo_card">
+            <div className="algo_card_title">
+              <div>
+                <AlgoIcon />
+              </div>{" "}
+              <h3>Лонг-Шорт</h3>
+            </div>
+            <div className="algo_card_desc">
+              <p>
+                Больше зарабатывает на росте, меньше на падении. При
+                значительном снижении рынка депозит остаётся нетронутым. В
+                среднем совершает до 10 сделок в день.
+              </p>
+            </div>
+            <div className="algo_card_graph">
+              <img src={algo2} alt="" />
+            </div>
+            <div className="algo_card_spec">
+              <div>
+                <p>Торгуемая площадка</p>
+                <span>Спот, фьючерсы</span>
+              </div>
+              <div>
+                <p>Уровень риска</p>
+                <span>Средний</span>
+              </div>
+              <div>
+                <p>Рекомендуемый депозит</p>
+                <span>500 USDT</span>
+              </div>
+            </div>
+            <button className="algo_btn">Создать</button>
+          </div>
+          <div className="algo_card">
+            <div className="algo_card_title">
+              <div>
+                <AlgoIcon />
+              </div>{" "}
+              <h3>Лонг smart-grid</h3>
+            </div>
+            <div className="algo_card_desc">
+              <p>
+                Больше зарабатывает на росте, меньше на падении. При
+                значительном снижении рынка депозит остаётся нетронутым. В
+                среднем совершает до 10 сделок в день.
+              </p>
+            </div>
+            <div className="algo_card_graph">
+              <img src={algo1} alt="" />
+            </div>
+            <div className="algo_card_spec">
+              <div>
+                <p>Торгуемая площадка</p>
+                <span>Спот, фьючерсы</span>
+              </div>
+              <div>
+                <p>Уровень риска</p>
+                <span>Высокий</span>
+              </div>
+              <div>
+                <p>Рекомендуемый депозит</p>
+                <span>500 USDT</span>
+              </div>
+            </div>
+            <button className="algo_btn">Создать</button>
+          </div>
+        </div>
+
         <div className="investments_page_wrapper">
           <div className="orders_history_list main_block_wrapper">
             <div className="main_block_wrapper_top">

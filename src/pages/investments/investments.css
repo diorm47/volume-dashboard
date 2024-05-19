@@ -700,6 +700,147 @@
 .black_mode .warning_delete_modal_desc p {
   color: rgb(255, 255, 255);
 }
+.user_balance_invest {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user_balance_invest h4 {
+  cursor: pointer;
+  /* 14px/Regular */
+  color: rgb(0, 119, 255);
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: right;
+}
+
+.top_page_attention_wrapper {
+  border-radius: 6px;
+  padding: 28px;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+  background: rgb(255, 255, 255);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  justify-content: start;
+}
+.top_page_attention_wrapper div {
+  display: flex;
+  align-items: center;
+}
+.top_page_attention_wrapper p {
+  color: rgb(27, 27, 27);
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.algo_cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+.algo_card {
+  border-radius: 6px;
+  padding: 24px;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+  background: rgb(255, 255, 255);
+  width: 33%;
+}
+.algo_card_title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.algo_card_title div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgb(243, 244, 246);
+  border-radius: 50%;
+}
+.algo_card_title h3 {
+  color: rgb(27, 27, 27);
+  font-family: TTInterfaces500;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.algo_card_desc p {
+  color: rgb(146, 151, 156);
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.algo_card_graph img {
+  width: 100%;
+  margin-bottom: 24px;
+}
+.algo_card_spec div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.algo_card_spec p {
+  color: rgb(146, 151, 156);
+  font-family: TTInterfaces400;
+  font-size: 14px;
+  font-weight: 400;
+
+  letter-spacing: 0%;
+  text-align: left;
+}
+.algo_card_spec span {
+  color: rgb(0, 0, 0);
+  font-family: TTInterfaces400;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  letter-spacing: 0%;
+  text-align: left;
+}
+.algo_btn {
+  width: 100%;
+  border-radius: 6px;
+  height: 46px;
+  background: rgb(37, 99, 235);
+  color: rgb(255, 255, 255);
+  font-family: TTInterfaces400;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.algo_btn_disabled {
+  background: rgb(243, 244, 246);
+  cursor: default;
+  color: rgb(0, 0, 0);
+}
+.algo_btn_disabled:hover {
+  background: rgb(243, 244, 246);
+
+}
 @media only screen and (max-width: 1300px) {
   .investments_page {
     padding-left: 20px;
@@ -858,20 +999,4 @@
   .faq_invest {
     padding: 24px;
   }
-}
-.user_balance_invest {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.user_balance_invest h4 {
-  cursor: pointer;
-  /* 14px/Regular */
-  color: rgb(0, 119, 255);
-  font-family: TTInterfaces400;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: 0%;
-  text-align: right;
 }
