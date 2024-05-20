@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./algo-type-charts.css";
 import { datesLine } from "./line-dates";
@@ -9,11 +9,28 @@ const AlgoLineChart = () => {
     const [year, month, day] = cat.split(".").map(Number);
     return new Date(year, month - 1, day).getTime();
   });
+
+  const calculateCumulativeSum = (data) => {
+    let cumulativeSum = 0;
+    return data.map((value) => {
+      cumulativeSum += value;
+      return cumulativeSum;
+    });
+  };
+
+  const [cumulativeData, setCumulativeData] = useState(
+    calculateCumulativeSum(lineData)
+  );
+
+  useEffect(() => {
+    setCumulativeData(calculateCumulativeSum(lineData));
+  }, [lineData]);
+
   const [chartData, setChartData] = useState({
     series: [
       {
         name: "PnL",
-        data: lineData,
+        data: cumulativeData,
       },
     ],
     options: {
