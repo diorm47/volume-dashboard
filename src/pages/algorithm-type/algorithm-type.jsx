@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./algorithm-type.css";
 import AlgoLineChart from "../../components/algotype-charts/algo-type-line";
 import AlgoColumnChart from "../../components/algotype-charts/algo-type-column";
@@ -42,6 +42,8 @@ import trade36 from "../../assets/images/trade/36.png";
 import trade37 from "../../assets/images/trade/37.png";
 
 function AlgorithmType() {
+  const [allPnl, setAllPnl] = useState(0);
+
   return (
     <div className="pages_wrapper investments_page algorithm_type_page">
       <div className="main_page_title_template">
@@ -57,7 +59,16 @@ function AlgorithmType() {
           <div className="main_block_wrapper_bottom">
             <div className="review_left_top_block_content">
               <div className="review_left_top_block_content_amount">
-                <p className="algo_type_top_card_green">+ 333.81 %</p>
+                {allPnl && allPnl > 0 ? (
+                  <p className="algo_type_top_card_green">+ {allPnl} %</p>
+                ) : (
+                  ""
+                )}
+                {allPnl && allPnl < 0 ? (
+                  <p className="algo_type_top_card_red"> {allPnl} %</p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
@@ -163,7 +174,7 @@ function AlgorithmType() {
           <h2>График PnL</h2>
         </div>
 
-        <AlgoLineChart />
+        <AlgoLineChart setAllPnl={setAllPnl} />
       </div>
       <div className="secondary_block_wrapper algorithm_type_chart">
         <div className="main_block_wrapper_title">

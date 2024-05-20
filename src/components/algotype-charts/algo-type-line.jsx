@@ -4,7 +4,7 @@ import "./algo-type-charts.css";
 import { datesLine } from "./line-dates";
 import { lineData } from "./line-datas";
 
-const AlgoLineChart = () => {
+const AlgoLineChart = ({setAllPnl}) => {
   const timestamps = datesLine.map((cat) => {
     const [year, month, day] = cat.split(".").map(Number);
     return new Date(year, month - 1, day).getTime();
@@ -23,8 +23,15 @@ const AlgoLineChart = () => {
   );
 
   useEffect(() => {
-    setCumulativeData(calculateCumulativeSum(lineData));
+    const newCumulativeData = calculateCumulativeSum(lineData);
+    setCumulativeData(newCumulativeData);
+    
+    // Log the value of the last element
+    if (newCumulativeData.length > 0) {
+      setAllPnl(newCumulativeData[newCumulativeData.length - 1].toFixed(2));
+    }
   }, [lineData]);
+
 
   const [chartData, setChartData] = useState({
     series: [
