@@ -54,16 +54,13 @@ const AlgoLineChart = () => {
           },
         },
       },
-
       xaxis: {
         type: "datetime",
         categories: timestamps,
         labels: {
           formatter: function (val, timestamp) {
             const date = new Date(timestamp);
-            return `${date.getFullYear()}.${String(
-              date.getMonth() + 1
-            ).padStart(2, "0")}.${date.getDay()}`;
+            return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
           },
           style: {
             colors: "#92979C",
@@ -82,10 +79,9 @@ const AlgoLineChart = () => {
           align: "left",
         },
       },
-
       tooltip: {
         x: {
-          format: "yy/MM/dd",
+          format: "yyyy/MM/dd",
         },
         y: {
           formatter: function (value) {
@@ -95,6 +91,7 @@ const AlgoLineChart = () => {
       },
     },
   });
+  
 
   return (
     <>

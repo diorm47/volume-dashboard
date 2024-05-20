@@ -104,3 +104,7 @@ height: 24px;
   text-align: left;
   padding-left: 10px;
 }
+
+.black_mode .algorithm_pairs_list .drop_api_item p{
+  color: #fff;
+}
