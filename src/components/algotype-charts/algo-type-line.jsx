@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./algo-type-charts.css";
+import { datesLine } from "./line-dates";
+import { lineData } from "./line-datas";
 
 const AlgoLineChart = () => {
+  const timestamps = datesLine.map((cat) => {
+    const [year, month, day] = cat.split(".").map(Number);
+    return new Date(year, month - 1, day).getTime();
+  });
   const [chartData, setChartData] = useState({
     series: [
       {
         name: "PnL",
-        data: [20, -45, -12, 67, -34, -1, 23],
+        data: lineData,
       },
     ],
     options: {
@@ -30,34 +36,28 @@ const AlgoLineChart = () => {
             color: "#F7F7F7",
           },
         },
-        // padding: {
-        //   right: 58, // Increase right padding
-        // },
       },
+
       xaxis: {
         type: "datetime",
-
-        categories: [
-          "01/01",
-          "01/02",
-          "01/03",
-          "01/04",
-          "01/05",
-          "01/06",
-          "01/07",
-        ],
+        categories: timestamps,
         labels: {
-          format: "MM/dd", // Format date as 'month/day'
-
+          formatter: function (val, timestamp) {
+            const date = new Date(timestamp);
+            return `${date.getFullYear()}.${String(
+              date.getMonth() + 1
+            ).padStart(2, "0")}.${date.getDay()}`;
+          },
           style: {
             colors: "#92979C",
           },
+          align: "center",
         },
       },
       yaxis: {
         labels: {
           formatter: function (value) {
-            return `${value.toFixed(2)}`; // Отображаем значение с двумя цифрами после запятой
+            return `${value.toFixed(2)} %`;
           },
           style: {
             colors: "#92979C",
@@ -68,11 +68,11 @@ const AlgoLineChart = () => {
 
       tooltip: {
         x: {
-          format: "dd/MM/yy",
+          format: "yy/MM/dd",
         },
         y: {
           formatter: function (value) {
-            return `${Number(value).toFixed(2)} USDT`;
+            return `${Number(value).toFixed(2)} %`;
           },
         },
       },
@@ -81,16 +81,14 @@ const AlgoLineChart = () => {
 
   return (
     <>
-      <div className="review_chart">
-        <div id="chart">
-          <ReactApexChart
-            options={chartData.options}
-            series={chartData.series}
-            type="area"
-            height={350}
-            width="100%"
-          />
-        </div>
+      <div id="chart">
+        <ReactApexChart
+          options={chartData.options}
+          series={chartData.series}
+          type="area"
+          height={350}
+          width="100%"
+        />
       </div>
     </>
   );

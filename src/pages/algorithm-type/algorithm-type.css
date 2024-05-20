@@ -1,4 +1,5 @@
-.algo_type_top_cards .main_block_wrapper_top {
+.algo_type_top_cards .main_block_wrapper_top,
+.algorithm_type_desc .main_block_wrapper_top {
   padding: 24px;
 }
 .algo_type_top_cards .main_block_wrapper {
@@ -10,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 
 .algo_type_top_card_green {
@@ -31,7 +32,7 @@
   margin-bottom: 48px;
 }
 .algorithm_type_desc {
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 
 .algorithm_type_desc p {
@@ -64,4 +65,42 @@
   line-height: 17px;
   letter-spacing: 0px;
   text-align: left;
+  margin: 0;
+}
+
+.algorithm_type_chart #chart {
+  padding-top: 30px;
+}
+.algorithm_type_bottom_blocks {
+  display: flex;
+  align-items: start;
+  gap: 24px;
+}
+.algorithm_type_bottom_blocks .main_block_wrapper {
+  width: 50%;
+}
+.algorithm_type_bottom_blocks .main_block_wrapper_top {
+  padding: 24px;
+}
+.algorithm_pairs_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.algorithm_pairs_list .drop_api_item {
+  margin-bottom: 12px;
+}
+.algorithm_pairs_list .drop_api_item img {
+  width: 24px;
+height: 24px;
+}
+.algorithm_pairs_list .drop_api_item p {
+  color: rgb(27, 27, 27);
+  font-family: TTInterfaces500;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: left;
+  padding-left: 10px;
 }

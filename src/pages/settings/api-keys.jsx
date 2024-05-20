@@ -249,7 +249,7 @@ function ApiKeys({ setRec }) {
   return (
     <>
       <div className="secondary_block_wrapper user_image_block add_key_history">
-        <div class="main_block_wrapper_title secondary_title">
+        <div className="main_block_wrapper_title secondary_title">
           <div className="add_api_keys_block_title">
             <div>
               <h2>{t("apiKeyPage.title")}</h2>

@@ -135,8 +135,8 @@ function ReferalPage() {
       <div className="pages_wrapper referal_page">
         <div className="referal_page_wrapper">
           <div className="ref_top main_block_wrapper ref_block">
-            <div class="main_block_wrapper_top">
-              <div class="main_block_wrapper_title secondary_title">
+            <div className="main_block_wrapper_top">
+              <div className="main_block_wrapper_title secondary_title">
                 <h2 className="color_white">{t("ref_1_block.title")}</h2>
                 <p>{t("ref_1_block.desc")}</p>
                 <div className="ref_bonus">
@@ -166,8 +166,8 @@ function ReferalPage() {
             </div>
           </div>
           <div className="ref_top main_block_wrapper ref_block">
-            <div class="main_block_wrapper_top">
-              <div class="main_block_wrapper_title secondary_title">
+            <div className="main_block_wrapper_top">
+              <div className="main_block_wrapper_title secondary_title">
                 <h2>{t("ref_2_block.title")}</h2>
                 <p>{t("ref_2_block.desc")}</p>
                 <p className="marg_ref">{t("ref_2_block.link")}</p>
@@ -204,8 +204,8 @@ function ReferalPage() {
             </div>
           </div>
           <div className="ref_bottom main_block_wrapper ref_block">
-            <div class="main_block_wrapper_top">
-              <div class="main_block_wrapper_title secondary_title">
+            <div className="main_block_wrapper_top">
+              <div className="main_block_wrapper_title secondary_title">
                 <h2>{t("ref_3_block.title")}</h2>
                 <p>{t("ref_3_block.desc")}</p>
               </div>

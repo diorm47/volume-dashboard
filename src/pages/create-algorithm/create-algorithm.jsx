@@ -66,8 +66,9 @@ function CreateAlgorithm() {
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
-            <img src={bybit} alt="" />
-            <p>ByBit Futures</p>
+            <img src={binance} alt="" />
+
+            <p>Binance Futures</p>
           </div>{" "}
         </div>
       ),
@@ -687,10 +688,10 @@ function CreateAlgorithm() {
           </div>
           <div className="algorithm_line"></div>
           <div className="algorithm_btns">
-            <div class="modal_wrapper_save_btn">
+            <div className="modal_wrapper_save_btn">
               <button>Создать алгоритм</button>
             </div>
-            <div class="modal_wrapper_cancel">
+            <div className="modal_wrapper_cancel">
               <button>Отмена</button>
             </div>
           </div>
@@ -803,10 +804,10 @@ function CreateAlgorithm() {
           </div>
           <div className="algorithm_line"></div>
           <div className="algorithm_btns">
-            <div class="modal_wrapper_save_btn">
+            <div className="modal_wrapper_save_btn">
               <button>Создать алгоритм</button>
             </div>
-            <div class="modal_wrapper_cancel">
+            <div className="modal_wrapper_cancel">
               <button>Отмена</button>
             </div>
           </div>
