@@ -138,7 +138,7 @@ const AlgoColumnChart = () => {
 
   return (
     <>
-      <div id="chart" className="algo_type_column_1">
+      <div id="chart" className="algo_type_column_1 ">
         <ReactApexChart
           options={chartData.options}
           series={chartData.series}

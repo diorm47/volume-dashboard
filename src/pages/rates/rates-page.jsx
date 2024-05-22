@@ -301,7 +301,7 @@ function RatesPage({ updatebalance }) {
                   <p>Лонг-Шорт</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $1,000</span>
+                  <span>Лимит депозита до $1 000</span>
                 </p>
               </div>
               <div className="rates_card_limits_item">
@@ -310,7 +310,7 @@ function RatesPage({ updatebalance }) {
                   <p>Long-Term AI</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $1,000</span>
+                  <span>Лимит депозита до $1 000</span>
                 </p>
               </div>
             </div>
@@ -344,7 +344,7 @@ function RatesPage({ updatebalance }) {
                   <p>Лонг-Шорт</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $5,000</span>
+                  <span>Лимит депозита до $5 000</span>
                 </p>
               </div>
               <div className="rates_card_limits_item">
@@ -353,7 +353,7 @@ function RatesPage({ updatebalance }) {
                   <p>Long-Term AI</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $5,000</span>
+                  <span>Лимит депозита до $5 000</span>
                 </p>
               </div>
             </div>
@@ -387,7 +387,7 @@ function RatesPage({ updatebalance }) {
                   <p>Лонг-Шорт</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $10,000</span>
+                  <span>Лимит депозита до $10 000</span>
                 </p>
               </div>
               <div className="rates_card_limits_item">
@@ -396,7 +396,7 @@ function RatesPage({ updatebalance }) {
                   <p>Long-Term AI</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $10,000</span>
+                  <span>Лимит депозита до $25 000</span>
                 </p>
               </div>
             </div>

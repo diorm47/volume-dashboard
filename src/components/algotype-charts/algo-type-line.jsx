@@ -122,7 +122,7 @@ const AlgoLineChart = ({ setAllPnl, setAllPnlDown }) => {
 
   return (
     <>
-      <div id="chart">
+      <div id="chart" className="algo_type_column_1 algo_type_column_2">
         <ReactApexChart
           options={chartData.options}
           series={chartData.series}
@@ -130,6 +130,12 @@ const AlgoLineChart = ({ setAllPnl, setAllPnlDown }) => {
           height={350}
           width="100%"
         />
+        <div className="algo_type_column_1_xaxis">
+          <p>2021</p>
+          <p>2022</p>
+          <p>2023</p>
+          <p>2024</p>
+        </div>
       </div>
     </>
   );

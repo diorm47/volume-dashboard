@@ -84,6 +84,9 @@
 .algorithm_type_chart .apexcharts-legend {
   display: none !important;
 }
+.algo_type_column_2 {
+  padding-bottom: 20px;
+}
 
 @media only screen and (max-width: 800px) {
   .algo_type_column_1_xaxis {
@@ -94,5 +97,8 @@
 @media only screen and (max-width: 450px) {
   .algorithm_type_chart #chart {
     padding-left: 20px;
+  }
+  .algo_type_column_2 .algo_type_column_1_xaxis  {
+    margin-top: -74px;
   }
 }
