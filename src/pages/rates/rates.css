@@ -183,10 +183,14 @@ text-align: left;
 .rates_card_limits_item span {
   color: rgb(146, 151, 156);
 }
+.black_mode
+.rates_card_limits_item div p {
+ color: #fff;
+}
 @media only screen and (max-width: 950px) {
   .rates_cards {
     flex-direction: column;
-    gap: 0;
+
   }
 }
 

@@ -3,8 +3,9 @@ import ReactApexChart from "react-apexcharts";
 import "./algo-type-charts.css";
 import { datesLine } from "./line-dates";
 import { lineData } from "./line-datas";
+import { lineDataDown } from "./line-datas-1";
 
-const AlgoLineChart = ({setAllPnl}) => {
+const AlgoLineChart = ({ setAllPnl }) => {
   const timestamps = datesLine.map((cat) => {
     const [year, month, day] = cat.split(".").map(Number);
     return new Date(year, month - 1, day).getTime();
@@ -25,19 +26,22 @@ const AlgoLineChart = ({setAllPnl}) => {
   useEffect(() => {
     const newCumulativeData = calculateCumulativeSum(lineData);
     setCumulativeData(newCumulativeData);
-    
+
     // Log the value of the last element
     if (newCumulativeData.length > 0) {
       setAllPnl(newCumulativeData[newCumulativeData.length - 1].toFixed(2));
     }
   }, [lineData]);
 
-
   const [chartData, setChartData] = useState({
     series: [
       {
         name: "PnL",
         data: cumulativeData,
+      },
+      {
+        name: "PnLDown",
+        data: lineDataDown,
       },
     ],
     options: {
@@ -51,8 +55,17 @@ const AlgoLineChart = ({setAllPnl}) => {
       stroke: {
         curve: "smooth",
         width: 2,
-        colors: ["#0077FF"],
       },
+      fill: {
+        type: "gradient",
+        gradient: {
+          shadeIntensity: 1,
+          opacityFrom: 0.01,
+          opacityTo: 0.01,
+          stops: [0, 90, 100],
+        },
+      },
+      colors: ["#0077FF", "#e39a08"],
       grid: {
         yaxis: {
           lines: {
@@ -67,7 +80,9 @@ const AlgoLineChart = ({setAllPnl}) => {
         labels: {
           formatter: function (val, timestamp) {
             const date = new Date(timestamp);
-            return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
+            return `${date.getFullYear()}.${String(
+              date.getMonth() + 1
+            ).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
           },
           style: {
             colors: "#92979C",
@@ -98,7 +113,6 @@ const AlgoLineChart = ({setAllPnl}) => {
       },
     },
   });
-  
 
   return (
     <>

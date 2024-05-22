@@ -564,6 +564,9 @@
 }
 
 @media only screen and (max-width: 450px) {
+  .tarif_plan_time_title p:nth-child(2) {
+    display: none;
+  }
   .main_block_wrapper_bottom {
     padding: 24px;
   }
@@ -581,7 +584,7 @@
     font-size: 17px;
   }
   .invite_block h2 {
-    margin-bottom: 0px;
+    margin-bottom: 26px;
   }
 
   .review_left_top_block_content_amount span,

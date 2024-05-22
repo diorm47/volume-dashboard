@@ -94,7 +94,7 @@
 
   /* 17px/Regular */
   font-family: "TTInterfaces400";
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 141.176% */
@@ -272,6 +272,10 @@
   font-size: 14px;
   height: 40px;
   background: rgb(37, 99, 235);
+}
+.black_mode .output_btn button:disabled {
+  background: #323232 !important;
+  color: #fff !important;
 }
 .output_agree {
   border-radius: 6px;

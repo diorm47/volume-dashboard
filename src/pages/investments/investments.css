@@ -870,13 +870,14 @@
   color: rgb(0, 0, 0);
 }
 .black_mode .algo_btn_disabled {
-  background: grey;
+  background: #323232;
+  color: #fff;
 }
 .algo_btn_disabled:hover {
   background: rgb(243, 244, 246);
 }
 .black_mode .algo_btn_disabled:hover {
-  background: grey;
+  background: #323232 ;
 }
 .algo_card_title_wrapper {
   display: flex;
@@ -916,6 +917,9 @@
   }
 }
 @media only screen and (max-width: 500px) {
+  .top_page_attention_wrapper  {
+    display: none;
+  }
   .warning_delete_modal_title h3 {
     font-size: 17px;
     font-weight: 600;

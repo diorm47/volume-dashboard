@@ -66,9 +66,9 @@ function CreateAlgorithm() {
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
-            <img src={binance} alt="" />
+            <img src={bybit} alt="" />
 
-            <p>Binance Futures</p>
+            <p>ByBit Futures</p>
           </div>{" "}
         </div>
       ),
