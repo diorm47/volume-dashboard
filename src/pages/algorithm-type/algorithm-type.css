@@ -92,7 +92,7 @@
 }
 .algorithm_pairs_list .drop_api_item img {
   width: 24px;
-height: 24px;
+  height: 24px;
 }
 .algorithm_pairs_list .drop_api_item p {
   color: rgb(27, 27, 27);
@@ -105,6 +105,53 @@ height: 24px;
   padding-left: 10px;
 }
 
-.black_mode .algorithm_pairs_list .drop_api_item p{
+.black_mode .algorithm_pairs_list .drop_api_item p {
   color: #fff;
+}
+
+.algorithm_type_chart {
+  padding-left: 0;
+}
+.algorithm_type_chart
+.main_block_wrapper_title {
+  padding-left: 24px;
+}
+.algorithm_type_chart #chart {
+  padding-left: 24px;
+}
+.p0 {
+  padding-bottom: 10px;
+}
+@media only screen and (max-width: 1200px) {
+  .algo_type_top_cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .algo_type_top_cards .main_block_wrapper {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .algorithm_type_bottom_blocks {
+    flex-direction: column;
+    gap: 0;
+  }
+  .algorithm_type_bottom_blocks .main_block_wrapper {
+    width: 100%;
+  }
+  .algorithm_type_chart #chart {
+    padding-left: 0;
+  }
+  .algo_type_column_1_xaxis {
+    padding-left: 30px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .algo_type_top_cards {
+    display: flex;
+    flex-direction: column;
+  }
+  .algo_type_top_cards .main_block_wrapper {
+    width: 100%;
+  }
 }

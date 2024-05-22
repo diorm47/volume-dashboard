@@ -728,6 +728,12 @@
   gap: 36px;
   justify-content: start;
 }
+.black_mode .top_page_attention_wrapper {
+  background: rgb(40, 40, 40);
+}
+.black_mode .top_page_attention_wrapper p {
+  color: #fff;
+}
 .top_page_attention_wrapper div {
   display: flex;
   align-items: center;
@@ -754,7 +760,16 @@
   padding: 24px;
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
   background: rgb(255, 255, 255);
-  width: 33%;
+  width: 50%;
+}
+.black_mode .algo_card {
+  background: rgb(40, 40, 40);
+}
+.algo_card_precents {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 .algo_card_title {
   display: flex;
@@ -769,6 +784,13 @@
   height: 24px;
   background: rgb(243, 244, 246);
   border-radius: 50%;
+}
+.black_mode .algo_card_title div {
+  background: rgb(58, 57, 57);
+
+}
+.black_mode .algo_card_title div svg * {
+  fill:  #fff;
 }
 .algo_card_title h3 {
   color: rgb(27, 27, 27);
@@ -798,7 +820,7 @@
   justify-content: space-between;
   margin-bottom: 24px;
 }
-.algo_card_spec p {
+.algo_card_spec p, .algo_card_precents p {
   color: rgb(146, 151, 156);
   font-family: TTInterfaces400;
   font-size: 14px;
@@ -806,6 +828,9 @@
 
   letter-spacing: 0%;
   text-align: left;
+}
+.algo_card_precents p {
+  color: #2563EB;
 }
 .algo_card_spec span {
   color: rgb(0, 0, 0);
@@ -816,6 +841,9 @@
 
   letter-spacing: 0%;
   text-align: left;
+}
+.black_mode .algo_card_title h3, .black_mode .algo_card_spec span {
+  color: #fff;
 }
 .algo_btn {
   width: 100%;
@@ -841,8 +869,14 @@
   cursor: default;
   color: rgb(0, 0, 0);
 }
+.black_mode .algo_btn_disabled {
+  background: grey;
+}
 .algo_btn_disabled:hover {
   background: rgb(243, 244, 246);
+}
+.black_mode .algo_btn_disabled:hover {
+  background: grey;
 }
 .algo_card_title_wrapper {
   display: flex;

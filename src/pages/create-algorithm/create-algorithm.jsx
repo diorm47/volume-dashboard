@@ -778,6 +778,17 @@ function CreateAlgorithm() {
               </div>
             </div>
           </div>
+          <div className="algorithm_item mt_24">
+            <div className="reinv_inputs">
+              <div className="algorithm_item_title">
+                <p>Плечо</p>
+                <Info />
+              </div>
+            </div>
+            <div className="algorithm_item_input">
+              <input type="text" placeholder="Укажите плечо" />
+            </div>
+          </div>
           <div className="algorithm_line"></div>
           <div className="algorithm_item">
             <div className="reinv_inputs">

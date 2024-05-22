@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./investments.css";
 import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import empty_block from "../../assets/icons/empty-block.png";
-import algo1 from "../../assets/images/algorithm-1.png";
-import algo2 from "../../assets/images/algorithm-2.png";
+import algo1 from "../../assets/images/algorithm-3.png";
+import algo2 from "../../assets/images/algorithm-4.png";
 import Snackbar from "../../components/snackbar/snackbar";
 import { ReactComponent as Icon } from "../../assets/icons/tarif-icon.svg";
 import { format } from "date-fns";
@@ -488,6 +488,10 @@ function Investments({ updatebalance, setRec }) {
             <div className="algo_card_graph">
               <img src={algo1} alt="" />
             </div>
+            <div className="algo_card_precents">
+              <p>01.05.2023 - 01.06.2023 </p>
+              <p>+ 85.32%</p>
+            </div>
             <div className="algo_card_spec">
               <div>
                 <p>Торгуемая площадка</p>
@@ -528,6 +532,10 @@ function Investments({ updatebalance, setRec }) {
             <div className="algo_card_graph">
               <img src={algo2} alt="" />
             </div>
+            <div className="algo_card_precents">
+              <p>01.05.2023 - 01.06.2023 </p>
+              <p>+ 21.24%</p>
+            </div>
             <div className="algo_card_spec">
               <div>
                 <p>Торгуемая площадка</p>
@@ -546,48 +554,7 @@ function Investments({ updatebalance, setRec }) {
               <button className="algo_btn">Создать</button>
             </NavLink>
           </div>
-          <div className="algo_card">
-            <div className="algo_card_title_wrapper">
-              <div className="algo_card_title">
-                <div>
-                  <AlgoIcon />
-                </div>{" "}
-                <h3>Лонг smart-grid</h3>
-              </div>{" "}
-              <div className="algo_card_about">
-                <NavLink to="/algorithm-type">
-                  <p>Подробнее</p>
-                </NavLink>
-              </div>
-            </div>
-            <div className="algo_card_desc">
-              <p>
-                Больше зарабатывает на росте, меньше на падении. При
-                значительном снижении рынка депозит остаётся нетронутым. В
-                среднем совершает до 10 сделок в день.
-              </p>
-            </div>
-            <div className="algo_card_graph">
-              <img src={algo1} alt="" />
-            </div>
-            <div className="algo_card_spec">
-              <div>
-                <p>Торгуемая площадка</p>
-                <span>Спот, фьючерсы</span>
-              </div>
-              <div>
-                <p>Уровень риска</p>
-                <span>Высокий</span>
-              </div>
-              <div>
-                <p>Рекомендуемый депозит</p>
-                <span>500 USDT</span>
-              </div>
-            </div>
-            <NavLink to="/create-algorithm">
-              <button className="algo_btn">Создать</button>
-            </NavLink>
-          </div>
+   
         </div>
 
         <div className="investments_page_wrapper">

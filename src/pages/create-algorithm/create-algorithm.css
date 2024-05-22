@@ -17,6 +17,9 @@
 .black_mode .algorithm_item_title p {
   color: rgb(255, 255, 255);
 }
+.mt_24 {
+  margin-top: 24px;
+}
 .algorithm_item_title svg {
   cursor: pointer;
 }
@@ -291,6 +294,12 @@
     padding-left: 24px;
     padding-right: 24px;
   }
+  .algo_cards {
+    flex-direction: column;
+  }
+  .algo_card {
+    width: 100%;
+  }
 }
 .black_mode .algo_deposit .algorithm_item_input_add {
   background: rgb(50, 50, 50);
@@ -305,11 +314,11 @@
     flex-direction: column;
   }
   .algorithm_btns {
-   flex-direction: column;
+    flex-direction: column;
     gap: 14px;
   }
   .algorithm_btns div,
-  .algorithm_btns  button {
+  .algorithm_btns button {
     width: 100% !important;
   }
   .algorithm_btns .modal_wrapper_save_btn button {
@@ -330,5 +339,9 @@
   }
   .algo_refresh {
     background: #fff;
+  }
+  .top_page_attention_wrapper {
+    flex-direction: column;
+    gap: 24px;
   }
 }

@@ -52,3 +52,43 @@
   transform: translateX(-35px) !important;
 } */
 
+.algo_type_column_1 .apexcharts-xaxis {
+  display: none !important;
+}
+.algo_type_column_1 {
+  position: relative;
+}
+.algo_type_column_1_xaxis {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 40px;
+  padding-left: 10%;
+  margin-top: -40px;
+}
+.algo_type_column_1_xaxis p {
+  font-family: TTInterfaces400;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  color: #57575790;
+}
+.black_mode .algo_type_column_1 .apexcharts-yaxis tspan {
+  color: #e9ebf084 !important;
+}
+
+.black_mode .algo_type_column_1_xaxis p {
+  color: #e9ebf084;
+}
+
+@media only screen and (max-width: 800px) {
+  .algo_type_column_1_xaxis {
+    padding-left: 100px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .algorithm_type_chart #chart {
+    padding-left: 20px;
+  }
+}
