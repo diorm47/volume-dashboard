@@ -547,7 +547,7 @@ function Investments({ updatebalance, setRec }) {
               </div>
               <div>
                 <p>Рекомендуемый депозит</p>
-                <span>500 USDT</span>
+                <span>1000 USDT</span>
               </div>
             </div>
             <NavLink to="/create-algorithm">

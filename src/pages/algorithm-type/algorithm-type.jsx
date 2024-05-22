@@ -238,30 +238,6 @@ function AlgorithmType() {
             <div className="algorithm_pairs_list">
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
-                  <img src={trade1} alt="" />
-                  <p>BTCUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade2} alt="" />
-                  <p> UNIUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade3} alt="" />
-                  <p> MATICUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade4} alt="" />
-                  <p>XMRUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
                   <img src={trade5} alt="" />
                   <p>FLOWUSDT</p>
                 </div>{" "}
@@ -274,44 +250,8 @@ function AlgorithmType() {
               </div>
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
-                  <img src={trade7} alt="" />
-                  <p>CRVUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
                   <img src={trade8} alt="" />
                   <p>1INCHUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade9} alt="" />
-                  <p>ETHUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade10} alt="" />
-                  <p>AAVEUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade11} alt="" />
-                  <p>MKRUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade12} alt="" />
-                  <p>ATOMUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade13} alt="" />
-                  <p>ZRXUSDT</p>
                 </div>{" "}
               </div>
               <div className="drop_api_item">
@@ -322,163 +262,65 @@ function AlgorithmType() {
               </div>
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
-                  <img src={trade15} alt="" />
-                  <p> DASHUSDT</p>
-                </div>{" "}
-              </div>
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade16} alt="" />
-                  <p> ZECUSDT</p>
-                </div>{" "}
-              </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade17} alt="" />
-                  <p>BNBUSDT</p>
-                </div>{" "}
-              </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade18} alt="" />
-                  <p>APTUSDT</p>
-                </div>{" "}
-              </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade19} alt="" />
-                  <p>LDOUSDT</p>
-                </div>{" "}
-              </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade20} alt="" />
-                  <p>MANAUSDT</p>
-                </div>{" "}
-              </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
                   <img src={trade21} alt="" />
                   <p>GRTUSDT</p>
                 </div>{" "}
               </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade22} alt="" />
-                  <p>XTZUSDT</p>
-                </div>{" "}
-              </div>
-
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
                   <img src={trade23} alt="" />
                   <p>NEARUSDT</p>
                 </div>{" "}
               </div>
-
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
                   <img src={trade24} alt="" />
                   <p>AXSUSDT</p>
                 </div>{" "}
               </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade25} alt="" />
-                  <p>RPLUSDT</p>
-                </div>{" "}
-              </div>
-
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
                   <img src={trade26} alt="" />
                   <p>ADAUSDT</p>
                 </div>{" "}
               </div>
-
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
                   <img src={trade27} alt="" />
                   <p>DOTUSDT</p>
                 </div>{" "}
               </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade28} alt="" />
-                  <p>YFIUSDT</p>
-                </div>{" "}
-              </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade29} alt="" />
-                  <p>ENJUSDT</p>
-                </div>{" "}
-              </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade30} alt="" />
-                  <p>NEOUSDT</p>
-                </div>{" "}
-              </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade31} alt="" />
-                  <p>IOTXUSDT</p>
-                </div>{" "}
-              </div>
-
-              <div className="drop_api_item">
-                <div className="drop_api_item_name">
-                  <img src={trade32} alt="" />
-                  <p>LINKUSDT</p>
-                </div>{" "}
-              </div>
-
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
                   <img src={trade33} alt="" />
                   <p>AVAXUSDT</p>
                 </div>{" "}
               </div>
-
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
                   <img src={trade34} alt="" />
                   <p>SANDUSDT</p>
                 </div>{" "}
               </div>
-
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
                   <img src={trade35} alt="" />
                   <p>SNXUSDT</p>
                 </div>{" "}
               </div>
-
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
-                  <img src={trade36} alt="" />
-                  <p>XLMUSDT</p>
+                  <img src={trade19} alt="" />
+                  <p>LDOUSDT</p>
                 </div>{" "}
               </div>
-
               <div className="drop_api_item">
                 <div className="drop_api_item_name">
-                  <img src={trade37} alt="" />
-                  <p>ZILUSDT</p>
+                  <img src={trade18} alt="" />
+                  <p>APTUSDT</p>
                 </div>{" "}
               </div>
+              
             </div>
           </div>
         </div>

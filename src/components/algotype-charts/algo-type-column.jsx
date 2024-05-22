@@ -100,7 +100,7 @@ const AlgoColumnChart = () => {
             return `${y.toFixed(2)} %`;
           },
           style: {
-            colors:  mode === "dark" ? "#57575790" : "#e9ebf084",
+            colors:  mode === "dark" ? "#e9ebf084 " : "#57575790",
 
           },
         },

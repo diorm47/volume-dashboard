@@ -40,7 +40,7 @@ const AlgoLineChart = ({ setAllPnl }) => {
         data: cumulativeData,
       },
       {
-        name: "PnLDown",
+        name: "DrawDown",
         data: lineDataDown,
       },
     ],
