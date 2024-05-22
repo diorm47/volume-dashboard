@@ -13,6 +13,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import { ReactComponent as DeleteWarning } from "../../assets/icons/delete-warning.svg";
 import { ReactComponent as AlgoIcon } from "../../assets/icons/algorithm.svg";
+import LongShortGraph from "../../components/long-short-graph/long-short-graph";
 
 function Investments({ updatebalance, setRec }) {
   const navigate = useNavigate();
@@ -530,7 +531,7 @@ function Investments({ updatebalance, setRec }) {
               </p>
             </div>
             <div className="algo_card_graph">
-              <img src={algo2} alt="" />
+              <LongShortGraph />
             </div>
             <div className="algo_card_precents">
               <p>01.05.2023 - 01.06.2023 </p>
@@ -547,14 +548,13 @@ function Investments({ updatebalance, setRec }) {
               </div>
               <div>
                 <p>Рекомендуемый депозит</p>
-                <span>1000 USDT</span>
+                <span>1 000 USDT</span>
               </div>
             </div>
             <NavLink to="/create-algorithm">
               <button className="algo_btn">Создать</button>
             </NavLink>
           </div>
-   
         </div>
 
         <div className="investments_page_wrapper">

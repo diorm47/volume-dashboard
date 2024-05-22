@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import "./algo-type-charts.css";
-import { datesLine } from "./line-dates";
-import { lineData } from "./line-datas";
-import { lineDataDown } from "./line-datas-1";
+import "../algotype-charts/algo-type-charts.css";
+import { lineData } from "../algotype-charts/line-datas";
+import { datesLine } from "../algotype-charts/line-dates";
+import "./long-short-graph.css";
 
-const AlgoLineChart = ({ setAllPnl, setAllPnlDown }) => {
+const LongShortGraph = () => {
   const timestamps = datesLine.map((cat) => {
     const [year, month, day] = cat.split(".").map(Number);
     return new Date(year, month - 1, day).getTime();
@@ -26,63 +26,66 @@ const AlgoLineChart = ({ setAllPnl, setAllPnlDown }) => {
   useEffect(() => {
     const newCumulativeData = calculateCumulativeSum(lineData);
     setCumulativeData(newCumulativeData);
-
-    // Log the value of the last element
-    if (newCumulativeData.length > 0) {
-      setAllPnl(newCumulativeData[newCumulativeData.length - 1].toFixed(2));
-    }
   }, [lineData]);
-  useEffect(() => {
-    const maxNegativeValue = Math.min(
-      ...lineDataDown.filter((value) => value < 0)
-    );
-    setAllPnlDown(maxNegativeValue);
-  }, []);
+
+  // Filter data within the specified date range
+  const startDate = new Date(2023, 0, 1).getTime(); // 2023-01-01
+  const endDate = new Date(2024, 0, 1).getTime(); // 2024-01-01
+
+  const filteredData = cumulativeData.filter((value, index) => {
+    const timestamp = timestamps[index];
+    return timestamp >= startDate && timestamp <= endDate;
+  });
+
+  const filteredTimestamps = timestamps.filter(
+    (timestamp) => timestamp >= startDate && timestamp <= endDate
+  );
 
   const [chartData, setChartData] = useState({
     series: [
       {
         name: "PnL",
-        data: cumulativeData,
-      },
-      {
-        name: "DrawDown",
-        data: lineDataDown,
+        data: filteredData,
       },
     ],
     options: {
       chart: {
         height: 350,
         type: "area",
+        zoom: {
+            enabled: false, // Disable zoom
+          },
+          selection: {
+            enabled: false, // Disable selection
+          },
       },
       dataLabels: {
         enabled: false,
       },
       stroke: {
         curve: "smooth",
-        width: 2,
+        width: 1,
       },
       fill: {
         type: "gradient",
         gradient: {
           shadeIntensity: 1,
-          opacityFrom: 0.01,
-          opacityTo: 0.01,
+          opacityFrom: 0.4,
+          opacityTo: 0.4,
           stops: [0, 90, 100],
         },
       },
-      colors: ["#0077FF", "#e39a08"],
+      colors: ["#0077FF"],
       grid: {
         yaxis: {
           lines: {
-            show: true,
-            color: "#F7F7F7",
+            show: false, // Hide horizontal grid lines
           },
         },
       },
       xaxis: {
         type: "datetime",
-        categories: timestamps,
+        categories: filteredTimestamps,
         labels: {
           formatter: function (val, timestamp) {
             const date = new Date(timestamp);
@@ -108,31 +111,22 @@ const AlgoLineChart = ({ setAllPnl, setAllPnlDown }) => {
         },
       },
       tooltip: {
-        x: {
-          format: "yyyy/MM/dd",
-        },
-        y: {
-          formatter: function (value) {
-            return `${Number(value).toFixed(2)} %`;
-          },
-        },
+        enabled: false,
       },
     },
   });
 
   return (
-    <>
-      <div id="chart">
-        <ReactApexChart
-          options={chartData.options}
-          series={chartData.series}
-          type="area"
-          height={350}
-          width="100%"
-        />
-      </div>
-    </>
+    <div id="chart" className="long_short_graph">
+      <ReactApexChart
+        options={chartData.options}
+        series={chartData.series}
+        type="area"
+        height={250}
+        width="114%"
+      />
+    </div>
   );
 };
 
-export default AlgoLineChart;
+export default LongShortGraph;
