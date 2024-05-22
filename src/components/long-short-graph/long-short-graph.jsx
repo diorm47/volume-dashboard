@@ -23,6 +23,7 @@ const LongShortGraph = () => {
     calculateCumulativeSum(lineData)
   );
 
+
   useEffect(() => {
     const newCumulativeData = calculateCumulativeSum(lineData);
     setCumulativeData(newCumulativeData);

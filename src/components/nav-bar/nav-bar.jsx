@@ -84,8 +84,8 @@ function NavBar({ setMode }) {
   const tariffNames = {
     Пробный: "Trial",
     Стартовый: "Starter",
-    Улучшенный: "Advanced",
-    Продвинутый: "Professional",
+    Улучшенный: "Improved",
+    Продвинутый: "Advanced",
   };
 
   const displayTariff = (language, tariff) => {

@@ -200,8 +200,8 @@ function Review(rec) {
   const tariffNames = {
     Пробный: "Trial",
     Стартовый: "Starter",
-    Улучшенный: "Advanced",
-    Профессиональный: "Professional",
+    Улучшенный: "Improved",
+    Продвинутый: "Advanced",
   };
   const { i18n } = useTranslation();
 

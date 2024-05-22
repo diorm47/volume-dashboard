@@ -155,4 +155,7 @@
   .algo_type_top_cards .main_block_wrapper {
     width: 100%;
   }
+  .algorithm_type_chart #chart {
+    padding-left: 20px;
+  }
 }

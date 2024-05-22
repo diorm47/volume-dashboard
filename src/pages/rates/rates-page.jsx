@@ -200,8 +200,8 @@ function RatesPage({ updatebalance }) {
   const tariffNames = {
     Пробный: "Trial",
     Стартовый: "Starter",
-    Улучшенный: "Advanced",
-    Профессиональный: "Professional",
+    Улучшенный: "Improved",
+    Продвинутый: "Advanced",
   };
 
   const displayTariff = (language, tariff) => {

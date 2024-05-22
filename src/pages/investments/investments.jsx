@@ -490,7 +490,7 @@ function Investments({ updatebalance, setRec }) {
               <img src={algo1} alt="" />
             </div>
             <div className="algo_card_precents">
-              <p>01.05.2023 - 01.06.2023 </p>
+              <p>2023 - 2024 </p>
               <p>+ 85.32%</p>
             </div>
             <div className="algo_card_spec">
@@ -534,8 +534,8 @@ function Investments({ updatebalance, setRec }) {
               <LongShortGraph />
             </div>
             <div className="algo_card_precents">
-              <p>01.01.2023 - 01.01.2024 </p>
-              <p>+ 779.74%</p>
+              <p>2023 - 2024 </p>
+              <p>+ 241.56%</p>
             </div>
             <div className="algo_card_spec">
               <div>

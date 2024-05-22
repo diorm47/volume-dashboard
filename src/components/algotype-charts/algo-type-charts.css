@@ -81,15 +81,13 @@
   color: #e9ebf084;
 }
 
-.algorithm_type_chart
-.apexcharts-legend  {
- display: none !important;
-
+.algorithm_type_chart .apexcharts-legend {
+  display: none !important;
 }
 
 @media only screen and (max-width: 800px) {
   .algo_type_column_1_xaxis {
-    padding-left: 100px;
+    padding-left: 100px !important;
   }
 }
 
