@@ -4,20 +4,45 @@ import AlgoLineChart from "../../components/algotype-charts-ai/algo-type-line";
 import "./algorithm-type.css";
 import { ReactComponent as Icon } from "../../assets/icons/tarif-icon.svg";
 
+import trade1 from "../../assets/images/trade/1.png";
+import trade2 from "../../assets/images/trade/2.png";
+import trade3 from "../../assets/images/trade/3.png";
+import trade4 from "../../assets/images/trade/4.png";
+import trade5 from "../../assets/images/trade/5.png";
+import trade6 from "../../assets/images/trade/6.png";
+import trade7 from "../../assets/images/trade/7.png";
+import trade8 from "../../assets/images/trade/8.png";
+import trade9 from "../../assets/images/trade/9.png";
+import trade10 from "../../assets/images/trade/10.png";
+import trade11 from "../../assets/images/trade/11.png";
+import trade12 from "../../assets/images/trade/12.png";
+import trade13 from "../../assets/images/trade/13.png";
 import trade14 from "../../assets/images/trade/14.png";
+import trade15 from "../../assets/images/trade/15.png";
+import trade16 from "../../assets/images/trade/16.png";
+import trade17 from "../../assets/images/trade/17.png";
 import trade18 from "../../assets/images/trade/18.png";
 import trade19 from "../../assets/images/trade/19.png";
+import trade20 from "../../assets/images/trade/20.png";
 import trade21 from "../../assets/images/trade/21.png";
+import trade22 from "../../assets/images/trade/22.png";
 import trade23 from "../../assets/images/trade/23.png";
 import trade24 from "../../assets/images/trade/24.png";
+import trade25 from "../../assets/images/trade/25.png";
 import trade26 from "../../assets/images/trade/26.png";
 import trade27 from "../../assets/images/trade/27.png";
+import trade28 from "../../assets/images/trade/28.png";
+import trade29 from "../../assets/images/trade/29.png";
+import trade30 from "../../assets/images/trade/30.png";
+import trade31 from "../../assets/images/trade/31.png";
+import trade32 from "../../assets/images/trade/32.png";
 import trade33 from "../../assets/images/trade/33.png";
 import trade34 from "../../assets/images/trade/34.png";
 import trade35 from "../../assets/images/trade/35.png";
-import trade5 from "../../assets/images/trade/5.png";
-import trade6 from "../../assets/images/trade/6.png";
-import trade8 from "../../assets/images/trade/8.png";
+import trade36 from "../../assets/images/trade/36.png";
+import trade37 from "../../assets/images/trade/37.png";
+import trade38 from "../../assets/images/trade/38.png";
+import trade39 from "../../assets/images/trade/39.png";
 
 function AlgorithmTypeAi() {
   const [allPnl, setAllPnl] = useState(0);
@@ -185,56 +210,8 @@ function AlgorithmTypeAi() {
           <div className="algorithm_pairs_list">
             <div className="drop_api_item">
               <div className="drop_api_item_name">
-                <img src={trade5} alt="" />
-                <p>FLOWUSDT</p>
-              </div>{" "}
-            </div>
-            <div className="drop_api_item">
-              <div className="drop_api_item_name">
-                <img src={trade6} alt="" />
-                <p>ALGOUSDT</p>
-              </div>{" "}
-            </div>
-            <div className="drop_api_item">
-              <div className="drop_api_item_name">
-                <img src={trade8} alt="" />
-                <p>1INCHUSDT</p>
-              </div>{" "}
-            </div>
-            <div className="drop_api_item">
-              <div className="drop_api_item_name">
-                <img src={trade14} alt="" />
-                <p>HBARUSDT</p>
-              </div>{" "}
-            </div>
-            <div className="drop_api_item">
-              <div className="drop_api_item_name">
-                <img src={trade21} alt="" />
-                <p>GRTUSDT</p>
-              </div>{" "}
-            </div>
-            <div className="drop_api_item">
-              <div className="drop_api_item_name">
-                <img src={trade23} alt="" />
-                <p>NEARUSDT</p>
-              </div>{" "}
-            </div>
-            <div className="drop_api_item">
-              <div className="drop_api_item_name">
-                <img src={trade24} alt="" />
-                <p>AXSUSDT</p>
-              </div>{" "}
-            </div>
-            <div className="drop_api_item">
-              <div className="drop_api_item_name">
                 <img src={trade26} alt="" />
                 <p>ADAUSDT</p>
-              </div>{" "}
-            </div>
-            <div className="drop_api_item">
-              <div className="drop_api_item_name">
-                <img src={trade27} alt="" />
-                <p>DOTUSDT</p>
               </div>{" "}
             </div>
             <div className="drop_api_item">
@@ -245,26 +222,32 @@ function AlgorithmTypeAi() {
             </div>
             <div className="drop_api_item">
               <div className="drop_api_item_name">
-                <img src={trade34} alt="" />
-                <p>SANDUSDT</p>
+                <img src={trade1} alt="" />
+                <p>BTCUSDT</p>
               </div>{" "}
             </div>
             <div className="drop_api_item">
               <div className="drop_api_item_name">
-                <img src={trade35} alt="" />
-                <p>SNXUSDT</p>
+                <img src={trade38} alt="" />
+                <p>ETCUSDT</p>
               </div>{" "}
-            </div>
+            </div>{" "}
             <div className="drop_api_item">
               <div className="drop_api_item_name">
-                <img src={trade19} alt="" />
-                <p>LDOUSDT</p>
+                <img src={trade9} alt="" />
+                <p>ETHUSDT</p>
               </div>{" "}
-            </div>
+            </div>{" "}
             <div className="drop_api_item">
               <div className="drop_api_item_name">
-                <img src={trade18} alt="" />
-                <p>APTUSDT</p>
+                <img src={trade39} alt="" />
+                <p>SOLUSDT</p>
+              </div>{" "}
+            </div>{" "}
+            <div className="drop_api_item">
+              <div className="drop_api_item_name">
+                <img src={trade36} alt="" />
+                <p>XLMUSDT</p>
               </div>{" "}
             </div>
           </div>
