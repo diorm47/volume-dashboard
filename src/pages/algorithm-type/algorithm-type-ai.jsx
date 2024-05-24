@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import AlgoColumnChart from "../../components/algotype-charts/algo-type-column";
-import AlgoLineChart from "../../components/algotype-charts/algo-type-line";
+import AlgoColumnChart from "../../components/algotype-charts-ai/algo-type-column";
+import AlgoLineChart from "../../components/algotype-charts-ai/algo-type-line";
 import "./algorithm-type.css";
 import { ReactComponent as Icon } from "../../assets/icons/tarif-icon.svg";
 
@@ -19,14 +19,14 @@ import trade5 from "../../assets/images/trade/5.png";
 import trade6 from "../../assets/images/trade/6.png";
 import trade8 from "../../assets/images/trade/8.png";
 
-function AlgorithmType() {
+function AlgorithmTypeAi() {
   const [allPnl, setAllPnl] = useState(0);
   const [allPnlDown, setAllPnlDown] = useState(0);
 
   return (
     <div className="pages_wrapper investments_page algorithm_type_page">
       <div className="main_page_title_template">
-        <h1>Лонг-Шорт</h1>
+        <h1>Long-Term AI</h1>
       </div>
       <div className="top_page_attention_wrapper container">
         <div>
@@ -87,7 +87,7 @@ function AlgorithmType() {
           <div className="main_block_wrapper_bottom">
             <div className="review_left_top_block_content">
               <div className="review_left_top_block_content_amount">
-                <p>Средний</p>
+                <p>Минимальный</p>
               </div>
             </div>
           </div>
@@ -101,7 +101,7 @@ function AlgorithmType() {
           <div className="main_block_wrapper_bottom">
             <div className="review_left_top_block_content">
               <div className="review_left_top_block_content_amount">
-                <p>Futures</p>
+                <p>Spot</p>
               </div>
             </div>
           </div>
@@ -165,7 +165,7 @@ function AlgorithmType() {
               </div>
               <div>
                 <p>Рекомендуемый депозит</p>
-                <p>$1 000</p>
+                <p>$3 000</p>
               </div>
               <div>
                 <p>Рекомендуемый срок работы</p>
@@ -340,4 +340,4 @@ function AlgorithmType() {
   );
 }
 
-export default AlgorithmType;
+export default AlgorithmTypeAi;

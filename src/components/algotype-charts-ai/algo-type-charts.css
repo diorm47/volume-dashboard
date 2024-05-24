@@ -1,0 +1,104 @@
+.apexcharts-toolbar {
+  display: none !important;
+}
+
+#chart .apexcharts-gridline {
+  stroke-width: 0.3px; /* Change grid line thickness here */
+}
+
+#chart .apexcharts-xaxis-label,
+#chart .apexcharts-yaxis-label {
+  font-family: TTInterfaces400 !important;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+}
+.apexcharts-text tspan {
+  font-family: TTInterfaces400 !important;
+}
+#SvgjsLine1073,
+.apexcharts-xaxis-tick {
+  display: none !important;
+}
+.black_mode .apexcharts-tooltip.apexcharts-theme-light {
+  border: 1px solid #343436 !important;
+}
+.black_mode .apexcharts-tooltip.apexcharts-theme-light,
+.black_mode
+  .apexcharts-tooltip.apexcharts-theme-light
+  .apexcharts-tooltip-title {
+  background: #29292d !important;
+}
+.black_mode
+  .apexcharts-tooltip.apexcharts-theme-light
+  .apexcharts-tooltip-title {
+  border-bottom: 1px solid #343436 !important;
+}
+.black_mode .apexcharts-xaxistooltip,
+.apexcharts-yaxistooltip {
+  background: #29292d !important;
+  color: #fff;
+  border: 1px solid #343436 !important;
+}
+
+@media only screen and (max-width: 450px) {
+  #chart {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+}
+
+/* .apexcharts-xaxis {
+  transform: translateX(-35px) !important;
+} */
+
+.algo_type_column_1 .apexcharts-xaxis {
+  display: none !important;
+}
+.algo_type_column_1 {
+  position: relative;
+}
+.algo_type_column_1_xaxis {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 40px;
+  padding-left: 10%;
+  margin-top: -40px;
+}
+.algo_type_column_1_xaxis p {
+  font-family: TTInterfaces400;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  color: #57575790;
+}
+.black_mode .algo_type_column_1 .apexcharts-yaxis tspan {
+  color: #e9ebf084 !important;
+}
+
+.black_mode .algo_type_column_1_xaxis p {
+  color: #e9ebf084;
+}
+
+.algorithm_type_chart .apexcharts-legend {
+  display: none !important;
+}
+.algo_type_column_2 {
+  padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .algo_type_column_1_xaxis {
+    padding-left: 100px !important;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .algorithm_type_chart #chart {
+    padding-left: 20px;
+  }
+  .algo_type_column_2 .algo_type_column_1_xaxis  {
+    margin-top: -74px;
+  }
+}

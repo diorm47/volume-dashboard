@@ -474,7 +474,7 @@ function Investments({ updatebalance, setRec }) {
                 <h3>Long-Term AI</h3>
               </div>{" "}
               <div className="algo_card_about">
-                <NavLink to="/algorithm-type">
+                <NavLink to="/algorithm-type-ai">
                   <p>Подробнее</p>
                 </NavLink>
               </div>
@@ -496,7 +496,7 @@ function Investments({ updatebalance, setRec }) {
             <div className="algo_card_spec">
               <div>
                 <p>Торгуемая площадка</p>
-                <span>Спот</span>
+                <span>Spot</span>
               </div>
               <div>
                 <p>Уровень риска</p>
@@ -540,7 +540,7 @@ function Investments({ updatebalance, setRec }) {
             <div className="algo_card_spec">
               <div>
                 <p>Торгуемая площадка</p>
-                <span>Спот, фьючерсы</span>
+                <span>Futures</span>
               </div>
               <div>
                 <p>Уровень риска</p>
