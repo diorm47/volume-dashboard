@@ -47,8 +47,9 @@ import trade35 from "../../assets/images/trade/35.png";
 import trade36 from "../../assets/images/trade/36.png";
 import trade37 from "../../assets/images/trade/37.png";
 import { NavLink } from "react-router-dom";
+import { mainApi } from "../../components/utils/main-api";
 
-function CreateAlgorithm() {
+function CreateAlgorithm({ updatebalance }) {
   const customOptions = [
     {
       value: "binance",
@@ -581,8 +582,27 @@ function CreateAlgorithm() {
         console.log(error);
       });
   };
+  // balance
+  const [userBalance, setUserBalance] = useState();
+  const getUserbalance = () => {
+    mainApi
+      .reEnter()
+      .then((res) => {
+        setUserBalance(res.data.user.balance);
+    
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const refreshUserBalance = () => {
+    updatebalance()
+    getUserbalance()
+  }
+
   useEffect(() => {
     getApiKeys();
+    getUserbalance()
   }, []);
   const [apiKeyTrade, setApiKeyTrade] = useState();
 
@@ -612,6 +632,7 @@ function CreateAlgorithm() {
       checkApiForTrade();
     }
   }, [customOptionsKey.length, selectedOption]);
+
 
   return (
     <div className="algorithm_wrapper">
@@ -762,9 +783,9 @@ function CreateAlgorithm() {
             <div className="algorithm_item_input algo_deposit">
               <input type="text" placeholder="Укажите сумму депозита" />
               <div className="algorithm_item_input_add">
-                <p>Доступно: 3500.13 USDT</p>
+                <p>Доступно: {userBalance} USDT</p>
 
-                <div className="algo_refresh">
+                <div className="algo_refresh" onClick={refreshUserBalance}>
                   <Refresh />
                 </div>
               </div>
@@ -879,8 +900,8 @@ function CreateAlgorithm() {
             <div className="algorithm_item_input algo_deposit">
               <input type="text" placeholder="Укажите сумму депозита" />
               <div className="algorithm_item_input_add">
-                <p>Доступно: 3500.13 USDT</p>
-                <div className="algo_refresh">
+                <p>Доступно: {userBalance} USDT</p>
+                <div className="algo_refresh" onClick={refreshUserBalance}>
                   <Refresh />
                 </div>
               </div>

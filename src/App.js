@@ -141,7 +141,7 @@ function App() {
           <Route path="/base-investing" element={<ConnectiongInvest />} />
           <Route path="/differences" element={<Differences />} />
           <Route path="/risks" element={<Risks />} />
-          <Route path="/create-algorithm" element={<CreateAlgorithm />} />
+          <Route path="/create-algorithm" element={<CreateAlgorithm updatebalance={updatebalance}  />} />
           <Route path="/limits" element={<Limits />} />
           <Route path="/topup-types" element={<TopupTypes />} />
           <Route path="/p2p" element={<P2p />} />
