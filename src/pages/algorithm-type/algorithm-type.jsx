@@ -26,7 +26,7 @@ function AlgorithmType() {
   return (
     <div className="pages_wrapper investments_page algorithm_type_page">
       <div className="main_page_title_template">
-        <h1>Лонг-Шорт</h1>
+        <h1>Sigma</h1>
       </div>
       <div className="top_page_attention_wrapper container">
         <div>
@@ -126,27 +126,27 @@ function AlgorithmType() {
               </div>
               <div>
                 <p>Среднегодовая доходность</p>
-                <p>+333.8%</p>
+                <p>+334.28%</p>
               </div>
               <div>
                 <p>Среднемесячная доходность</p>
-                <p>+333.8%</p>
+                <p>+27.48 %</p>
               </div>
               <div>
                 <p>Количество сделок</p>
-                <p>+333.8%</p>
+                <p>2612</p>
               </div>
               <div>
                 <p>Прибыльных сделок в %</p>
-                <p>+333.8%</p>
+                <p>88.51%</p>
               </div>
               <div>
                 <p>Убыточных сделок в %</p>
-                <p>+333.8%</p>
+                <p>11.49%</p>
               </div>
               <div>
                 <p>Макс. просадка в %</p>
-                <p>+333.8%</p>
+                <p>-3.06%</p>
               </div>
             </div>
           </div>
@@ -161,7 +161,7 @@ function AlgorithmType() {
             <div className="review_left_top_block_content algo_type_stats">
               <div>
                 <p>Минимальный депозит</p>
-                <p>$300</p>
+                <p>$100</p>
               </div>
               <div>
                 <p>Рекомендуемый депозит</p>
@@ -280,42 +280,42 @@ function AlgorithmType() {
           <div className="review_left_top_block_content">
             <div className="review_left_top_block_content_amount">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <b>
+                  {" "}
+                  Алгоритм основан на контртрендовой стратегии
+                  среднеквадратичного отклонения цены
+                </b>
               </p>
               <p>
                 {" "}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Реагирует на импульсное движение цены и подбирает оптимальные
+                точки входа в зависимости от волатильности рынка. Сеточные, или
+                grid методы торговли, отсутствуют.
               </p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                AI реагирует на краткосрочное отклонение от основного тренда,
+                определяет вероятность направления движения цены и находит
+                оптимальную точку входа в сделку.
+              </p>
+              <p>
+                Алгоритм учитывает волатильность рынка и совершает сделки при
+                оптимальных параметрах, не дожидаясь идеальных условий. Это
+                позволяет увеличить прибыль и минимизировать убытки.
+              </p>
+              <p>
+                <b> Преимущества алгоритма</b>
               </p>
               <p>
                 {" "}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                AI за секунды реагирует на изменения цены и подбирает
+                оптимальную точку продажи позиции. Это позволяет избежать
+                зависание позиции на часы и дни, а закрывать большинство сделок
+                в течение минуты после открытия.
+              </p>
+              <p>
+                Алгоритм контролирует риск и использует набор метрик
+                волатильности. Метрики используются для поиска оптимальных точек
+                усреднения позиции, что позволяет выгоднее закрывать сделку.
               </p>
             </div>
           </div>
