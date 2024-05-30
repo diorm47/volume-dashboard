@@ -647,7 +647,7 @@ function CreateAlgorithm() {
           <p>API ключ</p>
           <Info title="Выберите API ключи из списка или создайте новый" />
         </div>
-        <div className="api_modal_dropdown create_algo_birj">
+        <div className="api_modal_dropdown create_algo_birj select_api_key_sl">
           <Select
             placeholder="Выберите API ключ"
             options={customOptionsKey}

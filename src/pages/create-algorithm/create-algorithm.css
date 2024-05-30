@@ -45,8 +45,11 @@
   letter-spacing: 0%;
   text-align: center;
 }
-.add_new_api_key_btn:hover{
+.add_new_api_key_btn:hover {
   color: #fff;
+}
+.black_mode .add_new_api_key_btn {
+  background: rgb(40, 40, 40);
 }
 
 .algorithm_line {
@@ -326,8 +329,27 @@
   color: rgb(255, 255, 255);
   background: rgb(40, 40, 40);
 }
+.trade_not_allow {
+  margin-bottom: 24px;
+}
 .trade_not_allow p {
-  color: #DC2626;
+  color: #dc2626;
+}
+
+.select_api_key_sl .css-16xfy0z-control,
+.select_api_key_sl .css-3iigni-container,
+.select_api_key_sl .css-1hb7zxy-IndicatorsContainer {
+  height: 50px !important;
+}
+.select_api_key_sl .css-16xfy0z-control {
+ border: none;
+}
+.black_mode .select_api_key_sl .css-16xfy0z-control {
+  background: rgb(40, 40, 40);
+  border-color: rgb(40, 40, 40);
+}
+.css-894a34-indicatorSeparator {
+  display: none;
 }
 @media only screen and (max-width: 600px) {
   .algo_regim {
