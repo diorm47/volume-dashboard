@@ -122,7 +122,7 @@ function AlgorithmType() {
               </div>
               <div>
                 <p>Чистый П/У в %</p>
-                <p>+333.8%</p>
+                <p>{allPnl}%</p>
               </div>
               <div>
                 <p>Среднегодовая доходность</p>
@@ -146,7 +146,7 @@ function AlgorithmType() {
               </div>
               <div>
                 <p>Макс. просадка в %</p>
-                <p>-3.06%</p>
+                <p>{allPnlDown}%</p>
               </div>
             </div>
           </div>

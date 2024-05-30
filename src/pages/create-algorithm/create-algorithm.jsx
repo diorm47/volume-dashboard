@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./create-algorithm.css";
 import { ReactComponent as Info } from "../../assets/icons/info.svg";
 import { ReactComponent as Allow } from "../../assets/icons/trade-allow.svg";
@@ -45,9 +45,9 @@ import trade34 from "../../assets/images/trade/34.png";
 import trade35 from "../../assets/images/trade/35.png";
 import trade36 from "../../assets/images/trade/36.png";
 import trade37 from "../../assets/images/trade/37.png";
+import { NavLink } from "react-router-dom";
 
 function CreateAlgorithm() {
-  const [mode, setMode] = useState(localStorage.getItem("mode"));
   const customOptions = [
     {
       value: "binance",
@@ -74,7 +74,7 @@ function CreateAlgorithm() {
       ),
     },
   ];
-  const customOptionsKey = [
+  const customOptionsKeyBinance = [
     {
       value: "binance",
       label: (
@@ -88,6 +88,20 @@ function CreateAlgorithm() {
       ),
     },
   ];
+  const customOptionsKeyBybit = [
+    {
+      value: "bybit",
+      label: (
+        <div className="drop_api_item">
+          <div className="drop_api_item_name">
+            <img src={binance} alt="" />
+            <p>ByBit Futures ***************************</p>
+          </div>{" "}
+        </div>
+      ),
+    },
+  ];
+
   const customOptionsTrade = [
     {
       value: "1",
@@ -496,8 +510,6 @@ function CreateAlgorithm() {
         </div>
       ),
     },
-
-
   ];
   const customStyles = {
     option: (provided, state) => ({
@@ -535,6 +547,68 @@ function CreateAlgorithm() {
   };
 
   const [algorithmType, setAlgorithmType] = useState();
+
+  //
+  const [apiKeyBinance, setApiKeyBinance] = useState();
+  const [apiKeyBybit, setApiKeyBybit] = useState();
+  const customOptionsKey =
+    selectedOption === "binance" && apiKeyBinance
+      ? customOptionsKeyBinance
+      : selectedOption === "bybit" && apiKeyBybit
+      ? customOptionsKeyBybit
+      : [];
+  // get api
+  const getApiKeys = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch("https://api.nvolume.com/private-api/v1/users/api-keys", {
+      method: "GET",
+      headers: headersList,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.data.api_keys[0].exchange == "binance") {
+          setApiKeyBinance(data.data.api_keys[0]);
+        } else {
+          setApiKeyBybit(data.data.api_keys[0]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    getApiKeys();
+  }, []);
+  const checkApiForTrade = () => {
+    let headersList = {
+      Accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    fetch(
+      `https://api.nvolume.com/private-api/v1/users/api-keys/can-trade?exchange=${selectedOption}`,
+      {
+        method: "POST",
+        headers: headersList,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    if (customOptionsKey.length == 1 && selectedOption) {
+      checkApiForTrade()
+    }
+  }, [customOptionsKey.length, selectedOption]);
 
   return (
     <div className="algorithm_wrapper">
@@ -576,21 +650,35 @@ function CreateAlgorithm() {
             options={customOptionsKey}
             styles={
               localStorage.getItem("mode") &&
-              localStorage.getItem("mode") == "dark"
+              localStorage.getItem("mode") === "dark"
                 ? customStylesDark
                 : customStyles
             }
             onChange={handleSelectKey}
             value={customOptionsKey.find(
-              (option) => option.value === selectedOptionKey
+              (option) => option.value === selectedOption
             )}
           />
         </div>
       </div>
-      <div className="trade_allow">
-        <Allow />
-        <p>Торговля разрешена</p>
-      </div>
+      {customOptionsKey.length !== 1 && selectedOption ? (
+        <NavLink to="/settings/api">
+          <button className="add_new_api_key_btn">
+            Добавить новый API ключ
+          </button>
+        </NavLink>
+      ) : (
+        ""
+      )}
+      {customOptionsKey.length == 1 && selectedOption ? (
+        <div className="trade_allow">
+          <Allow />
+          <p>Торговля разрешена</p>
+        </div>
+      ) : (
+        ""
+      )}
+
       <div className="algorithm_line"></div>
       <div className="algorithm_item">
         <div className="algorithm_item_title">
@@ -672,10 +760,7 @@ function CreateAlgorithm() {
               <Switch open={true} />
             </div>
             <div className="algorithm_item_input">
-              <input
-                type="text"
-                placeholder="Укажите стоп-лосс"
-              />
+              <input type="text" placeholder="Укажите стоп-лосс" />
               <div className="algorithm_item_input_add">
                 <p>%</p>
               </div>
@@ -759,7 +844,10 @@ function CreateAlgorithm() {
               </div>
             </div>
             <div className="algorithm_item_input">
-              <input type="text" placeholder="Укажите максимальное кол-во сделок " />
+              <input
+                type="text"
+                placeholder="Укажите максимальное кол-во сделок "
+              />
             </div>
           </div>
           <div className="algorithm_line"></div>
@@ -799,10 +887,7 @@ function CreateAlgorithm() {
               <Switch open={true} />
             </div>
             <div className="algorithm_item_input">
-              <input
-                type="text"
-                placeholder="Укажите стоп-лосс"
-              />
+              <input type="text" placeholder="Укажите стоп-лосс" />
               <div className="algorithm_item_input_add">
                 <p>%</p>
               </div>

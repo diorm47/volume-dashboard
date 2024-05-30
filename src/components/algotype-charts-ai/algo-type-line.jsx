@@ -36,7 +36,7 @@ const AlgoLineChart = ({ setAllPnl, setAllPnlDown }) => {
     const maxNegativeValue = Math.min(
       ...lineDataDown.filter((value) => value < 0)
     );
-    setAllPnlDown(maxNegativeValue);
+    setAllPnlDown(maxNegativeValue.toFixed(2));
   }, []);
 
   const [chartData, setChartData] = useState({
