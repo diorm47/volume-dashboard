@@ -6,6 +6,7 @@ function Switch({open}) {
 
   const handleButtonClick = () => {
     setIsSwitchedOn((prevState) => !prevState);
+  
   };
 
   return (

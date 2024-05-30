@@ -50,6 +50,8 @@ import { NavLink } from "react-router-dom";
 import { mainApi } from "../../components/utils/main-api";
 
 function CreateAlgorithm({ updatebalance }) {
+  const [stopLossInput, setStopLossInput] = useState(false);
+
   const customOptions = [
     {
       value: "binance",
@@ -589,20 +591,19 @@ function CreateAlgorithm({ updatebalance }) {
       .reEnter()
       .then((res) => {
         setUserBalance(res.data.user.balance);
-    
       })
       .catch((error) => {
         console.log(error);
       });
   };
   const refreshUserBalance = () => {
-    updatebalance()
-    getUserbalance()
-  }
+    updatebalance();
+    getUserbalance();
+  };
 
   useEffect(() => {
     getApiKeys();
-    getUserbalance()
+    getUserbalance();
   }, []);
   const [apiKeyTrade, setApiKeyTrade] = useState();
 
@@ -632,7 +633,6 @@ function CreateAlgorithm({ updatebalance }) {
       checkApiForTrade();
     }
   }, [customOptionsKey.length, selectedOption]);
-
 
   return (
     <div className="algorithm_wrapper">
@@ -798,19 +798,28 @@ function CreateAlgorithm({ updatebalance }) {
                 <p>Стоп-лосс</p>
                 <Info title="Укажите сумму максимального убытка в % от депозита" />
               </div>
-              <Switch open={true} />
-            </div>
-            <div className="algorithm_item_input">
-              <input type="text" placeholder="Укажите стоп-лосс" />
-              <div className="algorithm_item_input_add">
-                <p>%</p>
+              <div onClick={() => setStopLossInput(!stopLossInput)}>
+                <Switch open={stopLossInput} />
               </div>
             </div>
-            <div className="stop_lost_text">
-              <p>
-                Если ваш чистый убыток достигнет -- USDT, торговля прекратится
-              </p>
-            </div>
+            {stopLossInput ? (
+              <>
+                <div className="algorithm_item_input">
+                  <input type="text" placeholder="Укажите стоп-лосс" />
+                  <div className="algorithm_item_input_add">
+                    <p>%</p>
+                  </div>
+                </div>
+                <div className="stop_lost_text">
+                  <p>
+                    Если ваш чистый убыток достигнет -- USDT, торговля
+                    прекратится
+                  </p>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
           </div>
           <div className="algorithm_line"></div>
           <div className="algorithm_btns">
@@ -925,19 +934,29 @@ function CreateAlgorithm({ updatebalance }) {
                 <p>Стоп-лосс</p>
                 <Info title="Укажите сумму максимального убытка в % от депозита" />
               </div>
-              <Switch open={true} />
-            </div>
-            <div className="algorithm_item_input">
-              <input type="text" placeholder="Укажите стоп-лосс" />
-              <div className="algorithm_item_input_add">
-                <p>%</p>
+
+              <div onClick={() => setStopLossInput(!stopLossInput)}>
+                <Switch open={stopLossInput} />
               </div>
             </div>
-            <div className="stop_lost_text">
-              <p>
-                Если ваш чистый убыток достигнет -- USDT, торговля прекратится
-              </p>
-            </div>
+            {stopLossInput ? (
+              <>
+                <div className="algorithm_item_input">
+                  <input type="text" placeholder="Укажите стоп-лосс" />
+                  <div className="algorithm_item_input_add">
+                    <p>%</p>
+                  </div>
+                </div>
+                <div className="stop_lost_text">
+                  <p>
+                    Если ваш чистый убыток достигнет -- USDT, торговля
+                    прекратится
+                  </p>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
           </div>
           <div className="algorithm_line"></div>
           <div className="algorithm_btns">
