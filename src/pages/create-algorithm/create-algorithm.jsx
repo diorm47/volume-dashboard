@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./create-algorithm.css";
 import { ReactComponent as Info } from "../../assets/icons/info.svg";
 import { ReactComponent as Allow } from "../../assets/icons/trade-allow.svg";
+import { ReactComponent as DisAllow } from "../../assets/icons/trade-dis.svg";
 import { ReactComponent as Refresh } from "../../assets/icons/refreah.svg";
 import Select from "react-select";
 import bybit from "../../assets/icons/bybit-icon.png";
@@ -583,6 +584,8 @@ function CreateAlgorithm() {
   useEffect(() => {
     getApiKeys();
   }, []);
+  const [apiKeyTrade, setApiKeyTrade] = useState();
+
   const checkApiForTrade = () => {
     let headersList = {
       Accept: "*/*",
@@ -598,7 +601,7 @@ function CreateAlgorithm() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        setApiKeyTrade(data.data.can_trade);
       })
       .catch((error) => {
         console.log(error);
@@ -606,7 +609,7 @@ function CreateAlgorithm() {
   };
   useEffect(() => {
     if (customOptionsKey.length == 1 && selectedOption) {
-      checkApiForTrade()
+      checkApiForTrade();
     }
   }, [customOptionsKey.length, selectedOption]);
 
@@ -654,6 +657,7 @@ function CreateAlgorithm() {
                 ? customStylesDark
                 : customStyles
             }
+            isDisabled
             onChange={handleSelectKey}
             value={customOptionsKey.find(
               (option) => option.value === selectedOption
@@ -670,7 +674,7 @@ function CreateAlgorithm() {
       ) : (
         ""
       )}
-      {customOptionsKey.length == 1 && selectedOption ? (
+      {customOptionsKey.length == 1 && selectedOption && apiKeyTrade == true ? (
         <div className="trade_allow">
           <Allow />
           <p>Торговля разрешена</p>
@@ -678,7 +682,23 @@ function CreateAlgorithm() {
       ) : (
         ""
       )}
-
+      {customOptionsKey.length == 1 &&
+      selectedOption &&
+      apiKeyTrade == false ? (
+        <>
+          <div className="trade_allow trade_not_allow">
+            <DisAllow />
+            <p>Торговля запрешена</p>
+          </div>
+          <NavLink to="/settings/api">
+            <button className="add_new_api_key_btn">
+              Добавить новый API ключ
+            </button>
+          </NavLink>
+        </>
+      ) : (
+        ""
+      )}
       <div className="algorithm_line"></div>
       <div className="algorithm_item">
         <div className="algorithm_item_title">

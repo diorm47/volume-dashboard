@@ -326,6 +326,9 @@
   color: rgb(255, 255, 255);
   background: rgb(40, 40, 40);
 }
+.trade_not_allow p {
+  color: #DC2626;
+}
 @media only screen and (max-width: 600px) {
   .algo_regim {
     flex-direction: column;
