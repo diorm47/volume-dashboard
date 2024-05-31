@@ -6,7 +6,7 @@ import Security from "./security";
 import "./settings.css";
 import ApiKeys from "./api-keys";
 
-function Settings({ setRec }) {
+function Settings({ setRec, updatebalance }) {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ function Settings({ setRec }) {
             <Route path="/" element={<Profile />} />
             <Route path="profile" element={<Profile />} />
             <Route path="security" element={<Security />} />
-            <Route path="api" element={<ApiKeys />} />
+            <Route path="api" element={<ApiKeys updatebalance={updatebalance} />} />
           </Routes>
         </div>
       </div>

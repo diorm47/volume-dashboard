@@ -127,7 +127,7 @@ function App() {
               <Investments updatebalance={updatebalance} setRec={setRec} />
             }
           />
-          <Route path="/settings/*" element={<Settings />} />
+          <Route path="/settings/*" element={<Settings updatebalance={updatebalance}  />} />
           <Route
             path="/pricing/*"
             element={<Rates updatebalance={updatebalance} />}

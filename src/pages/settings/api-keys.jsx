@@ -15,7 +15,7 @@ import Snackbar from "../../components/snackbar/snackbar";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-function ApiKeys({ setRec }) {
+function ApiKeys({ setRec, updatebalance }) {
   const { t, i18n } = useTranslation();
 
   const userLanguage = localStorage.getItem("locale") || "ru";
@@ -132,7 +132,6 @@ function ApiKeys({ setRec }) {
   const [publickKey, setPublickKey] = useState("");
   const [secretKey, setSecretKey] = useState("");
 
-  const navigate = useNavigate();
   const addApi = () => {
     const localization = {
       en: {
@@ -173,13 +172,12 @@ function ApiKeys({ setRec }) {
           refresh();
           closeModals();
           snackOptions(localization[userLanguage].apiAddedSuccess, "success");
-          navigate("/investments");
+          updatebalance()
         } else {
           snackOptions(localization[userLanguage].apiAddError, "error");
         }
       })
       .catch((error) => {
-        console.log(error);
         snackOptions(localization[userLanguage].requestError, "error");
       });
   };
@@ -216,6 +214,8 @@ function ApiKeys({ setRec }) {
           closeModals();
           snackOptions(localization[userLanguage].apiDeletedSuccess, "success");
           setRec(true);
+          updatebalance()
+
         } else {
           snackOptions(localization[userLanguage].apiDeleteError, "error");
         }
@@ -300,7 +300,7 @@ function ApiKeys({ setRec }) {
               <div className="empty_api_block">
                 <p>{t("api_empty.title")}</p>
                 <span>
-                {t("api_empty.desc1")} <br />  {t("api_empty.desc2")}
+                  {t("api_empty.desc1")} <br /> {t("api_empty.desc2")}
                 </span>
                 <div className="add_key_btn">
                   <button
@@ -481,7 +481,7 @@ function ApiKeys({ setRec }) {
               <div className="modal_wrapper_btns add_api_btns">
                 <div className="modal_wrapper_save_btn">
                   {/* onClick={addApi} */}
-                  <button onClick={addApi}>  {t("apiModal.addButton")}</button>
+                  <button onClick={addApi}> {t("apiModal.addButton")}</button>
                 </div>
 
                 <div className="modal_wrapper_cancel">

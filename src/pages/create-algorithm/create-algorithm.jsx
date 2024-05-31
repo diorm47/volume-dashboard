@@ -786,7 +786,15 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_item_input algo_deposit">
               <input type="text" placeholder="Укажите сумму депозита" />
               <div className="algorithm_item_input_add">
-                <p>Доступно: {userBalance} USDT</p>
+                <p>
+                  Доступно:{" "}
+                  {customOptionsKey.length == 1 &&
+                  selectedOption &&
+                  apiKeyTrade == true
+                    ? userBalance
+                    : "0.0"}{" "}
+                  USDT
+                </p>
 
                 <div className="algo_refresh" onClick={refreshUserBalance}>
                   <Refresh
@@ -914,7 +922,16 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_item_input algo_deposit">
               <input type="text" placeholder="Укажите сумму депозита" />
               <div className="algorithm_item_input_add">
-                <p>Доступно: {userBalance} USDT</p>
+                <p>
+                  Доступно:{" "}
+                  {customOptionsKey.length == 1 &&
+                  selectedOption &&
+                  apiKeyTrade == true
+                    ? userBalance
+                    : "0.0"}{" "}
+                  USDT
+                </p>
+
                 <div className="algo_refresh" onClick={refreshUserBalance}>
                   <Refresh
                     className={` ${isRotating ? "rotate-animation" : ""}`}
