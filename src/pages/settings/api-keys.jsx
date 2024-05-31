@@ -172,7 +172,7 @@ function ApiKeys({ setRec, updatebalance }) {
           refresh();
           closeModals();
           snackOptions(localization[userLanguage].apiAddedSuccess, "success");
-          updatebalance()
+          updatebalance();
         } else {
           snackOptions(localization[userLanguage].apiAddError, "error");
         }
@@ -209,19 +209,13 @@ function ApiKeys({ setRec, updatebalance }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.success) {
-          refresh();
-          closeModals();
-          snackOptions(localization[userLanguage].apiDeletedSuccess, "success");
-          setRec(true);
-          updatebalance()
-
-        } else {
-          snackOptions(localization[userLanguage].apiDeleteError, "error");
-        }
+        refresh();
+        closeModals();
+        snackOptions(localization[userLanguage].apiDeletedSuccess, "success");
+        setRec(true);
+        updatebalance();
       })
       .catch((error) => {
-        console.log(error);
         snackOptions(localization[userLanguage].apiDeleteError, "error");
       });
   };
