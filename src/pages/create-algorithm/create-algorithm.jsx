@@ -586,6 +586,7 @@ function CreateAlgorithm({ updatebalance }) {
   };
   // balance
   const [userBalance, setUserBalance] = useState();
+  const [isRotating, setIsRotating] = useState(false);
   const getUserbalance = () => {
     mainApi
       .reEnter()
@@ -598,7 +599,9 @@ function CreateAlgorithm({ updatebalance }) {
   };
   const refreshUserBalance = () => {
     updatebalance();
+    setIsRotating(true);
     getUserbalance();
+    setTimeout(() => setIsRotating(false), 1000);
   };
 
   useEffect(() => {
@@ -786,7 +789,9 @@ function CreateAlgorithm({ updatebalance }) {
                 <p>Доступно: {userBalance} USDT</p>
 
                 <div className="algo_refresh" onClick={refreshUserBalance}>
-                  <Refresh />
+                  <Refresh
+                    className={` ${isRotating ? "rotate-animation" : ""}`}
+                  />
                 </div>
               </div>
             </div>
@@ -911,7 +916,9 @@ function CreateAlgorithm({ updatebalance }) {
               <div className="algorithm_item_input_add">
                 <p>Доступно: {userBalance} USDT</p>
                 <div className="algo_refresh" onClick={refreshUserBalance}>
-                  <Refresh />
+                  <Refresh
+                    className={` ${isRotating ? "rotate-animation" : ""}`}
+                  />
                 </div>
               </div>
             </div>

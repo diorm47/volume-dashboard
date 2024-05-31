@@ -541,7 +541,7 @@ function Investments({ updatebalance, setRec }) {
             </div>
             <div className="algo_card_precents">
               <p>2023 - 2024 </p>
-              <p>+ 754.17%</p>
+              <p>+ 229.64%</p>
             </div>
             <div className="algo_card_spec">
               <div>

@@ -38,6 +38,7 @@ const LongShortGraph = () => {
     return timestamp >= startDate && timestamp <= endDate;
   });
 
+  console.log(filteredData);
   const filteredTimestamps = timestamps.filter(
     (timestamp) => timestamp >= startDate && timestamp <= endDate
   );

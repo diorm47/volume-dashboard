@@ -51,7 +51,18 @@
 .black_mode .add_new_api_key_btn {
   background: rgb(40, 40, 40);
 }
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
+.rotate-animation {
+  animation: rotate360 1s linear;
+}
 .algorithm_line {
   margin: 24px 0;
   width: 100%;
@@ -342,7 +353,7 @@
   height: 50px !important;
 }
 .select_api_key_sl .css-16xfy0z-control {
- border: none;
+  border: none;
 }
 .black_mode .select_api_key_sl .css-16xfy0z-control {
   background: rgb(40, 40, 40);
