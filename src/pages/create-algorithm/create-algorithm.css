@@ -17,6 +17,15 @@
 .black_mode .algorithm_item_title p {
   color: rgb(255, 255, 255);
 }
+.error_input_validate  {
+  font-family: TTInterfaces400;
+color: #DC2626;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  text-align: left;
+  margin-top: 20px;
+}
 .mt_24 {
   margin-top: 24px;
 }

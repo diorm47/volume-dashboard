@@ -85,7 +85,6 @@ function CreateAlgorithm({ updatebalance }) {
     //     <div className="drop_api_item">
     //       <div className="drop_api_item_name">
     //         <img src={binance} alt="" />
-
     //         <p>Binance Futures ***************************</p>
     //       </div>{" "}
     //     </div>
@@ -537,19 +536,16 @@ function CreateAlgorithm({ updatebalance }) {
 
   const [selectedOption, setSelectedOption] = useState();
   const [selectedOptionKey, setSelectedOptionKey] = useState();
-  const [selectedOptionTrade, setSelectedOptionTrade] = useState();
+  const [selectedOptionTrade, setSelectedOptionsTrade] = useState([]);
   const handleSelect = (selectedOption) => {
     setSelectedOption(selectedOption.value);
   };
   const handleSelectKey = (selectedOption) => {
     setSelectedOptionKey(selectedOption.value);
   };
-  const handleSelectTrade = (selectedOption) => {
-    setSelectedOptionTrade(selectedOption.value, () => {
-      console.log(selectedOptionTrade);
-    });
+  const handleSelectTrade = (selected) => {
+    setSelectedOptionsTrade(selected);
   };
-
   const [algorithmType, setAlgorithmType] = useState();
 
   //
@@ -637,6 +633,65 @@ function CreateAlgorithm({ updatebalance }) {
     }
   }, [customOptionsKey.length, selectedOption]);
 
+  const [deposite, setDeposite] = useState();
+  const [depositeError, setDepositeError] = useState();
+  const handleBlurDeposite = () => {
+    if (deposite < 100) {
+      setDepositeError(
+        "Депозит не может быть менее 100 USDT, увеличьте депозит"
+      );
+    } else if (deposite > userBalance) {
+      setDepositeError(
+        "Депозит выше доступной суммы на балансе, уменьшите сумму депозита"
+      );
+    } else {
+      setDepositeError("");
+    }
+  };
+
+  const [activeTR, setActiveTR] = useState();
+  const [activeTRError, setActiveTRError] = useState();
+  const handleBlurActiveTR = () => {
+    if (activeTR > selectedOptionTrade.length) {
+      setActiveTRError(
+        `Максимальное кол-во активных сделок не может быть больше ${selectedOptionTrade.length}`
+      );
+    } else if (activeTR < 1) {
+      setActiveTRError(
+        "Максимальное кол-во активных сделок не может быть меньше 1"
+      );
+    } else {
+      setActiveTRError("");
+    }
+  };
+
+  const [volume, setVolume] = useState();
+  const [volumeError, setVolumeError] = useState();
+  const handleBlurVolume = () => {
+    if (volume > deposite / 10) {
+      setVolumeError(
+        "Объём сделки не может быть более 10% от депозита, снизьте обьем"
+      );
+    } else if (volume < deposite / 1000) {
+      setVolumeError(
+        "Объём сделки не может быть менее 0,1% от депозита, увеличьте объём"
+      );
+    } else {
+      setVolumeError("");
+    }
+  };
+
+  const [shoulder, setShoulder] = useState();
+  const [shoulderError, setShoulderError] = useState();
+  const handleBlurShoulder = () => {
+    if (shoulder > 10) {
+      setShoulderError("Плечо не может быть более 10x, снизьте плечо");
+    } else if (shoulder < 1) {
+      setShoulderError("Плечо не может быть менее 1x, увеличьте плечо");
+    } else {
+      setShoulderError("");
+    }
+  };
   return (
     <div className="algorithm_wrapper">
       <div className="algorithm_wrapper_title">
@@ -784,7 +839,13 @@ function CreateAlgorithm({ updatebalance }) {
               <Info title="Укажите выделенную сумму депозита для алгоритма" />
             </div>
             <div className="algorithm_item_input algo_deposit">
-              <input type="number" placeholder="Укажите сумму депозита" />
+              <input
+                type="number"
+                placeholder="Укажите сумму депозита"
+                value={deposite}
+                onChange={(e) => setDeposite(e.target.value)}
+                onBlur={handleBlurDeposite}
+              />
               <div className="algorithm_item_input_add">
                 <p>
                   Доступно:{" "}
@@ -803,6 +864,10 @@ function CreateAlgorithm({ updatebalance }) {
                 </div>
               </div>
             </div>
+
+            {depositeError && (
+              <p className="error_input_validate">{depositeError}</p>
+            )}
           </div>
           <div className="algorithm_line"></div>
           <div className="algorithm_item">
@@ -884,43 +949,20 @@ function CreateAlgorithm({ updatebalance }) {
             </div>
           </div>
           <div className="algorithm_line"></div>
-          <div className="algorithm_item">
-            <div className="reinv_inputs">
-              <div className="algorithm_item_title">
-                <p>Объем сделки</p>
-                <Info title="Укажите обьем сделки в % от депозита" />
-              </div>
-            </div>
-            <div className="algorithm_item_input">
-              <input type="number" placeholder="Укажите объём сделки" />
-              <div className="algorithm_item_input_add">
-                <p>%</p>
-              </div>
-            </div>
-          </div>
-          <div className="algorithm_line"></div>
-          <div className="algorithm_item">
-            <div className="reinv_inputs">
-              <div className="algorithm_item_title">
-                <p>Максимальное кол-во активных сделок</p>
-                <Info />
-              </div>
-            </div>
-            <div className="algorithm_item_input">
-              <input
-             type="number"
-                placeholder="Укажите максимальное кол-во сделок "
-              />
-            </div>
-          </div>
-          <div className="algorithm_line"></div>
+
           <div className="algorithm_item">
             <div className="algorithm_item_title">
               <p>Депозит </p>
               <Info title="Укажите выделенную сумму депозита для алгоритма" />
             </div>
             <div className="algorithm_item_input algo_deposit">
-              <input type="number" placeholder="Укажите сумму депозита" />
+              <input
+                type="number"
+                placeholder="Укажите сумму депозита"
+                value={deposite}
+                onChange={(e) => setDeposite(e.target.value)}
+                onBlur={handleBlurDeposite}
+              />
               <div className="algorithm_item_input_add">
                 <p>
                   Доступно:{" "}
@@ -939,7 +981,58 @@ function CreateAlgorithm({ updatebalance }) {
                 </div>
               </div>
             </div>
+
+            {depositeError && (
+              <p className="error_input_validate">{depositeError}</p>
+            )}
           </div>
+          <div className="algorithm_line"></div>
+          <div className="algorithm_item">
+            <div className="reinv_inputs">
+              <div className="algorithm_item_title">
+                <p>Максимальное кол-во активных сделок</p>
+                <Info />
+              </div>
+            </div>
+            <div className="algorithm_item_input">
+              <input
+                type="number"
+                placeholder="Укажите максимальное кол-во сделок "
+                value={activeTR}
+                onChange={(e) => setActiveTR(e.target.value)}
+                onBlur={handleBlurActiveTR}
+              />
+            </div>
+            {activeTRError && (
+              <p className="error_input_validate">{activeTRError}</p>
+            )}
+          </div>
+          <div className="algorithm_line"></div>
+
+          <div className="algorithm_item">
+            <div className="reinv_inputs">
+              <div className="algorithm_item_title">
+                <p>Объем сделки</p>
+                <Info title="Укажите обьем сделки в % от депозита" />
+              </div>
+            </div>
+            <div className="algorithm_item_input">
+              <input
+                type="number"
+                placeholder="Укажите объём сделки"
+                value={volume}
+                onChange={(e) => setVolume(e.target.value)}
+                onBlur={handleBlurVolume}
+              />
+              <div className="algorithm_item_input_add">
+                <p>%</p>
+              </div>
+            </div>
+            {volumeError && (
+              <p className="error_input_validate">{volumeError}</p>
+            )}
+          </div>
+
           <div className="algorithm_item mt_24">
             <div className="reinv_inputs">
               <div className="algorithm_item_title">
@@ -948,8 +1041,18 @@ function CreateAlgorithm({ updatebalance }) {
               </div>
             </div>
             <div className="algorithm_item_input">
-              <input type="number" placeholder="Укажите плечо" />
+              <input
+                type="number"
+                placeholder="Укажите плечо"
+                value={shoulder}
+                onChange={(e) => setShoulder(e.target.value)}
+                onBlur={handleBlurShoulder}
+              />
             </div>
+
+            {shoulderError && (
+              <p className="error_input_validate">{shoulderError}</p>
+            )}
           </div>
           <div className="algorithm_line"></div>
           <div className="algorithm_item">
