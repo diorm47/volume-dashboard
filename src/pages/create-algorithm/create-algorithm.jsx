@@ -53,18 +53,18 @@ function CreateAlgorithm({ updatebalance }) {
   const [stopLossInput, setStopLossInput] = useState(false);
 
   const customOptions = [
-    {
-      value: "binance",
-      label: (
-        <div className="drop_api_item">
-          <div className="drop_api_item_name">
-            <img src={binance} alt="" />
+    // {
+    //   value: "binance",
+    //   label: (
+    //     <div className="drop_api_item">
+    //       <div className="drop_api_item_name">
+    //         <img src={binance} alt="" />
 
-            <p>Binance Futures</p>
-          </div>{" "}
-        </div>
-      ),
-    },
+    //         <p>Binance Futures</p>
+    //       </div>{" "}
+    //     </div>
+    //   ),
+    // },
     {
       value: "bybit",
       label: (
@@ -79,18 +79,18 @@ function CreateAlgorithm({ updatebalance }) {
     },
   ];
   const customOptionsKeyBinance = [
-    {
-      value: "binance",
-      label: (
-        <div className="drop_api_item">
-          <div className="drop_api_item_name">
-            <img src={binance} alt="" />
+    // {
+    //   value: "binance",
+    //   label: (
+    //     <div className="drop_api_item">
+    //       <div className="drop_api_item_name">
+    //         <img src={binance} alt="" />
 
-            <p>Binance Futures ***************************</p>
-          </div>{" "}
-        </div>
-      ),
-    },
+    //         <p>Binance Futures ***************************</p>
+    //       </div>{" "}
+    //     </div>
+    //   ),
+    // },
   ];
   const customOptionsKeyBybit = [
     {
@@ -98,7 +98,7 @@ function CreateAlgorithm({ updatebalance }) {
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
-            <img src={binance} alt="" />
+            <img src={bybit} alt="" />
             <p>ByBit Futures ***************************</p>
           </div>{" "}
         </div>
@@ -108,7 +108,7 @@ function CreateAlgorithm({ updatebalance }) {
 
   const customOptionsTrade = [
     {
-      value: "1",
+      value: "BTCUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -119,18 +119,18 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "2",
+      value: "UNIUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
             <img src={trade2} alt="" />
-            <p> UNIUSDT</p>
+            <p>UNIUSDT</p>
           </div>{" "}
         </div>
       ),
     },
     {
-      value: "3",
+      value: "MATICUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -141,7 +141,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "4",
+      value: "XMRUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -152,7 +152,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "5",
+      value: "FLOWUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -163,7 +163,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "6",
+      value: "ALGOUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -174,7 +174,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "7",
+      value: "CRVUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -185,7 +185,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "8",
+      value: "1INCHUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -196,7 +196,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "9",
+      value: "ETHUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -207,7 +207,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "10",
+      value: "AAVEUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -218,7 +218,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "11",
+      value: "MKRUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -229,7 +229,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "12",
+      value: "ATOMUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -240,7 +240,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "13",
+      value: "ZRXUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -251,7 +251,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "14",
+      value: "HBARUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -262,7 +262,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "15",
+      value: "DASHUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -273,7 +273,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "16",
+      value: "ZECUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -284,7 +284,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "17",
+      value: "BNBUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -295,7 +295,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "18",
+      value: "APTUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -306,7 +306,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "19",
+      value: "LDOUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -317,7 +317,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "20",
+      value: "MANAUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -328,7 +328,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "21",
+      value: "GRTUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -339,7 +339,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "22",
+      value: "XTZUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -350,7 +350,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "23",
+      value: "NEARUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -361,7 +361,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "24",
+      value: "AXSUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -372,7 +372,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "25",
+      value: "RPLUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -383,7 +383,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "26",
+      value: "ADAUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -394,7 +394,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "27",
+      value: "DOTUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -405,7 +405,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "28",
+      value: "YFIUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -416,7 +416,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "29",
+      value: "ENJUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -427,7 +427,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "30",
+      value: "NEOUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -438,7 +438,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "31",
+      value: "IOTXUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -449,7 +449,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "32",
+      value: "LINKUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -460,7 +460,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "33",
+      value: "AVAXUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -471,7 +471,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "34",
+      value: "SANDUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -482,7 +482,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "35",
+      value: "SNXUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -493,7 +493,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "36",
+      value: "XLMUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -504,7 +504,7 @@ function CreateAlgorithm({ updatebalance }) {
       ),
     },
     {
-      value: "37",
+      value: "ZILUSDT",
       label: (
         <div className="drop_api_item">
           <div className="drop_api_item_name">
@@ -784,7 +784,7 @@ function CreateAlgorithm({ updatebalance }) {
               <Info title="Укажите выделенную сумму депозита для алгоритма" />
             </div>
             <div className="algorithm_item_input algo_deposit">
-              <input type="text" placeholder="Укажите сумму депозита" />
+              <input type="number" placeholder="Укажите сумму депозита" />
               <div className="algorithm_item_input_add">
                 <p>
                   Доступно:{" "}
@@ -818,7 +818,7 @@ function CreateAlgorithm({ updatebalance }) {
             {stopLossInput ? (
               <>
                 <div className="algorithm_item_input">
-                  <input type="text" placeholder="Укажите стоп-лосс" />
+                  <input type="number" placeholder="Укажите стоп-лосс" />
                   <div className="algorithm_item_input_add">
                     <p>%</p>
                   </div>
@@ -892,7 +892,7 @@ function CreateAlgorithm({ updatebalance }) {
               </div>
             </div>
             <div className="algorithm_item_input">
-              <input type="text" placeholder="Укажите объём сделки" />
+              <input type="number" placeholder="Укажите объём сделки" />
               <div className="algorithm_item_input_add">
                 <p>%</p>
               </div>
@@ -908,7 +908,7 @@ function CreateAlgorithm({ updatebalance }) {
             </div>
             <div className="algorithm_item_input">
               <input
-                type="text"
+             type="number"
                 placeholder="Укажите максимальное кол-во сделок "
               />
             </div>
@@ -920,7 +920,7 @@ function CreateAlgorithm({ updatebalance }) {
               <Info title="Укажите выделенную сумму депозита для алгоритма" />
             </div>
             <div className="algorithm_item_input algo_deposit">
-              <input type="text" placeholder="Укажите сумму депозита" />
+              <input type="number" placeholder="Укажите сумму депозита" />
               <div className="algorithm_item_input_add">
                 <p>
                   Доступно:{" "}
@@ -948,7 +948,7 @@ function CreateAlgorithm({ updatebalance }) {
               </div>
             </div>
             <div className="algorithm_item_input">
-              <input type="text" placeholder="Укажите плечо" />
+              <input type="number" placeholder="Укажите плечо" />
             </div>
           </div>
           <div className="algorithm_line"></div>
@@ -966,7 +966,7 @@ function CreateAlgorithm({ updatebalance }) {
             {stopLossInput ? (
               <>
                 <div className="algorithm_item_input">
-                  <input type="text" placeholder="Укажите стоп-лосс" />
+                  <input type="number" placeholder="Укажите стоп-лосс" />
                   <div className="algorithm_item_input_add">
                     <p>%</p>
                   </div>
