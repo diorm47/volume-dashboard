@@ -169,7 +169,7 @@ nav {
   z-index: 12;
   opacity: 0;
   transform: translateY(15%);
-  transition: all 0.35s ease;
+  transition: all 0.2s ease;
   visibility: hidden;
 }
 .lang_switcher_wrapper .nav_menu_item_drop {
@@ -319,7 +319,7 @@ nav {
 
 .nav_menu_item_drop_profile {
   right: 0;
-  top: 40px;
+  top: 35px;
   width: 260px;
 }
 .nav_menu_item_drop_profile_block {

@@ -209,10 +209,9 @@ function ApiKeys({ setRec, updatebalance }) {
           refresh();
           closeModals();
           updatebalance();
+        } else {
+          snackOptions(localization[userLanguage].apiDeleteError, "error");
         }
-      })
-      .catch((error) => {
-        snackOptions(localization[userLanguage].apiDeleteError, "error");
       });
   };
 
