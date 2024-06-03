@@ -48,6 +48,7 @@ import trade36 from "../../assets/images/trade/36.png";
 import trade37 from "../../assets/images/trade/37.png";
 import { NavLink } from "react-router-dom";
 import { mainApi } from "../../components/utils/main-api";
+import CreateApiModal from "../../components/create-api-modal/create-api-modal";
 
 function CreateAlgorithm({ updatebalance }) {
   const [stopLossInput, setStopLossInput] = useState(false);
@@ -692,413 +693,419 @@ function CreateAlgorithm({ updatebalance }) {
       setShoulderError("");
     }
   };
+  const [addApiVisible, setAddApi] = useState(false);
   return (
-    <div className="algorithm_wrapper">
-      <div className="algorithm_wrapper_title">
-        <h1>Создание алгоритма</h1>
-      </div>
-      <div className="algorithm_line"></div>
-      <div className="algorithm_item">
-        <div className="algorithm_item_title">
-          <p>Биржа</p>
-          <Info title="Выберите используемую биржу" />
+    <>
+      <div className="algorithm_wrapper">
+        <div className="algorithm_wrapper_title">
+          <h1>Создание алгоритма</h1>
         </div>
-        <div className="api_modal_dropdown create_algo_birj">
-          <Select
-            placeholder="Выберите биржу"
-            options={customOptions}
-            styles={
-              localStorage.getItem("mode") &&
-              localStorage.getItem("mode") == "dark"
-                ? customStylesDark
-                : customStyles
-            }
-            onChange={handleSelect}
-            value={customOptions.find(
-              (option) => option.value === selectedOption
-            )}
-          />
-        </div>
-      </div>
-      <div className="algorithm_line"></div>
-      <div className="algorithm_item">
-        <div className="algorithm_item_title">
-          <p>API ключ</p>
-          <Info title="Выберите API ключи из списка или создайте новый" />
-        </div>
-        <div className="api_modal_dropdown create_algo_birj select_api_key_sl">
-          <Select
-            placeholder="Выберите API ключ"
-            options={customOptionsKey}
-            styles={
-              localStorage.getItem("mode") &&
-              localStorage.getItem("mode") === "dark"
-                ? customStylesDark
-                : customStyles
-            }
-            isDisabled
-            onChange={handleSelectKey}
-            value={customOptionsKey.find(
-              (option) => option.value === selectedOption
-            )}
-          />
-        </div>
-      </div>
-      {customOptionsKey.length !== 1 && selectedOption ? (
-        <NavLink to="/settings/api">
-          <button className="add_new_api_key_btn">
-            Добавить новый API ключ
-          </button>
-        </NavLink>
-      ) : (
-        ""
-      )}
-      {customOptionsKey.length == 1 && selectedOption && apiKeyTrade == true ? (
-        <div className="trade_allow">
-          <Allow />
-          <p>Торговля разрешена</p>
-        </div>
-      ) : (
-        ""
-      )}
-      {customOptionsKey.length == 1 &&
-      selectedOption &&
-      apiKeyTrade == false ? (
-        <>
-          <div className="trade_allow trade_not_allow">
-            <DisAllow />
-            <p>Торговля запрешена</p>
+        <div className="algorithm_line"></div>
+        <div className="algorithm_item">
+          <div className="algorithm_item_title">
+            <p>Биржа</p>
+            <Info title="Выберите используемую биржу" />
           </div>
-          <NavLink to="/settings/api">
-            <button className="add_new_api_key_btn">
-              Добавить новый API ключ
-            </button>
-          </NavLink>
-        </>
-      ) : (
-        ""
-      )}
-      <div className="algorithm_line"></div>
-      <div className="algorithm_item">
-        <div className="algorithm_item_title">
-          <p>Режим настройки</p>
-          <Info title="Выберите режим настройки алгоритма" />
-        </div>
-        <div className="algo_regim ">
-          <div
-            className={
-              algorithmType == "auto"
-                ? "algo_regim_item algo_regim_item_active"
-                : "algo_regim_item "
-            }
-            onClick={() => setAlgorithmType("auto")}
-          >
-            <div className="algo_regim_item_title">
-              <h4>Автоматический</h4>
-              <div className="algo_regim_item_rec">Рекомендуем</div>
-            </div>
-            <p>
-              Алгоритм самостоятельно подберёт оптимальные настройки в
-              зависимости от рыночной ситуации, без вашего участия.
-            </p>
-          </div>
-          <div
-            onClick={() => setAlgorithmType("handle")}
-            className={
-              algorithmType == "handle"
-                ? "algo_regim_item algo_regim_item_active"
-                : "algo_regim_item "
-            }
-          >
-            <div className="algo_regim_item_title">
-              <h4>Ручной</h4>
-            </div>
-            <p>
-              Настройте алгоритм и подберите оптимальные параметры торговли,
-              которые подойдут именно вам.
-            </p>
+          <div className="api_modal_dropdown create_algo_birj">
+            <Select
+              placeholder="Выберите биржу"
+              options={customOptions}
+              styles={
+                localStorage.getItem("mode") &&
+                localStorage.getItem("mode") == "dark"
+                  ? customStylesDark
+                  : customStyles
+              }
+              onChange={handleSelect}
+              value={customOptions.find(
+                (option) => option.value === selectedOption
+              )}
+            />
           </div>
         </div>
         <div className="algorithm_line"></div>
+        <div className="algorithm_item">
+          <div className="algorithm_item_title">
+            <p>API ключ</p>
+            <Info title="Выберите API ключи из списка или создайте новый" />
+          </div>
+          <div className="api_modal_dropdown create_algo_birj select_api_key_sl">
+            <Select
+              placeholder="Выберите API ключ"
+              options={customOptionsKey}
+              styles={
+                localStorage.getItem("mode") &&
+                localStorage.getItem("mode") === "dark"
+                  ? customStylesDark
+                  : customStyles
+              }
+              isDisabled
+              onChange={handleSelectKey}
+              value={customOptionsKey.find(
+                (option) => option.value === selectedOption
+              )}
+            />
+          </div>
+        </div>
+        {customOptionsKey.length !== 1 && selectedOption ? (
+      
+            <button className="add_new_api_key_btn" onClick={() => setAddApi(!addApiVisible)}>
+              Добавить новый API ключ
+            </button>
+          
+        ) : (
+          ""
+        )}
+        {customOptionsKey.length == 1 &&
+        selectedOption &&
+        apiKeyTrade == true ? (
+          <div className="trade_allow">
+            <Allow />
+            <p>Торговля разрешена</p>
+          </div>
+        ) : (
+          ""
+        )}
+        {customOptionsKey.length == 1 &&
+        selectedOption &&
+        apiKeyTrade == false ? (
+          <>
+            <div className="trade_allow trade_not_allow">
+              <DisAllow />
+              <p>Торговля запрешена</p>
+            </div>
+            <NavLink to="/settings/api">
+              <button className="add_new_api_key_btn">
+                Добавить новый API ключ
+              </button>
+            </NavLink>
+          </>
+        ) : (
+          ""
+        )}
+        <div className="algorithm_line"></div>
+        <div className="algorithm_item">
+          <div className="algorithm_item_title">
+            <p>Режим настройки</p>
+            <Info title="Выберите режим настройки алгоритма" />
+          </div>
+          <div className="algo_regim ">
+            <div
+              className={
+                algorithmType == "auto"
+                  ? "algo_regim_item algo_regim_item_active"
+                  : "algo_regim_item "
+              }
+              onClick={() => setAlgorithmType("auto")}
+            >
+              <div className="algo_regim_item_title">
+                <h4>Автоматический</h4>
+                <div className="algo_regim_item_rec">Рекомендуем</div>
+              </div>
+              <p>
+                Алгоритм самостоятельно подберёт оптимальные настройки в
+                зависимости от рыночной ситуации, без вашего участия.
+              </p>
+            </div>
+            <div
+              onClick={() => setAlgorithmType("handle")}
+              className={
+                algorithmType == "handle"
+                  ? "algo_regim_item algo_regim_item_active"
+                  : "algo_regim_item "
+              }
+            >
+              <div className="algo_regim_item_title">
+                <h4>Ручной</h4>
+              </div>
+              <p>
+                Настройте алгоритм и подберите оптимальные параметры торговли,
+                которые подойдут именно вам.
+              </p>
+            </div>
+          </div>
+          <div className="algorithm_line"></div>
+        </div>
+        {algorithmType == "auto" ? (
+          <div className="auto_regim_content">
+            <div className="algorithm_item">
+              <div className="reinv_inputs">
+                <div className="algorithm_item_title">
+                  <p>Реинвестирование прибыли</p>
+                  <Info title="Использовать в торговле полученную прибыль" />
+                </div>
+                <Switch open={true} />
+              </div>
+            </div>
+            <div className="algorithm_line"></div>
+            <div className="algorithm_item">
+              <div className="algorithm_item_title">
+                <p>Депозит </p>
+                <Info title="Укажите выделенную сумму депозита для алгоритма" />
+              </div>
+              <div className="algorithm_item_input algo_deposit">
+                <input
+                  type="number"
+                  placeholder="Укажите сумму депозита"
+                  value={deposite}
+                  onChange={(e) => setDeposite(e.target.value)}
+                  onBlur={handleBlurDeposite}
+                />
+                <div className="algorithm_item_input_add">
+                  <p>
+                    Доступно:{" "}
+                    {customOptionsKey.length == 1 &&
+                    selectedOption &&
+                    apiKeyTrade == true
+                      ? userBalance
+                      : "0.0"}{" "}
+                    USDT
+                  </p>
+
+                  <div className="algo_refresh" onClick={refreshUserBalance}>
+                    <Refresh
+                      className={` ${isRotating ? "rotate-animation" : ""}`}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {depositeError && (
+                <p className="error_input_validate">{depositeError}</p>
+              )}
+            </div>
+            <div className="algorithm_line"></div>
+            <div className="algorithm_item">
+              <div className="reinv_inputs">
+                <div className="algorithm_item_title">
+                  <p>Стоп-лосс</p>
+                  <Info title="Укажите сумму максимального убытка в % от депозита" />
+                </div>
+                <div onClick={() => setStopLossInput(!stopLossInput)}>
+                  <Switch open={stopLossInput} />
+                </div>
+              </div>
+              {stopLossInput ? (
+                <>
+                  <div className="algorithm_item_input">
+                    <input type="number" placeholder="Укажите стоп-лосс" />
+                    <div className="algorithm_item_input_add">
+                      <p>%</p>
+                    </div>
+                  </div>
+                  <div className="stop_lost_text">
+                    <p>
+                      Если ваш чистый убыток достигнет -- USDT, торговля
+                      прекратится
+                    </p>
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="algorithm_line"></div>
+            <div className="algorithm_btns">
+              <div className="modal_wrapper_save_btn">
+                <button>Создать алгоритм</button>
+              </div>
+              <div className="modal_wrapper_cancel">
+                <button>Отмена</button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+
+        {algorithmType == "handle" ? (
+          <div className="algo_regim_second_content">
+            <div className="algorithm_item">
+              <div className="algorithm_item_title">
+                <p>Торговые пары</p>
+                <Info title="Выберите торговые пары для торговли " />
+              </div>
+              <div className="api_modal_dropdown create_algo_birj trade_select">
+                <Select
+                  isMulti
+                  placeholder="Выберите торговые пары"
+                  options={customOptionsTrade}
+                  styles={
+                    localStorage.getItem("mode") &&
+                    localStorage.getItem("mode") == "dark"
+                      ? customStylesDark
+                      : customStyles
+                  }
+                  onChange={handleSelectTrade}
+                  value={customOptionsTrade.find(
+                    (option) => option.value === selectedOptionTrade
+                  )}
+                />
+              </div>
+            </div>
+            <div className="algorithm_line"></div>
+            <div className="algorithm_item">
+              <div className="reinv_inputs">
+                <div className="algorithm_item_title">
+                  <p>Реинвестирование прибыли</p>
+                  <Info title="Использовать в торговле полученную прибыль" />
+                </div>
+                <Switch open={true} />
+              </div>
+            </div>
+            <div className="algorithm_line"></div>
+
+            <div className="algorithm_item">
+              <div className="algorithm_item_title">
+                <p>Депозит </p>
+                <Info title="Укажите выделенную сумму депозита для алгоритма" />
+              </div>
+              <div className="algorithm_item_input algo_deposit">
+                <input
+                  type="number"
+                  placeholder="Укажите сумму депозита"
+                  value={deposite}
+                  onChange={(e) => setDeposite(e.target.value)}
+                  onBlur={handleBlurDeposite}
+                />
+                <div className="algorithm_item_input_add">
+                  <p>
+                    Доступно:{" "}
+                    {customOptionsKey.length == 1 &&
+                    selectedOption &&
+                    apiKeyTrade == true
+                      ? userBalance
+                      : "0.0"}{" "}
+                    USDT
+                  </p>
+
+                  <div className="algo_refresh" onClick={refreshUserBalance}>
+                    <Refresh
+                      className={` ${isRotating ? "rotate-animation" : ""}`}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {depositeError && (
+                <p className="error_input_validate">{depositeError}</p>
+              )}
+            </div>
+            <div className="algorithm_line"></div>
+            <div className="algorithm_item">
+              <div className="reinv_inputs">
+                <div className="algorithm_item_title">
+                  <p>Максимальное кол-во активных сделок</p>
+                  <Info />
+                </div>
+              </div>
+              <div className="algorithm_item_input">
+                <input
+                  type="number"
+                  placeholder="Укажите максимальное кол-во сделок "
+                  value={activeTR}
+                  onChange={(e) => setActiveTR(e.target.value)}
+                  onBlur={handleBlurActiveTR}
+                />
+              </div>
+              {activeTRError && (
+                <p className="error_input_validate">{activeTRError}</p>
+              )}
+            </div>
+            <div className="algorithm_line"></div>
+
+            <div className="algorithm_item">
+              <div className="reinv_inputs">
+                <div className="algorithm_item_title">
+                  <p>Объем сделки</p>
+                  <Info title="Укажите обьем сделки в % от депозита" />
+                </div>
+              </div>
+              <div className="algorithm_item_input">
+                <input
+                  type="number"
+                  placeholder="Укажите объём сделки"
+                  value={volume}
+                  onChange={(e) => setVolume(e.target.value)}
+                  onBlur={handleBlurVolume}
+                />
+                <div className="algorithm_item_input_add">
+                  <p>%</p>
+                </div>
+              </div>
+              {volumeError && (
+                <p className="error_input_validate">{volumeError}</p>
+              )}
+            </div>
+
+            <div className="algorithm_item mt_24">
+              <div className="reinv_inputs">
+                <div className="algorithm_item_title">
+                  <p>Плечо</p>
+                  <Info />
+                </div>
+              </div>
+              <div className="algorithm_item_input">
+                <input
+                  type="number"
+                  placeholder="Укажите плечо"
+                  value={shoulder}
+                  onChange={(e) => setShoulder(e.target.value)}
+                  onBlur={handleBlurShoulder}
+                />
+              </div>
+
+              {shoulderError && (
+                <p className="error_input_validate">{shoulderError}</p>
+              )}
+            </div>
+            <div className="algorithm_line"></div>
+            <div className="algorithm_item">
+              <div className="reinv_inputs">
+                <div className="algorithm_item_title">
+                  <p>Стоп-лосс</p>
+                  <Info title="Укажите сумму максимального убытка в % от депозита" />
+                </div>
+
+                <div onClick={() => setStopLossInput(!stopLossInput)}>
+                  <Switch open={stopLossInput} />
+                </div>
+              </div>
+              {stopLossInput ? (
+                <>
+                  <div className="algorithm_item_input">
+                    <input type="number" placeholder="Укажите стоп-лосс" />
+                    <div className="algorithm_item_input_add">
+                      <p>%</p>
+                    </div>
+                  </div>
+                  <div className="stop_lost_text">
+                    <p>
+                      Если ваш чистый убыток достигнет -- USDT, торговля
+                      прекратится
+                    </p>
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="algorithm_line"></div>
+            <div className="algorithm_btns">
+              <div className="modal_wrapper_save_btn">
+                <button>Создать алгоритм</button>
+              </div>
+              <div className="modal_wrapper_cancel">
+                <button>Отмена</button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
-      {algorithmType == "auto" ? (
-        <div className="auto_regim_content">
-          <div className="algorithm_item">
-            <div className="reinv_inputs">
-              <div className="algorithm_item_title">
-                <p>Реинвестирование прибыли</p>
-                <Info title="Использовать в торговле полученную прибыль" />
-              </div>
-              <Switch open={true} />
-            </div>
-          </div>
-          <div className="algorithm_line"></div>
-          <div className="algorithm_item">
-            <div className="algorithm_item_title">
-              <p>Депозит </p>
-              <Info title="Укажите выделенную сумму депозита для алгоритма" />
-            </div>
-            <div className="algorithm_item_input algo_deposit">
-              <input
-                type="number"
-                placeholder="Укажите сумму депозита"
-                value={deposite}
-                onChange={(e) => setDeposite(e.target.value)}
-                onBlur={handleBlurDeposite}
-              />
-              <div className="algorithm_item_input_add">
-                <p>
-                  Доступно:{" "}
-                  {customOptionsKey.length == 1 &&
-                  selectedOption &&
-                  apiKeyTrade == true
-                    ? userBalance
-                    : "0.0"}{" "}
-                  USDT
-                </p>
-
-                <div className="algo_refresh" onClick={refreshUserBalance}>
-                  <Refresh
-                    className={` ${isRotating ? "rotate-animation" : ""}`}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {depositeError && (
-              <p className="error_input_validate">{depositeError}</p>
-            )}
-          </div>
-          <div className="algorithm_line"></div>
-          <div className="algorithm_item">
-            <div className="reinv_inputs">
-              <div className="algorithm_item_title">
-                <p>Стоп-лосс</p>
-                <Info title="Укажите сумму максимального убытка в % от депозита" />
-              </div>
-              <div onClick={() => setStopLossInput(!stopLossInput)}>
-                <Switch open={stopLossInput} />
-              </div>
-            </div>
-            {stopLossInput ? (
-              <>
-                <div className="algorithm_item_input">
-                  <input type="number" placeholder="Укажите стоп-лосс" />
-                  <div className="algorithm_item_input_add">
-                    <p>%</p>
-                  </div>
-                </div>
-                <div className="stop_lost_text">
-                  <p>
-                    Если ваш чистый убыток достигнет -- USDT, торговля
-                    прекратится
-                  </p>
-                </div>
-              </>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="algorithm_line"></div>
-          <div className="algorithm_btns">
-            <div className="modal_wrapper_save_btn">
-              <button>Создать алгоритм</button>
-            </div>
-            <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
-            </div>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
-
-      {algorithmType == "handle" ? (
-        <div className="algo_regim_second_content">
-          <div className="algorithm_item">
-            <div className="algorithm_item_title">
-              <p>Торговые пары</p>
-              <Info title="Выберите торговые пары для торговли " />
-            </div>
-            <div className="api_modal_dropdown create_algo_birj trade_select">
-              <Select
-                isMulti
-                placeholder="Выберите торговые пары"
-                options={customOptionsTrade}
-                styles={
-                  localStorage.getItem("mode") &&
-                  localStorage.getItem("mode") == "dark"
-                    ? customStylesDark
-                    : customStyles
-                }
-                onChange={handleSelectTrade}
-                value={customOptionsTrade.find(
-                  (option) => option.value === selectedOptionTrade
-                )}
-              />
-            </div>
-          </div>
-          <div className="algorithm_line"></div>
-          <div className="algorithm_item">
-            <div className="reinv_inputs">
-              <div className="algorithm_item_title">
-                <p>Реинвестирование прибыли</p>
-                <Info title="Использовать в торговле полученную прибыль" />
-              </div>
-              <Switch open={true} />
-            </div>
-          </div>
-          <div className="algorithm_line"></div>
-
-          <div className="algorithm_item">
-            <div className="algorithm_item_title">
-              <p>Депозит </p>
-              <Info title="Укажите выделенную сумму депозита для алгоритма" />
-            </div>
-            <div className="algorithm_item_input algo_deposit">
-              <input
-                type="number"
-                placeholder="Укажите сумму депозита"
-                value={deposite}
-                onChange={(e) => setDeposite(e.target.value)}
-                onBlur={handleBlurDeposite}
-              />
-              <div className="algorithm_item_input_add">
-                <p>
-                  Доступно:{" "}
-                  {customOptionsKey.length == 1 &&
-                  selectedOption &&
-                  apiKeyTrade == true
-                    ? userBalance
-                    : "0.0"}{" "}
-                  USDT
-                </p>
-
-                <div className="algo_refresh" onClick={refreshUserBalance}>
-                  <Refresh
-                    className={` ${isRotating ? "rotate-animation" : ""}`}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {depositeError && (
-              <p className="error_input_validate">{depositeError}</p>
-            )}
-          </div>
-          <div className="algorithm_line"></div>
-          <div className="algorithm_item">
-            <div className="reinv_inputs">
-              <div className="algorithm_item_title">
-                <p>Максимальное кол-во активных сделок</p>
-                <Info />
-              </div>
-            </div>
-            <div className="algorithm_item_input">
-              <input
-                type="number"
-                placeholder="Укажите максимальное кол-во сделок "
-                value={activeTR}
-                onChange={(e) => setActiveTR(e.target.value)}
-                onBlur={handleBlurActiveTR}
-              />
-            </div>
-            {activeTRError && (
-              <p className="error_input_validate">{activeTRError}</p>
-            )}
-          </div>
-          <div className="algorithm_line"></div>
-
-          <div className="algorithm_item">
-            <div className="reinv_inputs">
-              <div className="algorithm_item_title">
-                <p>Объем сделки</p>
-                <Info title="Укажите обьем сделки в % от депозита" />
-              </div>
-            </div>
-            <div className="algorithm_item_input">
-              <input
-                type="number"
-                placeholder="Укажите объём сделки"
-                value={volume}
-                onChange={(e) => setVolume(e.target.value)}
-                onBlur={handleBlurVolume}
-              />
-              <div className="algorithm_item_input_add">
-                <p>%</p>
-              </div>
-            </div>
-            {volumeError && (
-              <p className="error_input_validate">{volumeError}</p>
-            )}
-          </div>
-
-          <div className="algorithm_item mt_24">
-            <div className="reinv_inputs">
-              <div className="algorithm_item_title">
-                <p>Плечо</p>
-                <Info />
-              </div>
-            </div>
-            <div className="algorithm_item_input">
-              <input
-                type="number"
-                placeholder="Укажите плечо"
-                value={shoulder}
-                onChange={(e) => setShoulder(e.target.value)}
-                onBlur={handleBlurShoulder}
-              />
-            </div>
-
-            {shoulderError && (
-              <p className="error_input_validate">{shoulderError}</p>
-            )}
-          </div>
-          <div className="algorithm_line"></div>
-          <div className="algorithm_item">
-            <div className="reinv_inputs">
-              <div className="algorithm_item_title">
-                <p>Стоп-лосс</p>
-                <Info title="Укажите сумму максимального убытка в % от депозита" />
-              </div>
-
-              <div onClick={() => setStopLossInput(!stopLossInput)}>
-                <Switch open={stopLossInput} />
-              </div>
-            </div>
-            {stopLossInput ? (
-              <>
-                <div className="algorithm_item_input">
-                  <input type="number" placeholder="Укажите стоп-лосс" />
-                  <div className="algorithm_item_input_add">
-                    <p>%</p>
-                  </div>
-                </div>
-                <div className="stop_lost_text">
-                  <p>
-                    Если ваш чистый убыток достигнет -- USDT, торговля
-                    прекратится
-                  </p>
-                </div>
-              </>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="algorithm_line"></div>
-          <div className="algorithm_btns">
-            <div className="modal_wrapper_save_btn">
-              <button>Создать алгоритм</button>
-            </div>
-            <div className="modal_wrapper_cancel">
-              <button>Отмена</button>
-            </div>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
-    </div>
+      {addApiVisible ? <CreateApiModal addApiVisible={addApiVisible} setAddApi={setAddApi}  /> : ""}
+    </>
   );
 }
 

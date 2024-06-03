@@ -328,6 +328,10 @@ color: #DC2626;
   color: rgb(27, 27, 27);
   background: rgb(242, 242, 242);
 }
+
+.black_mode .algorithm_wrapper input {
+  color: #fff;
+}
 @media only screen and (max-width: 830px) {
   .algorithm_wrapper {
     width: 100%;

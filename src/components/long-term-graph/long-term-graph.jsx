@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import "../algotype-charts/algo-type-charts.css";
-import { lineData } from "../algotype-charts/line-datas";
-import { datesLine } from "../algotype-charts/line-dates";
-import "./long-short-graph.css";
+import { lineData } from "../algotype-charts-ai/line-datas";
+import { datesLine } from "../algotype-charts-ai/line-dates";
+import "./long-term-graph.css";
 
-const LongShortGraph = () => {
+const LongTermGraph = () => {
   const timestamps = datesLine.map((cat) => {
     const [year, month, day] = cat.split(".").map(Number);
     return new Date(year, month - 1, day).getTime();
@@ -38,7 +38,7 @@ const LongShortGraph = () => {
     return timestamp >= startDate && timestamp <= endDate;
   });
 
- 
+  console.log(filteredData);
   const filteredTimestamps = timestamps.filter(
     (timestamp) => timestamp >= startDate && timestamp <= endDate
   );
@@ -131,4 +131,4 @@ const LongShortGraph = () => {
   );
 };
 
-export default LongShortGraph;
+export default LongTermGraph;

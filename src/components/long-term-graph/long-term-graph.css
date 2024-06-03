@@ -1,0 +1,22 @@
+.long_short_graph .apexcharts-yaxis,
+.long_short_graph .apexcharts-grid-borders,
+.long_short_graph .apexcharts-xaxis {
+  display: none !important;
+}
+
+.long_short_graph {
+  position: relative;
+  overflow: hidden;
+  height: 155px;
+  margin-bottom: 24px;
+}
+.long_short_graph .apexcharts-canvas {
+  position: absolute;
+  top: -50px;
+  left: -70px;
+}
+@media only screen and (max-width: 500px) {
+  .long_short_graph .apexcharts-canvas {
+    left: -55px;
+  }
+}

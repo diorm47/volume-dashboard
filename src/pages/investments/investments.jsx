@@ -14,6 +14,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { ReactComponent as DeleteWarning } from "../../assets/icons/delete-warning.svg";
 import { ReactComponent as AlgoIcon } from "../../assets/icons/algorithm.svg";
 import LongShortGraph from "../../components/long-short-graph/long-short-graph";
+import LongTermGraph from "../../components/long-term-graph/long-term-graph";
 
 function Investments({ updatebalance, setRec }) {
   const navigate = useNavigate();
@@ -488,17 +489,18 @@ function Investments({ updatebalance, setRec }) {
             </div>
             <div className="algo_card_desc">
               <p>
-                Больше зарабатывает на росте, меньше на падении. При
-                значительном снижении рынка депозит остаётся нетронутым. В
-                среднем совершает до 10 сделок в день.
+                Подходит для долгосрочного планирования. Больше зарабатывает на
+                росте, меньше на падении. При значительном падении рынка, от
+                -50% и ниже, совершает меньше сделок и сохраняет депозит. В
+                среднем совершает 1-2 сделки в день.
               </p>
             </div>
             <div className="algo_card_graph">
-              <img src={algo1} alt="" />
+              <LongTermGraph />
             </div>
             <div className="algo_card_precents">
               <p>2023 - 2024 </p>
-              <p>+ 85.32%</p>
+              <p>+ 80.46%</p>
             </div>
             <div className="algo_card_spec">
               <div>
@@ -532,8 +534,10 @@ function Investments({ updatebalance, setRec }) {
             </div>
             <div className="algo_card_desc">
               <p>
-                Реагирует на импульсное движение цены и подбирает оптимальные
-                точки входа в зависимости от волатильности рынка.
+                Зарабатывает на росте и падении рынка, реагирует на импульсное
+                движение цены, подбирает оптимальные точки входа в зависимости
+                от волатильности рынка. Показывает хорошую эффективность даже на
+                короткой дистанции.
               </p>
             </div>
             <div className="algo_card_graph">

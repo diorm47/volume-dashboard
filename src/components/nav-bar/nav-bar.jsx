@@ -377,6 +377,9 @@ function NavBar({ setMode }) {
               <NavLink to="/referal">
                 <p> {t("nav_menu_14")} </p>
               </NavLink>
+              <NavLink to="/settings/api">
+                <p> API </p>
+              </NavLink>
               <NavLink to="/login" onClick={handleLogout}>
                 <p> {t("nav_menu_15")} </p>
               </NavLink>
