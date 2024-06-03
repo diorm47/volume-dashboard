@@ -748,11 +748,12 @@ function CreateAlgorithm({ updatebalance }) {
           </div>
         </div>
         {customOptionsKey.length !== 1 && selectedOption ? (
-      
-            <button className="add_new_api_key_btn" onClick={() => setAddApi(!addApiVisible)}>
-              Добавить новый API ключ
-            </button>
-          
+          <button
+            className="add_new_api_key_btn"
+            onClick={() => setAddApi(!addApiVisible)}
+          >
+            Добавить новый API ключ
+          </button>
         ) : (
           ""
         )}
@@ -1104,7 +1105,16 @@ function CreateAlgorithm({ updatebalance }) {
           ""
         )}
       </div>
-      {addApiVisible ? <CreateApiModal addApiVisible={addApiVisible} setAddApi={setAddApi}  /> : ""}
+      {addApiVisible ? (
+        <CreateApiModal
+          addApiVisible={addApiVisible}
+          setAddApi={setAddApi}
+          getApiKeys={getApiKeys}
+          updatebalance={updatebalance}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 }

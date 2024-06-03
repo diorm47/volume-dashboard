@@ -15,11 +15,16 @@ import Snackbar from "../../components/snackbar/snackbar";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-function CreateApiModal({ setRec, updatebalance, addApiVisible, setAddApi }) {
+function CreateApiModal({
+  setRec,
+  updatebalance,
+  addApiVisible,
+  setAddApi,
+  getApiKeys,
+}) {
   const { t, i18n } = useTranslation();
 
   const userLanguage = localStorage.getItem("locale") || "ru";
-
 
   const [apiActiveModal, setapiActiveModal] = useState(false);
   const [apiActiveEditModal, setapiActiveEditModal] = useState(false);
@@ -32,8 +37,6 @@ function CreateApiModal({ setRec, updatebalance, addApiVisible, setAddApi }) {
     setapiActiveEditModal(false);
     setDeleteModal(false);
   };
-
-
 
   const [apiList, setapiList] = useState([]);
 
@@ -155,10 +158,10 @@ function CreateApiModal({ setRec, updatebalance, addApiVisible, setAddApi }) {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          refresh();
-          closeModals();
           snackOptions(localization[userLanguage].apiAddedSuccess, "success");
+          getApiKeys();
           updatebalance();
+          setAddApi(false);
         } else {
           snackOptions(localization[userLanguage].apiAddError, "error");
         }
@@ -230,7 +233,7 @@ function CreateApiModal({ setRec, updatebalance, addApiVisible, setAddApi }) {
     <>
       <div
         className={
-            addApiVisible || apiActiveModal || apiActiveEditModal || deleteModal
+          addApiVisible || apiActiveModal || apiActiveEditModal || deleteModal
             ? "overlay visible_overlay"
             : "overlay"
         }
@@ -240,7 +243,7 @@ function CreateApiModal({ setRec, updatebalance, addApiVisible, setAddApi }) {
       {/* Api modal */}
       <div
         className={
-            addApiVisible
+          addApiVisible
             ? "modal_wrapper api_modal_wrapper visible_modal_wrapper"
             : "modal_wrapper api_modal_wrapper"
         }
