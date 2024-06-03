@@ -6,7 +6,6 @@ import { ReactComponent as ExitModal } from "../../assets/icons/exit-modal.svg";
 import { ReactComponent as DeleteWarning } from "../../assets/icons/delete-warning.svg";
 import { ReactComponent as Info } from "../../assets/icons/info.svg";
 
-
 import "react-dropdown/style.css";
 import { useTranslation } from "react-i18next";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -111,11 +110,6 @@ function ApiKeys({ setRec, updatebalance }) {
       .then((response) => response.json())
       .then((data) => {
         setapiList(data.data.api_keys[0]);
-        if (!data.data.api_keys[0] && localStorage.getItem("token")) {
-          setRec(true);
-        } else {
-          setRec(false);
-        }
       })
       .catch((error) => {
         console.log(error);
@@ -210,11 +204,12 @@ function ApiKeys({ setRec, updatebalance }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        refresh();
-        closeModals();
-        snackOptions(localization[userLanguage].apiDeletedSuccess, "success");
-        setRec(true);
-        updatebalance();
+        if (data.success) {
+          snackOptions(localization[userLanguage].apiDeletedSuccess, "success");
+          refresh();
+          closeModals();
+          updatebalance();
+        }
       })
       .catch((error) => {
         snackOptions(localization[userLanguage].apiDeleteError, "error");
@@ -559,21 +554,26 @@ function ApiKeys({ setRec, updatebalance }) {
       {/* delete modal */}
       <div
         className={
-          deleteModal ? "modal_wrapper api_delete_warning visible_modal_wrapper" : "modal_wrapper api_delete_warning"
+          deleteModal
+            ? "modal_wrapper api_delete_warning visible_modal_wrapper"
+            : "modal_wrapper api_delete_warning"
         }
       >
         <div className="warning_delete_modal ">
           <div className="warning_delete_modal_title">
-          <h3>Удаление API</h3>   <ExitModal onClick={closeModals} />
+            <h3>Удаление API</h3> <ExitModal onClick={closeModals} />
           </div>
           <div className="warning_delete_modal_desc">
-            <p>Если у вас есть активные сделки, удаление API ключей может привести к их автоматическому закрытию и удалению алгоритма. Вы уверены в том, что хотите удалить API ключи?</p>
+            <p>
+              Если у вас есть активные сделки, удаление API ключей может
+              привести к их автоматическому закрытию и удалению алгоритма. Вы
+              уверены в том, что хотите удалить API ключи?
+            </p>
           </div>
           <div className="warning_delete_modal_actions">
             <button onClick={deleteApi}>
               <p> Да, удалить</p>
             </button>
-        
           </div>
         </div>
       </div>
