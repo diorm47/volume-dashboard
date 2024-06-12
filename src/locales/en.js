@@ -807,4 +807,118 @@ export const en_locale = {
     network: "Network",
     wallet: "Wallet",
   },
+
+  investmentsCards: {
+    warning:
+      "Each algorithm comes with comprehensive details about its operational principles, risks, recommendations, and performance results derived from historical data analysis. Depending on your investment goals, you can select a single algorithm or combine multiple ones, allowing you to customize your strategy and risk level.",
+    more_det: "Details",
+    delta_des:
+      "Ideal for long-term planning, this algorithm excels in growth markets and is conservative during declines. If the market drops significantly, by -50% or more, it reduces trading activity to preserve your capital. On average, it executes 1-2 transactions per day.",
+    sigma_des:
+      "This algorithm profits from both market growth and decline by reacting to sudden price movements and selecting optimal entry points based on market volatility. It demonstrates strong effectiveness even over short time frames.",
+    place: "Trading platform",
+    risk: "Risk level",
+    minimal: "Low",
+    average: "Moderate",
+    rec_dep: "Recommended deposit",
+    soon: "Soon",
+    create: "Create",
+  },
+  createAlgo: {
+    title: "Creation of the Algorithm",
+    birja: "Exchange",
+    birja_p: "Choose an exchange",
+    api: "API-key",
+    api_p: "Choose your API-key",
+    api_add: "Add new API-key",
+
+    settings_reg: "Setting mode",
+    sr_auto: "Automatic",
+    sr_han: "Manual",
+    sr_rec: "Recommended",
+    sr_reg_auto:
+      "The algorithm autonomously selects the optimal settings based on the current market conditions, requiring no user intervention.",
+    sr_reg_han:
+      "Manually set up the algorithm and select the optimal trading parameters that suit you.",
+
+    reinv: "Accumulation",
+    trade_pairs: "Tradable pairs",
+    trade_pairs_se: "Pick your tradable pairs",
+    depos: "Deposit",
+    depo_s: "Set your deposit",
+    depo_d: "Available",
+    q_a_o: "Maximum number of active trades",
+    qoas: "Set the maximum number of active trades",
+    order_ob: "Single trade volume",
+    order_ob_s: "Set the max volume for a single trade",
+    plecho: "Leverage",
+    plecho_s: "Set the leverage",
+    stopl: "Stop-loss",
+    stopls: "Set stop-loss",
+    create_btn: "Create algorithm",
+    cancel_btn: "Cancel",
+  },
+  createAlgoSec: {
+    depo_err1: "The deposit cannot be less than 100 USDT, increase the deposit",
+    depo_err2:
+      "The deposit is higher than the available balance, reduce the deposit amount",
+    activetr_err1: "The maximum number of active trades cannot be greater",
+    activeetr_err2:
+      "The maximum number of active transactions cannot be less than 1",
+    volume_err1:
+      "The transaction volume cannot be more than 10% of the deposit, reduce the volume",
+    volume_err2:
+      "The transaction volume cannot be less than 0.1% of the deposit, increase the volume",
+    volume_err3: "Trade volume cannot be greater than 100%",
+    plecho_err1: "Leverage cannot be greater than 10x, lower leverage",
+    plecho_err2: "Leverage cannot be less than 1x, increase leverage",
+    trade_s: "Trade is allowed",
+    trade_f: "Trade is prohibited",
+    sett_rej: "Select algorithm setting mode",
+    reinv_d: "Use the profit received in trading",
+    depo_d: "Specify the allocated deposit amount for the algorithm",
+    stoplos_d: "Specify the maximum loss amount as a % of the deposit",
+    stop_w1: "If your net loss reaches",
+    stop_w2: "trading will stop",
+    pairs_d: "Select trading pairs to trade",
+    volume_d: "Indicate the transaction volume as a % of the deposit",
+  },
+  algo_type_sigma: {
+    warning:
+      "The information on this page is based on historical and backtested data, and may not provide similar performance in the future.",
+    doxod: "All-time profitability",
+    min_pros: "Maximum drawdown",
+    risk: "Risk",
+    medium: "Moderate",
+    exchange: "Market",
+
+    testing: 'Test results',
+    testing2: 'Date of creation',
+    testing3: 'Net P/L in %',
+    testing4: 'Average annual return',
+    testing5: 'Average monthly profitability',
+    testing6: 'Amount of deals',
+    testing7: 'Profitable trades in %',
+    testing8: 'Losing trades in %',
+    testing9: 'Max. drawdown in %',
+
+    rec: 'Recommendations',
+    mindep: 'Minimum deposit',
+    rec_dep: 'Recommended deposit',
+    rec_w: 'Recommended operating time from 3 months',
+    pairs: 'Tradable pairs',
+    det: 'Description',
+    time: 'from 3 months',
+  },
+  algo_type_sigma_d: {
+    title1: 'The algorithm is based on the counter-trend strategy of standard price deviation',
+    desc11: 'Reacts to impulse price movements and selects optimal entry points depending on market volatility. There are no grid trading methods.',
+    desc12: 'AI reacts to short-term deviations from the main trend, determines the probability of the direction of price movement and finds the optimal entry point into the transaction.',
+    desc13: 'The algorithm takes into account market volatility and makes transactions with optimal parameters, without waiting for ideal conditions. This allows you to increase profits and minimize losses.',
+    title2: 'Advantages of the algorithm',
+    desc21: 'AI reacts to price changes in seconds and selects the optimal selling point for the position. This allows you to avoid positions hanging for hours and days, and close most trades within a minute after opening.',
+    desc22: 'The algorithm controls risk and uses a set of volatility metrics. Metrics are used to find optimal position averaging points, which allows you to close a deal more profitably.',
+    pnl: 'PnL',
+    pnl_m: 'PnL by month',
+  }
 };

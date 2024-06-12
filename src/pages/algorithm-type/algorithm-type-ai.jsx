@@ -51,7 +51,7 @@ function AlgorithmTypeAi() {
   return (
     <div className="pages_wrapper investments_page algorithm_type_page">
       <div className="main_page_title_template">
-        <h1>Long-Term AI</h1>
+        <h1>Delta</h1>
       </div>
       <div className="top_page_attention_wrapper container">
         <div>

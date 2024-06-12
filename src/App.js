@@ -147,7 +147,7 @@ function App() {
           <Route path="/p2p" element={<P2p />} />
           <Route path="/referal/*" element={<Referals />} />
           <Route path="/algorithm-type" element={<AlgorithmType />} />
-          <Route path="/algorithm-type-ai" element={<AlgorithmTypeAi />} />
+          <Route path="/delta" element={<AlgorithmTypeAi />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>

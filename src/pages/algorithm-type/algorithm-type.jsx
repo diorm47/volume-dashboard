@@ -18,8 +18,14 @@ import trade35 from "../../assets/images/trade/35.png";
 import trade5 from "../../assets/images/trade/5.png";
 import trade6 from "../../assets/images/trade/6.png";
 import trade8 from "../../assets/images/trade/8.png";
+import { useTranslation } from "react-i18next";
 
 function AlgorithmType() {
+  const { t } = useTranslation();
+
+  React.useEffect(() => {
+    document.title = `Sigma | &Volume`;
+  }, [t]);
   const [allPnl, setAllPnl] = useState(0);
   const [allPnlDown, setAllPnlDown] = useState(0);
 
@@ -33,17 +39,13 @@ function AlgorithmType() {
           {" "}
           <Icon />
         </div>
-        <p>
-          Информация на странице получена по результатам тестирования алгоритма
-          на историческом периоде и не может гарантировать аналогичную
-          эффективность в будущем.
-        </p>
+        <p>{t("algo_type_sigma.warning")}</p>
       </div>
       <div className="algo_type_top_cards">
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Доходность за все время</h2>
+              <h2> {t("algo_type_sigma.doxod")}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
@@ -67,7 +69,7 @@ function AlgorithmType() {
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Максимальная просадка</h2>
+              <h2>{t("algo_type_sigma.min_pros")}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
@@ -81,13 +83,13 @@ function AlgorithmType() {
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Риск</h2>
+              <h2>{t("algo_type_sigma.risk")}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
             <div className="review_left_top_block_content">
               <div className="review_left_top_block_content_amount">
-                <p>Средний</p>
+                <p>{t("algo_type_sigma.medium")}</p>
               </div>
             </div>
           </div>
@@ -95,7 +97,7 @@ function AlgorithmType() {
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Тип рынка</h2>
+              <h2>{t("algo_type_sigma.exchange")}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
@@ -111,41 +113,41 @@ function AlgorithmType() {
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Результаты тестирования</h2>
+              <h2>{t("algo_type_sigma.testing")}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
             <div className="review_left_top_block_content algo_type_stats">
               <div>
-                <p>Дата создания</p>
+                <p>{t("algo_type_sigma.testing2")}</p>
                 <p>01.01.2021</p>
               </div>
               <div>
-                <p>Чистый П/У в %</p>
+                <p>{t("algo_type_sigma.testing3")}</p>
                 <p>{allPnl}%</p>
               </div>
               <div>
-                <p>Среднегодовая доходность</p>
+                <p>{t("algo_type_sigma.testing4")}</p>
                 <p>+226.01%</p>
               </div>
               <div>
-                <p>Среднемесячная доходность</p>
+                <p>{t("algo_type_sigma.testing5")}</p>
                 <p>+18.58 %</p>
               </div>
               <div>
-                <p>Количество сделок</p>
+                <p>{t("algo_type_sigma.testing6")}</p>
                 <p>4760</p>
               </div>
               <div>
-                <p>Прибыльных сделок в %</p>
+                <p>{t("algo_type_sigma.testing7")}</p>
                 <p>72.58%</p>
               </div>
               <div>
-                <p>Убыточных сделок в %</p>
+                <p>{t("algo_type_sigma.testing8")}</p>
                 <p>27.42%</p>
               </div>
               <div>
-                <p>Макс. просадка в %</p>
+                <p>{t("algo_type_sigma.testing9")}</p>
                 <p>{allPnlDown}%</p>
               </div>
             </div>
@@ -154,22 +156,22 @@ function AlgorithmType() {
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Рекомендации</h2>
+              <h2>{t("algo_type_sigma.rec")}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
             <div className="review_left_top_block_content algo_type_stats">
               <div>
-                <p>Минимальный депозит</p>
+                <p>{t("algo_type_sigma.mindep")}</p>
                 <p>$100</p>
               </div>
               <div>
-                <p>Рекомендуемый депозит</p>
+                <p>{t("algo_type_sigma.rec_dep")}</p>
                 <p>$1 000</p>
               </div>
               <div>
-                <p>Рекомендуемый срок работы</p>
-                <p>от 3 месяцев</p>
+                <p>{t("algo_type_sigma.rec_w")}</p>
+                <p>{t("algo_type_sigma.time")}</p>
               </div>
             </div>
           </div>
@@ -178,7 +180,7 @@ function AlgorithmType() {
       <div className="main_block_wrapper">
         <div className="main_block_wrapper_top">
           <div className="main_block_wrapper_title">
-            <h2>Торгуемые пары</h2>
+            <h2>{t("algo_type_sigma.pairs")}</h2>
           </div>
         </div>
         <div className="main_block_wrapper_bottom">
@@ -273,49 +275,26 @@ function AlgorithmType() {
       <div className="main_block_wrapper algorithm_type_desc">
         <div className="main_block_wrapper_top">
           <div className="main_block_wrapper_title">
-            <h2>Описание</h2>
+            <h2>{t("algo_type_sigma.det")}</h2>
           </div>
         </div>
         <div className="main_block_wrapper_bottom">
           <div className="review_left_top_block_content">
             <div className="review_left_top_block_content_amount">
               <p>
-                <b>
-                  {" "}
-                  Алгоритм основан на контртрендовой стратегии
-                  среднеквадратичного отклонения цены
-                </b>
+                <b>{t("algo_type_sigma_d.title1")}</b>
+              </p>
+              <p>{t("algo_type_sigma_d.desc11")}</p>
+              <p>{t("algo_type_sigma_d.desc12")}</p>
+              <p>{t("algo_type_sigma_d.desc13")}</p>
+              <p>
+                <b> {t("algo_type_sigma_d.title2")}</b>
               </p>
               <p>
-                {" "}
-                Реагирует на импульсное движение цены и подбирает оптимальные
-                точки входа в зависимости от волатильности рынка. Сеточные, или
-                grid методы торговли, отсутствуют.
+              {t("algo_type_sigma_d.desc21")}
               </p>
               <p>
-                AI реагирует на краткосрочное отклонение от основного тренда,
-                определяет вероятность направления движения цены и находит
-                оптимальную точку входа в сделку.
-              </p>
-              <p>
-                Алгоритм учитывает волатильность рынка и совершает сделки при
-                оптимальных параметрах, не дожидаясь идеальных условий. Это
-                позволяет увеличить прибыль и минимизировать убытки.
-              </p>
-              <p>
-                <b> Преимущества алгоритма</b>
-              </p>
-              <p>
-                {" "}
-                AI за секунды реагирует на изменения цены и подбирает
-                оптимальную точку продажи позиции. Это позволяет избежать
-                зависание позиции на часы и дни, а закрывать большинство сделок
-                в течение минуты после открытия.
-              </p>
-              <p>
-                Алгоритм контролирует риск и использует набор метрик
-                волатильности. Метрики используются для поиска оптимальных точек
-                усреднения позиции, что позволяет выгоднее закрывать сделку.
+              {t("algo_type_sigma_d.desc22")}
               </p>
             </div>
           </div>
@@ -324,14 +303,14 @@ function AlgorithmType() {
 
       <div className="secondary_block_wrapper p0 algorithm_type_chart">
         <div className="main_block_wrapper_title">
-          <h2>График PnL</h2>
+          <h2>{t("algo_type_sigma_d.pnl")}</h2>
         </div>
 
         <AlgoLineChart setAllPnl={setAllPnl} setAllPnlDown={setAllPnlDown} />
       </div>
       <div className="secondary_block_wrapper algorithm_type_chart">
         <div className="main_block_wrapper_title">
-          <h2>График PnL по месяцам</h2>
+          <h2>{t("algo_type_sigma_d.pnl_m")}</h2>
         </div>
 
         <AlgoColumnChart />

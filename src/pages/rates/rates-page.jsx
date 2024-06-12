@@ -298,7 +298,7 @@ function RatesPage({ updatebalance }) {
               <div className="rates_card_limits_item">
                 <div>
                   <Fail />
-                  <p>Long-Term AI</p>
+                  <p>Delta</p>
                 </div>
                 <p>
                   <span>Лимит депозита до $1 000</span>
@@ -340,7 +340,7 @@ function RatesPage({ updatebalance }) {
               <div className="rates_card_limits_item">
                 <div>
                   <Success />
-                  <p>Long-Term AI</p>
+                  <p>Delta</p>
                 </div>
                 <p>
                   <span>Лимит депозита до $5 000</span>
@@ -382,7 +382,7 @@ function RatesPage({ updatebalance }) {
               <div className="rates_card_limits_item">
                 <div>
                   <Success />
-                  <p>Long-Term AI</p>
+                  <p>Delta</p>
                 </div>
                 <p>
                   <span>Лимит депозита до $25 000</span>

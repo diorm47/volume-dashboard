@@ -464,13 +464,7 @@ function Investments({ updatebalance, setRec }) {
             {" "}
             <Icon />
           </div>
-          <p>
-            Для каждого алгоритма есть подробная информация о принципах его
-            работы, рисках, рекомендациях и результатах, полученных на основе
-            анализа исторических данных. Исходя из своих целей, вы можете
-            выбрать один алгоритм или комбинировать несколько, настраивая
-            стратегию и уровень риска.
-          </p>
+          <p>{t("investmentsCards.warning")}</p>
         </div>
         <div className="algo_cards">
           <div className="algo_card">
@@ -479,21 +473,16 @@ function Investments({ updatebalance, setRec }) {
                 <div>
                   <AlgoIcon />
                 </div>{" "}
-                <h3>Long-Term AI</h3>
+                <h3>Delta</h3>
               </div>{" "}
               <div className="algo_card_about">
-                <NavLink to="/algorithm-type-ai">
-                  <p>Подробнее</p>
+                <NavLink to="/delta">
+                  <p>{t("investmentsCards.more_det")}</p>
                 </NavLink>
               </div>
             </div>
             <div className="algo_card_desc">
-              <p>
-                Подходит для долгосрочного планирования. Больше зарабатывает на
-                росте, меньше на падении. При значительном падении рынка, от
-                -50% и ниже, совершает меньше сделок и сохраняет депозит. В
-                среднем совершает 1-2 сделки в день.
-              </p>
+              <p>{t("investmentsCards.delta_des")}</p>
             </div>
             <div className="algo_card_graph">
               <LongTermGraph />
@@ -504,19 +493,21 @@ function Investments({ updatebalance, setRec }) {
             </div>
             <div className="algo_card_spec">
               <div>
-                <p>Торгуемая площадка</p>
+                <p>{t("investmentsCards.place")}</p>
                 <span>Spot</span>
               </div>
               <div>
-                <p>Уровень риска</p>
-                <span>Минимальный</span>
+                <p>{t("investmentsCards.risk")}</p>
+                <span>{t("investmentsCards.minimal")}</span>
               </div>
               <div>
-                <p>Рекомендуемый депозит</p>
+                <p>{t("investmentsCards.rec_dep")}</p>
                 <span>3 000 USDT</span>
               </div>
             </div>
-            <button className="algo_btn algo_btn_disabled">Скоро</button>
+            <button className="algo_btn algo_btn_disabled">
+              {t("investmentsCards.soon")}
+            </button>
           </div>
           <div className="algo_card">
             <div className="algo_card_title_wrapper">
@@ -528,16 +519,13 @@ function Investments({ updatebalance, setRec }) {
               </div>{" "}
               <div className="algo_card_about">
                 <NavLink to="/algorithm-type">
-                  <p>Подробнее</p>
+                  <p>  {t("investmentsCards.more_det")}</p>
                 </NavLink>
               </div>
             </div>
             <div className="algo_card_desc">
               <p>
-                Зарабатывает на росте и падении рынка, реагирует на импульсное
-                движение цены, подбирает оптимальные точки входа в зависимости
-                от волатильности рынка. Показывает хорошую эффективность даже на
-                короткой дистанции.
+              {t("investmentsCards.sigma_des")}
               </p>
             </div>
             <div className="algo_card_graph">
@@ -549,20 +537,20 @@ function Investments({ updatebalance, setRec }) {
             </div>
             <div className="algo_card_spec">
               <div>
-                <p>Торгуемая площадка</p>
+                <p>  {t("investmentsCards.place")}</p>
                 <span>Futures</span>
               </div>
               <div>
-                <p>Уровень риска</p>
-                <span>Средний</span>
+                <p>{t("investmentsCards.risk")}</p>
+                <span>{t("investmentsCards.average")}</span>
               </div>
               <div>
-                <p>Рекомендуемый депозит</p>
+                <p>{t("investmentsCards.rec_dep")}</p>
                 <span>1 000 USDT</span>
               </div>
             </div>
             <NavLink to="/create-algorithm">
-              <button className="algo_btn">Создать</button>
+              <button className="algo_btn">{t("investmentsCards.create")}</button>
             </NavLink>
           </div>
         </div>

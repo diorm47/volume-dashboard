@@ -49,9 +49,14 @@ import trade37 from "../../assets/images/trade/37.png";
 import { NavLink } from "react-router-dom";
 import { mainApi } from "../../components/utils/main-api";
 import CreateApiModal from "../../components/create-api-modal/create-api-modal";
+import { useTranslation } from "react-i18next";
 
 function CreateAlgorithm({ updatebalance }) {
+  const { t } = useTranslation();
   const [stopLossInput, setStopLossInput] = useState(false);
+  React.useEffect(() => {
+    document.title = `${t("createAlgo.title")} Sigma  | &Volume`;
+  }, [t]);
 
   const customOptions = [
     // {
@@ -536,6 +541,7 @@ function CreateAlgorithm({ updatebalance }) {
   };
 
   const [selectedOption, setSelectedOption] = useState();
+  const [stopLoss, setStopLoss] = useState("--");
   const [selectedOptionKey, setSelectedOptionKey] = useState();
   const [selectedOptionTrade, setSelectedOptionsTrade] = useState([]);
   const handleSelect = (selectedOption) => {
@@ -582,6 +588,7 @@ function CreateAlgorithm({ updatebalance }) {
       });
   };
   // balance
+  const userLanguage = localStorage.getItem("locale") || "ru";
   const [userBalance, setUserBalance] = useState();
   const [isRotating, setIsRotating] = useState(false);
   const getUserbalance = () => {
@@ -677,6 +684,8 @@ function CreateAlgorithm({ updatebalance }) {
       setVolumeError(
         "Объём сделки не может быть менее 0,1% от депозита, увеличьте объём"
       );
+    } else if (volume > 100) {
+      setVolumeError("Объём сделки не может быть больше 100%");
     } else {
       setVolumeError("");
     }
@@ -694,21 +703,22 @@ function CreateAlgorithm({ updatebalance }) {
     }
   };
   const [addApiVisible, setAddApi] = useState(false);
+
   return (
     <>
       <div className="algorithm_wrapper">
         <div className="algorithm_wrapper_title">
-          <h1>Создание алгоритма</h1>
+          <h1> {t("createAlgo.title")} Sigma</h1>
         </div>
         <div className="algorithm_line"></div>
         <div className="algorithm_item">
           <div className="algorithm_item_title">
-            <p>Биржа</p>
+            <p>{t("createAlgo.birja")}</p>
             <Info title="Выберите используемую биржу" />
           </div>
           <div className="api_modal_dropdown create_algo_birj">
             <Select
-              placeholder="Выберите биржу"
+              placeholder={t("createAlgo.birja_p")}
               options={customOptions}
               styles={
                 localStorage.getItem("mode") &&
@@ -726,12 +736,12 @@ function CreateAlgorithm({ updatebalance }) {
         <div className="algorithm_line"></div>
         <div className="algorithm_item">
           <div className="algorithm_item_title">
-            <p>API ключ</p>
+            <p>{t("createAlgo.api")}</p>
             <Info title="Выберите API ключи из списка или создайте новый" />
           </div>
           <div className="api_modal_dropdown create_algo_birj select_api_key_sl">
             <Select
-              placeholder="Выберите API ключ"
+              placeholder={t("createAlgo.api_p")}
               options={customOptionsKey}
               styles={
                 localStorage.getItem("mode") &&
@@ -752,7 +762,7 @@ function CreateAlgorithm({ updatebalance }) {
             className="add_new_api_key_btn"
             onClick={() => setAddApi(!addApiVisible)}
           >
-            Добавить новый API ключ
+          {t("createAlgo.api_add")}
           </button>
         ) : (
           ""
@@ -777,7 +787,7 @@ function CreateAlgorithm({ updatebalance }) {
             </div>
             <NavLink to="/settings/api">
               <button className="add_new_api_key_btn">
-                Добавить новый API ключ
+              {t("createAlgo.api_add")}
               </button>
             </NavLink>
           </>
@@ -787,7 +797,7 @@ function CreateAlgorithm({ updatebalance }) {
         <div className="algorithm_line"></div>
         <div className="algorithm_item">
           <div className="algorithm_item_title">
-            <p>Режим настройки</p>
+            <p> {t("createAlgo.settings_reg")}</p>
             <Info title="Выберите режим настройки алгоритма" />
           </div>
           <div className="algo_regim ">
@@ -800,12 +810,11 @@ function CreateAlgorithm({ updatebalance }) {
               onClick={() => setAlgorithmType("auto")}
             >
               <div className="algo_regim_item_title">
-                <h4>Автоматический</h4>
-                <div className="algo_regim_item_rec">Рекомендуем</div>
+                <h4>{t("createAlgo.sr_auto")}</h4>
+                <div className="algo_regim_item_rec">{t("createAlgo.sr_rec")}</div>
               </div>
               <p>
-                Алгоритм самостоятельно подберёт оптимальные настройки в
-                зависимости от рыночной ситуации, без вашего участия.
+              {t("createAlgo.sr_reg_auto")}
               </p>
             </div>
             <div
@@ -817,11 +826,10 @@ function CreateAlgorithm({ updatebalance }) {
               }
             >
               <div className="algo_regim_item_title">
-                <h4>Ручной</h4>
+                <h4>  {t("createAlgo.sr_han")}</h4>
               </div>
               <p>
-                Настройте алгоритм и подберите оптимальные параметры торговли,
-                которые подойдут именно вам.
+              {t("createAlgo.sr_reg_han")}
               </p>
             </div>
           </div>
@@ -832,7 +840,7 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_item">
               <div className="reinv_inputs">
                 <div className="algorithm_item_title">
-                  <p>Реинвестирование прибыли</p>
+                  <p>{t("createAlgo.reinv")}</p>
                   <Info title="Использовать в торговле полученную прибыль" />
                 </div>
                 <Switch open={true} />
@@ -841,20 +849,20 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_line"></div>
             <div className="algorithm_item">
               <div className="algorithm_item_title">
-                <p>Депозит </p>
+                <p>{t("createAlgo.depos")} </p>
                 <Info title="Укажите выделенную сумму депозита для алгоритма" />
               </div>
               <div className="algorithm_item_input algo_deposit">
                 <input
                   type="number"
-                  placeholder="Укажите сумму депозита"
+                  placeholder={t("createAlgo.depo_s")}
                   value={deposite}
                   onChange={(e) => setDeposite(e.target.value)}
                   onBlur={handleBlurDeposite}
                 />
                 <div className="algorithm_item_input_add">
                   <p>
-                    Доступно:{" "}
+                  {t("createAlgo.depo_d")}:{" "}
                     {customOptionsKey.length == 1 &&
                     selectedOption &&
                     apiKeyTrade == true
@@ -879,7 +887,7 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_item">
               <div className="reinv_inputs">
                 <div className="algorithm_item_title">
-                  <p>Стоп-лосс</p>
+                  <p> {t("createAlgo.stopl")}</p>
                   <Info title="Укажите сумму максимального убытка в % от депозита" />
                 </div>
                 <div onClick={() => setStopLossInput(!stopLossInput)}>
@@ -889,14 +897,19 @@ function CreateAlgorithm({ updatebalance }) {
               {stopLossInput ? (
                 <>
                   <div className="algorithm_item_input">
-                    <input type="number" placeholder="Укажите стоп-лосс" />
+                    <input
+                      type="number"
+                      placeholder={t("createAlgo.stopls")}
+                      value={stopLoss}
+                      onChange={(e) => setStopLoss(e.target.value)}
+                    />
                     <div className="algorithm_item_input_add">
                       <p>%</p>
                     </div>
                   </div>
                   <div className="stop_lost_text">
                     <p>
-                      Если ваш чистый убыток достигнет -- USDT, торговля
+                      Если ваш чистый убыток достигнет {stopLoss} USDT, торговля
                       прекратится
                     </p>
                   </div>
@@ -908,10 +921,10 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_line"></div>
             <div className="algorithm_btns">
               <div className="modal_wrapper_save_btn">
-                <button>Создать алгоритм</button>
+                <button>{t("createAlgo.create_btn")}</button>
               </div>
               <div className="modal_wrapper_cancel">
-                <button>Отмена</button>
+                <button>{t("createAlgo.cancel_btn")}</button>
               </div>
             </div>
           </div>
@@ -923,13 +936,13 @@ function CreateAlgorithm({ updatebalance }) {
           <div className="algo_regim_second_content">
             <div className="algorithm_item">
               <div className="algorithm_item_title">
-                <p>Торговые пары</p>
+                <p>{t("createAlgo.trade_pairs")}</p>
                 <Info title="Выберите торговые пары для торговли " />
               </div>
               <div className="api_modal_dropdown create_algo_birj trade_select">
                 <Select
                   isMulti
-                  placeholder="Выберите торговые пары"
+                  placeholder={t("createAlgo.trade_pairs_se")}
                   options={customOptionsTrade}
                   styles={
                     localStorage.getItem("mode") &&
@@ -948,7 +961,7 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_item">
               <div className="reinv_inputs">
                 <div className="algorithm_item_title">
-                  <p>Реинвестирование прибыли</p>
+                  <p>{t("createAlgo.reinv")}</p>
                   <Info title="Использовать в торговле полученную прибыль" />
                 </div>
                 <Switch open={true} />
@@ -958,20 +971,20 @@ function CreateAlgorithm({ updatebalance }) {
 
             <div className="algorithm_item">
               <div className="algorithm_item_title">
-                <p>Депозит </p>
+                <p>{t("createAlgo.depos")} </p>
                 <Info title="Укажите выделенную сумму депозита для алгоритма" />
               </div>
               <div className="algorithm_item_input algo_deposit">
                 <input
                   type="number"
-                  placeholder="Укажите сумму депозита"
+                  placeholder={t("createAlgo.depo_s")}
                   value={deposite}
                   onChange={(e) => setDeposite(e.target.value)}
                   onBlur={handleBlurDeposite}
                 />
                 <div className="algorithm_item_input_add">
                   <p>
-                    Доступно:{" "}
+                  {t("createAlgo.depo_d")}:{" "}
                     {customOptionsKey.length == 1 &&
                     selectedOption &&
                     apiKeyTrade == true
@@ -996,14 +1009,14 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_item">
               <div className="reinv_inputs">
                 <div className="algorithm_item_title">
-                  <p>Максимальное кол-во активных сделок</p>
+                  <p>  {t("createAlgo.q_a_o")}</p>
                   <Info />
                 </div>
               </div>
               <div className="algorithm_item_input">
                 <input
                   type="number"
-                  placeholder="Укажите максимальное кол-во сделок "
+                  placeholder={t("createAlgo.qoas")}
                   value={activeTR}
                   onChange={(e) => setActiveTR(e.target.value)}
                   onBlur={handleBlurActiveTR}
@@ -1018,14 +1031,14 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_item">
               <div className="reinv_inputs">
                 <div className="algorithm_item_title">
-                  <p>Объем сделки</p>
+                  <p>{t("createAlgo.order_ob")}</p>
                   <Info title="Укажите обьем сделки в % от депозита" />
                 </div>
               </div>
               <div className="algorithm_item_input">
                 <input
                   type="number"
-                  placeholder="Укажите объём сделки"
+                  placeholder={t("createAlgo.order_ob_s")}
                   value={volume}
                   onChange={(e) => setVolume(e.target.value)}
                   onBlur={handleBlurVolume}
@@ -1042,14 +1055,14 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_item mt_24">
               <div className="reinv_inputs">
                 <div className="algorithm_item_title">
-                  <p>Плечо</p>
+                  <p>{t("createAlgo.plecho")}</p>
                   <Info />
                 </div>
               </div>
               <div className="algorithm_item_input">
                 <input
                   type="number"
-                  placeholder="Укажите плечо"
+                  placeholder={t("createAlgo.plecho_s")}
                   value={shoulder}
                   onChange={(e) => setShoulder(e.target.value)}
                   onBlur={handleBlurShoulder}
@@ -1064,7 +1077,7 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_item">
               <div className="reinv_inputs">
                 <div className="algorithm_item_title">
-                  <p>Стоп-лосс</p>
+                  <p>{t("createAlgo.stopl")}</p>
                   <Info title="Укажите сумму максимального убытка в % от депозита" />
                 </div>
 
@@ -1075,14 +1088,19 @@ function CreateAlgorithm({ updatebalance }) {
               {stopLossInput ? (
                 <>
                   <div className="algorithm_item_input">
-                    <input type="number" placeholder="Укажите стоп-лосс" />
+                    <input
+                      type="number"
+                      placeholder={t("createAlgo.stopls")}
+                      value={stopLoss}
+                      onChange={(e) => setStopLoss(e.target.value)}
+                    />
                     <div className="algorithm_item_input_add">
                       <p>%</p>
                     </div>
                   </div>
                   <div className="stop_lost_text">
                     <p>
-                      Если ваш чистый убыток достигнет -- USDT, торговля
+                      Если ваш чистый убыток достигнет {stopLoss} USDT, торговля
                       прекратится
                     </p>
                   </div>
@@ -1094,10 +1112,10 @@ function CreateAlgorithm({ updatebalance }) {
             <div className="algorithm_line"></div>
             <div className="algorithm_btns">
               <div className="modal_wrapper_save_btn">
-                <button>Создать алгоритм</button>
+                <button>{t("createAlgo.create_btn")}</button>
               </div>
               <div className="modal_wrapper_cancel">
-                <button>Отмена</button>
+                <button>{t("createAlgo.cancel_btn")}</button>
               </div>
             </div>
           </div>
