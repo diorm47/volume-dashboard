@@ -737,7 +737,10 @@ export const ru_locale = {
   },
   all_balance: "Использовать все",
   mon: "мес",
+  day: "день",
   days: "дней",
+  popular: 'Самый популярный',
+  depol_limit: 'Лимит депозита до',
   help: {
     help_title: "Помощь",
     help1_title: "Купить тарифный план",
@@ -854,6 +857,7 @@ export const ru_locale = {
     soon: "Скоро",
     create: "Создать",
   },
+  ending: 'Заканчивается',
   createAlgo: {
     title: "Создание алгоритма",
     birja: "Биржа",
@@ -919,6 +923,7 @@ export const ru_locale = {
     min_pros: "Максимальная просадка",
     risk: "Риск",
     medium: "Средний",
+    minim: 'Минимальный',
     exchange: "Тип рынка",
 
     testing: "Результаты тестирования",
@@ -934,7 +939,7 @@ export const ru_locale = {
     rec: "Рекомендации",
     mindep: "Минимальный депозит",
     rec_dep: "Рекомендуемый депозит",
-    rec_w: "Рекомендуемый срок работы от 3 месяцев",
+    rec_w: "Рекомендуемый срок работы",
     pairs: "Торгуемые пары",
     det: "Описание",
     time: "от 3 месяцев",

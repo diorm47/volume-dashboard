@@ -473,7 +473,7 @@ function Investments({ updatebalance, setRec }) {
                 <div>
                   <AlgoIcon />
                 </div>{" "}
-                <h3>Delta</h3>
+                <h3>Delta AI</h3>
               </div>{" "}
               <div className="algo_card_about">
                 <NavLink to="/delta">
@@ -515,7 +515,7 @@ function Investments({ updatebalance, setRec }) {
                 <div>
                   <AlgoIcon />
                 </div>{" "}
-                <h3>Sigma</h3>
+                <h3>Sigma AI</h3>
               </div>{" "}
               <div className="algo_card_about">
                 <NavLink to="/algorithm-type">

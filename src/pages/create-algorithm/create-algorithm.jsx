@@ -55,7 +55,7 @@ function CreateAlgorithm({ updatebalance }) {
   const { t } = useTranslation();
   const [stopLossInput, setStopLossInput] = useState(false);
   React.useEffect(() => {
-    document.title = `${t("createAlgo.title")} Sigma  | &Volume`;
+    document.title = `${t("createAlgo.title")} Sigma AI | &Volume`;
   }, [t]);
 
   const customOptions = [
@@ -650,7 +650,7 @@ function CreateAlgorithm({ updatebalance }) {
       );
     } else if (deposite > userBalance) {
       setDepositeError(
-        "Депозит выше доступной суммы на балансе, уменьшите сумму депозита"
+        "Вы указали депозит больше, чем доступные баланс на бирже. Уменьшите сумму депозита."
       );
     } else {
       setDepositeError("");
@@ -708,7 +708,7 @@ function CreateAlgorithm({ updatebalance }) {
     <>
       <div className="algorithm_wrapper">
         <div className="algorithm_wrapper_title">
-          <h1> {t("createAlgo.title")} Sigma</h1>
+          <h1> {t("createAlgo.title")} Sigma AI</h1>
         </div>
         <div className="algorithm_line"></div>
         <div className="algorithm_item">

@@ -466,9 +466,9 @@ function Review(rec) {
                       <div className="tarif_plan_time">
                         <div className="tarif_plan_time_title">
                           <p>
-                            {t("remaining_days")} {remainingDays} {t("days")}
+                            {t("remaining_days")} {remainingDays} {t(remainingDays === 1 ? "day" : "days")}
                           </p>
-                          <p>Заканчивается 24.03.2024</p>
+                          <p>{t('ending')} 24.03.2024</p>
                         </div>
                         <div className="tarif_plan_time_block">
                           <div

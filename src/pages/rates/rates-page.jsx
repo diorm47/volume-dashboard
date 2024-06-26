@@ -232,7 +232,7 @@ function RatesPage({ updatebalance }) {
                 <div className="tarif_plan_time">
                   <div className="tarif_plan_time_title">
                     <p>
-                      {t("remaining_days")} {remainingDays} дней
+                      {t("remaining_days")} {remainingDays} {t(remainingDays === 1 ? "day" : "days")}
                     </p>
                   </div>
                   <div className="tarif_plan_time_block">
@@ -289,19 +289,19 @@ function RatesPage({ updatebalance }) {
               <div className="rates_card_limits_item">
                 <div>
                   <Success />
-                  <p>Лонг-Шорт</p>
+                  <p>Sigma AI</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $1 000</span>
+                  <span>{t('depol_limit')} $1 000</span>
                 </p>
               </div>
               <div className="rates_card_limits_item">
                 <div>
                   <Fail />
-                  <p>Delta</p>
+                  <p>Delta AI</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $1 000</span>
+                  <span className="bgtr">{t('depol_limit')} $1 000</span>
                 </p>
               </div>
             </div>
@@ -313,7 +313,7 @@ function RatesPage({ updatebalance }) {
         </div>
         <div className="secondary_block_wrapper rates_card best_pricing_card">
           <div className="best_pricing_card_ind">
-            <p>Самый популярный </p>
+            <p>{t('popular')}</p>
           </div>
           <div className="main_block_wrapper_title">
             <h2>{t("advancedPlanTitle")}</h2>
@@ -331,19 +331,19 @@ function RatesPage({ updatebalance }) {
               <div className="rates_card_limits_item">
                 <div>
                   <Success />
-                  <p>Лонг-Шорт</p>
+                  <p>Sigma AI</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $5 000</span>
+                  <span>{t('depol_limit')} $5 000</span>
                 </p>
               </div>
               <div className="rates_card_limits_item">
                 <div>
                   <Success />
-                  <p>Delta</p>
+                  <p>Delta AI</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $5 000</span>
+                  <span>{t('depol_limit')} $5 000</span>
                 </p>
               </div>
             </div>
@@ -373,19 +373,19 @@ function RatesPage({ updatebalance }) {
               <div className="rates_card_limits_item">
                 <div>
                   <Success />
-                  <p>Лонг-Шорт</p>
+                  <p>Sigma AI</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $10 000</span>
+                  <span>{t('depol_limit')} $10 000</span>
                 </p>
               </div>
               <div className="rates_card_limits_item">
                 <div>
                   <Success />
-                  <p>Delta</p>
+                  <p>Delta AI</p>
                 </div>
                 <p>
-                  <span>Лимит депозита до $25 000</span>
+                  <span>{t('depol_limit')} $25 000</span>
                 </p>
               </div>
             </div>

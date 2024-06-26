@@ -24,7 +24,7 @@ function AlgorithmType() {
   const { t } = useTranslation();
 
   React.useEffect(() => {
-    document.title = `Sigma | &Volume`;
+    document.title = `Sigma AI | &Volume`;
   }, [t]);
   const [allPnl, setAllPnl] = useState(0);
   const [allPnlDown, setAllPnlDown] = useState(0);
@@ -32,7 +32,7 @@ function AlgorithmType() {
   return (
     <div className="pages_wrapper investments_page algorithm_type_page">
       <div className="main_page_title_template">
-        <h1>Sigma</h1>
+        <h1>Sigma AI</h1>
       </div>
       <div className="top_page_attention_wrapper container">
         <div>

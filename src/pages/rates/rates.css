@@ -16,6 +16,9 @@
 .rates_card {
   width: 33%;
 }
+.bgtr {
+  color: transparent !important;
+}
 .rates_card .main_block_wrapper_title {
   padding: 10px;
   flex-direction: column;

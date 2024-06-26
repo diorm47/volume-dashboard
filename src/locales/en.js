@@ -16,6 +16,8 @@ export const en_locale = {
   nav_menu_14: "Referral program",
   nav_menu_15: "Logout",
   // reviews
+  ending: 'Left',
+
   rev_1: "Review",
   rev_2: "Balance",
   rev_3: "Main account",
@@ -700,7 +702,10 @@ export const en_locale = {
   },
   all_balance: "Use all",
   mon: "mon",
-  days: "day",
+  day: "day",
+  days: "days",
+  popular: 'Popular choice',
+  depol_limit: 'Deposit limit up to',
   help: {
     help_title: "Help",
     help1_title: "Buy a tariff plan",
@@ -816,7 +821,7 @@ export const en_locale = {
       "Ideal for long-term planning, this algorithm excels in growth markets and is conservative during declines. If the market drops significantly, by -50% or more, it reduces trading activity to preserve your capital. On average, it executes 1-2 transactions per day.",
     sigma_des:
       "This algorithm profits from both market growth and decline by reacting to sudden price movements and selecting optimal entry points based on market volatility. It demonstrates strong effectiveness even over short time frames.",
-    place: "Trading platform",
+    place: "Market",
     risk: "Risk level",
     minimal: "Low",
     average: "Moderate",
@@ -890,6 +895,7 @@ export const en_locale = {
     min_pros: "Maximum drawdown",
     risk: "Risk",
     medium: "Moderate",
+    minim: 'Minimum',
     exchange: "Market",
 
     testing: 'Test results',
@@ -905,7 +911,7 @@ export const en_locale = {
     rec: 'Recommendations',
     mindep: 'Minimum deposit',
     rec_dep: 'Recommended deposit',
-    rec_w: 'Recommended operating time from 3 months',
+    rec_w: 'Recommended operating time',
     pairs: 'Tradable pairs',
     det: 'Description',
     time: 'from 3 months',

@@ -3,7 +3,7 @@ import AlgoColumnChart from "../../components/algotype-charts-ai/algo-type-colum
 import AlgoLineChart from "../../components/algotype-charts-ai/algo-type-line";
 import "./algorithm-type.css";
 import { ReactComponent as Icon } from "../../assets/icons/tarif-icon.svg";
-
+import { useTranslation } from "react-i18next";
 import trade1 from "../../assets/images/trade/1.png";
 import trade2 from "../../assets/images/trade/2.png";
 import trade3 from "../../assets/images/trade/3.png";
@@ -45,13 +45,18 @@ import trade38 from "../../assets/images/trade/38.png";
 import trade39 from "../../assets/images/trade/39.png";
 
 function AlgorithmTypeAi() {
+  const { t } = useTranslation();
+
+  React.useEffect(() => {
+    document.title = `Delta AI | &Volume`;
+  }, [t]);
   const [allPnl, setAllPnl] = useState(0);
   const [allPnlDown, setAllPnlDown] = useState(0);
 
   return (
     <div className="pages_wrapper investments_page algorithm_type_page">
       <div className="main_page_title_template">
-        <h1>Delta</h1>
+        <h1>Delta AI</h1>
       </div>
       <div className="top_page_attention_wrapper container">
         <div>
@@ -59,16 +64,14 @@ function AlgorithmTypeAi() {
           <Icon />
         </div>
         <p>
-          Информация на странице получена по результатам тестирования алгоритма
-          на историческом периоде и не может гарантировать аналогичную
-          эффективность в будущем.
+        {t('algo_type_sigma.warning')}
         </p>
       </div>
       <div className="algo_type_top_cards">
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Доходность за все время</h2>
+              <h2> {t('algo_type_sigma.doxod')}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
@@ -92,7 +95,7 @@ function AlgorithmTypeAi() {
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Максимальная просадка</h2>
+              <h2> {t('algo_type_sigma.min_pros')}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
@@ -106,13 +109,13 @@ function AlgorithmTypeAi() {
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Риск</h2>
+              <h2>{t('algo_type_sigma.risk')}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
             <div className="review_left_top_block_content">
               <div className="review_left_top_block_content_amount">
-                <p>Минимальный</p>
+                <p> {t('algo_type_sigma.minim')}</p>
               </div>
             </div>
           </div>
@@ -120,7 +123,7 @@ function AlgorithmTypeAi() {
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Тип рынка</h2>
+              <h2>{t('algo_type_sigma.exchange')}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
@@ -136,41 +139,41 @@ function AlgorithmTypeAi() {
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Результаты тестирования</h2>
+              <h2>{t('algo_type_sigma.testing')}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
             <div className="review_left_top_block_content algo_type_stats">
               <div>
-                <p>Дата создания</p>
+                <p>{t('algo_type_sigma.testing2')}</p>
                 <p>01.01.2021</p>
               </div>
               <div>
-                <p>Чистый П/У в %</p>
+                <p>{t('algo_type_sigma.testing3')}</p>
                 <p>+333.8%</p>
               </div>
               <div>
-                <p>Среднегодовая доходность</p>
+                <p>{t('algo_type_sigma.testing4')}</p>
                 <p>+333.8%</p>
               </div>
               <div>
-                <p>Среднемесячная доходность</p>
+                <p>{t('algo_type_sigma.testing5')}</p>
                 <p>+333.8%</p>
               </div>
               <div>
-                <p>Количество сделок</p>
+                <p>{t('algo_type_sigma.testing6')}</p>
                 <p>+333.8%</p>
               </div>
               <div>
-                <p>Прибыльных сделок в %</p>
+                <p>{t('algo_type_sigma.testing7')}</p>
                 <p>+333.8%</p>
               </div>
               <div>
-                <p>Убыточных сделок в %</p>
+                <p>{t('algo_type_sigma.testing8')}</p>
                 <p>+333.8%</p>
               </div>
               <div>
-                <p>Макс. просадка в %</p>
+                <p>{t('algo_type_sigma.testing9')}</p>
                 <p>+333.8%</p>
               </div>
             </div>
@@ -179,21 +182,21 @@ function AlgorithmTypeAi() {
         <div className="main_block_wrapper">
           <div className="main_block_wrapper_top">
             <div className="main_block_wrapper_title">
-              <h2>Рекомендации</h2>
+              <h2>{t('algo_type_sigma.rec')}</h2>
             </div>
           </div>
           <div className="main_block_wrapper_bottom">
             <div className="review_left_top_block_content algo_type_stats">
               <div>
-                <p>Минимальный депозит</p>
+                <p>{t('algo_type_sigma.mindep')}</p>
                 <p>$300</p>
               </div>
               <div>
-                <p>Рекомендуемый депозит</p>
+                <p>{t('algo_type_sigma.rec_dep')}</p>
                 <p>$3 000</p>
               </div>
               <div>
-                <p>Рекомендуемый срок работы</p>
+                <p>{t('algo_type_sigma.rec_w')}</p>
                 <p>от 3 месяцев</p>
               </div>
             </div>
@@ -203,7 +206,7 @@ function AlgorithmTypeAi() {
       <div className="main_block_wrapper">
         <div className="main_block_wrapper_top">
           <div className="main_block_wrapper_title">
-            <h2>Торгуемые пары</h2>
+            <h2>{t('algo_type_sigma.pairs')}</h2>
           </div>
         </div>
         <div className="main_block_wrapper_bottom">
@@ -256,7 +259,7 @@ function AlgorithmTypeAi() {
       <div className="main_block_wrapper algorithm_type_desc">
         <div className="main_block_wrapper_top">
           <div className="main_block_wrapper_title">
-            <h2>Описание</h2>
+            <h2>{t('algo_type_sigma.det')}</h2>
           </div>
         </div>
         <div className="main_block_wrapper_bottom">
@@ -307,14 +310,14 @@ function AlgorithmTypeAi() {
 
       <div className="secondary_block_wrapper p0 algorithm_type_chart">
         <div className="main_block_wrapper_title">
-          <h2>График PnL</h2>
+          <h2>{t('algo_type_sigma.pnl')}</h2>
         </div>
 
         <AlgoLineChart setAllPnl={setAllPnl} setAllPnlDown={setAllPnlDown} />
       </div>
       <div className="secondary_block_wrapper algorithm_type_chart">
         <div className="main_block_wrapper_title">
-          <h2>График PnL по месяцам</h2>
+          <h2>{t('algo_type_sigma.pnl_m')}</h2>
         </div>
 
         <AlgoColumnChart />
